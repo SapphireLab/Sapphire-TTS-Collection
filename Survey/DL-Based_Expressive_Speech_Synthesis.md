@@ -103,7 +103,73 @@ ASR 模型通过使用梯度反转层来反转共享层的梯度.
 
 #### 5.1.2.韵律分类器 (Prosody Classifiers)
 
+> This is a supporting approach used by some studies to produce more discriminative prosody embeddings by passing them to a prosody classifier. 
+> This method can be applied when the training data is labeled with emotion or style labels. 
+> In the two consecutive studies [32] [34] from the same research group, an auxiliary reference encoder is proposed and located after the decoder of the baseline TTS model [74]. 
+> The two reference encoders in the model are followed by emotion classifiers to further enhance the discriminative nature of their resulting embeddings.
+> However, the emotion embedding that is passed to the TTS model is the output of an intermediate hidden layer of the classifiers. 
+> In addition to the classification loss,an additional style loss is also applied between the two emotion embeddings from the two employed emotion classifiers.
 
+> In [36], alongside the text encoder, two encoders are introduced to generate embeddings for speaker and emotion from a reference audio. 
+> To further disentangle emotion, speaker, and text information, both speaker and emotion encoders are supported with a classifier to predict speaker and emotion labels, respectively. 
+> Similarly, in paper [39], a model with two encoders and two classifiers is proposed to produce disentangled embeddings for speakers and emotions from a reference audio. 
+> However, the paper claims that some emotional information is lost during the process of disentangling speaker identity from the emotion embedding. 
+> As a result, an ASR model is introduced to compensate for the missing emotional information. 
+> The emotion embedding is incorporated within a pre-trained ASR model through a global context(GC) block. 
+> This block extracts global emotional features from the ASR model’s intermediate features (AIF). 
+> Subsequently, a prosody compensation encoder is utilized to generate emotion compensation information from the output of the AIF layer, which is then added to the emotion encoder output.
+
+#### 5.1.3.信息瓶颈 (Information Bottleneck)
+
+> The information bottleneck is a technique used to control information flow via a single layer/network. 
+> It helps prevent information leakage as it projects input into a lower dimension so that there is not enough capacity to model additional information and only important information is passed through it. 
+> In other words, the bottleneck can be seen as a down-sampling and up-sampling filter that restricts its output and generates a pure style embedding. 
+> Several prosody-reference based approaches, as in [86] [93] [97] [101] [130], have employed this technique to prevent the flow of speaker or content-related information from the reference audio to the prosody embedding.
+
+> In [93], a bottleneck layer named sieve layer is introduced to the style encoder in GST-TTS to generate pure style embedding. 
+> Similarly, in the multiple style encoders model STYLER [97], each encoder involves a channel-wise bottleneck block of two bidirectional-LSTM layers to eliminate content information from encoders’ output. 
+> Another example is the cross-speaker-style transfer Transformer-TTS model proposed in [86] with both speaker and style embeddings as input to the model encoder. 
+> The speaker-style-combined output from the encoder is then passed to a prosody bottleneck sub-network, which produces a prosody embedding that involves only prosody-related features. 
+> The proposed bottleneck sub-network consists of two CNN layers, a squeeze-and-excitation (SE) block [152], and a linear layer. 
+> The encoder output is then concatenated with the resulting prosody embedding and used as input to the decoder.
+
+> The Copycat TTS model [130] is a prosody transfer model via VAE. 
+> The model applies three techniques to disentangle the source speaker information from the prosody embedding. 
+> One of these techniques is to use a temporal bottleneck encoder [153] within the reference encoder of the model. 
+> The prosody embedding that is sampled from the latent space is passed to the bottleneck to reduce speaker identity-related information in the prosody embedding before it flows to the model decoder.
+> Similarly, the model proposed in [101] produces a style embedding with less irrelevant style information by adding a variational information bottleneck (VIB) [154] layer to the reference encoder. 
+> The idea behind this layer is to introduce a complexity constraint on mutual information(MI) between the reference encoder input and output so that it only flows out style-related information.
+
+#### 5.1.4.实例归一化 (Instance Normalization)
+
+> Batch normalization (BN), first introduced in [155], is utilized in deep neural networks to accelerate the training process and increase its stability. Essentially, a batch normalization layer is added before each layer in deep neural networks to adjust the means and variances of the layer inputs, as illustrated by Eq.(1):
+> $$
+>   IN(x) = \gamma \left[\dfrac{x-\mu(x)}{\sigma(x)}\right]+\beta, \tag{1}
+> $$
+> 
+> where $\gamma$, $\beta$ are affine parameters learned from data and $\mu$, $\sigma$ are the mean and standard deviation which are calculated for each feature channel across the batch size.
+> Instance normalization (IN) also follows equation (1); however, it calculates means and variances across spatial dimensions independently for each channel and each sample (instance). 
+> In the field of computer vision, stylization approach is significantly improved by replacing (BN) layers with (IN) layers [156]. 
+> Consequently, researchers in the expressive speech field have started to apply IN to extract better prosody representations. 
+> For example,an instance normalization (IN) layer is used at the reference encoder in [130], at the prosody extractor in [93], and at the style encoder in [96] to remove style/prosody irrelevant features (such as speaker identity features) and enhance the learned style/prosody embedding.
+
+#### 5.1.5.互信息最小化 (Mutual Information Minimization)
+
+> For a pair of random variables, mutual information (MI)is defined as the information obtained on one random variable by observing the other. 
+> Specifically, if $X$ and $Y$ are two variables, then $MI(X; Y)$ shown by Venn diagram in [Fig.10](#FIG10), can be seen as the KL-divergence between the joint distribution $(P_{XY})$ and the product of the marginals $(P_X, P_Y)$ as in [equation (2)](#EQ02). If the two random variables $X$ and $Y$ represent linguistic and style vectors, applying $MI$ minimization between these two vectors helps to produce style vectors with less information from the content vector.
+> $$
+>   MI(X;Y)=DL_{KL}(P_{(X,Y)}\| P_X\otimes P_Y),\tag{2}
+> $$
+
+> For example, in [137], the Mutual Information Neural Estimation algorithm (MINE) [157] is employed to estimate the mutual information between the content and style vectors. 
+> The algorithm uses a neural network that is trained to maximize the lower bound of the mutual information between the style and content vectors. 
+> Simultaneously, the TTS model aims to minimize the reconstruction loss, making the overall problem a max-min problem. 
+> Alternatively, in [21], the CLUB method [158], which computes an upper bound as the MI estimator, is used to prevent the leakage of speaker and content information into the style embedding.
+
+> A new approach is proposed in [117] for MI estimation and minimization to reduce content/speaker information transfer to the style embedding in a VAE based approach. 
+> Typically, the model needs to estimate MI between latent style embeddings and speaker/content embeddings. 
+> To avoid the exponentially high statistical variance of the finite-sampling MI estimator, the paper suggests using a new algorithm for information divergence named Rényi divergence. 
+> Two variations from the Rényi divergence family are proposed, including minimizing the Hellinger distance and minimizing the sum of Rényi divergences.
 
 ## 6.数据集与开源代码
 
