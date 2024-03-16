@@ -105,19 +105,35 @@ ASR 模型通过使用梯度反转层来反转共享层的梯度.
 
 > This is a supporting approach used by some studies to produce more discriminative prosody embeddings by passing them to a prosody classifier. 
 > This method can be applied when the training data is labeled with emotion or style labels. 
-> In the two consecutive studies [32] [34] from the same research group, an auxiliary reference encoder is proposed and located after the decoder of the baseline TTS model [74]. 
+> In the [two consecutive studies](#T.Li2022) [](#T.Li2021) from the same research group, an auxiliary reference encoder is proposed and located after the decoder of the [baseline TTS model](#R.Skerry2018). 
 > The two reference encoders in the model are followed by emotion classifiers to further enhance the discriminative nature of their resulting embeddings.
 > However, the emotion embedding that is passed to the TTS model is the output of an intermediate hidden layer of the classifiers. 
-> In addition to the classification loss,an additional style loss is also applied between the two emotion embeddings from the two employed emotion classifiers.
+> In addition to the classification loss, an additional style loss is also applied between the two emotion embeddings from the two employed emotion classifiers.
+
+这是某些研究中采用的支持方法, 通过将它们传递给韵律分类器用于产生更具区分性的韵律嵌入.
+当训练数据带有情感或风格标签时可以采用此方法.
+在同一研究小组的两项连续研究中, 给基线 TTS 模型的解码器后添加一个辅助的参考编码器.
+模型中的两个参考编码器后跟着情感分类器用于进一步增强其生成嵌入的区分性.
+然而传递给 TTS 模型的情感嵌入是分类器的中间隐藏层的输出.
+除了分类器损失外, 还应用了来源于两个情感分类器的情感嵌入之间的附加风格损失.
 
 > In [36], alongside the text encoder, two encoders are introduced to generate embeddings for speaker and emotion from a reference audio. 
 > To further disentangle emotion, speaker, and text information, both speaker and emotion encoders are supported with a classifier to predict speaker and emotion labels, respectively. 
 > Similarly, in paper [39], a model with two encoders and two classifiers is proposed to produce disentangled embeddings for speakers and emotions from a reference audio. 
 > However, the paper claims that some emotional information is lost during the process of disentangling speaker identity from the emotion embedding. 
 > As a result, an ASR model is introduced to compensate for the missing emotional information. 
-> The emotion embedding is incorporated within a pre-trained ASR model through a global context(GC) block. 
+> The emotion embedding is incorporated within a pre-trained ASR model through a **Global Context (GC)** block. 
 > This block extracts global emotional features from the ASR model’s intermediate features (AIF). 
 > Subsequently, a prosody compensation encoder is utilized to generate emotion compensation information from the output of the AIF layer, which is then added to the emotion encoder output.
+
+在文献 [36] 中, 除了文本编码器之外, 还引入了两个编码器从参考音频中生成说话人和情感的嵌入.
+为了进一步解耦情感, 说话人和文本信息, 说话人和情感编码器都用一个分类器进行支持, 分别用于预测说话人和情感标签.
+类似地, 文献 [39] 中, 提出了一个具有两个编码器和两个分类器的模型以从参考音频中产生解耦的说话人和情感嵌入.
+然而该文献声称再从情感嵌入中解耦说话人标识时丢失了一些情感信息.
+因此引入了一个 ASR 模型用于补偿丢失的情感信息.
+情感嵌入通过全局文本块被整合进预训练 ASR 模型中.
+这个块从 ASR 模型的中间特征 (AIF) 中提取全局情感特征.
+然后, 使用韵律补偿编码器从 AIF 层的输出中生成情感补偿信息, 之后加入到情感编码器的输出中.
 
 #### 5.1.3.信息瓶颈 (Information Bottleneck)
 
@@ -182,7 +198,10 @@ ASR 模型通过使用梯度反转层来反转共享层的梯度.
 ## R.参考文献
 
 - 019 [<a id="S.Jo2023">Cross-Speaker Emotion Transfer by Manipulating Speech Style Latents]()
+- 032 [<a id="T.Li2021">Controllable Emotion Transfer for End-to-End Speech Synthesis</a>]()
+- 034 [<a id="T.Li2022">Cross-Speaker Emotion Disentangling and Transfer for End-to-End Speech Synthesis</a>]()
 - 047 [<a id="C.Lu2021">Multi-Speaker Emotional Speech Synthesis with Fine-Grained Prosody Modeling</a>]()
+- 074 [<a id="R.Skerry2018">Towards End-to-End Prosody Transfer for Expressive Speech Synthesis with Tacotron</a>]()
 - 090 [<a id="Y.Ganin2016">Domain-Adversarial Training of Neural Networks</a>]()
 - 097 [<a id="K.Lee2021">Styler: Style Factor Modeling with Rapidity and Robustness via Speech Decomposition for Expressive and Controllable Neural Text To Speech</a>]()
 - 102 [<a id="K.Zhang2022">Joint and Adversarial Training with ASR for Expressive Speech Synthesis</a>]()
