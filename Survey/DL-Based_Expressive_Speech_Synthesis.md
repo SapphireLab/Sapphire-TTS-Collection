@@ -1,3 +1,25 @@
+---
+PDF: 
+标题: Deep Learning-Based Expressive Speech Synthesis - A Systematic Review of Approaches, Challenges, and Resources
+作者:
+ - Huda Barakat
+ - Oytun Turk
+ - Cenk Demiroglu
+机构:
+ - OzyeginU
+代码: 
+ArXiv: 
+提出时间: 
+出版社: 
+发表期刊: 
+发表时间: 
+引文数量: 
+被引次数: 
+tags:
+ - 综述
+ - 语音合成
+ - 情感语音
+---
 # Deep Learning-Based Expressive Speech Synthesis: A Systematic Review of Approaches,  Challenges, and Resources<br>基于深度学习的表现性语音合成: 方法, 挑战, 资源的系统性回顾
 
 ## A.摘要
