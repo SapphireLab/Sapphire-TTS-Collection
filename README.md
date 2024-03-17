@@ -10,4 +10,4 @@
 
 |时间|发表|标题|代码|
 |:-:|---|---|:-:|
-|2023.12.12 (v1)<br>2024.01.02 (v5)|[ArXiv](https://arxiv.org/abs/2312.01479)|[OpenVoice: Versatile Instant Voice Cloning](Model/OpenVoice.md)|[OpenVoice](https://github.com/myshell-ai/OpenVoice)
+|2023.12.12 (v1)<br>2024.01.02 (v5)|[ArXiv](https://arxiv.org/abs/2312.01479)|[OpenVoice: Versatile Instant Voice Cloning](Papers/OpenVoice.md)|[OpenVoice](https://github.com/myshell-ai/OpenVoice)
