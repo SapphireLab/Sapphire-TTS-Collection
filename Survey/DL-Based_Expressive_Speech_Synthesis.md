@@ -164,6 +164,11 @@ ASR 模型通过使用梯度反转层来反转共享层的梯度.
 > In other words, the bottleneck can be seen as a down-sampling and up-sampling filter that restricts its output and generates a pure style embedding. 
 > Several prosody-reference based approaches, as in [86] [93] [97] [101] [130], have employed this technique to prevent the flow of speaker or content-related information from the reference audio to the prosody embedding.
 
+信息瓶颈是一种通过单层或网络控制信息流的技术。
+它有助于防止信息泄露，因为它将输入投射到较低维度从而没有足够的容量来建模额外信息，只有重要信息通过它。
+换句话说，信息瓶颈可以视为一个下采样和上采样滤波器，它限制了输出并生成纯风格嵌入。
+有几项基于韵律参考的研究已经应用了这一技术用于防止说话人或内容相关的信息从参考音频流入韵律嵌入。
+
 > In [93], a bottleneck layer named sieve layer is introduced to the style encoder in GST-TTS to generate pure style embedding. 
 > Similarly, in the multiple style encoders model STYLER [97], each encoder involves a channel-wise bottleneck block of two bidirectional-LSTM layers to eliminate content information from encoders’ output. 
 > Another example is the cross-speaker-style transfer Transformer-TTS model proposed in [86] with both speaker and style embeddings as input to the model encoder. 
@@ -171,12 +176,19 @@ ASR 模型通过使用梯度反转层来反转共享层的梯度.
 > The proposed bottleneck sub-network consists of two CNN layers, a squeeze-and-excitation (SE) block [152], and a linear layer. 
 > The encoder output is then concatenated with the resulting prosody embedding and used as input to the decoder.
 
+[文献 093]() 在 GST-TTS 的风格编码器中引入了一个名为筛层 (Sieve Layer) 的瓶颈层用于生成纯风格嵌入.
+[文献 097]() 提出的多风格编码器模型 STYLER 中，每个编码器都包含两个双向 LSTM 层通道级别瓶颈块用于消除编码器输出中的内容信息.
+[文献 086]() 提出的跨说话人风格迁移 Transformer-TTS 模型中, 说话人和风格嵌入都作为模型编码器的输入. 编码器输出的说话人-风格组合被传递到韵律瓶颈自网络, 导出仅包含韵律相关特征的韵律嵌入. 之后将编码器的输出与产生的韵律嵌入进行拼接作为解码器的输入.
+
 > The Copycat TTS model [130] is a prosody transfer model via VAE. 
 > The model applies three techniques to disentangle the source speaker information from the prosody embedding. 
 > One of these techniques is to use a temporal bottleneck encoder [153] within the reference encoder of the model. 
 > The prosody embedding that is sampled from the latent space is passed to the bottleneck to reduce speaker identity-related information in the prosody embedding before it flows to the model decoder.
 > Similarly, the model proposed in [101] produces a style embedding with less irrelevant style information by adding a variational information bottleneck (VIB) [154] layer to the reference encoder. 
 > The idea behind this layer is to introduce a complexity constraint on mutual information(MI) between the reference encoder input and output so that it only flows out style-related information.
+
+[文献 130]() 提出的 Copycat TTS 是通过 VAE 进行韵律迁移的模型. 模型应用三种技术来从韵律嵌入中解耦源说话人信息. 其中之一是在模型的参考编码器中使用**时序瓶颈编码器** [文献 153](), 在传递给模型解码器之前, 从隐空间中采样的韵律嵌入被传递到瓶颈以减少其中和说话人身份相关的信息.
+[文献 101]() 通过给参考编码器添加变分信息瓶颈 (Variational Information Bottleneck, VIB) 层以生成具有更少风格无关信息的风格嵌入. 该层背后的思想是在参考编码器的输入和输出之间的互信息引入一个复杂度约束使其只流出风格相关的信息.
 
 #### 5.1.4.实例归一化 (Instance Normalization)
 
