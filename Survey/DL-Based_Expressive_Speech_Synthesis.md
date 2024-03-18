@@ -176,9 +176,9 @@ ASR 模型通过使用梯度反转层来反转共享层的梯度.
 > The proposed bottleneck sub-network consists of two CNN layers, a squeeze-and-excitation (SE) block [152], and a linear layer. 
 > The encoder output is then concatenated with the resulting prosody embedding and used as input to the decoder.
 
-[文献 093]() 在 GST-TTS 的风格编码器中引入了一个名为筛层 (Sieve Layer) 的瓶颈层用于生成纯风格嵌入.
-[文献 097]() 提出的多风格编码器模型 STYLER 中，每个编码器都包含两个双向 LSTM 层通道级别瓶颈块用于消除编码器输出中的内容信息.
-[文献 086]() 提出的跨说话人风格迁移 Transformer-TTS 模型中, 说话人和风格嵌入都作为模型编码器的输入. 编码器输出的说话人-风格组合被传递到韵律瓶颈自网络, 导出仅包含韵律相关特征的韵律嵌入. 之后将编码器的输出与产生的韵律嵌入进行拼接作为解码器的输入.
+- [文献 093]() 在 GST-TTS 的风格编码器中引入了一个名为筛层 (Sieve Layer) 的瓶颈层用于生成纯风格嵌入.
+- [文献 097]() 提出的多风格编码器模型 STYLER 中，每个编码器都包含两个双向 LSTM 层通道级别瓶颈块用于消除编码器输出中的内容信息.
+- [文献 086]() 提出的跨说话人风格迁移 Transformer-TTS 模型中, 说话人和风格嵌入都作为模型编码器的输入. 编码器输出的说话人-风格组合被传递到韵律瓶颈自网络, 导出仅包含韵律相关特征的韵律嵌入. 之后将编码器的输出与产生的韵律嵌入进行拼接作为解码器的输入.
 
 > The Copycat TTS model [130] is a prosody transfer model via VAE. 
 > The model applies three techniques to disentangle the source speaker information from the prosody embedding. 
@@ -187,8 +187,8 @@ ASR 模型通过使用梯度反转层来反转共享层的梯度.
 > Similarly, the model proposed in [101] produces a style embedding with less irrelevant style information by adding a variational information bottleneck (VIB) [154] layer to the reference encoder. 
 > The idea behind this layer is to introduce a complexity constraint on mutual information(MI) between the reference encoder input and output so that it only flows out style-related information.
 
-[文献 130]() 提出的 Copycat TTS 是通过 VAE 进行韵律迁移的模型. 模型应用三种技术来从韵律嵌入中解耦源说话人信息. 其中之一是在模型的参考编码器中使用**时序瓶颈编码器** [文献 153](), 在传递给模型解码器之前, 从隐空间中采样的韵律嵌入被传递到瓶颈以减少其中和说话人身份相关的信息.
-[文献 101]() 通过给参考编码器添加变分信息瓶颈 (Variational Information Bottleneck, VIB) 层以生成具有更少风格无关信息的风格嵌入. 该层背后的思想是在参考编码器的输入和输出之间的互信息引入一个复杂度约束使其只流出风格相关的信息.
+- [文献 130]() 提出的 Copycat TTS 是通过 VAE 进行韵律迁移的模型. 模型应用三种技术来从韵律嵌入中解耦源说话人信息. 其中之一是在模型的参考编码器中使用**时序瓶颈编码器** [文献 153](), 在传递给模型解码器之前, 从隐空间中采样的韵律嵌入被传递到瓶颈以减少其中和说话人身份相关的信息.
+- [文献 101]() 通过给参考编码器添加变分信息瓶颈 (Variational Information Bottleneck, VIB) 层以生成具有更少风格无关信息的风格嵌入. 该层背后的思想是在参考编码器的输入和输出之间的互信息引入一个复杂度约束使其只流出风格相关的信息.
 
 #### 5.1.4.实例归一化 (Instance Normalization)
 
@@ -201,7 +201,20 @@ ASR 模型通过使用梯度反转层来反转共享层的梯度.
 > Instance normalization (IN) also follows equation (1); however, it calculates means and variances across spatial dimensions independently for each channel and each sample (instance). 
 > In the field of computer vision, stylization approach is significantly improved by replacing (BN) layers with (IN) layers [156]. 
 > Consequently, researchers in the expressive speech field have started to apply IN to extract better prosody representations. 
-> For example,an instance normalization (IN) layer is used at the reference encoder in [130], at the prosody extractor in [93], and at the style encoder in [96] to remove style/prosody irrelevant features (such as speaker identity features) and enhance the learned style/prosody embedding.
+> For example, an instance normalization (IN) layer is used at the reference encoder in [130], at the prosody extractor in [93], and at the style encoder in [96] to remove style/prosody irrelevant features (such as speaker identity features) and enhance the learned style/prosody embedding.
+
+**批量归一化 (Batch Normalization, BN)** 由[文献 155]() 首次提出, 用于加速深度神经网络的训练过程并提高其稳定性. 本质上, 在深度神经网络的每一层之前添加批量归一化层用于调整输入的均值和方差, 如[公式一]()所示.
+其中 $\gamma$ 和 $\beta$ 是从数据中学习到的仿射参数, $\mu$ 和 $\sigma$ 是在整个批量大小上为每个特征通道计算的均值和方差.
+
+**实例归一化 (Instance Normaliztion, IN)** 同样满足[公式一](), 然而它独立地为每个通道和每个样本 (又称实例) 在空间维度上计算均值和方差. 
+
+在计算机视觉领域, 通过将批量归一化层替换为实例归一化层, 风格化方法得到了显著提升. 因此, 表达性语音领域的研究人员尝试应用实例归一化用于提取更好的韵律表示. 
+
+例如以下研究都使用了实例归一化层以去除风格/韵律无关特征 (如说话人身份特征) 并增强学习到的风格/韵律嵌入.
+
+- [文献 130]() 的参考编码器;
+- [文献 093]() 的韵律提取器;
+- [文献 096]() 的风格编码器.
 
 #### 5.1.5.互信息最小化 (Mutual Information Minimization)
 
@@ -237,6 +250,6 @@ ASR 模型通过使用梯度反转层来反转共享层的梯度.
 - 047 [<a id="C.Lu2021">Multi-Speaker Emotional Speech Synthesis with Fine-Grained Prosody Modeling</a>]()
 - 074 [<a id="R.Skerry2018">Towards End-to-End Prosody Transfer for Expressive Speech Synthesis with Tacotron</a>]()
 - 090 [<a id="Y.Ganin2016">Domain-Adversarial Training of Neural Networks</a>]()
-- 097 [<a id="K.Lee2021">Styler: Style Factor Modeling with Rapidity and Robustness via Speech Decomposition for Expressive and Controllable Neural Text To Speech</a>]()
+- 097 [<a id="K.Lee2021">STYLER: Style Factor Modeling with Rapidity and Robustness via Speech Decomposition for Expressive and Controllable Neural Text To Speech</a>]()
 - 102 [<a id="K.Zhang2022">Joint and Adversarial Training with ASR for Expressive Speech Synthesis</a>]()
 - 111 [<a id="D.Tan2020">Fine-Grained Style Modeling, Transfer and Prediction in Text-to-Speech Synthesis via Phone-Level Content-Style Disentanglement</a>]()
