@@ -76,8 +76,6 @@ tags:
 换句话说, 分类器在它的输出中对任何不需要的信息惩罚韵律编码器或提取器.
 通常使用**梯度反转层 (Gradient Reversal Layer, GRL)** 来获得分类器梯度的反转.
 
-
-
 > Several studies utilize adversarial training to prevent the flow of either speaker or content-related information from the given reference audio to the resulting prosody embedding. 
 > For instance, the [VAE-TTS model](#C.Lu2021) learns phoneme-level 3-dimensional prosody codes. 
 > The VAE is conditioned on speaker and emotion embeddings, besides the tone sequence and mel-spectrogram from the reference audio. 
@@ -121,7 +119,6 @@ tags:
 将参考梅尔频谱传递到共享层用于生成共享嵌入, 作为参考编码器和 ASR 模型的输入.
 ASR 模型通过使用梯度反转层来反转共享层的梯度.
 因此, 参考编码器的参数被修改使得 ASR 模型无法识别共享嵌入, 从而减少从参考编码器到风格嵌入器的内容泄露.
-
 
 #### 5.1.2.韵律分类器 (Prosody Classifiers)
 
@@ -233,6 +230,16 @@ ASR 模型通过使用梯度反转层来反转共享层的梯度.
 > Typically, the model needs to estimate MI between latent style embeddings and speaker/content embeddings. 
 > To avoid the exponentially high statistical variance of the finite-sampling MI estimator, the paper suggests using a new algorithm for information divergence named Rényi divergence. 
 > Two variations from the Rényi divergence family are proposed, including minimizing the Hellinger distance and minimizing the sum of Rényi divergences.
+
+对于一对随机变量, 互信息 (Mutual Information, MI) 被定义为通过观察另一个随机变量获得的当前随机变量的信息.
+具体地, 若 $X$ 和 $Y$ 为两个变量, 那么 $MI(X;Y)$ 如图十显示的韦恩图所示, 可以视为联合概率分布 $P_{XY}$ 和边际概率分布 $(P_X,P_Y)$ 的乘积之间的 KL 散度. 若两个随机变量 $X$ 和 $Y$ 分别表示语言向量和风格向量, 对这两个向量应用互信息最小化将有助于生成具有更少来自内容向量的信息的风格向量.
+$$
+    MI(X;Y)=DL_{KL}(P_{(X,Y)}\| P_X\otimes P_Y),\tag{2}
+$$
+
+- 文献 [137] 将文献 [157] 的互信息网络估计算法 (Mutual Information Neural Estimation, MINE) 应用于估计内容向量和风格向量之间的互信息. 该算法使用一个神经网络, 被训练以最大化风格向量和内容向量之间互信息的下界. 同时, TTS 模型最小化重构损失, 使得整体变成了最大-最小问题.
+- 文献 [021] 将文献 [158] 使用 CLUB 方法计算一个上界作为 MI 估计量, 用于防止说话人和内容信息泄露到风格嵌入中.
+- 文献 [117] 提出了一种用于互信息估计的新方法并在基于 VAE 方法中最小化用于减少内容/说话人信息转移到风格嵌入中. 通常模型需要估计隐风格嵌入和说话人/内容嵌入之间的互信息. 为了避免有限采样互信息估计其的指数高统计方差, 作者建议使用一种新算法用于信息散度, 名为 Rényi 散度. Rényi 散度导出两种变体, 包括最小化 Hellinger 距离和最小化 Rényi 散度之和.
 
 ## 6.数据集与开源代码
 
