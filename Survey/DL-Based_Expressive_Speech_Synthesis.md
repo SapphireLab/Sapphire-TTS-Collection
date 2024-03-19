@@ -309,21 +309,38 @@ $$
 
 两项工作的 GMM 都通过混合密度网络进行建模.
 
-#### 5.2.2 VAE‑Based Approaches without Reference Audio 
+#### 5.2.2.无参考语音的VAE类方法 (VAE‑Based Approaches without Reference Audio)
 
-Sampling from the latent space without reference audio results in less controllability of style. In addition, it can also introduce naturalness degradation and inappropriate contextual prosody with regard to the input text [68] [129]. 
+> Sampling from the latent space without reference audio results in less controllability of style. In addition, it can also introduce naturalness degradation and inappropriate contextual prosody with regard to the input text [68] [129]. 
+> Therefore, to avoid sampling the latent space without a reference, authors of [131] proposed utilizing the same prosody embedding of the most similar training sentence to input sentence at inference time. The selection process is based on measuring cosine similarity between sentences’ linguistic features. Three methods are proposed for extracting sentence linguistic information including 
+> (1) calculating the syntactic distance between words in the sentence using constituency trees [162], 
+> (2) averaging the contextual word embeddings (CWE) for the words in the sentence using BERT, and 
+> (3) combining the previous two methods.
 
-Therefore, to avoid sampling the latent space without a reference, authors of [131] proposed utilizing the same prosody embedding of the most similar training sentence to input sentence at inference time. The selection process is based on measuring cosine similarity between sentences’ linguistic features. Three methods are proposed for extracting sentence linguistic information including 
-(1) calculating the syntactic distance between words in the sentence using constituency trees [162], 
-(2) averaging the contextual word embeddings (CWE) for the words in the sentence using BERT, and 
-(3) combining the previous two methods.
+在没有参考音频的情况下从隐空间采样会导致风格的可控性降低. 此外它还会引入自然性退化和和不适合输入文本的语境韵律.
+因此为了避免在没有参考的情况下从隐空间中采样, 文献 [131] 提出推理时用和输入句子最相似的训练句子的相同韵律嵌入. 选择过程基于句子语言特征之间的余弦相似度. 三种方法用于提取句子语言信息:
+1. 使用句法树计算句子中单词的句法距离;
+2. 使用 BERT 计算句子中单词的上下文词嵌入 (Contextual Word Embeddings, CWE) 的平均值;
+3. 结合前两种方法.
 
-Other studies approach the problem in alternative ways, seeking to enhance the sampling process either through refining the baseline model structure or by incorporating text-based components into the baseline.
-Regarding the improvement of the baseline structure,study [68] suggests the combination of multiple variational autoencoders to generate latent variables at three distinct levels: utterance-level, phrase-level, and word-level. Furthermore, they apply a conditional prior (CP)to learn the latent space distribution based on the input text embedding. To account for dependencies within the input text, they employ Autoregressive (AR) latent converters to transform latent variables from coarser to finer levels.
-An alternative approach is proposed in [126] by replacing the conventional VAE encoder with a residual encoder that leverages phoneme embedding and a set of learnable free parameters as inputs. With this modified structure, the model learns a latent distribution that rep-resents various prosody styles for a specific sentence (i.e.,the input text), in addition to capturing potential global biases within the applied dataset (represented by the free parameters). At the same time, with this modification,the problem of speaker and content leakage into prosody embedding is addressed.
-Various studies propose training a predictor for the latent prosody vectors based on features extracted from the input text [35] [47]. The proposed model in [47] generates fine-grained prosody latent codes of three dimensions at phoneme-level. These prosody codes are then used to guide the training process of a prosody predictor that receives phoneme embeddings as input, in addition to emotion and speaker embeddings as sentence-level conditions. In [35], the predicted mean values of the latent space distribution are employed as prosody codes.
-Similarly, a prosody predictor is trained to predict these prosody codes using two text-based inputs, including sentence-level embeddings from a pre-trained BERT model and contextual information considering BERT embeddings of a few of surrounding k sentences given the current sentence.
-Alternatively, study [129] proposed training a sam-pler, i.e., Gaussian parameters, to sample the latent space using features extracted from the input text. Three different structures are investigated for the sampler based on the input features it receives. The applied text-based features include BERT representations of a sentence(semantic information), the parsing tree of the sentence(syntactic information) after it is fed to a graph attention network, and the concatenation of outputs from the previous two samplers.
+> Other studies approach the problem in alternative ways, seeking to enhance the sampling process either through refining the baseline model structure or by incorporating text-based components into the baseline.
+> Regarding the improvement of the baseline structure, study [68] suggests the combination of multiple variational autoencoders to generate latent variables at three distinct levels: utterance-level, phrase-level, and word-level. Furthermore, they apply a conditional prior (CP) to learn the latent space distribution based on the input text embedding. To account for dependencies within the input text, they employ Autoregressive (AR) latent converters to transform latent variables from coarser to finer levels.
+> An alternative approach is proposed in [126] by replacing the conventional VAE encoder with a residual encoder that leverages phoneme embedding and a set of learnable free parameters as inputs. With this modified structure, the model learns a latent distribution that represents various prosody styles for a specific sentence (i.e.,the input text), in addition to capturing potential global biases within the applied dataset (represented by the free parameters). At the same time, with this modification, the problem of speaker and content leakage into prosody embedding is addressed.
+
+其他研究以不同的方式解决这个问题, 寻求通过改进基线模型结构或向基线模型中添加基于文本的组件来增强采样过程.
+关于基线结构的改进:
+- 文献 [068] 建议组合多个变分自编码器用于生成三个不同级别的隐变量: 语调级, 短语级和单词级. 此外应用了条件先验基于输入文本嵌入学习隐空间分布. 为了考虑输入文本内的依赖性, 他们应用自回归隐转化器将隐变量从粗糙级别转化为精细级别.
+- 文献 [126] 提出了一种替代方法, 通过将传统 VAE 替换为一个利用音素嵌入和一组可学习自由参数作为输入的残差编码器. 采用这一结构, 模型为一个具体句子即输入文本学习一个隐分布表示各种韵律风格, 同时捕捉应用数据集的潜在全局偏差 (由自由参数表示). 同时说话人和内容泄露到韵律嵌入的问题也得到解决.
+
+> Various studies propose training a predictor for the latent prosody vectors based on features extracted from the input text [35] [47]. The proposed model in [47] generates fine-grained prosody latent codes of three dimensions at phoneme-level. These prosody codes are then used to guide the training process of a prosody predictor that receives phoneme embeddings as input, in addition to emotion and speaker embeddings as sentence-level conditions. In [35], the predicted mean values of the latent space distribution are employed as prosody codes. Similarly, a prosody predictor is trained to predict these prosody codes using two text-based inputs, including sentence-level embeddings from a pre-trained BERT model and contextual information considering BERT embeddings of a few of surrounding k sentences given the current sentence.
+
+多项研究提出基于从输入文本中提取的特征训练一个隐韵律向量的预测器.
+- 文献 [047] 提出的模型在音素级别生成细粒度的三维韵律隐代码. 这些韵律代码之后用于指导韵律预测器的训练. 预测器接收音素嵌入作为输入, 此外情感和说话人嵌入作为句子级别条件.
+- 文献 [035] 中隐空间分布的预测均值作为韵律编码. 类似地训练一个韵律预测器使用两个基于文本的输入包括来自预训练 BERT 模型的句子级别嵌入和考虑当前句子周围的 k 个句子的 BERT 嵌入的上下文信息用于预测这些韵律编码.
+
+> Alternatively, study [129] proposed training a sampler, i.e., Gaussian parameters, to sample the latent space using features extracted from the input text. Three different structures are investigated for the sampler based on the input features it receives. The applied text-based features include BERT representations of a sentence (semantic information), the parsing tree of the sentence (syntactic information) after it is fed to a graph attention network, and the concatenation of outputs from the previous two samplers.
+
+文献 [129] 提出训练一个采样器, 即高斯参数, 使用输入文本提取的特征对隐空间进行采样. 根据采样器接收的输入特征, 研究了三种不同的结构. 应用基于文本的特征包括句子的 BERT 表示 (语义信息), 图注意力网络输出的句子的解析树 (语法信息) 和前两个采样器的输出的拼接.
 
 #### 5.2.3 GST‑Based Approaches without Reference Audio 
 
