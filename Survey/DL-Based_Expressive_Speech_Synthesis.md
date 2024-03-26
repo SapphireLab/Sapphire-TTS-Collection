@@ -285,11 +285,11 @@ GST-TTS 模型能够通过建模不同级别的韵律来提升生成语音的表
 
 近期有一组 TTS 模型通过上下文学习策略在大量数据上进行训练. 在上下文学习 (或提示工程) 中, 模型被训练用于基于上下文预测缺失数据. 换句话说模型通过表示上下文学习任务的输入输出对列表进行训练, 训练后模型能够预测给定输入的输出.
 
-> For the TTS task, the provided style reference (referred to as prompt) is considered as part of the entire utterance to be synthesized. The TTS model training task is to generate the rest of this utterance following the style of the provided prompt as shown by Fig. 9. By employing this training strategy, recent TTS models such as VALL-E[22], [NaturalSpeech2](../Papers/2023.04_NaturalSpeech2.md), and Voicebox [25] are capable of producing zero-shot speech synthesis using only a single acoustic prompt. Furthermore, these models demonstrate the ability to replicate speech style/emotion from a provided prompt ([NaturalSpeech2](../Papers/2023.04_NaturalSpeech2.md), [22]) or reference [25] to the synthesized speech.
+> For the TTS task, the provided style reference (referred to as prompt) is considered as part of the entire utterance to be synthesized. The TTS model training task is to generate the rest of this utterance following the style of the provided prompt as shown by Fig. 9. By employing this training strategy, recent TTS models such as [VALL-E](../Papers/2023.01_VALL-E.md), [NaturalSpeech2](../Papers/2023.04_NaturalSpeech2.md), and Voicebox [25] are capable of producing zero-shot speech synthesis using only a single acoustic prompt. Furthermore, these models demonstrate the ability to replicate speech style/emotion from a provided prompt ([NaturalSpeech2](../Papers/2023.04_NaturalSpeech2.md), [VALL-E](../Papers/2023.01_VALL-E.md)) or reference [25] to the synthesized speech.
 
 对于 TTS 任务, 提供的风格参考 (即提示) 被考虑为要合成的整个发言的一部分. TTS 模型训练任务即遵循提示的风格生成这个发言剩下的部分. 通过应用这种训练策略, 近期 TTS 模型例如 VALL-E, NaturalSpeech2 和 VoiceBox 能够使用单个声学提示进行零次语音合成. 此外, 这些模型说明了从提供的提示或参考复制语音风格/情感到合成语音的能力.
 
-> In VALL-E [22], a language model is trained on tokens from Encodec [151], and the input text is used to condi-tion the language model. Specifically, the Encodec model tokenizes audio frames into discrete latent vectors/codes,where each audio frame is encoded with eight codebooks.
+> In [VALL-E](../Papers/2023.01_VALL-E.md), a language model is trained on tokens from Encodec [151], and the input text is used to condi-tion the language model. Specifically, the Encodec model tokenizes audio frames into discrete latent vectors/codes,where each audio frame is encoded with eight codebooks.
 > VALL-E employs two main models: the first one is an auto-regressive (AR) model that predicts the first code of each frame, and the second is non-auto-regressive (NAR)model that predicts the other seven codes of the frame.
 
 VALL-E 一个语言模型在 Encodec 的标记上训练, 且输入文本用于条件化语言模型. 特别地, Encodec 模型将音频帧离散化为离散的隐向量/代码, 每个音频帧由八个码本进行编码. VALL-E 应用两个主要模型一个是自回归模型能够预测每帧的第一个编码, 第二个是非自回归模型用于预测其他七个编码.
@@ -516,7 +516,7 @@ ASR 模型通过使用梯度反转层来反转共享层的梯度.
 > For example, in [137], the Mutual Information Neural Estimation algorithm (MINE) [157] is employed to estimate the mutual information between the content and style vectors. 
 > The algorithm uses a neural network that is trained to maximize the lower bound of the mutual information between the style and content vectors. 
 > Simultaneously, the TTS model aims to minimize the reconstruction loss, making the overall problem a max-min problem. 
-> Alternatively, in [21], the CLUB method [158], which computes an upper bound as the MI estimator, is used to prevent the leakage of speaker and content information into the style embedding.
+> Alternatively, in [InstructTTS](../Papers/2023.01_InstructTTS.md), the CLUB method [158], which computes an upper bound as the MI estimator, is used to prevent the leakage of speaker and content information into the style embedding.
 
 > A new approach is proposed in [117] for MI estimation and minimization to reduce content/speaker information transfer to the style embedding in a VAE based approach. 
 > Typically, the model needs to estimate MI between latent style embeddings and speaker/content embeddings. 
@@ -810,7 +810,7 @@ Similarly, in [119], the Householder Normalizing Flow[169] is incorporated into 
 The Multi-SpectroGAN TTS model proposed in [98]is a multi-speaker model trained based on adversarial feedback. The model supports the generation of speech for unseen styles/speakers by introducing adversarial style combination (ASC) during the training process.
 Style combinations result from mixing/interpolating style embeddings from different source speakers. The model is then trained with adversarial feedback using mixed-style mel-spectrograms. Two mixing methods are employed:binary selection or manifold mix-up via linear combina-tion. This training strategy enables the model to generate more natural speech for unseen speakers.
 
-> Lastly, recent TTS models based on in-context learning ([NaturalSpeech2](../Papers/2023.04_NaturalSpeech2.md), [22] [25]) all share the capability to perform zero-shot speech synthesis, as explained in Section 4.4. In fact, the in-context training strategy underlies the ability of these models to synthesize speech given only a style prompt with the input text. Specifically, the synthesis process treats the provided prompt/reference as part of the desired output speech. Therefore, the model’s goal is to predict the rest of this speech in the same style as the given part (prompt) and with the input text. In Table 5 we list papers addressing each challenge.
+> Lastly, recent TTS models based on in-context learning ([NaturalSpeech2](../Papers/2023.04_NaturalSpeech2.md), [VALL-E](../Papers/2023.01_VALL-E.md) [25]) all share the capability to perform zero-shot speech synthesis, as explained in Section 4.4. In fact, the in-context training strategy underlies the ability of these models to synthesize speech given only a style prompt with the input text. Specifically, the synthesis process treats the provided prompt/reference as part of the desired output speech. Therefore, the model’s goal is to predict the rest of this speech in the same style as the given part (prompt) and with the input text. In Table 5 we list papers addressing each challenge.
 
 ## 6.数据集与开源代码
 
