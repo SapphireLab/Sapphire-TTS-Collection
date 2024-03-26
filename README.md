@@ -14,6 +14,8 @@
 |2017.12.16(v1)<br>2017.02.16(v2)|[ArXiv](https://arxiv.org/abs/1712.05884)<br>[IEEE-ICASSP](https://doi.org/10.1109/ICASSP.2018.8461368)|[Tacotron 2: Natural TTS Synthesis by Conditioning WaveNet on Mel Spectrogram Predictions](Papers/2017.12_Tacotron2.md)|
 |2019.05.22(v1)<br>2019.11.20(v5)|[ArXiv]()<br>[NeuIPS](https://proceedings.neurips.cc/paper_files/paper/2019/hash/f63f65b503e22cb970527f23c9ad7db1-Abstract.html)|[FastSpeech: Fast, Robust and Controllable Text to Speech](Papers/2019.05_FastSpeech.md)|
 |2020.06.08(v1)<br>2022.08.08(v8)|[ArXiv](https://arxiv.org/abs/2006.04558)|[FastSpeech2: Fast and High-Quality End-to-End Text-to-Speech](Papers/2020.06_FastSpeech2.md)|
+|2021.04.01(v1)<br>2022.10.06(v2)|[ArXiv](https://arxiv.org/abs/2104.00436)|[ST-TTS: Expressive Text-to-Speech using Style Tag](Papers/2021.04_ST-TTS.md)|
+|2021.12.04(v1)<br>2023.04.30(v4)|[ArXiv](https://arxiv.org/abs/2112.02418)<br>[ICML](https://proceedings.mlr.press/v162/casanova22a.html)|[YourTTS: Towards Zero-Shot Multi-Speaker TTS and Zero-Shot Voice Conversion for Everyone](Papers/2021.12_YourTTS.md)|
 |2022.11.30|[MDPI-Appl. Sci.](https://www.mdpi.com/2076-3417/13/4/2225)|[Emo-VITS: An Emotion Speech Synthesis Method Based on VITS](Papers/2022.11_Emo-VITS.md)|
 |2023.01.05(v1)|[ArXiv](https://arxiv.org/abs/2301.02111)|[VALL-E: Neural Codec Language Models are Zero-Shot Text to Speech Synthesizers](Papers/2023.01_VALL-E.md)|
 |2023.01.31(v1)<br>2023.06.25(v2)|[ArXiv](https://arxiv.org/abs/2301.13662)|[InstructTTS: Modelling Expressive TTS in Discrete Latent Space with Natural Language Style Prompt](Papers/2023.01_InstructTTS.md)|
