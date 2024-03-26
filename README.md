@@ -10,7 +10,11 @@
 
 |时间|发表|标题|代码|
 |:-:|---|---|:-:|
+|2017.03.29 (v1)<br>2017.04.06 (v2)|[ArXiv](https://arxiv.org/abs/1703.10135)<br>[InterSpeech](https://doi.org/10.21437/Interspeech.2017-1452)|[Tacotron: Towards End-to-End Speech Synthesis](Papers/2017.03_Tacotron.md)
+|2017.12.16 (v1)<br>2017.02.16 (v2)|[ArXiv](https://arxiv.org/abs/1712.05884)<br>[IEEE-ICASSP](https://doi.org/10.1109/ICASSP.2018.8461368)|[Tacotron 2: Natural TTS Synthesis by Conditioning WaveNet on Mel Spectrogram Predictions](Papers/2017.12_Tacotron2.md)|
 |2023.06.14|[Blog](https://coqui.ai/blog/tts/xtts_taking_tts_to_the_next_level)|[XTTS: Taking TTS to the Next Level](Papers/2023.06_XTTS.md)|
 |2023.06.23|[NeuIPS2023](https://proceedings.neurips.cc/paper_files/paper/2023/hash/2d8911db9ecedf866015091b28946e15-Abstract-Conference.html)<br>[Arxiv](https://arxiv.org/abs/2306.15687)|[VoiceBox: Text-Guided Multilingual Universal Speech Generation at Scale]()|
 |2023.11.21 (v1)<br>2023.11.27 (v2)|[ArXiv](https://arxiv.org/abs/2311.12454)|[HierSpeech++: Bridging the Gap between Semantic and Acoustic Representation of Speech by Hierarchical Variational Inference for Zero-shot Speech Synthesis](Papers/2023.11_HierSpeechpp.md)|[HierSpeechpp](https://github.com/sh-lee-prml/HierSpeechpp)|
 |2023.12.12 (v1)<br>2024.01.02 (v5)|[ArXiv](https://arxiv.org/abs/2312.01479)|[OpenVoice: Versatile Instant Voice Cloning](Papers/2023.12_OpenVoice.md)|[OpenVoice](https://github.com/myshell-ai/OpenVoice)|
+
+Utilizing Neural Transducers for Two-Stage Text-to-Speech via Semantic Token Prediction
