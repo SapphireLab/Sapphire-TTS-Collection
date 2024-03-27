@@ -4,6 +4,7 @@
 
 |时间|发表|标题|
 |:-:|---|---|
+|2021.06|ArXiv|[A Survey on Neural Speech Synthesis]()|
 |2024.02.12|(Springer) EURASIP Journal on Audio, Speech, and Music Processing|[Deep Learning-Based Expressive Speech Synthesis - A Systematic Review of Approaches, Challenges, and Resources](Survey/DL-Based_Expressive_Speech_Synthesis.md)|
 
 ## Papers
@@ -20,9 +21,12 @@
 |2023.01.05(v1)|[ArXiv](https://arxiv.org/abs/2301.02111)|[VALL-E: Neural Codec Language Models are Zero-Shot Text to Speech Synthesizers](Papers/2023.01_VALL-E.md)|
 |2023.01.31(v1)<br>2023.06.25(v2)|[ArXiv](https://arxiv.org/abs/2301.13662)|[InstructTTS: Modelling Expressive TTS in Discrete Latent Space with Natural Language Style Prompt](Papers/2023.01_InstructTTS.md)|
 |2023.04.18(v1)<br>2023.05.30(v3)|[ArXiv](https://arxiv.org/abs/2304.09116)|[NaturalSpeech 2: Latent Diffusion Models are Natural and Zero-Shot Speech and Singing Synthesizers](Papers/2023.04_NaturalSpeech2.md)|
+|2023.05.16(v1)|[ArXiv](https://arxiv.org/abs/2305.09636)|[SoundStorm: Efficient Parallel Audio Generation](Papers/2023.05_SoundStorm.md)|[[Unofficial]](https://github.com/yangdongchao/SoundStorm/)
 |2023.06.14|[Blog](https://coqui.ai/blog/tts/xtts_taking_tts_to_the_next_level)|[XTTS: Taking TTS to the Next Level](Papers/2023.06_XTTS.md)|
 |2023.06.23(v1)<br>2023.10.19(v2)|[NeuIPS2023](https://proceedings.neurips.cc/paper_files/paper/2023/hash/2d8911db9ecedf866015091b28946e15-Abstract-Conference.html)<br>[Arxiv](https://arxiv.org/abs/2306.15687)|[VoiceBox: Text-Guided Multilingual Universal Speech Generation at Scale](Papers/2023.06_VoiceBox.md)|
+|2023.07.31(v1)|[ArXiv](https://arxiv.org/abs/2307.16430)|[VITS2: Improving Quality and Efficiency of Single-Stage Text-to-Speech with Adversarial Learning and Architecture Design](Papers/2023.07_VITS2.md)|
 |2023.07.31(v1)|[ArXiv](https://arxiv.org/abs/2307.16549)|[DiffProsody: Diffusion-based Latent Prosody Generation for Expressive Speech Synthesis with Prosody Conditional Adversarial Training](Papers/2023.07_DiffProsody.md)|
 |2023.11.21(v1)<br>2023.11.27(v2)|[ArXiv](https://arxiv.org/abs/2311.12454)|[HierSpeech++: Bridging the Gap between Semantic and Acoustic Representation of Speech by Hierarchical Variational Inference for Zero-shot Speech Synthesis](Papers/2023.11_HierSpeechpp.md)|[HierSpeechpp](https://github.com/sh-lee-prml/HierSpeechpp)|
 |2023.12.12(v1)<br>2024.01.02(v5)|[ArXiv](https://arxiv.org/abs/2312.01479)|[OpenVoice: Versatile Instant Voice Cloning](Papers/2023.12_OpenVoice.md)|[OpenVoice](https://github.com/myshell-ai/OpenVoice)|
 |2024.03.05(v1)|[ArXiv](https://arxiv.org/abs/2403.03100)|[NaturalSpeech 3: Zero-Shot Speech Synthesis with Factorized Codec and Diffusion Models](Papers/2024.03_NaturalSpeech3.md)|
+|2024.03.25(v1)|[ArXiv](https://arxiv.org/abs/2403.16973)|[VoiceCraft: Zero-Shot Speech Editing and Text-to-Speech in the Wild](Papers/2024.03_VoiceCraft.md)|[VoiceCraft](https://github.com/jasonppy/VoiceCraft)
