@@ -13,7 +13,8 @@
 |:-:|---|---|:-:|
 |2017.03.29(v1)<br>2017.04.06(v2)|[ArXiv](https://arxiv.org/abs/1703.10135)<br>[InterSpeech](https://doi.org/10.21437/Interspeech.2017-1452)|[Tacotron: Towards End-to-End Speech Synthesis](Papers/2017.03_Tacotron.md)
 |2017.12.16(v1)<br>2017.02.16(v2)|[ArXiv](https://arxiv.org/abs/1712.05884)<br>[IEEE-ICASSP](https://doi.org/10.1109/ICASSP.2018.8461368)|[Tacotron 2: Natural TTS Synthesis by Conditioning WaveNet on Mel Spectrogram Predictions](Papers/2017.12_Tacotron2.md)|
-|2019.05.22(v1)<br>2019.11.20(v5)|[ArXiv]()<br>[NeurIPS](https://proceedings.neurips.cc/paper_files/paper/2019/hash/f63f65b503e22cb970527f23c9ad7db1-Abstract.html)|[FastSpeech: Fast, Robust and Controllable Text to Speech](Papers/2019.05_FastSpeech.md)|
+|2018.09.19(v1)<br>2019.01.30(v3)|[ArXiv](https://arxiv.org/abs/1809.08895)<br>[AAAI](https://doi.org/10.1609/aaai.v33i01.33016706)|[Transformer TTS: Neural Speech Synthesis with Transformer Network](Papers/2018.09_Transformer_TTS.md)|
+|2019.05.22(v1)<br>2019.11.20(v5)|[ArXiv](https://arxiv.org/abs/1905.09263)<br>[NeurIPS](https://proceedings.neurips.cc/paper_files/paper/2019/hash/f63f65b503e22cb970527f23c9ad7db1-Abstract.html)|[FastSpeech: Fast, Robust and Controllable Text to Speech](Papers/2019.05_FastSpeech.md)|
 |2020.06.08(v1)<br>2022.08.08(v8)|[ArXiv](https://arxiv.org/abs/2006.04558)|[FastSpeech2: Fast and High-Quality End-to-End Text-to-Speech](Papers/2020.06_FastSpeech2.md)|
 |2021.04.01(v1)<br>2022.10.06(v2)|[ArXiv](https://arxiv.org/abs/2104.00436)|[ST-TTS: Expressive Text-to-Speech using Style Tag](Papers/2021.04_ST-TTS.md)|
 |2021.06.11(v1)|[ArXiv](https://arxiv.org/abs/2106.06103)<br>[ICML](https://proceedings.mlr.press/v139/kim21f.html)|[VITS: Conditional Variational Autoencoder with Adversarial Learning for End-to-End Text-to-Speech](Papers/2021.06_VITS.md)|[Official](https://github.com/jaywalnut310/vits)|
