@@ -1,5 +1,11 @@
 # SapphireTTS
 
+## Books
+
+|时间|标题|作者|
+|:-:|---|---|
+|2023.05|[Neural Text-to-Speech Synthesis](Books/2023.05_Neural_TTS_Synthesis/Ch00.ToC.md)|谭旭 (Microsoft Research Asia)|
+
 ## Survey
 
 |时间|发表|标题|
