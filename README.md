@@ -42,10 +42,10 @@
 |2023.07.31(v1)|[ArXiv](https://arxiv.org/abs/2307.16549)|[DiffProsody: Diffusion-based Latent Prosody Generation for Expressive Speech Synthesis with Prosody Conditional Adversarial Training](Papers/2023.07_DiffProsody.md)|
 |2023.11.21(v1)<br>2023.11.27(v2)|[ArXiv](https://arxiv.org/abs/2311.12454)|[HierSpeech++: Bridging the Gap between Semantic and Acoustic Representation of Speech by Hierarchical Variational Inference for Zero-shot Speech Synthesis](Papers/2023.11_HierSpeechpp.md)|[Official](https://github.com/sh-lee-prml/HierSpeechpp)|
 |2023.12.12(v1)<br>2024.01.02(v5)|[ArXiv](https://arxiv.org/abs/2312.01479)|[OpenVoice: Versatile Instant Voice Cloning](Papers/2023.12_OpenVoice.md)|[Official](https://github.com/myshell-ai/OpenVoice)|
+|2024.01.16<br>2024.04.03(v1)|[ArXiv](https://arxiv.org/abs/2404.02781)<br>ICLR<br>[OpenReview](https://openreview.net/forum?id=ofzeypWosV)|[CLaM-TTS: Improving Neural Codec Language Model for Zero-Shot Text-to-Speech](Papers/2024.04_CLaM-TTS.md)|[Demo](https://clam-tts.github.io)
 |2024.02.14(v1)|[ArXiv](https://arxiv.org/abs/2402.09378)|[MobileSpeech: A Fast and High-Fidelity Framework for Mobile Zero-Shot Text-to-Speech](Papers/2024.02_MobileSpeech.md)|
 |2024.03.05(v1)|[ArXiv](https://arxiv.org/abs/2403.03100)|[NaturalSpeech 3: Zero-Shot Speech Synthesis with Factorized Codec and Diffusion Models](Papers/2024.03_NaturalSpeech3.md)|
 |2024.03.25(v1)|[ArXiv](https://arxiv.org/abs/2403.16973)|[VoiceCraft: Zero-Shot Speech Editing and Text-to-Speech in the Wild](Papers/2024.03_VoiceCraft.md)|[Official](https://github.com/jasonppy/VoiceCraft)|
-|2024.04.03(v1)|[ArXiv](https://arxiv.org/abs/2404.02781)<br>ICLR|[CLaM-TTS: Improving Neural Codec Language Model for Zero-Shot Text-to-Speech](Papers/2024.04_CLaM-TTS.md)|[Demo](https://clam-tts.github.io)
 
 ## News
 
