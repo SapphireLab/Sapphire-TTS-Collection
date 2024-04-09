@@ -58,6 +58,8 @@
 |2024.02.14(v1)|[ArXiv](https://arxiv.org/abs/2402.09378)|[**MobileSpeech**: A Fast and High-Fidelity Framework for Mobile Zero-Shot Text-to-Speech](Papers/2024.02_MobileSpeech.md)|[Demo](mobilespeech.github.io/)|
 |2024.02.08<br>2024.03.05(v1)|[ArXiv](https://arxiv.org/abs/2403.03100)|[**NaturalSpeech 3**: Zero-Shot Speech Synthesis with Factorized Codec and Diffusion Models](Papers/2024.03_NaturalSpeech3.md)|[Demo](https://speechresearch.github.io/naturalspeech3/)|[MSRA](https://speechresearch.github.io)|
 |2024.03.25(v1)|[ArXiv](https://arxiv.org/abs/2403.16973)|[**VoiceCraft**: Zero-Shot Speech Editing and Text-to-Speech in the Wild](Papers/2024.03_VoiceCraft.md)|[Official](https://github.com/jasonppy/VoiceCraft)|UT Austin<br>Rembrand|
+|2024.06.06(v1)|[ArXiv](https://arxiv.org/abs/2404.04645)|[**HyperTTS**: Parameter Efficient Adaptation in Text to Speech using Hypernetworks](Papers/2024.04_HyperTTS.md)|[Official<br>2023.06.24](https://github.com/declare-lab/HyperTTS)<br>|北京邮电大学<br>新加坡科技设计大学|
+
 
 ## News
 
