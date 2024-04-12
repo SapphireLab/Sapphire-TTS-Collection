@@ -2,9 +2,10 @@
 
 ## Books
 
-|时间|标题|作者|
-|:-:|---|---|
-|2023.05|[Neural Text-to-Speech Synthesis](Books/2023.05_Neural_TTS_Synthesis/Ch00.ToC.md)|谭旭 (Microsoft Research Asia)|
+|时间|标题|作者|链接|
+|:-:|---|---|---|
+|2022.02|book-text-to-speech |cnlinxi|[Github](https://github.com/cnlinxi)|
+|2023.05|[Neural Text-to-Speech Synthesis](Books/2023.05_Neural_TTS_Synthesis/Ch00.ToC.md)|谭旭 (Microsoft Research Asia)|[Springer](https://link.springer.com/book/10.1007/978-981-99-0827-1)|
 
 ## Surveys
 
@@ -58,8 +59,8 @@
 |2024.02.14(v1)| [ArXiv](https://arxiv.org/abs/2402.09378)| **MobileSpeech**: A Fast and High-Fidelity Framework for Mobile Zero-Shot Text-to-Speech||[Demo](mobilespeech.github.io/)|
 |2024.02.08<br>2024.03.05(v1)| [ArXiv](https://arxiv.org/abs/2403.03100)| **NaturalSpeech 3**: Zero-Shot Speech Synthesis with Factorized Codec and Diffusion Models|[MSRA](https://speechresearch.github.io)|[Demo](https://speechresearch.github.io/naturalspeech3/)|
 |2024.03.25(v1)| [ArXiv](https://arxiv.org/abs/2403.16973)| **VoiceCraft**: Zero-Shot Speech Editing and Text-to-Speech in the Wild|UT Austin<br>Rembrand|[Official](https://github.com/jasonppy/VoiceCraft)|
-|2024.06.06(v1)| [ArXiv](https://arxiv.org/abs/2404.04645)| **HyperTTS**: Parameter Efficient Adaptation in Text to Speech using Hypernetworks|北京邮电大学<br>新加坡科技设计大学|[Official<br>2023.06.24](https://github.com/declare-lab/HyperTTS)<br>|
-
+|2024.04.06(v1)<br>2024.04.06(v2)|[ArXiv](https://arxiv.org/abs/2404.03204)| **RALL-E**: Robust Codec Language Modeling with Chain-of-Thought Prompting for Text-to-Speech Synthesis|Microsoft(7/11)<br>东京大学(3/11)<br>浙江大学(1/11)<br>中科大(1/11)<br>港中文(2/11)|[Demo](https://ralle-demo.github.io/RALL-E)
+|2024.04.06(v1)| [ArXiv](https://arxiv.org/abs/2404.04645)| **HyperTTS**: Parameter Efficient Adaptation in Text to Speech using Hypernetworks|北京邮电大学<br>新加坡科技设计大学|[Official<br>2023.06.24](https://github.com/declare-lab/HyperTTS)<br>|
 
 ## News
 
