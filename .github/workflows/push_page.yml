@@ -30,8 +30,8 @@ jobs:
     - name: Commit changes
       run: |
         cd target_repo
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
+        git config --local user.email "starylan@outlook.com"
+        git config --local user.name "SapphireLab"
         git add .
         git commit -m "Update folder"
 
@@ -39,3 +39,6 @@ jobs:
       run: |
         cd target_repo
         git push origin main
+      with:
+        personal_token: ${{ secrets.StaryLan }}
+        
