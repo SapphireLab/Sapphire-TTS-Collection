@@ -11,6 +11,8 @@ jobs:
       with:
         personal_token: ${{ secrets.COPY }}
         src_path: Papers/
+        src_branch: main
         dst_path: /docs/TTS/
         dst_owner: SapphireLab
+        dst_branch: main
         dst_repo_name: SapphireLab.github.io
