@@ -38,7 +38,4 @@ jobs:
     - name: Push Changes
       run: |
         cd target_repo
-        git push origin main
-      with:
-        personal_token: ${{ secrets.StaryLan }}
-        
+        git push origin main --token ${{ secrets.StaryLan }}
