@@ -37,9 +37,9 @@ jobs:
 
     - name: Push Changes
       run: |
-        mkdir -p /root/.ssh
-        echo "${{ secrets.StaryLan }}" > /root/.ssh/id_rsa
-        chmod 600 /root/.ssh/id_rsa
+        mkdir -p ~/.ssh
+        echo "${{ secrets.StaryLan }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
         git remote add destination "git@github.com:SapphireLab/SapphireLab.github.io.git"
         cd target_repo
         git push destination main
