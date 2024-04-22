@@ -13,14 +13,14 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: SapphireLab/SapphireLab.github.io
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.StaryLan }}
         path: 'target_repo'
 
     - name: Checkout source
       uses: actions/checkout@v2
       with:
         repository: SapphireLab/Sapphire-TTS
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.StaryLan }}
         path: 'source_repo'
     
     - name: Copy Folder
@@ -38,4 +38,6 @@ jobs:
     - name: Push Changes
       run: |
         cd target_repo
-        git push origin main --token ${{ secrets.StaryLan }}
+        git push origin main
+      permissions:
+        contents: write
