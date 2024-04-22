@@ -1,45 +1,16 @@
 name: Push Folder to GitHub Pages
 
-on:
-  push:
-    branches: [ main ]
+on: push
 
 jobs:
-  build:
+  copy-file:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout target
-      uses: actions/checkout@v2
+    - name: Copy
+      uses: andstor/copycat-action@v3
       with:
-        repository: SapphireLab/SapphireLab.github.io
-        token: ${{ secrets.GITHUB_TOKEN }}
-        path: 'target_repo'
-
-    - name: Checkout source
-      uses: actions/checkout@v2
-      with:
-        repository: SapphireLab/Sapphire-TTS
-        token: ${{ secrets.GITHUB_TOKEN }}
-        path: 'source_repo'
-    
-    - name: Copy Folder
-      run: |
-        cp -r 'source_repo/Papers' 'target_repo/docs/TTS'
-    
-    - name: Commit changes
-      run: |
-        cd target_repo
-        git config --local user.email "starylan@outlook.com"
-        git config --local user.name "SapphireLab"
-        git add .
-        git commit -m "Update folder"
-
-    - name: Push Changes
-      run: |
-        mkdir -p ~/.ssh
-        echo "${{ secrets.StaryLan }}" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        git remote add destination "git@github.com:SapphireLab/SapphireLab.github.io.git"
-        cd target_repo
-        git push destination main
+        personal_token: ${{ secrets.COPY }}
+        src_path: /Papers/
+        dst_path: /docs/TTS/
+        dst_owner: SapphireLab
+        dst_repo_name: SapphireLab.github.io
