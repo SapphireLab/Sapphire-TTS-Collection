@@ -13,14 +13,14 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: SapphireLab/SapphireLab.github.io
-        token: ${{ secrets.StaryLan }}
+        token: ${{ secrets.GITHUB_TOKEN }}
         path: 'target_repo'
 
     - name: Checkout source
       uses: actions/checkout@v2
       with:
         repository: SapphireLab/Sapphire-TTS
-        token: ${{ secrets.StaryLan }}
+        token: ${{ secrets.GITHUB_TOKEN }}
         path: 'source_repo'
     
     - name: Copy Folder
