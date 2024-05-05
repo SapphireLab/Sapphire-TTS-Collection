@@ -1,14 +1,14 @@
 # %%
 from transformers import BertTokenizer
 
-# %%
+# %% 2.3.1.Loading the tokenizer
 tokenizer: BertTokenizer = BertTokenizer.from_pretrained(
     pretrained_model_name_or_path='bert-base-chinese',
     cache_dir=None,
     force_download=False,
 )
 
-# %%
+# %% 2.3.2.Prepare the input sentences
 sentences = [
     '你站在桥上看风景',
     '看风景的人在楼上看你',
@@ -16,7 +16,7 @@ sentences = [
     '你装饰了别人的梦',
 ]
 
-# %% encode()
+# %% 2.3.3.Using encode()
 out = tokenizer.encode(
     text               = sentences[0],
     text_pair          = sentences[1],
@@ -30,7 +30,7 @@ out = tokenizer.encode(
 print(out)
 print(tokenizer.decode(out))
 
-# %% encode_plus()
+# %% 2.3.4.Using encode_plus()
 out = tokenizer.encode_plus(
     text                       = sentences[0],
     text_pair                  = sentences[1],
@@ -48,7 +48,8 @@ out = tokenizer.encode_plus(
 for k, v in out.items():
     print(k, ':',  v)
 print(tokenizer.decode(out['input_ids']))
-# %% batch_encode_plus()
+
+# %% 2.3.5.Using batch_encode_plus()
 out = tokenizer.batch_encode_plus(
     batch_text_or_text_pairs   = [(sentences[0], sentences[1]), (sentences[2], sentences[3])],
     truncation                 = True,
@@ -65,12 +66,13 @@ out = tokenizer.batch_encode_plus(
 for k, v in out.items():
     print(k, ':',  v)
 print(tokenizer.decode(out['input_ids'][0]))
-# %% vocab
+
+# %% 2.3.6.Modify the vocab
 vocab = tokenizer.get_vocab()
 print(f"{type(vocab)=}, {len(vocab)=}, {'明月' in vocab=}")
 
-# tokenizer.add_tokens(new_tokens=['明月', '装饰', '窗子'])
-# tokenizer.add_special_tokens({'eos_token': '[EOS]'})
+tokenizer.add_tokens(new_tokens=['明月', '装饰', '窗子'])
+tokenizer.add_special_tokens({'eos_token': '[EOS]'})
 
 out = tokenizer.encode(
     text               = sentences[2] + '[EOS]', 
