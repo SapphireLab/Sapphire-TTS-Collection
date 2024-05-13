@@ -800,25 +800,21 @@ tensor([0.0000, 1.2000, 1.3000, 1.8000], dtype=torch.float64)
 #### `log_semiring==True`
 
 > It uses LogAdd to combine path scores.
-> 1. State 0 is the start state and \(f_0\) is defined to be 0.
-> 2. \(f_1\) is computed with the following formula:
->   \[f_1 = \log(e^{f_0 + 1.2} + e^{f_0 + 0.8}) = \log(e^{1.2} + e^{0.8}) = 1.7130\]
-> 
+> 1. State 0 is the start state and $f_0$ is defined to be 0.
+> 2. $f_1$ is computed with the following formula: $f_1 = \log(e^{f_0 + 1.2} + e^{f_0 + 0.8}) = \log(e^{1.2} + e^{0.8}) = 1.7130$
 > where 1.2 is the score of one of the two arcs from state 0 to state 1; 0.8 is the score of the other arc from state 0 to state 1.
-> 3. \(f_2\) is computed by:
->   \[f_2 = \log(e^{f_0 + 0.5} + e^{f_1 + 0.1}) = \log(e^{0.5} + e^{1.8130}) = 2.0513\]
-> 4. \(f_3\) can be computed from \(f_1\) and \(f_2\):
->  \[f_3 = \log(e^{f_1 + 0.6} + e^{f_2 + 0.4}) = \log(e^{2.3130} + e^{2.4513}) = 3.0777\]
+> 3. $f_2$ is computed by: $f_2 = \log(e^{f_0 + 0.5} + e^{f_1 + 0.1}) = \log(e^{0.5} + e^{1.8130}) = 2.0513$
+> 4. $f_3$ can be computed from $f_1$ and $f_2$: $f_3 = \log(e^{f_1 + 0.6} + e^{f_2 + 0.4}) = \log(e^{2.3130} + e^{2.4513}) = 3.0777$
 
 将使用 `LogAdd` 结合路径分数.
 1. 状态 0 是起始状态, 且 $f_0$ 定义为 0.
 2. $f_1$ 由以下公式计算:
-   \[f_1 = \log(e^{f_0 + 1.2} + e^{f_0 + 0.8}) = \log(e^{1.2} + e^{0.8}) = 1.7130\]
+   $f_1 = \log(e^{f_0 + 1.2} + e^{f_0 + 0.8}) = \log(e^{1.2} + e^{0.8}) = 1.7130$
    其中 1.2 是状态 0 到状态 1 的两条边的分数之一, 0.8 是另一条边的分数.
 3. $f_2$ 由以下公式计算:
-   \[f_2 = \log(e^{f_0 + 0.5} + e^{f_1 + 0.1}) = \log(e^{0.5} + e^{1.8130}) = 2.0513\]
+   $f_2 = \log(e^{f_0 + 0.5} + e^{f_1 + 0.1}) = \log(e^{0.5} + e^{1.8130}) = 2.0513$
 4. $f_3$ 可以由 $f_1$ 和 $f_2$ 计算得出:
-   \[f_3 = \log(e^{f_1 + 0.6} + e^{f_2 + 0.4}) = \log(e^{2.3130} + e^{2.4513}) = 3.0777\]
+   $f_3 = \log(e^{f_1 + 0.6} + e^{f_2 + 0.4}) = \log(e^{2.3130} + e^{2.4513}) = 3.0777$
 
 #### `log_semiring==False`
 
