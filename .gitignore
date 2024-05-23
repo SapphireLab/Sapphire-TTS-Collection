@@ -1,4 +1,4 @@
 .obsidian
 .vscode
-*.pdf
+[0-9]*.pdf
 Templates
