@@ -34,7 +34,7 @@
 
 > Language modeling has proven to be highly successful in the field of Natural Language Processing (NLP). 
 > Audio data encompasses not only textual content but also rich information about speaker timbre, emotion, and general audio, offering deeper possibilities for language model applications.
-> Researchers, especially those in large companies with significant computational resources, recently leverage the potential of neural codecs ([Encodec (2022)](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md), [SoundStream (2021)](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md), [SoundStorm (2023)](../../Models/Speech_LLM/2023.05.16_SoundStorm.md), [AudioDec (2023)](../../Models/Speech_Neural_Codec/2023.05.26_AudioDec.md), [AcademiCodec/HiFi-Codec (2023)](../../Models/Speech_Neural_Codec/2023.05.04_HiFi-Codec.md), [FunCodec (2023)](../../Models/Speech_Neural_Codec/2023.09.14_FunCodec.md), [SpeechTokenizer (2023)](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md), [Descript-Audio-Codec (2023)](../../Models/Speech_Neural_Codec/2023.06.11_Descript-Audio-Codec.md)) as suitable tokenizers for converting continuous audio into discrete codes, which can be employed to develop audio language models (LMs) [9]–[20].
+> Researchers, especially those in large companies with significant computational resources, recently leverage the potential of neural codecs ([Encodec (2022)](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md), [SoundStream (2021)](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md), [SoundStorm (2023)](../../Models/Speech_LLM/2023.05.16_SoundStorm.md), [AudioDec (2023)](../../Models/Speech_Neural_Codec/2023.05.26_AudioDec.md), [AcademiCodec/HiFi-Codec (2023)](../../Models/Speech_Neural_Codec/2023.05.04_HiFi-Codec.md), [FunCodec (2023)](../../Models/Speech_Neural_Codec/2023.09.14_FunCodec.md), [SpeechTokenizer (2023)](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md), [Descript-Audio-Codec (2023)](../../Models/Speech_Neural_Codec/2023.06.11_Descript-Audio-Codec.md)) as suitable tokenizers for converting continuous audio into discrete codes, which can be employed to develop audio language models (LMs) ([AudioLM (2022)](../../Models/Speech_LLM/2022.09.07_AudioLM.md), [AudioPaLM (2023)](../../Models/Speech_LLM/2023.06.22_AudioPaLM.md), [MusicLM (2023)](../../Models/Speech_LLM/2023.01.26_MusicLM.md), [VALL-E (2023)](../../Models/Speech_LLM/2023.01.05_VALL-E.md), [VALL-E X (2023)](../../Models/Speech_LLM/2023.03.07_VALL-E_X.md), [VioLA (2023)](../../Models/Speech_LLM/2023.05.25_VioLA.md), [UniAudio (2023)](../../Models/Speech_LLM/2023.10.01_UniAudio.md), [LauraGPT (2023)](../../Models/Speech_LLM/2023.10.07_LauraGPT.md), [SpeechX (2023)](../../Models/Speech_LLM/2023.08.14_SpeechX.md), [MusicGen (2023)](../../Models/Speech_LLM/2023.06.08_MusicGen.md), [AudioGen (2022)](../../Models/Speech_LLM/2022.09.30_AudioGen.md)).
 > The current codec-based language models and codec models are summarized in [Fig.01](#Fig.01). 
 > These findings promptly garnered the community’s attention, sparking a fervor for developing codecs tailored to audio language modeling. 
 > Numerous high performance neural audio codec models and audio LMs have been developed.
@@ -119,6 +119,7 @@
 量化器集成了一个带有残差向量量化瓶颈的语音增强系统以获得并行的 Token 流.
 在训练时, 模型参数使用重构损失和对抗损失的结合进行优化.
 
+#TODO ?
 [SoundStorm (2023)](../../Models/Speech_LLM/2023.05.16_SoundStorm.md) 是 [SoundStream](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md) 的改进版本, 实现了高效和高质量音频生成.
 该模型通过采用专门针对音频 Token 的层次结构的架构来实现这一点.
 此外, 它首创了一种并行的, 非自回归的解码方案, 该方案依赖于基于置信度的策略来处理残差向量量化后的 Token 序列.
@@ -280,38 +281,66 @@
 ### 3.1.Overview of Codec-Based Language Models·编解码器语言模型概览
 
 > [AudioLM (2022)](../../Models/Speech_LLM/2022.09.07_AudioLM.md) is the pioneering model in introducing codec codes for language modeling, utilizing a hierarchical approach that encompasses two distinct stages.
-> The first stage generates semantic tokens using a self-supervised w2v-BERT model [32].
+> The first stage generates semantic tokens using a self-supervised [W2V-BERT (2021)](../../Models/Speech_Representaion/2021.08.07_W2V-BERT.md) model.
 > These tokens are then leveraged in the second stage as conditioning elements to create acoustic tokens using a [SoundStream (2021)](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md) neural codec.
 
-> VALL-E [12], VALL-E X [13], and SpeechX [17], all originate from Microsoft and are neural codec language models trained to generate discrete codes derived from [Encodec (2022)](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md), based on textual or acoustic inputs.
-> VALL-E can generate high-quality personalized speech with only a 3-second enrollment recording from an unseen speaker.
-> Furthermore, VALL-E X can produce high-quality speech in the target language with just a single speech utterance in the source language as a prompt.
-> Additionally, SpeechX introduces a unified framework to address not only zero-shot TTS but also various types of speech transformation tasks, including speech enhancement and speech editing.
+[AudioLM (2022)](../../Models/Speech_LLM/2022.09.07_AudioLM.md) 是引入编解码器编码进行语言建模的先驱模型, 采用包含两个不同的阶段的分层方法.
+第一个阶段使用自监督 [W2V-BERT (2021)](../../Models/Speech_Representaion/2021.08.07_W2V-BERT.md) 模型生成语义 Token.
+第二个阶段使用这些 Token 作为条件化元素, 使用 [SoundStream (2021)](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md) 神经编解码器生成音频 Token.
 
-> What sets ViaLA [14], AudioPaLM [10], and LauraGPT [16] apart is their dual capability to generate both text and audio.
-> VioLA tries to tackle the question “Is one decoder-only generative model all you need for speech recognition, synthesis, and translation?” by employing language modeling that integrates both text tokens and audio tokens (extracted by [Encodec (2022)](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md)), along with the use of task IDs and language IDs.
-> AudioPaLM constructs a unified vocabulary comprising both text and audio tokens.
+> [VALL-E (2023)](../../Models/Speech_LLM/2023.01.05_VALL-E.md), [VALL-E X (2023)](../../Models/Speech_LLM/2023.03.07_VALL-E_X.md), and [SpeechX (2023)](../../Models/Speech_LLM/2023.08.14_SpeechX.md), all originate from Microsoft and are neural codec language models trained to generate discrete codes derived from [Encodec](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md), based on textual or acoustic inputs.
+> [VALL-E](../../Models/Speech_LLM/2023.01.05_VALL-E.md) can generate high-quality personalized speech with only a 3-second enrollment recording from an unseen speaker.
+> Furthermore, [VALL-E X](../../Models/Speech_LLM/2023.03.07_VALL-E_X.md) can produce high-quality speech in the target language with just a single speech utterance in the source language as a prompt.
+> Additionally, [SpeechX (2023)](../../Models/Speech_LLM/2023.08.14_SpeechX.md) introduces a unified framework to address not only zero-shot TTS but also various types of speech transformation tasks, including speech enhancement and speech editing.
+
+[VALL-E (2023)](../../Models/Speech_LLM/2023.01.05_VALL-E.md), [VALL-E X (2023)](../../Models/Speech_LLM/2023.03.07_VALL-E_X.md) 和 [SpeechX (2023)](../../Models/Speech_LLM/2023.08.14_SpeechX.md) 都来自于 Microsoft, 是经过训练的神经编解码器语言模型用于根据文本或声学输入, 生成基于 [Encodec](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) 的离散编码.
+
+- [VALL-E](../../Models/Speech_LLM/2023.01.05_VALL-E.md) 可以仅凭一个未见过的说话人的三秒输入语音生成高质量的个性化语音.
+- [VALL-E X](../../Models/Speech_LLM/2023.03.07_VALL-E_X.md) 则能够仅凭源语言的单个语音发言作为提示, 生成目标语言的高质量语音.
+- [SpeechX](../../Models/Speech_LLM/2023.08.14_SpeechX.md) 引入了一个统一框架, 不仅可以解决零样本文本转语音, 还能处理各种类型的语音转换任务, 包括语音增强和语音编辑.
+
+> What sets [VioLA (2023)](../../Models/Speech_LLM/2023.05.25_VioLA.md), [AudioPaLM (2023)](../../Models/Speech_LLM/2023.06.22_AudioPaLM.md), and [LauraGPT (2023)](../../Models/Speech_LLM/2023.10.07_LauraGPT.md) apart is their dual capability to generate both text and audio.
+> [VioLA](../../Models/Speech_LLM/2023.05.25_VioLA.md) tries to tackle the question “Is one decoder-only generative model all you need for speech recognition, synthesis, and translation?” by employing language modeling that integrates both text tokens and audio tokens (extracted by [Encodec](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md)), along with the use of task IDs and language IDs.
+> [AudioPaLM](../../Models/Speech_LLM/2023.06.22_AudioPaLM.md) constructs a unified vocabulary comprising both text and audio tokens.
 > It is a decoder-only, autoregressive model capable of processing and generating both text and speech.
-> Additionally, AudioPaLM’s initialization stems from PaLM-2 [33], a text-only language model.
-> AudioPaLM’s approach to audio tokenization resembles that of AudioLM.
-> Moreover, AudioPaLM adopts and extends the [SoundStream (2021)](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md) model to [SoundStorm (2023)](../../Models/Speech_LLM/2023.05.16_SoundStorm.md).
-> LauraGPT [16] is a versatile language model built on a decoder-only text-based language model, Qwen-2B [34].
-> LauraGPT has the capability to process both audio and text inputs, generating outputs in either modality.
-> LauraGPT encodes input audio into continuous representations using a Conformer encoder and decodes output audio using [FunCodec (2023)](../../Models/Speech_Neural_Codec/2023.09.14_FunCodec.md) discrete codes.
+> Additionally, [AudioPaLM](../../Models/Speech_LLM/2023.06.22_AudioPaLM.md)’s initialization stems from [PaLM-2 (2023)](../../Models/LLM/2023.05.17_PaLM2.md), a text-only language model.
+> [AudioPaLM](../../Models/Speech_LLM/2023.06.22_AudioPaLM.md)’s approach to audio tokenization resembles that of [AudioLM](../../Models/Speech_LLM/2022.09.07_AudioLM.md).
+> Moreover, [AudioPaLM](../../Models/Speech_LLM/2023.06.22_AudioPaLM.md) adopts and extends the [SoundStream](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md) model to [SoundStorm (2023)](../../Models/Speech_LLM/2023.05.16_SoundStorm.md).
+> [LauraGPT (2023)](../../Models/Speech_LLM/2023.10.07_LauraGPT.md) is a versatile language model built on a decoder-only text-based language model, [Qwen-2B (2023)](../../Models/LLM/2023.09.28_Qwen.md).
+> [LauraGPT](../../Models/Speech_LLM/2023.10.07_LauraGPT.md) has the capability to process both audio and text inputs, generating outputs in either modality.
+> [LauraGPT](../../Models/Speech_LLM/2023.10.07_LauraGPT.md) encodes input audio into continuous representations using a [Conformer](../../Models/_Basis/2020.05.16_Conformer.md) encoder and decodes output audio using [FunCodec](../../Models/Speech_Neural_Codec/2023.09.14_FunCodec.md) discrete codes.
 > The authors claim this specific audio features design for inputs and outputs will result in improved performance for speech generation using some preliminary experimental results.
 
-> UniAudio [15] utilizes language modeling to generate a wide range of audio types, including speech, sounds, music, and singing, using textual or acoustic tokens as inputs.
-> UniAudio stands out for its ability to enhance autoregressive prediction speed by introducing a multi-scale Transformer model [35], which employs a large global transformer to predict the first-layer codec codes and a small local transformer to predict the codec codes for the subsequent codec layers.
-> The codec model in UniAudio is revised from [Encodec (2022)](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md).
+[VioLA](../../Models/Speech_LLM/2023.05.25_VioLA.md), [AudioPaLM](../../Models/Speech_LLM/2023.06.22_AudioPaLM.md), 和 [LauraGPT](../../Models/Speech_LLM/2023.10.07_LauraGPT.md) 的不同指出在于它们具有生成文本和音频的双重能力.
+- [VioLA](../../Models/Speech_LLM/2023.05.25_VioLA.md) 试图解决 "是否只需要一个仅用解码器的生成模型就能完成语音识别, 合成和翻译?" 的问题, 通过采用结合 文本 Token 和音频 Token (由 [Encodec](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) 提取), 任务 ID 和语言 ID 进行语言建模.
+- [AudioPaLM](../../Models/Speech_LLM/2023.06.22_AudioPaLM.md) 构造了一个统一的词汇表, 包括文本和音频 Token. 它是一个仅使用解码器, 自回归模型, 能够处理和生成文本和语音. 此外, 其初始化来自一个仅文本的语言模型 [PaLM-2 (2023)](../../Models/LLM/2023.05.17_PaLM2.md). 其音频分词方式与 [AudioLM](../../Models/Speech_LLM/2022.09.07_AudioLM.md) 类似. 此外, 还采用并扩展了 [SoundStream](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md) 到 [SoundStorm](../../Models/Speech_LLM/2023.05.16_SoundStorm.md).
+- [LauraGPT](../../Models/Speech_LLM/2023.10.07_LauraGPT.md) 是建立在仅使用解码器的基于文本的语言模型 [Qwen-2B (2023)](../../Models/LLM/2023.09.28_Qwen.md) 的多功能语言模型, 它具有处理音频和文本输入的能力, 生成的双模态输出. 它采用 [Conformer](../../Models/_Basis/2020.05.16_Conformer.md) 编码器编码输入音频, 并使用 [FunCodec](../../Models/Speech_Neural_Codec/2023.09.14_FunCodec.md) 离散编码解码为输出音频. 作者声称特定的音频特征设计, 对于输入和输出, 将会提升语音生成的性能, 并给出了一些初步的实验结果.
+
+> [UniAudio (2023)](../../Models/Speech_LLM/2023.10.01_UniAudio.md) utilizes language modeling to generate a wide range of audio types, including speech, sounds, music, and singing, using textual or acoustic tokens as inputs.
+> [UniAudio](../../Models/Speech_LLM/2023.10.01_UniAudio.md) stands out for its ability to enhance autoregressive prediction speed by introducing a multi-scale Transformer model [35], which employs a large global Transformer to predict the first-layer codec codes and a small local Transformer to predict the codec codes for the subsequent codec layers.
+> The codec model in [UniAudio](../../Models/Speech_LLM/2023.10.01_UniAudio.md) is revised from [Encodec](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md).
+
+[UniAudio (2023)](../../Models/Speech_LLM/2023.10.01_UniAudio.md) 利用语言建模生成广泛的音频类型, 包括语音, 声音, 音乐, 歌唱, 输入可以是文本或声学 Token.
+[UniAudio](../../Models/Speech_LLM/2023.10.01_UniAudio.md) 的突出之处在于它通过引入多尺度 Transformer 模型来提高自回归预测速度, 该模型使用一个大的全局 Transformer 来预测第一层编解码器编码, 以及一个小的局部 Transformer 来预测后续编解码器层的编码.
+[UniAudio](../../Models/Speech_LLM/2023.10.01_UniAudio.md) 中的编解码器模型是基于 [Encodec](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) 改进的.
 
 > Additionally, there are other codec-based language models designed for sound modeling.
-> AudioGen [20] trained a [SoundStream (2021)](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md) model to get audio tokens and subsequently trained a language model to utilize textual features as conditions for generating audio tokens.
-> MusicLM [11] follows a training strategy similar to AudioLM but extends its scope to encompass music features.
+> [AudioGen (2022)](../../Models/Speech_LLM/2022.09.30_AudioGen.md) trained a [SoundStream](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md) model to get audio tokens and subsequently trained a language model to utilize textual features as conditions for generating audio tokens.
+> [MusicLM (2023)](../../Models/Speech_LLM/2023.01.26_MusicLM.md) follows a training strategy similar to [AudioLM](../../Models/Speech_LLM/2022.09.07_AudioLM.md) but extends its scope to encompass music features.
 > It approaches the task of conditional music generation through a hierarchical sequence-to-sequence modeling approach.
-> Initially, it utilizes music tokens from Mulan [36] to generate semantic tokens from the w2v-BERT model.
-> Subsequently, it employs both music tokens and semantic tokens to generate acoustic features through [SoundStream (2021)](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md).
-> MusicGen [18] is a music language model designed to work with EnCodec discrete tokens.
+> Initially, it utilizes music tokens from [Mulan](../../Models/_Basis/2022.08.26_MuLan.md)  to generate semantic tokens from the [W2V-BERT](../../Models/Speech_Representaion/2021.08.07_W2V-BERT.md) model.
+> Subsequently, it employs both music tokens and semantic tokens to generate acoustic features through [SoundStream](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md).
+> [MusicGen (2023)](../../Models/Speech_LLM/2023.06.08_MusicGen.md) is a music language model designed to work with [EnCodec](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) discrete tokens.
 > It accepts textual descriptions or melodic features as input conditions to generate tokens, which can be reconstructed to high-fidelity music.
+
+此外有其他一些基于编解码器的语言模型为声音建模设计.
+- [AudioGen (2022)](../../Models/Speech_LLM/2022.09.30_AudioGen.md) 训练了一个 [SoundStream](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md) 模型来获得音频 Token, 然后训练了一个语言模型来利用文本特征作为条件生成音频 Token.
+- [MusicLM (2023)](../../Models/Speech_LLM/2023.01.26_MusicLM.md) 采取与 [AudioLM](../../Models/Speech_LLM/2022.09.07_AudioLM.md) 类似的训练策略, 但扩展了其范围, 包括音乐特征. 
+  它采用层次序列到序列的建模方式来解决指导式音乐生成问题. 
+  最初, 它利用 [Mulan](../../Models/_Basis/2022.08.26_MuLan.md) 中的音乐 Token 来生成语义 Token, 并利用 [W2V-BERT](../../Models/Speech_Representaion/2021.08.07_W2V-BERT.md) 模型来生成音频特征. 
+  随后, 它采用音乐 Token 和语义 Token 来生成声学特征, 并使用 [SoundStream](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md).
+- [MusicGen (2023)](../../Models/Speech_LLM/2023.06.08_MusicGen.md) 是为 [EnCodec](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) 离散 Token 设计的音乐语言模型. 
+  它接受文本描述或旋律特征作为输入条件, 生成 Token, 这些 Token 可以用于高保真的音乐生成.
 
 > Another branch of speech language modeling aims to utilize discrete units obtained by quantizing self-supervised speech representations.
 > While these discrete units contain rich acoustic and linguistic information [37], they lack speaker and paralinguistic information [38].
@@ -319,20 +348,82 @@
 > Pioneering work is speech-resynthesis [38], which utilizes these discrete units in conjunction with prosody and speaker encoders to encode speech into low-bitrate codes.
 > These codes can then be resynthesized into a speech signal with a decoder to achieve low-bitrate transmission.
 > Additionally, these discrete units can be regarded as “pseudo-text,” serving as a foundation for training textless speech language models.
-> Notable examples include GSLM [39], pGSLM [40], dGSLM [41], and TWIST [42].
+> Notable examples include [GSLM (2021)](../../Models/Speech_LLM/2021.02.01_GSLM.md), [pGSLM (2021)](../../Models/Speech_LLM/2021.09.07_pGSLM.md), [dGSLM (2022)](../../Models/Speech_LLM/2022.03.30_dGSLM.md), and [TWIST (2023)](../../Models/Speech_LLM/2023.05.22_TWIST.md).
 > By engaging in the pre-trained task of next-token prediction, these speech LMs perform spoken language modeling and can conduct the task of speech continuation.
-> In the field of speech translation, recent advancements have been made possible through these discrete units. [43] pre-trained a Unit mBART combined with a wav2vec 2.0 [44] encoder to directly predict the translated discrete units.
-> UnitY [45] further incorporates text modality to enhance speech translation.
-> The Seamless models [46], [47] integrate the UnitY framework to perform expressive and streaming speech-to-text and speech-to-speech translation.
-> With the development of these powerful speech LMs, researchers have begun to explore the use of prompting on speech LMs for various speech processing tasks, including prompt tuning [48]–[50], in-context learning [51], and instruction tuning [52], [53].
+
+语音语言建模的另一个分支旨在利用由自监督语音表示量化获得的离散单元.
+这些离散单元包含丰富的声学和语言学信息, 它们缺少说话人和伴随语言的信息.
+这一研究方向注重于建模语音的语义, 可选地使用编码器来学习说话人特征和韵律.
+开创性的工作是语音重合成, 利用这些离散单元结合韵律和说话人编码器将语音编码器为低码率编码.
+这些编码随后可以通过解码器被重新合成为语音信号, 实现低比特率传输.
+此外, 这些离散单元可以被视为伪文本, 作为训练无文本语音语言模型的基础.
+显著的例子包括 [GSLM (2021)](../../Models/Speech_LLM/2021.02.01_GSLM.md), [pGSLM (2021)](../../Models/Speech_LLM/2021.09.07_pGSLM.md), [dGSLM (2022)](../../Models/Speech_LLM/2022.03.30_dGSLM.md), 和 [TWIST (2023)](../../Models/Speech_LLM/2023.05.22_TWIST.md).
+通过采用预训练任务的下一标记预测, 这些语音语言模型可以进行口语语言建模, 并能够进行语音续写任务.
+
+> In the field of speech translation, recent advancements have been made possible through these discrete units. 
+> [Enhanced Direct Speech-to-Speech Translation Using Self-supervised Pre-training and Data Augmentation]() pre-trained a Unit mBART combined with a [Wav2Vec 2.0 (2020)](../../Models/Speech_Representaion/2020.06_Wav2Vec2.0.md) encoder to directly predict the translated discrete units.
+> [UnitY (2022)](../../Models/_Basis/2022.12.15_UnitY.md) further incorporates text modality to enhance speech translation.
+> The Seamless models ([SeamlessM4T](../../Models/_Basis/2023.08.22_SeamlessM4T.md), [Seamless](../../Models/_Basis/2023.12.08_Seamless.md)) integrate the [UnitY](../../Models/_Basis/2022.12.15_UnitY.md) framework to perform expressive and streaming speech-to-text and speech-to-speech translation.
+> With the development of these powerful speech LMs, researchers have begun to explore the use of prompting on speech LMs for various speech processing tasks, including prompt tuning, in-context learning, and instruction tuning.
+
+在语音翻译领域, 最近的进展已经成为可能, 例如 [Enhanced Direct Speech-to-Speech Translation Using Self-supervised Pre-training and Data Augmentation]() 预训练了一个 Unit mBART 与 [Wav2Vec 2.0 (2020)](../../Models/Speech_Representaion/2020.06_Wav2Vec2.0.md) 编码器, 直接预测翻译后的离散单元.
+[UnitY (2022)](../../Models/_Basis/2022.12.15_UnitY.md) 进一步整合了文本模态以增强语音翻译.
+[SeamlessM4T](../../Models/_Basis/2023.08.22_SeamlessM4T.md), [Seamless](../../Models/_Basis/2023.12.08_Seamless.md) 整合 [UnitY](../../Models/_Basis/2022.12.15_UnitY.md) 框架用于实现表达性和流式语音转文本和语音转语音翻译.
+随着这些强力语音语言模型, 研究人员开始探索在语音语言模型对于各种语音处理任务的提示使用, 包括
+- 提示调参: [An Exploration of Prompt Tuning on Generative Spoken Language Model for Speech Processing Tasks](), [SpeechPrompt v2](../../Models/_Basis/2023.03.01_SpeechPrompt_v2.md) [SpeechGen](../../Models/_Basis/2023.06.03_SpeechGen.md)
+- 上下文学习: [An Exploration of In-Context Learning for Speech Language Model]()
+- 指令调参: [Towards General-Purpose Text-Instruction-Guided Voice Conversion](), [Dynamic-Superb](../../Evaluations/2023.09.18_Dynamic-SUPERB.md)
 
 ### 3.2.Comparison for Codec-Based Audio Language Models
 
-> In Tab.03, we compare the inputs, outputs, and downstream tasks of different codec-based language models.
-> We also summarize that the downstream tasks conducted by differ-ent codec-based language models: Speech Continuation (SC), Piano Continuation (PC), Audio Continuation (AC), Text-to-Speech (TTS), Music Generation (MG), Stereophonic Generation (SG), Speech to Speech Translation (S2ST), Automatic Speech Recognition (ASR), Spoken Language Understanding (SLU), Automated Audio Captioning (AAC), Speech to Text Translation (S2TT), Machine Translation (MT), Speech Enhancement (SE), Speech Removal (SR), Target Speaker Extraction (TSE), Speech Editing (SPED), Voice Conversion (VC), Singing Voice Synthesis (SVS), Text-to-Sound (TTSO), Text-to-Music (TTM), Audio Editing (AUED), Speech Dereverb (SD), Instructed TTS (ITTS).
+> In [Tab.03](#Tab.03), we compare the inputs, outputs, and downstream tasks of different codec-based language models.
+> We also summarize that the downstream tasks conducted by different codec-based language models: 
+> - Speech Continuation (SC), 
+> - Piano Continuation (PC), 
+> - Audio Continuation (AC), 
+> - Text-to-Speech (TTS), 
+> - Music Generation (MG), 
+> - Stereophonic Generation (SG), 
+> - Speech to Speech Translation (S2ST), 
+> - Automatic Speech Recognition (ASR), 
+> - Spoken Language Understanding (SLU), 
+> - Automated Audio Captioning (AAC), 
+> - Speech to Text Translation (S2TT), 
+> - Machine Translation (MT), 
+> - Speech Enhancement (SE), 
+> - Speech Removal (SR), 
+> - Target Speaker Extraction (TSE), 
+> - Speech Editing (SPED), 
+> - Voice Conversion (VC), 
+> - Singing Voice Synthesis (SVS), 
+> - Text-to-Sound (TTSO), 
+> - Text-to-Music (TTM), 
+> - Audio Editing (AUED), 
+> - Speech Dereverb (SD), 
+> - Instructed TTS (ITTS).
+> 
 > Finally, we show the codec models adopted by different LMs.
+
+<a id="Tab.03"></a>
+
+![](../_Images/2024.02.20_Tab.03.png)
+
+> Tab.03: Codec-Based Language Models Comparison. 
+> `T` means Text, 
+> `Aud` means Audio, 
+> `P` means Phoneme,
+> `M` means MIDI.
+
+在[表 03](#Tab.03), 我们对比了不同基于编解码器的语言模型的输入, 输出和下游任务.
+我们还总结了由不同基于编解码器的语言模型引导的下游任务:
+语音续写, 钢琴续写, 音频续写, 文本转语音, 音乐生成, 立体声生成, 语音转语音, 自动语音识别, 口语理解, 自动音频字幕, 语音转文本, 机器翻译, 语音增强, 语音去除, 目标说话人提取, 语音编辑, 声音转换, 歌唱声音合成, 文本转声音, 文本转音乐, 音频编辑, 语音反混响, 指导式文本转语音.
+
+最后我们展示了不同语言模型采用的编解码器模型.
 
 ## 4.Conclusions
 
 > The paper fills the research blank to review the neural codec models and LMs built upon them.
 > We hope the comprehensive review and comparisons can inspire future research works to boost the development of neural codec models and codec-based LMs.
+
+本文填补了当前研究的空白, 对神经编解码器模型和基于其上的语言模型进行了回顾.
+我们希望这一全面的回顾和比较能够启发未来的研究工作, 推动神经编解码器模型和基于编解码器的语言模型的发展.
