@@ -10,7 +10,7 @@ jobs:
       uses: andstor/copycat-action@v3
       with:
         personal_token: ${{ secrets.COPY }}
-        src_path: Papers/
+        src_path: Models/
         src_branch: main
         dst_path: /docs/TTS/
         dst_owner: SapphireLab
