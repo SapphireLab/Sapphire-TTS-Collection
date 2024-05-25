@@ -1,4 +1,9 @@
 .obsidian
 .vscode
-[0-9]*.pdf
+Books/**/*.pdf
+Datasets/**/*.pdf
+Evaluations/**/*.pdf
+Models/**/*.pdf
+Surveys/**/*.pdf
 Templates
+*.mp4
