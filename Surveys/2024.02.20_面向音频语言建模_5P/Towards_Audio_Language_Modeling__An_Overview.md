@@ -34,7 +34,7 @@
 
 > Language modeling has proven to be highly successful in the field of Natural Language Processing (NLP). 
 > Audio data encompasses not only textual content but also rich information about speaker timbre, emotion, and general audio, offering deeper possibilities for language model applications.
-> Researchers, especially those in large companies with significant computational resources, recently leverage the potential of neural codecs [1]–[8] as suitable tokenizers for converting continuous audio into discrete codes, which can be employed to develop audio language models (LMs) [9]–[20].
+> Researchers, especially those in large companies with significant computational resources, recently leverage the potential of neural codecs ([Encodec (2022)](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md), [SoundStream (2021)](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md), [SoundStorm (2023)](../../Models/Speech_LLM/2023.05.16_SoundStorm.md), [AudioDec (2023)](../../Models/Speech_Neural_Codec/2023.05.26_AudioDec.md), [AcademiCodec/HiFi-Codec (2023)](../../Models/Speech_Neural_Codec/2023.05.04_HiFi-Codec.md), [FunCodec (2023)](../../Models/Speech_Neural_Codec/2023.09.14_FunCodec.md), [SpeechTokenizer (2023)](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md), [Descript-Audio-Codec (2023)](../../Models/Speech_Neural_Codec/2023.06.11_Descript-Audio-Codec.md)) as suitable tokenizers for converting continuous audio into discrete codes, which can be employed to develop audio language models (LMs) [9]–[20].
 > The current codec-based language models and codec models are summarized in Fig.01. 
 > These findings promptly garnered the community’s attention, sparking a fervor for developing codecs tailored to audio language modeling. 
 > Numerous high performance neural audio codec models and audio LMs have been developed.
@@ -76,71 +76,124 @@
 > Considering the broad spectrum of codec models within the research community, each trained with its distinct configurations and training techniques, there is a clear need for a thorough examination that covers the training methodologies, implementation settings, and training data employed across these codec models.
 > The six codec models have distinct training details, resulting in a collection of fifteen different codec models, as summarized in Tab.01.
 
-## 2.1.Brief Method Overview for Codecs
+编解码器模型的目标是高效地压缩和解压缩语音信号.
+传统的编解码器是基于心理声学和语音合成开发的.
+近期, 神经编解码器模型在压缩和信号重建方面表现出了极高效率, 超越了传统编解码器.
+考虑到研究社区中编解码器模型的广泛范围, 每个模型都使用其独特的配置和训练技术进行训练, 显然需要进行一次彻底的检查, 以涵盖这些编解码器模型所采用的训练方法, 实现设置和训练数据.
+以下六个编解码器模型有着不同的训练细节, 从而形成一个包含十五个不同编解码器模型的集合, 如表 01 所示.
 
-> SoundStream [2] stands as one of the pioneering implementations of neural codec models, embodying a classic neural codec architecture comprising encoder, quantizer, and decoder modules.
-> It utilizes the streaming SEANets [23] as its encoder and decoder.
-> The quantizer incorporates a speech enhancement system with a Residual Vector Quantization (RVQ) [2], [24] bottleneck to obtain parallel token streams.
+> Tab.01 Codec Information Comparison. 
+> `A-F` represents different neural codec models, where 
+> - `A` is [SpeechTokenizer (2023)](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md), 
+> - `B` is [AcademiCodec/HiFi-Codec (2023)](../../Models/Speech_Neural_Codec/2023.05.04_HiFi-Codec.md), 
+> - `C` is [AudioDec (2023)](../../Models/Speech_Neural_Codec/2023.05.26_AudioDec.md), 
+> - `D` is [Descript-Audio-Codec (DAC) (2023)](../../Models/Speech_Neural_Codec/2023.06.11_Descript-Audio-Codec.md), 
+> - `E` is [Encodec (2022)](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md),
+> - `F` is [FunCodec (2023)](../../Models/Speech_Neural_Codec/2023.09.14_FunCodec.md). 
+> 
+> $n_c$ represents the codebook number, `SR` represents the Sample Rate, And `BPS` represents the bit rate in unit bits per second.
+
+![](../_Images/2024.02.20_Tab.01.png)
+
+## 2.1.Brief Method Overview for Codecs·编解码器的简要方法概述
+
+> [SoundStream (2021)](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md) stands as one of the pioneering implementations of neural codec models, embodying a classic neural codec architecture comprising encoder, quantizer, and decoder modules.
+> It utilizes the streaming [SEANets (2020)](../../Models/_Basis/2020.09.04_SEANet.md) as its encoder and decoder.
+> The quantizer incorporates a speech enhancement system with a **Residual Vector Quantization (RVQ)** ([SoundStream (2021)](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md), [MelGAN (2019)](../../Models/TTS3_Vocoder/2019.10.08_MelGAN.md)) bottleneck to obtain parallel token streams.
 > During training, the model parameters are optimized using a combination of reconstruction and adversarial loss.
-> SoundStorm [3] is an improved version of SoundStream to achieve both efficiency and high-quality audio generation.
+> [SoundStorm (2023)](../../Models/Speech_LLM/2023.05.16_SoundStorm.md) is an improved version of [SoundStream](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md) to achieve both efficiency and high-quality audio generation.
 > It accomplishes this by employing an architecture specifically tailored to the hierarchical structure of audio tokens.
 > Moreover, it pioneers a parallel, non-autoregressive decoding scheme, which relies on confidence-based strategies for residual vector-quantized token sequences.
 
-> Encodec [1] builds upon a framework similar to SoundStream.
+[SoundStream (2021)](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md) 作为神经编解码器模型的先驱之一, 体现了一个经典的神经编解码器架构, 由编码器, 量化器和解码器模块组成.
+它使用了流式 [SEANets (2020)](../../Models/_Basis/2020.09.04_SEANet.md) 作为编码器和解码器.
+量化器集成了一个带有残差向量量化瓶颈的语音增强系统以获得并行的 Token 流.
+在训练时, 模型参数使用重构损失和对抗损失的结合进行优化.
+
+[SoundStorm (2023)](../../Models/Speech_LLM/2023.05.16_SoundStorm.md) 是 [SoundStream](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md) 的改进版本, 实现了高效和高质量音频生成.
+该模型通过采用专门针对音频 Token 的层次结构的架构来实现这一点.
+此外, 它首创了一种并行的, 非自回归的解码方案, 该方案依赖于基于置信度的策略来处理残差向量量化后的 Token 序列.
+
+> [Encodec (2022)](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) builds upon a framework similar to [SoundStream](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md).
 > Nonetheless, it further augments its capabilities by integrating supplementary LSTM [25] layers and harnessing a Transformer-based language model [26] to model the RVQ codes, thereby amplifying its sequence modeling performance.
 > Then, there is a stream of work aimed at making codec models more general and powerful.
-> AudioDec [4] represents an enhanced version of Encodec, implementing a group convolution mechanism to facilitate the real-time operation of the streamable network while also harnessing the capabilities of HiFi-GAN [27] to effectively generate high-fidelity audio at a high sampling rate of 48 kHz. 
+> [AudioDec (2023)](../../Models/Speech_Neural_Codec/2023.05.26_AudioDec.md) represents an enhanced version of [Encodec](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md), implementing a group convolution mechanism to facilitate the real-time operation of the streamable network while also harnessing the capabilities of [HiFi-GAN (2020)](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md) to effectively generate high-fidelity audio at a high sampling rate of 48 kHz. 
 
-> In the AcademiCodec model introduced by [5], a novel technique known as group-residual vector quantization is presented.
+[Encodec (2022)](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) 建立在类似于 [SoundStream](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md) 的框架之上.
+然而, 它通过整合追加的 LSTM 层和利用基于 Transformer 的语言模型来建模 RVQ 编码以进一步增强其能力, 从而扩大其序列建模性能.
+因此, 有一系列工作旨在使编解码器模型更加通用和强大.
+[AudioDec (2023)](../../Models/Speech_Neural_Codec/2023.05.26_AudioDec.md) 是 [Encodec](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) 的增强版本, 应用了组卷积机制, 以促进流式网络的实时操作, 同时利用 [HiFi-GAN (2020)](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md) 的能力, 在 48k Hz 的高采样率下有效地生成高保真度的音频.
+
+> In the [AcademiCodec/HiFi-Codec (2023)](../../Models/Speech_Neural_Codec/2023.05.04_HiFi-Codec.md) model, a novel technique known as group-residual vector quantization is presented.
 > It employs multiple parallel RVQ groups.
 > This technique is specifically tailored for generation tasks.
 > It aims to enhance the reconstruction performance while using a limited number of codebooks, consequently achieving an impressively low bit rate per second (BPS).
 > This low BPS is of utmost significance as it effectively addresses the challenge of lengthy speech tokens in speech language modeling, resulting in reduced sequence lengths.
 
-> SpeechTokenizer [7] is a unified speech tokenizer designed for speech language models.
+[AcademiCodec/HiFi-Codec (2023)](../../Models/Speech_Neural_Codec/2023.05.04_HiFi-Codec.md) 模型提出了一个新的技术, 组残差向量量化.
+它采用了多个并行的 RVQ 组.
+这一技术是专门为生成任务而设计的.
+其目的是在使用有限的码本的同时提高重构性能, 因此实现了惊人的低码率每秒 (BPS).
+这种低码率对于长语音 Token 在语音语言建模中的挑战是至关重要的, 能使得序列长度减少.
+
+> [SpeechTokenizer (2023)](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) is a unified speech tokenizer designed for speech language models.
 > It implements an Encoder-Decoder architecture enhanced with RVQ.
-> By integrating both semantic and acoustic tokens, SpeechTokenizer hierarchically separates various aspects of speech information across different RVQ layers.
-> Specifically, SpeechTokenizer is designed to regularize the first RVQ layer to highlight semantic information by learning the Hubert tokens [28].
+> By integrating both semantic and acoustic tokens, [SpeechTokenizer](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) hierarchically separates various aspects of speech information across different RVQ layers.
+> Specifically, [SpeechTokenizer](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) is designed to regularize the first RVQ layer to highlight semantic information by learning the [Hubert (2021)](../../Models/Speech_Representaion/2021.06.14_HuBERT.md) tokens.
 > Using such techniques can enhance the disentanglement of information across different RVQ layers.
 
-> Descript-Audio-Codec (DAC) [8], a universal neural codec model, distinguishes itself through its exceptional ability to maintain high-fidelity audio quality across a wide spectrum of data types, encompassing general audio, music, and speech.
+[SpeechTokenizer (2023)](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) 是为语音语言模型设计的统一语音分词器.
+它采用了 RVQ 增强的编码器-解码器架构.
+通过整合语义 Token 和声学 Token, [SpeechTokenizer](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) 逐层地将语音信息分离到不同的 RVQ 层.
+具体来说, [SpeechTokenizer](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) 被设计成通过学习 [Hubert (2021)](../../Models/Speech_Representaion/2021.06.14_HuBERT.md) Token 正则化第一个 RVQ 层, 以突出语义信息.
+采用这样的技术可以增强不同 RVQ 层之间的信息解耦.
+
+> [Descript-Audio-Codec (DAC) (2023)](../../Models/Speech_Neural_Codec/2023.06.11_Descript-Audio-Codec.md), a universal neural codec model, distinguishes itself through its exceptional ability to maintain high-fidelity audio quality across a wide spectrum of data types, encompassing general audio, music, and speech.
 > It accomplishes this feature by employing a number of training techniques, such as periodic activation functions [29], enhanced residual vector quantization using factorized and L2-normalized codes, random quantizer dropout to preserve audio reconstruction quality, as well as refining adversarial and reconstruction loss during the training process.
 > The authors highlight the crucial importance of the periodic activation function among the employed techniques.
 
-> Unlike most models focusing on the time domain, FunCodec [6] proposes a frequency-domain codec.
+[Descript-Audio-Codec (DAC) (2023)](../../Models/Speech_Neural_Codec/2023.06.11_Descript-Audio-Codec.md) 是一种通用神经编解码器模型, 其独特的能力能够在广泛的数据类型范围内 (一般音频, 音乐和语音) 保持高保真度的音频质量.
+它通过采用多种训练技术来实现这一特性, 例如周期激活函数, 使用因子化和 L2 归一化编码的增强残差向量量化, 随机量化器失活以保持音频重建质量, 以及在训练过程中细化对抗损失和重构损失.
+作者强调了周期性激活函数在所采用技术中的关键重要性.
+
+> Unlike most models focusing on the time domain, [FunCodec (2023)](../../Models/Speech_Neural_Codec/2023.09.14_FunCodec.md) proposes a frequency-domain codec.
 > The authors claim they can achieve comparable performance with fewer parameters and lower computation complexity.
 > Meanwhile, it also finds that incorporating semantic information in the codec tokens improves speech quality at low bit rates.
+
+与大部分模型关注时域不同, [FunCodec (2023)](../../Models/Speech_Neural_Codec/2023.09.14_FunCodec.md) 提出了频域编解码器.
+作者声称他们可以用较少参数和较低计算复杂度获得相当的性能.
+同时还发现将语义信息整合到编解码器 Token 中可以提高低码率下的语音质量.
 
 ### 2.2.Comparison from Methodology Angles
 
 > We compare several techniques proposed by these codecs in Tab.02.
-> The abbreviation “A-F” represents different codec models.
+> The abbreviation `A-F` represents different codec models.
 > Please refer to Tab.01 for the corresponding model full name.
 > The design of discriminators constitutes a pivotal element within codec models.
-> Encodec initially introduces the Multi-scale-STFT Discriminator (MS-STFTD).
-> In contrast to the multi-scale discriminator (MSD) proposed in MelGAN [24], which captures long-term dependencies, the multi-period discriminator (MPD) proposed in HiFi-GAN [30] exhibits a capacity to discern more nuanced periodic details.
-> Consequently, AudioDec replaces the conventionally employed STFTD with a HiFi-GAN-based MPD, observing an enhancement in audio quality within their model.
-> AcademiCodec integrates prior research efforts by incorporating the MS-STFTD from Encodec and both HiFi-GAN-based MPD and MSD.
-> Both SpeechTokenizer and FunCodec adopt identical discriminators to AcademiCodec, with Funcodec offering a unified interface adaptable to any combination of these three discriminator types.
-> DAC identifies that employing MSD and MPD alone generates audio displaying blurriness and artifacts.
+> [Encodec](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) initially introduces the **Multi-scale-STFT Discriminator (MS-STFTD)**.
+> In contrast to the **multi-scale discriminator (MSD)** proposed in [MelGAN (2019)](../../Models/TTS3_Vocoder/2019.10.08_MelGAN.md), which captures long-term dependencies, the multi-period discriminator (MPD) proposed in [HiFi-GAN (2020)](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md) exhibits a capacity to discern more nuanced periodic details.
+> Consequently, AudioDec replaces the conventionally employed STFTD with a [HiFi-GAN](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md)-based MPD, observing an enhancement in audio quality within their model.
+> [AcademiCodec](../../Models/Speech_Neural_Codec/2023.05.04_HiFi-Codec.md) integrates prior research efforts by incorporating the MS-STFTD from Encodec and both [HiFi-GAN](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md)-based MPD and MSD.
+> Both [SpeechTokenizer](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) and FunCodec adopt identical discriminators to [AcademiCodec](../../Models/Speech_Neural_Codec/2023.05.04_HiFi-Codec.md), with Funcodec offering a unified interface adaptable to any combination of these three discriminator types.
+> [DAC](../../Models/Speech_Neural_Codec/2023.06.11_Descript-Audio-Codec.md) identifies that employing MSD and MPD alone generates audio displaying blurriness and artifacts.
 > To address this, they propose the application of a multi-scale, multi-band STFT discriminator (MS-MB-STFTD) to improve phase modeling and mitigate aliasing artifacts.
 
-> SpeechTokenizer utilizes semantic tokens from Hubert L9 as a teacher for the RVQ process.
+> [SpeechTokenizer](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) utilizes semantic tokens from [Hubert L9](../../Models/Speech_Representaion/2021.06.14_HuBERT.md) as a teacher for the RVQ process.
 > This guidance enables the disentanglement of content information into the first layer of the tokenizer, while paralinguistic information is retained in subsequent layers.
-> FunCodec seeks to integrate semantic information by combining, adding, or residualizing the audio codec with semantic tokens.
+> [FunCodec](../../Models/Speech_Neural_Codec/2023.09.14_FunCodec.md) seeks to integrate semantic information by combining, adding, or residualizing the audio codec with semantic tokens.
 > The study reveals that including semantic tokens enhances audio quality, particularly with the residual inclusion method.
-> Additionally, SpeechTokenizer and FunCodec utilize K-means to cluster samples in the first mini-batch for initializing the VQ codebook, leading to improved code utilization.
+> Additionally, [SpeechTokenizer](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) and [FunCodec](../../Models/Speech_Neural_Codec/2023.09.14_FunCodec.md) utilize K-means to cluster samples in the first mini-batch for initializing the VQ codebook, leading to improved code utilization.
 > DAC follows the approach of BigVGAN [31], employing snake activation [29] for trainable control over the frequency of periodic signals.
-> AcademiCodec employs multiple RVQ codebooks (multiple residual groups) to represent intermediate features.
+> [AcademiCodec](../../Models/Speech_Neural_Codec/2023.05.04_HiFi-Codec.md) employs multiple RVQ codebooks (multiple residual groups) to represent intermediate features.
 > They demonstrate that using multiple residual groups achieves good reconstruction performance while employing only a few codebooks.
-> Encodec trains an additional small transformer model for entropy coding over the quantized units, which reduces bandwidth and accelerates encoding and decoding.
+> [Encodec (2022)](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) trains an additional small transformer model for entropy coding over the quantized units, which reduces bandwidth and accelerates encoding and decoding.
 
 ### 2.3.Implementation Details
 
 > We compare the codebook number, training data, sampling rate, and bit rate per second in Tab.01.
-> From the training data perspective, SpeechTokenizer [7], AudioDec [4], and FunCodec [6] utilize only English speech dataset.
-> AcademiCodec [5] incorporates bilingual speech datasets, including AISHELL for Chinese and LibriTTS and VCTK for English.
-> Both DAC [8], and Encodec [1] encompass diverse modality data, including speech, music, and audio, in the training data.
+> From the training data perspective, [SpeechTokenizer (2023)](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md), [AudioDec (2023)](../../Models/Speech_Neural_Codec/2023.05.26_AudioDec.md), and [FunCodec (2023)](../../Models/Speech_Neural_Codec/2023.09.14_FunCodec.md) utilize only English speech dataset.
+> [AcademiCodec/HiFi-Codec (2023)](../../Models/Speech_Neural_Codec/2023.05.04_HiFi-Codec.md) incorporates bilingual speech datasets, including AISHELL for Chinese and LibriTTS and VCTK for English.
+> Both [DAC (2023)](../../Models/Speech_Neural_Codec/2023.06.11_Descript-Audio-Codec.md), and [Encodec (2022)](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) encompass diverse modality data, including speech, music, and audio, in the training data.
 
 ## 3.Current Codec-Based Speech Language Models
 
@@ -153,35 +206,35 @@
 
 > AudioLM [9] is the pioneering model in introducing codec codes for language modeling, utilizing a hierarchical approach that encompasses two distinct stages.
 > The first stage generates semantic tokens using a self-supervised w2v-BERT model [32].
-> These tokens are then leveraged in the second stage as conditioning elements to create acoustic tokens using a SoundStream neural codec [2].
+> These tokens are then leveraged in the second stage as conditioning elements to create acoustic tokens using a [SoundStream (2021)](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md) neural codec.
 
-> VALL-E [12], VALL-E X [13], and SpeechX [17], all originate from Microsoft and are neural codec language models trained to generate discrete codes derived from EnCodec [1], based on textual or acoustic inputs.
+> VALL-E [12], VALL-E X [13], and SpeechX [17], all originate from Microsoft and are neural codec language models trained to generate discrete codes derived from [Encodec (2022)](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md), based on textual or acoustic inputs.
 > VALL-E can generate high-quality personalized speech with only a 3-second enrollment recording from an unseen speaker.
 > Furthermore, VALL-E X can produce high-quality speech in the target language with just a single speech utterance in the source language as a prompt.
 > Additionally, SpeechX introduces a unified framework to address not only zero-shot TTS but also various types of speech transformation tasks, including speech enhancement and speech editing.
 
 > What sets ViaLA [14], AudioPaLM [10], and LauraGPT [16] apart is their dual capability to generate both text and audio.
-> VioLA tries to tackle the question “Is one decoder-only generative model all you need for speech recognition, synthesis, and translation?” by employing language modeling that integrates both text tokens and audio tokens (extracted by EnCodec [1]), along with the use of task IDs and language IDs.
+> VioLA tries to tackle the question “Is one decoder-only generative model all you need for speech recognition, synthesis, and translation?” by employing language modeling that integrates both text tokens and audio tokens (extracted by [Encodec (2022)](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md)), along with the use of task IDs and language IDs.
 > AudioPaLM constructs a unified vocabulary comprising both text and audio tokens.
 > It is a decoder-only, autoregressive model capable of processing and generating both text and speech.
 > Additionally, AudioPaLM’s initialization stems from PaLM-2 [33], a text-only language model.
 > AudioPaLM’s approach to audio tokenization resembles that of AudioLM.
-> Moreover, AudioPaLM adopts and extends the SoundStream model to SoundStorm [3].
+> Moreover, AudioPaLM adopts and extends the [SoundStream (2021)](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md) model to [SoundStorm (2023)](../../Models/Speech_LLM/2023.05.16_SoundStorm.md).
 > LauraGPT [16] is a versatile language model built on a decoder-only text-based language model, Qwen-2B [34].
 > LauraGPT has the capability to process both audio and text inputs, generating outputs in either modality.
-> LauraGPT encodes input audio into continuous representations using a Conformer encoder and decodes output audio using FunCodec [6] discrete codes.
+> LauraGPT encodes input audio into continuous representations using a Conformer encoder and decodes output audio using [FunCodec (2023)](../../Models/Speech_Neural_Codec/2023.09.14_FunCodec.md) discrete codes.
 > The authors claim this specific audio features design for inputs and outputs will result in improved performance for speech generation using some preliminary experimental results.
 
 > UniAudio [15] utilizes language modeling to generate a wide range of audio types, including speech, sounds, music, and singing, using textual or acoustic tokens as inputs.
 > UniAudio stands out for its ability to enhance autoregressive prediction speed by introducing a multi-scale Transformer model [35], which employs a large global transformer to predict the first-layer codec codes and a small local transformer to predict the codec codes for the subsequent codec layers.
-> The codec model in UniAudio is revised from EnCodec.
+> The codec model in UniAudio is revised from [Encodec (2022)](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md).
 
 > Additionally, there are other codec-based language models designed for sound modeling.
-> AudioGen [20] trained a SoundStream model to get audio tokens and subsequently trained a language model to utilize textual features as conditions for generating audio tokens.
+> AudioGen [20] trained a [SoundStream (2021)](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md) model to get audio tokens and subsequently trained a language model to utilize textual features as conditions for generating audio tokens.
 > MusicLM [11] follows a training strategy similar to AudioLM but extends its scope to encompass music features.
 > It approaches the task of conditional music generation through a hierarchical sequence-to-sequence modeling approach.
 > Initially, it utilizes music tokens from Mulan [36] to generate semantic tokens from the w2v-BERT model.
-> Subsequently, it employs both music tokens and semantic tokens to generate acoustic features through SoundStream.
+> Subsequently, it employs both music tokens and semantic tokens to generate acoustic features through [SoundStream (2021)](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md).
 > MusicGen [18] is a music language model designed to work with EnCodec discrete tokens.
 > It accepts textual descriptions or melodic features as input conditions to generate tokens, which can be reconstructed to high-fidelity music.
 
