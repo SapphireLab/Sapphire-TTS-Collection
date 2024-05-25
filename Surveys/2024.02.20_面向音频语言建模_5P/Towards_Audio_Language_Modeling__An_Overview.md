@@ -10,37 +10,65 @@
 - Alexander H. Liu, 
 - [Hung-yi Lee](../../Authors/李宏毅_Hung-Yi_Lee.md)
 
-## Abstract
+## Abstract·摘要
 
 > Neural audio codecs are initially introduced to compress audio data into compact codes to reduce transmission latency.
 > Researchers recently discovered the potential of codecs as suitable tokenizers for converting continuous audio into discrete codes, which can be employed to develop audio language models (LMs).
 > Numerous high-performance neural audio codecs and codec-based LMs have been developed.
 > The paper aims to provide a thorough and systematic overview of the neural audio codec models and codec-based LMs.
 
-## 1.Introduction
+最初引入神经音频编解码器是用于压缩音频数据为紧凑编码以降低传输延迟.
+最近研究人员发现编解码器作为将连续音频转换为离散代码的分词器的潜力, 这可以用于开发音频语言模型.
+许多高性能的神经音频编解码器和基于编解码器的语言模型已经被开发出来.
+本文旨在提供有关神经音频编解码器模型和基于编解码器的语言模型的全面综述.
+
+## 1.Introduction·引言
 
 > Neural audio codec models were first introduced to compress audio for efficient data transmission. 
 > The encoder converts the audio into codec codes, which are then transmitted.
 > The receiver then uses the codec decoder to reconstruct the audio using the received codes.
 
+神经音频编解码模型首次引入用于压缩音频以高效数据传输.
+编码器将音频转换为编解码器编码, 然后传输.
+接收方使用编解码器的解码器使用收到的编码重构音频.
+
 > Language modeling has proven to be highly successful in the field of Natural Language Processing (NLP). 
 > Audio data encompasses not only textual content but also rich information about speaker timbre, emotion, and general audio, offering deeper possibilities for language model applications.
 > Researchers, especially those in large companies with significant computational resources, recently leverage the potential of neural codecs [1]–[8] as suitable tokenizers for converting continuous audio into discrete codes, which can be employed to develop audio language models (LMs) [9]–[20].
-> The current codec-based language models and codec models are summarized in Figure 1. 
+> The current codec-based language models and codec models are summarized in Fig.01. 
 > These findings promptly garnered the community’s attention, sparking a fervor for developing codecs tailored to audio language modeling. 
 > Numerous high performance neural audio codec models and audio LMs have been developed.
+
+语言建模已经被证明在自然语言处理领域是高度成功的.
+音频数据不仅包含文本内容还有关于说话人音色, 情感, 以及一般音频的丰富信息, 为语言模型应用提供了更深层次的可能性.
+研究人员, 尤其是那些拥有大量计算资源的大型公司的研究人员, 最近开始利用神经编解码器的潜力, 将其作为合适的分词器把连续的音频转化为离散编码, 从而用于开发音频语言模型.
+当前基于编解码器的语言模型和编解码器模型总结在图 01 中.
+这些发现迅速引起了社区的关注, 激发了开发专门为音频语言建模定义的编解码器的热潮.
+许多高性能的神经音频编解码器模型和音频语言模型已经被开发出来.
+
+![Fig.01 Timeline of Current Neural Codec Models and Codec-Based Language Models](../_Images/2024.02.20_Fig.01.png)
 
 > An ideal codec should maintain content while preserving paralinguistic and speaker-related information. 
 > Similarly, a universal audio language model should be able to generalize across various audio types, such as speech, music, and general audio, covering a wide range of applications. 
 > The arms race in developing codecs and audio LMs is still ongoing.
 
-> Given the significant advancements in codecs and audio language models over the past three years as shown in Figure , there has yet to be a comprehensive review comparing them and providing inspiration to the community.
+一个理想的编解码器应该在保持内容的同时, 保留伴随语言和说话人相关的信息.
+类似地, 一个通用的音频语言模型应该能够跨多种音频类型进行泛化, 例如语音, 音乐和一般音频, 从而覆盖广泛的应用场景.
+开发编解码器和音频语言模型的竞赛仍在继续.
+
+> Given the significant advancements in codecs and audio language models over the past three years as shown in Fig.01, there has yet to be a comprehensive review comparing them and providing inspiration to the community.
 > In this study, we aim to fill this research gap by thoroughly reviewing and comparing various existing neural codec models and audio codec-based language models.
 > Firstly, we specifically conduct an in-depth analysis of six representative open-source neural codec models to cover their training methodologies, implementation settings, and training data. 
 > Secondly, we expand our analysis to include eleven diverse codec-based language models, examining how they utilize the codecs and the tasks to which they can be applied. 
 > Through this comprehensive review, we aim to offer the community insights into the diverse methodologies and potential directions in the field of neural codecs and codec-based language modeling.
 
-## 2.Comprehensive Comparison for Neural Audio Codec Models
+鉴于过去三年中编解码器和音频语言模型所取得的显著进步 (如图 01 所示), 目前尚未有一篇全面的综述来比较它们并为社区提供启发.
+在本研究中, 我们的目标是通过详尽回顾和比较各种现有的神经编解码器模型和基于编解码器的音频语言模型.
+首先, 我们特别地对六个代表性的开源神经编解码器模型进行深入分析, 涵盖它们的训练方法, 实现细节和训练数据.
+其次, 我们将分析扩展到包括十一个不同的基于编解码器的语言模型, 探讨它们如何利用编解码器和可以应用的任务.
+通过这一全面的回顾, 我们期望为社区提供关于神经编解码器和基于编解码器的语言建模领域中多样化方法和潜在方向的见解.
+
+## 2.Comprehensive Comparison for Neural Audio Codec Models·神经音频编解码器模型的综合比较
 
 > Codec models aim to compress and decompress speech signals efficiently.
 > Traditional codecs are developed based on psycho-acoustics and speech synthesis [21], [22].
