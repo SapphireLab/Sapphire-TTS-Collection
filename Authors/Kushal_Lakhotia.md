@@ -1,7 +1,7 @@
-# Abdelrahman Mohamed
+# Kushal Lakhotia
 
 - 机构: [Meta AI, FAIR Team (Menlo Park, CA, USA)](../Institutions/FAIR@MetaAI.md)
-- 邮箱: abdo@fb.com
+- 邮箱: kushall@fb.com
 
 ## 论文列表
 
