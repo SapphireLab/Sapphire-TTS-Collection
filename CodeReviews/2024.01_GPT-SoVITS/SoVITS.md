@@ -1,3 +1,0 @@
-## SoVITS
-
-![](SoVITS.drawio.svg)
