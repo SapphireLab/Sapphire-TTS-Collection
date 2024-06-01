@@ -93,8 +93,63 @@ FACodec 由一个语音编码器, 音色提取器, 三个分别用于内容, 韵
 
 #### 前向过程
 
+$X = [x_{i}]_{i=1}^{N}$ 为目标离散标识符序列, 其中 $N$ 是序列长度;
+$X^{p}$ 是提示词离散标识符序列;
+$C$ 为条件.
+
+在时间步 $t$ 的前向过程定义为对 $X$ 的子集用相应的二元掩膜 $M_t=[m_{t,i}]_{i=1}^{N}$ 进行遮盖, 即 $X_t=X\odot M_{t}$, 具体是当 $m_{t,i}=1$ 时将 $x_{i}$ 替换为 `[MASK]` 标识符, 否则当 $m_{t,i}=0$ 时保持 $x_{i}$ 不变, $m_{t,i}$ 独立同分布于伯努利分布 $\text{Bernoulli}(\sigma(t))$, $\sigma(t)\in (0,1]$ 是一个单调递减函数.
+
+本文采用 $\sigma(t)=\sin((\pi t)/ (2 T))$.
+特别地 $X_0=X$ 为原始标识符序列, 而 $X_{T}$ 为全掩膜序列.
+
 #### 反向过程
+
+反向过程通过从反向分布 $q(X_{t-\Delta t}|X_0, X_t)$ 采样来逐渐从全掩膜序列 $X_T$ 恢复为 $X_0$.
+因为 $X_0$ 在推理时不可用, 所以使用由参数 $\theta$ 参数化的扩散模型 $p_{\theta}$, 基于条件 $X^{p}$ 和 $C$ 预测掩膜标识符, 记为 $p_{\theta}(X_0|X_t, X^p, C)$.
+优化目标是掩膜标识符的负对数似然:
+
+$$
+    Loss_{mask} = E_{X\in \mathcal{D}, t\in [0,T]} \left[-\sum_{i=1}^N m_{t,i}\cdot \log (p_{\theta}(x_i|X_t, X^p, C))\right]
+$$
+
+然后就能够获得反向转移分布:
+
+$$
+    p(X_{t-\Delta t|X_0, X^p, C}) = E_{\hat{x}_0\sim p_{\theta}} q(X_{t-\Delta t|\hat{X}_0, X_t})
+$$
 
 #### 推理部分
 
+在推理时, 逐渐从全掩膜序列 $X_T$ 替换被掩膜的标识符.
+首先从 $p_{\theta}(X_0|X_t, X^p, C)$ 采样 $X'_0$;
+然后从 $q_{X_{t-\Delta t}|X'_0, X_t}$ 采样 $X_{t-\Delta t}$, 涉及到对 $X'_0$ 中具有最低置信分数的 $\lfloor N\sigma(t-\Delta t)\rfloor$ 个标识符进行重掩膜. 其中置信分数定义为 $m_{t,i}=1$ 时 $p_{\theta}$, 否则为 1, 即标识符已经去掩膜, 无需重掩膜.
+
 #### 无分类器指导
+
+此外, 采用无分类器指导技术.
+具体地, 在训练时不使用概率 $p_{cfg}=0.15$ 的提示词;
+在推理时, 将模型的输出向基于提示 $g_{cond}=g(X|X^p)$ 的方向外推, 并远离无条件生成 $g_{uncond}=g(X)$, 即
+
+$$
+  g_{cfg} = g_{cond} + \alpha (g_{cond}-g_{uncond})
+$$
+
+指导缩放系数 $\alpha$ 基于实验结果选择.
+然后通过 $g_{final}=std(g_{cond})\times g_{cfg} / std(g_{cfg})$ 进行重缩放.
+
+### 和 NaturalSpeech 系列比较
+
+NaturalSpeech3 和之前的 NaturalSpeech 工作相比, 有以下联系和不同:
+- **目标**: NaturalSpeech 系列的目标是生成具有高质量和多样性的自然语音. 
+  我们采用多阶段的方式解决:
+  - 在单说话人场景下获得高质量的语音合成. 如 NaturalSpeech;
+  - 在多风格多说话人多语种场景下获得高质量和多样性的语音合成. 如 NaturalSpeech 2 通过基于大规模多说话人数据集来探索零样本合成能力.
+  - 在多说话人数据集上达到人类级别的自然度. 即 NaturalSpeech 3.
+- **架构**: NaturalSpeech 系列共享的基本组件有编码器解码器用于波形重构, 时长预测用于非自回归语音生成.
+  - NaturalSpeech 使用基于流模型的生成模型;
+  - NaturalSpeech2 使用潜在扩散模型;
+  - NaturalSpeech3 提出分解扩散模型以分而治之的方式生成每个被分解的语音属性.
+- **语音表示**: 由于语音波形的复杂性, NaturalSpeech 系列使用编码器解码器用于获得音频隐变量以便进行高质量语音合成.
+  - NaturalSpeech 使用基于 VAE 的连续表示;
+  - NaturalSpeech2 使用基于残差向量量化器的神经编解码器得到的连续表示;
+  - NaturalSpeech3 使用 FACodec 将语音信号转换到解耦子空间中, 并减少了语音建模复杂度.
