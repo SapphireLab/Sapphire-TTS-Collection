@@ -2,13 +2,13 @@
 
 作者列表
 
-- Haibin Wu, 
-- Xuanjun Chen, 
-- Yi-Cheng Lin, 
-- [Kai-wei Chang](../../Authors/张凯为_Kai-wei_Chang.md), 
-- Ho-Lam Chung, 
-- Alexander H. Liu, 
-- [Hung-yi Lee](../../Authors/李宏毅_Hung-Yi_Lee.md)
+- [Haibin Wu](../../Authors/Haibin_Wu.md) 
+- [Xuanjun Chen](../../Authors/Xuanjun_Chen.md)
+- [Yi-Cheng Lin](../../Authors/Yi-Cheng_Lin.md) 
+- [Kai-wei Chang](../../Authors/Kai-wei_Chang_(张凯为).md)
+- [Ho-Lam Chung](../../Authors/Ho-Lam_Chung.md) 
+- [Alexander H. Liu](../../Authors/Alexander_H._Liu.md) 
+- [李宏毅](../../Authors/Hung-Yi_Lee_(李宏毅).md)
 
 ## Abstract·摘要
 
@@ -361,12 +361,12 @@
 通过采用预训练任务的下一标记预测, 这些语音语言模型可以进行口语语言建模, 并能够进行语音续写任务.
 
 > In the field of speech translation, recent advancements have been made possible through these discrete units. 
-> [Enhanced Direct Speech-to-Speech Translation Using Self-supervised Pre-training and Data Augmentation]() pre-trained a Unit mBART combined with a [Wav2Vec 2.0 (2020)](../../Models/Speech_Representaion/2020.06_Wav2Vec2.0.md) encoder to directly predict the translated discrete units.
+> [Enhanced Direct Speech-to-Speech Translation Using Self-supervised Pre-training and Data Augmentation]() pre-trained a Unit mBART combined with a [Wav2Vec 2.0 (2020)](../../Models/Speech_Representaion/2020.06.20_Wav2Vec2.0.md) encoder to directly predict the translated discrete units.
 > [UnitY (2022)](../../Models/_Basis/2022.12.15_UnitY.md) further incorporates text modality to enhance speech translation.
 > The Seamless models ([SeamlessM4T](../../Models/_Basis/2023.08.22_SeamlessM4T.md), [Seamless](../../Models/_Basis/2023.12.08_Seamless.md)) integrate the [UnitY](../../Models/_Basis/2022.12.15_UnitY.md) framework to perform expressive and streaming speech-to-text and speech-to-speech translation.
 > With the development of these powerful speech LMs, researchers have begun to explore the use of prompting on speech LMs for various speech processing tasks, including prompt tuning, in-context learning, and instruction tuning.
 
-在语音翻译领域, 最近的进展已经成为可能, 例如 [Enhanced Direct Speech-to-Speech Translation Using Self-supervised Pre-training and Data Augmentation]() 预训练了一个 Unit mBART 与 [Wav2Vec 2.0 (2020)](../../Models/Speech_Representaion/2020.06_Wav2Vec2.0.md) 编码器, 直接预测翻译后的离散单元.
+在语音翻译领域, 最近的进展已经成为可能, 例如 [Enhanced Direct Speech-to-Speech Translation Using Self-supervised Pre-training and Data Augmentation]() 预训练了一个 Unit mBART 与 [Wav2Vec 2.0 (2020)](../../Models/Speech_Representaion/2020.06.20_Wav2Vec2.0.md) 编码器, 直接预测翻译后的离散单元.
 [UnitY (2022)](../../Models/_Basis/2022.12.15_UnitY.md) 进一步整合了文本模态以增强语音翻译.
 [SeamlessM4T](../../Models/_Basis/2023.08.22_SeamlessM4T.md), [Seamless](../../Models/_Basis/2023.12.08_Seamless.md) 整合 [UnitY](../../Models/_Basis/2022.12.15_UnitY.md) 框架用于实现表达性和流式语音转文本和语音转语音翻译.
 随着这些强力语音语言模型, 研究人员开始探索在语音语言模型对于各种语音处理任务的提示使用, 包括
