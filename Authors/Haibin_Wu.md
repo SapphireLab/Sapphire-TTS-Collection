@@ -5,4 +5,4 @@
 
 ## 论文列表
 
-- 2024.02.20 [Towards Audio-Language Modeling: An Overview](../Surveys/2024.02.20_面向音频语言建模_5P/Towards_Audio_Language_Modeling__An_Overview.md)
+- 2024.02.20 [Towards Audio-Language Modeling: An Overview](../Surveys/2024.02.20_Towards_Audio_Language_Modeling_5P/Towards_Audio_Language_Modeling__An_Overview.md)
