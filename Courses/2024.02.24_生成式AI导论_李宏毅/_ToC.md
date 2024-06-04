@@ -1,7 +1,7 @@
 # 生成式 AI 导论 2024
 
 主页: [NTU](https://speech.ee.ntu.edu.tw/~hylee/genai/2024-spring.php)
-主讲: [李宏毅](../../Authors/李宏毅_Hung-Yi_Lee.md)
+主讲: [李宏毅](../../Authors/Hung-Yi_Lee_(李宏毅).md)
 链接: [Youtube](https://www.youtube.com/playlist?list=PLJV_el3uVTsPz6CTopeRp2L2t4aL_KgiI)
 
 ## 课程列表
