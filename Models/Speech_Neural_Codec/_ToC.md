@@ -1,4 +1,4 @@
-# 神经编解码器简要概述
+# 神经编解码器概述
 
 ## 2021.07.07 SoundStream - Google Research
 
