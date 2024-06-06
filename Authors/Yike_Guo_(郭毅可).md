@@ -10,8 +10,8 @@
 
 ## 合作人员
 
-- 教授 [Wei Xue](../Authors/雪巍_(Wei_Xue).md)
-- 教授 [Qifeng Liu](../Authors/柳崎峰_(Qifeng_Liu).md)
+- 教授 [Wei Xue](../Authors/Wei_Xue_(雪巍).md)
+- 教授 [Qifeng Liu](../Authors/Qifeng_Liu_(柳崎峰).md)
 - 2022 秋季博士 [Zhen Ye](../Authors/Zhen_Ye.md)
 - 2022 秋季博士 [Jianyi Chen](../Authors/Jianyi_Chen.md)
 - 2023 科研助理 [Yiwen Lu](../Authors/Yiwen_Lu.md)

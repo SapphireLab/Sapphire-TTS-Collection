@@ -1,6 +1,6 @@
 # Zhen Ye
 
-- 机构: [香港科技大学](../Institutions/HKUST.md)-[郭毅可](../Authors/郭毅可_(Yike_Guo).md)-[雪巍](../Authors/雪巍_(Wei_Xue).md)团队
+- 机构: [香港科技大学](../Institutions/HKUST.md)-[郭毅可](../Authors/Yike_Guo_(郭毅可).md)-[雪巍](../Authors/Wei_Xue_(雪巍).md)团队
 - 邮箱: 
 
 ## 论文列表
