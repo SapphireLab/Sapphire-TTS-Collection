@@ -1,6 +1,6 @@
 # Benjamin Bolte
 
-- 机构: [Meta AI, FAIR Team (Menlo Park, CA, USA)](../Institutions/FAIR@MetaAI.md)
+- 机构: [Meta AI, FAIR Team (Menlo Park, CA, USA)](../Institutions/Meta.AI.md)
 - 邮箱: ben@bolte.cc
 
 ## 论文列表

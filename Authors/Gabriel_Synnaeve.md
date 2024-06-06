@@ -1,6 +1,6 @@
 # Gabriel Synnaeve
 
-- 机构: [Meta AI, FAIR Team (Paris, France)](../Institutions/FAIR@MetaAI.md)
+- 机构: [Meta AI, FAIR Team (Paris, France)](../Institutions/Meta.AI.md)
 - 邮箱: gab@meta.com
 
 ## 论文列表

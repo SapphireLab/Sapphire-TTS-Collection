@@ -1,6 +1,6 @@
 # Abdelrahman Mohamed
 
-- 机构: [Meta AI, FAIR Team (Menlo Park, CA, USA)](../Institutions/FAIR@MetaAI.md)
+- 机构: [Meta AI, FAIR Team (Menlo Park, CA, USA)](../Institutions/Meta.AI.md)
 - 邮箱: abdo@fb.com
 
 ## 论文列表

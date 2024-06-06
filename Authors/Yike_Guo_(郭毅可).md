@@ -1,6 +1,6 @@
 # 郭毅可 (Yike Guo)
 
-- 机构: [香港科技大学](../Institutions/HKUST.md)
+- 机构: [香港科技大学](../Institutions/HKUST_香港科技大学.md)
 - 邮箱: yikeguo@ust.hk
 - 主页: [学校](https://cse.hkust.edu.hk/admin/people/faculty/profile/yikeguo)
 

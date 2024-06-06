@@ -1,6 +1,6 @@
 # 柳崎峰 (Qifeng Liu)
 
-- 机构: [香港科技大学](../Institutions/HKUST.md)
+- 机构: [香港科技大学](../Institutions/HKUST_香港科技大学.md)
 - 邮箱: 
 - 主页: 
 

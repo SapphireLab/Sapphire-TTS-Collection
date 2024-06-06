@@ -1,6 +1,6 @@
 # Neil Zeghidour
 
-- 机构: [Google Research](../Institutions/Google_Research.md)
+- 机构: [Google Research](../Institutions/Google.md)
 - 邮箱:
 - 主页:
 

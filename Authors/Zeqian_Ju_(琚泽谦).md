@@ -1,6 +1,6 @@
 # 琚泽谦 (Zeqian Ju)
 
-- 机构: [中国科学技术大学](../Institutions/USTC.md)
+- 机构: [中国科学技术大学](../Institutions/USTC_中国科学技术大学.md)
 - 邮箱: 
 
 ## 论文列表
