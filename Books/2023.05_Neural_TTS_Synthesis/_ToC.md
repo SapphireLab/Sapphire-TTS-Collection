@@ -20,14 +20,14 @@
 |SampleRNN [46]|Voc|∅→(AR)→wav|ICLR17|2016.12|
 |Deep voice [47]|AM+Voc|ch→ ph→ling→(AR)→wav|ICML17|2017.02|
 |Char2Wav [48]|E2E|ch→(AR)→ceps→(AR)→wav|ICLR17 WS|2017.02|
-|[Tacotron](../../Papers/AcousticModels/2017.03_Tacotron.md) [49]|AM|ch/ph→(AR)→linS→wav|IS17|2017.03|
+|[Tacotron](../../Models/TTS2_Acoustic/2017.03.29_Tacotron.md) [49]|AM|ch/ph→(AR)→linS→wav|IS17|2017.03|
 |Deep voice 2 [50]|AM+Voc|ch→ph→(FF)→ling→(AR)→wav|NIPS17|2017.05|
 |DV2-Tacotron [50]|AM+Voc|ch→(AR)→linS→(AR)→wav|NIPS17|2017.05|
 |VoiceLoop [51]|AM|ph→ceps→wav|ICLR18|2017.07|
 |Deep voice 3 [52]|AM|ch/ph→(AR)→melS→(AR)→wav|ICLR18|2017.10|
 |DCTTS [53]|AM|ch→(AR)→melS→wav|ICASSP18|2017.10|
 |Par.WaveNet [54]|Voc|ling→(FF)→wav|ICML18|2017.11|
-|[Tacotron 2](../../Papers/AcousticModels/2017.12_Tacotron2.md) [55]|AM|ch/ph→(AR)→melS→(AR)→wav|ICASSP18|2017.12|
+|[Tacotron 2](../../Models/TTS2_Acoustic/2017.12.16_Tacotron2.md) [55]|AM|ch/ph→(AR)→melS→(AR)→wav|ICASSP18|2017.12|
 |WaveGAN [56]|Voc|.∅FF−→wav|ICLR19|2018.02|
 |WaveRNN [57]|Voc|ling→(AR)→wav|ICML18|2018.02|
 |DV3-Clone [58]|AM|ch/ph→(AR)→linS→wav|NeurIPS18|2018.02|
@@ -39,7 +39,7 @@
 |ClariNet [64]|E2E|ch/ph→(AR)→wav|ICLR19|2018.07|
 |ForwardAtt [65]|AM|ph→(AR)→linS→wav|ICASSP18|2018.07|
 |MCNN [66]|Voc|linS→(FF)→wav|SPL18|2018.08|
-|[TransformerTTS](../../Papers/AcousticModels/2018.09_Transformer_TTS.md) [67]|AM|ph→(AR)→melS→(AR)→wav|AAAI19|2018.09|
+|[TransformerTTS](../../Models/TTS2_Acoustic/2018.09.19_Transformer_TTS.md) [67]|AM|ph→(AR)→melS→(AR)→wav|AAAI19|2018.09|
 |SEA-TTS [68]|Voc|ling→(AR)→wav|ICLR19|2018.09|
 |GMVAE-Tacotron [69]|AM|ph→(AR)→melS→(AR)→wav|ICLR19|2018.10|
 |LPCNet [70]|Voc|ceps→(AR)→wav|ICASSP19|2018.10|
@@ -80,12 +80,12 @@
 |FastPitch [102]|AM|ph→(FF)→melS→(FF)→wav|ICASSP21|2020.06|
 |VocGAN [103]|Voc|melS→(FF)→wav|IS20|2020.07|
 |LRSpeech [104]|AM|ch→(AR)→melS→(FF)→wav|KDD20|2020.08|
-|[SpeedySpeech](../../Papers/AcousticModels/2020.08_SpeedySpeech.md) [105]|AM|ph→(FF)→melS→(FF)→wav|IS20|2020.08|
+|[SpeedySpeech](../../Models/TTS2_Acoustic/2020.08.09_SpeedySpeech.md) [105]|AM|ph→(FF)→melS→(FF)→wav|IS20|2020.08|
 |GED [106]|Voc|ling→(FF)→wav|NeurIPS20|2020.08|
 |SC-WaveRNN [107]|Voc|melS→(AR)→wav|IS20|2020.08|
 |WaveGrad [108]|Voc|melS→(FF)→wav|ICLR21|2020.09|
 |DiffWave [109]|Voc|melS→(FF)→wav|ICLR21|2020.09|
-|[HiFi-GAN](../../Papers/Vocoders/2020.10_HiFi-GAN.md) [110]|Voc|melS→(FF)→wav|NeurIPS20|2020.10|
+|[HiFi-GAN](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md) [110]|Voc|melS→(FF)→wav|NeurIPS20|2020.10|
 |NonAtt tacotron [111]|AM|ph→(AR)→melS→(AR)→wav|arXiv20|2020.10|
 |Para. tacotron [112]|AM|ph→(FF)→melS→(AR)→wav|ICASSP21|2020.10|
 |DeviceTTS [113]|AM|ph→(AR)→Ceps→wav|arXiv20|2020.10|
@@ -106,7 +106,7 @@
 |Diff-TTS [127]|AM|ph→(FF)→melS→(FF)→wav|IS21|2021.04|
 |Grad-TTS [128]|AM|ph→(FF)→melS→(FF)→wav|ICML21|2021.05|
 |Fre-GAN [129]|Voc|melS→(FF)→wav|IS21|2021.06|
-|[VITS](../../Papers/End-to-End/2021.06_VITS.md) [130]|E2E|ph→(FF)→wav|ICML21|2021.06|
+|[VITS](../../Models/E2E/2021.06.11_VITS.md) [130]|E2E|ph→(FF)→wav|ICML21|2021.06|
 |AdaSpeech 3 [131]|AM|ph→(FF)→melS→(FF)→wav|IS21|2021.06|
 |PriorGrad-AM [132]|AM|ph→(FF)→melS→(FF)→wav|ICLR22|2021.06|
 |PriorGrad-Voc[132]|Voc|melS→(FF)→wav|ICLR22|2021.06|
@@ -114,4 +114,4 @@
 |WaveGrad 2 [134]|E2E|ph→(FF)→wav|IS21|2021.06|
 |InferGrad [135]|Voc|melS→(FF)→wav|ICASSP22|2022.02|
 |SpecGrad [136]|Voc|melS→(FF)→wav|IS22|2022.03|
-|[NaturalSpeech](../../papers/End-to-End/2022.03_NaturalSpeech.md) [137]|E2E|ph→(FF)→wav|arXiv22|2022.05|
+|[NaturalSpeech](../../Models/E2E/2022.05.09_NaturalSpeech.md) [137]|E2E|ph→(FF)→wav|arXiv22|2022.05|
