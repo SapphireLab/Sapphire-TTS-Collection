@@ -2,9 +2,9 @@
 
 - 标题: Deep Learning-Based Expressive Speech Synthesis: A Systematic Review of Approaches, Challenges, and Resources
 - 作者: 
-  - Huda Barakat
-  - Oytun Turk
-  - Cenk Demiroglu
+  - [Huda Barakat](../../Authors/Huda_Barakat.md)
+  - [Oytun Turk](../../Authors/Oytun_Turk.md)
+  - [Cenk Demiroglu](../../Authors/Cenk_Demiroglu.md)
 - 发表:
   - EURASIP Journal on Audio, Speech, and Music Processing (2024)
   - DOI: https://doi.org/10.1186/s13636-024-00329-7
@@ -38,14 +38,14 @@
 我们进行这项工作的目的是为这一热门研究领域提供一个全面的概述, 为对这一领域感兴趣的研究人员和未来研究提供指导.
 
 文章内容:
-- [ ] [Sec.01]()
-- [ ] [Sec.02]()
-- [ ] [Sec.03]()
-- [ ] [Sec.04]()
-- [ ] [Sec.05]()
+- [ ] [Sec.01](Sec.01.md)
+- [ ] [Sec.02](Sec.02.md)
+- [ ] [Sec.03](Sec.03.md)
+- [ ] [Sec.04](Sec.04.md)
+- [ ] [Sec.05](Sec.05.md)
 - [x] [Sec.06](Sec.06.md)
 - [x] [Sec.07](Sec.07.md)
-- [ ] [Sec.08]()
+- [ ] [Sec.08](Sec.08.md)
 
 ## Sec.09: Conclusions·结论
 
