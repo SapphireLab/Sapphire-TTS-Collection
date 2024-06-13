@@ -5,4 +5,4 @@
 
 ## 论文列表
 
-- 2022.10.24 [EnCodec: High Fidelity Neural Audio Compression](../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md)
+- 2022.10.24 No.02 [EnCodec](../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md)
