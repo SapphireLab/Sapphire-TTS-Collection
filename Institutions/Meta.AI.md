@@ -31,7 +31,7 @@
 - 2023.06.12 Handling the Alignment forWake Word Detection: A Comparison Between Alignment-Based, Alignment-Free and Hybrid Approaches
 - 2023.05.22 Scaling Speech Technology to 1,000+ Languages
 - 2023.03.27 Cocktail HuBERT: Generalized Self-Supervised Pre-Training for Mixture and Single-Source Speech
-- 2022.10.24 [EnCodec: High Fidelity Neural Audio Compression](../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md)
+- 2022.10.24 [EnCodec](../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md)
 - 2021.08.30 A Two-stage Approach to Speech Bandwidth Extension
 - 2021.05.04 Combining label propagation and simple models outperforms graph neural networks
 - 2020.11.20 Generating Fact Checking Briefs
