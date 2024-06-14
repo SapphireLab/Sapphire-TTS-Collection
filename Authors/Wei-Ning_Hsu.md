@@ -5,4 +5,4 @@
 
 ## 论文列表
 
-- 2021.06.14 [HuBERT](../Models/Speech_Representaion/2021.06.14_HuBERT.md)
+- 2021.06.14 No.01 [HuBERT](../Models/Speech_Representaion/2021.06.14_HuBERT.md)
