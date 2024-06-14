@@ -1,14 +1,36 @@
 # Towards Audio Language Modeling: An Overview
 
-作者列表
+<details>
+<summary>基本信息</summary>
 
-- [Haibin Wu](../../Authors/Haibin_Wu.md) 
-- [Xuanjun Chen](../../Authors/Xuanjun_Chen.md)
-- [Yi-Cheng Lin](../../Authors/Yi-Cheng_Lin.md) 
-- [Kai-wei Chang](../../Authors/Kai-wei_Chang_(张凯为).md)
-- [Ho-Lam Chung](../../Authors/Ho-Lam_Chung.md) 
-- [Alexander H. Liu](../../Authors/Alexander_H._Liu.md) 
-- [李宏毅](../../Authors/Hung-Yi_Lee_(李宏毅).md)
+- 标题: Towards Audio Language Modeling: An Overview
+- 作者:
+  - [Haibin Wu](../../Authors/Haibin_Wu.md) 
+  - [Xuanjun Chen](../../Authors/Xuanjun_Chen.md)
+  - [Yi-Cheng Lin](../../Authors/Yi-Cheng_Lin.md) 
+  - [Kai-wei Chang](../../Authors/Kai-wei_Chang_(张凯为).md)
+  - [Ho-Lam Chung](../../Authors/Ho-Lam_Chung.md) 
+  - [Alexander H. Liu](../../Authors/Alexander_H._Liu.md) 
+  - [李宏毅](../../Authors/Hung-Yi_Lee_(李宏毅).md)
+- 机构:
+  - [NTU](../../Institutions/NTU_台湾大学.md)
+- 时间:
+  - 预印时间: 2024.02.20 ArXiv v1
+  - 更新笔记: 2024.06.14
+- 发表:
+  - 期刊/会议 
+- 链接:
+  - [ArXiv](https://arxiv.org/abs/2402.13236)
+  - [DOI]()
+  - [Github]()
+  - [Demo]()
+- 标签:
+  - [Survey](../../Tags/Survey.md)
+- 页数: 5
+- 引用: 53
+- 被引: ?
+
+</details>
 
 ## Abstract·摘要
 
