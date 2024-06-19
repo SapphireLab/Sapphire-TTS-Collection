@@ -5,6 +5,7 @@
 
 ## 论文列表
 
-- 2020.06.08 No.06 [FastSpeech2](../Models/TTS2_Acoustic/2020.06.08_FastSpeech2.md)
-- 2023.06.06 No.12 [Mega-TTS](../Models/Speech_LLM/2023.06.06_Mega-TTS.md)
-- 2023.07.14 No.13 [Mega-TTS2](../Models/Speech_LLM/2023.07.14_Mega-TTS2.md)
+- 2019.05.22 No.06/07 [FastSpeech](../Models/TTS2_Acoustic/2019.05.22_FastSpeech.md)
+- 2020.06.08 No.06/07 [FastSpeech2](../Models/TTS2_Acoustic/2020.06.08_FastSpeech2.md)
+- 2023.06.06 No.12/12 [Mega-TTS](../Models/Speech_LLM/2023.06.06_Mega-TTS.md)
+- 2023.07.14 No.13/13 [Mega-TTS2](../Models/Speech_LLM/2023.07.14_Mega-TTS2.md)

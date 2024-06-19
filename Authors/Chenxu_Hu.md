@@ -5,4 +5,4 @@
 
 ## 论文列表
 
-- 2020.06.08 No.02 [FastSpeech2](../Models/TTS2_Acoustic/2020.06.08_FastSpeech2.md)
+- 2020.06.08 No.02/07 [FastSpeech2](../Models/TTS2_Acoustic/2020.06.08_FastSpeech2.md)
