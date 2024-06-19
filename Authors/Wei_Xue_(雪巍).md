@@ -6,4 +6,4 @@
 
 ## 论文列表
 
-- 2024.04.23 [FlashSpeech](../Models/Diffusion/2024.04.23_FlashSpeech.md) No.13
+- 2024.04.23 No.13/13 [FlashSpeech](../Models/Diffusion/2024.04.23_FlashSpeech.md)

@@ -6,7 +6,7 @@
 
 ## 论文列表
 
-- 2024.04.23 [FlashSpeech](../Models/Diffusion/2024.04.23_FlashSpeech.md) No.12
+- 2024.04.23 No.12/13 [FlashSpeech](../Models/Diffusion/2024.04.23_FlashSpeech.md) No.12
 
 ## 合作人员
 
