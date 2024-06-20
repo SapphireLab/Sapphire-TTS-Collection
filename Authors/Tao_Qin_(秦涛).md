@@ -1,7 +1,7 @@
 # Tao Qin (秦涛)
 
 - 机构: [Microsoft Research Asia](../Institutions/Microsoft.md)
-- 邮箱: taoqin@microsoft.com
+- 邮箱: <taoqin@microsoft.com>
 
 ## 论文列表
 
