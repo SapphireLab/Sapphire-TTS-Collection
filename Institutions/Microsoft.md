@@ -10,7 +10,12 @@
 
 ## 论文列表
 
-- 2022.11.22 [PromptTTS](../Models/_tmp/2022.11.22_PromptTTS.md)
+- 2021.06.29 [Survey](../Surveys/2021.06.29_A_Survey_on_Neural_Speech_Synthesis_63P/_ToC.md)
+
+
+- 2019.05.22 [FastSpeech](../Models/TTS2_Acoustic/2019.05.22_FastSpeech.md)
+- 2020.06.08 [FastSpeech2](../Models/TTS2_Acoustic/2020.06.08_FastSpeech2.md)
+- 2022.11.22 [PromptTTS](../Models/Prompt/2022.11.22_PromptTTS.md)
 - 2023.01.15 [VALL-E](../Models/Speech_LLM/2023.01.05_VALL-E.md)
 - 2023.04.19 [NaturalSpeech 2](../Models/Diffusion/2023.04.18_NaturalSpeech2.md)
 - 2023.09.07 [PromptTTS 2](../Models/_tmp/2023.09.05_PromptTTS2.md)

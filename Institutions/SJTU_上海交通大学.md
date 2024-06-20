@@ -1,8 +1,6 @@
 # 上海交通大学 (Shanghai JiaoTong University, SJTU)
 
-## X-LANCE 实验室
-
-- [主页](https://x-lance.sjtu.edu.cn)
+[X-LANCE 实验室](https://x-lance.sjtu.edu.cn) - 俞凯
 
 ### 学者列表
 

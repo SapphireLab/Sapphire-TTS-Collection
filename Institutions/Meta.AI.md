@@ -2,7 +2,7 @@
 
 [主页 Speech & Audio](https://ai.meta.com/results/?content_types%5B0%5D=publication&research_areas%5B0%5D=speech-and-audio)
 
-## 作者列表
+## 学者列表
 
 ### 法国-巴黎 (Paris, France)
 
@@ -14,19 +14,19 @@
 
 - [Yossi Adi](../Authors/Yossi_Adi.md)
 
-## 文章列表
+## 论文列表
 
 - 2024.05.24 DOC-RAG
 - 2024.04.14 CoLLD
 - 2024.03.05 Generative Pre-Training for Speech with Flow Matching
-- 2023.12.11 Audiobox
+- 2023.12.11 [Audiobox](../Models/Speech_LLM/2023.12.25_Audiobox.md)
 - 2023.11.30 EMMA - Efficient Monotonic Multihead Attention
 - 2023.11.30 Seamless
 - 2023.10.22 DinoSR
 - 2023.10.05 Decoding Speech Perception from Non-Invasive Brain Recordings
 - 2023.08.22 SeamlessM4T
 - 2023.08.14 Multi-Head State Space Model for Speech Recognition
-- 2023.06.16 Voicebox
+- 2023.06.16 [VoiceBox](../Models/Speech_LLM/2023.06.23_VoiceBox.md)
 - 2023.06.13 PLUE
 - 2023.06.12 Handling the Alignment forWake Word Detection: A Comparison Between Alignment-Based, Alignment-Free and Hybrid Approaches
 - 2023.05.22 Scaling Speech Technology to 1,000+ Languages
@@ -43,7 +43,7 @@
 - 2020.10.26 Self-Supervised Contrastive Learning for Unsupervised Phoneme Segmentation
 - 2020.10.26 Real Time Speech Enhancement in the Waveform Domain
 - 2020.08.13 Listener-Preferred Headphone Frequency Response for Stereo and Spatial Audio Content
-- 2020.05.04 Libri-light: A benchmark for ASR with limited or no supervision
+- 2020.05.04 [Libri-Light](../Datasets/2019.12.17_Libri-Light.md)
 - 2019.12.11 Hyper-Graph-Network Decoders for Block Codes
 - 2019.10.27 Live Face De-Identification in Video
 - 2019.05.11 Unsupervised Polyglot Text To Speech
