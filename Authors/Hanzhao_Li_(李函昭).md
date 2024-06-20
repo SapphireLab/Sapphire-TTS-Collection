@@ -3,6 +3,9 @@
 - 机构
   - [西北工业大学](../Institutions/NPU_西北工业大学.md)
 - 邮箱
+  - <lihanzhao.mail@gmail.com>
+- 链接:
+  - [Github](https://github.com/kkksuper)
 
 ## 论文列表
 
