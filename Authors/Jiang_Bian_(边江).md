@@ -1,6 +1,9 @@
----
-机构: 
-aliases:
-  - Jiang Bian
-  - 边江
----
+# 边江 (Jiang Bian)
+
+- 机构
+  - [Microsoft](../Institutions/Microsoft.md)
+- 邮箱
+
+## 论文列表
+
+- 2023.09.05 No.15/15 [PromptTTS2](../Models/Prompt/2023.09.05_PromptTTS2.md) ICLR 2024

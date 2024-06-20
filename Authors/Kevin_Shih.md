@@ -1,0 +1,10 @@
+# Kevin Shih
+
+- 机构
+  - [Nvidia](../Institutions/Nvidia.md)
+- 邮箱
+  - <kshih@nvidia.com>
+
+## 论文列表
+
+- 2021.06.16 No.01/06 [RAD-TTS](../Models/TTS2_Acoustic/2021.06.16_RAD-TTS.md) ICML 2021
