@@ -315,11 +315,18 @@
 ## 3.Background: 背景 <a id="sec.background"></a>>
 
 > The main purpose of this section is to show how audio generation has developed over the years up to this point.
-> Since audio generation is a broad field that encompasses many different areas, such as text-to-speech synthesis, voice conversion, speech enhancement,... \cite{ling_DeepLearningAcoustic_2015}, we will only focus on two different areas of audio generation: text-to-speech synthesis and music generation.
+> Since audio generation is a broad field that encompasses many different areas, such as text-to-speech synthesis, voice conversion, speech enhancement,... ["Deep Learning for Audio and Music (2021)"](../2015_DL_for_Acoustic_Modeling_in_Parametric_Speech_Generation/_ToC.md), we will only focus on two different areas of audio generation: text-to-speech synthesis and music generation.
 > There is no particular reason for this choice, except that they are among the more popular ones.
 > The trend we want to show is how domain-specific knowledge is shifting towards general-purpose methods and how feature engineering is turning into feature recognition.
 
-### Text-to-Speech
+本节的主要目的是展示音频生成领域多年来是如何发展到目前这个阶段的.
+由于音频生成是一个广泛的领域, 涵盖了许多不同的领域, 如文本到语音合成, 语音转换, 语音增强等 (["Deep Learning for Audio and Music (2021)"](../2015_DL_for_Acoustic_Modeling_in_Parametric_Speech_Generation/_ToC.md)), 
+
+我们将只关注音频生成的两个不同领域: 文本到语音合成和音乐生成.
+这个选择没有特别的理由, 只是因为它们是更受欢迎的领域之一.
+我们想要展示的趋势是特定领域知识如何向通用方法转变, 以及特征工程如何转变为特征识别.
+
+### Text-to-Speech: 文本转语音
 
 > Text-to-speech (TTS) is a task with numerous applications, ranging from phone assistants to GPS navigators.
 > The desire to construct a machine that can communicate with a human has historically fueled growth in this subject.
@@ -368,8 +375,7 @@
 > Vocaine \cite{agiomyrgiannakis_VocaineVocoderApplications_2015}.
 > Finally, there have also been attempts to construct a fully end-to-end system, which means integrating text analysis and acoustic modeling into a single model \cite{wang_FirstStepEndtoEnd_2016}.
 
-
-### Music generation
+### Music Generation: 音乐生成
 
 > Music has been a part of human life long before the invention of the electronic computer, and people have developed many guidelines for how beautifully sounded music should be made.
 > For this reason alone, the discipline of music generation has placed a heavy emphasis on rule-based systems that use music theory to create logical rules.
@@ -379,14 +385,13 @@
 > Unlike language, music employs a significantly smaller number of acoustic features.
 > These include MIDI representation \cite{moroni_VoxPopuliInteractive_2000,huang_DeepLearningMusic_2016}, encoded sheet music \cite{chen_CreatingMelodiesEvolving_2001}, binary vector of an octave \cite{lavrenko_PolyphonicMusicModeling_2003}, and piano roll \cite{boulanger-lewandowski_ModelingTemporalDependencies_2012,huang_DeepLearningMusic_2016}.
 
-
 ## 4.Audio Features: 音频特征 <a id="audio-features"></a>
 
 > Even though there have been numerous audio features used throughout the history of audio generation.
 > Here we will describe the two most popular features, the raw waveform and the log-mel spectrogram, but also mention features that have recently gained traction.
 > Keep in mind that there are too many features to describe them all, especially if we take into account the many hand-crafted features that were created before the rise of deep learning methods.
 
-### Raw waveform
+### Raw Waveform: 原始波形
 
 > The term "raw audio" typically refers to a waveform recorded using pulse code modulation (PCM) \cite{natsiou_AudioRepresentationsDeep_2021}.
 > In PCM, a continuous waveform is sampled at uniform intervals, known as the sampling frequency.
@@ -409,7 +414,7 @@
 > In section \ref{sec:background}, we mentioned vocoders, which are used to translate mid-term representations, such as mel-spectrograms, to raw audio waveforms.
 > Examples include WaveNet \cite{oord_WaveNetGenerativeModel_2016}, SampleRNN \cite{mehri_SampleRNNUnconditionalEndtoEnd_2017}, and Deep Voice 3 \cite{ping_DeepVoiceScaling_2018}.
 
-### Mel-spectrogram
+### Mel-Spectrogram: 梅尔频谱
 
 > Before we can talk about mel-spectrograms, we must first understand the Short-Time Fourier Transform (STFT).
 > To represent audio frequencies, we use a Discrete-Fourier Transform (DFT), which transforms the original waveform into a sum of weighted complex exponentials \cite{prandoni_SignalProcessingCommunications_2008}.
@@ -440,7 +445,7 @@
 > There is a concern as spectrograms aren't the same as images due to the different meaning of the axis.
 > This does not appear to have a substantial effect since many works implement mel-spectrograms in their convolutional models \cite{peeters_DeepLearningAudio_2021}.
 
-### Neural codecs
+### Neural Codecs: 神经编解码
 
 > An audio codec is a signal processing technique that compresses an audio signal into discrete codes before using those codes to reconstruct the audio signal, which is not always possible with complete accuracy.
 > A typical audio codec system consists of three components: an encoder, a quantizer, and a decoder.
@@ -495,7 +500,7 @@
 > Unlike the audio features, there are many different architectures.
 > Here we will mention the architectures that have been most commonly used in the field of audio generation.
 
-### Auto-encoders
+### Auto-Encoders: 自编码器
 
 > The majority of this section was taken from works by \textcite{goodfellow_DeepLearning_2016, kingma_IntroductionVariationalAutoencoders_2019}.
 
@@ -541,7 +546,7 @@
 > In other words, RVQ cascades \(N\) layers of VQ where unquantized input vector is passed through a first VQ and quantization residuals are computed, then those residuals are iteratively quantized by an additional sequence of \(N - 1\) vector quantizers \cite{zeghidour_SoundStreamEndtoEndNeural_2022}.
 > Section \ref{ssec:neural_codec} provides a list of models that employ RVQ.
 
-### Generative adversarial networks
+### Generative Adversarial Networks: 生成对抗网络
 
 > Another prominent generating architecture is generative adversarial networks (GAN).
 > It is made up of two models that serve different purposes: the generator and the discriminator.
@@ -591,7 +596,8 @@
 > Finally, we'd like to mention works that were challenging to categorize.
 > They are GANSynth \cite{engel_GANSynthAdversarialNeural_2019}, GAN-TTS \cite{binkowski_HighFidelitySpeech_2019}, RegNet \cite{chen_GeneratingVisuallyAligned_2020}, Audeo \cite{su_AudeoAudioGeneration_2020}, Multi-Band MelGAN \cite{yang_MultiBandMelganFaster_2021}, Multi-Singer \cite{huang_MultiSingerFastMultiSinger_2021} and DelightfulTTS 2 \cite{liu_DelightfulTTSEndtoEndSpeech_2022}.
 
-### Normalizing flows
+### Normalizing Flows: 归一化流
+
 % what are normalizing flows
 % what are inverse autoregressive flows
 % what are generative flows
@@ -626,7 +632,7 @@
 > Because audio is digitally stored in a discrete representation, training a continuous density model on discrete data might lead to poor model performance.
 \Textcite{yoon_AudioDequantizationHigh_2020} presented audio dequantization methods that can be deployed in flow-based networks and improved audio generating quality.
 
-### Transformer networks
+### Transformer Networks: Transformer 网络
 % what is attention
 % what is self-attention
 % what is masked self-attention
@@ -684,7 +690,7 @@
 > It integrates a relative positional encoding scheme, a method adopted from the described Transformer-XL to improve generalization for diverse input lengths \cite{gulati_ConformerConvolutionaugmentedTransformer_2020}.
 > Papers utilizing the conformer are SpeechNet \cite{chen_SpeechNetUniversalModularized_2021}, \(\text{A}^3\text{T}\) \cite{bai_AlignmentAwareAcousticText_2022}, VQTTS \cite{du_VQTTSHighFidelityTexttoSpeech_2022}, \textcite{popuri_EnhancedDirectSpeechtoSpeech_2022}, and SoundStorm \cite{borsos_SoundStormEfficientParallel_2023}.
 
-### Diffusion models
+### Diffusion Models: 扩散模型
 % what is a diffusion model
 
 > Diffusion models are generative models inspired by non-equilibrium thermodynamics \cite{mehrish_ReviewDeepLearning_2023}.
@@ -712,7 +718,7 @@
 > There are many more widely used metrics that we will not mention in the following sections.
 > Some of them are: Nearest neighbor comparisons, Number of statistically-different bins, Kernel Inception Distance, and CLIP score.
 
-### Human evaluation
+### Human Evaluation: 人类评估
 % Music evaluation
 % MOS
 % A/B preference
@@ -736,7 +742,7 @@
 > This means that the concrete numbers in the evaluation are unimportant, and only the link between them is crucial.
 > This stems from the inherent subjectivity of human evaluation as well as biases or predispositions for specific auditory features.
 
-### Inception score
+### Inception Score: 初始分数
 
 > The Inception Score (IS) is a perceptual metric that correlates with human evaluation.
 > The Inception score is calculated by applying a pretrained Inception classifier to the generative model's output.
@@ -748,7 +754,7 @@
 > This will cause the classifier to be unable to separate the data into meaningful categories, resulting in a low IS score.
 > An extension to the IS called Modified Inception Score (mIS) measures the within-class diversity of samples in addition to the IS which favors sharp and clear samples \cite{kong_DiffWaveVersatileDiffusion_2021}.
 
-### Fréchet distance
+### Fréchet Distance: Fréchet 距离
 % what is FID
 % what is FAD
 % what is FD
@@ -780,7 +786,7 @@
 > PANN \cite{kong_PANNsLargeScalePretrained_2020} uses mel-spectrogram as input, whereas VGGish \cite{hershey_CNNArchitecturesLargescale_2017} uses raw waveform.
 > FD evaluates audio quality using an audio embedding model to measure the similarity between the embedding space of generations and that of targets \cite{chen_MusicLDMEnhancingNovelty_2023}.
 
-### Kullback-Leibler divergence
+### Kullback-Leibler Divergence: KL 散度
 
 > Kullback-Leibler (KL) divergence is a reference-dependent metric that computes the divergence between the generated and reference audio distributions.
 > It uses a pretrained classifier to obtain the probabilities of generated and reference samples and then calculates the KL divergence between the distributions.
@@ -791,6 +797,9 @@
 
 ## 7.Conclusions: 结论
 
+<details>
+<summary>原文</summary>
+
 > The development of deep learning methods has significantly changed the field of audio generation.
 > In this work, we have presented three important parts of building a deep learning model for the task of audio generation.
 > For audio representation, we have presented two long-standing champions and a third up-and-comer.
@@ -798,6 +807,21 @@
 > Finally, we presented the four most common evaluations in the works we examined.
 > While the first three architectures mentioned above seem to have lost importance in recent years, the transformer and diffusion models seem to have taken their place.
 > This could be due to the popularization of large language models such as ChatGPT or, in the case of the diffusion models, diffusion-based text-to-image generators.
-
+>
 > With the ever-increasing computing power and availability of large databases, it looks like the age of deep learning has only just begun.
 > Just as deep learning has allowed us to move from domain-dependent features and methods to a more universal solution, more recent work has attempted to move from a single task or purpose to a multi-task or even multi-modality model.
+
+</details>
+<br>
+
+深度学习方法的发展极大地改变了音频生成领域.
+在这项工作中, 我们展示了构建音频生成深度学习模型的三个重要部分.
+对于音频表示, 我们介绍了两个长期以来的冠军和一个新兴的竞争者.
+我们解释了五种架构, 并列出了在音频生成领域中实现它们的工作.
+最后, 我们展示了在我们审查的作品中最常见的四种评估方法.
+
+虽然上面提到的头三种架构在近年来似乎已经失去了重要性, Transformer 和扩散模型似乎已经取代了它们的位置.
+这可能是因为大型语言模型如 ChatGPT 的流行, 或者在扩散模型的情况下, 基于扩散的文本到图像生成器的流行.
+
+随着计算能力的不断提高, 以及大型数据库的可用性, 看起来深度学习的时代才刚刚开始.
+正如深度学习使我们能够从依赖特定领域的特征和方法转向更通用的解决方案一样, 最近的工作试图从单一任务或目的转向多任务甚至多模态模型.
