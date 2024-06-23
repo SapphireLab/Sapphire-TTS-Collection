@@ -360,13 +360,13 @@
 > Although there are other SPSS techniques, the majority of research has centered on hidden Markov models (HMM) \cite{taylor_TexttoSpeechSynthesis_2009}.
 
 > Some HMM works include \textcite{toda_SpeechParameterGeneration_2007}, which considers not only the output probability of static and dynamic feature vectors but also the global variance (GV).
-\Textcite{nakamura_IntegrationSpectralFeature_2014} directly models speech waveforms with a trajectory HMM.
-\Textcite{yoshimura_SimultaneousModelingSpectrum_1999,tokuda_HMMbasedSpeechSynthesis_2002} use decision-tree-based context clustering to represent spectrum, pitch, and HMM state duration simultaneously.
+> \Textcite{nakamura_IntegrationSpectralFeature_2014} directly models speech waveforms with a trajectory HMM.
+> \Textcite{yoshimura_SimultaneousModelingSpectrum_1999,tokuda_HMMbasedSpeechSynthesis_2002} use decision-tree-based context clustering to represent spectrum, pitch, and HMM state duration simultaneously.
 > Commonly used contexts include the current phoneme, preceding and succeeding phonemes, the position of the current syllable within the current word or phrase, etc. \cite{tokuda_SpeechSynthesisBased_2013}.
 
 > The notion that the human speech system has a layered structure in its transformation of the linguistic level to the waveform level has stimulated the adoption of deep neural network speech synthesis \cite{zen_StatisticalParametricSpeech_2013}.
-\Textcite{burniston_HybridNeuralNetwork_1994} employs an artificial neural network alongside a rule-based method to model speech parameters.
-\Textcite{ling_ModelingSpectralEnvelopes_2013} employs limited Boltzmann machines and deep belief networks to predict speech parameters for each HMM state.
+> \Textcite{burniston_HybridNeuralNetwork_1994} employs an artificial neural network alongside a rule-based method to model speech parameters.
+> \Textcite{ling_ModelingSpectralEnvelopes_2013} employs limited Boltzmann machines and deep belief networks to predict speech parameters for each HMM state.
 > Some other methods worth noting are multi-layer perceptron \cite{weijters_SpeechSynthesisArtificial_1993,lu_CombiningVectorSpace_2013,zen_StatisticalParametricSpeech_2013,fan_MultispeakerModelingSpeaker_2015,tokuday_DirectlyModelingSpeech_2015}, time-delay neural network \cite{karaali_SpeechSynthesisNeural_1998,karaali_TextToSpeechConversionNeural_1998}, long short-term memory \cite{fan_TTSSynthesisBidirectional_2014,zen_UnidirectionalLongShortterm_2015,li_MultiLanguageMultiSpeakerAcoustic_2016,tokuda_DirectlyModelingVoiced_2016}, gated recurrent unit \cite{wang_GatingRecurrentMixture_2016}, attention-based recurrent network \cite{wang_FirstStepEndtoEnd_2016}, and mixture density network \cite{zen_DeepMixtureDensity_2014,wang_GatingRecurrentMixture_2016}.
 
 > The TTS system consists of four major components: the first converts text to a linguistic representation, the second determines the duration of each speech segment, the third converts the linguistic and timing representations into speech parameters, and the fourth is the vocoder, which generates the speech waveform based on the speech parameters \cite{karaali_SpeechSynthesisNeural_1998}.
@@ -377,19 +377,45 @@
 
 ### Music Generation: 音乐生成
 
+<details>
+<summary>原文</summary>
+
 > Music has been a part of human life long before the invention of the electronic computer, and people have developed many guidelines for how beautifully sounded music should be made.
 > For this reason alone, the discipline of music generation has placed a heavy emphasis on rule-based systems that use music theory to create logical rules.
 > Unlike text, musical vocabulary is rather tiny, consisting of at most several hundred discrete note symbols \cite{lavrenko_PolyphonicMusicModeling_2003}.
 > Music creation is classified into six categories: grammars, knowledge-based, markov chains, artificial neural networks, evolutionary methods, and self-similarity \cite{fernandez_AIMethodsAlgorithmic_2013}.
 > Specific methods include discrete nonlinear maps \cite{pressing_NonlinearMapsGenerators_1988, dodge_ComputerMusicSynthesis_1985}, rule-based \cite{giomi_ComputationalGenerationStudy_1991, ames_CyberneticComposerOverview_1992}, genetic algorithm \cite{biles_GenJamGeneticAlgorithm_1994, moroni_VoxPopuliInteractive_2000, chen_CreatingMelodiesEvolving_2001, delapuente_AutomaticCompositionMusic_2002}, recurrent neural network \cite{mozer_NeuralNetworkMusic_1994, chen_CreatingMelodiesEvolving_2001}, long short-term memory \cite{eck_FirstLookMusic_2002, chu_SongPIMusically_2016, huang_DeepLearningMusic_2016, mogren_CRNNGANContinuousRecurrent_2016}, markov chain \cite{dodge_ComputerMusicSynthesis_1985, jones_CompositionalApplicationsStochastic_1981}, context-free grammars \cite{jones_CompositionalApplicationsStochastic_1981, delapuente_AutomaticCompositionMusic_2002}, context-sensitive grammars \cite{kohonen_SelflearningMusicalGrammar_1989, kohonen_NonheuristicAutomaticComposing_1991}, cellular automaton \cite{miranda_GranularSynthesisSounds_1995}, random fields \cite{lavrenko_PolyphonicMusicModeling_2003}, L-systems \cite{worth_GrowingMusicMusical_2005}, knowledge base \cite{chan_ImprovingAlgorithmicMusic_2006}, and restricted Boltzmann machines \cite{boulanger-lewandowski_ModelingTemporalDependencies_2012}.
-> Unlike language, music employs a significantly smaller number of acoustic features.
+
+> Unlike language, music employs a significantly smaller number of  acoustic features. 
 > These include MIDI representation \cite{moroni_VoxPopuliInteractive_2000,huang_DeepLearningMusic_2016}, encoded sheet music \cite{chen_CreatingMelodiesEvolving_2001}, binary vector of an octave \cite{lavrenko_PolyphonicMusicModeling_2003}, and piano roll \cite{boulanger-lewandowski_ModelingTemporalDependencies_2012,huang_DeepLearningMusic_2016}.
 
+</details>
+<br>
+
+音乐在电子计算机发明之前就已经是人类生活的一部分, 人们已经发展了许多关于如何制作优美音乐的指导原则.
+正因如此, 音乐生成的原则在很大程度上依赖于基于规则的系统, 这些系统使用音乐理论来创建逻辑规则.
+
+和文本不同, 音乐的词汇表相当小, 最多包含几百个离散的音符符号.
+音乐创作被分为六个类别: 语法, 基于知识, 马尔可夫链, 人工神经网络, 进化方法和自相似性.
+具体方法包括离散非线性映射, 基于规则的, 遗传算法, 循环神经网络, 长短期记忆网络, 马尔可夫链, 上下文无关的语法, 上下文敏感的语法, 细胞自动机, 随机场, L-系统, 知识库, 受限玻尔兹曼机.
+
+和语言不同, 音乐使用的声学特征数要少得多.
+这些特征包括 MIDI 表示, 编码乐谱, 八度二进制向量, 和自动钢琴打孔纸卷.
+
 ## 4.Audio Features: 音频特征 <a id="audio-features"></a>
+
+<details>
+<summary>原文</summary>
 
 > Even though there have been numerous audio features used throughout the history of audio generation.
 > Here we will describe the two most popular features, the raw waveform and the log-mel spectrogram, but also mention features that have recently gained traction.
 > Keep in mind that there are too many features to describe them all, especially if we take into account the many hand-crafted features that were created before the rise of deep learning methods.
+
+</details>
+<br>
+
+尽管在音频生成的历史中使用了众多的音频特征, 但在这里我们将描述两个最流行的特征: 原始波形和梅尔对数频谱图, 同时也会提及一些最近获得关注的特征.
+请记住, 有太多的特征无法描述, 尤其是如果我们考虑到在深度学习方法兴起之前创建的许多手工制作的特征.
 
 ### Raw Waveform: 原始波形
 
@@ -404,15 +430,15 @@
 > In certain tasks, the disadvantages appear to outweigh the benefits, as raw waveforms are still not universally used.
 > The issue is that raw audio synthesis at higher bit rates becomes problematic due to the sheer amount of states involved \cite{verma_GenerativeModelRaw_2021}.
 > For example, 24-bit audio signals have more than 16 million states.
-> High sampling rates create exceptionally long sequences, making raw audio synthesis more challenging \cite{wang_NeuralCodecLanguage_2023}.
-\(\mu\)-law is frequently employed in speech generative models like WaveNet \cite{oord_WaveNetGenerativeModel_2016} to compress integer values and sequence length.
-> The method can quantize each timestep to 256 values and reconstruct high-quality audio \cite{wang_NeuralCodecLanguage_2023}.
+> High sampling rates create exceptionally long sequences, making raw audio synthesis more challenging [VALL-E](../../Models/Speech_LLM/2023.01.05_VALL-E.md).
+> $\mu$-law is frequently employed in speech generative models like [WaveNet](../../Models/TTS3_Vocoder/2016.09.12_WaveNet.md) to compress integer values and sequence length.
+> The method can quantize each timestep to 256 values and reconstruct high-quality audio [VALL-E](../../Models/Speech_LLM/2023.01.05_VALL-E.md).
 > According to \textcite{dieleman_ChallengeRealisticMusic_2018}, increased bit depth representation can lead to models learning undesirable aspects, such as the calm background of the surroundings.
 > It should be emphasized that this issue was only observed in older publications and is not discussed in current ones.
 
 > The most common models that use raw waveforms as their representation of choice are text-to-speech models called vocoders.
 > In section \ref{sec:background}, we mentioned vocoders, which are used to translate mid-term representations, such as mel-spectrograms, to raw audio waveforms.
-> Examples include WaveNet \cite{oord_WaveNetGenerativeModel_2016}, SampleRNN \cite{mehri_SampleRNNUnconditionalEndtoEnd_2017}, and Deep Voice 3 \cite{ping_DeepVoiceScaling_2018}.
+> Examples include [WaveNet](../../Models/TTS3_Vocoder/2016.09.12_WaveNet.md), [SampleRNN](../../Models/TTS3_Vocoder/2016.12.22_SampleRNN.md), and [Deep Voice 3](../../Models/TTS2_Acoustic/2017.10.20_DeepVoice3.md).
 
 ### Mel-Spectrogram: 梅尔频谱
 
@@ -434,7 +460,7 @@
 > The algorithms used for these were already mentioned in the previous section. 
 > In addition to neural-based vocoders, other algorithms include Griffin-Lim \cite{griffin_SignalEstimationModified_1984}, gradient-based inversion \cite{decorsiere_InversionAuditorySpectrograms_2015}, single-pass spectrogram inversion (SPSI) \cite{beauregard_SinglePassSpectrogram_2015}, and phase gradient heap integration (PGHI) \cite{prusa_NoniterativeMethodReconstruction_2017}.
 > Mel-spectrograms have been frequently utilized as intermediate features in text-to-speech pipelines \cite{shi_SurveyAudioSynthesis_2021}.
-> Tacotron 1/2 \cite{wang_TacotronEndtoEndSpeech_2017,shen_NaturalTTSSynthesis_2018} and FastSpeech 1/2 \cite{ren_FastSpeechFastRobust_2019,ren_FastSpeechFastHighQuality_2022} are examples of such models.
+> Tacotron 1/2 \cite{wang_TacotronEndtoEndSpeech_2017,shen_NaturalTTSSynthesis_2018} and [FastSpeech](../../Models/TTS2_Acoustic/2019.05.22_FastSpeech.md) [FastSpeech2](../../Models/TTS2_Acoustic/2020.06.08_FastSpeech2.md) are examples of such models.
 > To better illustrate the compression of the mel-spectrogram, take, for example, a 5-minute video sampled at 44.1 kHz.
 > With 16-bit depth, our raw waveform will take up \({\approx} 25 \text{MB}\), while the mel-spectrogram with a common configuration\footnote{Based on a small sample of articles observed using mel-spectrograms} of 80 bins, 256 hop size, 1024 window size, and 1024 points of Fourier transform takes up \({\approx} 8 \text{MB}\) at the same bit depth.
 > In a \citeyear{choi_ComparisonAudioSignal_2018} article, it was proven that mel-spectrogram is preferable over STFT because it achieves the same performance while having a more compact representation \cite{choi_ComparisonAudioSignal_2018}.
@@ -451,17 +477,17 @@
 > A typical audio codec system consists of three components: an encoder, a quantizer, and a decoder.
 > The function of each component is explained in section \ref{ssec:auto_encoder}.
 > The goal of an audio codec is to use as little information as possible to store or transmit an audio signal while ensuring that the decoded audio quality is not significantly reduced by eliminating redundant or irrelevant information from the audio signal.
-> Traditionally, this is accomplished by changing the signal and trading off the quality of specific signal components that are less likely to influence the quality \cite{defossez_HighFidelityNeural_2022}.
+> Traditionally, this is accomplished by changing the signal and trading off the quality of specific signal components that are less likely to influence the quality [EnCodec](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md).
 > Audio codecs have been utilized for a wide range of applications, including mobile and internet communication.
 > There are numerous types of audio codecs; some are utilized in real-time applications like streaming, while others may be used for audio production.
 > Whereas in streaming, latency is a larger concern, which means sacrificing quality for speed, in production, we want to retain as much detail as possible while maintaining a compact representation.
 
 > Audio codecs can be separated into two categories: waveform codecs and parametric codecs.
 > Waveform codecs make little to no assumptions about the nature of audio, allowing them to work with any audio signal.
-> This universality makes them well-suited for creating high-quality audio at low compression, but they tend to produce artifacts when operating at high compression \cite{zeghidour_SoundStreamEndtoEndNeural_2022}.
+> This universality makes them well-suited for creating high-quality audio at low compression, but they tend to produce artifacts when operating at high compression [SoundStream](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md).
 > Furthermore, because they do not operate well in high compression, they tend to increase storage and transmission costs.
 > In contrast to waveform codecs, parametric codecs make assumptions about the source audio being encoded and introduce strong priors in the form of a parametric model that characterizes the audio synthesis process.
-> The goal is not to achieve a faithful reconstruction on a sample-by-sample basis but rather to generate audio that is perceptually comparable to the original \cite{zeghidour_SoundStreamEndtoEndNeural_2022}.
+> The goal is not to achieve a faithful reconstruction on a sample-by-sample basis but rather to generate audio that is perceptually comparable to the original [SoundStream](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md).
 > Parametric codecs offer great compression but suffer from low decoded audio quality and noise susceptibility \cite{ai_APCodecNeuralAudio_2024}.
 
 > On the way to the neural codec, we first encountered hybrid codecs, which substituted some parametric codec modules with neural networks.
@@ -473,18 +499,18 @@
 > The basic use case is to take the raw waveform and use the encoder to construct a representation with reduced temporal resolution, which is then projected into a multidimensional space by the projector component.
 > To make the representations suitable for transmission and storage, we further quantize the projections into codes.
 > These codes make up a lookup table, which is used at the other end by the decoder to transform the quantized representations back to a raw waveform.
-\Textcite{shen_NaturalSpeechLatentDiffusion_2023} defines the neural codec as a kind of neural network model that converts audio waveform into compact representations with a codec encoder and reconstructs audio waveform from these representations with a codec decoder.
-> The core idea is to use the audio codec to compress the speech or sound into a set of discrete tokens, and then the generation model is used to generate these tokens \cite{yang_HiFiCodecGroupresidualVector_2023}.
-> They have been shown to allow for cross-modal tasks \cite{wang_VioLAUnifiedCodec_2023}.
+> [NaturalSpeech 2](../../Models/Diffusion/2023.04.18_NaturalSpeech2.md) defines the neural codec as a kind of neural network model that converts audio waveform into compact representations with a codec encoder and reconstructs audio waveform from these representations with a codec decoder.
+> The core idea is to use the audio codec to compress the speech or sound into a set of discrete tokens, and then the generation model is used to generate these tokens [HiFi-Codec](../../Models/Speech_Neural_Codec/2023.05.04_HiFi-Codec.md).
+> They have been shown to allow for cross-modal tasks [VioLA](../../Models/Speech_LLM/2023.05.25_VioLA.md).
 
-> Neural codec methods include SoundStream \cite{zeghidour_SoundStreamEndtoEndNeural_2022}, EnCodec \cite{defossez_HighFidelityNeural_2022}, HiFi-Codec \cite{yang_HiFiCodecGroupresidualVector_2023}, AudioDec \cite{wu_AudioDecOpensourceStreaming_2023}, and APCodec \cite{ai_APCodecNeuralAudio_2024}.
+> Neural codec methods include [SoundStream](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md), [EnCodec](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md), [HiFi-Codec](../../Models/Speech_Neural_Codec/2023.05.04_HiFi-Codec.md), AudioDec \cite{wu_AudioDecOpensourceStreaming_2023}, and APCodec \cite{ai_APCodecNeuralAudio_2024}.
 > All the said methods use residual vector quantization (RVQ), while HiFi-Codec also introduced an extension called group-RVQ.
 > VQ methods will be talked about in section \ref{ssec:auto_encoder}.
-> SoundStream \cite{zeghidour_SoundStreamEndtoEndNeural_2022} is used by AudioLM, \cite{borsos_AudioLMLanguageModeling_2023}, MusicLM \cite{agostinelli_MusicLMGeneratingMusic_2023}, SingSong \cite{donahue_SingSongGeneratingMusical_2023} and SoundStorm \cite{borsos_SoundStormEfficientParallel_2023}, while
-> EnCodec \cite{defossez_HighFidelityNeural_2022} is used by VALL-E \cite{wang_NeuralCodecLanguage_2023}, VALL-E X \cite{zhang_SpeakForeignLanguages_2023}, Speech-X \cite{wang_SpeechXNeuralCodec_2023a}, and VioLA \cite{wang_VioLAUnifiedCodec_2023}.
+> [SoundStream](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md) is used by [AudioLM](../../Models/Speech_LLM/2022.09.07_AudioLM.md), MusicLM \cite{agostinelli_MusicLMGeneratingMusic_2023}, SingSong \cite{donahue_SingSongGeneratingMusical_2023} and [SoundStorm](../../Models/Speech_LLM/2023.05.16_SoundStorm.md), while
+> [EnCodec](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) is used by [VALL-E](../../Models/Speech_LLM/2023.01.05_VALL-E.md), [VALL-E X](../../Models/Speech_LLM/2023.03.07_VALL-E_X.md), Speech-X \cite{wang_SpeechXNeuralCodec_2023a}, and [VioLA](../../Models/Speech_LLM/2023.05.25_VioLA.md).
 
 > Finally, despite the fact that neural codec approaches are relatively new, they have not been without criticism.
-\Textcite{shen_NaturalSpeechLatentDiffusion_2023} noted that although RVQ can achieve acceptable reconstruction quality and low bitrate, they are meant for compression and transmission; therefore, they may not be suited as intermediate representations for audio production jobs.
+> [NaturalSpeech 2](../../Models/Diffusion/2023.04.18_NaturalSpeech2.md) noted that although RVQ can achieve acceptable reconstruction quality and low bitrate, they are meant for compression and transmission; therefore, they may not be suited as intermediate representations for audio production jobs.
 > This is because the sequence of discrete tokens created by RVQ can be very long, approximately \(N\) times longer when \(N\) residual quantifiers are utilized.
 > Because language models cannot handle extremely long sequences, we will encounter inaccurate predictions of discrete tokens, resulting in word skipping, word repetition, or speech collapse issues while attempting to reconstruct the speech waveform from these tokens.
 
@@ -542,8 +568,8 @@
 > MelGAN \cite{kumar_MelGANGenerativeAdversarial_2019}, VQVAE \cite{tjandra_VQVAEUnsupervisedUnit_2019}, Jukebox \cite{dhariwal_JukeboxGenerativeModel_2020} with Hierarchical VQ-VAE, DiscreTalk \cite{hayashi_DiscreTalkTexttoSpeechMachine_2020}, FIGARO \cite{rutte_FIGAROControllableMusic_2022}, Diffsound \cite{yang_DiffsoundDiscreteDiffusion_2023}, and Im2Wav \cite{sheffer_HearYourTrue_2023} use VQ-VAE to compress the input to a lower-dimensional space.
 > While Dance2Music-GAN \cite{zhu_QuantizedGANComplex_2022}, SpeechT5 \cite{ao_SpeechT5UnifiedModalEncoderDecoder_2022}, VQTTS \cite{du_VQTTSHighFidelityTexttoSpeech_2022}, and DelightfulTTS 2 \cite{liu_DelightfulTTSEndtoEndSpeech_2022} only use the vector quantization.
 
-> Residual Vector Quantization (RVQ) improves VAE by computing the residual after quantization and further quantizing it using a second codebook, a third, and so on \cite{defossez_HighFidelityNeural_2022}.
-> In other words, RVQ cascades \(N\) layers of VQ where unquantized input vector is passed through a first VQ and quantization residuals are computed, then those residuals are iteratively quantized by an additional sequence of \(N - 1\) vector quantizers \cite{zeghidour_SoundStreamEndtoEndNeural_2022}.
+> Residual Vector Quantization (RVQ) improves VAE by computing the residual after quantization and further quantizing it using a second codebook, a third, and so on [EnCodec](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md).
+> In other words, RVQ cascades \(N\) layers of VQ where unquantized input vector is passed through a first VQ and quantization residuals are computed, then those residuals are iteratively quantized by an additional sequence of \(N - 1\) vector quantizers [SoundStream](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md).
 > Section \ref{ssec:neural_codec} provides a list of models that employ RVQ.
 
 ### Generative Adversarial Networks: 生成对抗网络
@@ -678,7 +704,7 @@
 > On the other hand, transformers are generally referred to as data-hungry since they require a large amount of training data \cite{zaman_SurveyAudioClassification_2023}.
 > The attention mechanism's quadratic complexity makes it difficult to process long sequences \cite{verma_GenerativeModelRaw_2021}.
 > To use transformers with audio, we would convert signals into visual spectrograms and divide them into "patches" that are then treated as separate input tokens, analogous to text \cite{zaman_SurveyAudioClassification_2023}.
-> There are many works that use the transformer architecture, including Music Transformer \cite{huang_MusicTransformer_2018}, FastSpeech \cite{ren_FastSpeechFastRobust_2019}, Wave2Midi2Wave \cite{hawthorne_EnablingFactorizedPiano_2019}, \textcite{li_NeuralSpeechSynthesis_2019}, RobuTrans \cite{li_RobuTransRobustTransformerBased_2020}, Jukebox \cite{dhariwal_JukeboxGenerativeModel_2020}, AlignTTS \cite{zeng_AlignttsEfficientFeedForward_2020}, Multi-Track Music Machine \cite{ens_MMMExploringConditional_2020}, JDI-T \cite{lim_JDITJointlyTrained_2020}, AdaSpeech \cite{chen_AdaSpeechAdaptiveText_2021}, FastPitch \cite{lancucki_FastpitchParallelTexttoSpeech_2021}, \textcite{verma_GenerativeModelRaw_2021}, Controllable Music Transformer \cite{di_VideoBackgroundMusic_2021}, \textcite{lee_DirectSpeechtospeechTranslation_2022a}, SpeechT5 \cite{ao_SpeechT5UnifiedModalEncoderDecoder_2022}, CPS \cite{wang_CPSFullSongStyleConditioned_2022}, FastSpeech 2 \cite{ren_FastSpeechFastHighQuality_2022}, FIGARO \cite{rutte_FIGAROControllableMusic_2022}, HAT \cite{zhang_StructureEnhancedPopMusic_2022}, ELMG \cite{bao_GeneratingMusicEmotions_2023}, AudioLM \cite{borsos_AudioLMLanguageModeling_2023}, VALL-E \cite{wang_NeuralCodecLanguage_2023}, MusicLM \cite{agostinelli_MusicLMGeneratingMusic_2023}, SingSong \cite{donahue_SingSongGeneratingMusical_2023}, SPEAR-TTS \cite{kharitonov_SpeakReadPrompt_2023}, AudioGen \cite{kreuk_AudioGenTextuallyGuided_2023}, VALL-E X \cite{zhang_SpeakForeignLanguages_2023}, dGSLM \cite{nguyen_GenerativeSpokenDialogue_2023}, VioLA \cite{wang_VioLAUnifiedCodec_2023}, MuseCoco \cite{lu_MuseCocoGeneratingSymbolic_2023}, Im2Wav \cite{sheffer_HearYourTrue_2023}, AudioPaLM \cite{rubenstein_AudioPaLMLargeLanguage_2023}, VampNet \cite{garcia_VampNetMusicGeneration_2023}, LM-VC \cite{wang_LMVCZeroshotVoice_2023}, UniAudio \cite{yang_UniAudioAudioFoundation_2023}, and MusicGen \cite{copet_SimpleControllableMusic_2023}.
+> There are many works that use the transformer architecture, including Music Transformer \cite{huang_MusicTransformer_2018}, [FastSpeech](../../Models/TTS2_Acoustic/2019.05.22_FastSpeech.md), Wave2Midi2Wave \cite{hawthorne_EnablingFactorizedPiano_2019}, [NaturalSpeech](../../Models/E2E/2022.05.09_NaturalSpeech.md), RobuTrans \cite{li_RobuTransRobustTransformerBased_2020}, Jukebox \cite{dhariwal_JukeboxGenerativeModel_2020}, AlignTTS \cite{zeng_AlignttsEfficientFeedForward_2020}, Multi-Track Music Machine \cite{ens_MMMExploringConditional_2020}, JDI-T \cite{lim_JDITJointlyTrained_2020}, AdaSpeech \cite{chen_AdaSpeechAdaptiveText_2021}, FastPitch \cite{lancucki_FastpitchParallelTexttoSpeech_2021}, \textcite{verma_GenerativeModelRaw_2021}, Controllable Music Transformer \cite{di_VideoBackgroundMusic_2021}, \textcite{lee_DirectSpeechtospeechTranslation_2022a}, SpeechT5 \cite{ao_SpeechT5UnifiedModalEncoderDecoder_2022}, CPS \cite{wang_CPSFullSongStyleConditioned_2022}, [FastSpeech2](../../Models/TTS2_Acoustic/2020.06.08_FastSpeech2.md), FIGARO \cite{rutte_FIGAROControllableMusic_2022}, HAT \cite{zhang_StructureEnhancedPopMusic_2022}, ELMG \cite{bao_GeneratingMusicEmotions_2023}, [AudioLM](../../Models/Speech_LLM/2022.09.07_AudioLM.md), [VALL-E](../../Models/Speech_LLM/2023.01.05_VALL-E.md), MusicLM \cite{agostinelli_MusicLMGeneratingMusic_2023}, SingSong \cite{donahue_SingSongGeneratingMusical_2023}, [SPEAR-TTS](../../Models/Speech_LLM/2023.02.07_SPEAR-TTS.md), AudioGen \cite{kreuk_AudioGenTextuallyGuided_2023}, [VALL-E X](../../Models/Speech_LLM/2023.03.07_VALL-E_X.md), dGSLM \cite{nguyen_GenerativeSpokenDialogue_2023}, [VioLA](../../Models/Speech_LLM/2023.05.25_VioLA.md), MuseCoco \cite{lu_MuseCocoGeneratingSymbolic_2023}, Im2Wav \cite{sheffer_HearYourTrue_2023}, [AudioPaLM](../../Models/Speech_LLM/2023.06.22_AudioPaLM.md), VampNet \cite{garcia_VampNetMusicGeneration_2023}, LM-VC \cite{wang_LMVCZeroshotVoice_2023}, [UniAudio](../../Models/Speech_LLM/2023.10.01_UniAudio.md), and MusicGen \cite{copet_SimpleControllableMusic_2023}.
 
 > LakhNES \cite{donahue_LakhNESImprovingMultiinstrumental_2019} and REMI \cite{huang_PopMusicTransformer_2020} use Transformer-XL, an extension of the Transformer that can, in theory, encode arbitrary long contexts into fixed-length representations.
 > This is accomplished by providing a recurrence mechanism \cite{dai_TransformerXLAttentiveLanguage_2019}, wherein the preceding segment is cached for later usage as an expanded context for the subsequent segment.
@@ -688,7 +714,7 @@
 > Finally, another extension to the transformer has been successful for various speech tasks \cite{bai_AlignmentAwareAcousticText_2022}.
 > Convolution-augmented Transformer (Conformer) extends the Transformer by incorporating convolution and self-attention between two feed-forward modules; this cascade of modules is a single Conformer block.
 > It integrates a relative positional encoding scheme, a method adopted from the described Transformer-XL to improve generalization for diverse input lengths \cite{gulati_ConformerConvolutionaugmentedTransformer_2020}.
-> Papers utilizing the conformer are SpeechNet \cite{chen_SpeechNetUniversalModularized_2021}, \(\text{A}^3\text{T}\) \cite{bai_AlignmentAwareAcousticText_2022}, VQTTS \cite{du_VQTTSHighFidelityTexttoSpeech_2022}, \textcite{popuri_EnhancedDirectSpeechtoSpeech_2022}, and SoundStorm \cite{borsos_SoundStormEfficientParallel_2023}.
+> Papers utilizing the conformer are SpeechNet \cite{chen_SpeechNetUniversalModularized_2021}, \(\text{A}^3\text{T}\) \cite{bai_AlignmentAwareAcousticText_2022}, VQTTS \cite{du_VQTTSHighFidelityTexttoSpeech_2022}, \textcite{popuri_EnhancedDirectSpeechtoSpeech_2022}, and [SoundStorm](../../Models/Speech_LLM/2023.05.16_SoundStorm.md).
 
 ### Diffusion Models: 扩散模型
 % what is a diffusion model
@@ -698,14 +724,14 @@
 > The forward process converts the data to a conventional Gaussian distribution by constructing a Markov chain of diffusion steps with a predetermined noise schedule.
 > The reverse method gradually reconstructs data samples from the noise using an interference noise schedule.
 > Unlike other architectures that change the distribution of data, such as variational auto-encoders and normalizing flows, diffusion models maintain the dimensionality of the latent variables fixed.
-> Because the dimensionality of the latent variables must be fixed during the iterative generation process, which can result in slow inference speed in high-dimensional spaces \cite{liu_AudioLDMTexttoAudioGeneration_2023}.
+> Because the dimensionality of the latent variables must be fixed during the iterative generation process, which can result in slow inference speed in high-dimensional spaces [AudioLDM](../../Models/Diffusion/2023.01.29_AudioLDM.md).
 > A potential solution is to utilize a more compressed representation, such as a mel-spectrogram, instead of a short-time Fourier transform.
-> Papers employing diffusion models include WaveGrad \cite{chen_WaveGradEstimatingGradients_2020}, DiffWave \cite{kong_DiffWaveVersatileDiffusion_2021}, Diff-TTS \cite{jeong_DiffTTSDenoisingDiffusion_2021}, Grad-TTS \cite{popov_GradTTSDiffusionProbabilistic_2021}, DiffuSE \cite{lu_StudySpeechEnhancement_2021}, FastDiff \cite{huang_FastDiffFastConditional_2022}, CDiffuSE \cite{lu_ConditionalDiffusionProbabilistic_2022}, Guided-TTS \cite{kim_GuidedTTSDiffusionModel_2022a}, Guided-TTS 2 \cite{kim_GuidedTTSDiffusionModel_2022}, DiffSinger \cite{liu_DiffSingerSingingVoice_2022}, UNIVERSE \cite{serra_UniversalSpeechEnhancement_2022}, Diffsound \cite{yang_DiffsoundDiscreteDiffusion_2023}, Noise2Music \cite{huang_Noise2MusicTextconditionedMusic_2023}, DiffAVA \cite{mo_DiffAVAPersonalizedTexttoAudio_2023}, MeLoDy \cite{lam_EfficientNeuralMusic_2023}, Tango \cite{ghosal_TexttoAudioGenerationUsing_2023}, SRTNet \cite{qiu_SRTNETTimeDomain_2023}, MusicLDM \cite{chen_MusicLDMEnhancingNovelty_2023}, JEN-1 \cite{li_JEN1TextGuidedUniversal_2023}, AudioLDM \cite{liu_AudioLDMTexttoAudioGeneration_2023}, \textcite{bai_AcceleratingDiffusionBasedTexttoAudio_2023}, ERNIE-Music \cite{zhu_ERNIEMusicTexttoWaveformMusic_2023}, and Re-AudioLDM \cite{yuan_RetrievalAugmentedTexttoAudioGeneration_2024}.
+> Papers employing diffusion models include [WaveGrad](../../Models/TTS3_Vocoder/2020.09.02_WaveGrad.md), [DiffWave](../../Models/TTS3_Vocoder/2020.09.21_DiffWave.md), Diff-TTS \cite{jeong_DiffTTSDenoisingDiffusion_2021}, [Grad-TTS](../../Models/TTS2_Acoustic/2021.05.13_Grad-TTS.md), DiffuSE \cite{lu_StudySpeechEnhancement_2021}, FastDiff \cite{huang_FastDiffFastConditional_2022}, CDiffuSE \cite{lu_ConditionalDiffusionProbabilistic_2022}, Guided-TTS \cite{kim_GuidedTTSDiffusionModel_2022a}, Guided-TTS 2 \cite{kim_GuidedTTSDiffusionModel_2022}, DiffSinger \cite{liu_DiffSingerSingingVoice_2022}, UNIVERSE \cite{serra_UniversalSpeechEnhancement_2022}, Diffsound \cite{yang_DiffsoundDiscreteDiffusion_2023}, Noise2Music \cite{huang_Noise2MusicTextconditionedMusic_2023}, DiffAVA \cite{mo_DiffAVAPersonalizedTexttoAudio_2023}, MeLoDy \cite{lam_EfficientNeuralMusic_2023}, Tango \cite{ghosal_TexttoAudioGenerationUsing_2023}, SRTNet \cite{qiu_SRTNETTimeDomain_2023}, MusicLDM \cite{chen_MusicLDMEnhancingNovelty_2023}, JEN-1 \cite{li_JEN1TextGuidedUniversal_2023}, [AudioLDM](../../Models/Diffusion/2023.01.29_AudioLDM.md), \textcite{bai_AcceleratingDiffusionBasedTexttoAudio_2023}, ERNIE-Music \cite{zhu_ERNIEMusicTexttoWaveformMusic_2023}, and Re-AudioLDM \cite{yuan_RetrievalAugmentedTexttoAudioGeneration_2024}.
 
 % Diffusion with Transformer
 > Transformer and diffusion models were the most popular designs discussed in this article.
 > As a result, in the final half of this chapter, we will list some works that use both the transformer and diffusion models.
-> These works include \textcite{hawthorne_MultiinstrumentMusicSynthesis_2022}, Make-An-Audio 2 \cite{huang_MakeAnAudioTemporalEnhancedTexttoAudio_2023}, NaturalSpeech 2 \cite{shen_NaturalSpeechLatentDiffusion_2023}, Grad-StyleSpeech \cite{kang_GradStyleSpeechAnySpeakerAdaptive_2023}, Make-An-Audio \cite{huang_MakeAnAudioTextToAudioGeneration_2023}, AudioLDM 2 \cite{liu_AudioLDMLearningHolistic_2023}, and Moûsai \cite{schneider_MoUsaiTexttoMusic_2023}.
+> These works include \textcite{hawthorne_MultiinstrumentMusicSynthesis_2022}, Make-An-Audio 2 \cite{huang_MakeAnAudioTemporalEnhancedTexttoAudio_2023}, [NaturalSpeech 2](../../Models/Diffusion/2023.04.18_NaturalSpeech2.md), Grad-StyleSpeech \cite{kang_GradStyleSpeechAnySpeakerAdaptive_2023}, Make-An-Audio \cite{huang_MakeAnAudioTextToAudioGeneration_2023}, [AudioLDM 2](../../Models/Diffusion/2023.08.10_AudioLDM2.md), and Moûsai \cite{schneider_MoUsaiTexttoMusic_2023}.
 
 ## 6.Evaluation metrics: 评估指标 <a id="sec.eval_metrics"></a>
 
@@ -735,7 +761,7 @@
 > This type of test is termed the Mean-Opinion Score (MOS) \cite{maiti_SpeechlmscoreEvaluatingSpeech_2023}.
 > While MOS is used to evaluate naturalness, similarity MOS is used to assess how similar the generated and real samples are \cite{arik_NeuralVoiceCloning_2018}.
 > Another metric, known as the comparative MOS, can be used to compare two systems by subtracting their MOS values.
-> We may also calculate it by providing listeners with two audio samples generated by different models and immediately judging which one is better \cite{li_NeuralSpeechSynthesis_2019}.
+> We may also calculate it by providing listeners with two audio samples generated by different models and immediately judging which one is better [NaturalSpeech](../../Models/E2E/2022.05.09_NaturalSpeech.md).
 \Textcite{oord_ParallelWaveNetFast_2018} discovered that preference scores from a paired comparison test, frequently referred to as the A/B test, were more reliable than the MOS score.
 > Many alternative human evaluation metrics have been proposed for music; domain-specific metrics include melody, groove, consonance, coherence, and integrity.
 > The biggest disadvantage of human evaluation is that the findings cannot be replicated exactly.
@@ -752,7 +778,7 @@
 > The IS is maximized when the classifier is confident in every classification of the generated sample and each label is predicted equally often \cite{donahue_AdversarialAudioSynthesis_2019}.
 > Normally, the Inception classifier is trained using the ImageNet dataset, which may not be compatible with audio spectrograms.
 > This will cause the classifier to be unable to separate the data into meaningful categories, resulting in a low IS score.
-> An extension to the IS called Modified Inception Score (mIS) measures the within-class diversity of samples in addition to the IS which favors sharp and clear samples \cite{kong_DiffWaveVersatileDiffusion_2021}.
+> An extension to the IS called Modified Inception Score (mIS) measures the within-class diversity of samples in addition to the IS which favors sharp and clear samples [DiffWave](../../Models/TTS3_Vocoder/2020.09.21_DiffWave.md).
 
 ### Fréchet Distance: Fréchet 距离
 % what is FID
