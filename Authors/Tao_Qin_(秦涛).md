@@ -7,4 +7,5 @@
 
 - 2019.05.22 No.04/07 [FastSpeech](../Models/TTS2_Acoustic/2019.05.22_FastSpeech.md)
 - 2020.06.08 No.04/07 [FastSpeech2](../Models/TTS2_Acoustic/2020.06.08_FastSpeech2.md)
+- 2023.04.18 No.07/09 [NaturalSpeech2](../Models/Diffusion/2023.04.18_NaturalSpeech2.md) ICLR 2024
 - 2023.09.05 No.14/15 [PromptTTS2](../Models/Prompt/2023.09.05_PromptTTS2.md) ICLR 2024
