@@ -10,6 +10,7 @@
 
 - 2019.05.22 No.05/07 [FastSpeech](../Models/TTS2_Acoustic/2019.05.22_FastSpeech.md)
 - 2020.06.08 No.05/07 [FastSpeech2](../Models/TTS2_Acoustic/2020.06.08_FastSpeech2.md)
+- 2022.05.09 No.13/14 [NaturalSpeech](../Models/E2E/2022.05.09_NaturalSpeech.md) TPAMI 2024
 - 2022.11.22 No.04/05 [PromptTTS](../Models/Prompt/2022.11.22_PromptTTS.md) ICASSP 2023
 - 2023.01.05 No.12/13 [VALL-E](../Models/Speech_LLM/2023.01.05_VALL-E.md)
 - 2023.03.07 No.12/13 [VALL-E X](../Models/Speech_LLM/2023.03.07_VALL-E_X.md)
