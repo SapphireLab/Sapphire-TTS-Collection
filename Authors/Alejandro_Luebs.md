@@ -8,4 +8,4 @@
 
 ## 论文列表
 
-- 2021.07.07 [SoundStream](../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md) 02
+- 2021.07.07 02/05 [SoundStream](../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md) TASLP 2021

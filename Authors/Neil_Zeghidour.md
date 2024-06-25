@@ -8,6 +8,7 @@
 
 ## 论文列表
 
-- 2021.07.07 [SoundStream](../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md) 01
-- 2022.09.07 [AudioLM](../Models/Speech_LLM/2022.09.07_AudioLM.md)
-- 2023.02.07 [SPEAR-TTS](../Models/Speech_LLM/2023.02.07_SPEAR-TTS.md)
+- 2021.07.07 01/05 [SoundStream](../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md) TASLP 2021
+- 2022.09.07 11/11 [AudioLM](../Models/Speech_LLM/2022.09.07_AudioLM.md) TASLP 2023
+- 2023.02.07 09/09 [SPEAR-TTS](../Models/Speech_LLM/2023.02.07_SPEAR-TTS.md) TACL 2023
+- 2023.05.16 05/06 [SoundStorm](../Models/Speech_LLM/2023.05.16_SoundStorm.md)
