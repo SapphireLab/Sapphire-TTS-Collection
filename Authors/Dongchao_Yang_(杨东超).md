@@ -14,3 +14,4 @@
 
 - 2023.01.31 No.01/05 [InstructTTS](../Models/Prompt/2023.01.31_InstructTTS.md)
 - 2023.09.05 No.08/15 [PromptTTS2](../Models/Prompt/2023.09.05_PromptTTS2.md) ICLR 2024
+- 2024.03.05 No.06/19 [NaturalSpeech3](../Models/Diffusion/2024.03.05_NaturalSpeech3.md) ICML 2024

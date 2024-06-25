@@ -12,5 +12,6 @@
 - 2022.11.22 No.05/05 [PromptTTS](../Models/Prompt/2022.11.22_PromptTTS.md) ICASSP 2023
 - 2023.04.18 No.03/09 [NaturalSpeech2](../Models/Diffusion/2023.04.18_NaturalSpeech2.md) ICLR 2024
 - 2023.09.05 No.04/15 [PromptTTS2](../Models/Prompt/2023.09.05_PromptTTS2.md) ICLR 2024
+- 2024.03.05 No.04/19 [NaturalSpeech3](../Models/Diffusion/2024.03.05_NaturalSpeech3.md) ICML 2024
 - 2024.04.23 No.04/13 [FlashSpeech](../Models/Diffusion/2024.04.23_FlashSpeech.md)
 - 2024.06.08 No.05/09 [VALL-E 2](../Models/Speech_LLM/2024.06.08_VALL-E2.md)
