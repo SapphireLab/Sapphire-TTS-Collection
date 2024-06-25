@@ -33,7 +33,7 @@
 |模型|类型|数据流|发表|时间|
 |:-:|:-:|:-:|---|:-:|
 |[Tacotron](../../Models/TTS2_Acoustic/2017.03.29_Tacotron.md)|AM|ch/ph→(AR)→linS→wav|IS17|2017.03|
-|[VoiceLoop](../../Models/TTS2_Acoustic/VoiceLoop.md)|AM|ph→ceps→wav|ICLR18|2017.07|
+|[VoiceLoop](../../Models/TTS2_Acoustic/2017.07.20_VoiceLoop.md)|AM|ph→ceps→wav|ICLR18|2017.07|
 |[Deep voice 3](../../Models/TTS2_Acoustic/2017.10.20_DeepVoice3.md)|AM|ch/ph→(AR)→melS→(AR)→wav|ICLR18|2017.10|
 |DCTTS [53]|AM|ch→(AR)→melS→wav|ICASSP18|2017.10|
 |[Tacotron 2](../../Models/TTS2_Acoustic/2017.12.16_Tacotron2.md)|AM|ch/ph→(AR)→melS→(AR)→wav|ICASSP18|2017.12|
@@ -60,7 +60,7 @@
 |[Flow-TTS](../../Models/TTS2_Acoustic/2020.05.04_Flow-TTS.md)|AM|ch/ph→(FF)→melS→(FF)→wav|ICASSP20|2020.05|
 |[Flowtron](../../Models/TTS2_Acoustic/2020.05.12_Flowtron.md)|AM|ph→(AR)→melS→(FF)→wav|ICLR21|2020.05|
 |[Glow-TTS](../../Models/TTS2_Acoustic/2020.05.22_Glow-TTS.md)|AM|ph→(FF)→melS→(FF)→wav|NeurIPS20|2020.05|
-|[JDI-T](../../Models/TTS2_Acoustic/JDI-T.md)|AM|ph→(FF)→melS→(FF)→wav|IS20|2020.05|
+|[JDI-T](../../Models/TTS2_Acoustic/2020.05.15_JDI-T.md)|AM|ph→(FF)→melS→(FF)→wav|IS20|2020.05|
 |TalkNet [97]|AM|ch→(FF)→melS→(FF)→wav|IS21|2020.05|
 |MultiSpeech [99]|AM|ph→(AR)→melS→(FF)→wav|IS20|2020.06|
 |[FastSpeech 2](../../Models/TTS2_Acoustic/2020.06.08_FastSpeech2.md)|AM|ph→(FF)→melS→(FF)→wav|ICLR21|2020.06|
@@ -73,7 +73,7 @@
 |DenoiSpeech [115]|AM|ph→(FF)→melS→(FF)→wav|ICASSP21|2020.12|
 |EfficientTTS [116]|AM|ch→(FF)→melS→(FF)→wav|ICML21|2020.12|
 |Multi-SpectroGAN [117]|AM|ph→(AR)→melS→(FF)→wav|AAAI21|2020.12|
-|[LightSpeech](../../Models/TTS2_Acoustic/LightSpeech.md)|AM|ph→(FF)→melS→(FF)→wav|ICASSP21|2021.02|
+|[LightSpeech](../../Models/TTS2_Acoustic/2021.02.08_LightSpeech.md)|AM|ph→(FF)→melS→(FF)→wav|ICASSP21|2021.02|
 |Para. Tacotron 2 [119]|AM|ph→(FF)→melS→(AR)→wav|IS21|2021.03|
 |[AdaSpeech](../../Models/TTS2_Acoustic/2021.03.01_AdaSpeech.md)|AM|ph→(FF)→melS→(FF)→wav|ICLR21|2021.03|
 |[BVAE-TTS](../../Models/TTS2_Acoustic/2021.01.13_BVAE-TTS.md)|AM|ph→(FF)→melS→(FF)→wav|ICLR21|2021.03|
@@ -94,7 +94,7 @@
 |[WaveNet](../../Models/TTS3_Vocoder/2016.09.12_WaveNet.md)|Voc|ling→(AR)→wav|arXiv16|2016.09|
 |[SampleRNN](../../Models/TTS3_Vocoder/2016.12.22_SampleRNN.md)|Voc|∅→(AR)→wav|ICLR17|2016.12|
 |[Para. WaveNet](../../Models/TTS3_Vocoder/2017.11.28_Parallel_WaveNet.md)|Voc|ling→(FF)→wav|ICML18|2017.11|
-|WaveGAN ?|Voc|.∅FF−→wav|ICLR19|2018.02|
+|[WaveGAN](../../Models/TTS3_Vocoder/2018.02.12_WaveGAN.md)|Voc|.∅FF−→wav|ICLR19|2018.02|
 |[WaveRNN](../../Models/TTS3_Vocoder/2018.02.23_WaveRNN.md)|Voc|ling→(AR)→wav|ICML18|2018.02|
 |FFTNet [61]|Voc|ceps→(AR)→wav|ICASSP18|2018.04|
 |MCNN [66]|Voc|linS→(FF)→wav|SPL18|2018.08|
@@ -110,10 +110,10 @@
 |MB WaveRNN [85]|Voc|melS→(AR)→wav|IS20|2019.09|
 |[MelGAN](../../Models/TTS3_Vocoder/2019.10.08_MelGAN.md)|Voc|melS→(FF)→wav|NeurIPS19|2019.10|
 |[Para. WaveGAN](../../Models/TTS3_Vocoder/2019.10.25_Parallel_WaveGAN.md)|Voc|melS→(FF)→wav|ICASSP20|2019.10|
-|WaveFlow [89]|Voc|melS→(AR)→wav|ICML20|2019.12|
+|[WaveFlow](../../Models/TTS3_Vocoder/2019.12.03_WaveFlow.md)|Voc|melS→(AR)→wav|ICML20|2019.12|
 |SqueezeWave [90]|Voc|melS→(FF)→wav|arXiv20|2020.01|
-|MB MelGAN [98]|Voc|melS→(FF)→wav|SLT21|2020.05|
-|VocGAN [103]|Voc|melS→(FF)→wav|IS20|2020.07|
+|[MB MelGAN](../../Models/TTS3_Vocoder/2020.05.11_Multi-Band_MelGAN.md)|Voc|melS→(FF)→wav|SLT21|2020.05|
+|[VocGAN](../../Models/TTS3_Vocoder/2020.07.30_VocGAN.md)|Voc|melS→(FF)→wav|IS20|2020.07|
 |GED [106]|Voc|ling→(FF)→wav|NeurIPS20|2020.08|
 |SC-WaveRNN [107]|Voc|melS→(AR)→wav|IS20|2020.08|
 |[WaveGrad](../../Models/TTS3_Vocoder/2020.09.02_WaveGrad.md)|Voc|melS→(FF)→wav|ICLR21|2020.09|
