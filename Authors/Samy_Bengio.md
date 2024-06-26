@@ -1,4 +1,4 @@
-# 猿渡洋
+# Samy Bengio
 
 - 机构
 - 链接
@@ -10,4 +10,5 @@
 
 | 时间 | 作者序 | 论文 | 发表 |
 |:-:|:-:|---|---|
-| 2024.04.04 | No.08/11 | [RALL-E](../Models/Speech_LLM/2024.04.04_RALL-E.md) |
+| 2017.03.29 | No.10/14 | [Tacotron](../Models/TTS2_Acoustic/2017.03.29_Tacotron.md) | InterSpeech 2017 |
+
