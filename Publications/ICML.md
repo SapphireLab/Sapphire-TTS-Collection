@@ -28,3 +28,5 @@ Proceedings of Machine Learning Research
 ## 2023 (41 th)
 
 ## 2024 (42 th)
+
+- 2024.03.05 [NaturalSpeech3](../Models/Diffusion/2024.03.05_NaturalSpeech3.md) Oral
