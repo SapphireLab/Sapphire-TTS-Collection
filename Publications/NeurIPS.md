@@ -5,6 +5,7 @@
 ## 2019 (33rd)
 
 - 2019.05.22 [FastSpeech](../Models/TTS2_Acoustic/2019.05.22_FastSpeech.md)
+- 2019.10.08 [MelGAN](../Models/TTS3_Vocoder/2019.10.08_MelGAN.md)
 
 ## 2020 (34th)
 
