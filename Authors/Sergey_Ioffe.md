@@ -7,4 +7,4 @@
 
 ## 论文列表
 
-- 2015.02.11 No.01/02 [Batch Normalization](../Models/_Basis/2015.02.11_BatchNorm.md) ICML 2015
+- 2015.02.11 No.01/02 [Batch Normalization](../Modules/Normalization/2015.02.11_BatchNorm.md) ICML 2015
