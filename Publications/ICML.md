@@ -4,7 +4,7 @@ Proceedings of Machine Learning Research
 
 ## 2015 (32 nd)
 
-- 2015.02.11 [Batch Normalization](../Models/_Basis/2015.02.11_BatchNorm.md)
+- 2015.02.11 [Batch Normalization](../Modules/Normalization/2015.02.11_BatchNorm.md)
 
 ## 2016 (33 rd)
 

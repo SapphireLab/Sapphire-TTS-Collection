@@ -33,5 +33,5 @@
 
 - 2023.03.01 [Vocos](../Models/TTS3_Vocoder/2023.03.01_Vocos.md)
 - 2023.04.18 [NaturalSpeech2](../Models/Diffusion/2023.04.18_NaturalSpeech2.md) Spotlight
-- 2023.07.14 [Mega-TTS2](../Models/Speech_LLM/2023.07.14_Mega-TTS2.md)
+- 2023.07.14 [Mega-TTS2](../Models/Speech_LLM/2023.07.14_Mega-TTS2.md) Poster
 - 2023.09.05 [PromptTTS2](../Models/Prompt/2023.09.05_PromptTTS2.md) Poster
