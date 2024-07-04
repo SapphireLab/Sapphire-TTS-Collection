@@ -5,4 +5,4 @@
 
 ## 论文列表
 
-- 2021.06.14 No.04 [HuBERT](../Models/Speech_Representaion/2021.06.14_HuBERT.md)
+- 2021.06.14 No.04/06 [HuBERT](../Models/Speech_Representaion/2021.06.14_HuBERT.md) | TASLP 2021
