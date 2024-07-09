@@ -25,6 +25,7 @@
 
 |时间|名称|仓库|演示|论文|源码阅读|
 |---|---|:-:|---|:-:|:-:|
+|2024.07.03|CosyVoice|[Github](https://github.com/FunAudioLLM/CosyVoice)<br>![Star](https://img.shields.io/github/stars/FunAudioLLM/CosyVoice?style=social)<br>[ModelScope](https://www.modelscope.cn/studios/iic/CosyVoice-300M)||[Paper](https://fun-audio-llm.github.io/pdf/CosyVoice_v1.pdf)|
 |2024.05.28|ChatTTS|[Github](https://github.com/2noise/ChatTTS)<br>![Star](https://img.shields.io/github/stars/2noise/ChatTTS?style=social)<br>[HuggingFace](https://huggingface.co/2Noise/ChatTTS)<br>[HF Mirror](https://hf-mirrors.com/2Noise/ChatTTS)|[Video](https://www.bilibili.com/video/BV1zn4y1o7iV)||[Note](CodeReviews/2024.05.28_ChatTTS/Readme.md)|
 |2024.01.15|GPT-SoVITS|[Github](https://github.com/RVC-Boss/GPT-SoVITS)<br>![Star](https://img.shields.io/github/stars/RVC-Boss/GPT-SoVITS?style=social)|[Video](https://www.bilibili.com/video/BV12g4y1m7Uw/)|
 |2023.11.29<br>2024.04.09 (v2)|OpenVoice|[Github](https://github.com/myshell-ai/OpenVoice)<br>![Star](https://img.shields.io/github/stars/myshell-ai/openvoice.svg?style=social&label=Star)||[ArXiv](https://arxiv.org/abs/2312.01479)|
