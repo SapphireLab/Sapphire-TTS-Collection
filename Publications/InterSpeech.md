@@ -23,6 +23,12 @@
 - 地点: Graz, Austria
 - 主页: <https://www.isca-archive.org/interspeech_2019/>
 
+### Speech Synthesis: Data and Evaluation
+
+- 2019.04.05 [LibriTTS](../Datasets/2019.04.05_LibriTTS.md)
+- MOSNet: Deep Learning-Based Objective Assessment for Voice Conversion
+
+
 ## 2020
 
 - 时间: 2020.10.25~2020.10.29
@@ -96,5 +102,5 @@
 - 2024.06.16 [NAST](../Models/_tmp/2024.06.16_NAST.md)
 - 2024.06.22 [TacoLM](../Models/_tmp/2024.06.22_TacoLM.md)
 - 2024.06.25 [T5-TTS](../Models/_tmp/2024.06.25_T5-TTS.md)
-- 2024.06.30 [FLY-TTS](../Models/_tmp/2024.06.30_FLY-TTS.md)
+- 2024.06.30 [FLY-TTS](../Models/E2E/2024.06.30_FLY-TTS.md)
 - 2024.07.01 [LightweightTTS](../Models/_tmp/2024.07.01_LightweightTTS.md)
