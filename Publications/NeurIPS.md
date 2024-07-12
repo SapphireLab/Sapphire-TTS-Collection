@@ -1,5 +1,9 @@
 # Neural Information Processing Systems
 
+## 2017
+
+- 2017.11.02 [VQ-VAE](../Models/_Basis/2017.11.02_VQ-VAE.md)
+
 ## 2018 (32nd)
 
 ## 2019 (33rd)
