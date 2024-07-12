@@ -5,4 +5,6 @@
 
 ## 论文列表
 
-- 2022.10.24 No.01 [EnCodec](../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md)
+| 时间 | 作者序 | 论文 | 发表 |
+|:-:|:-:|---|---|
+| 2022.10.24 | No.01/04 | [EnCodec](../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) | TMLR |
