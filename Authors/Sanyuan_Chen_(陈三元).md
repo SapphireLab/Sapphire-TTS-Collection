@@ -1,6 +1,7 @@
 # 陈三元 (Sanyuan Chen)
 
 - 机构
+  - [Microsoft](../Institutions/Microsoft.md) Internship
 - 链接
 
 ## 论文列表
@@ -11,3 +12,4 @@
 | 2023.03.07 | No.04/13 | [VALL-E X](../Models/Speech_LLM/2023.03.07_VALL-E_X.md) |
 | 2024.06.08 | No.01/09 | [VALL-E 2](../Models/Speech_LLM/2024.06.08_VALL-E2.md) |
 | 2024.06.12 | No.04/10 | [VALL-E R](../Models/Speech_LLM/2024.06.12_VALL-E_R.md) |
+| 2024.07.11 | No.04/12 | [MELLE](../Models/Speech_LLM/2024.07.11_MELLE.md) |

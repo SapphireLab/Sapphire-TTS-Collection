@@ -1,6 +1,7 @@
 # Shujie Liu (刘树杰)
 
 - 机构
+  - [Microsoft](../Institutions/Microsoft.md)
 - 链接
   - 邮箱
   - Github
@@ -15,3 +16,4 @@
 | 2024.04.04 | No.09/11 | [RALL-E](../Models/Speech_LLM/2024.04.04_RALL-E.md) |
 | 2024.06.08 | No.02/09 | [VALL-E 2](../Models/Speech_LLM/2024.06.08_VALL-E2.md) |
 | 2024.06.12 | No.03/10 | [VALL-E R](../Models/Speech_LLM/2024.06.12_VALL-E_R.md) |
+| 2024.07.11 | No.03/12 | [MELLE](../Models/Speech_LLM/2024.07.11_MELLE.md) |

@@ -6,4 +6,7 @@
 
 ## 论文列表
 
-- 2024.06.11 No.03/09 [Single-Codec](../Models/Speech_Neural_Codec/2024.06.11_Single-Codec.md) InterSpeech 2024
+| 时间 | 作者序 | 论文 | 发表 |
+|:-:|:-:|---|---|
+| 2024.06.11 | No.03/09 | [Single-Codec](../Models/Speech_Neural_Codec/2024.06.11_Single-Codec.md) |  InterSpeech 2024
+| 2024.06.04 | No.03/06 | [SimpleSpeech](../Models/Diffusion/2024.06.04_SimpleSpeech.md) | InterSpeech 2024

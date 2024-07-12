@@ -7,4 +7,8 @@
 
 ## 论文列表
 
-- 2023.01.31 No.05/05 [InstructTTS](../Models/Prompt/2023.01.31_InstructTTS.md)
+| 时间 | 作者序 | 论文 | 发表 |
+|:-:|:-:|---|---|
+| 2023.01.31 | No.05/05 | [InstructTTS](../Models/Prompt/2023.01.31_InstructTTS.md) |
+| 2024.06.04 | No.04/06 | [SimpleSpeech](../Models/Diffusion/2024.06.04_SimpleSpeech.md) | InterSpeech 2024
+| 2024.07.11 | No.11/12 | [MELLE](../Models/Speech_LLM/2024.07.11_MELLE.md) |
