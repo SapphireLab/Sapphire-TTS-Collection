@@ -2,7 +2,7 @@
 
 ## 2017
 
-- 2017.11.02 [VQ-VAE](../Models/_Basis/2017.11.02_VQ-VAE.md)
+- 2017.11.02 [VQ-VAE](../Modules/VQ/2017.11.02_VQ-VAE.md)
 
 ## 2018 (32nd)
 
