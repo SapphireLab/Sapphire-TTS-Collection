@@ -7,4 +7,4 @@
 
 ## 论文列表
 
-- 2017.11.14 No.02/02 [AdamW](../Models/_Basis/2017.11.14_AdamW.md) ICLR 2019
+- 2017.11.14 No.02/02 [AdamW](../Modules/Optim/2017.11.14_AdamW.md) ICLR 2019
