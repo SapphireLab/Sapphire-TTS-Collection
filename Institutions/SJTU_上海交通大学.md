@@ -12,6 +12,6 @@
 
 ### 论文列表
 
-- 2023.09.10 [VoiceFlow](../Models/_tmp/2023.09.10_VoiceFlow.md) ICASSP 2024
+- 2023.09.10 [VoiceFlow](../Models/Flow/2023.09.10_VoiceFlow.md) ICASSP 2024
 - 2024.01.25 [VALL-T](../Models/Speech_LLM/2024.01.25_VALL-T.md)
 - 2024.01.14 [ELLA-V](../Models/Speech_LLM/2024.01.14_ELLA-V.md)
