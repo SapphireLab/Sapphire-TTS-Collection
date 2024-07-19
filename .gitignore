@@ -3,7 +3,8 @@
 Books/**/*.pdf
 Datasets/**/*.pdf
 Evaluations/**/*.pdf
-Models/**/*.pdf
 Surveys/**/*.pdf
 Templates
 *.mp4
+_PDF
+_Tex
