@@ -21,8 +21,10 @@
 
 ## 2021
 
-- 时间: 
-- 地点: 
+- 时间: 2021.06.06~2021.06.11
+- 地点: Toronto, ON, Canada
+
+- 2020.06.11 [FastPitch](../Models/TTS2_Acoustic/2020.06.11_FastPitch.md)
 
 ## 2022
 

@@ -10,6 +10,9 @@
 
 ## 2018
 
+- 2017.07.20 [VoiceLoop](../Models/TTS2_Acoustic/2017.07.20_VoiceLoop.md) Poster
+- 2017.10.20 [DeepVoice3](../Models/TTS2_Acoustic/2017.10.20_DeepVoice3.md) Poster
+
 ## 2019 
 
 - 2017.11.14 [AdamW](../Modules/Optim/2017.11.14_AdamW.md) Poster
