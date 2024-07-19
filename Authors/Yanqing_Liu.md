@@ -8,6 +8,7 @@
 
 | 时间 | 作者序 | 论文 | 发表 |
 |:-:|:-:|---|---|
+| 2018.09.19 | No.03/05 | [TransformerTTS](../Models/TTS2_Acoustic/2018.09.19_TransformerTTS.md) | AAAI 2019 |
 | 2022.05.09 | No.06/14 | [NaturalSpeech](../Models/E2E/2022.05.09_NaturalSpeech.md) | TPAMI 2024
 | 2023.01.05 | No.08/13 | [VALL-E](../Models/Speech_LLM/2023.01.05_VALL-E.md) |
 | 2023.03.07 | No.08/13 | [VALL-E X](../Models/Speech_LLM/2023.03.07_VALL-E_X.md) |

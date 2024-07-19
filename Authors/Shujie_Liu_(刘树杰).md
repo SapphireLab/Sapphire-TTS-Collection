@@ -9,8 +9,9 @@
 
 ## 论文列表
 
-| 时间 | 作者序 | 论文 | 发表 |
+| 时间 | 作者序 | 论文 | 发表 |#
 |:-:|:-:|---|---|
+| 2018.09.19 | No.02/05 | [TransformerTTS](../Models/TTS2_Acoustic/2018.09.19_TransformerTTS.md) | AAAI 2019 |
 | 2023.01.05 | No.06/13 | [VALL-E](../Models/Speech_LLM/2023.01.05_VALL-E.md) | 
 | 2023.03.07 | No.06/13 | [VALL-E X](../Models/Speech_LLM/2023.03.07_VALL-E_X.md) |
 | 2024.04.04 | No.09/11 | [RALL-E](../Models/Speech_LLM/2024.04.04_RALL-E.md) |

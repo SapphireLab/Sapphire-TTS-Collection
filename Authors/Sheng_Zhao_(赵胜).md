@@ -10,6 +10,7 @@
 
 | 时间 | 作者序 | 论文 | 发表 |
 |:-:|:-:|---|---|
+| 2018.09.19 | No.04/05 | [TransformerTTS](../Models/TTS2_Acoustic/2018.09.19_TransformerTTS.md) | AAAI 2019 |
 | 2019.05.22 | No.05/07 | [FastSpeech](../Models/TTS2_Acoustic/2019.05.22_FastSpeech.md) | NeurIPS 2019
 | 2020.06.08 | No.05/07 | [FastSpeech2](../Models/TTS2_Acoustic/2020.06.08_FastSpeech2.md) | ICLR 2021
 | 2022.05.09 | No.13/14 | [NaturalSpeech](../Models/E2E/2022.05.09_NaturalSpeech.md) | TPAMI 2024
