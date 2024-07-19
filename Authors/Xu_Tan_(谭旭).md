@@ -24,4 +24,4 @@
 | 2024.04.23 | No.04/13 | [FlashSpeech](../Models/Diffusion/2024.04.23_FlashSpeech.md) | 
 | 2024.06.08 | No.05/09 | [VALL-E 2](../Models/Speech_LLM/2024.06.08_VALL-E2.md) | 
 | 2024.06.14 | No.06/08 | [UniAudio 1.5](../Models/Speech_LLM/2024.06.14_UniAudio1.5.md) |
-| 2024.06.26 | No.10/13 | [E2 TTS](../Models/_tmp/2024.06.26_E2_TTS.md) | 
+| 2024.06.26 | No.10/13 | [E2 TTS](../Models/Flow/2024.06.26_E2_TTS.md) | 

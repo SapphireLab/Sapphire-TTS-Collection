@@ -25,5 +25,5 @@
 | 2024.04.04 | No.11/11 | [RALL-E](../Models/Speech_LLM/2024.04.04_RALL-E.md) |
 | 2024.06.08 | No.07/09 | [VALL-E 2](../Models/Speech_LLM/2024.06.08_VALL-E2.md) |
 | 2024.06.12 | No.08/10 | [VALL-E R](../Models/Speech_LLM/2024.06.12_VALL-E_R.md) |
-| 2024.06.26 | No.12/13 | [E2 TTS](../Models/_tmp/2024.06.26_E2_TTS.md) |
+| 2024.06.26 | No.12/13 | [E2 TTS](../Models/Flow/2024.06.26_E2_TTS.md) |
 | 2024.07.11 | No.09/12 | [MELLE](../Models/Speech_LLM/2024.07.11_MELLE.md) |
