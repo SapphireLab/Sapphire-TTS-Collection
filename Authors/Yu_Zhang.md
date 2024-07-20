@@ -12,3 +12,4 @@
 |:-:|:-:|---|---|
 | 2017.12.16 | No.08/13 | [Tacotron2](../Models/TTS2_Acoustic/2017.12.16_Tacotron2.md) | ICASSP 2018 |
 | 2019.04.05 | No.04/08 | [LibriTTS](../Datasets/2019.04.05_LibriTTS.md) | InterSpeech 2019 |
+| 2023.11.02 | No.03/04 | [E3 TTS](../Models/Diffusion/2023.11.02_E3_TTS.md) | ASRU 2023 |
