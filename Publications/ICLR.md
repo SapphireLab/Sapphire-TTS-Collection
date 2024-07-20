@@ -26,7 +26,7 @@
 - 主页: <https://openreview.net/group?id=ICLR.cc/2021/Conference>
 
 - 2020.06.05 [EATS](../Models/E2E/2020.06.05_EATS.md) Oral
-- 2020.06.08 [FastSpeech2](../Models/TTS2_Acoustic/2020.06.08_FastSpeech2.md)
+- 2020.06.08 [FastSpeech2](../Models/TTS2_Acoustic/2020.06.08_FastSpeech2.md) Poster
 
 ## 2022
 

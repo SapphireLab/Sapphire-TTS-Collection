@@ -46,3 +46,4 @@
 - 地点: Seoul, Korea
 
 - 2023.09.10 [VoiceFlow](../Models/Flow/2023.09.10_VoiceFlow.md)
+- 2023.09.15 [TiCodec](../Models/Speech_Neural_Codec/2023.09.15_TiCodec.md)

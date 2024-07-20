@@ -64,8 +64,12 @@
 
 ### Speech Synthesis: Toward End-to-End Synthesis
 
-- [SANE-TTS](../Models/E2E/SANE-TTS.md)
+- 2022.06.24 [SANE-TTS](../Models/E2E/2022.06.24_SANE-TTS.md)
 - 2022.07.01 [JETS](../Models/E2E/2022.07.01_JETS.md)
+
+### Speech Synthesis: Acoustic Modeling and Neural Waveform Generation II
+
+- 2022.07.11 [DelightfulTTS2](../Models/TTS2_Acoustic/2022.07.11_DelightfulTTS2.md)
 
 ### Voice Conversion and Adaptation III
 
@@ -92,7 +96,7 @@
 
 
 - 2024.06.04 [SimpleSpeech](../Models/Diffusion/2024.06.04_SimpleSpeech.md)
-- 2024.06.07 [XTTS](../Models/_tmp/2024.06.07_XTTS.md)
+- 2024.06.07 [XTTS](../Models/Speech_LLM/2024.06.07_XTTS.md)
 - 2024.06.11 [Single-Codec](../Models/Speech_Neural_Codec/2024.06.11_Single-Codec.md)
 - 2024.06.10 [mHuBERT](../Models/Speech_Representaion/2024.06.10_mHuBERT.md)
 - 2024.06.11 [ExHuBERT](../Models/Speech_Representaion/2024.06.11_ExHuBERT.md)
