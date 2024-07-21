@@ -59,7 +59,7 @@
   - [ ] modules.py 模块
   - [ ] mrte_model.py MRTE 模块
   - [ ] quantize.py 量化
-  - [ ] transformer.py Transformer 模块
+  - [ ] transforms.py Transforms 函数 (时长预测部分)
 - [ ] s2_train.py 训练使用 DDP 并行训练
 
 ---
@@ -99,3 +99,36 @@
 
 ---
 
+文本编码器 TextEncoder: 
+- 对 `y` 掩膜后, 使用 `ssl_proj` 进行维度变换, 然后 `encoder_ssl` 编码器输出 `y`;
+- 对 `text` 掩膜后, 使用 `text_embedding` 进行嵌入, 然后 `encoder_text` 编码器输出 `text`;
+- 将 `y` 和 `text` 使用 MRTE 模块进行融合输出 `y`;
+- `y` 经过第二个编码器 `encoder2` (注意力机制编码器) 输出 `y`;
+- 对 `y` 进行映射 `proj`, 对半划分得到均值和对数方差.
+
+相比 VITS 的文本编码器, 增加了 MRTE 模块引入 `y` 的信息. 
+(注: 有量化部分的冗余代码)
+
+生成器 Generator (HiFi-GAN):
+- conv_pre + ResBlock1/ResBlock2 + conv_post
+
+后验编码器 PosteriorEncoder:
+- 一维卷积 + WaveNet + 一维卷积 + 对半划分得到均值和对数方差
+
+流模型 ResidualCouplingBlock:
+- 遍历 ResidualCouplingLayer (残差耦合层) 
+- 耦合层: Conv1d → WaveNet → Conv1d → 对半划分出不变的 x0 和需要变的 x1 → x1 = m + x1 sigma, 和不变的部分拼接.
+
+Meta-StyleSpeech (https://github.com/KevinMIN95/StyleSpeech/blob/main/models/StyleSpeech.py)
+梅尔风格编码器 MelStyleEncoder:
+- MISH: `x * torch.tanh(F.softplus(x))`
+- spectral (LinearNorm + Mish + Dropout + LinearNorm + Mish + Dropout)
+- temporal (Conv1dGLU + Conv1dGLU)
+- self_attn (MultiHeadAttention)
+- fc (LinearNorm)
+- 时域平均池化
+
+正向过程: x → spectral → temporal → self_attn → fc → 时域平均池化 → w
+
+残差矢量量化器 ResidualVectorQuantizer:
+- 基于矢量量化 VQ 增加残差机制.
