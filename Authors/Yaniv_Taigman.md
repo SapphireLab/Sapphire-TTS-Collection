@@ -12,3 +12,4 @@
 | 时间 | 作者序 | 论文 | 发表 |
 |:-:|:-:|---|---|
 | 2017.07.20 | No.01/04 | [VoiceLoop](../Models/TTS2_Acoustic/2017.07.20_VoiceLoop.md) | ICLR 2018 |
+| 2022.09.30 | No.08/09 | [AudioGen](../Models/Speech_LLM/2022.09.30_AudioGen.md) | ICLR 2023 |
