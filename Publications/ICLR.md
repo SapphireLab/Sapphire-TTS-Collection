@@ -32,6 +32,8 @@
 
 ## 2023
 
+- 2022.09.30 [AudioGen](../Models/Speech_LLM/2022.09.30_AudioGen.md) Poster
+
 ## 2024
 
 - 2023.03.01 [Vocos](../Models/TTS3_Vocoder/2023.03.01_Vocos.md)
