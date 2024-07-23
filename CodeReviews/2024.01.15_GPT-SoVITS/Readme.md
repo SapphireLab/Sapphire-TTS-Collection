@@ -77,6 +77,8 @@
 
 **基本的前向传播过程为**:
 
+SSL; SPEC, SPEC_LEN, TEXT, TEXT_LEN;
+
 对 `y` 应用掩膜, 然后由参考编码器输出 `ge`;
 对 `ssl` 应用 `ssl_proj` 后然后经过残差矢量量化器得到量化结果 `quantized`;
 
@@ -132,3 +134,29 @@ Meta-StyleSpeech (https://github.com/KevinMIN95/StyleSpeech/blob/main/models/Sty
 
 残差矢量量化器 ResidualVectorQuantizer:
 - 基于矢量量化 VQ 增加残差机制.
+
+训练用的判别器为 MultiPeriodDiscriminator
+
+---
+
+### 损失函数的计算
+
+首先 `SSL 特征`+`频谱`+`频谱长度`+`文本`+`文本长度` 输入到`生成器 SynthesizerTrn` 得到`分段预测波形` `y_hat`, 量化的 commit_loss 为 `SSL_KL`, 分段索引
+
+将`真实波形`用分段索引进行划分得到`分段真实波形 y`
+和 `分段预测波形 y_hat` 一同输入到 `判别器 Discriminator` 得到 `y_d_hat_r` 和 `y_d_hat_g`, 然后计算`判别器损失` 用于更新判别器;
+
+将真实波形对应的 `频谱` 转化为`目标梅尔频谱`, 然后用分段索引切片得到`分段目标梅尔频谱 y_mel`.
+将 `分段预测波形` 转化为 `预测梅尔频谱 y_hat_mel`.
+将 `分段真实波形` 和 `分段预测波形` 输入到判别器中, 得到 `y_d_hat_r` 和 `y_d_hat_g`, 以及对应的 `fmap_r` 和 `fmap_g`.
+
+- Loss_Mel = L1(y_hat_mel, y_mel)
+- Loss_KL = kl_loss(z_p, logs_q, mp, logs_p) ?
+- Loss_FM = feature_loss(fmap_r, fmap_g)
+- loss_gen = generator_loss(y_d_hat_g)
+- loss_commit = kl_ssl 
+
+用于优化生成器.
+
+---
+
