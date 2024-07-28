@@ -7,5 +7,7 @@
 
 ## 论文列表
 
-- 2023.09.10 No.05/05 [VoiceFlow](../Models/Flow/2023.09.10_VoiceFlow.md) ICASSP 2024
-- 2024.01.25 No.09/09 [VALL-T](../Models/Speech_LLM/2024.01.25_VALL-T.md)
+| 时间 | 作者序 | 论文 | 发表 |
+|:-:|:-:|---|---|
+| 2023.09.10 | No.05/05 | [VoiceFlow](../Models/Flow/2023.09.10_VoiceFlow.md) | ICASSP 2024 |
+| 2024.01.25 | No.09/09 | [VALL-T](../Models/Speech_LLM/2024.01.25_VALL-T.md) |
