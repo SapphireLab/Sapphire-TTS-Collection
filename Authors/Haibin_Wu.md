@@ -5,4 +5,6 @@
 
 ## 论文列表
 
-- 2024.02.20 [Towards Audio-Language Modeling: An Overview](../Surveys/2024.02.20_Towards_Audio_Language_Modeling_5P/_ToC.md)
+| 时间 | 作者序 | 论文 | 发表 |
+|:-:|:-:|---|---|
+| 2024.02.20 || [Towards Audio-Language Modeling: An Overview](../Surveys/2024.02.20_Towards_Audio_Language_Modeling_5P/_ToC.md) |

@@ -1,7 +1,7 @@
 # Eunwoo Song
 
 - 机构
-  - [NAVER Corp](../../Institutions/NAVER_Corp.md)
+  - [NAVER Corp](../Institutions/NAVER_Corp.md)
 - 链接
 
 ## 论文列表

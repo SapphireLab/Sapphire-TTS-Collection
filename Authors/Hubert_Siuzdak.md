@@ -4,7 +4,9 @@
 
 ## 论文列表
 
-- 2023.03.01 No.01 [Vocos](../Models/TTS3_Vocoder/2023.03.01_Vocos.md)
+| 时间 | 作者序 | 论文 | 发表 |
+|:-:|:-:|---|---|
+| 2023.03.01 | No.01 | [Vocos](../Models/TTS3_Vocoder/2023.03.01_Vocos.md) |
 
 ## 项目列表
 
