@@ -5,4 +5,6 @@
 
 ## 论文列表
 
-- 2024.06.17 No.02/04 [DiTTo-TTS](../Models/Diffusion/2024.06.17_DiTTo-TTS.md)
+| 时间 | 作者序 | 论文 | 发表 |
+|:-:|:-:|---|---|
+| 2024.06.17 | No.02/04 | [DiTTo-TTS](../Models/Diffusion/2024.06.17_DiTTo-TTS.md) |
