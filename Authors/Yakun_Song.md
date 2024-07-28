@@ -7,5 +7,7 @@
   
 ## 论文列表
 
-- 2024.01.25 No.01/05 [ELLA-V](../Models/Speech_LLM/2024.01.14_ELLA-V.md)
-- [TacoLM](../Models/_tmp/2024.06.22_TacoLM.md)
+| 时间 | 作者序 | 论文 | 发表 |
+|:-:|:-:|---|---|
+| 2024.01.25 | No.01/05 | [ELLA-V](../Models/Speech_LLM/2024.01.14_ELLA-V.md) |
+| | | [TacoLM](../Models/_tmp/2024.06.22_TacoLM.md) |

@@ -7,4 +7,6 @@
 
 ## 论文列表
 
-- 2022.07.05 No.01/05 [Glow-WaveGAN2](../Models/E2E/2022.07.05_Glow-WaveGAN2.md) InterSpeech 2022
+| 时间 | 作者序 | 论文 | 发表 |
+|:-:|:-:|---|---|
+| 2022.07.05 | No.01/05 | [Glow-WaveGAN2](../Models/E2E/2022.07.05_Glow-WaveGAN2.md) | InterSpeech 2022 |

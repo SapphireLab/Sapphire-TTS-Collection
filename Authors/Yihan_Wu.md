@@ -6,4 +6,6 @@
 
 ## 论文列表
 
-- 2022.11.22 No.03/05 [PromptTTS](../Models/Prompt/2022.11.22_PromptTTS.md) ICASSP 2023
+| 时间 | 作者序 | 论文 | 发表 |
+|:-:|:-:|---|---|
+| 2022.11.22 | No.03/05 | [PromptTTS](../Models/Prompt/2022.11.22_PromptTTS.md) | ICASSP 2023 |
