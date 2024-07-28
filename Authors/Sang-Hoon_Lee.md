@@ -1,7 +1,7 @@
 # Sang-Hoon Lee
 
 - 机构
-  - [Korea University](../../Institutions/Korea_University.md)
+  - [Korea University](../Institutions/Korea_University.md)
 - 链接
 
 ## 论文列表
