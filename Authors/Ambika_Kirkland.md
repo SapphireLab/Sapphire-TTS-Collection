@@ -6,4 +6,6 @@
 
 ## 论文列表
 
-- 2022.11.13 No.02/06 [OverFlow](../Models/TTS2_Acoustic/2022.11.13_OverFlow.md) InterSpeech 2023
+| 时间 | 作者序 | 论文 | 发表 |
+|:-:|:-:|---|---|
+| 2022.11.13 | No.02/06 | [OverFlow](../Models/TTS2_Acoustic/2022.11.13_OverFlow.md) | InterSpeech 2023 |
