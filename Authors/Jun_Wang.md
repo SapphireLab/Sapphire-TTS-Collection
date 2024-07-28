@@ -7,4 +7,6 @@
 
 ## 论文列表
 
-- 2022.04.21 No.03/07 [FastDiff](../Models/Diffusion/2022.04.21_FastDiff.md) IJCAI 2022
+| 时间 | 作者序 | 论文 | 发表 |
+|:-:|:-:|---|---|
+| 2022.04.21 | No.03/07 | [FastDiff](../Models/Diffusion/2022.04.21_FastDiff.md) | IJCAI 2022 |
