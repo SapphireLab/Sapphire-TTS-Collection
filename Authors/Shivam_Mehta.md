@@ -6,5 +6,7 @@
 
 ## 论文列表
 
-- 2021.08.30 No.01/04 [Neural HMM-TTS](../Models/TTS2_Acoustic/2021.08.30_Neural_HMM_TTS.md) ICASSP 2022
-- 2022.11.13 No.01/06 [OverFlow](../Models/TTS2_Acoustic/2022.11.13_OverFlow.md) InterSpeech 2023
+| 时间 | 作者序 | 论文 | 发表 |
+|:-:|:-:|---|---|
+| 2021.08.30 | No.01/04 | [Neural HMM-TTS](../Models/TTS2_Acoustic/2021.08.30_Neural_HMM_TTS.md) | ICASSP 2022 |
+| 2022.11.13 | No.01/06 | [OverFlow](../Models/TTS2_Acoustic/2022.11.13_OverFlow.md) | InterSpeech 2023 |
