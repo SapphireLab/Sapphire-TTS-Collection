@@ -12,4 +12,4 @@
 
 | 时间 | 作者序 | 论文 | 发表 |
 |:-:|:-:|---|---|
-| 2022.05.15 | No.04/05 | [GenerSpeech](../Models/_tmp/2022.05.15_GenerSpeech.md) | NeurIPS 2022
+| 2022.05.15 | No.04/05 | [GenerSpeech](../Models/TTS2_Acoustic/2022.05.15_GenerSpeech.md) | NeurIPS 2022
