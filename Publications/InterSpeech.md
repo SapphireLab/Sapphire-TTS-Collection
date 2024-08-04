@@ -94,20 +94,22 @@
 - 地点: Kos Island, Greece.
 - 主页: <https://interspeech2024.org>
 
+### 论文列表
 
 - 2024.06.04 [SimpleSpeech](../Models/Diffusion/2024.06.04_SimpleSpeech.md)
 - 2024.06.07 [XTTS](../Models/Speech_LLM/2024.06.07_XTTS.md)
-- 2024.06.11 [Single-Codec](../Models/Speech_Neural_Codec/2024.06.11_Single-Codec.md)
 - 2024.06.10 [mHuBERT](../Models/Speech_Representaion/2024.06.10_mHuBERT.md)
+- 2024.06.11 [Single-Codec](../Models/Speech_Neural_Codec/2024.06.11_Single-Codec.md)
 - 2024.06.11 [ExHuBERT](../Models/Speech_Representaion/2024.06.11_ExHuBERT.md)
 - 2024.06.12 [EmoSphere-TTS](../Models/_tmp/2024.06.12_EmoSphere-TTS.md)
 - 2024.06.12 [TokSing](../Models/Singing_Voice/2024.06.12_TokSing.md)
 - 2024.06.12 [VECL-TTS](../Models/_tmp/2024.06.12_VECL-TTS.md)
 - 2024.06.12 [LibriTTS-P](../Datasets/2024.06.12_LibriTTS-P.md)
+- 2024.06.12 [FreeV](../Models/TTS3_Vocoder/2024.06.12_FreeV.md)
 - 2024.06.14 [PeriodSinger](../Models/Singing_Voice/2024.06.14_PeriodSinger.md)
 - 2024.06.15 [How Should We Extract Discrete Audio Tokens from Self-Supervised Models?](../Models/_Full/2024.06.15_How_Should_We_Extract_Discrete_Audio_Tokens_from_Self-Supervised_Models.md)
 - 2024.06.16 [NAST](../Models/_tmp/2024.06.16_NAST.md)
-- 2024.06.22 [TacoLM](../Models/_tmp/2024.06.22_TacoLM.md)
+- 2024.06.22 [TacoLM](../Models/Speech_LLM/2024.06.22_TacoLM.md)
 - 2024.06.25 [T5-TTS](../Models/_tmp/2024.06.25_T5-TTS.md)
 - 2024.06.30 [FLY-TTS](../Models/E2E/2024.06.30_FLY-TTS.md)
 - 2024.07.01 [LightweightTTS](../Models/_tmp/2024.07.01_LightweightTTS.md)

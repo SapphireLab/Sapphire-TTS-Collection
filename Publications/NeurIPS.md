@@ -26,7 +26,7 @@
 主页: <https://proceedings.neurips.cc/paper_files/paper/2022>
 
 - 2022.11.01 [HierSpeech](../Models/_tmp/2022.11.01_HierSpeech.md)
-- 2022.05.15 [GenerSpeech](../Models/_tmp/2022.05.15_GenerSpeech.md)
+- 2022.05.15 [GenerSpeech](../Models/TTS2_Acoustic/2022.05.15_GenerSpeech.md)
 
 ## 2023 (37th)
 
