@@ -11,4 +11,4 @@
 
 | 时间 | 作者序 | 论文 | 发表 |
 |:-:|:-:|---|---|
-| 2014.12.22 | No.01/02 | [Adam](../Modules/Optimizer/2014.12.22_Adam.md) | ICLR 2015 |
+| 2014.12.22 | No.01/02 | [Adam](../Modules/Optimization/2014.12.22_Adam.md) | ICLR 2015 |
