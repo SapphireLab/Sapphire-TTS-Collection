@@ -2,7 +2,7 @@
 
 ## 2015
 
-- 2014.12.22 [Adam](../Modules/Optimizer/2014.12.22_Adam.md)
+- 2014.12.22 [Adam](../Modules/Optimization/2014.12.22_Adam.md)
 
 ## 2016
 
@@ -15,7 +15,7 @@
 
 ## 2019 
 
-- 2017.11.14 [AdamW](../Modules/Optimizer/2017.11.14_AdamW.md) Poster
+- 2017.11.14 [AdamW](../Modules/Optimization/2017.11.14_AdamW.md) Poster
 
 ## 2020
 
