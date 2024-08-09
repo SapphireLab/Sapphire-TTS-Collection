@@ -6,4 +6,4 @@
 
 ## 论文列表
 
-- 2014.12.22 [Adam](../Modules/Optimizer/2014.12.22_Adam.md) ICLR 2015
+- 2014.12.22 [Adam](../Modules/Optimization/2014.12.22_Adam.md) ICLR 2015
