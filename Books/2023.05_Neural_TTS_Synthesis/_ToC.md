@@ -43,7 +43,7 @@
 |VAE-Loop [62]|AM|ph→ceps→wav|IS18|2018.04|
 |SV-Tacotron [63]|AM|ch/ph→(AR)→melS→(AR)→wav|NeurIPS18|2018.06|
 |ForwardAtt [65]|AM|ph→(AR)→linS→wav|ICASSP18|2018.07|
-|[TransformerTTS](../../Models/TTS2_Acoustic/2018.09.19_Transformer_TTS.md) [67]|AM|ph→(AR)→melS→(AR)→wav|AAAI19|2018.09|
+|[TransformerTTS](../../Models/TTS2_Acoustic/2018.09.19_TransformerTTS.md) [67]|AM|ph→(AR)→melS→(AR)→wav|AAAI19|2018.09|
 |GMVAE-Tacotron [69]|AM|ph→(AR)→melS→(AR)→wav|ICLR19|2018.10|
 |VAE-TTS [74]|AM|ph→(AR)→melS→(AR)→wav|ICASSP19|2018.12|
 |TTS-Stylization [75]|AM|ch→(AR)→melS→wav|ICLR19|2018.12|
