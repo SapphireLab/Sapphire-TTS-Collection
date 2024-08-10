@@ -110,7 +110,7 @@
 - 2024.06.15 [How Should We Extract Discrete Audio Tokens from Self-Supervised Models?](../Models/_Full/2024.06.15_How_Should_We_Extract_Discrete_Audio_Tokens_from_Self-Supervised_Models.md)
 - 2024.06.16 [NAST](../Models/_tmp/2024.06.16_NAST.md)
 - 2024.06.22 [TacoLM](../Models/Speech_LLM/2024.06.22_TacoLM.md)
-- 2024.06.25 [T5-TTS](../Models/_tmp/2024.06.25_T5-TTS.md)
+- 2024.06.25 [T5-TTS](../Models/Speech_LLM/2024.06.25_T5-TTS.md)
 - 2024.06.30 [FLY-TTS](../Models/E2E/2024.06.30_FLY-TTS.md)
 - 2024.07.01 [LightweightTTS](../Models/_tmp/2024.07.01_LightweightTTS.md)
 - 2024.07.19 [MSceneSpeech](../Datasets/2024.07.19_MSceneSpeech.md)
