@@ -192,7 +192,7 @@
 <summary>原文</summary>
 
 > [Encodec (2022)](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) builds upon a framework similar to [SoundStream](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md).
-> Nonetheless, it further augments its capabilities by integrating supplementary LSTM [25] layers and harnessing a [Transformer (2017)](../../Models/_Basis/2017.06.12_Transformer.md)-based language model to model the RVQ codes, thereby amplifying its sequence modeling performance.
+> Nonetheless, it further augments its capabilities by integrating supplementary LSTM [25] layers and harnessing a [Transformer (2017)](../../Models/_Transformer/2017.06.12_Transformer.md)-based language model to model the RVQ codes, thereby amplifying its sequence modeling performance.
 > Then, there is a stream of work aimed at making codec models more general and powerful.
 > [AudioDec (2023)](../../Models/Speech_Neural_Codec/2023.05.26_AudioDec.md) represents an enhanced version of [Encodec](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md), implementing a group convolution mechanism to facilitate the real-time operation of the streamable network while also harnessing the capabilities of [HiFi-GAN (2020)](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md) to effectively generate high-fidelity audio at a high sampling rate of 48 kHz. 
 
@@ -200,7 +200,7 @@
 <br>
 
 [Encodec (2022)](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) 建立在类似于 [SoundStream](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md) 的框架之上.
-然而, 它通过整合追加的 LSTM 层和利用基于 [Transformer (2017)](../../Models/_Basis/2017.06.12_Transformer.md) 的语言模型来建模 RVQ 编码以进一步增强其能力, 从而扩大其序列建模性能.
+然而, 它通过整合追加的 LSTM 层和利用基于 [Transformer (2017)](../../Models/_Transformer/2017.06.12_Transformer.md) 的语言模型来建模 RVQ 编码以进一步增强其能力, 从而扩大其序列建模性能.
 因此, 有一系列工作旨在使编解码器模型更加通用和强大.
 [AudioDec (2023)](../../Models/Speech_Neural_Codec/2023.05.26_AudioDec.md) 是 [Encodec](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) 的增强版本, 应用了组卷积机制, 以促进流式网络的实时操作, 同时利用 [HiFi-GAN (2020)](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md) 的能力, 在 48k Hz 的高采样率下有效地生成高保真度的音频.
 
@@ -338,7 +338,7 @@
 > [DAC](../../Models/Speech_Neural_Codec/2023.06.11_Descript-Audio-Codec.md) follows the approach of [BigVGAN (2022)](../../Models/TTS3_Vocoder/2022.06.09_BigVGAN.md), employing snake activation [29] for trainable control over the frequency of periodic signals.
 > [AcademiCodec](../../Models/Speech_Neural_Codec/2023.05.04_HiFi-Codec.md) employs multiple RVQ codebooks (multiple residual groups) to represent intermediate features.
 > They demonstrate that using multiple residual groups achieves good reconstruction performance while employing only a few codebooks.
-> [Encodec (2022)](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) trains an additional small [Transformer](../../Models/_Basis/2017.06.12_Transformer.md) model for entropy coding over the quantized units, which reduces bandwidth and accelerates encoding and decoding.
+> [Encodec (2022)](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) trains an additional small [Transformer](../../Models/_Transformer/2017.06.12_Transformer.md) model for entropy coding over the quantized units, which reduces bandwidth and accelerates encoding and decoding.
 
 </details>
 <br>
@@ -357,7 +357,7 @@
 [AcademiCodec](../../Models/Speech_Neural_Codec/2023.05.04_HiFi-Codec.md) 采用多个 RVQ 码本 (多个残差组) 来表示中间特征.
 他们证明使用多个残差组可以在仅使用少量码本的情况下实现良好的重建性能.
 
-[Encodec (2022)](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) 训练了一个额外的小型 [Transformer](../../Models/_Basis/2017.06.12_Transformer.md) 模型来对量化单元进行熵编码, 这可以减少带宽并加速编码和解码.
+[Encodec (2022)](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) 训练了一个额外的小型 [Transformer](../../Models/_Transformer/2017.06.12_Transformer.md) 模型来对量化单元进行熵编码, 这可以减少带宽并加速编码和解码.
 
 ### 2.3.Implementation Details·实现细节
 
@@ -366,7 +366,7 @@
 
 > We compare the codebook number, training data, sampling rate, and bit rate per second in [Tab.01](#Tab.01).
 > From the training data perspective, [SpeechTokenizer (2023)](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md), [AudioDec (2023)](../../Models/Speech_Neural_Codec/2023.05.26_AudioDec.md), and [FunCodec (2023)](../../Models/Speech_Neural_Codec/2023.09.14_FunCodec.md) utilize only English speech dataset.
-> [AcademiCodec/HiFi-Codec (2023)](../../Models/Speech_Neural_Codec/2023.05.04_HiFi-Codec.md) incorporates bilingual speech datasets, including [AISHELL](../../Datasets/AISHELL.md) for Chinese and [LibriTTS](../../Datasets/2019.04.05_LibriTTS.md) and [VCTK](../../Datasets/VCTK.md) for English.
+> [AcademiCodec/HiFi-Codec (2023)](../../Models/Speech_Neural_Codec/2023.05.04_HiFi-Codec.md) incorporates bilingual speech datasets, including [AISHELL](../../Datasets/2017.09.16_AISHELL-1.md) for Chinese and [LibriTTS](../../Datasets/2019.04.05_LibriTTS.md) and [VCTK](../../Datasets/2012.08.00_VCTK.md) for English.
 > Both [DAC (2023)](../../Models/Speech_Neural_Codec/2023.06.11_Descript-Audio-Codec.md), and [Encodec (2022)](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) encompass diverse modality data, including speech, music, and audio, in the training data.
 
 </details>
@@ -375,7 +375,7 @@
 我们在[表 01](#Tab.01) 中比较了码本数量, 训练数据, 采样率, 和每秒比特率.
 从训练数据的角度看:
 - [SpeechTokenizer (2023)](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md), [AudioDec (2023)](../../Models/Speech_Neural_Codec/2023.05.26_AudioDec.md), 和 [FunCodec (2023)](../../Models/Speech_Neural_Codec/2023.09.14_FunCodec.md) 只使用了英语语音数据集.
-- [AcademiCodec/HiFi-Codec (2023)](../../Models/Speech_Neural_Codec/2023.05.04_HiFi-Codec.md) 包含了双语语音数据集, 包括 [AISHELL](../../Datasets/AISHELL.md) 用于中文, [LibriTTS](../../Datasets/2019.04.05_LibriTTS.md) 和 [VCTK](../../Datasets/VCTK.md) 用于英语.
+- [AcademiCodec/HiFi-Codec (2023)](../../Models/Speech_Neural_Codec/2023.05.04_HiFi-Codec.md) 包含了双语语音数据集, 包括 [AISHELL](../../Datasets/2017.09.16_AISHELL-1.md) 用于中文, [LibriTTS](../../Datasets/2019.04.05_LibriTTS.md) 和 [VCTK](../../Datasets/2012.08.00_VCTK.md) 用于英语.
 - [DAC (2023)](../../Models/Speech_Neural_Codec/2023.06.11_Descript-Audio-Codec.md) 和 [Encodec (2022)](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) 在训练数据中包含了多种模态数据, 包括语音, 音乐, 以及音频.
 
 ## 3.Current Codec-Based Speech Language Models·现有的基于编解码器的语音语言模型
@@ -536,7 +536,7 @@
 [UnitY (2022)](../../Models/_Basis/2022.12.15_UnitY.md) 进一步整合了文本模态以增强语音翻译.
 [SeamlessM4T](../../Models/_Basis/2023.08.22_SeamlessM4T.md), [Seamless](../../Models/_Basis/2023.12.08_Seamless.md) 整合 [UnitY](../../Models/_Basis/2022.12.15_UnitY.md) 框架用于实现表达性和流式语音转文本和语音转语音翻译.
 随着这些强力语音语言模型, 研究人员开始探索在语音语言模型对于各种语音处理任务的提示使用, 包括
-- 提示调参: [An Exploration of Prompt Tuning on Generative Spoken Language Model for Speech Processing Tasks](), [SpeechPrompt v2](../../Models/_Basis/2023.03.01_SpeechPrompt_v2.md) [SpeechGen](../../Models/_Basis/2023.06.03_SpeechGen.md)
+- 提示调参: [An Exploration of Prompt Tuning on Generative Spoken Language Model for Speech Processing Tasks](), [SpeechPrompt v2](../../Models/Speech_LLM/2023.03.01_SpeechPrompt_v2.md) [SpeechGen](../../Models/Speech_LLM/2023.06.03_SpeechGen.md)
 - 上下文学习: [An Exploration of In-Context Learning for Speech Language Model]()
 - 指令调参: [Towards General-Purpose Text-Instruction-Guided Voice Conversion](), [Dynamic-Superb](../../Evaluations/2023.09.18_Dynamic-SUPERB.md)
 
