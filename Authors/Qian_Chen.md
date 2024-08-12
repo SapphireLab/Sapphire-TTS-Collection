@@ -4,5 +4,6 @@
 
 | 时间 | 作者序 | 论文 | 发表 |
 |:-:|:-:|---|---|
+| 2023.10.07 | No.03/15 | [LauraGPT](../Models/Speech_LLM/2023.10.07_LauraGPT.md) |
 | 2024.02.19 | No.05/09 | [Language-Codec](../Models/Speech_Neural_Codec/2024.02.19_Language-Codec.md) |
 | 2024.06.03 | No.05/11 | [ControlSpeech](../Models/Speech_LLM/2024.06.03_ControlSpeech.md) |

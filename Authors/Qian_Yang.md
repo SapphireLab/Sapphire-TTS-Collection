@@ -6,4 +6,5 @@
 |:-:|:-:|---|---|
 | 2023.06.06 | No.06/12 | [Mega-TTS](../Models/Speech_LLM/2023.06.06_Mega-TTS.md) |
 | 2023.07.14 | No.07/13 | [Mega-TTS2](../Models/Speech_LLM/2023.07.14_Mega-TTS2.md) | ICLR 2024 |
+| 2023.11.14 | No.04/08 | [Qwen-Audio](../Models/Speech_LLM/2023.11.14_Qwen-Audio.md) |
 | 2024.07.19 | No.01/09 | [MSceneSpeech](../Datasets/2024.07.19_MSceneSpeech.md) | InterSpeech 2024 |
