@@ -9,3 +9,4 @@
 | 时间 | 作者序 | 论文 | 发表 |
 |:-:|:-:|---|---|
 | 2022.11.01 | No.06/06 | [HierSpeech](../Models/_tmp/2022.11.01_HierSpeech.md) |
+| 2024.08.14 | No.03/03 | [PeriodWave](../Models/TTS3_Vocoder/2024.08.14_PeriodWave.md) |
