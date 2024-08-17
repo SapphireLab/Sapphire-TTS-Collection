@@ -1,8 +1,8 @@
 # 琚泽谦 (Zeqian Ju)
 
 - 机构
-  - [中国科学技术大学](../Institutions/USTC_中国科学技术大学.md)
-  - [Microsoft](../Institutions/Microsoft.md)
+  - [中国科学技术大学](../Institutions/CHN-USTC_中国科学技术大学.md)
+  - [Microsoft](../Institutions/USA-Microsoft.md)
 - 邮箱
 
 ## 论文列表

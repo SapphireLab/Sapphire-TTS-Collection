@@ -1,7 +1,7 @@
 # Zhou Zhao (赵洲)
 
 - 机构
-  - [浙江大学](../Institutions/ZJU_浙江大学.md)
+  - [浙江大学](../Institutions/CHN-ZJU_浙江大学.md)
 - 链接
   - 邮箱: <zhaozhou@zju.edu.cn>
 

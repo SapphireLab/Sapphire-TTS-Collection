@@ -1,7 +1,7 @@
 # 谭旭 (Xu Tan)
 
 - 机构 
-  - [Microsoft Research Asia](../Institutions/Microsoft.md)
+  - [Microsoft Research Asia](../Institutions/USA-Microsoft.md)
     - [Team](https://speechresearch.github.io) 
 - 邮箱
   - <xuta@microsoft.com>

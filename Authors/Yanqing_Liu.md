@@ -1,7 +1,7 @@
 # Yanqing Liu
 
 - 机构
-  - [Microsoft](../Institutions/Microsoft.md)
+  - [Microsoft](../Institutions/USA-Microsoft.mdt.md)
 - 邮箱
 
 ## 论文列表

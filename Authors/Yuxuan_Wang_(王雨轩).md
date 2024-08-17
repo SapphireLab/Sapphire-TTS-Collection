@@ -1,7 +1,7 @@
 # 王雨轩 (Yuxuan Wang)
 
 - 机构
-  - [字节跳动](../Institutions/ByteDance.md)
+  - [字节跳动](../Institutions/CHN-ByteDance.md)
 - 链接
   - 邮箱
   - Github

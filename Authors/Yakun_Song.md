@@ -1,8 +1,8 @@
 # Yakun Song
 
 - 机构
-  - [上海交通大学](../Institutions/SJTU_上海交通大学.md) X-LANCE Lab
-  - [字节跳动](../Institutions/ByteDance.md)
+  - [上海交通大学](../Institutions/CHN-SJTU_上海交通大学.md) X-LANCE Lab
+  - [字节跳动](../Institutions/CHN-ByteDance.md)
 - 链接
   - Github: https://github.com/Ereboas
   

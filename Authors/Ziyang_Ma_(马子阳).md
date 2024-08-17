@@ -1,8 +1,8 @@
 # 马子阳 (Ziyang Ma)
 
 - 机构
-  - [上海交通大学](../Institutions/SJTU_上海交通大学.md) X-LANCE Lab (PhD)
-  - [字节跳动](../Institutions/ByteDance.md)
+  - [上海交通大学](../Institutions/CHN-SJTU_上海交通大学.md) X-LANCE Lab (PhD)
+  - [字节跳动](../Institutions/CHN-ByteDance.md)
 - 链接
   - [学术主页](https://ziyang.tech)
   - [Github 主页](https://github.com/ddlBoJack)

@@ -1,6 +1,6 @@
 # Yossi Adi
 
-- 机构: [Meta AI, FAIR Team (Tel-Aviv, Israel)](../Institutions/Meta.AI.md)
+- 机构: [Meta AI, FAIR Team (Tel-Aviv, Israel)](../Institutions/USA-Meta.AI.md)
 - 邮箱: adiyoss@meta.com
 
 ## 论文列表

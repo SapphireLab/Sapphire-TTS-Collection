@@ -1,8 +1,8 @@
 # Ziyue Jiang
 
 - 机构
-  - [浙江大学](../Institutions/ZJU_浙江大学.md)
-  - [字节跳动](../Institutions/ByteDance.md)
+  - [浙江大学](../Institutions/CHN-ZJU_浙江大学.md)
+  - [字节跳动](../Institutions/CHN-ByteDance.md)
 
 ## 论文列表
 

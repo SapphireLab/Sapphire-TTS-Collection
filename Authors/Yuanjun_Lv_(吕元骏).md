@@ -1,7 +1,7 @@
 # Yuanjun Lv
 
 - 机构
-  - [西北工业大学](../Institutions/NPU_西北工业大学.md)
+  - [西北工业大学](../Institutions/CHN-NPU_西北工业大学.md)
 - 邮箱
 
 ## 论文列表

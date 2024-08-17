@@ -1,7 +1,7 @@
 ## Ying Yan
 
 - 机构
-  - [爱奇艺](../Institutions/iQIYI.md)
+  - [爱奇艺](../Institutions/CHN-iQIYI.md)
 - 邮箱
 
 ## 论文列表

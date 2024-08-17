@@ -1,7 +1,7 @@
 # Xixin Wu
 
 - 机构
-  - [香港中文大学](../Institutions/CUHK_香港中文大学.md)
+  - [香港中文大学](../Institutions/CHN-CUHK_香港中文大学.md)
 - 链接
 
 ## 论文列表

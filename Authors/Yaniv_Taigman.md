@@ -1,7 +1,7 @@
 # Yaniv Taigman
 
 - 机构
-  - [Facebook AI Research](../Institutions/Meta.AI.md)
+  - [Facebook AI Research](../Institutions/USA-Meta.AI.md)
 - 链接
   - 邮箱
   - Github
