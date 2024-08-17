@@ -1,7 +1,7 @@
 # Eng Siong Chng
 
 - 机构
-  - [南洋理工大学](../Institutions/NTU_新加坡南洋理工大学.md) 
+  - [南洋理工大学](../Institutions/SGP-NTU_新加坡南洋理工大学.md) 
 - 链接
   - Github
 

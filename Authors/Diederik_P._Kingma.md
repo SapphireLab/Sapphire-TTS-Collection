@@ -1,8 +1,8 @@
 # Diederik P. Kingma
 
 - 机构
-  - [UvA](../Institutions/UvA_荷兰阿姆斯特丹大学.md)
-  - [OpenAI](../Institutions/OpenAI.md)
+  - [UvA](../Institutions/NLD-UvA_荷兰阿姆斯特丹大学.md)
+  - [OpenAI](../Institutions/USA-OpenAI.md)
 - 邮箱:
   - <dpkingma@openai.com>
 

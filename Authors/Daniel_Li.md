@@ -1,7 +1,7 @@
 # Daniel Li
 
 - 机构
-  - [Meta.AI](../Institutions/Meta.AI.md)
+  - [Meta.AI](../Institutions/USA-Meta.AI.md)
 - 邮箱:
 
 ## 论文列表

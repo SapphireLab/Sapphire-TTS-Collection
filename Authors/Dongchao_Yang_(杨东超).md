@@ -1,9 +1,9 @@
 # Dongchao Yang (杨东超)
 
 - 机构
-  - [香港中文大学](../Institutions/CUHK_香港中文大学.md)
-  - 2023.01.31 [腾讯 AI Lab](../Institutions/TecentAI.md)
-  - 2023.09.05 [Microsoft](../Institutions/Microsoft.md)
+  - [香港中文大学](../Institutions/CHN-CUHK_香港中文大学.md)
+  - 2023.01.31 [腾讯 AI Lab](../Institutions/CHN-TecentAI.md)
+  - 2023.09.05 [Microsoft](../Institutions/USA-Microsoft.md)
 - 邮箱
   - 
 - 链接

@@ -1,7 +1,7 @@
 # 韦福如 (Furu Wei)
 
 - 机构
-  - [Microsoft](../Institutions/Microsoft.md)
+  - [Microsoft](../Institutions/USA-Microsoft.md)
 - 链接
 
 ## 论文列表
