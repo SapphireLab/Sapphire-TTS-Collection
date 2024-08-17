@@ -1,9 +1,9 @@
 # Pooneh Mousavi
 
 - 机构
-  - [Concordia University](../Institutions/Concordia_University_加拿大康考迪亚大学.md)
-  - [Mila-Quebec](../Institutions/Mila-Quebec.md)
-  - [Universit´e de Montreal, Canada](../Institutions/Université_de_Montréal_加拿大蒙特利尔大学.md)
+  - [Concordia University](../Institutions/CAN-Concordia_University_加拿大康考迪亚大学.md)
+  - [Mila-Quebec](../Institutions/CAN-Mila-Quebec.md)
+  - [Universit´e de Montreal, Canada](../Institutions/CAN-Université_de_Montréal_加拿大蒙特利尔大学.md)
 - 链接
 
 ## 论文列表

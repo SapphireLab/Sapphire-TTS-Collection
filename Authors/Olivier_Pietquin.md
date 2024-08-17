@@ -1,7 +1,7 @@
 # Olivier Pietquin
 
 - 机构:
-  - [Google](../Institutions/Google.md)
+  - [Google](../Institutions/USA-Google.md)
 - 链接:
 
 ## 论文列表

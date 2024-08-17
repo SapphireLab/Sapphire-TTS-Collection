@@ -3,7 +3,7 @@
 > Neil Zeghidour received the Ph.D. degree in machine learning from École Normale Supérieure-PSL, Paris, France, jointly with Facebook AI Research. He is a Senior Research Scientist with Google Research, Brain Team. His main research interest focuses on integrate signal processing with deep learning to design fully learnable classification, processing and synthesis systems of audio.
 
 - 机构:
-  - [Google](../Institutions/Google.md)
+  - [Google](../Institutions/USA-Google.md)
 - 链接:
 
 ## 论文列表

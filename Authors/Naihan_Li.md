@@ -1,7 +1,7 @@
 # Naihan Li
 
 - 机构
-  - [中国电子科技大学](../Institutions/UESTC_电子科技大学.md)
+  - [中国电子科技大学](../Institutions/CHN-UESTC_电子科技大学.md)
 - 链接
   - 邮箱
   - Github

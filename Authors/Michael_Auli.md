@@ -1,7 +1,7 @@
 # Michael Auli
 
 
-- 机构: [Facebook AI](../Institutions/Meta.AI.md)
+- 机构: [Facebook AI](../Institutions/USA-Meta.AI.md)
 - 邮箱: michaelauli@fb.com
 
 ## 论文列表
