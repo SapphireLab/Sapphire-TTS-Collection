@@ -1,7 +1,7 @@
 # Songxiang Liu
 
 - 机构
-  - [腾讯 AI Lab](../Institutions/TecentAI.md)
+  - [腾讯 AI Lab](../Institutions/CHN-TecentAI.md)
 - 邮箱
 
 ## 论文列表

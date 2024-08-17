@@ -1,8 +1,8 @@
 # Sang-Hoon Lee
 
 - 机构
-  - [Korea University](../Institutions/Korea_University.md)
-  - [Ajou University](../Institutions/Ajou_University.md)
+  - [Korea University](../Institutions/KOR-Korea_University.md)
+  - [Ajou University](../Institutions/KOR-Ajou_University.md)
 - 链接
 
 ## 论文列表

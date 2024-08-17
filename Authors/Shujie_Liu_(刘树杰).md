@@ -1,7 +1,7 @@
 # Shujie Liu (刘树杰)
 
 - 机构
-  - [Microsoft](../Institutions/Microsoft.md)
+  - [Microsoft](../Institutions/USA-Microsoft.md)
 - 链接
   - 邮箱
   - Github

@@ -1,7 +1,7 @@
 # Salah Zaiem
 
 - 机构
-  - [Telecom Paris](../Institutions/Telecom_Paris.md)
+  - [Telecom Paris](../Institutions/FRA-Telecom_Paris.md)
 - 链接
 
 ## 论文列表

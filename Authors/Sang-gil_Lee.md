@@ -1,7 +1,7 @@
 # Sang-gil Lee
 
 - 机构
-  - [Seoul National University](../Institutions/Seoul_National_University.md)
+  - [Seoul National University](../Institutions/KOR-Seoul_National_University_首尔大学.md)
 - 链接
 
 ## 论文列表

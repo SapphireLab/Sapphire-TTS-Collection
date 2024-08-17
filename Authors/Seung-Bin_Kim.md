@@ -1,7 +1,7 @@
 # Seung-Bin Kim
 
 - 机构
-  - [Korea University](../Institutions/Korea_University.md)
+  - [Korea University](../Institutions/KOR-Korea_University.md)
 - 链接
 
 ## 论文列表

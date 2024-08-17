@@ -1,7 +1,7 @@
 # Sergey Ioffe
 
 - 机构
-  - [Google](../Institutions/Google.md)
+  - [Google](../Institutions/USA-Google.md)
 - 邮箱:
   - <sioffe@google.com>
 

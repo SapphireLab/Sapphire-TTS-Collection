@@ -1,7 +1,7 @@
 # 陈三元 (Sanyuan Chen)
 
 - 机构
-  - [Microsoft](../Institutions/Microsoft.md) Internship
+  - [Microsoft](../Institutions/USA-Microsoft.md) Internship
 - 链接
 
 ## 论文列表

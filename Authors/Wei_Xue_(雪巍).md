@@ -1,6 +1,6 @@
 # 雪巍（Wei Xue）
 
-- 机构: [香港科技大学](../Institutions/HKUST_香港科技大学.md)
+- 机构: [香港科技大学](../Institutions/CHN-HKUST_香港科技大学.md)
 - 邮箱: weixue@ust.hk
 - 主页: [个人](http://wei-xue.com)
 

@@ -1,7 +1,7 @@
 # Tu-Anh Nguyen
 
 - 机构
-  - [Facebook AI Research (FAIR)](../Institutions/Meta.AI.md)
+  - [Facebook AI Research (FAIR)](../Institutions/USA-Meta.AI.md)
 - 链接
 
 ## 论文列表

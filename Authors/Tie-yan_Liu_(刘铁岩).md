@@ -1,6 +1,6 @@
 # Tie-yan_Liu (刘铁岩)
 
-- 机构: [Microsoft Research Asia](../Institutions/Microsoft.md)
+- 机构: [Microsoft Research Asia](../Institutions/USA-Microsoft.md)
 - 邮箱: tyliu@microsoft.com
 
 ## 论文列表
