@@ -1,7 +1,7 @@
 # Ilya Loshchilov
 
 - 机构:
-  - [University of Freiburg](../Institutions/University_of_Freiburg_德国弗赖堡大学.md)
+  - [University of Freiburg](../Institutions/DEU-University_of_Freiburg_德国弗赖堡大学.md)
 - 邮箱:
   - <ilya@cs.uni-freiburg.de>
 

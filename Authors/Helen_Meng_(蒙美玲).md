@@ -1,7 +1,7 @@
 # Helen Meng (蒙美玲)
 
 - 机构
-  - [香港中文大学](../Institutions/CUHK_香港中文大学.md)
+  - [香港中文大学](../Institutions/CHN-CUHK_香港中文大学.md)
 - 链接:
   - [学校主页](https://www.se.cuhk.edu.hk/people/academic-staff/prof-meng-mei-ling-helen/)
 

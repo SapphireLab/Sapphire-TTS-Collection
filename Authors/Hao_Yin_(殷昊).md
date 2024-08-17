@@ -1,7 +1,7 @@
 # Hao Yin
 
 - 机构
-  - [出门问问 (上海墨百意信息科技有限公司)](../Institutions/Mobvoi_墨百意.md)
+  - [出门问问 (上海墨百意信息科技有限公司)](../Institutions/CHN-Mobvoi_墨百意.md)
 - 邮箱
 
 ## 论文列表
