@@ -1,8 +1,8 @@
 # Artem Ploujnikov
 
 - 机构
-  - [Ude_Montréal](../Institutions/Université_de_Montréal_加拿大蒙特利尔大学.md)
-  - [Mila-Quebec](../Institutions/Mila-Quebec.md)
+  - [Ude_Montréal](../Institutions/CAN-Université_de_Montréal_加拿大蒙特利尔大学.md)
+  - [Mila-Quebec](../Institutions/CAN-Mila-Quebec.md)
 - 链接
 
 ## 论文列表

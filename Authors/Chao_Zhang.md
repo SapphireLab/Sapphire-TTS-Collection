@@ -1,7 +1,7 @@
 # Chao Zhang
 
 - 机构
-  - [清华大学](../Institutions/THU_清华大学.md) 
+  - [清华大学](../Institutions/CHN-THU_清华大学.md) 
 - 链接
   - Github: 
 

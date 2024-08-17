@@ -1,6 +1,6 @@
 # Ahmed Omran
 
-- 机构: [Google Research](../Institutions/Google.md)
+- 机构: [Google Research](../Institutions/USA-Google.md)
 - 邮箱:
 - 主页:
 

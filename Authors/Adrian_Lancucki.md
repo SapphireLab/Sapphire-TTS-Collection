@@ -1,7 +1,7 @@
 # Adrian Lancucki
 
 - 机构
-  - [Nvidia](../Institutions/Nvidia.md)
+  - [Nvidia](../Institutions/USA-Nvidia.md)
 - 邮箱
 
 ## 论文列表

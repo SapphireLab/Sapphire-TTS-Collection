@@ -1,7 +1,7 @@
 # Boris Ginsburg
 
 - 机构
-  - [Nvidia](../Institutions/Nvidia.md)
+  - [Nvidia](../Institutions/USA-Nvidia.md)
 - 链接
 
 ## 论文列表

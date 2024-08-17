@@ -1,6 +1,6 @@
 # Alexandre Défossez
 
-- 机构: [Meta AI, FAIR Team (Paris, France)](../Institutions/Meta.AI.md)
+- 机构: [Meta AI, FAIR Team (Paris, France)](../Institutions/USA-Meta.AI.md)
 - 邮箱: defossez@meta.com
 
 ## 论文列表

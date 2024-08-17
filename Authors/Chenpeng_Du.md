@@ -1,8 +1,8 @@
 # Chenpeng Du
 
 - 机构
-  - [上海交通大学](../Institutions/SJTU_上海交通大学.md)
-  - [字节跳动](../Institutions/ByteDance.md)
+  - [上海交通大学](../Institutions/CHN-SJTU_上海交通大学.md)
+  - [字节跳动](../Institutions/CHN-ByteDance.md)
 - 邮箱
 
 ## 论文列表

@@ -1,7 +1,7 @@
 # Chenxu Hu
 
 - 机构: 
-  - [浙江大学](../Institutions/ZJU_浙江大学.md)
+  - [浙江大学](../Institutions/CHN-ZJU_浙江大学.md)
 - 邮箱: chenxuhu@zju.edu.cn
 
 ## 论文列表
