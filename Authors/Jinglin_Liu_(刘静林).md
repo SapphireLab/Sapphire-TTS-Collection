@@ -1,8 +1,8 @@
 # Jinglin Liu
 
 - 机构
-  - [浙江大学](../Institutions/ZJU_浙江大学.md)
-  - [字节跳动](../Institutions/ByteDance.md)
+  - [浙江大学](../Institutions/CHN-ZJU_浙江大学.md)
+  - [字节跳动](../Institutions/CHN-ByteDance.md)
 - 链接
   - Github: https://github.com/MoonInTheRiver
   - 学术主页: https://silentlin15.github.io

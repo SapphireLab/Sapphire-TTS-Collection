@@ -1,7 +1,7 @@
 # Jimmy Lei Ba
 
 - 机构
-  - [University of Toronto](../Institutions/University_of_Toronto_加拿大多伦多大学.md)
+  - [University of Toronto](../Institutions/CAN-University_of_Toronto_加拿大多伦多大学.md)
 - 邮箱:
   - <jimmy@psi.utoronto.ca>
 

@@ -1,6 +1,6 @@
 # Keon Lee
 
-- 机构: [KRAFRON](../Institutions/KRAFTON.AI.md)
+- 机构: [KRAFRON](../Institutions/KOR-KRAFTON.AI.md)
 - 邮箱: keonlee@krafton.com
 
 ## 论文列表

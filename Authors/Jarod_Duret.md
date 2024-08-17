@@ -1,7 +1,7 @@
 # Jarod Duret
 
 - 机构
-  - [University of Avignon](../Institutions/Uof_Avignon_法国阿维尼翁大学.md)
+  - [University of Avignon](../Institutions/FRA-Uof_Avignon_法国阿维尼翁大学.md)
 - 链接
 
 ## 论文列表

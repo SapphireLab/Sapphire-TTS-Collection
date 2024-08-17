@@ -1,7 +1,7 @@
 # 薛浏蒙 (Liumeng Xue)
 
 - 机构
-  - [香港中文大学 深圳](../Institutions/CUHK_香港中文大学.md)
+  - [香港中文大学 深圳](../Institutions/CHN-CUHK_香港中文大学.md)
 - 邮箱
 
 ## 论文列表

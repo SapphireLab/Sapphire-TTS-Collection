@@ -1,8 +1,8 @@
 # Jian Cong
 
 - 机构
-  - [西北工业大学](../Institutions/NPU_西北工业大学.md)
-  - [字节跳动](../Institutions/ByteDance.md)
+  - [西北工业大学](../Institutions/CHN-NPU_西北工业大学.md)
+  - [字节跳动](../Institutions/CHN-ByteDance.md)
 - 邮箱
   - <npujcong@mail.nwpu.edu.cn>
 

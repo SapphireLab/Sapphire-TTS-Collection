@@ -1,12 +1,12 @@
 # Jianyi Chen
 
-- 机构: [香港科技大学](../Institutions/HKUST_香港科技大学.md)
+- 机构: [香港科技大学](../Institutions/CHN-HKUST_香港科技大学.md)
 - 邮箱: 
 
 ## 时间线
 
 - 中国科学技术大学
-- 2022 秋季博士 [香港科技大学](../Institutions/HKUST_香港科技大学.md)
+- 2022 秋季博士 [香港科技大学](../Institutions/CHN-HKUST_香港科技大学.md)
 
 ## 论文列表
 

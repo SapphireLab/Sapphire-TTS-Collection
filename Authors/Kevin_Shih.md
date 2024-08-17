@@ -1,7 +1,7 @@
 # Kevin Shih
 
 - 机构
-  - [Nvidia](../Institutions/Nvidia.md)
+  - [Nvidia](../Institutions/USA-Nvidia.md)
 - 邮箱
   - <kshih@nvidia.com>
 

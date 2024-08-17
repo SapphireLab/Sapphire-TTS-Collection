@@ -1,7 +1,7 @@
 # 沈锴 (Kai Shen)
 
 - 机构
-  - [Microsoft](../Institutions/Microsoft.md)
+  - [Microsoft](../Institutions/USA-Microsoft.md)
 - 邮箱
 
 ## 论文列表

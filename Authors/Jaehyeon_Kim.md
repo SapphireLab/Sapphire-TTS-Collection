@@ -1,8 +1,8 @@
 # Jaehyeon Kim
 
 - 机构: 
-  - 2021.06.11 [韩国 Kakao Enterprise](../Institutions/Kakao_Enterprise.md)
-  - 2024.06.17 [KRAFRON](../Institutions/KRAFTON.AI.md)
+  - 2021.06.11 [韩国 Kakao Enterprise](../Institutions/KOR-Kakao_Enterprise.md)
+  - 2024.06.17 [KRAFRON](../Institutions/KOR-KRAFTON.AI.md)
 - 邮箱: 
   - jay.310@krafton.com
 

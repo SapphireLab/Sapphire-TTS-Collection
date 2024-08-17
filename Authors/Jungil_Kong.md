@@ -2,7 +2,7 @@
 
 ## 所属机构
 
-- 2021.06.11 [韩国 Kakao Enterprise](../Institutions/Kakao_Enterprise.md)
+- 2021.06.11 [韩国 Kakao Enterprise](../Institutions/KOR-Kakao_Enterprise.md)
 
 ## 论文列表
 

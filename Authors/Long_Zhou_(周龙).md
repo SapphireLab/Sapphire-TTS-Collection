@@ -1,7 +1,7 @@
 # 周龙 (Long Zhou)
 
 - 机构
-  - [Microsoft](../Institutions/Microsoft.md)
+  - [Microsoft](../Institutions/USA-Microsoft.md)
 - 链接
 
 ## 论文列表
