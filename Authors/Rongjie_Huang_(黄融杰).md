@@ -1,7 +1,7 @@
 # 黄融杰 (Rongjie Huang)
 
 - 机构
-  - [浙江大学](../Institutions/ZJU_浙江大学.md)
+  - [浙江大学](../Institutions/CHN-ZJU_浙江大学.md)
 - 链接
   - Github: https://github.com/Rongjiehuang
   - 学术主页: https://rongjiehuang.github.io
