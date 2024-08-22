@@ -15,5 +15,5 @@
 
 | 时间 | 作者序 | 论文 | 发表 |
 |:-:|:-:|---|---|
-| 2023.09.15 | No.05/07 | [TiCodec](../Models/Speech_Neural_Codec/2023.09.15_TiCodec.md) | 
+| 2023.09.15 | No.05/07 | [TiCodec](../Models/Speech_Neural_Codec/2023.09.15_TiCodec.md) | ICASSP 2024 | 
 | 2024.08.20 | No.04/13 | [EELE](../Models/E2E/2024.08.20_EELE.md) |
