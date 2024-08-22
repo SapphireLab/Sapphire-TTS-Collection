@@ -1,4 +1,4 @@
-# 马子阳 (Ziyang Ma)
+# 马子阳 (Ziyang Ma) 博士
 
 - 机构
   - [上海交通大学](../Institutions/CHN-SJTU_上海交通大学.md) X-LANCE Lab (PhD)
@@ -15,4 +15,6 @@
 | 2023.10.07 | No.10/15 | [LauraGPT](../Models/Speech_LLM/2023.10.07_LauraGPT.md) |
 | 2024.01.14 | No.04/05 | [ELLA-V](../Models/Speech_LLM/2024.01.14_ELLA-V.md) |
 | 2024.06.22 | No.04/06 | [TacoLM](../Models/Speech_LLM/2024.06.22_TacoLM.md) | InterSpeech 2024 |
+| 2024.07.04 | No.18/33 | [FunAudioLLM](../Models/Speech_LLM/2024.07.04_FunAudioLLM.md) |
+| 2024.07.07 | No.10/12 | [CosyVoice](../Models/Speech_LLM/2024.07.07_CosyVoice.md) |
 | 2024.08.05 | No.01/08 | [LSLM](../Models/Speech_LLM/2024.08.05_LSLM.md) |

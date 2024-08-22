@@ -1,4 +1,4 @@
-# 陈谐 (Xie Chen)
+# 陈谐 (Xie Chen) 副教授
 
 - 机构
   - [上海交通大学](../Institutions/CHN-SJTU_上海交通大学.md)

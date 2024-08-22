@@ -1,4 +1,4 @@
-# Yakun Song
+# 宋雅昆 (Yakun Song) 硕士
 
 - 机构
   - [上海交通大学](../Institutions/CHN-SJTU_上海交通大学.md) X-LANCE Lab

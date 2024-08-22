@@ -1,4 +1,4 @@
-# Guanrou Yang
+# 杨冠柔 (Guanrou Yang) 硕士
 
 - 机构
   - [上海交通大学](../Institutions/CHN-SJTU_上海交通大学.md) X-LANCE Lab (PhD)
