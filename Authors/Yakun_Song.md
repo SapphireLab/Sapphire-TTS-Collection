@@ -11,5 +11,5 @@
 | 时间 | 作者序 | 论文 | 发表 |
 |:-:|:-:|---|---|
 | 2024.01.25 | No.01/05 | [ELLA-V](../Models/Speech_LLM/2024.01.14_ELLA-V.md) |
-| | | [TacoLM](../Models/Speech_LLM/2024.06.22_TacoLM.md) |
+| 2024.06.22 | No.01/06 | [TacoLM](../Models/Speech_LLM/2024.06.22_TacoLM.md) | InterSpeech 2024 |
 | 2024.08.05 | No.02/08 | [LSLM](../Models/Speech_LLM/2024.08.05_LSLM.md) |
