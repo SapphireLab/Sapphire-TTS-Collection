@@ -31,3 +31,160 @@
 - 2024.07.09 PR227 新增数据集 [Emilia](../../Datasets/2024.07.07_Emilia.md) 构建代码;
 - 2024.07.15 PR231 新增模型 [JETS](../../Models/E2E/2022.07.01_JETS.md) 复现代码;
 - 2024.08.22 PR265 开放数据集 [Emilia](../../Datasets/2024.07.07_Emilia.md);
+
+## 项目结构
+
+- bins/
+  - codec/
+    - `train.py`
+    - `inference.py`
+  - svc/
+    - `preprocess.py`
+    - `train.py`
+    - `inference.py`
+  - tta/
+    - `preprocess.py`
+    - `train.py`
+    - `inference.py`
+  - tts/
+    - `preprocess.py`
+    - `train.py`
+    - `inference.py`
+  - vocoder/
+    - `preprocess.py`
+    - `train.py`
+    - `inference.py`
+  - `calc_metrics.py`
+- config/*.json (base svc; diffusion svc; AudioLDM, AutoEncoderKL, base, ComoSVC, FACodec, FastSpeech2, JETS, NaturalSpeech2, transformer, tts, VALLE, VITS, VITS-SVC, vocoder)
+- egs
+  - codec/FACodec (train.sh)
+  - datasets/Readme.md
+  - metrics/ (run.sh)
+  - svc/
+    - _template/run.sh
+    - DiffComoSVC/
+    - MultipleContentSVC/
+    - TransformerSVC/
+    - VITS-SVC/
+  - tta/
+    - AudioLDM/
+    - AutoEncoderKL/
+  - tts/
+    - FastSpeech2/
+    - JETS/
+    - NaturalSpeech2/
+    - VALL-E/
+    - VALL-E v2/
+    - VITS/
+  - vocoder/
+    - diffusion/
+      - DiffWave/
+    - gan/
+      - APNet/
+      - BigVGAN/
+      - BigVGAN-Large/
+      - HiFi-GAN/
+      - MelGAN/
+      - NSF-HiFiGAN/
+      - Transform-Enhanced HiFi-GAN (MSSBCQTD)/
+  - visualization/SingVisio/
+- evaluation/
+  - features/
+  - metrics/
+    - energy/
+    - f0/
+    - intelligibility/
+    - similarity/
+    - spectrogram/
+- ~~imgs/~~
+- models/
+  - base/(dataset+sampler+trainer+inference)
+  - codec/(dataset+sampler+trainer+inference)
+    - FACodec/
+    - NS3_Codec/ #TODO ?
+    - SpeechTokenizer/
+  - svc/
+    - base/
+    - comosvc/
+    - diffusion/
+    - transformer/
+    - vits/ 
+  - tta/
+    - LDM/
+    - AutoEncoder/ 
+  - tts/
+    - base/
+    - fastspeech2/
+    - jets/
+    - naturalspeech2/
+    - vall-e/
+    - vall-e-v2/
+    - vits/
+  - vocoder/
+    - autoregressive/
+      - wavenet
+      - wavernn
+    - diffusion/
+      - diffwave
+    - dsp/world/
+    - flow/
+      - waveglow/
+    - gan/
+      - Discriminator/
+        - MPD
+        - MRD
+        - MSD 
+        - MSSBCQTD
+        - MSSTFT
+      - Generator/ 
+        - APNet
+        - BigVGAN
+        - HiFi-GAN
+        - MelGAN
+        - NSF-HiFiGAN
+        - SiFi-GAN
+- modules/
+  - activation function/
+  - anti aliasing/
+  - base/
+  - dac/
+  - diffusion/
+  - distributions/
+  - duration_predictor/
+  - encoder/
+  - flow/
+  - general/
+  - monotonic align/
+  - naturalspeech2/
+  - neural source filter/
+  - norms/
+  - transformer/
+  - vocoder_blocks/
+  - wenet_extractor/ 
+- optimizers/optimizers.py
+- preprocessors/ #TODO
+- pretrained/
+  - BERT-Base-Uncased/
+  - BigVGAN
+  - ContentVec/
+  - DiffWave/
+  - Facebook/BART-Base/
+  - HiFi-GAN/
+  - RawNet3/
+  - RoBERTa-Base/
+  - WavLM/
+  - Wenet/ 
+- processors/
+  - acoustic extractor
+  - audio feature extractor
+  - content extractor
+  - data augment
+  - descriptive text feature extractor
+  - phone extractor
+  - text feature extractor
+- schedulers/schedulers.py
+- text/
+  - lexicon/
+- utils/
+- visualization/SingVisio/
+
