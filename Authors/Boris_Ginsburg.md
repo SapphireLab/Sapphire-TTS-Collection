@@ -9,3 +9,4 @@
 | 时间 | 作者序 | 论文 | 发表 |
 |:-:|:-:|---|---|
 | 2022.06.09 | No.03/05 | [BigVGAN](../Models/TTS3_Vocoder/2022.06.09_BigVGAN.md) | ICLR 2023 |
+| 2024.06.28 | No.08/08 | [BESTOW](../Models/Speech_LLM/2024.06.28_BESTOW.md) | 
