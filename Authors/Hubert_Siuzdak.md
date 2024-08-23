@@ -6,7 +6,8 @@
 
 | 时间 | 作者序 | 论文 | 发表 |
 |:-:|:-:|---|---|
-| 2023.03.01 | No.01 | [Vocos](../Models/TTS3_Vocoder/2023.03.01_Vocos.md) |
+| 2022.03.29 | No.05/08 | [VoiceMe](../Models/E2E/2022.03.29_VoiceMe.md) | InterSpeech 2022 |
+| 2023.03.01 | No.01/01 | [Vocos](../Models/TTS3_Vocoder/2023.03.01_Vocos.md) | ICLR 2024 |
 
 ## 项目列表
 
