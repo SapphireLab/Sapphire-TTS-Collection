@@ -1,4 +1,4 @@
-# Silvan Mertes
+# Ruben Schlagowski
 
 - 机构
   - [德国奥格斯堡大学](../Institutions/DEU-Augsburg_University_德国奥格斯堡大学.md)
@@ -11,5 +11,4 @@
 
 | 时间 | 作者序 | 论文 | 发表 |
 |:-:|:-:|---|---|
-| 2022.03.29 | No.02/08 | [VoiceMe](../Models/E2E/2022.03.29_VoiceMe.md) | InterSpeech 2022 |
-| 2024.08.22 | No.01/06 | [VoiceX](../Models/E2E/2024.08.22_VoiceX.md) | 
+| 2024.08.22 | No.05/06 | [VoiceX](../Models/E2E/2024.08.22_VoiceX.md) | 
