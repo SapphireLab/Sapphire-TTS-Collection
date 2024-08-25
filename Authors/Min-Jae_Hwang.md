@@ -8,4 +8,4 @@
 
 | 时间 | 作者序 | 论文 | 发表 |
 |:-:|:-:|---|---|
-| 2022.11.01 | No.05/06 | [HierSpeech](../Models/_tmp/2022.11.01_HierSpeech.md) |
+| 2022.11.01 | No.05/06 | [HierSpeech](../Models/E2E/2022.11.01_HierSpeech.md) |
