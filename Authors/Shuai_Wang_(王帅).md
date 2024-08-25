@@ -1,8 +1,8 @@
 # Shuai Wang
 
 - 机构
+  - Shenzhen Research Institute of Big Data
 - 邮箱
-  
   
 ## 论文列表
 
