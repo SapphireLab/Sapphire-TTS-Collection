@@ -10,3 +10,4 @@
 |:-:|:-:|---|---|
 | 2024.06.04 | No.05/06 | [SimpleSpeech](../Models/Diffusion/2024.06.04_SimpleSpeech.md) | InterSpeech 2024
 | 2024.07.11 | No.10/12 | [MELLE](../Models/Speech_LLM/2024.07.11_MELLE.md) |
+| 2024.08.25 | No.07/08 | [SimpleSpeech2](../Models/Diffusion/2024.08.25_SimpleSpeech2.md) |
