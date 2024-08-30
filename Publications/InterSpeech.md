@@ -120,5 +120,6 @@
 - 2024.06.30 [FLY-TTS](../Models/E2E/2024.06.30_FLY-TTS.md)
 - 2024.07.01 [LightweightTTS](../Models/_tmp/2024.07.01_LightweightTTS.md)
 - 2024.07.19 [MSceneSpeech](../Datasets/2024.07.19_MSceneSpeech.md)
+- 2024.08.27 [VoiceTailor](../Models/Diffusion/2024.08.27_VoiceTailor.md)
 
 ---
