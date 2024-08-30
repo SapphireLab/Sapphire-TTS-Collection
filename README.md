@@ -39,3 +39,9 @@
 ||MeloTTS||
 ||Piper||
 ||StableTTS|| -->
+
+## 开源项目·Speech Interaction
+
+|时间|名称|仓库|演示|论文|源码阅读|
+|---|---|:-:|---|:-:|:-:|
+|2024.08.29|Mini-Omni|[Github](https://github.com/gpt-omni/mini-omni)<br>![Star](https://img.shields.io/github/stars/gpt-omni/mini-omni)<br>[HuggingFace](https://huggingface.co/gpt-omni/mini-omni)<br>[HF Mirror](https://hf-mirror.com/gpt-omni/mini-omni)||[ArXiv](https://arxiv.org/abs/2408.16725)|
