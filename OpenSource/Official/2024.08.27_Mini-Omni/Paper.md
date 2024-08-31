@@ -50,55 +50,59 @@
 ## 1.Introduction: 引言
 
 > Recent developments in large language models have progressed rapidly, with models becoming increasingly powerful, such as off-the-shelf Llama 3.1 \citep{llama3.1}, Mixtral \citep{mixtral}, Qwen-2 \citep{qwen2}, and the well-known GPT-4. 
-> As an extension of their capabilities, language models are beginning to master understanding other modalities, exemplified by LLaVA \citep{llava}, Qwen2-Audio \citep{qwen2audio} and Video-llama \citep{videollama}. 
+> As an extension of their capabilities, language models are beginning to master understanding other modalities, exemplified by LLaVA \citep{llava}, [Qwen2-Audio](../../../Models/Speech_LLM/2024.07.15_Qwen2-Audio.md) and Video-llama \citep{videollama}. 
 > Despite their strength in specific tasks, a significant gap remains that hinders further integration of large language models into daily application: real-time voice interaction capability. 
 > GPT-4o \citep{gpt4}, introduced by OpenAI, is the first model to feature real-time multimodal speech interaction capabilities. 
 > It can understand and engage with vision, audio, and text while enabling real-time speech conversations, although it remains closed-source. 
 > Other models typically adopt two approaches to incorporate speech capabilities. 
 > The first is a cascade method, where the language model generates text, followed by a text-to-speech (TTS) model for audio synthesis. 
 > This approach introduces significant latency due to the time required for text generation, severely impacting user experience. 
-> The second, an end-to-end method like SpeechGPT \citep{speechgpt}, generates text before continuing to generate audio. 
+> The second, an end-to-end method like [SpeechGPT](../../../Models/Speech_LLM/2023.05.18_SpeechGPT.md), generates text before continuing to generate audio. 
 > However, this still requires waiting for text generation. 
 > Large language models need real end-to-end speech output capabilities to provide real-time feedback.
 >
-> Enhancing models with speech output capabilities is a challenging task, primarily due to four factors: (1) \textbf{Complexity of Audio Reasoning}: Our experiments indicate that direct training for audio modality reasoning is highly challenging, often resulting in incoherent outputs from the model. (2) \textbf{Model Complexity}: Incorporating additional modules for speech input and output increases the overall complexity. (3) \textbf{Difficulty in Modality Alignment}: The reasoning abilities developed for text are difficult to transfer to the audio domain. (4) \textbf{Resource Demands}: Adapting a model's text capabilities to the speech modality requires converting all data labels into audio and retraining, significantly increasing resource consumption.
+> Enhancing models with speech output capabilities is a challenging task, primarily due to four factors: 
+> (1) Complexity of Audio Reasoning: Our experiments indicate that direct training for audio modality reasoning is highly challenging, often resulting in incoherent outputs from the model. 
+> (2) Model Complexity: Incorporating additional modules for speech input and output increases the overall complexity. 
+> (3) Difficulty in Modality Alignment: The reasoning abilities developed for text are difficult to transfer to the audio domain. 
+> (4) Resource Demands: Adapting a model's text capabilities to the speech modality requires converting all data labels into audio and retraining, significantly increasing resource consumption.
 >
-> In this paper, we propose \textbf{Mini-Omni}, the first open-source multi-model large language model with real-time conversational capabilities, featuring fully end-to-end speech input and output abilities. 
+> In this paper, we propose ***Mini-Omni***, the first open-source multi-model large language model with real-time conversational capabilities, featuring fully end-to-end speech input and output abilities. 
 > It also includes various other audio-to-text functionalities such as Automatic Speech Recognition (ASR). 
 > We adapt currently available off-the-shelf methods for discretizing speech tokens and employ the simplest model architecture, making it easy for our model and approach to be adapted by other researchers. 
 > Direct audio reasoning poses significant challenges; however, our approach successfully addresses this using only a 0.5B model and a limited amount of synthesized audio data. 
 > Importantly, our training framework achieves this without heavy reliance on extensive model capabilities or large volumes of data.
 >
 > To leverage and preserve the original capabilities of the language model, we propose a parallel generation paradigm in which the transformer simultaneously produces audio and text tokens. 
-> Subsequently, we observed a minimal impact of the audio modality on text capabilities and further introduced \textbf{batch-based parallel generation}, which significantly enhances the model’s reasoning ability during streaming audio output. 
+> Subsequently, we observed a minimal impact of the audio modality on text capabilities and further introduced **batch-based parallel generation**, which significantly enhances the model’s reasoning ability during streaming audio output. 
 > As a poinerr, we opted not to sacrifice audio quality for a simpler and lower bitrate audio encoder, in order to reduce the complexity of audio inference in the model. 
 > However, to ensure audio quality, we selected SNAC \citep{snac}, a music-grade encoder features 8 layers of codebooks and processes hundreds of tokens per second. 
-> Innovatively, we applied \textbf{text-instructed delayed parallel generation} to address the issue of long SNAC codebook sequences. 
+> Innovatively, we applied **text-instructed delayed parallel generation** to address the issue of long SNAC codebook sequences. 
 > Experiments show that the audio output quality is on par with common TTS systems.
 >
 > We also propose a method that requires minimal training and modification of the original model, enabling other works to rapidly develop their own speech capabilities. 
-> We refer to this approach as \textbf{"Any Model Can Talk"}, designed to achieve speech output using a limited amount of additional data. 
+> We refer to this approach as **"Any Model Can Talk"**, designed to achieve speech output using a limited amount of additional data. 
 > The approach extend speech capabilities through additional adapters and pre-trained models, fine-tuning with a small amount of synthesized data. 
 > This is combined with the aforementioned parallel modeling approach to enable streaming output in the new modality while preserving the original model’s reasoning capabilities. 
 >
-> To evaluate the capabilities of \textbf{Mini-Omni}, we first assessed its performance on traditional text-to-speech multi-modal tasks, including text-based question answering (textQA), automatic speech recognition (ASR), text-to-speech response, and speech-based question answering (speechQA). 
+> To evaluate the capabilities of ***Mini-Omni***, we first assessed its performance on traditional text-to-speech multi-modal tasks, including text-based question answering (textQA), automatic speech recognition (ASR), text-to-speech response, and speech-based question answering (speechQA). 
 > The model demonstrated strong proficiency in these fundamental tasks. 
 > Additionally, we conduct a series of experiments to investigate the impact on the original model's capabilities and assess the effectiveness and variations of our inference method. 
 > Preliminary experiments demonstrate that batch parallel inference preserves the model’s original capabilities. 
 > We will conduct further experiments and provide additional details in due course.
 >
 > Lastly, we observed that most open-source QA datasets contain mixed code or overly lengthy text, rendering them unsuitable for speech model. 
-> To overcome this limitation, we introduce the \textbf{VoiceAssistant-400K} dataset, comprising over 400,000 entries specifically generated by GPT-4o for speech assistant supervised fine-tuning (SFT).
+> To overcome this limitation, we introduce the **VoiceAssistant-400K** dataset, comprising over 400,000 entries specifically generated by GPT-4o for speech assistant supervised fine-tuning (SFT).
 >
 > In summary, we make the following contributions:
 >
-> - We introduce \textbf{Mini-Omni}, the first open-source end-to-end multimodal large model with audio input and audio streaming output capabilities. 
+> - We introduce ***Mini-Omni***, the first open-source end-to-end multimodal large model with audio input and audio streaming output capabilities. 
 > We propose a unique text-instruct parallel generation method that enables speech inference outputs aligned with textual capabilities, achieved with minimal data. 
 > We further enhance this with delayed parallelism, accelerating audio inference speed. 
-> - We introduce "\textbf{Any Model Can Talk}", an innovative approach that enhances performance without altering the architecture of large models by focusing on training and inference. 
+> - We introduce **"Any Model Can Talk"**, an innovative approach that enhances performance without altering the architecture of large models by focusing on training and inference. 
 > Our method employs a three-phase training process for speech-to-text and text-to-speech adapters, including annealing and SFT. 
 > Our method involves minimal training and modification of the original model, aiming to provide a reference for incorporating interaction capabilities into other models.
-> - We identified shortcomings in existing open-source QA datasets when training audio assistants and proposed a dedicated dataset for speech model outputs, called\textbf{ VoiceAssistant-400K}. 
+> - We identified shortcomings in existing open-source QA datasets when training audio assistants and proposed a dedicated dataset for speech model outputs, called ** VoiceAssistant-400K**.
 > This dataset, synthesized using GPT-4o, can be used to fine-tune models to develop the tone of a voice assistant.
 
 ## 2.Related Works: 相关工作
@@ -107,8 +111,8 @@
 
 > Recently, researchers have been increasingly focused on advancing unified models for cross-modal understanding. 
 > These approaches typically employ a well-pretrained neural network as the encoder for relevant modalities, using a lightweight adapter to align the encoder's output with the text input of language model. 
-> Classical works such as LLaVA \citep{llava}, Flamingo \citep{flamingo} and BLIP \citep{blip} are used for visual understanding, while in the audio domain, models like Whisper \citep{whisper} and Beats \citep{beats} are commonly utilized as encoders for semantic and acoustic features. 
-> In Llama 3.1, Whisper is employed, while SpeechVerse \citep{speechverse} leverages WavLM \citep{wavllm}; SALMONN \citep{salmonn}, combine Whisper and Beats to extract features. 
+> Classical works such as LLaVA \citep{llava}, Flamingo \citep{flamingo} and BLIP \citep{blip} are used for visual understanding, while in the audio domain, models like [Whisper](../../../Models/Speech_LLM/2022.12.06_Whisper.md) and Beats \citep{beats} are commonly utilized as encoders for semantic and acoustic features. 
+> In Llama 3.1, Whisper is employed, while SpeechVerse \citep{speechverse} leverages [WavLM](../../../Models/Speech_Representaion/2021.10.26_WavLM.md); [SALMONN](../../../Models/Speech_LLM/2023.10.20_SALMONN.md), combine Whisper and Beats to extract features. 
 > Such works are often constrained to producing output in the text modality.
 
 ### Audio Language Modeling 
@@ -116,21 +120,21 @@
 > Recently, an increasing number of studies have employed audio tokenization to bridge the gap between audio and text. 
 > Audio tokenization converts continuous audio signals into discrete audio tokens, enabling large language models to perform inference and even cross-modal interactions. 
 > As a result, a variety of speech-text tasks, such as ASR, TTS, music understanding and generation, and sound editing, can be accomplished. 
-> MegaTTS \citep{megatts} utilized audio codecs for speech synthesis, while efforts like InstructTTS \citep{instructtts}, SpearTTS \citep{spearTTS}, and Voicebox \citep{voicebox} have further explored optimizations in decoding methods and conditioning techniques, employing Diffusion as the converter from tokens to audio.
+> [Mega-TTS](../../../Models/Speech_LLM/2023.06.06_Mega-TTS.md) utilized audio codecs for speech synthesis, while efforts like [InstructTTS](../../../Models/Prompt/2023.01.31_InstructTTS.md), [SPEAR-TTS](../../../Models/Speech_LLM/2023.02.07_SPEAR-TTS.md), and [Voicebox](../../../Models/Speech_LLM/2023.06.23_VoiceBox.md) have further explored optimizations in decoding methods and conditioning techniques, employing Diffusion as the converter from tokens to audio.
 
 ### Real-Time Human-Machine Interaction Models 
 
 > Since the introduction of GPT-4o \citep{gpt4}, real-time conversational models have achieved unprecedented results, providing near-instantaneous voice feedback to user inputs, marking a significant milestone for the next generation of multi-modal large models. 
 > However, the technical implementations remain proprietary. 
 > Models with real-time interaction capabilities are currently scarce. 
-> SpeechGPT \citep{speechgpt} is an early end-to-end speech interaction model; however, it still suffers from latency due to the Audio-Text-Text-Audio(A-T-T-A) process, similar to Spectron \citep{Spectron}. 
-> LauraGPT \citep{lauragpt} also employs a similar approach but not for voice conversation scenario. 
-> VITA \citep{vita} and Qwen-audio2 \citep{qwen2audio} are two models that support voice input, but they output text and rely on external TTS systems for speech synthesis. \textbf{Mini-Omni} is a fully end-to-end speech-to-speech conversational model. 
+> [SpeechGPT](../../../Models/Speech_LLM/2023.05.18_SpeechGPT.md) is an early end-to-end speech interaction model; however, it still suffers from latency due to the Audio-Text-Text-Audio(A-T-T-A) process, similar to Spectron \citep{Spectron}. 
+> [LauraGPT](../../../Models/Speech_LLM/2023.10.07_LauraGPT.md) also employs a similar approach but not for voice conversation scenario. 
+> [VITA](../2024.08.09_VITA/Paper.md) and [Qwen2-Audio](../../../Models/Speech_LLM/2024.07.15_Qwen2-Audio.md) are two models that support voice input, but they output text and rely on external TTS systems for speech synthesis. ***Mini-Omni*** is a fully end-to-end speech-to-speech conversational model. 
 > Through our exploration, we have identified the biggest challenge in advancing this field: the logical inconsistency in reasoning when only the audio modality is present, which we will address in the following chapter.
 
 ## 3.Methodology: 方法
 
-> Our innovation stems from existing methods such as SpeechGPT \citep{speechgpt} and Spectron \citep{Spectron} utilize the A-T-T-A approach, which mitigates the challenges of direct audio learning by guiding the speech generation process through text. 
+> Our innovation stems from existing methods such as [SpeechGPT](../../../Models/Speech_LLM/2023.05.18_SpeechGPT.md) and Spectron \citep{Spectron} utilize the A-T-T-A approach, which mitigates the challenges of direct audio learning by guiding the speech generation process through text. 
 > However, generating text first and then audio is suboptimal for real-time dialogue scenarios. 
 > To address this, we propose a novel method for simultaneous text and audio generation. 
 > This approach hypothesizes that text outputs have higher information density, allowing for the same response with fewer tokens. 
@@ -160,7 +164,7 @@ $$
 #### Audio Generation with text instruction
 
 > Language models have undergone substantial advancements, demonstrating exceptional reasoning capabilities within the text modality. 
-> In response, \textbf{Mini-Omni} has been restructured to transfer these reasoning abilities to streaming audio output through a text-audio parallel decoding approach. 
+> In response, ***Mini-Omni*** has been restructured to transfer these reasoning abilities to streaming audio output through a text-audio parallel decoding approach. 
 > This method simultaneously outputs both audio and text tokens, with the audio generated via text-to-speech synthesis, ensuring real-time delivery while leveraging the text-based reasoning strengths. 
 > To align with the inputs of large models, all sequences generated in parallel are summed before producing the next token, as illustrated in Figure 1. 
 > This approach enables the model to achieve real-time voice output in chat scenarios with minimal first token delay.
@@ -196,18 +200,26 @@ $$
 #### Audio Encoding 
 
 > The audio input primarily focuses on feature extraction from the input audio, with options including Hubert or a separately pretrained audio encoder. 
-> Given our focus on speech input, Whisper \citep{whisper} and Qwen2-audio \citep{qwen2audio} also demonstrate effective performance for general audio tasks. 
+> Given our focus on speech input, [Whisper](../../../Models/Speech_LLM/2022.12.06_Whisper.md) and [Qwen2-Audio](../../../Models/Speech_LLM/2024.07.15_Qwen2-Audio.md) also demonstrate effective performance for general audio tasks. 
 > For audio output, selecting audio tokens with a multi-codebook approach better captures audio details. 
 > We experimented with flattening for audio token modeling, but it resulted in excessively long tokens, which are detrimental to streaming and lead to unstable learning. 
 > Instead, parallel decoding, inspired by MusicGen \citep{MusicGEN}, employs a delay pattern combined with text conditions, as illustrated in Figure 2.
 
 #### Three-Stage Training
 
-> Our training methodology is divided into three distinct stages: \textbf{(1) Modality Alignment.} The goal of this stage is to enhance the text model's ability to understand and generate speech. 
-> The core model of \textbf{Mini-Omni} is entirely frozen, with gradients allowed only in two adapters. 
-> During this stage, we use data from speech recognition and speech synthesis to train the model's speech recognition and synthesis capabilities. \textbf{(2) Adaption Training.} Once the new modality is aligned with the text model's input, the adapters are frozen. 
+> Our training methodology is divided into three distinct stages: 
+> (1) Modality Alignment.
+> The goal of this stage is to enhance the text model's ability to understand and generate speech. 
+> The core model of ***Mini-Omni*** is entirely frozen, with gradients allowed only in two adapters. 
+> During this stage, we use data from speech recognition and speech synthesis to train the model's speech recognition and synthesis capabilities. 
+> 
+> (2) Adaption Training. 
+> Once the new modality is aligned with the text model's input, the adapters are frozen. 
 > In this stage, we focus solely on training the model's text capabilities when given audio inputs, as audio output is simply synthesized from text. 
-> The model is trained using data from speech recognition, spoken question answering, and text response tasks. \textbf{(3) Multi-modal Finetuning.} In the final stage, the entire model is fine-tuned using comprehensive data. 
+> The model is trained using data from speech recognition, spoken question answering, and text response tasks. 
+> 
+> (3) Multi-modal Finetuning. 
+> In the final stage, the entire model is fine-tuned using comprehensive data. 
 > At this point, all model weights are unfrozen and trained. 
 > Since the primary modality alignment tasks are handled during adapter training, the original model's capabilities are maximally preserved.
 
@@ -217,13 +229,13 @@ $$
 > Therefore, we briefly outline the organization of model inputs here. 
 > The model can accept either text or audio inputs, which are placed in the corresponding modality sequences. 
 > For audio inputs, the input tokens and Whisper features are transformed into tensors of the same dimension via adapters and then concatenated. 
-> Depending on the task, we place the <answer> special token in different positions to guide the model's output, achieving multi-modal output. 
+> Depending on the task, we place the `<answer>` special token in different positions to guide the model's output, achieving multi-modal output. 
 > The organization of some tasks is illustrated in Figure 4. 
 > Before being fed into the model, all sequences are summed and averaged to integrate features.
 
 ## 4.Experiments: 实验
 
-> This section presents the foundational capability test results for \textbf{Mini-Omni}. 
+> This section presents the foundational capability test results for ***Mini-Omni***. 
 > We first describe the training datasets, data processing methods, and hyperparameters. 
 > We then evaluate the model's performance on core tasks like speech recognition and provide several use case examples. 
 > We will include all relevant experiments in the next version as soon as possible.
@@ -253,23 +265,23 @@ $$
 ### Experiments Results
 
 > We first evaluated the model's performance on ASR tasks to assess its speech understanding capabilities. 
-> Basic experiments on speech recognition capabilities were conducted using the four test sets from LibriSpeech \citep{librispeech}: test-clean, test-other, dev-clean, and dev-other. 
-> Results are presented in Table 2, where we compare the accuracy of our adopted speech recognition systems, wav2vec2 \citep{wav2vec} and Whisper-small, as well as the VITA \citep{vita}. 
-> The findings indicate that while Mini-Omni's speech recognition performance slightly lags behind Whisper-small’s \citep{whisper} decoder, it still achieves an excellent level of audio comprehension.
+> Basic experiments on speech recognition capabilities were conducted using the four test sets from [LibriSpeech](../../../Datasets/2015.04.19_LibriSpeech.md): test-clean, test-other, dev-clean, and dev-other. 
+> Results are presented in Table 2, where we compare the accuracy of our adopted speech recognition systems, [wav2vec2](../../../Models/Speech_Representaion/2020.06.20_Wav2Vec2.0.md) and Whisper-small, as well as the [VITA](../2024.08.09_VITA/Paper.md). 
+> The findings indicate that while Mini-Omni's speech recognition performance slightly lags behind [Whisper](../../../Models/Speech_LLM/2022.12.06_Whisper.md)-small’s decoder, it still achieves an excellent level of audio comprehension.
 
 ### Case Study
 
-> Here, we present several cases to demonstrate \textbf{Mini-Omni}'s capabilities in speech understanding and reasoning. 
+> Here, we present several cases to demonstrate ***Mini-Omni***'s capabilities in speech understanding and reasoning. 
 > These examples reveal that speech-based reasoning is somewhat weaker compared to text-based reasoning, highlighting the necessity for batch generation. 
 > For more impressive examples, please refer to https://github.com/gpt-omni/mini-omni.
 
 ## 6.Conclusions: 结论
 
-> In this work, we introduce \textbf{Mini-Omni}, the first multi-modal model with direct speech-to-speech capabilities. 
+> In this work, we introduce ***Mini-Omni***, the first multi-modal model with direct speech-to-speech capabilities. 
 > Building on previous approaches that use text-guided speech generation, we propose a parallel text and audio generation method that leverages minimal additional data and modules to rapidly transfer a language model's text capabilities to the audio modality, supporting streaming output interactions with high model and data efficiency. 
 > We explore both text-instructed streaming parallel generation and batch parallel generation, which further enhance the model's reasoning ability and efficiency. 
 > Our approach successfully addresses challenging real-time dialogue tasks using a model with only 0.5 billion parameters. 
-> We have developed the \textbf{Any Model Can Talk} method, based on a pre and post-adapter design, to facilitate rapid speech adaptation of other models with minimal additional training. 
+> We have developed the **Any Model Can Talk** method, based on a pre and post-adapter design, to facilitate rapid speech adaptation of other models with minimal additional training. 
 > Additionally, we have released the VoiceAssistant-400K dataset for fine-tuning speech output, designed to minimize the generation of code symbols and assist humans in a voice assistant-like manner. 
 > All our data, inference, and training codes will be progressively open-sourced at https://github.com/gpt-omni/mini-omni. 
 > We hope to provide guidance and support for other work focused on language model speech interaction.
