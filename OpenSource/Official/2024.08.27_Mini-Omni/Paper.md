@@ -64,6 +64,18 @@
 
 ## 2.Related Works: 相关工作
 
+### Multimodal Understanding
+
+> Recently, researchers have been increasingly focused on advancing unified models for cross-modal understanding. These approaches typically employ a well-pretrained neural network as the encoder for relevant modalities, using a lightweight adapter to align the encoder's output with the text input of language model. Classical works such as LLaVA \citep{llava}, Flamingo \citep{flamingo} and BLIP \citep{blip} are used for visual understanding, while in the audio domain, models like Whisper \citep{whisper} and Beats \citep{beats} are commonly utilized as encoders for semantic and acoustic features. In Llama 3.1, Whisper is employed, while SpeechVerse \citep{speechverse} leverages WavLM \citep{wavllm}; SALMONN \citep{salmonn}, combine Whisper and Beats to extract features. Such works are often constrained to producing output in the text modality.
+
+### Audio Language Modeling 
+
+> Recently, an increasing number of studies have employed audio tokenization to bridge the gap between audio and text. Audio tokenization converts continuous audio signals into discrete audio tokens, enabling large language models to perform inference and even cross-modal interactions. As a result, a variety of speech-text tasks, such as ASR, TTS, music understanding and generation, and sound editing, can be accomplished. MegaTTS \citep{megatts} utilized audio codecs for speech synthesis, while efforts like InstructTTS \citep{instructtts}, SpearTTS \citep{spearTTS}, and Voicebox \citep{voicebox} have further explored optimizations in decoding methods and conditioning techniques, employing Diffusion as the converter from tokens to audio.
+
+### Real-Time Human-Machine Interaction Models 
+
+> Since the introduction of GPT-4o \citep{gpt4}, real-time conversational models have achieved unprecedented results, providing near-instantaneous voice feedback to user inputs, marking a significant milestone for the next generation of multi-modal large models. However, the technical implementations remain proprietary. Models with real-time interaction capabilities are currently scarce. SpeechGPT \citep{speechgpt} is an early end-to-end speech interaction model; however, it still suffers from latency due to the Audio-Text-Text-Audio(A-T-T-A) process, similar to Spectron \citep{Spectron}. LauraGPT \citep{lauragpt} also employs a similar approach but not for voice conversation scenario. VITA \citep{vita} and Qwen-audio2 \citep{qwen2audio} are two models that support voice input, but they output text and rely on external TTS systems for speech synthesis. \textbf{Mini-Omni} is a fully end-to-end speech-to-speech conversational model. Through our exploration, we have identified the biggest challenge in advancing this field: the logical inconsistency in reasoning when only the audio modality is present, which we will address in the following chapter.
+
 ## 3.Methodology: 方法
 
 ## 4.Experiments: 实验
