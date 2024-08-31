@@ -120,6 +120,17 @@ $$
 
 ## 4.Experiments: 实验
 
+> This section presents the foundational capability test results for \textbf{Mini-Omni}. We first describe the training datasets, data processing methods, and hyperparameters. We then evaluate the model's performance on core tasks like speech recognition and provide several use case examples. 
+> We will include all relevant experiments in the next version as soon as possible.
+
+### 4.1.Datasets
+
+> To establish foundational speech capabilities, we trained the model using three speech recognition datasets totaling approximately 8,000 hours, focusing on speech understanding and synthesis. For text modality, we incorporated 2 million data points from the Open-Orca \citep{openorca} dataset and integrated them with other modalities to preserve textual accuracy. Moss's SFT dataset \citep{moss} was utilized with zero-shot TTS to synthesize 1.5 million speech QA pairs. To avoid unsuitable code and symbolic outputs, we created the VoiceAssistant-400K dataset with GPT-4o. Datasets are detailed in Table 1. Stage 1 involves ASR data for training speech adapters. Stage 2 uses TextQA and AudioQA for audio/text input and text response training. Stage 3 focuses on multimodal interaction using the audio modality of AudioQA. Final stage training includes annealing and fine-tuning with Voice QA.
+
+### 4.2.Training Parameters
+
+> Our model is trained on 8 A100 GPUs, utilizing a cosine annealing learning rate scheduler with a minimum learning rate of 4e-6 and a maximum learning rate of 4e-4. Each training epoch consists of 40,000 steps, with batch size 192 for each step. The base language model employs Qwen2-0.5B \citep{qwen2}, a transformer architecture with 24 blocks and an internal dimension of 896. The speech encoder uses the Whisper-small encoder, with ASR adapter connected via two-layer MLP, and the TTS adapter extends the original model by adding 6 additional transformer blocks. During fine-tuning, we use learn rate from 4e-6 to 5e-5.
+
 ## 5.Results: 结果
 
 ## 6.Conclusions: 结论
