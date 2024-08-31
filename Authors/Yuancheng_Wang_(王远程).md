@@ -13,6 +13,6 @@
 | 时间 | 作者序 | 论文 | 发表 |
 |:-:|:-:|---|---|
 | | | AUDIT | NeurIPS2023 | 
-| 2023.12.15 | No.04/17 | [Amphion](../Toolkits/Amphion/2023.12.15_Amphion.md) |
+| 2023.12.15 | No.04/17 | [Amphion](../OpenSource/Official/2023.12.15_Amphion/Paper.md) |
 | 2024.03.05 | No.02/19 | [NaturalSpeech3](../Models/Diffusion/2024.03.05_NaturalSpeech3.md) | ICML 2024 |
 | 2024.04.04 | No.06/11 | [RALL-E](../Models/Speech_LLM/2024.04.04_RALL-E.md) |

@@ -12,4 +12,4 @@
 
 | 时间 | 作者序 | 论文 | 发表 |
 |:-:|:-:|---|---|
-| 2023.12.15 | No.03/17 | [Amphion](../Toolkits/Amphion/2023.12.15_Amphion.md) |
+| 2023.12.15 | No.03/17 | [Amphion](../OpenSource/Official/2023.12.15_Amphion/Paper.md) |
