@@ -133,6 +133,14 @@ $$
 
 ## 5.Results: 结果
 
+### Experiments Results
+
+> We first evaluated the model's performance on ASR tasks to assess its speech understanding capabilities. Basic experiments on speech recognition capabilities were conducted using the four test sets from LibriSpeech \citep{librispeech}: test-clean, test-other, dev-clean, and dev-other. Results are presented in Table 2, where we compare the accuracy of our adopted speech recognition systems, wav2vec2 \citep{wav2vec} and Whisper-small, as well as the VITA \citep{vita}. The findings indicate that while Mini-Omni's speech recognition performance slightly lags behind Whisper-small’s \citep{whisper} decoder, it still achieves an excellent level of audio comprehension.
+
+### Case Study
+
+> Here, we present several cases to demonstrate \textbf{Mini-Omni}'s capabilities in speech understanding and reasoning. These examples reveal that speech-based reasoning is somewhat weaker compared to text-based reasoning, highlighting the necessity for batch generation. For more impressive examples, please refer to https://github.com/gpt-omni/mini-omni.
+
 ## 6.Conclusions: 结论
 
 > In this work, we introduce \textbf{Mini-Omni}, the first multi-modal model with direct speech-to-speech capabilities. Building on previous approaches that use text-guided speech generation, we propose a parallel text and audio generation method that leverages minimal additional data and modules to rapidly transfer a language model's text capabilities to the audio modality, supporting streaming output interactions with high model and data efficiency. We explore both text-instructed streaming parallel generation and batch parallel generation, which further enhance the model's reasoning ability and efficiency. Our approach successfully addresses challenging real-time dialogue tasks using a model with only 0.5 billion parameters. We have developed the \textbf{Any Model Can Talk} method, based on a pre and post-adapter design, to facilitate rapid speech adaptation of other models with minimal additional training. Additionally, we have released the VoiceAssistant-400K dataset for fine-tuning speech output, designed to minimize the generation of code symbols and assist humans in a voice assistant-like manner. All our data, inference, and training codes will be progressively open-sourced at https://github.com/gpt-omni/mini-omni. We hope to provide guidance and support for other work focused on language model speech interaction.
