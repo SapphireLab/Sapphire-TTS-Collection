@@ -38,7 +38,7 @@
     - [ ] silero_vad.onnx
   - [ ] `snac_utils.py`
   - [ ] `vad.py`
-- [ ] webui
+- [ ] webui/
   - [ ] `omni_gradio.py`
   - [ ] `omni_streamlit.py`
 - [x] .gitignore
@@ -51,3 +51,45 @@
 </details>
 
 --- 
+
+通过 `requirements.txt` 文件可知依赖的其他项目:
+
+| 项目 | 版本 | 用途 |
+| --- | --- | --- |
+| PyTorch/TorchVision/TorchAudio | 2.3.1 |
+| SoundFile | 0.12.1 | 音频处理 |
+| Librosa | 0.10.2post1 | 音频处理 |
+| PyDub | 0.25.1 | 音频处理 |
+| Gradio | 4.42.0 | 用于创建交互式界面 `webui/omni_gradio.py`|
+| Streamlit | 1.37.1 | 用于创建交互式界面 `webui/omni_streamlit.py`|
+| Fire | | 用于命令行接口 |
+| Flask | 3.0.3 | 用于构建服务端 `server.py`|
+| OpenAI-Whisper |
+| Tokenizers | 0.19.1 |
+| OnnxRuntime | 1.19.0 |
+| [Lightning-AI/litgpt](https://github.com/Lightning-AI/litgpt) | v0.4.3 (非最新) | |
+| [hubertsiuzdak/snac](https://github.com/hubertsiuzdak/snac/) | v1.2.0 (非最新) | |
+
+---
+
+以 `inference.py` 为入口进行分析.
+
+整个文件有 667 行. 具有 14 个函数和一个类, 列出如下:
+
+| 函数名 | 入参 | 功能 |
+| --- | --- | --- |
+| get_input_ids_TA() | Text, Text Tokenizer | 
+| get_input_ids_TT() | Text, Text_Tokenizer |
+| get_input_ids_whisper() | Mel_Spec, Length, WhisperModel |
+| get_input_ids_whisper_ATBatch() | Mel_Spec, Length, WhisperModel |
+| load_audio() | Path | 使用 whisper.load_audio() 并返回对数梅尔频谱 |
+| A1_A2() | fabric, Audio Feature, Input_IDs, Length, Model, Text Tokenizer, Step, SNAC model, Output Dir | 1. 调用 `generate_AA()`<br> 2. 调用 SNAC 模型解码 + Text Tokenizer 解码 | 
+| A1_A2_batch() | fabric, Audio Feature, Input_IDs, Length, Model, Text Tokenizer, Step, SNAC model, Output Dir | 1. 调用 `generate_TA_batch()` <br> 2. 调用 SNAC 模型解码 + Text Tokenizer 解码 |
+| A1_T1() | fabric, Audio Feature, Input_IDs, Length, Model, Text Tokenizer | 1. 调用 `generate_ASR()` <br> 2. 调用 Text Tokenizer 解码 |
+| A1_T2() | fabric, Audio Feature, Input_IDs, Length, Model, Text Tokenizer | 1. 调用 `generate_AT()` <br> 2. 调用 Text Tokenizer 解码 |
+| T1_A2() | fabric, Input_IDs, Model, Text Tokenizer, Step, SNAC model, Output Dir | 1. 调用 `generate_TA()` <br> 2. 调用 SNAC 模型解码 + Text Tokenizer 解码 |
+| T1_T2() | fabric, Input_IDs, Model, Text Tokenizer, Step | 1. 调用 `generate_TT()` <br> 2. 调用 Text Tokenizer 解码 |
+| load_model() | Checkpoint Path | 加载 SNAC_24KHz 模型, Whipser-Small 模型, Tokenizer, Lightning.Fabric, GPT |
+| download_model() | Checkpoint Path | 从 HuggingFace 的 GPT-Omni/Mini-Omni 仓库下载模型 |
+| test_infer() | | 测试以上所有函数的功能. 包括 A1A2, ASR, T1A2, AA-Batch, T1T2, AT|
+| OmniInference 类 | Checkpoint Path | 调用 `load_model()`, 创建 `run_AT_batch_stream()` 函数 |
