@@ -2,7 +2,7 @@
 
 - 机构
   - [Concordia University](../Institutions/CAN-Concordia_University_加拿大康考迪亚大学.md)
-  - [Mila-Quebec](../Institutions/CAN-Mila-Quebec.md)
+  - [Mila-Quebec](../Institutions/CAN-MILA-Quebec.md)
 - 链接
 
 ## 论文列表

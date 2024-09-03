@@ -2,7 +2,7 @@
 
 - 机构
   - [Ude_Montréal](../Institutions/CAN-Université_de_Montréal_加拿大蒙特利尔大学.md)
-  - [Mila-Quebec](../Institutions/CAN-Mila-Quebec.md)
+  - [Mila-Quebec](../Institutions/CAN-MILA-Quebec.md)
 - 链接
 
 ## 论文列表
