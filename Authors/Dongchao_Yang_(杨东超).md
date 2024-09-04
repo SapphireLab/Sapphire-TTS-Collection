@@ -12,11 +12,12 @@
 
 ## 论文列表
 
-| 时间 | 作者序 | 论文 | 发表 |
-|:-:|:-:|---|---|
-| 2023.01.31 | No.01/05 | [InstructTTS](../Models/Prompt/2023.01.31_InstructTTS.md) |
-| 2023.09.05 | No.08/15 | [PromptTTS2](../Models/Prompt/2023.09.05_PromptTTS2.md) | ICLR 2024
-| 2024.03.05 | No.06/19 | [NaturalSpeech3](../Models/Diffusion/2024.03.05_NaturalSpeech3.md) | ICML 2024
-| 2024.04.04 | No.04/11 | [RALL-E](../Models/Speech_LLM/2024.04.04_RALL-E.md) |
-| 2024.06.04 | No.01/06 | [SimpleSpeech](../Models/Diffusion/2024.06.04_SimpleSpeech.md) | InterSpeech 2024 |
-| 2024.08.25 | No.01/08 | [SimpleSpeech2](../Models/Diffusion/2024.08.25_SimpleSpeech2.md) |
+| 时间 | 作者序 | 机构 | 论文 | 发表 |
+|:-:|:-:|---|---|---|
+| 2023.01.31 | No.01/05 | | [InstructTTS](../Models/Prompt/2023.01.31_InstructTTS.md) |
+| 2023.09.05 | No.08/15 | | [PromptTTS2](../Models/Prompt/2023.09.05_PromptTTS2.md) | ICLR 2024
+| 2024.03.05 | No.06/19 | | [NaturalSpeech3](../Models/Diffusion/2024.03.05_NaturalSpeech3.md) | ICML 2024
+| 2024.04.04 | No.04/11 | | [RALL-E](../Models/Speech_LLM/2024.04.04_RALL-E.md) |
+| 2024.06.04 | No.01/06 | | [SimpleSpeech](../Models/Diffusion/2024.06.04_SimpleSpeech.md) | InterSpeech 2024 |
+| 2024.08.25 | No.01/08 | | [SimpleSpeech2](../Models/Diffusion/2024.08.25_SimpleSpeech2.md) |
+| 2024.09.02 | No.04/07 | [香港中文大学](../Institutions/CHN-CUHK_香港中文大学.md) | [SoCodec](../Models/Speech_Neural_Codec/2024.09.02_SoCodec.md) | SLT 2024 |
