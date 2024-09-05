@@ -9,3 +9,4 @@
 | 时间 | 作者序 | 论文 | 发表 |
 |:-:|:-:|---|---|
 | 2023.01.31 | No.04/05 | [InstructTTS](../Models/Prompt/2023.01.31_InstructTTS.md) |
+| 2023.05.04 | No.05/06 | [腾讯 AI Lab](../Institutions/CHN-TecentAI.md) | [HiFi-Codec](../Models/Speech_Neural_Codec/2023.05.04_HiFi-Codec.md) |
