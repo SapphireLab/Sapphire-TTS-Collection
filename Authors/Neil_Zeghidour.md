@@ -9,4 +9,5 @@
 | 2021.07.07 | 01/05 | [Research Google Inc.](../Institutions/USA-Google.md) | [SoundStream](../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md) | [TASLP 2021](../Publications/TASLP.md) |
 | 2022.09.07 | 11/11 | | [AudioLM](../Models/Speech_LLM/2022.09.07_AudioLM.md) | TASLP 2023 |
 | 2023.02.07 | 09/09 | | [SPEAR-TTS](../Models/Speech_LLM/2023.02.07_SPEAR-TTS.md) | TACL 2023 |
+| 2023.03.23 | 06/07 | [Google](../Institutions/USA-Google.md) | [LMCodec](../Models/Speech_Neural_Codec/2023.03.23_LMCodec.md) | [ICASSP 2023](../Publications/ICASSP.md) |
 | 2023.05.16 | 05/06 | | [SoundStorm](../Models/Speech_LLM/2023.05.16_SoundStorm.md) |
