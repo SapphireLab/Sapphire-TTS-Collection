@@ -26,7 +26,7 @@
   - [x] demo_streamlit.mov
 - [ ] litgpt/
   - [ ] generate/
-    - [ ] `__init__.py`
+    - [x] `__init__.py` 空文件
     - [ ] `base.py`
   - [ ] `__init__.py`
   - [ ] `config.py`
@@ -93,3 +93,20 @@
 | download_model() | Checkpoint Path | 从 HuggingFace 的 GPT-Omni/Mini-Omni 仓库下载模型 |
 | test_infer() | | 测试以上所有函数的功能. 包括 A1A2, ASR, T1A2, AA-Batch, T1T2, AT|
 | OmniInference 类 | Checkpoint Path | 调用 `load_model()`, 创建 `run_AT_batch_stream()` 函数 |
+
+该文件的函数核心来源于 `litgpt/generate/base.py` 文件下的 `generate_XX()` 函数.
+模型有:
+- OpenAI 的 Whisper;
+- SNAC 用于重构音频;
+- LitGPT 的 GPT 模型和 Tokenizer 为主干.
+
+---
+
+## LitGPT-Modified
+
+模型主体是基于 LitGPT 进行修改的. 
+- `config.py` 文件相同.
+- `tokenizer.py`
+- `model.py`
+- `utils.py` 有一些格式上的变化.
+
