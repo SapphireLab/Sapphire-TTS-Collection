@@ -6,4 +6,6 @@
 
 | 时间 | 作者序 | 机构 | 论文 | 发表 |
 |:-:|:-:|---|---|---|
-| 2021.07.07 | 02/05 | [Research Google Inc.](../Institutions/USA-Google.md) | [SoundStream](../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md) | [TASLP 2021](../Publications/TASLP.md) |
+| 2021.07.07 | No.02/05 | [Research Google Inc.](../Institutions/USA-Google.md) | [SoundStream](../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md) | [TASLP 2021](../Publications/TASLP.md) |
+| 2023.06.11 | No.03/05 | [Descript.Inc.](../Institutions/Descript.Inc.md) | [Descript-Audio-Codec](../Models/Speech_Neural_Codec/2023.06.11_Descript-Audio-Codec.md) | [NeurIPS 2023](../Publications/NeurIPS.md) |
+
