@@ -1,86 +1,97 @@
-Author                 ,Date       ,Institutions                                               ,Paper    ,Order ,Publication ,Email                       ,CN     ,
-Aaron van den Oord     ,2016.09.12 ,Google DeepMind London UK                                  ,WaveNet  ,01/09 ,            ,avdnoord@google.com         ,
-Sander Dieleman        ,2016.09.12 ,Google DeepMind London UK                                  ,WaveNet  ,02/09 ,            ,sedielem@google.com         ,
-Heiga Zen              ,2016.09.12 ,Google London UK                                           ,WaveNet  ,03/09 ,            ,heigazen@google.com         ,
-Karen Simonyan         ,2016.09.12 ,Google DeepMind London UK                                  ,WaveNet  ,04/09 ,            ,simonyan@google.com         ,
-Oriol Vinyals          ,2016.09.12 ,Google DeepMind London UK                                  ,WaveNet  ,05/09 ,            ,vinyals@google.com          ,
-Alex Graves            ,2016.09.12 ,Google DeepMind London UK                                  ,WaveNet  ,06/09 ,            ,gravesa@google.com          ,
-Nal Kalchbrenner       ,2016.09.12 ,Google DeepMind London UK                                  ,WaveNet  ,07/09 ,            ,nalk@google.com             ,
-Andrew Senior          ,2016.09.12 ,Google DeepMind London UK                                  ,WaveNet  ,08/09 ,            ,andrewsenior@google.com     ,
-Koray Kavukcuoglu      ,2016.09.12 ,Google DeepMind London UK                                  ,WaveNet  ,09/09 ,            ,korayk@google.com           ,
-Kundan Kumar           ,2019.10.08 ,Lyrebird AI/Mila/University of Montreal                    ,MelGAN   ,01/09 ,NeurIPS2019 ,kundan@descript.com         ,
-Rithesh Kumar          ,2019.10.08 ,Lyrebird AI                                                ,MelGAN   ,02/09 ,NeurIPS2019 ,rithesh@descript.com        ,
-Thibault de Boissiere  ,2019.10.08 ,Lyrebird AI                                                ,MelGAN   ,03/09 ,NeurIPS2019 ,                            ,
-Lucas Gestion          ,2019.10.08 ,Lyrebird AI                                                ,MelGAN   ,04/09 ,NeurIPS2019 ,                            ,
-Wei Zhen Teoh          ,2019.10.08 ,Lyrebird AI                                                ,MelGAN   ,05/09 ,NeurIPS2019 ,                            ,
-Jose Sotelo            ,2019.10.08 ,Lyrebird AI                                                ,MelGAN   ,06/09 ,NeurIPS2019 ,                            ,
-Alexandre de Brebisson ,2019.10.08 ,Lyrebird AI                                                ,MelGAN   ,07/09 ,NeurIPS2019 ,                            ,
-Yoshua Bengio          ,2019.10.08 ,Mila/University of Montreal                                ,MelGAN   ,08/09 ,NeurIPS2019 ,                            ,
-Aaron Courville        ,2019.10.08 ,Mila/University of Montreal                                ,MelGAN   ,09/09 ,NeurIPS2019 ,                            ,
-Jungil Kong            ,2020.10.12 ,Kakao Enterprise                                           ,HiFi-GAN ,01/03 ,NeurIPS2020 ,henry.k@kakaoenterprise.com ,
-Jaehyeon Kim           ,2020.10.12 ,Kakao Enterprise                                           ,HiFi-GAN ,02/03 ,NeurIPS2020 ,jay.xyz@kakaoenterprise.com ,
-Jaekyoung Bae          ,2020.10.12 ,Kakao Enterprise                                           ,HiFi-GAN ,03/03 ,NeurIPS2020 ,storm.b@kakaoenterprise.com ,
-Jaehyeon Kim           ,2021.06.11 ,Kakao Enterprise                                           ,VITS     ,01/03 ,ICML2021    ,jay.xyz@kakaoenterprise.com ,
-Jungil Kong            ,2021.06.11 ,Kakao Enterprise                                           ,VITS     ,02/03 ,ICML2021    ,                            ,
-Juhee Son              ,2021.06.11 ,Kakao Enterprise/KAIST                                     ,VITS     ,03/03 ,ICML2021    ,                            ,
-Jaehyeon Kim           ,2020.05.22 ,Kakao Enterprise                                           ,Glow-TTS ,01/04 ,NeurIPS2020 ,jay.xyz@kakaoenterprise.com ,
-Sungwon Kim            ,2020.05.22 ,Seoul National University                                  ,Glow-TTS ,02/04 ,NeurIPS2020 ,ksw0306@snu.ac.kr           ,
-Jungil Kong            ,2020.05.22 ,Kakao Enterprise                                           ,Glow-TTS ,03/04 ,NeurIPS2020 ,henry.k@kakaoenterprise.com ,
-Sungroh Yoon           ,2020.05.22 ,Seoul National University                                  ,Glow-TTS ,04/04 ,NeurIPS2020 ,sryoon@snu.ac.kr            ,
-Chengyi Wang           ,2023.01.05 ,Microsoft                                                  ,VALL-E   ,01/13 ,            ,                            ,王程一
-Sanyuan Chen           ,2023.01.05 ,Microsoft                                                  ,VALL-E   ,02/13 ,            ,                            ,陈三元
-Yu Wu                  ,2023.01.05 ,Microsoft                                                  ,VALL-E   ,03/13 ,            ,                            ,吴俣
-Ziqiang Zhang          ,2023.01.05 ,Microsoft                                                  ,VALL-E   ,04/13 ,            ,                            ,张自强
-Long Zhou              ,2023.01.05 ,Microsoft                                                  ,VALL-E   ,05/13 ,            ,                            ,周龙
-Shujie Liu             ,2023.01.05 ,Microsoft                                                  ,VALL-E   ,06/13 ,            ,                            ,刘树杰
-Zhuo Chen              ,2023.01.05 ,Microsoft                                                  ,VALL-E   ,07/13 ,            ,                            ,陈卓
-Yanqing Liu            ,2023.01.05 ,Microsoft                                                  ,VALL-E   ,08/13 ,            ,                            ,
-Huaming Wang           ,2023.01.05 ,Microsoft                                                  ,VALL-E   ,09/13 ,            ,                            ,
-Jinyu Li               ,2023.01.05 ,Microsoft                                                  ,VALL-E   ,10/13 ,            ,                            ,李劲宇
-Lei He                 ,2023.01.05 ,Microsoft                                                  ,VALL-E   ,11/13 ,            ,                            ,何磊
-Sheng Zhao             ,2023.01.05 ,Microsoft                                                  ,VALL-E   ,12/13 ,            ,                            ,赵胜
-Furu Wei               ,2023.01.05 ,Microsoft                                                  ,VALL-E   ,13/13 ,            ,                            ,韦福如
-Ziqiang Zhang          ,2023.03.07 ,Microsoft                                                  ,VALL-E X ,01/13 ,            ,                            ,张自强
-Long Zhou              ,2023.03.07 ,Microsoft                                                  ,VALL-E X ,02/13 ,            ,                            ,周龙
-Chengyi Wang           ,2023.03.07 ,Microsoft                                                  ,VALL-E X ,03/13 ,            ,                            ,王程一
-Sanyuan Chen           ,2023.03.07 ,Microsoft                                                  ,VALL-E X ,04/13 ,            ,                            ,陈三元
-Yu Wu                  ,2023.03.07 ,Microsoft                                                  ,VALL-E X ,05/13 ,            ,                            ,吴俣
-Shujie Liu             ,2023.03.07 ,Microsoft                                                  ,VALL-E X ,06/13 ,            ,                            ,刘树杰
-Zhuo Chen              ,2023.03.07 ,Microsoft                                                  ,VALL-E X ,07/13 ,            ,                            ,陈卓
-Yanqing Liu            ,2023.03.07 ,Microsoft                                                  ,VALL-E X ,08/13 ,            ,                            ,
-Huaming Wang           ,2023.03.07 ,Microsoft                                                  ,VALL-E X ,09/13 ,            ,                            ,
-Jinyu Li               ,2023.03.07 ,Microsoft                                                  ,VALL-E X ,10/13 ,            ,                            ,李劲宇
-Lei He                 ,2023.03.07 ,Microsoft                                                  ,VALL-E X ,11/13 ,            ,                            ,何磊
-Sheng Zhao             ,2023.03.07 ,Microsoft                                                  ,VALL-E X ,12/13 ,            ,                            ,赵胜
-Furu Wei               ,2023.03.07 ,Microsoft                                                  ,VALL-E X ,13/13 ,            ,                            ,韦福如
-Sanyuan Chen           ,2024.06.08 ,Microsoft [InternShip]                                     ,VALL-E 2 ,01/09 ,            ,                            ,陈三元
-Shujie Liu             ,2024.06.08 ,Microsoft                                                  ,VALL-E 2 ,02/09 ,            ,                            ,刘树杰
-Long Zhou              ,2024.06.08 ,Microsoft                                                  ,VALL-E 2 ,03/09 ,            ,                            ,周龙
-Yanqing Liu            ,2024.06.08 ,Microsoft                                                  ,VALL-E 2 ,04/09 ,            ,                            ,
-Xu Tan                 ,2024.06.08 ,Microsoft                                                  ,VALL-E 2 ,05/09 ,            ,                            ,谭旭
-Jinyu Li               ,2024.06.08 ,Microsoft                                                  ,VALL-E 2 ,06/09 ,            ,                            ,李劲宇
-Sheng Zhao             ,2024.06.08 ,Microsoft                                                  ,VALL-E 2 ,07/09 ,            ,                            ,赵胜
-Yao Qian               ,2024.06.08 ,Microsoft                                                  ,VALL-E 2 ,08/09 ,            ,                            ,钱瑶
-Furu Wei               ,2024.06.08 ,Microsoft                                                  ,VALL-E 2 ,09/09 ,            ,                            ,韦福如
-Bing Han               ,2024.06.12 ,Shanghai Jiao Tong University (CHN-SJTU)/MSRA [InternShip] ,VALL-E R ,01/10 ,
-Long Zhou              ,2024.06.12 ,Microsoft Corporation                                      ,VALL-E R ,02/10 ,            ,                            ,周龙
-Shujie Liu             ,2024.06.12 ,Microsoft Corporation                                      ,VALL-E R ,03/10 ,            ,                            ,刘树杰
-Sanyuan Chen           ,2024.06.12 ,Microsoft Corporation                                      ,VALL-E R ,04/10 ,            ,                            ,陈三元
-Lingwei Meng           ,2024.06.12 ,Microsoft Corporation                                      ,VALL-E R ,05/10 ,            ,                            ,
-Yanming Qian           ,2024.06.12 ,Shanghai Jiao Tong University (CHN-SJTU)                   ,VALL-E R ,06/10 ,            ,                            ,
-Yanqing Liu            ,2024.06.12 ,Microsoft Corporation                                      ,VALL-E R ,07/10 ,            ,                            ,
-Sheng Zhao             ,2024.06.12 ,Microsoft Corporation                                      ,VALL-E R ,08/10 ,            ,                            ,赵胜
-Jinyu Li               ,2024.06.12 ,Microsoft Corporation                                      ,VALL-E R ,09/10 ,            ,                            ,李劲宇
-Furu Wei               ,2024.06.12 ,Microsoft Corporation                                      ,VALL-E R ,10/10 ,            ,                            ,韦福如
-Lingwei Meng           ,2024.07.11 ,The Chinese University of Hong Kong (CHN-CUHK)             ,MELLE    ,01/12 ,            ,                            ,
-Long Zhou              ,2024.07.11 ,Microsoft Corporation                                      ,MELLE    ,02/12 ,            ,                            ,周龙
-Shujie Liu             ,2024.07.11 ,Microsoft Corporation                                      ,MELLE    ,03/12 ,            ,                            ,刘树杰
-Sanyuan Chen           ,2024.07.11 ,MSRA [InternShip]                                          ,MELLE    ,04/12 ,            ,                            ,陈三元
-Bing Han               ,2024.07.11 ,Microsoft Corporation                                      ,MELLE    ,05/12 ,            ,                            ,
-Shujie Hu              ,2024.07.11 ,The Chinese University of Hong Kong (CHN-CUHK)             ,MELLE    ,06/12 ,            ,                            ,
-Yanqing Liu            ,2024.07.11 ,Microsoft Corporation                                      ,MELLE    ,07/12 ,            ,                            ,
-Jinyu Li               ,2024.07.11 ,Microsoft Corporation                                      ,MELLE    ,08/12 ,            ,                            ,
-Sheng Zhao             ,2024.07.11 ,Microsoft Corporation                                      ,MELLE    ,09/12 ,            ,                            ,赵胜
-Xixin Wu               ,2024.07.11 ,The Chinese University of Hong Kong (CHN-CUHK)             ,MELLE    ,10/12 ,            ,                            ,
-Helen Meng             ,2024.07.11 ,The Chinese University of Hong Kong (CHN-CUHK)             ,MELLE    ,11/12 ,            ,                            ,蒙美玲
-Furu Wei               ,2024.07.11 ,Microsoft Corporation                                      ,MELLE    ,12/12 ,            ,                            ,韦福如
+Author                 ,Date       ,Institutions                                                       ,Paper    ,Order ,Publication ,Email                         ,CN         ,
+Aaron van den Oord     ,2016.09.12 ,Google DeepMind London UK                                          ,WaveNet  ,01/09 ,            ,avdnoord@google.com           ,           ,
+Sander Dieleman        ,2016.09.12 ,Google DeepMind London UK                                          ,WaveNet  ,02/09 ,            ,sedielem@google.com           ,           ,
+Heiga Zen              ,2016.09.12 ,Google London UK                                                   ,WaveNet  ,03/09 ,            ,heigazen@google.com           ,           ,
+Karen Simonyan         ,2016.09.12 ,Google DeepMind London UK                                          ,WaveNet  ,04/09 ,            ,simonyan@google.com           ,           ,
+Oriol Vinyals          ,2016.09.12 ,Google DeepMind London UK                                          ,WaveNet  ,05/09 ,            ,vinyals@google.com            ,           ,
+Alex Graves            ,2016.09.12 ,Google DeepMind London UK                                          ,WaveNet  ,06/09 ,            ,gravesa@google.com            ,           ,
+Nal Kalchbrenner       ,2016.09.12 ,Google DeepMind London UK                                          ,WaveNet  ,07/09 ,            ,nalk@google.com               ,           ,
+Andrew Senior          ,2016.09.12 ,Google DeepMind London UK                                          ,WaveNet  ,08/09 ,            ,andrewsenior@google.com       ,           ,
+Koray Kavukcuoglu      ,2016.09.12 ,Google DeepMind London UK                                          ,WaveNet  ,09/09 ,            ,korayk@google.com             ,           ,
+Kundan Kumar           ,2019.10.08 ,Lyrebird AI/Mila/University of Montreal                            ,MelGAN   ,01/09 ,NeurIPS2019 ,kundan@descript.com           ,           ,
+Rithesh Kumar          ,2019.10.08 ,Lyrebird AI                                                        ,MelGAN   ,02/09 ,NeurIPS2019 ,rithesh@descript.com          ,           ,
+Thibault de Boissiere  ,2019.10.08 ,Lyrebird AI                                                        ,MelGAN   ,03/09 ,NeurIPS2019 ,                              ,           ,
+Lucas Gestion          ,2019.10.08 ,Lyrebird AI                                                        ,MelGAN   ,04/09 ,NeurIPS2019 ,                              ,           ,
+Wei Zhen Teoh          ,2019.10.08 ,Lyrebird AI                                                        ,MelGAN   ,05/09 ,NeurIPS2019 ,                              ,           ,
+Jose Sotelo            ,2019.10.08 ,Lyrebird AI                                                        ,MelGAN   ,06/09 ,NeurIPS2019 ,                              ,           ,
+Alexandre de Brebisson ,2019.10.08 ,Lyrebird AI                                                        ,MelGAN   ,07/09 ,NeurIPS2019 ,                              ,           ,
+Yoshua Bengio          ,2019.10.08 ,Mila/University of Montreal                                        ,MelGAN   ,08/09 ,NeurIPS2019 ,                              ,           ,
+Aaron Courville        ,2019.10.08 ,Mila/University of Montreal                                        ,MelGAN   ,09/09 ,NeurIPS2019 ,                              ,           ,
+Jungil Kong            ,2020.10.12 ,Kakao Enterprise                                                   ,HiFi-GAN ,01/03 ,NeurIPS2020 ,henry.k@kakaoenterprise.com   ,           ,
+Jaehyeon Kim           ,2020.10.12 ,Kakao Enterprise                                                   ,HiFi-GAN ,02/03 ,NeurIPS2020 ,jay.xyz@kakaoenterprise.com   ,           ,
+Jaekyoung Bae          ,2020.10.12 ,Kakao Enterprise                                                   ,HiFi-GAN ,03/03 ,NeurIPS2020 ,storm.b@kakaoenterprise.com   ,           ,
+Jaehyeon Kim           ,2021.06.11 ,Kakao Enterprise                                                   ,VITS     ,01/03 ,ICML2021    ,jay.xyz@kakaoenterprise.com   ,           ,
+Jungil Kong            ,2021.06.11 ,Kakao Enterprise                                                   ,VITS     ,02/03 ,ICML2021    ,                              ,           ,
+Juhee Son              ,2021.06.11 ,Kakao Enterprise/KAIST                                             ,VITS     ,03/03 ,ICML2021    ,                              ,           ,
+Jaehyeon Kim           ,2020.05.22 ,Kakao Enterprise                                                   ,Glow-TTS ,01/04 ,NeurIPS2020 ,jay.xyz@kakaoenterprise.com   ,           ,
+Sungwon Kim            ,2020.05.22 ,Seoul National University                                          ,Glow-TTS ,02/04 ,NeurIPS2020 ,ksw0306@snu.ac.kr             ,           ,
+Jungil Kong            ,2020.05.22 ,Kakao Enterprise                                                   ,Glow-TTS ,03/04 ,NeurIPS2020 ,henry.k@kakaoenterprise.com   ,           ,
+Sungroh Yoon           ,2020.05.22 ,Seoul National University                                          ,Glow-TTS ,04/04 ,NeurIPS2020 ,sryoon@snu.ac.kr              ,           ,
+Chengyi Wang           ,2023.01.05 ,Microsoft                                                          ,VALL-E   ,01/13 ,            ,                              ,王程一     ,
+Sanyuan Chen           ,2023.01.05 ,Microsoft                                                          ,VALL-E   ,02/13 ,            ,                              ,陈三元     ,
+Yu Wu                  ,2023.01.05 ,Microsoft                                                          ,VALL-E   ,03/13 ,            ,                              ,吴俣       ,
+Ziqiang Zhang          ,2023.01.05 ,Microsoft                                                          ,VALL-E   ,04/13 ,            ,                              ,张自强     ,
+Long Zhou              ,2023.01.05 ,Microsoft                                                          ,VALL-E   ,05/13 ,            ,                              ,周龙       ,
+Shujie Liu             ,2023.01.05 ,Microsoft                                                          ,VALL-E   ,06/13 ,            ,                              ,刘树杰     ,
+Zhuo Chen              ,2023.01.05 ,Microsoft                                                          ,VALL-E   ,07/13 ,            ,                              ,陈卓       ,
+Yanqing Liu            ,2023.01.05 ,Microsoft                                                          ,VALL-E   ,08/13 ,            ,                              ,           ,
+Huaming Wang           ,2023.01.05 ,Microsoft                                                          ,VALL-E   ,09/13 ,            ,                              ,           ,
+Jinyu Li               ,2023.01.05 ,Microsoft                                                          ,VALL-E   ,10/13 ,            ,                              ,李劲宇     ,
+Lei He                 ,2023.01.05 ,Microsoft                                                          ,VALL-E   ,11/13 ,            ,                              ,何磊       ,
+Sheng Zhao             ,2023.01.05 ,Microsoft                                                          ,VALL-E   ,12/13 ,            ,                              ,赵胜       ,
+Furu Wei               ,2023.01.05 ,Microsoft                                                          ,VALL-E   ,13/13 ,            ,                              ,韦福如     ,
+Ziqiang Zhang          ,2023.03.07 ,Microsoft                                                          ,VALL-E X ,01/13 ,            ,                              ,张自强     ,
+Long Zhou              ,2023.03.07 ,Microsoft                                                          ,VALL-E X ,02/13 ,            ,                              ,周龙       ,
+Chengyi Wang           ,2023.03.07 ,Microsoft                                                          ,VALL-E X ,03/13 ,            ,                              ,王程一     ,
+Sanyuan Chen           ,2023.03.07 ,Microsoft                                                          ,VALL-E X ,04/13 ,            ,                              ,陈三元     ,
+Yu Wu                  ,2023.03.07 ,Microsoft                                                          ,VALL-E X ,05/13 ,            ,                              ,吴俣       ,
+Shujie Liu             ,2023.03.07 ,Microsoft                                                          ,VALL-E X ,06/13 ,            ,                              ,刘树杰     ,
+Zhuo Chen              ,2023.03.07 ,Microsoft                                                          ,VALL-E X ,07/13 ,            ,                              ,陈卓       ,
+Yanqing Liu            ,2023.03.07 ,Microsoft                                                          ,VALL-E X ,08/13 ,            ,                              ,           ,
+Huaming Wang           ,2023.03.07 ,Microsoft                                                          ,VALL-E X ,09/13 ,            ,                              ,           ,
+Jinyu Li               ,2023.03.07 ,Microsoft                                                          ,VALL-E X ,10/13 ,            ,                              ,李劲宇     ,
+Lei He                 ,2023.03.07 ,Microsoft                                                          ,VALL-E X ,11/13 ,            ,                              ,何磊       ,
+Sheng Zhao             ,2023.03.07 ,Microsoft                                                          ,VALL-E X ,12/13 ,            ,                              ,赵胜       ,
+Furu Wei               ,2023.03.07 ,Microsoft                                                          ,VALL-E X ,13/13 ,            ,                              ,韦福如     ,
+Sanyuan Chen           ,2024.06.08 ,Microsoft [InternShip]                                             ,VALL-E 2 ,01/09 ,            ,                              ,陈三元     ,
+Shujie Liu             ,2024.06.08 ,Microsoft                                                          ,VALL-E 2 ,02/09 ,            ,                              ,刘树杰     ,
+Long Zhou              ,2024.06.08 ,Microsoft                                                          ,VALL-E 2 ,03/09 ,            ,                              ,周龙       ,
+Yanqing Liu            ,2024.06.08 ,Microsoft                                                          ,VALL-E 2 ,04/09 ,            ,                              ,           ,
+Xu Tan                 ,2024.06.08 ,Microsoft                                                          ,VALL-E 2 ,05/09 ,            ,                              ,谭旭       ,
+Jinyu Li               ,2024.06.08 ,Microsoft                                                          ,VALL-E 2 ,06/09 ,            ,                              ,李劲宇     ,
+Sheng Zhao             ,2024.06.08 ,Microsoft                                                          ,VALL-E 2 ,07/09 ,            ,                              ,赵胜       ,
+Yao Qian               ,2024.06.08 ,Microsoft                                                          ,VALL-E 2 ,08/09 ,            ,                              ,钱瑶       ,
+Furu Wei               ,2024.06.08 ,Microsoft                                                          ,VALL-E 2 ,09/09 ,            ,                              ,韦福如     ,
+Bing Han               ,2024.06.12 ,Shanghai Jiao Tong University (CHN-SJTU)/MSRA [InternShip]         ,VALL-E R ,01/10 ,            ,                              ,           ,
+Long Zhou              ,2024.06.12 ,Microsoft Corporation                                              ,VALL-E R ,02/10 ,            ,                              ,周龙       ,
+Shujie Liu             ,2024.06.12 ,Microsoft Corporation                                              ,VALL-E R ,03/10 ,            ,                              ,刘树杰     ,
+Sanyuan Chen           ,2024.06.12 ,Microsoft Corporation                                              ,VALL-E R ,04/10 ,            ,                              ,陈三元     ,
+Lingwei Meng           ,2024.06.12 ,Microsoft Corporation                                              ,VALL-E R ,05/10 ,            ,                              ,           ,
+Yanming Qian           ,2024.06.12 ,Shanghai Jiao Tong University (CHN-SJTU)                           ,VALL-E R ,06/10 ,            ,                              ,           ,
+Yanqing Liu            ,2024.06.12 ,Microsoft Corporation                                              ,VALL-E R ,07/10 ,            ,                              ,           ,
+Sheng Zhao             ,2024.06.12 ,Microsoft Corporation                                              ,VALL-E R ,08/10 ,            ,                              ,赵胜       ,
+Jinyu Li               ,2024.06.12 ,Microsoft Corporation                                              ,VALL-E R ,09/10 ,            ,                              ,李劲宇     ,
+Furu Wei               ,2024.06.12 ,Microsoft Corporation                                              ,VALL-E R ,10/10 ,            ,                              ,韦福如     ,
+Lingwei Meng           ,2024.07.11 ,The Chinese University of Hong Kong (CHN-CUHK)                     ,MELLE    ,01/12 ,            ,                              ,           ,
+Long Zhou              ,2024.07.11 ,Microsoft Corporation                                              ,MELLE    ,02/12 ,            ,                              ,周龙       ,
+Shujie Liu             ,2024.07.11 ,Microsoft Corporation                                              ,MELLE    ,03/12 ,            ,                              ,刘树杰     ,
+Sanyuan Chen           ,2024.07.11 ,MSRA [InternShip]                                                  ,MELLE    ,04/12 ,            ,                              ,陈三元     ,
+Bing Han               ,2024.07.11 ,Microsoft Corporation                                              ,MELLE    ,05/12 ,            ,                              ,           ,
+Shujie Hu              ,2024.07.11 ,The Chinese University of Hong Kong (CHN-CUHK)                     ,MELLE    ,06/12 ,            ,                              ,           ,
+Yanqing Liu            ,2024.07.11 ,Microsoft Corporation                                              ,MELLE    ,07/12 ,            ,                              ,           ,
+Jinyu Li               ,2024.07.11 ,Microsoft Corporation                                              ,MELLE    ,08/12 ,            ,                              ,           ,
+Sheng Zhao             ,2024.07.11 ,Microsoft Corporation                                              ,MELLE    ,09/12 ,            ,                              ,赵胜       ,
+Xixin Wu               ,2024.07.11 ,The Chinese University of Hong Kong (CHN-CUHK)                     ,MELLE    ,10/12 ,            ,                              ,           ,
+Helen Meng             ,2024.07.11 ,The Chinese University of Hong Kong (CHN-CUHK)                     ,MELLE    ,11/12 ,            ,                              ,蒙美玲     ,
+Furu Wei               ,2024.07.11 ,Microsoft Corporation                                              ,MELLE    ,12/12 ,            ,                              ,韦福如     ,
+Detai Xin              ,2024.04.04 ,Microsoft/The University of Tokyo                                  ,RALL-E   ,01/11 ,            ,detai_xin@ipc.i.u-tokyo.ac.jp ,辛德泰     ,
+Xu Tan                 ,2024.04.04 ,Microsoft                                                          ,RALL-E   ,02/11 ,            ,xuta@microsoft.com            ,谭旭       ,
+Kai Shen               ,2024.04.04 ,Microsoft/Zhejiang University (CHN-ZJU)                            ,RALL-E   ,03/11 ,            ,                              ,沈锴       ,
+Zeqian Ju              ,2024.04.04 ,Microsoft/University of Science and Technology of China (CHN-USTC) ,RALL-E   ,04/11 ,            ,                              ,琚泽谦     ,
+Dongchao Yang          ,2024.04.04 ,The Chinese University of Hong Kong (CHN-CUHK)                     ,RALL-E   ,05/11 ,            ,                              ,杨东超     ,
+Yuancheng Wang         ,2024.04.04 ,The Chinese University of Hong Kong Shenzhen (CHN-CUHK)            ,RALL-E   ,06/11 ,            ,                              ,王远程     ,
+Shinnosuke Takamichi   ,2024.04.04 ,The University of Tokyo                                            ,RALL-E   ,07/11 ,            ,                              ,高道慎之介 ,
+Hiroshi Saruwatari     ,2024.04.04 ,The University of Tokyo                                            ,RALL-E   ,08/11 ,            ,                              ,猿渡洋     ,
+Shujie Liu             ,2024.04.04 ,Microsoft                                                          ,RALL-E   ,09/11 ,            ,                              ,刘树杰     ,
+Jinyu Li               ,2024.04.04 ,Microsoft                                                          ,RALL-E   ,10/11 ,            ,                              ,李劲宇     ,
+Sheng Zhao             ,2024.04.04 ,Microsoft                                                          ,RALL-E   ,11/11 ,            ,                              ,赵胜       ,
