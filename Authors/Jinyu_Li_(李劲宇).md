@@ -1,14 +1,10 @@
-# Jinyu Li (李劲宇)
-
-- 机构
-  - [Microsoft](../Institutions/USA-Microsoft.md)
-- 邮箱
+# 李劲宇 (Jinyu Li)
 
 ## 论文列表
 
 | 时间 | 作者序 | 机构 | 论文 | 发表 |
 |:-:|:-:|---|---|---|
-| 2023.01.05 | No.10/13 | | [VALL-E](../Models/Speech_LLM/2023.01.05_VALL-E.md) |
+| 2023.01.05 | No.10/13 | [Microsoft](../Institutions/USA-Microsoft.md) | [VALL-E](../Models/Speech_LLM/2023.01.05_VALL-E.md) |
 | 2024.03.05 | No.18/19 | | [NaturalSpeech3](../Models/Diffusion/2024.03.05_NaturalSpeech3.md) | ICML 2024
 | 2023.03.07 | No.10/13 | | [VALL-E X](../Models/Speech_LLM/2023.03.07_VALL-E_X.md) |
 | 2024.04.04 | No.10/11 | | [RALL-E](../Models/Speech_LLM/2024.04.04_RALL-E.md) |
