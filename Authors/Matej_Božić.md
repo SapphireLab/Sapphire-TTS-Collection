@@ -1,3 +1,0 @@
-University of Zagreb, Faculty of Electrical Engineering and Computing, Zagreb, Croatia
-
-matej.bozic@fer.hr
