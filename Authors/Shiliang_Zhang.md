@@ -1,9 +1,0 @@
-# Shiliang Zhang
-
-
-## 论文列表
-
-| 时间 | 作者序 | 论文 | 发表 |
-|:-:|:-:|---|---|
-| 2023.10.07 | No.15/15 | [LauraGPT](../Models/Speech_LLM/2023.10.07_LauraGPT.md) |
-| 2023.11.14 | No.05/08 | [Qwen-Audio](../Models/Speech_LLM/2023.11.14_Qwen-Audio.md) |
