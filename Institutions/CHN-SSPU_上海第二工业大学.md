@@ -1,1 +1,0 @@
-# 上海第二工业大学 (Shanghai Polytechnic University, SSPU)

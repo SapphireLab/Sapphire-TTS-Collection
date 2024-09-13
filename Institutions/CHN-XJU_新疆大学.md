@@ -1,1 +1,0 @@
-# 新疆大学 (Xinjiang University, XJU)
