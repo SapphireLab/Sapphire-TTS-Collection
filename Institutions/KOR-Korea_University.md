@@ -1,2 +1,0 @@
-# Korea University
-
