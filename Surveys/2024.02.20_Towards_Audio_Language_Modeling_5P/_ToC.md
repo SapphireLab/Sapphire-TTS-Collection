@@ -89,7 +89,7 @@
 <a id="Fig.01"></a>
 <center>
 
-![Timeline of Current Neural Codec Models and Codec-Based Language Models](../_Images/2024.02.20_Fig.01.png)
+![Timeline of Current Neural Codec Models and Codec-Based Language Models](../Images/2024.02.20_Fig.01.png)
 
 > Fig.01: Timeline of Current Neural Codec Models and Codec-Based Language Models
 
@@ -149,7 +149,7 @@
 
 <a id="Tab.01"></a>
 
-![](../_Images/2024.02.20_Tab.01.png)
+![](../Images/2024.02.20_Tab.01.png)
 
 > Tab.01: Codec Information Comparison. 
 > `A-F` represents different neural codec models, where 
@@ -286,7 +286,7 @@
 
 <a id="Tab.02"></a>
 
-![](../_Images/2024.02.20_Tab.02.png)
+![](../Images/2024.02.20_Tab.02.png)
 
 > Tab.02: Comparison between codec implementation strategy. 
 > - `SEM` represents codec including Semantic Tokens. 
@@ -393,7 +393,7 @@
 
 <a id='Fig.02'></a>
 
-![](../_Images/2024.02.20_Fig.02.png)
+![](../Images/2024.02.20_Fig.02.png)
 
 > Fig.02: Codec-Based Language Modeling.
 
@@ -572,7 +572,7 @@
 
 <a id="Tab.03"></a>
 
-![](../_Images/2024.02.20_Tab.03.png)
+![](../Images/2024.02.20_Tab.03.png)
 
 > Tab.03: Codec-Based Language Models Comparison. 
 > `T` means Text, 
