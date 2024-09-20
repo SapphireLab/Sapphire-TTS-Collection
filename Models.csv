@@ -78,3 +78,13 @@ Natural TTS Synthesis by Conditioning WaveNet on Mel Spectrogram Predictions,Tac
 Neural Speech Synthesis with Transformer Network,Transformer TTS,,,2018.09.19,,,,,,,,,,,,,,,,,,,,,
 Wav2Vec: Unsupervised Pre-Training for Speech Recognition,Wav2Vec,,https://arxiv.org/abs/1904.05862,2019.04.11,v4,2019.09.11,InterSpeech,,,,https://github.com/pytorch/fairseq,,,,,,,,,,,,,,
 Non-Autoregressive Neural Text-to-Speech,ParaNet,,,2019.05.21,,,,,,,,,,,,,,,,,,,,,
+FastSpeech: Fast Robust and Controllable Text to Speech,FastSpeech,,https://arxiv.org/abs/1905.09263,2019.05.22,,,,,,,,,,,,,,,,,,,,,
+AlignTTS: Efficient Feed-Forward Text-to-Speech System without Explicit Alignment,AlignTTS,,https://arxiv.org/abs/2003.01950,2020.03.04,v1,2020.03.04,ICASSP2020,,,,,,,,,https://scholar.google.com/scholar?cluster=1600438380822500245,86,,,,,,,,2024.09.17
+Flow-TTS: A non-autoregressive network for text to speech based on flow,Flow-TTS,,,2020.05.04,,,ICASSP2020,,,,,,,,,https://scholar.google.com/scholar?cluster=7765078935283625839,134,Flow,,,,,,NAR,2024.09.17
+Flowtron: an Autoregressive Flow-based Generative Network for Text-to-Speech Synthesis,Flowtron,,https://arxiv.org/abs/2005.05957,2020.05.12,v3,2020.07.16,ICLR2021Poster,2021.01.12,https://openreview.net/forum?id=Ig53hpHxS4,,https://github.com/NVIDIA/flowtron,,,10,,,170,,,,,,,,
+,JDI-T,,,2020.05.15,,,,,,,,,,,,,,,,,,,,,
+Glow-TTS: A Generative Flow for Text-to-Speech via Monotonic Alignment Search,Glow-TTS,,,2020.05.22,v2,2020.10.23,NeurIPS2020,,,,,,,,,,,Flow,,,,,,,
+,MultiSpeech,,,2020.06.08,,,,,,,,,,,,,,,,,,,,,
+FastSpeech 2: Fast and High-Quality End-to-End Text to Speech,FastSpeech2,,https://arxiv.org/abs/2006.04558,2020.06.08,,,,,,,,,,,,,,,,,,,,,
+,FastPitch,,,2020.06.11,,,,,,,,,,,,,,,,,,,,,
+wav2vec 2.0: A Framework for Self-Supervised Learning of Speech Representations,Wav2Vec2,,,2020.06.20,v3,2020.10.22,NeurIPS2020,,,,,,,,,,,,,,,,,,
