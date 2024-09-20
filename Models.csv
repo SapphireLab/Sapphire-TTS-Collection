@@ -88,3 +88,13 @@ Glow-TTS: A Generative Flow for Text-to-Speech via Monotonic Alignment Search,Gl
 FastSpeech 2: Fast and High-Quality End-to-End Text to Speech,FastSpeech2,,https://arxiv.org/abs/2006.04558,2020.06.08,,,,,,,,,,,,,,,,,,,,,
 ,FastPitch,,,2020.06.11,,,,,,,,,,,,,,,,,,,,,
 wav2vec 2.0: A Framework for Self-Supervised Learning of Speech Representations,Wav2Vec2,,,2020.06.20,v3,2020.10.22,NeurIPS2020,,,,,,,,,,,,,,,,,,
+SpeedySpeech: Efficient Neural Speech Synthesis,SpeedySpeech,,,2020.08.09,,,,,,,,,,,,,,,,,,,,,
+,BVAE-TTS,,,2021.01.13,,,,,,,,,,,,,,,,,,,,,
+On Generative Spoken Language Modeling from Raw Audio,GSLM,,https://arxiv.org/abs/2102.01192,2021.02.01,v2,2021.09.09,TACL2021,2022.01.04,https://transacl.org/index.php/tacl/article/view/3241,,https://github.com/pytorch/fairseq/tree/master/examples/textless_nlp/gslm,,,19,,https://scholar.google.com/scholar?cluster=10339951252730122651,304,,CPC/Wav2Vec2.0/HuBERT+Transformer+Tacotron2,Acoustic Unit Discovery/Spoken Language Modeling/Discrete Speech Resynthesis/Speech Generation,,,,,2024.09.17
+,AdaSpeech,,,2021.03.01,,,,,,,,,,,,,,,,,,,,,
+Expressive Text-to-Speech using Style Tag,ST-TTS,,https://arxiv.org/abs/2104.00436,2021.04.01,,,,,,,,,,,,,,,,,,,,,
+,AdaSpeech2,,,2021.04.20,,,,,,,,,,,,,,,,,,,,,
+Conditional Variational Autoencoder with Adversarial Learning for End-to-End Text-to-Speech,VITS,,,2021.06.11,v1,2021.06.11,ICML,,,,,,,,,,,,,,,,,,
+HuBERT: Self-Supervised Speech Representation Learning by Masked Prediction of Hidden Units,HuBERT,,,2021.06.14,v1,2021.06.14,TASLP2021,,,,,,,,,,,,,,,,,,
+RAD-TTS: Parallel Flow-Based TTS with Robust Alignment Learning and Diverse Synthesis,RAD-TTS,,,2021.06.16,,,ICML2021Poster,,https://openreview.net/forum?id=0NQwnnwAORi,,,,,,,,,,,,,,,,
+Glow-WaveGAN: Learning Speech Representations from GAN-based Variational Auto-Encoder For High Fidelity Flow-based Speech Synthesis,Glow-WaveGAN,,,2021.06.21,v2,2021.06.22,InterSpeech,,,,,,,,,,,,,,,,,,
