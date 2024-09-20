@@ -48,3 +48,13 @@ DiffWave: A Versatile Diffusion Model for Audio Synthesis,DiffWave,Vocoder,https
 ,HiFi-GAN,Vocoder,,2020.10.12,,,,,,,,,,,,,,,,,,,,,
 ,PriorGrad,Vocoder,,2021.06.11,,,,,,,,,,,,,,,,,,,,,
 ,UnivNet,Vocoder,,2021.06.15,,,,,,,,,,,,,,,,,,,,,
+WaveGrad 2: Iterative Refinement for Text-to-Speech Synthesis,WaveGrad2,Vocoder,https://arxiv.org/abs/2106.09660,2021.06.17,v2,2021.06.19,InterSpeech2021,,,,,,https://wavegrad.github.io/v2,,,https://scholar.google.com/scholar?cluster=7794140642380946818,52,,,,,,,,
+,iSTFTNet,Vocoder,,2022.03.04,,,,,,,,,,,,,,,,,,,,,
+,HiFi++,Vocoder,,2022.03.24,,,,,,,,,,,,,,,,,,,,,
+,SpecGrad,Vocoder,,2022.03.31,,,,,,,,,,,,,,,,,,,,,
+BigVGAN: A Universal Neural Vocoder with Large-Scale Training,BigVGAN,Vocoder,https://arxiv.org/abs/2206.04658,2022.06.09,v2,2023.02.16,ICLR2023Poster,,https://openreview.net/forum?id=iTtGCMDEzS_,,https://github.com/NVIDIA/BigVGAN,,https://bigvgan-demo.github.io/,,,https://scholar.google.com/scholar?cluster=14265847301322679424,159,GAN,,,,,,,2024.09.17
+Vocos: Closing the gap between time-domain and Fourier-based neural vocoders for high-quality audio synthesis,Vocos,Vocoder,https://arxiv.org/abs/2306.00814,2023.03.01,v3,2024.05.29,,,,,https://github.com/gemelo-ai/vocos,,,,,,33,,,,,,,,
+,APNet,Vocoder,,2023.05.13,,,,,,,,,,,,,,,,,,,,,
+,iSTFTNet2,Vocoder,,2023.08.14,,,,,,,,,,,,,,,,,,,,,
+,BigVSAN,Vocoder,,2023.09.06,,,,,,,,,,,,,,,,,,,,,
+,SnakeGAN,Vocoder,,2023.09.14,,,,,,,,,,,,,,,,,,,,,
