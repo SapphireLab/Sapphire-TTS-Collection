@@ -68,3 +68,13 @@ RFWave: Multi-band Rectified Flow for Audio Waveform Reconstruction,RFWave,Vocod
 ,JenGAN,Vocoder,,2024.06.10,,,,,,,,,,,,,,,,,,,,,
 FreeV: Free Lunch For Vocoders Through Pseudo Inversed Mel Filter,FreeV,Vocoder,https://arxiv.org/abs/2406.08196,2024.06.12,v1,2024.06.12,InterSpeech2024,,#TODO,,https://github.com/BakerBunker/FreeV,,,5,,https://scholar.google.com/scholar?cluster=13731432507109093105,1,,,,,,,,2024.09.17
 ,FA-GAN,Vocoder,,2024.07.05,,,,,,,,,,,,,,,,,,,,,
+,VNet,Vocoder,,2024.08.13,,,,,,,,,,,,,,,,,,,,,
+,PeriodWave,Vocoder,,2024.08.14,,,,,,,,,,,,,,,,,,,,,
+,Vec2Wav2.0,Vocoder,,2024.09.03,,,,,,,,,,,,,,,,,,,,,
+Tacotron: Towards End-to-End Speech Synthesis,Tacotron,,,2017.03.29,,,,,,,,,,,,,,,,,,,,,
+VoiceLoop: Voice Fitting and Synthesis via a Phonological Loop,VoiceLoop,,https://arxiv.org/abs/1707.06588,2017.07.20,v3,2018.02.01,ICLR2018Poster,2018.02.16,https://openreview.net/forum?id=SkFAWax0-,,https://github.com/facebookarchive/loop,,,,,https://scholar.google.com/scholar?cluster=14159878382438547497,,,,,,,,,
+Deep Voice 3: Scaling Text-to-Speech with Convolutional Sequence Learning,DeepVoice3,,https://arxiv.org/abs/1710.07654,2017.10.20,v3,2018.02.22,ICLR2018Poster,2018.02.16,https://openreview.net/forum?id=HJtEm4p6Z,,,,,,,https://scholar.google.com/scholar?cluster=1828409622662260131,,,,,,,,,
+Natural TTS Synthesis by Conditioning WaveNet on Mel Spectrogram Predictions,Tacotron2,,,2017.12.16,,,,,,,,,,,,,,,,,,,,,
+Neural Speech Synthesis with Transformer Network,Transformer TTS,,,2018.09.19,,,,,,,,,,,,,,,,,,,,,
+Wav2Vec: Unsupervised Pre-Training for Speech Recognition,Wav2Vec,,https://arxiv.org/abs/1904.05862,2019.04.11,v4,2019.09.11,InterSpeech,,,,https://github.com/pytorch/fairseq,,,,,,,,,,,,,,
+Non-Autoregressive Neural Text-to-Speech,ParaNet,,,2019.05.21,,,,,,,,,,,,,,,,,,,,,
