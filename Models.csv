@@ -28,3 +28,13 @@ BigCodec: Pushing the Limits of Low-Bitrate Neural Speech Codec,BigCodec,Codec,,
 WaveGAN: Frequency-aware GAN for High-Fidelity Few-shot Image Generation,WaveGAN,Image,https://arxiv.org/abs/2207.07288,2022.07.15,v2,2022.08.09,ECCV2022,,,Training+Inference+Weight,https://github.com/kobeshegu/ECCV2022_WaveGAN,,,,,https://scholar.google.com/scholar?cluster=3247766894580497169,50,GAN,,,,,,,2024.09.17
 Conditional Variational Autoencoder with Adversarial Learning for End-to-End Text-to-Speech,Adam,Optimizer,https://arxiv.org/abs/2106.06103,2021.06.11,v1,2021.06.11,ICML2021,,https://proceedings.mlr.press/v139/kim21f,Training+Inference+Weight,https://github.com/jaywalnut310/vits,,https://jaywalnut310.github.io/vits-demo/index.html,15,45,,720,,,,LJSpeech/VCTK,Tacotron2+HiFi-GAN/Glow-TTS+HiFi-GAN,,,2024.09.09
 ,AdamW,Optimizer,,,,,,,,,,,,,,,,,,,,,,,
+,WORLD,Vocoder,,2016.07.01,,,,,,,,,,,,,,,,,,,,,
+WaveNet: A Generative Model for Raw Audio,WaveNet,Vocoder,https://arxiv.org/abs/1609.03499,2016.09.12,v2,2016.09.19,,,,,,,,,,,,,,,,,,AR,
+,SampleRNN,Vocoder,,2016.12.22,,,,,,,,,,,,,,,,,,,,,
+,Parallel WaveNet,Vocoder,,2017.11.28,,,,,,,,,,,,,,,,,,,,,
+Adversarial Audio Synthesis,WaveGAN,Vocoder,https://arxiv.org/abs/1802.04208,2018.02.12,v3,2019.02.09,ICLR2019,,,,,,,,,,,,,,,,,,
+,WaveRNN,Vocoder,,2018.02.23,,,,,,,,,,,,,,,,,,,,,
+,LPCNet,Vocoder,,2018.10.28,,,,,,,,,,,,,,,,,,,,,
+,WaveGlow,Vocoder,,2018.10.31,,,,,,,,,,,,,,,,,,,,,
+,FloWaveNet,Vocoder,,2018.11.06,,,,,,,,,,,,,,,,,,,,,
+,GANSynth,Vocoder,,2019.02.23,,,,,,,,,,,,,,,,,,,,,
