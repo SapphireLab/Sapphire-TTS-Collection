@@ -1,0 +1,10 @@
+Title,Abbreviation,Class,ArXiv,ArXiv v1 Date,ArXiv New Version,ArXiv New Date,Publication,Publication Date,DOI,OpenSource,Official Code,HuggingFace,Demo Page,Page Number,Cite Number,Google Scholar,Cited by,Theory,Architecture,Tasks,Datasets,Compare Methods,Tags,AR/NAR,Update Time
+SoundStream: An End-to-End Neural Audio Codec,SoundStream,Codec,https://arxiv.org/abs/2107.03312,2021.07.07,,,IEEE@TASLP2021,,https://doi.org/10.1109/TASLP.2021.3129994,,,,https://google-research.github.io/seanet/soundstream/examples/,13,68,,483,,,,,,,,
+High Fidelity Neural Audio Compression,EnCodec,Codec,https://arxiv.org/abs/2210.13438,2022.10.24,,,TMLR,,,Training+Inference+Weight,https://github.com/facebookresearch/encodec,,,19,,https://scholar.google.com/scholar?cluster=11269141130994676820,,,,,,,,,
+LMCodec: A Low Bitrate Speech Codec With Causal Transformer Models,LMCodec,Codec,,2023.03.23,,,,,,,,,,,,,,,,,,,,,
+HiFi-Codec: Group-residual Vector quantization for High Fidelity Audio Codec,HiFi-Codec,Codec,,2023.05.04,,,,,,,,,,,,,,,,,,,,,
+,AudioDec,Codec,,2023.05.26,,,,,,,,,,,,,,,,,,,,,
+,DAC,Codec,,2023.06.11,,,,,,,,,,,,,,,,,,,,,
+,RepCodec,Codec,,2023.08.31,,,,,,,,,,,,,,,,,,,,,
+,SpeechTokenizer,Codec,,2023.08.31,,,,,,,,,,,,,,,,,,,,,
+,FunCodec,Codec,,2023.09.14,,,,,,,,,,,,,,,,,,,,,
