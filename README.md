@@ -43,3 +43,4 @@
 |时间|名称|仓库|演示|论文|源码阅读|
 |---|---|:-:|---|:-:|:-:|
 |2024.08.29|Mini-Omni|[Github](https://github.com/gpt-omni/mini-omni)<br>![Star](https://img.shields.io/github/stars/gpt-omni/mini-omni)<br>[HuggingFace](https://huggingface.co/gpt-omni/mini-omni)<br>[HF Mirror](https://hf-mirror.com/gpt-omni/mini-omni)||[ArXiv](https://arxiv.org/abs/2408.16725)|
+|2024.09.10|LLaMA-Omni|[Github](https://github.com/ictnlp/LLaMA-Omni)<br>![Star](https://img.shields.io/github/stars/ictnlp/LLaMA-Omni?style=social)<br>[HuggingFace](https://huggingface.co/ICTNLP/Llama-3.1-8B-Omni)<br>[HF Mirror](https://hf-mirror.com/ICTNLP/Llama-3.1-8B-Omni)||[ArXiv](https://arxiv.org/abs/2409.06666)|
