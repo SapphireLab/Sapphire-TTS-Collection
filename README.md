@@ -16,7 +16,7 @@
 
 - [ ] [作者基本信息表 Authors-Info](Authors.csv)
 - [ ] [作者论文对应表 Authors-Papers](Authors-Papers.csv)
-- [ ] [模型总结表 Models]()
+- [ ] [模型总结表 Models](Models.csv)
 - [ ] [综述论文总结表 Survey]()
 
 ## 开源项目·Text-to-Speech
