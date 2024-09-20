@@ -58,3 +58,13 @@ Vocos: Closing the gap between time-domain and Fourier-based neural vocoders for
 ,iSTFTNet2,Vocoder,,2023.08.14,,,,,,,,,,,,,,,,,,,,,
 ,BigVSAN,Vocoder,,2023.09.06,,,,,,,,,,,,,,,,,,,,,
 ,SnakeGAN,Vocoder,,2023.09.14,,,,,,,,,,,,,,,,,,,,,
+,HiFTNet,Vocoder,,2023.09.18,,,,,,,,,,,,,,,,,,,,,
+APNet2: High-quality and High-efficiency Neural Vocoder with Direct Prediction of Amplitude and Phase Spectra,APNet2,Vocoder,https://arxiv.org/abs/2311.11545,2023.11.20,v1,2023.11.20,NCMMSC2023,,https://link.springer.com/chapter/10.1007/978-981-97-0601-3_6,,,,,,,https://scholar.google.com/scholar?cluster=360953352732613526,2,,,,,,,,2024.09.17
+,FreGrad,Vocoder,,2024.01.18,,,,,,,,,,,,,,,,,,,,,
+,EVA-GAN,Vocoder,,2024.01.31,,,,,,,,,,,,,,,,,,,,,
+,GLA-Grad,Vocoder,,2024.02.09,,,,,,,,,,,,,,,,,,,,,
+RFWave: Multi-band Rectified Flow for Audio Waveform Reconstruction,RFWave,Vocoder,https://arxiv.org/abs/2403.05010,2024.03.08,v2,2024.06.02,,,,,,,https://rfwave-demo.github.io/rfwave/,,,https://scholar.google.com/scholar?cluster=14982663450191514510,0,,,,,,,,
+,BiVocoder,Vocoder,,2024.06.04,,,,,,,,,,,,,,,,,,,,,
+,JenGAN,Vocoder,,2024.06.10,,,,,,,,,,,,,,,,,,,,,
+FreeV: Free Lunch For Vocoders Through Pseudo Inversed Mel Filter,FreeV,Vocoder,https://arxiv.org/abs/2406.08196,2024.06.12,v1,2024.06.12,InterSpeech2024,,#TODO,,https://github.com/BakerBunker/FreeV,,,5,,https://scholar.google.com/scholar?cluster=13731432507109093105,1,,,,,,,,2024.09.17
+,FA-GAN,Vocoder,,2024.07.05,,,,,,,,,,,,,,,,,,,,,
