@@ -33,11 +33,12 @@ High Fidelity Speech Synthesis with Adversarial Networks,GAN-TTS,Vocoder,https:/
 MelGAN: Generative Adversarial Networks for Conditional Waveform Synthesis,MelGAN,Vocoder,https://arxiv.org/abs/1910.06711,2019.10.08,v3,2019.12.09,,,,,,,,,,,,,,,,,,,2024.09.21
 ,VQ-Wav2Vec,Representation,,2019.10.12,,,,,,,,,,,,,,,,,,,,,
 WaveFlow: A Compact Flow-based Model for Raw Audio,WaveFlow,Vocoder,https://arxiv.org/abs/1912.01219,2019.12.03,v4,2020.06.24,ICML2020,,,,,,,,,,,,,,,,,,2024.09.21
-AlignTTS: Efficient Feed-Forward Text-to-Speech System without Explicit Alignment,AlignTTS,,https://arxiv.org/abs/2003.01950,2020.03.04,v1,2020.03.04,ICASSP2020,,,,,,,,,https://scholar.google.com/scholar?cluster=1600438380822500245,86.0,,,,,,,,2024.09.21
-Flow-TTS: A non-autoregressive network for text to speech based on flow,Flow-TTS,,,2020.04.09,,2020.04.09,ICASSP2020,2020.04.09,https://doi.org/10.1109/ICASSP40776.2020.9054484,,,,,,,https://scholar.google.com/scholar?cluster=7765078935283625839,134.0,Flow,,,,,,NAR,2024.09.21
-Flowtron: an Autoregressive Flow-based Generative Network for Text-to-Speech Synthesis,Flowtron,,https://arxiv.org/abs/2005.05957,2020.05.12,v3,2020.07.16,ICLR2021Poster,2021.01.12,https://openreview.net/forum?id=Ig53hpHxS4,,https://github.com/NVIDIA/flowtron,,,10.0,,,170.0,,,,,,,,2024.09.21
+AlignTTS: Efficient Feed-Forward Text-to-Speech System without Explicit Alignment,AlignTTS,,https://arxiv.org/abs/2003.01950,2020.03.04,v1,2020.03.04,ICASSP2020,,,,,,,,,https://scholar.google.com/scholar?cluster=1600438380822500245,86,,,,,,,,2024.09.21
+Flow-TTS: A non-autoregressive network for text to speech based on flow,Flow-TTS,,,2020.04.09,,2020.04.09,ICASSP2020,2020.04.09,https://doi.org/10.1109/ICASSP40776.2020.9054484,,,,,,,https://scholar.google.com/scholar?cluster=7765078935283625839,134,Flow,,,,,,NAR,2024.09.21
+Flowtron: an Autoregressive Flow-based Generative Network for Text-to-Speech Synthesis,Flowtron,,https://arxiv.org/abs/2005.05957,2020.05.12,v3,2020.07.16,ICLR2021Poster,2021.01.12,https://openreview.net/forum?id=Ig53hpHxS4,,https://github.com/NVIDIA/flowtron,,,10,,,170,,,,,,,,2024.09.21
 JDI-T: Jointly trained Duration Informed Transformer for Text-To-Speech without Explicit Alignment,JDI-T,,https://arxiv.org/abs/2005.07799,2020.05.15,v3,2020.10.05,InterSpeech2020,,,,,,,,,,,,,,,,,,2024.09.21
 Glow-TTS: A Generative Flow for Text-to-Speech via Monotonic Alignment Search,Glow-TTS,,https://arxiv.org/abs/2005.11129,2020.05.22,v2,2020.10.23,NeurIPS2020,,,,,,,,,,,Flow,,,,,,,2024.09.21
+Language Models are Few-Shot Learners,GPT-3,LLM,https://arxiv.org/abs/2005.14165,2020.05.28,v4,2020.07.22,,,,,,,,,,,,,,,,,,,
 End-to-End Adversarial Text-to-Speech,EATS,,https://arxiv.org/abs/2006.03575,2020.06.05,v3,2021.03.17,ICLR2021Oral,,,,,,,,,,,,,,,,,,2024.09.21
 MultiSpeech: Multi-Speaker Text to Speech with Transformer,MultiSpeech,,https://arxiv.org/abs/2006.04664,2020.06.08,v2,2022.08.01,,,,,,,,,,,,,,,,,,,2024.09.21
 FastSpeech 2: Fast and High-Quality End-to-End Text to Speech,FastSpeech2,,https://arxiv.org/abs/2006.04558,2020.06.08,v8,2022.08.08,ICLR2021,,,,,,https://speechresearch.github.io/fastspeech2/,,,,,,,,,,,,2024.09.21
@@ -46,11 +47,11 @@ FastPitch: Parallel Text-to-speech with Pitch Prediction,FastPitch,,https://arxi
 wav2vec 2.0: A Framework for Self-Supervised Learning of Speech Representations,Wav2Vec 2.0,Representation,https://arxiv.org/abs/2006.11477,2020.06.20,v3,2020.10.22,NeurIPS2020,,,,,,,,,,,,,,,,,,2024.09.21
 VocGAN: A High-Fidelity Real-time Vocoder with a Hierarchically-nested Adversarial Network,VocGAN,Vocoder,https://arxiv.org/abs/2007.15256,2020.07.30,v1,2020.07.30,InterSpeech2020,,,,,,,,,,,,,,,,,,2024.09.21
 SpeedySpeech: Efficient Neural Speech Synthesis,SpeedySpeech,,https://arxiv.org/abs/2008.03802,2020.08.09,v1,2020.08.09,InterSpeech2020,,,,,,,,,,,,,,,,,,2024.09.21
-WaveGrad: Estimating Gradients for Waveform Generation,WaveGrad,Vocoder,https://arxiv.org/abs/2009.00713,2020.09.02,v2,2020.10.09,ICLR2021Poster,,,,,,https://wavegrad.github.io/,,,https://scholar.google.com/scholar?cluster=9166479714962885889,724.0,,,,,,,,2024.09.21
-DiffWave: A Versatile Diffusion Model for Audio Synthesis,DiffWave,Vocoder,https://arxiv.org/abs/2009.09761,2020.09.21,v3,2021.03.30,ICLR2021Oral,,,,,,,,,https://scholar.google.com/scholar?cluster=8775132726722534164,1176.0,,,,,,,,2024.09.21
+WaveGrad: Estimating Gradients for Waveform Generation,WaveGrad,Vocoder,https://arxiv.org/abs/2009.00713,2020.09.02,v2,2020.10.09,ICLR2021Poster,,,,,,https://wavegrad.github.io/,,,https://scholar.google.com/scholar?cluster=9166479714962885889,724,,,,,,,,2024.09.21
+DiffWave: A Versatile Diffusion Model for Audio Synthesis,DiffWave,Vocoder,https://arxiv.org/abs/2009.09761,2020.09.21,v3,2021.03.30,ICLR2021Oral,,,,,,,,,https://scholar.google.com/scholar?cluster=8775132726722534164,1176,,,,,,,,2024.09.21
 HiFi-GAN: Generative Adversarial Networks for Efficient and High Fidelity Speech Synthesis,HiFi-GAN,Vocoder,https://arxiv.org/abs/2010.05646,2020.10.12,v2,2020.10.23,NeurIPS2020,,,,https://github.com/jik876/hifi-gan,,,,,,,,,,,,,,2024.09.21
 Bidirectional Variational Inference for Non-Autoregressive Text-to-Speech,BVAE-TTS,,,2021.01.13,,2021.01.13,ICLR2021Poster,2021.01.13,https://openreview.net/forum?id=o3iritJHLfO,,https://github.com/LEEYOONHYUNG/BVAE-TTS,,,,,,,,,,,,,,2024.09.21
-On Generative Spoken Language Modeling from Raw Audio,GSLM,,https://arxiv.org/abs/2102.01192,2021.02.01,v2,2021.09.09,TACL2021,2022.01.04,https://transacl.org/index.php/tacl/article/view/3241,,https://github.com/pytorch/fairseq/tree/master/examples/textless_nlp/gslm,,,19.0,,https://scholar.google.com/scholar?cluster=10339951252730122651,304.0,,CPC/Wav2Vec2.0/HuBERT+Transformer+Tacotron2,Acoustic Unit Discovery/Spoken Language Modeling/Discrete Speech Resynthesis/Speech Generation,,,,,2024.09.21
+On Generative Spoken Language Modeling from Raw Audio,GSLM,,https://arxiv.org/abs/2102.01192,2021.02.01,v2,2021.09.09,TACL2021,2022.01.04,https://transacl.org/index.php/tacl/article/view/3241,,https://github.com/pytorch/fairseq/tree/master/examples/textless_nlp/gslm,,,19,,https://scholar.google.com/scholar?cluster=10339951252730122651,304,,CPC/Wav2Vec2.0/HuBERT+Transformer+Tacotron2,Acoustic Unit Discovery/Spoken Language Modeling/Discrete Speech Resynthesis/Speech Generation,,,,,2024.09.21
 LightSpeech: Lightweight and Fast Text to Speech with Neural Architecture Search,LightSpeech,,https://arxiv.org/abs/2102.04040,2021.02.08,v1,2021.02.08,ICASSP2021,,,,,,https://speechresearch.github.io/lightspeech,,,,,,,,,,,,2024.09.21
 AdaSpeech: Adaptive Text to Speech for Custom Voice,AdaSpeech,,https://arxiv.org/abs/2103.00993,2021.03.01,v1,2021.03.01,ICLR2021,,,,,,,,,,,,,,,,,,2024.09.21
 Expressive Text-to-Speech using Style Tag,ST-TTS,,https://arxiv.org/abs/2104.00436,2021.04.01,v2,2022.10.06,InterSpeech2021,,,,,,,,,,,,,,,,,,2024.09.21
@@ -58,14 +59,14 @@ Expressive Text-to-Speech using Style Tag,ST-TTS,,https://arxiv.org/abs/2104.004
 AdaSpeech 2: Adaptive Text to Speech with Untranscribed Data,AdaSpeech2,,https://arxiv.org/abs/2104.09715,2021.04.20,v1,2021.04.20,ICASSP2021,,,,,,https://speechresearch.github.io/adaspeech2/,,,,,,,,,,,,2024.09.21
 ,Grad-TTS,,,2021.05.13,,,,,,,,,,,,,,,,,,,,,
 PriorGrad: Improving Conditional Denoising Diffusion Models with Data-Dependent Adaptive Prior,PriorGrad,Vocoder,https://arxiv.org/abs/2106.06406,2021.06.11,v2,2022.02.20,,,,,,,https://speechresearch.github.io/priorgrad/,,,,,,,,,,,,2024.09.21
-Conditional Variational Autoencoder with Adversarial Learning for End-to-End Text-to-Speech,VITS,,https://arxiv.org/abs/2106.06103,2021.06.11,v1,2021.06.11,ICML2021,,https://proceedings.mlr.press/v139/kim21f,Training+Inference+Weight,https://github.com/jaywalnut310/vits,,https://jaywalnut310.github.io/vits-demo/index.html,15.0,45.0,,720.0,,,,LJSpeech/VCTK,Tacotron2+HiFi-GAN/Glow-TTS+HiFi-GAN,,,2024.09.21
+Conditional Variational Autoencoder with Adversarial Learning for End-to-End Text-to-Speech,VITS,,https://arxiv.org/abs/2106.06103,2021.06.11,v1,2021.06.11,ICML2021,,https://proceedings.mlr.press/v139/kim21f,Training+Inference+Weight,https://github.com/jaywalnut310/vits,,https://jaywalnut310.github.io/vits-demo/index.html,15,45,,720,,,,LJSpeech/VCTK,Tacotron2+HiFi-GAN/Glow-TTS+HiFi-GAN,,,2024.09.21
 HuBERT: Self-Supervised Speech Representation Learning by Masked Prediction of Hidden Units,HuBERT,Representation,https://arxiv.org/abs/2106.07447,2021.06.14,v1,2021.06.14,TASLP2021,,,,,,,,,,,,,,,,,,2024.09.21
 UnivNet: A Neural Vocoder with Multi-Resolution Spectrogram Discriminators for High-Fidelity Waveform Generation,UnivNet,Vocoder,https://arxiv.org/abs/2106.07889,2021.06.15,v1,2021.06.15,InterSpeech2021,,,,,,,,,,,,,,,,,,2024.09.21
 RAD-TTS: Parallel Flow-Based TTS with Robust Alignment Learning and Diverse Synthesis,RAD-TTS,,,2021.06.16,,2021.06.16,ICML2021Poster,,https://openreview.net/forum?id=0NQwnnwAORi,,,,,,,,,,,,,,,,2024.09.21
-WaveGrad 2: Iterative Refinement for Text-to-Speech Synthesis,WaveGrad2,Vocoder,https://arxiv.org/abs/2106.09660,2021.06.17,v2,2021.06.19,InterSpeech2021,,,,,,https://wavegrad.github.io/v2,,,https://scholar.google.com/scholar?cluster=7794140642380946818,52.0,,,,,,,,2024.09.21
+WaveGrad 2: Iterative Refinement for Text-to-Speech Synthesis,WaveGrad2,Vocoder,https://arxiv.org/abs/2106.09660,2021.06.17,v2,2021.06.19,InterSpeech2021,,,,,,https://wavegrad.github.io/v2,,,https://scholar.google.com/scholar?cluster=7794140642380946818,52,,,,,,,,2024.09.21
 Glow-WaveGAN: Learning Speech Representations from GAN-based Variational Auto-Encoder For High Fidelity Flow-based Speech Synthesis,Glow-WaveGAN,,https://arxiv.org/abs/2106.10831,2021.06.21,v2,2021.06.22,InterSpeech2021,,,,,,,,,,,,,,,,,,2024.09.21
 AdaSpeech 3: Adaptive Text to Speech for Spontaneous Style,AdaSpeech3,,https://arxiv.org/abs/2107.02530,2021.07.06,v1,2021.07.06,InterSpeech2021,,,,,,,,,,,,,,,,,,2024.09.21
-SoundStream: An End-to-End Neural Audio Codec,SoundStream,Codec,https://arxiv.org/abs/2107.03312,2021.07.07,v1,2021.07.07,IEEE@TASLP2021,,https://doi.org/10.1109/TASLP.2021.3129994,,,,https://google-research.github.io/seanet/soundstream/examples/,13.0,68.0,,483.0,,,,,,,,2024.09.21
+SoundStream: An End-to-End Neural Audio Codec,SoundStream,Codec,https://arxiv.org/abs/2107.03312,2021.07.07,v1,2021.07.07,IEEE@TASLP2021,,https://doi.org/10.1109/TASLP.2021.3129994,,,,https://google-research.github.io/seanet/soundstream/examples/,13,68,,483,,,,,,,,2024.09.21
 ,W2V-BERT,Representation,,2021.08.07,,,,,,,,,,,,,,,,,,,,,
 ,pGSLM,,,2021.09.07,,,,,,,,,,,,,,,,,,,,,
 DelightfulTTS: The Microsoft Speech Synthesis System for Blizzard Challenge 2021,DelightfulTTS,,https://arxiv.org/abs/2110.12612,2021.10.15,v2,2021.11.19,,,,,,,,,,,,,,,,,,,2024.09.21
@@ -84,16 +85,16 @@ FastDiff: A Fast Conditional Diffusion Model for High-Quality Speech Synthesis,F
 NaturalSpeech: End-to-End Text to Speech Synthesis with Human-Level Quality,NaturalSpeech,,https://arxiv.org/abs/2205.04421,2022.05.09,v2,2022.05.10,TPAMI,,,,,,,,,,,,,,,,,,2024.09.21
 GenerSpeech: Towards Style Transfer for Generalizable Out-Of-Domain Text-to-Speech,GenerSpeech,,https://arxiv.org/abs/2205.07211,2022.05.15,v2,2022.10.12,NeurIPS2022,,,,,,https://generspeech.github.io/,,,,,,,,,,,,2024.09.21
 StyleTTS: A Style-Based Generative Model for Natural and Diverse Text-to-Speech Synthesis,StyleTTS,,https://arxiv.org/abs/2205.15439,2022.05.30,v2,2023.11.20,,,,,,,,,,,,,,,,,,,2024.09.21
-BigVGAN: A Universal Neural Vocoder with Large-Scale Training,BigVGAN,Vocoder,https://arxiv.org/abs/2206.04658,2022.06.09,v2,2023.02.16,ICLR2023Poster,,https://openreview.net/forum?id=iTtGCMDEzS_,,https://github.com/NVIDIA/BigVGAN,,https://bigvgan-demo.github.io/,,,https://scholar.google.com/scholar?cluster=14265847301322679424,159.0,GAN,,,,,,,2024.09.21
+BigVGAN: A Universal Neural Vocoder with Large-Scale Training,BigVGAN,Vocoder,https://arxiv.org/abs/2206.04658,2022.06.09,v2,2023.02.16,ICLR2023Poster,,https://openreview.net/forum?id=iTtGCMDEzS_,,https://github.com/NVIDIA/BigVGAN,,https://bigvgan-demo.github.io/,,,https://scholar.google.com/scholar?cluster=14265847301322679424,159,GAN,,,,,,,2024.09.21
 SANE-TTS: Stable And Natural End-to-End Multilingual Text-to-Speech,SANE-TTS,,https://arxiv.org/abs/2206.12132,2022.06.24,v1,2022.06.24,InterSpeech2022,,,,,,,,,,,,,,,,,,2024.09.21
 ,JETS,,,2022.07.01,,,,,,,,,,,,,,,,,,,,,
 Glow-WaveGAN 2: High-quality Zero-shot Text-to-speech Synthesis and Any-to-any Voice Conversion,Glow-WaveGAN2,,https://arxiv.org/abs/2207.01832,2022.07.05,v1,2022.07.05,,,,,,,,,,,,,,,,,,,2024.09.21
 DelightfulTTS 2: End-to-End Speech Synthesis with Adversarial Vector-Quantized Auto-Encoders,DelightfulTTS2,,https://arxiv.org/abs/2207.04646,2022.07.11,v1,2022.07.11,InterSpeech2022,,,,,,,,,,,,,,,,,,2024.09.21
-WaveGAN: Frequency-aware GAN for High-Fidelity Few-shot Image Generation,WaveGAN,Image,https://arxiv.org/abs/2207.07288,2022.07.15,v2,2022.08.09,ECCV2022,,,Training+Inference+Weight,https://github.com/kobeshegu/ECCV2022_WaveGAN,,,,,https://scholar.google.com/scholar?cluster=3247766894580497169,50.0,GAN,,,,,,,2024.09.21
-AudioLM: A Language Modeling Approach to Audio Generation,AudioLM,,https://arxiv.org/abs/2209.03143,2022.09.07,v2,2023.07.26,TASLP2023,2023.06.21,https://doi.org/10.1109/TASLP.2023.3288409,,,,,11.0,65.0,https://scholar.google.com/scholar?cluster=16664344357726277649,,,,,,,,,2024.09.21
+WaveGAN: Frequency-aware GAN for High-Fidelity Few-shot Image Generation,WaveGAN,Image,https://arxiv.org/abs/2207.07288,2022.07.15,v2,2022.08.09,ECCV2022,,,Training+Inference+Weight,https://github.com/kobeshegu/ECCV2022_WaveGAN,,,,,https://scholar.google.com/scholar?cluster=3247766894580497169,50,GAN,,,,,,,2024.09.21
+AudioLM: A Language Modeling Approach to Audio Generation,AudioLM,,https://arxiv.org/abs/2209.03143,2022.09.07,v2,2023.07.26,TASLP2023,2023.06.21,https://doi.org/10.1109/TASLP.2023.3288409,,,,,11,65,https://scholar.google.com/scholar?cluster=16664344357726277649,,,,,,,,,2024.09.21
 AudioGen: Textually Guided Audio Generation,AudioGen,,https://arxiv.org/abs/2209.15352,2022.09.30,v2,2023.06.05,ICLR,,https://openreview.net/forum?id=CYK7RfcOzQ4,,,,,,,https://scholar.google.com/scholar?cluster=11166122285082527856,,,,,,,,,2024.09.21
-High Fidelity Neural Audio Compression,EnCodec,Codec,https://arxiv.org/abs/2210.13438,2022.10.24,v1,2022.10.24,TMLR,,,Training+Inference+Weight,https://github.com/facebookresearch/encodec,,,19.0,,https://scholar.google.com/scholar?cluster=11269141130994676820,,,,,,,,,2024.09.21
-HierSpeech: Bridging the Gap between Text and Speech by Hierarchical Variational Inference using Self-supervised Representations for Speech Synthesis,HierSpeech,,,2022.11.01,,2022.11.01,NeurIPS2022,2022.11.01,https://openreview.net/forum?id=awdyRVnfQKX,,,,,,,https://scholar.google.com/scholar?cluster=10216809622451649383,39.0,,,,,,,,2024.09.21
+High Fidelity Neural Audio Compression,EnCodec,Codec,https://arxiv.org/abs/2210.13438,2022.10.24,v1,2022.10.24,TMLR,,,Training+Inference+Weight,https://github.com/facebookresearch/encodec,,,19,,https://scholar.google.com/scholar?cluster=11269141130994676820,,,,,,,,,2024.09.21
+HierSpeech: Bridging the Gap between Text and Speech by Hierarchical Variational Inference using Self-supervised Representations for Speech Synthesis,HierSpeech,,,2022.11.01,,2022.11.01,NeurIPS2022,2022.11.01,https://openreview.net/forum?id=awdyRVnfQKX,,,,,,,https://scholar.google.com/scholar?cluster=10216809622451649383,39,,,,,,,,2024.09.21
 VISinger 2: High-Fidelity End-to-End Singing Voice Synthesis Enhanced by Digital Signal Processing Synthesizer,VISinger2,,https://arxiv.org/abs/2211.02903,2022.11.05,,,,,,,,,,,,,,,,,,,,,
 OverFlow: Putting flows on top of neural transducers for better TTS,OverFlow,,https://arxiv.org/abs/2211.06892,2022.11.13,v2,2023.05.29,InterSpeech2023,,,,,,https://shivammehta25.github.io/OverFlow/,,,,,,,,,,,,2024.09.21
 PromptTTS: Controllable Text-to-Speech with Text Descriptions,PromptTTS,,https://arxiv.org/abs/2211.12171,2022.11.22,v1,2022.11.22,ICASSP2023,,,,,,,,,,,,,,,,,,2024.09.21
@@ -104,7 +105,7 @@ AudioLDM: Text-To-Audio Generation with Latent Diffusion Models,AudioLDM,,,2023.
 ,Make An Audio,,,2023.01.30,,,,,,,,,,,,,,,,,,,,,
 InstructTTS: Modelling Expressive TTS in Discrete Latent Space with Natural Language Style Prompt,InstructTTS,,https://arxiv.org/abs/2301.13662,2023.01.31,v2,2023.06.25,IEEE@TASLP2024,2024.05.20,https://doi.org/10.1109/TASLP.2024.3402088,,,,,,,,,,,,,,,,2024.09.21
 "Speak, Read and Prompt: High-Fidelity Text-to-Speech with Minimal Supervision",SPEAR-TTS,,https://arxiv.org/abs/2302.03540,2023.02.07,v1,2023.02.07,MIT-TACL,2023.12.21,https://doi.org/10.1162/tacl_a_00618,,,,https://google-research.github.io/seanet/speartts/examples/,,,,,,,,,,,,2024.09.21
-Vocos: Closing the gap between time-domain and Fourier-based neural vocoders for high-quality audio synthesis,Vocos,Vocoder,https://arxiv.org/abs/2306.00814,2023.03.01,v3,2024.05.29,,,,,https://github.com/gemelo-ai/vocos,,,,,,33.0,,,,,,,,2024.09.21
+Vocos: Closing the gap between time-domain and Fourier-based neural vocoders for high-quality audio synthesis,Vocos,Vocoder,https://arxiv.org/abs/2306.00814,2023.03.01,v3,2024.05.29,,,,,https://github.com/gemelo-ai/vocos,,,,,,33,,,,,,,,2024.09.21
 SpeechPrompt v2: Prompt Tuning for Speech Classification Tasks,SpeechPrompt v2,,https://arxiv.org/abs/2303.00733,2023.03.01,v1,2023.03.01,,,,,,,,,,,,,,,,,,,
 Google USM: Scaling Automatic Speech Recognition Beyond 100 Languages,Google USM,,https://arxiv.org/abs/2303.01037,2023.03.02,v3,2023.09.25,,,,,,,,,,,,,,,,,,,
 FoundationTTS: Text-to-Speech for ASR Customization with Generative Language Model,FoundationTTS,,https://arxiv.org/abs/2303.02939,2023.03.06,v3,2023.03.06,,,,,,,,,,,,,,,,,,,
@@ -125,7 +126,7 @@ AudioDec: An Open-source Streaming High-fidelity Neural Audio Codec,AudioDec,Cod
 ,PromptStyle,,,2023.05.31,,,,,,,,,,,,,,,,,,,,,
 ,SpeechGen,,,2023.06.03,,,,,,,,,,,,,,,,,,,,,
 Mega-TTS: Zero-Shot Text-to-Speech at Scale with Intrinsic Inductive Bias,Mega-TTS,,https://arxiv.org/abs/2306.03509,2023.06.06,v1,2023.06.06,,,,,,,https://mega-tts.github.io/demo-page,,,,,,,,,,,,2024.09.21
-,MusicGen,,,2023.06.08,,,,,,,,,,,,,,,,,,,,,
+Simple and Controllable Music Generation,MusicGen,,https://arxiv.org/abs/2306.05284,2023.06.08,v3,2024.01.30,NeurIPS2023Poster,2023.09.22,https://openreview.net/forum?id=jtiQ26sCJi,Training+Inference+Weight,https://github.com/facebookresearch/audiocraft/blob/main/docs/MUSICGEN.md,,https://ai.honu.io/papers/musicgen/,17,X,https://scholar.google.com/scholar?cluster=8869808453563782269,274,,,,,,,,2024.09.23
 High-Fidelity Audio Compression with Improved RVQGAN,DAC,Codec,https://arxiv.org/abs/2306.06546,2023.06.11,v2,2023.10.26,NeurIPS2023Spotlight,,,,,,,,,,,,,,,,,,2024.09.21
 StyleTTS 2: Towards Human-Level Text-to-Speech through Style Diffusion and Adversarial Training with Large Speech Language Models,StyleTTS2,,https://arxiv.org/abs/2306.07691,2023.06.13,v2,2023.11.20,NeurIPS2023,,,,,,https://styletts2.github.io/,,,,,,,,,,,,2024.09.21
 ,AudioPaLM,,,2023.06.22,,,,,,,,,,,,,,,,,,,,,
@@ -142,7 +143,7 @@ RepCodec: A Speech Representation Codec for Speech Tokenization,RepCodec,Codec,h
 SpeechTokenizer: Unified Speech Tokenizer for Speech Large Language Models,SpeechTokenizer,Codec,https://arxiv.org/abs/2308.16692,2023.08.31,v2,2024.01.23,ICLR2024,,,,https://github.com/ZhangXInFD/SpeechTokenizer/,,,,,,,,,,,,,,2024.09.21
 PromptTTS 2: Describing and Generating Voices with Text Prompt,PromptTTS2,,https://arxiv.org/abs/2309.02285,2023.09.05,v2,2023.10.12,,,,,,,https://speechresearch.github.io/prompttts2,,,,,,,,,,,,2024.09.21
 BigVSAN: Enhancing GAN-based Neural Vocoders with Slicing Adversarial Network,BigVSAN,Vocoder,https://arxiv.org/abs/2309.02836,2023.09.06,v2,2024.03.25,ICASSP2024,,,,,,,,,,,,,,,,,,2024.09.21
-Matcha-TTS: A fast TTS architecture with conditional flow matching,Matcha-TTS,,https://arxiv.org/abs/2309.03199,2023.09.06,v2,2024.01.09,ICASSP2024,,,,,,https://shivammehta25.github.io/Matcha-TTS/,5.0,,https://scholar.google.com/scholar?cluster=3378090602595584425,21.0,,,,,,,,2024.09.21
+Matcha-TTS: A fast TTS architecture with conditional flow matching,Matcha-TTS,,https://arxiv.org/abs/2309.03199,2023.09.06,v2,2024.01.09,ICASSP2024,,,,,,https://shivammehta25.github.io/Matcha-TTS/,5,,https://scholar.google.com/scholar?cluster=3378090602595584425,21,,,,,,,,2024.09.21
 VoiceFlow: Efficient Text-to-Speech with Rectified Flow Matching,VoiceFlow,,https://arxiv.org/abs/2309.05027,2023.09.10,v3,2024.09.01,ICASSP2024,,,,,,,,,,,,,,,,,,2024.09.21
 ,NExT-GPT,,,2023.09.11,,,,,,,,,,,,,,,,,,,,,
 SnakeGAN: A Universal Vocoder Leveraging DDSP Prior Knowledge and Periodic Inductive Bias,SnakeGAN,Vocoder,https://arxiv.org/abs/2309.07803,2023.09.14,v1,2023.09.14,ICME2023,,,,,,,,,,,,,,,,,,2024.09.21
@@ -158,7 +159,7 @@ UniAudio: An Audio Foundation Model Toward Universal Audio Generation,UniAudio,,
 E3 TTS: Easy End-to-End Diffusion-based Text to Speech,E3 TTS,,https://arxiv.org/abs/2311.00945,2023.11.02,v1,2023.11.02,ASRU2023,,,,,,,,,,,,,,,,,,2024.09.21
 ,COSMIC,,,2023.11.03,,,,,,,,,,,,,,,,,,,,,
 Qwen-Audio: Advancing Universal Audio Understanding via Unified Large-Scale Audio-Language Models,Qwen-Audio,,https://arxiv.org/abs/2311.07919,2023.11.14,v2,2023.12.21,,,,,https://github.com/QwenLM/Qwen-Audio,,,,,,,,,,,,,,2024.09.21
-APNet2: High-quality and High-efficiency Neural Vocoder with Direct Prediction of Amplitude and Phase Spectra,APNet2,Vocoder,https://arxiv.org/abs/2311.11545,2023.11.20,v1,2023.11.20,NCMMSC2023,,https://link.springer.com/chapter/10.1007/978-981-97-0601-3_6,,,,,,,https://scholar.google.com/scholar?cluster=360953352732613526,2.0,,,,,,,,2024.09.21
+APNet2: High-quality and High-efficiency Neural Vocoder with Direct Prediction of Amplitude and Phase Spectra,APNet2,Vocoder,https://arxiv.org/abs/2311.11545,2023.11.20,v1,2023.11.20,NCMMSC2023,,https://link.springer.com/chapter/10.1007/978-981-97-0601-3_6,,,,,,,https://scholar.google.com/scholar?cluster=360953352732613526,2,,,,,,,,2024.09.21
 HierSpeech++: Bridging the Gap between Semantic and Acoustic Representation of Speech by Hierarchical Variational Inference for Zero-shot Speech Synthesis,HierSpeech++,,https://arxiv.org/abs/2311.12454,2023.11.21,v2,2023.11.27,,,,,https://github.com/sh-lee-prml/HierSpeechpp,,,,,,,,,,,,,,2024.09.21
 OpenVoice: Versatile Instant Voice Cloning,OpenVoice,,https://arxiv.org/abs/2312.01479,2023.12.03,v6,2024.08.18,,,,,,,,,,,,,,,,,,,2024.09.21
 Amphion: An Open-Source Audio Music and Speech Generation Toolkit,Amphion,Toolkit,https://arxiv.org/abs/2312.09911,2023.12.15,v3,2024.09.16,SLT2024,,,,,,,,,,,,,,,,,,2024.09.21
@@ -172,6 +173,7 @@ ScoreDec: A Phase-preserving High-Fidelity Audio Codec with A Generalized Score-
 SpeechGPT-Gen: Scaling Chain-of-Information Speech Generation,SpeechGPT-Gen,,https://arxiv.org/abs/2401.13527,2024.01.24,v2,2024.01.25,,,,,https://github.com/0nutation/SpeechGPT,,,,,,,,,,,,,,2024.09.21
 VALL-T: Decoder-Only Generative Transducer for Robust and Decoding-Controllable Text-to-Speech,VALL-T,,https://arxiv.org/abs/2401.14321,2024.01.25,v4,2024.01.30,,,,,,,,,,,,,,,,,,,2024.09.21
 EVA-GAN: Enhanced Various Audio Generation via Scalable Generative Adversarial Networks,EVA-GAN,Vocoder,https://arxiv.org/abs/2402.00892,2024.01.31,v1,2024.01.31,,,,,,,,,,,,,,,,,,,2024.09.21
+Natural Language Guidance of High-Fidelity Text-to-Speech with Synthetic Annotations,Parler-TTS (Reproduce),,https://arxiv.org/abs/2402.01912,2024.02.02,v1,2024.02.02,--,--,--,Training,[Reproduce] https://github.com/huggingface/parler-tts,https://huggingface.co/parler-tts/,https://text-description-to-speech.com,6,34,https://scholar.google.com/scholar?cluster=1239973316035890942,17,,,,,,,,2024.09.23
 ,SpiRit-LM,,,2024.02.08,,,,,,,,,,,,,,,,,,,,,
 GLA-Grad: A Griffin-Lim Extended Waveform Generation Diffusion Model,GLA-Grad,Vocoder,https://arxiv.org/abs/2402.15516,2024.02.09,v1,2024.02.09,ICASSP2024,,,,,,,,,,,,,,,,,,2024.09.21
 BASE TTS: Lessons from building a billion-parameter Text-to-Speech model on 100K hours of data,BASE TTS,,https://arxiv.org/abs/2402.08093,2024.02.12,v2,2024.02.15,,,,,,,,,,,,,,,,,,,2024.09.21
@@ -179,8 +181,8 @@ MobileSpeech: A Fast and High-Fidelity Framework for Mobile Zero-Shot Text-to-Sp
 APCodec: A Neural Audio Codec with Parallel Amplitude and Phase Spectrum Encoding and Decoding,APCodec,Codec,https://arxiv.org/abs/2402.10533,2024.02.16,v1,2024.02.16,TASLP,,,,,,,,,,,,,,,,,,2024.09.21
 Language-Codec: Reducing the Gaps Between Discrete Codec Representation and Speech Language Models,Language-Codec,Codec,https://arxiv.org/abs/2402.12208,2024.02.19,v3,2024.04.27,,,,,https://github.com/jishengpeng/languagecodec,,,,,,,,,,,,,,2024.09.21
 ,Spoken-LLM,,,2024.02.20,,,,,,,,,,,,,,,,,,,,,
-NaturalSpeech 3: Zero-Shot Speech Synthesis with Factorized Codec and Diffusion Models,NaturalSpeech3,,https://arxiv.org/abs/2403.03100,2024.03.05,v3,2024.04.23,ICML2024Oral,,,,,,,,,https://scholar.google.com/scholar?cluster=11303548308295061158,50.0,,,,,,,,2024.09.21
-RFWave: Multi-band Rectified Flow for Audio Waveform Reconstruction,RFWave,Vocoder,https://arxiv.org/abs/2403.05010,2024.03.08,v2,2024.06.02,,,,,,,https://rfwave-demo.github.io/rfwave/,,,https://scholar.google.com/scholar?cluster=14982663450191514510,0.0,,,,,,,,2024.09.21
+NaturalSpeech 3: Zero-Shot Speech Synthesis with Factorized Codec and Diffusion Models,NaturalSpeech3,,https://arxiv.org/abs/2403.03100,2024.03.05,v3,2024.04.23,ICML2024Oral,,,,,,,,,https://scholar.google.com/scholar?cluster=11303548308295061158,50,,,,,,,,2024.09.21
+RFWave: Multi-band Rectified Flow for Audio Waveform Reconstruction,RFWave,Vocoder,https://arxiv.org/abs/2403.05010,2024.03.08,v2,2024.06.02,,,,,,,https://rfwave-demo.github.io/rfwave/,,,https://scholar.google.com/scholar?cluster=14982663450191514510,0,,,,,,,,2024.09.21
 ,HAM-TTS,,,2024.03.09,,,,,,,,,,,,,,,,,,,,,
 VoiceCraft: Zero-Shot Speech Editing and Text-to-Speech in the Wild,VoiceCraft,,https://arxiv.org/abs/2403.16973,2024.03.25,v3,2024.06.14,ACL2024,,,,,,,,,,,,,,,,,,2024.09.21
 CM-TTS: Enhancing Real Time Text-to-Speech Synthesis Efficiency through Weighted Samplers and Consistency Models,CM-TTS,,https://arxiv.org/abs/2404.00569,2024.03.31,v1,2024.03.31,,,,,https://github.com/XiangLi2022/CM-TTS,,,,,,,,,,,,,,2024.09.21
@@ -207,7 +209,7 @@ JenGAN: Stacked Shifted Filters in GAN-Based Speech Synthesis,JenGAN,Vocoder,htt
 ,ExHuBERT,Representation,,2024.06.11,,,,,,,,,,,,,,,,,,,,,
 Single-Codec: Single-Codebook Speech Codec towards High-Performance Speech Generation,Single-Codec,Codec,https://arxiv.org/abs/2406.07422,2024.06.11,v1,2024.06.11,InterSpeech2024,,https://doi.org/10.21437/Interspeech.2024-1559,,,,,,,,,,,,,,,,2024.09.21
 LibriTTS-P: A Corpus with Speaking Style and Speaker Identity Prompts for Text-to-Speech and Style Captioning,LibriTTS-P,Dataset,https://arxiv.org/abs/2406.07969,2024.06.12,v1,2024.06.12,InterSpeech2024,,https://doi.org/10.21437/Interspeech.2024-692,,,,,,,,,,,,,,,,2024.09.21
-FreeV: Free Lunch For Vocoders Through Pseudo Inversed Mel Filter,FreeV,Vocoder,https://arxiv.org/abs/2406.08196,2024.06.12,v1,2024.06.12,InterSpeech2024,,https://doi.org/10.21437/Interspeech.2024-1435,,https://github.com/BakerBunker/FreeV,,,5.0,,https://scholar.google.com/scholar?cluster=13731432507109093105,1.0,,,,,,,,2024.09.21
+FreeV: Free Lunch For Vocoders Through Pseudo Inversed Mel Filter,FreeV,Vocoder,https://arxiv.org/abs/2406.08196,2024.06.12,v1,2024.06.12,InterSpeech2024,,https://doi.org/10.21437/Interspeech.2024-1435,,https://github.com/BakerBunker/FreeV,,,5,,https://scholar.google.com/scholar?cluster=13731432507109093105,1,,,,,,,,2024.09.21
 VALL-E R: Robust and Efficient Zero-Shot Text-to-Speech Synthesis via Monotonic Alignment,VALL-E R,,https://arxiv.org/abs/2406.07855,2024.06.12,v1,2024.06.12,,,,,,,,,,,,,,,,,,,2024.09.21
 TokSing: Singing Voice Synthesis based on Discrete Tokens,TokSing,,https://arxiv.org/abs/2406.08416,2024.06.12,v2,2024.06.20,InterSpeech2024,,https://doi.org/10.21437/Interspeech.2024-2360,,,,,,,,,,,,,,,,2024.09.21
 Speech ReaLLM: Real-time Streaming Speech Recognition with Multimodal LLMs by Teaching the Flow of Time,Speech ReaLLM,,https://arxiv.org/abs/2406.09569,2024.06.13,v1,2024.06.13,,,,,,,,,,,,,,,,,,,
@@ -255,10 +257,34 @@ vec2wav 2.0: Advancing Voice Conversion via Discrete Token Vocoders,Vec2Wav2.0,V
 LAST: Language Model Aware Speech Tokenization,LAST,,https://arxiv.org/abs/2409.03701,2024.09.05,v1,2024.09.05,,,,,,,,,,,,,,,,,,,
 BigCodec: Pushing the Limits of Low-Bitrate Neural Speech Codec,BigCodec,Codec,https://arxiv.org/abs/2409.05377,2024.09.09,v1,2024.09.09,,,,Inference+Weight,https://github.com/Aria-K-Alethia/BigCodec,,https://aria-k-alethia.github.io/bigcodec-demo/,,,,,,,,,,,,2024.09.21
 LLaMA-Omni: Seamless Speech Interaction with Large Language Models,LLaMA-Omni,,https://arxiv.org/abs/2409.06666,2024.09.10,v1,2024.09.10,,,,,https://github.com/ictnlp/LLaMA-Omni,,,,,,,,,,,,,,2024.09.21
-SSR-Speech: Towards Stable Safe and Robust Zero-shot Text-based Speech Editing and Synthesis,SSR-Speech,,https://arxiv.org/abs/2409.07556,2024.09.11,v1,2024.09.11,Submitted to ICASSP2025,,,Training+Inference+Weight,https://github.com/WangHelin1997/SSR-Speech,,https://WangHelin1997.github.io/SSR-Speech-Demo,5.0,35.0,,,,,,,,,,2024.09.21
+SSR-Speech: Towards Stable Safe and Robust Zero-shot Text-based Speech Editing and Synthesis,SSR-Speech,,https://arxiv.org/abs/2409.07556,2024.09.11,v1,2024.09.11,Submitted to ICASSP2025,,,Training+Inference+Weight,https://github.com/WangHelin1997/SSR-Speech,,https://WangHelin1997.github.io/SSR-Speech-Demo,5,35,,,,,,,,,,2024.09.21
 Super Monotonic Alignment Search,Super-MAS,,https://arxiv.org/abs/2409.07704,2024.09.12,,,,,,,,,,,,,,,,,,,,,
 E1 TTS: Simple and Fast Non-Autoregressive TTS,E1 TTS,,https://arxiv.org/abs/2409.09351,2024.09.14,v1,2024.09.14,,,,,,,,,,,,,,,,,,NAR,
-,WMCodec,Codec,,2024.09.18,,,,,,,,,,,,,,,,,,,,,
-,CoFi-Speech,,,2024.09.18,,,,,,,,,,,,,,,,,,,,,
-Low Frame-rate Speech Codec: a Codec Designed for Fast High-quality Speech LLM Training and Inference,LFSC,Codec,https://arxiv.org/abs/2409.12117,2024.09.18,v1,2024.09.18,Submitted to ICASSP2025,,,,https://github.com/NVIDIA/NeMo,,https://edresson.github.io/Low-Frame-rate-Speech-Codec/,5.0,40.0,,,,,,,,,,2024.09.21
-,NDVQ,Codec,,2024.09.19,,,,,,,,,,,,,,,,,,,,,
+WMCodec: End-to-End Neural Speech Codec with Deep Watermarking for Authenticity Verification,WMCodec,Codec,https://arxiv.org/abs/2409.12121,2024.09.18,v1,2024.09.18,,,,,,,,,,,,,,,,,,,
+Speaking from Coarse to Fine: Improving Neural Codec Language Model via Multi-Scale Speech Coding and Generation,CoFi-Speech,CodecLM,https://arxiv.org/abs/2409.11630,2024.09.18,v1,2024.09.18,,,,,,,https://hhguo.github.io/DemoCoFiSpeech,5,30,,0,,CoFi-Codec (SoCodec [OPQ])+CoFi-LM-Cos/SoS+BigVGAN,TTS,WenetSpeech4TTS,VALL-E/CosyVoice/SoCodec-TTS,Mel2Code/BPE,,2024.09.23
+Low Frame-rate Speech Codec: a Codec Designed for Fast High-quality Speech LLM Training and Inference,LFSC,Codec,https://arxiv.org/abs/2409.12117,2024.09.18,v1,2024.09.18,Submitted to ICASSP2025,,,,https://github.com/NVIDIA/NeMo,,https://edresson.github.io/Low-Frame-rate-Speech-Codec/,5,40,,,,,,,,,,2024.09.21
+NDVQ: Robust Neural Audio Codec with Normal Distribution-Based Vector Quantization,NDVQ,Codec,https://arxiv.org/abs/2409.12717,2024.09.19,v1,2024.09.19,,,,,,,,,,,,,,,,,,,
+,BERT,LLM,,,,,,,,,,,,,,,,,,,,,,,
+,RoBERTa,LLM,,,,,,,,,,,,,,,,,,,,,,,
+,ByT5,LLM,,,,,,,,,,,,,,,,,,,,,,,
+LLaMA: Open and Efficient Foundation Language Models,LLaMA,LLM,,,,,,,,,,,,,,,,,,,,,,,
+,PaLM2,LLM,,,,,,,,,,,,,,,,,,,,,,,
+Llama 2: Open Foundation and Fine-Tuned Chat Models,LLaMA2,LLM,,,,,,,,,,,,,,,,,,,,,,,
+,LLaMA3,LLM,,,,,,,,,,,,,,,,,,,,,,,
+,Qwen,LLM,,,,,,,,,,,,,,,,,,,,,,,
+,OpenELM,LLM,,,,,,,,,,,,,,,,,,,,,,,
+Period Singer: Integrating Periodic and Aperiodic Variational Autoencoders for Natural-Sounding End-to-End Singing Voice Synthesis,Period Singer,,https://arxiv.org/abs/2406.09894,2024.06.14,v2,2024.09.11,InterSpeech2024,,,,,,,,,,,,,,,,,,
+FreeVC: Towards High-Quality Text-Free One-Shot Voice Conversion,FreeVC,,https://arxiv.org/abs/2210.15418,2022.10.27,v1,2022.10.27,,,,,,,,,,,,,,,,,,,
+QuickVC: Any-to-many Voice Conversion Using Inverse Short-time Fourier Transform for Faster Conversion,QuickVC,,https://arxiv.org/abs/2302.08296,2023.02.16,v4,2023.02.23,,,,,,,,,,,,,,,,,,,
+StreamVoice: Streamable Context-Aware Language Modeling for Real-time Zero-Shot Voice Conversion,StreamVoice,,https://arxiv.org/abs/2401.11053,2024.01.19,v5,2024.07.19,ACL2024,,,,,,,,,,,,,,,,,,
+PAVITS: Exploring Prosody-aware VITS for End-to-End Emotional Voice Conversion,PAVITS,,https://arxiv.org/abs/2403.01494,2024.03.03,v1,2024.03.03,ICASSP2024,,,,,,,,,,,,,,,,,,
+StreamVoice+: Evolving into End-to-end Streaming Zero-shot Voice Conversion,StreamVoice+,,https://arxiv.org/abs/2408.02178,2024.08.05,v1,2024.08.05,,,,,,,,,,,,,,,,,,,
+,FourierFT,PEFT,,2024.05.05,,,,,,,,,,,,,,,,,,,,,
+,LoRA-GA,PEFT,,2024.07.06,,,,,,,,,,,,,,,,,,,,,
+,LoRA-Pro,PEFT,,2024.07.25,,,,,,,,,,,,,,,,,,,,,
+LoRA: Low-Rank Adaptation of Large Language Models,LoRA,PEFT,https://arxiv.org/abs/2106.09685,2021.06.17,V2,2021.10.16,,,,,,,,,,,,,,,,,,,
+MoRA: High-Rank Updating for Parameter-Efficient Fine-Tuning,MoRA,PEFT,https://arxiv.org/abs/2405.12130,2024.05.20,v1,2024.05.20,,,,,,,,,,,,,,,,,,,
+QLoRA: Efficient Finetuning of Quantized LLMs,QLoRA,PEFT,https://arxiv.org/abs/2305.14314,2023.05.23,v1,2023.05.23,,,,,,,,,,,,,,,,,,,
+VB-LoRA: Extreme Parameter Efficient Fine-Tuning with Vector Banks,VB-LoRA,PEFT,https://arxiv.org/abs/2405.15179,2024.05.24,v2,2024.05.27,,,,,,,,,,,,,,,,,,,
+Layer Normalization,Layer Normalization,,https://arxiv.org/abs/1607.06450,2016.07.21,v1,2016.07.21,,,,,,,,,,,,,,,,,,,
+Autoregressive Image Generation using Residual Quantization,RQ-VAE,,,2022.03.03,,,,,,,,,,,,,,,,,,,,,
