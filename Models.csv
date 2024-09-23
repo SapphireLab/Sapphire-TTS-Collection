@@ -113,28 +113,28 @@ Speak Foreign Languages with Your Own Voice:Cross-Lingual Neural Codec Language 
 LMCodec: A Low Bitrate Speech Codec With Causal Transformer Models,LMCodec,Codec,https://arxiv.org/abs/2303.12984,2023.03.23,v1,2023.03.23,ICASSP2023,,,,,,https://mjenrungrot.github.io/chrome-media-audio-papers/publications/lmcodec,,,,,,,,,,,,2024.09.21
 NaturalSpeech 2: Latent Diffusion Models are Natural and Zero-Shot Speech and Singing Synthesizers,NaturalSpeech2,,https://arxiv.org/abs/2304.09116,2023.04.18,v3,2023.05.30,,,,,,,,,,,,,,,,,,,2024.09.21
 HiFi-Codec: Group-residual Vector quantization for High Fidelity Audio Codec,HiFi-Codec,Codec,https://arxiv.org/abs/2305.02765,2023.05.04,v2,2023.05.07,,,,,,,,,,,,,,,,,,,2024.09.21
-,CoMoSpeech,,,2023.05.11,,,,,,,,,,,,,,,,,,,,,
+CoMoSpeech: One-Step Speech and Singing Voice Synthesis via Consistency Model,CoMoSpeech,,https://arxiv.org/abs/2305.06908,2023.05.11,v4,2023.10.29,ACM MultiMedia2023,2023.10.27,https://doi.org/10.1145/3581783.3612061,,,,https://comospeech.github.io/,,,https://scholar.google.com/scholar?cluster=125530389504723191,26,,,,,,,,2024.09.23
 APNet: An All-Frame-Level Neural Vocoder Incorporating Direct Prediction of Amplitude and Phase Spectra,APNet,Vocoder,https://arxiv.org/abs/2305.07952,2023.05.13,v1,2023.05.13,TASLP,,,,,,,,,,,,,,,,,,2024.09.21
 SoundStorm: Efficient Parallel Audio Generation,SoundStorm,,https://arxiv.org/abs/2305.09636,2023.05.16,v1,2023.05.16,,,,,,,,,,,,,,,,,,,2024.09.21
 SpeechGPT: Empowering Large Language Models with Intrinsic Cross-Modal Conversational Abilities,SpeechGPT,,https://arxiv.org/abs/2305.11000,2023.05.18,v2,2023.05.19,,,,,,,,,,,,,,,,,,,2024.09.21
 Listen Think and Understand,LTU,,https://arxiv.org/abs/2305.10790,2023.05.18,v3,2024.02.19,ICLR2024,,,,https://github.com/YuanGongND/ltu,https://huggingface.co/spaces/yuangongfdu/ltu,,,,,,,,,,,,,
-,Pengi,,https://arxiv.org/abs/2305.11834,2023.05.19,,,,,,,,,,,,,,,,,,,,,
+Pengi: An Audio Language Model for Audio Tasks,Pengi,,https://arxiv.org/abs/2305.11834,2023.05.19,v2,2024.01.19,NeurIPS2023Poster,2023.09.22,https://openreview.net/forum?id=gJLAfO4KUq,,,,,,,https://scholar.google.com/scholar?cluster=10580047223748383516,80,,,,,,,,2024.09.23
 ,TWIST,,,2023.05.22,,,,,,,,,,,,,,,,,,,,,
 U-DiT TTS: U-Diffusion Vision Transformer for Text-to-Speech,U-DiT TTS,,https://arxiv.org/abs/2305.13195,2023.05.22,v1,2023.05.22,,,,,,,,,,,,,,,,,,,
-,VioLA,,,2023.05.25,,,,,,,,,,,,,,,,,,,,,
+"VioLA: Unified Codec Language Models for Speech Recognition, Synthesis, and Translation",VioLA,,https://arxiv.org/abs/2305.16107,2023.05.25,v1,2023.05.25,,,,,,,,,,https://scholar.google.com/scholar?cluster=3175310480496805997,69,,,,,,,,2024.09.23
 AudioDec: An Open-source Streaming High-fidelity Neural Audio Codec,AudioDec,Codec,https://arxiv.org/abs/2305.16608,2023.05.26,v1,2023.05.26,ICASSP2023,,,,,,,,,,,,,,,,,,2024.09.21
-,PromptStyle,,,2023.05.31,,,,,,,,,,,,,,,,,,,,,
-,SpeechGen,,,2023.06.03,,,,,,,,,,,,,,,,,,,,,
+PromptStyle: Controllable Style Transfer for Text-to-Speech with Natural Language Descriptions,PromptStyle,,https://arxiv.org/abs/2305.19522,2023.05.31,v2,2023.06.01,InterSpeech2023,,,,,,,,,https://scholar.google.com/scholar?cluster=14591664902776788259,31,,,,,,,,2024.09.23
+SpeechGen: Unlocking the Generative Power of Speech Language Models with Prompts,SpeechGen,,https://arxiv.org/abs/2306.02207,2023.06.03,v3,2023.08.25,,,,,https://github.com/ga642381/SpeechGen,,https://ga642381.github.io/SpeechPrompt/speechgen,,,https://scholar.google.com/scholar?cluster=16623612908585464130,18,,,,,,,,2024.09.23
 Mega-TTS: Zero-Shot Text-to-Speech at Scale with Intrinsic Inductive Bias,Mega-TTS,,https://arxiv.org/abs/2306.03509,2023.06.06,v1,2023.06.06,,,,,,,https://mega-tts.github.io/demo-page,,,,,,,,,,,,2024.09.21
 Simple and Controllable Music Generation,MusicGen,,https://arxiv.org/abs/2306.05284,2023.06.08,v3,2024.01.30,NeurIPS2023Poster,2023.09.22,https://openreview.net/forum?id=jtiQ26sCJi,Training+Inference+Weight,https://github.com/facebookresearch/audiocraft/blob/main/docs/MUSICGEN.md,,https://ai.honu.io/papers/musicgen/,17,X,https://scholar.google.com/scholar?cluster=8869808453563782269,274,,,,,,,,2024.09.23
 High-Fidelity Audio Compression with Improved RVQGAN,DAC,Codec,https://arxiv.org/abs/2306.06546,2023.06.11,v2,2023.10.26,NeurIPS2023Spotlight,,,,,,,,,,,,,,,,,,2024.09.21
 StyleTTS 2: Towards Human-Level Text-to-Speech through Style Diffusion and Adversarial Training with Large Speech Language Models,StyleTTS2,,https://arxiv.org/abs/2306.07691,2023.06.13,v2,2023.11.20,NeurIPS2023,,,,,,https://styletts2.github.io/,,,,,,,,,,,,2024.09.21
-,AudioPaLM,,,2023.06.22,,,,,,,,,,,,,,,,,,,,,
+AudioPaLM: A Large Language Model That Can Speak and Listen,AudioPaLM,,https://arxiv.org/abs/2306.12925,2023.06.22,v1,2023.06.22,,,,,,,https://google-research.github.io/seanet/audiopalm/examples,,,https://scholar.google.com/scholar?cluster=15189287243147910049,120,,,,,,,,2024.09.23
 Voicebox: Text-Guided Multilingual Universal Speech Generation at Scale,Voicebox,,https://arxiv.org/abs/2306.15687,2023.06.23,v2,2023.10.19,NeurIPS2023,,,,,,https://voicebox.metademolab.com/,,,,,,,,,,,,2024.09.21
 UnitSpeech: Speaker-adaptive Speech Synthesis with Untranscribed Data,UnitSpeech,,https://arxiv.org/abs/2306.16083,2023.06.28,v1,2023.06.28,InterSpeech2023 Oral,,,,,,,,,,,,,,,,,,2024.09.21
 Mega-TTS 2: Boosting Prompting Mechanisms for Zero-Shot Speech Synthesis,Mega-TTS2,,https://arxiv.org/abs/2307.07218,2023.07.14,v4,2024.04.10,ICLR,,,,,,,,,,,,,,,,,,2024.09.21
 VITS2: Improving Quality and Efficiency of Single-Stage Text-to-Speech with Adversarial Learning and Architecture Design,VITS2,,https://arxiv.org/abs/2307.16430,2023.07.31,v1,2023.07.31,InterSpeech2023,,,,,,,,,,,,,,,,,,2024.09.21
-,DiffProsody,,,2023.07.31,,,,,,,,,,,,,,,,,,,,,
+DiffProsody: Diffusion-based Latent Prosody Generation for Expressive Speech Synthesis with Prosody Conditional Adversarial Training,DiffProsody,,https://arxiv.org/abs/2307.16549,2023.07.31,v1,2023.07.31,IEEE@TASLP2024,2024.05.01,https://doi.org/10.1109/TASLP.2024.3395994,,,,,,,https://scholar.google.com/scholar?cluster=13675380349094484432,8,,,,,,,,2024.09.23
 ,AudioLDM2,,,2023.08.10,,,,,,,,,,,,,,,,,,,,,
 iSTFTNet2: Faster and More Lightweight iSTFT-Based Neural Vocoder Using 1D-2D CNN,iSTFTNet2,Vocoder,https://arxiv.org/abs/2308.07117,2023.08.14,v1,2023.08.14,InterSpeech2023,,,,,,https://www.kecl.ntt.co.jp/people/kaneko.takuhiro/projects/istftnet2/,,,,,,,,,,,,2024.09.21
 ,SpeechX,,,2023.08.14,,,,,,,,,,,,,,,,,,,,,
@@ -226,17 +226,17 @@ BESTOW: Efficient and Streamable Speech Language Model with the Best of Two Worl
 Robust Zero-Shot Text-to-Speech Synthesis with Reverse Inference Optimization,RIO,,https://arxiv.org/abs/2407.02243,2024.07.02,v1,2024.07.02,,,,,,,,,,,,,,,,,,,2024.09.21
 ,FunAudioLLM,,,2024.07.04,,,,,,,,,,,,,,,,,,,,,
 FA-GAN: Artifacts-free and Phase-aware High-fidelity GAN-based Vocoder,FA-GAN,Vocoder,https://arxiv.org/abs/2407.04575,2024.07.05,v1,2024.07.05,InterSpeech2024,,https://doi.org/10.21437/Interspeech.2024-380,,,,,,,,,,,,,,,,2024.09.21
-,CosyVoice,,,2024.07.07,,,,,,,,,,,,,,,,,,,,,
+CosyVoice: A Scalable Multilingual Zero-shot Text-to-speech Synthesizer based on Supervised Semantic Tokens,CosyVoice,,https://arxiv.org/abs/2407.05407,2024.07.07,v2,2024.07.09,,,,,,,,,,https://scholar.google.com/scholar?cluster=16233573129404678819,8,,,,,,,,2024.09.23
 ,AffectGPT,,,2024.07.10,,,,,,,,,,,,,,,,,,,,,
 Autoregressive Speech Synthesis without Vector Quantization,MELLE,,https://arxiv.org/abs/2407.08551,2024.07.11,v1,2024.07.11,,,,,,,https://aka.ms/melle,,,,,,,,,,,AR,2024.09.21
-,Qwen2-Audio,,https://arxiv.org/abs/2407.10759,2024.07.15,,,,,,,,,,,,,,,,,,,,,
+Qwen2-Audio Technical Report,Qwen2-Audio,,https://arxiv.org/abs/2407.10759,2024.07.15,v1,2024.07.15,,,,,https://github.com/QwenLM/Qwen2-Audio,,,,,https://scholar.google.com/scholar?cluster=13259138701210870695,12,,,,,,,,2024.09.23
 TTSDS: Text-to-Speech Distribution Score,TTSDS,,https://arxiv.org/abs/2407.12707,2024.07.17,v2,2024.07.22,SLT2024,,,,,,,,,,,,,,,,,,2024.09.21
 MSceneSpeech: A Multi-Scene Speech Dataset For Expressive Speech Synthesis,MSceneSpeech,Dataset,https://arxiv.org/abs/2407.14006,2024.07.19,v1,2024.07.19,InterSpeech2024,,https://doi.org/10.21437/Interspeech.2024-266,,,,,,,,,,,,,,,,2024.09.21
 ,LLaST,,,2024.07.22,,,,,,,,,,,,,,,,,,,,,
 SuperCodec: A Neural Speech Codec with Selective Back-Projection Network,SuperCodec,Codec,https://arxiv.org/abs/2407.20530,2024.07.30,v1,2024.07.30,ICASSP2024,,,,,,,,,,,,,,,,,,2024.09.21
 Language Model Can Listen While Speaking,LSLM,,https://arxiv.org/abs/2408.02622,2024.08.05,v1,2024.08.05,,,,,,,https://ddlbojack.github.io/LSLM,,,,,,,,,,,,2024.09.21
 VNet: A GAN-based Multi-Tier Discriminator Network for Speech Synthesis Vocoders,VNet,Vocoder,https://arxiv.org/abs/2408.06906,2024.08.13,v1,2024.08.13,SMC2024,,,,,,,,,,,,,,,,,,2024.09.21
-Neural Speech and Audio Coding,,,https://arxiv.org/abs/2408.06954,2024.08.13,,,,,,,,,,,,,,,,,,,,,
+Neural Speech and Audio Coding,！！,,https://arxiv.org/abs/2408.06954,2024.08.13,,,,,,,,,,,,,,,,,,,,,
 PRESENT: Zero-Shot Text-to-Prosody Control,PRESENT,,https://arxiv.org/abs/2408.06827,2024.08.13,,,,,,,,,,,,,,,,,,,,,
 PeriodWave: Multi-Period Flow Matching for High-Fidelity Waveform Generation,PeriodWave,Vocoder,https://arxiv.org/abs/2408.07547,2024.08.14,v1,2024.08.14,,,,,https://github.com/sh-lee-prml/PeriodWave,,,,,,,,,,,,,,2024.09.21
 EELE: Exploring Efficient and Extensible LoRA Integration in Emotional Text-to-Speech,EELE,,https://arxiv.org/abs/2408.10852,2024.08.20,v1,2024.08.20,,,,,,,,,,,,,,,,,,,2024.09.21
@@ -265,26 +265,27 @@ Speaking from Coarse to Fine: Improving Neural Codec Language Model via Multi-Sc
 Low Frame-rate Speech Codec: a Codec Designed for Fast High-quality Speech LLM Training and Inference,LFSC,Codec,https://arxiv.org/abs/2409.12117,2024.09.18,v1,2024.09.18,Submitted to ICASSP2025,,,,https://github.com/NVIDIA/NeMo,,https://edresson.github.io/Low-Frame-rate-Speech-Codec/,5,40,,,,,,,,,,2024.09.21
 NDVQ: Robust Neural Audio Codec with Normal Distribution-Based Vector Quantization,NDVQ,Codec,https://arxiv.org/abs/2409.12717,2024.09.19,v1,2024.09.19,,,,,,,,,,,,,,,,,,,
 ,BERT,LLM,,,,,,,,,,,,,,,,,,,,,,,
-,RoBERTa,LLM,,,,,,,,,,,,,,,,,,,,,,,
-,ByT5,LLM,,,,,,,,,,,,,,,,,,,,,,,
-LLaMA: Open and Efficient Foundation Language Models,LLaMA,LLM,,,,,,,,,,,,,,,,,,,,,,,
-,PaLM2,LLM,,,,,,,,,,,,,,,,,,,,,,,
+RoBERTa: A Robustly Optimized BERT Pretraining Approach,RoBERTa,LLM,https://arxiv.org/abs/1907.11692,2019.07.26,v1,2019.07.26,,,,,,,,,,！！,15137,,,,,,,,2024.09.23
+ByT5: Towards a token-free future with pre-trained byte-to-byte models,ByT5,LLM,https://arxiv.org/abs/2105.13626,2021.05.28,v3,2022.03.08,MIT@TACL2022,,https://doi.org/10.1162/tacl_a_00461,,,,,,,https://scholar.google.com/scholar?cluster=765429917132805319,371,,,,,,,,2024.09.23
+LLaMA: Open and Efficient Foundation Language Models,LLaMA,LLM,https://arxiv.org/abs/2302.13971,2023.02.27,v1,2023.02.27,,,,,,,,,,https://scholar.google.com/scholar?cluster=7549877693210626200,8738,,,,,,,,2024.09.23
+Palm 2 Technical Report,PaLM2,LLM,https://arxiv.org/abs/2305.10403,2023.05.17,v3,2023.09.13,,,,,,,,,,https://scholar.google.com/scholar?cluster=8537582669272475110,1198,,,,,,,,2024.09.23
 Llama 2: Open Foundation and Fine-Tuned Chat Models,LLaMA2,LLM,,,,,,,,,,,,,,,,,,,,,,,
 ,LLaMA3,LLM,,,,,,,,,,,,,,,,,,,,,,,
-,Qwen,LLM,,,,,,,,,,,,,,,,,,,,,,,
-,OpenELM,LLM,,,,,,,,,,,,,,,,,,,,,,,
+Qwen technical report,Qwen,LLM,https://arxiv.org/abs/2309.16609,2023.09.28,v1,2023.09.28,,,,,,,,,,https://scholar.google.com/scholar?cluster=16379938937265481547,948,,,,,,,,2024.09.23
+OpenELM: An Efficient Language Model Family with Open Training and Inference Framework,OpenELM,LLM,https://arxiv.org/abs/2404.14619,2024.04.22,v2,2024.05.02,ICML2024Poster,,https://openreview.net/forum?id=XNMbTkxroF,,https://github.com/apple/corenet,https://huggingface.co/apple/OpenELM,,,,https://scholar.google.com/scholar?cluster=14435877561062275373,20,,,,,,,,2024.09.23
 Period Singer: Integrating Periodic and Aperiodic Variational Autoencoders for Natural-Sounding End-to-End Singing Voice Synthesis,Period Singer,,https://arxiv.org/abs/2406.09894,2024.06.14,v2,2024.09.11,InterSpeech2024,,,,,,,,,,,,,,,,,,
 FreeVC: Towards High-Quality Text-Free One-Shot Voice Conversion,FreeVC,,https://arxiv.org/abs/2210.15418,2022.10.27,v1,2022.10.27,,,,,,,,,,,,,,,,,,,
 QuickVC: Any-to-many Voice Conversion Using Inverse Short-time Fourier Transform for Faster Conversion,QuickVC,,https://arxiv.org/abs/2302.08296,2023.02.16,v4,2023.02.23,,,,,,,,,,,,,,,,,,,
 StreamVoice: Streamable Context-Aware Language Modeling for Real-time Zero-Shot Voice Conversion,StreamVoice,,https://arxiv.org/abs/2401.11053,2024.01.19,v5,2024.07.19,ACL2024,,,,,,,,,,,,,,,,,,
 PAVITS: Exploring Prosody-aware VITS for End-to-End Emotional Voice Conversion,PAVITS,,https://arxiv.org/abs/2403.01494,2024.03.03,v1,2024.03.03,ICASSP2024,,,,,,,,,,,,,,,,,,
 StreamVoice+: Evolving into End-to-end Streaming Zero-shot Voice Conversion,StreamVoice+,,https://arxiv.org/abs/2408.02178,2024.08.05,v1,2024.08.05,,,,,,,,,,,,,,,,,,,
-,FourierFT,PEFT,,2024.05.05,,,,,,,,,,,,,,,,,,,,,
-,LoRA-GA,PEFT,,2024.07.06,,,,,,,,,,,,,,,,,,,,,
-,LoRA-Pro,PEFT,,2024.07.25,,,,,,,,,,,,,,,,,,,,,
+Parameter-Efficient Fine-Tuning with Discrete Fourier Transform,FourierFT,PEFT,https://arxiv.org/abs/2405.03003,2024.05.05,v1,2024.05.05,ICML2024Poster,2024.05.02,https://openreview.net/forum?id=XUOHKSsurt,,https://github.com/Chaos96/fourierft,,,,,https://scholar.google.com/scholar?cluster=9524360008038380215,2,,,,,,,,2024.09.23
+LoRA-GA: Low-Rank Adaptation with Gradient Approximation,LoRA-GA,PEFT,https://arxiv.org/abs/2407.05000,2024.07.06,v2,2024.07.16,,,,,https://github.com/Outsider565/LoRA-GA,,,,,https://scholar.google.com/scholar?cluster=6092529847550522223,0,,,,,,,,2024.09.23
+LoRA-Pro: Are Low-Rank Adapters Properly Optimized?,LoRA-Pro,PEFT,https://arxiv.org/abs/2407.18242,2024.07.25,v1,2024.07.25,,,,,,,,,,https://scholar.google.com/scholar?cluster=5563318481080163149,0,,,,,,,,2024.09.23
 LoRA: Low-Rank Adaptation of Large Language Models,LoRA,PEFT,https://arxiv.org/abs/2106.09685,2021.06.17,V2,2021.10.16,,,,,,,,,,,,,,,,,,,
 MoRA: High-Rank Updating for Parameter-Efficient Fine-Tuning,MoRA,PEFT,https://arxiv.org/abs/2405.12130,2024.05.20,v1,2024.05.20,,,,,,,,,,,,,,,,,,,
 QLoRA: Efficient Finetuning of Quantized LLMs,QLoRA,PEFT,https://arxiv.org/abs/2305.14314,2023.05.23,v1,2023.05.23,,,,,,,,,,,,,,,,,,,
 VB-LoRA: Extreme Parameter Efficient Fine-Tuning with Vector Banks,VB-LoRA,PEFT,https://arxiv.org/abs/2405.15179,2024.05.24,v2,2024.05.27,,,,,,,,,,,,,,,,,,,
 Layer Normalization,Layer Normalization,,https://arxiv.org/abs/1607.06450,2016.07.21,v1,2016.07.21,,,,,,,,,,,,,,,,,,,
 Autoregressive Image Generation using Residual Quantization,RQ-VAE,,,2022.03.03,,,,,,,,,,,,,,,,,,,,,
+MuCodec: Ultra Low-Bitrate Music Codec,MuCodec,Codec,https://arxiv.org/abs/2409.13216,2024.09.20,v1,2024.09.20,,,,Readme,https://github.com/xuyaoxun/MuCodec,,https://xuyaoxun.github.io/MuCodec_demo/,6,39,,,,,,,,,,2024.09.23
