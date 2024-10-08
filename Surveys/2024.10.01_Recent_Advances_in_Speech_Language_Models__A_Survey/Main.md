@@ -73,10 +73,15 @@ SpeechLMs then model these tokens autoregressively, without solely relying on te
 Finally, the generated tokens are synthesized back to speech (\cref{sec:vocoder}).
 By working directly with the encoded speech tokens, SpeechLMs effectively mitigate the cumulative errors, as their training is integrated with the speech encoding, whereas the training of LLMs (language modeling) is completely independent of the ASR (speech recognition) module in the naive framework.
 
-Beyond basic conversational abilities, SpeechLMs hold the potential to undertake more complex tasks, such as encoding speaker-specific information and emotional nuances (Figure \ref{fig:SLM applications}). This capability allows SpeechLMs to distinguish between different speakers during a conversation and to comprehend and generate speech imbued with specific emotional tones. Such advancements are crucial for applications in areas like personalized assistants, emotion-aware systems, and more nuanced human-computer interaction scenarios.
+Beyond basic conversational abilities, SpeechLMs hold the potential to undertake more complex tasks, such as encoding speaker-specific information and emotional nuances (Figure \ref{fig:SLM applications}).
+This capability allows SpeechLMs to distinguish between different speakers during a conversation and to comprehend and generate speech imbued with specific emotional tones.
+Such advancements are crucial for applications in areas like personalized assistants, emotion-aware systems, and more nuanced human-computer interaction scenarios.
 Furthermore, SpeechLMs can be designed to enable real-time voice interaction, where the model can be interrupted by humans or choose to speak while the user is still speaking, which resembles the pattern of human conversations more closely.
 
-In this survey, we present the first comprehensive overview of recent endeavors in constructing SpeechLMs. We explore the various components that constitute their architecture (\cref{sec:components}) and the training recipes (\cref{sec:trainingRecipes}) involved in their development. we aim to elucidate the current state of the field by analyzing these models from the above perspectives. Additionally, we survey the downstream applications of SpeechLMs (\cref{sec:downstreamApps}), classify metrics to evaluate SpeechLMs (\cref{sec:evaluation}), discuss the challenges encountered in this rapidly evolving area, and outline promising future research directions that could drive further advancements in SpeechLM technology (\cref{sec:challenges}).
+In this survey, we present the first comprehensive overview of recent endeavors in constructing SpeechLMs.
+We explore the various components that constitute their architecture (\cref{sec:components}) and the training recipes (\cref{sec:trainingRecipes}) involved in their development.
+we aim to elucidate the current state of the field by analyzing these models from the above perspectives.
+Additionally, we survey the downstream applications of SpeechLMs (\cref{sec:downstreamApps}), classify metrics to evaluate SpeechLMs (\cref{sec:evaluation}), discuss the challenges encountered in this rapidly evolving area, and outline promising future research directions that could drive further advancements in SpeechLM technology (\cref{sec:challenges}).
 Our contributions are summarized as follows:
 
 - We present the first survey in the field of SpeechLMs.
@@ -85,6 +90,23 @@ Our contributions are summarized as follows:
 - We identify several challenges in building SpeechLMs.
 
 ## 2.Problem Formulation: 问题形式化
+
+In this section, we provide a formal definition of Speech Language Models.
+A Speech Language Model (SpeechLM) is an autoregressive foundation model that processes and generates speech data, utilizing contextual understanding for coherent sequence generation.
+It supports both speech and text modalities, such as speech-in-text-out, text-in-speech-out, or speech-in-speech-out, enabling a wide range of tasks with context-aware capabilities.
+We note that the concept of SpeechLM is in contrast to traditional text-based language models, such as LLM, where the only modality being processed within the model is text.
+Therefore, to avoid confusion, we call those text-based language models TextLMs throughout this survey.
+
+We offer a unified framework in which SpeechLMs can process and generate speech data, text data, or even interleaved speech and text data.
+Specifically, an audio waveform $\textbf{a} = (a_1, a_2, \ldots, a_Q)$ consists of a sequence of audio samples $a_i \in \mathbb{R}$ of length $Q$, where $1 \leq q \leq Q$.
+Similarly, a text span $\textbf{t} = (t_1, t_2, \ldots, t_K)$ consists of a sequence of text tokens $t_j$ (word, subword, character, etc.) of length $K$.
+Let $\textbf{M} = (M_1, M_2, \ldots, M_N)$ denote a multimodal sequence of length $N$, where each element $M_i \in \{a_i, t_j\}$.
+We define $\textbf{M}^{\text{in}} = (M_1^{\text{in}}, M_2^{\text{in}}, \ldots, M_{N_\text{in}}^{\text{in}})$ as the input multimodal sequence and $\textbf{M}^{\text{out}} = (M_1^{\text{out}}, M_2^{\text{out}}, \ldots, M_{N_\text{out}}^{\text{out}})$ as the output multimodal sequence, where $N_\text{in} \geq 0$ and $N_\text{out} \geq 0$.
+Then, A SpeechLM parameterized by $\theta$ can then be represented as:
+
+\[
+    \textbf{M}^{\text{out}} = SpeechLM(\textbf{M}^{\text{in}}; \theta).
+\]
 
 ## 3.Components in SpeechLM: 语音语言模型的组件
 
