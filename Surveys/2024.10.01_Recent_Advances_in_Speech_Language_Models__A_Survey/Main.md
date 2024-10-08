@@ -50,15 +50,53 @@ Additionally, we systematically survey the various capabilities of SpeechLMs, ca
 
 ## 1.Introduction: 引言
 
-## 2.Related Works: 相关工作
+Large Language Models (LLMs) have demonstrated remarkable capabilities in generating text and performing a wide array of natural language processing tasks \cite{gpt4,llama3,opt}, serving as powerful foundation models for AI-driven language understanding and generation.
+Their success has also spurred numerous applications in various other domains, yet the reliance solely on text-based modalities presents a significant limitation.
+This leads to the development of speech-based generative models, which allow to interact with humans more naturally and intuitively.
+The inclusion of speech not only facilitates real-time voice interactions but also enriches communication by combining both text and speech information \cite{generativedialog2channel,spiritlm}.
 
-## 3.Methodology: 方法
+Given the extensive mutual information between text and speech, it is natural to modify existing LLMs to enable speech interaction capabilities.
+A straightforward approach is to adopt an "Automatic Speech Recognition (ASR) + LLM + Text-to-Speech (TTS)" framework (Figure \ref{fig: architecture of TextLM}) \cite{audiogptASRLLMTTS}.
+In this setup, the user's spoken input is first processed by the ASR module, which converts it into text.
+The LLM then generates a text response based on this transcription.
+Finally, the TTS module transforms the text response back into speech, which is played back to the user.
+However, this naive solution mainly suffers from the following two problems.
+(1) **Information loss.** Speech signals not only contain semantic information (i.e., the meaning of the speech) but also paralinguistic information (e.g., pitch, timbre, tonality, etc.).
+Putting a text-only LLM in the middle will cause the complete loss of paralinguistic information in the input speech \cite{speechgpt}.
+(2) **Cumulative error.** A staged approach like this can easily lead to cumulative errors throughout the pipeline, particularly in the ASR-LLM stage \cite{audiochatllama}.
+Specifically, transcription errors that occur when converting speech to text in the ASR module can negatively impact the language generation performance of the LLM.
 
-## 4.Experiments: 实验
+The limitations of the naive ASR + LLM + TTS framework have led to the development of Speech Language Models (SpeechLMs, Figure \ref{fig: architecture of SLM}).
+Unlike the naive framework, SpeechLMs directly encode speech waveforms into discrete tokens, capturing essential features and information from audio (\cref{sec:speechencoder}).
+Although individual speech tokens may not carry word-level semantic meaning, they capture the semantic information of speech utterances and retain valuable paralinguistic information, which prevents the information loss.
+SpeechLMs then model these tokens autoregressively, without solely relying on text input, which allows them to use the additional paralinguistic information to generate more expressive and nuanced speech (\cref{sec:languagemodel}).
+Finally, the generated tokens are synthesized back to speech (\cref{sec:vocoder}).
+By working directly with the encoded speech tokens, SpeechLMs effectively mitigate the cumulative errors, as their training is integrated with the speech encoding, whereas the training of LLMs (language modeling) is completely independent of the ASR (speech recognition) module in the naive framework.
 
-## 5.Results: 结果
+Beyond basic conversational abilities, SpeechLMs hold the potential to undertake more complex tasks, such as encoding speaker-specific information and emotional nuances (Figure \ref{fig:SLM applications}). This capability allows SpeechLMs to distinguish between different speakers during a conversation and to comprehend and generate speech imbued with specific emotional tones. Such advancements are crucial for applications in areas like personalized assistants, emotion-aware systems, and more nuanced human-computer interaction scenarios.
+Furthermore, SpeechLMs can be designed to enable real-time voice interaction, where the model can be interrupted by humans or choose to speak while the user is still speaking, which resembles the pattern of human conversations more closely.
 
-## 6.Conclusions: 结论
+In this survey, we present the first comprehensive overview of recent endeavors in constructing SpeechLMs. We explore the various components that constitute their architecture (\cref{sec:components}) and the training recipes (\cref{sec:trainingRecipes}) involved in their development. we aim to elucidate the current state of the field by analyzing these models from the above perspectives. Additionally, we survey the downstream applications of SpeechLMs (\cref{sec:downstreamApps}), classify metrics to evaluate SpeechLMs (\cref{sec:evaluation}), discuss the challenges encountered in this rapidly evolving area, and outline promising future research directions that could drive further advancements in SpeechLM technology (\cref{sec:challenges}).
+Our contributions are summarized as follows:
+
+- We present the first survey in the field of SpeechLMs.
+- We propose a novel taxonomy (Figure \ref{fig: Taxonomy}) of classifying SpeechLMs from the underlying components and the training recipes.
+- We propose a novel classification system for the \mbox{evaluation} methods for SpeechLMs.
+- We identify several challenges in building SpeechLMs.
+
+## 2.Problem Formulation: 问题形式化
+
+## 3.Components in SpeechLM: 语音语言模型的组件
+
+## 4.Training Recipes: 训练方法
+
+## 5.Downstream Applications: 下游应用
+
+## 6.Evaluation: 评估
+
+## 7.Challenges and Future Directions: 挑战与未来方向
+
+## 8.Conclusions: 结论
 
 <details>
 <summary>展开原文</summary>
