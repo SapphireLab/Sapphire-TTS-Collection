@@ -50,10 +50,10 @@ Additionally, we systematically survey the various capabilities of SpeechLMs, ca
 
 ## 1.Introduction: 引言
 
-Large Language Models (LLMs) have demonstrated remarkable capabilities in generating text and performing a wide array of natural language processing tasks \cite{gpt4,llama3,opt}, serving as powerful foundation models for AI-driven language understanding and generation.
+Large Language Models (LLMs) have demonstrated remarkable capabilities in generating text and performing a wide array of natural language processing tasks ([GPT-4 (2023)](../../Models/LLM/2023.03.15_GPT-4.md); [LLaMA3 (2024)](../../Models/LLM/2024.07.31_LLaMA3.md); [OPT (2022)](../../Models/LLM/2022.05.02_OPT.md)), serving as powerful foundation models for AI-driven language understanding and generation.
 Their success has also spurred numerous applications in various other domains, yet the reliance solely on text-based modalities presents a significant limitation.
 This leads to the development of speech-based generative models, which allow to interact with humans more naturally and intuitively.
-The inclusion of speech not only facilitates real-time voice interactions but also enriches communication by combining both text and speech information \cite{generativedialog2channel,spiritlm}.
+The inclusion of speech not only facilitates real-time voice interactions but also enriches communication by combining both text and speech information \cite{generativedialog2channel,[SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md)}.
 
 Given the extensive mutual information between text and speech, it is natural to modify existing LLMs to enable speech interaction capabilities.
 A straightforward approach is to adopt an "Automatic Speech Recognition (ASR) + LLM + Text-to-Speech (TTS)" framework (Figure \ref{fig: architecture of TextLM}) \cite{audiogptASRLLMTTS}.
@@ -62,7 +62,7 @@ The LLM then generates a text response based on this transcription.
 Finally, the TTS module transforms the text response back into speech, which is played back to the user.
 However, this naive solution mainly suffers from the following two problems.
 (1) **Information loss.** Speech signals not only contain semantic information (i.e., the meaning of the speech) but also paralinguistic information (e.g., pitch, timbre, tonality, etc.).
-Putting a text-only LLM in the middle will cause the complete loss of paralinguistic information in the input speech \cite{speechgpt}.
+Putting a text-only LLM in the middle will cause the complete loss of paralinguistic information in the input speech ([SpeechGPT (2023)](../../Models/Speech_LLM/2023.05.18_SpeechGPT.md)).
 (2) **Cumulative error.** A staged approach like this can easily lead to cumulative errors throughout the pipeline, particularly in the ASR-LLM stage \cite{audiochatllama}.
 Specifically, transcription errors that occur when converting speech to text in the ASR module can negatively impact the language generation performance of the LLM.
 
@@ -104,9 +104,9 @@ Let $\textbf{M} = (M_1, M_2, \ldots, M_N)$ denote a multimodal sequence of lengt
 We define $\textbf{M}^{\text{in}} = (M_1^{\text{in}}, M_2^{\text{in}}, \ldots, M_{N_\text{in}}^{\text{in}})$ as the input multimodal sequence and $\textbf{M}^{\text{out}} = (M_1^{\text{out}}, M_2^{\text{out}}, \ldots, M_{N_\text{out}}^{\text{out}})$ as the output multimodal sequence, where $N_\text{in} \geq 0$ and $N_\text{out} \geq 0$.
 Then, A SpeechLM parameterized by $\theta$ can then be represented as:
 
-\[
+$$
     \textbf{M}^{\text{out}} = SpeechLM(\textbf{M}^{\text{in}}; \theta).
-\]
+$$
 
 ## [3.Components in SpeechLM: 语音语言模型的组件](Sec.03.Components.md)
 
@@ -118,30 +118,55 @@ Then, A SpeechLM parameterized by $\theta$ can then be represented as:
 
 ## 7.Challenges and Future Directions: 挑战与未来方向
 
-While SpeechLMs have demonstrated impressive abilities, the research in this area is still in its infancy. In this section, we survey challenges, unsolved questions, and possible directions for future research in the study of SpeechLMs.
+While SpeechLMs have demonstrated impressive abilities, the research in this area is still in its infancy.
+In this section, we survey challenges, unsolved questions, and possible directions for future research in the study of SpeechLMs.
 
 ### 7.1.Understanding Different Component Choices
 
-Current research on SpeechLMs encompasses key components such as speech tokenizers, language models, and vocoders, each offering a diverse range of options. While some studies have compared various component choices—primarily focusing on speech tokenizers—the comparisons tend to be limited in scope and depth \cite{OnGenerative,audiopalm}. Consequently, there remains a significant gap in understanding the advantages and disadvantages of different component selections. Therefore, studies aimed at comprehensively comparing these choices are essential. Such an investigation would yield valuable insights and serve as a guide for selecting more efficient components when developing SpeechLMs.
+Current research on SpeechLMs encompasses key components such as speech tokenizers, language models, and vocoders, each offering a diverse range of options.
+While some studies have compared various component choices—primarily focusing on speech tokenizers—the comparisons tend to be limited in scope and depth ([GSLM (2021)](../../Models/Speech_LLM/2021.02.01_GSLM.md);  [AudioPaLM (2023)](../../Models/Speech_LLM/2023.06.22_AudioPaLM.md)).
+Consequently, there remains a significant gap in understanding the advantages and disadvantages of different component selections.
+Therefore, studies aimed at comprehensively comparing these choices are essential.
+Such an investigation would yield valuable insights and serve as a guide for selecting more efficient components when developing SpeechLMs.
 
 ### 7.2.End-to-End Training
 
-Although SpeechLMs can generate speech directly without relying on text signals, they still need to train the three components separately. This separate optimization may hinder the model's overall potential. Consequently, it would be worthwhile to investigate whether training can be conducted in an end-to-end manner, allowing gradients to be back-propagated from the vocoder's output to the tokenizer's input. By exploring this fully end-to-end approach, we could potentially enable SpeechLMs to produce more coherent, contextually relevant, and high-fidelity speech outputs.
+Although SpeechLMs can generate speech directly without relying on text signals, they still need to train the three components separately.
+This separate optimization may hinder the model's overall potential.
+Consequently, it would be worthwhile to investigate whether training can be conducted in an end-to-end manner, allowing gradients to be back-propagated from the vocoder's output to the tokenizer's input.
+By exploring this fully end-to-end approach, we could potentially enable SpeechLMs to produce more coherent, contextually relevant, and high-fidelity speech outputs.
 
 ### 7.3.Real-Time Speech Generation
 
-Enabling real-time speech generation is crucial in SpeechLM as it fosters a more interactive way of engaging with humans. However, the most adopted approaches described in section \ref{sec:components} still result in noticeable delays between input and output speech generation. This delay occurs because a typical vocoder must wait for the entire sequence of output tokens to be generated by the language model before functioning, making it the most time-consuming process in the inference pipeline. One potential solution to improve latency is to develop a streamable vocoder, allowing it to begin synthesizing output speech while the language model generates output speech tokens. Another option could involve the SpeechLM autonomously generating audio samples in waveform. Overall, this area of real-time speech generation remains underexplored and requires further investigation.
+Enabling real-time speech generation is crucial in SpeechLM as it fosters a more interactive way of engaging with humans.
+However, the most adopted approaches described in [section 3](Sec.03.Components.md) still result in noticeable delays between input and output speech generation.
+This delay occurs because a typical vocoder must wait for the entire sequence of output tokens to be generated by the language model before functioning, making it the most time-consuming process in the inference pipeline.
+One potential solution to improve latency is to develop a streamable vocoder, allowing it to begin synthesizing output speech while the language model generates output speech tokens.
+Another option could involve the SpeechLM autonomously generating audio samples in waveform.
+Overall, this area of real-time speech generation remains under-explored and requires further investigation.
 
 ### 7.4.Safety Risks in SpeechLMs
 
-Safety is a highly significant subject in the field of Machine Learning, particularly when it comes to large-scale generative AI models. While there has been extensive research on safety concerns in TextLMs, the safety issues in SpeechLMs have not been thoroughly investigated. The safety challenges in SpeechLMs present both similarities and unique aspects compared to TextLMs, as highlighted in OpenAI's recent report on the safety issues of GPT-4o's voice model \cite{gpt4osystemcard}. Therefore, it is crucial for future research to explore safety vulnerabilities in SpeechLMs and develop safer SpeechLMs.
+Safety is a highly significant subject in the field of Machine Learning, particularly when it comes to large-scale generative AI models.
+While there has been extensive research on safety concerns in TextLMs, the safety issues in SpeechLMs have not been thoroughly investigated.
+The safety challenges in SpeechLMs present both similarities and unique aspects compared to TextLMs, as highlighted in OpenAI's recent report on the safety issues of [GPT-4o (2024)](../../Models/LLM/2024.09.06_GPT-4o.md)'s voice model.
+Therefore, it is crucial for future research to explore safety vulnerabilities in SpeechLMs and develop safer SpeechLMs.
 
-Primary concerns for the safety issues in SpeechLMs include but are not limited to \textit{toxicity} and \textit{privacy}. \textit{Toxicity} refers to the harmful nature of the content generated by SpeechLMs. For instance, these models might produce semantically dangerous content, such as instructions for making explosives. Additionally, they could generate acoustically inappropriate content, like erotic speech \cite{gpt4osystemcard}, which presents a unique challenge. \textit{Privacy} involves the risk of revealing personal information from the speech input after it has been processed by a SpeechLM. For example, the model might infer the speaker's identity based on the semantic content or acoustic features of the input. Even more concerning is the potential for the model to make biased inferences about the speaker, such as their ethnicity or religious beliefs, based on insufficient (e.g., acoustic) information \cite{gpt4osystemcard}.
+Primary concerns for the safety issues in SpeechLMs include but are not limited to toxicity and privacy.
+
+Toxicity refers to the harmful nature of the content generated by SpeechLMs.
+For instance, these models might produce semantically dangerous content, such as instructions for making explosives.
+Additionally, they could generate acoustically inappropriate content, like erotic speech ([GPT-4o (2024)](../../Models/LLM/2024.09.06_GPT-4o.md)), which presents a unique challenge.
+
+Privacy involves the risk of revealing personal information from the speech input after it has been processed by a SpeechLM.
+For example, the model might infer the speaker's identity based on the semantic content or acoustic features of the input.
+Even more concerning is the potential for the model to make biased inferences about the speaker, such as their ethnicity or religious beliefs, based on insufficient (e.g., acoustic) information ([GPT-4o (2024)](../../Models/LLM/2024.09.06_GPT-4o.md)).
 
 ### 7.5.Performance on Rare Languages
 
 SpeechLMs directly model speech data, which allows them to more effectively handle "low-resource" languages compared to TextLMs.
-"Low-resource" languages are those that lack extensive textual data, making it challenging for TextLMs to model them efficiently. In contrast, SpeechLM provides a better solution by modeling the speech data of these "low-resource" languages, which often have more available audio data than text \cite{OnGenerative}.
+"Low-resource" languages are those that lack extensive textual data, making it challenging for TextLMs to model them efficiently.
+In contrast, SpeechLM provides a better solution by modeling the speech data of these "low-resource" languages, which often have more available audio data than text ([GSLM (2021)](../../Models/Speech_LLM/2021.02.01_GSLM.md)).
 Therefore, future research could focus on training SpeechLMs in "low-resource" languages or dialects to expand their capabilities.
 
 ## 8.Conclusions: 结论
