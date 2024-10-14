@@ -17,12 +17,12 @@
 - [ ] [作者基本信息表 Authors-Info](Authors.csv)
 - [ ] [作者论文对应表 Authors-Papers](Authors-Papers.csv)
 - [ ] [模型总结表 Models](Models.csv)
-- [ ] [综述论文总结表 Survey]()
 
 ## 开源项目·Text-to-Speech
 
 |时间|名称|仓库|演示|论文|源码阅读|
 |---|---|:-:|---|:-:|:-:|
+|2024.10.08|F5-TTS|[Github](https://github.com/SWivid/F5-TTS)<br>![Star](https://img.shields.io/github/stars/SWivid/F5-TTS?style=social)<br>[HuggingFace](https://huggingface.co/SWivid/F5-TTS)<br>[HF Mirror](https://hf-mirror.com/SWivid/F5-TTS)|[Demo Page](https://swivid.github.io/F5-TTS/)<br>[HuggingFace Space](https://huggingface.co/spaces/mrfakename/E2-F5-TTS)|[ArXiv](https://arxiv.org/abs/2410.06885)<br>[Note](Models/Diffusion/2024.10.09_F5-TTS.md)|
 |2024.07.03|CosyVoice|[Github](https://github.com/FunAudioLLM/CosyVoice)<br>![Star](https://img.shields.io/github/stars/FunAudioLLM/CosyVoice?style=social)<br>[ModelScope](https://www.modelscope.cn/studios/iic/CosyVoice-300M)||[Paper](https://fun-audio-llm.github.io/pdf/CosyVoice_v1.pdf)|
 |2024.05.28|ChatTTS|[Github](https://github.com/2noise/ChatTTS)<br>![Star](https://img.shields.io/github/stars/2noise/ChatTTS?style=social)<br>[HuggingFace](https://huggingface.co/2Noise/ChatTTS)<br>[HF Mirror](https://hf-mirrors.com/2Noise/ChatTTS)|[Video](https://www.bilibili.com/video/BV1zn4y1o7iV)|||
 |2024.01.15 (v1)<br>2024.08.07 (v2)|GPT-SoVITS|[Github](https://github.com/RVC-Boss/GPT-SoVITS)<br>![Star](https://img.shields.io/github/stars/RVC-Boss/GPT-SoVITS?style=social)|[Video](https://www.bilibili.com/video/BV12g4y1m7Uw/)|
