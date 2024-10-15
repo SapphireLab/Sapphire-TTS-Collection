@@ -40,15 +40,15 @@ Viola \cite{violaCodecLM} uses codec tokens in a SpeechLM capable of performing 
 
 #### Discussion
 
-Different types of tokens influence the speech quality of SpeechLMs in different ways, often resulting in trade-offs \cite{audiolm}.
+Different types of tokens influence the speech quality of SpeechLMs in different ways, often resulting in trade-offs ([AudioLM (2022)](../../Models/Speech_LLM/2022.09.07_AudioLM.md)).
 For example, while semantic tokens align well with text and excel in producing semantically coherent speech, the generated speech often lacks acoustic details, such as high-frequency information.
 Recovering and enhancing these details typically requires postprocessing, like a diffusion model, which significantly increases the model's latency.
 Conversely, acoustic tokens can facilitate the generation of high-fidelity audio but often struggle with inaccuracies in content generation ([SpeechTokenizer (2023)](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md)).
 Researchers have tried two ways to balance these trade-offs.
 The first involves combining semantic and acoustic tokens into a single sequence.
-AudioLM \cite{audiolm} proposes a hierarchical modeling scheme that first models semantic tokens from [W2V-BERT (2021)](../../Models/Speech_Representaion/2021.08.07_W2V-BERT.md)  and then uses these tokens to predict acoustic tokens from [SoundStream (2021)](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md), which ultimately generates speech.
+[AudioLM (2022)](../../Models/Speech_LLM/2022.09.07_AudioLM.md) proposes a hierarchical modeling scheme that first models semantic tokens from [W2V-BERT (2021)](../../Models/Speech_Representaion/2021.08.07_W2V-BERT.md)  and then uses these tokens to predict acoustic tokens from [SoundStream (2021)](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md), which ultimately generates speech.
 However, this kind of approach increases sequence length, which increases modeling complexity.
-The second strategy leverages \textit{mixed tokens} (see \cref{sec:mixedTokenizer}) to jointly model semantic and acoustic information, showing promising results in [Moshi (2024)](../../Models/Speech_LLM/2024.09.17_Moshi.md) and SpeechGPT-Gen \cite{speechgpt-gen}.
+The second strategy leverages \textit{mixed tokens} (see \cref{sec:mixedTokenizer}) to jointly model semantic and acoustic information, showing promising results in [Moshi (2024)](../../Models/Speech_LLM/2024.09.17_Moshi.md) and [SpeechGPT-Gen (2024)](../../Models/Speech_LLM/2024.01.24_SpeechGPT-Gen.md).
 
 ### Continuous Features
 
@@ -129,7 +129,7 @@ This phase is crucial for enhancing the pre-trained model's generalization capab
 Therefore, the key focus is on creating effective instruction-following datasets.
 
 Several approaches have been proposed to construct instruction-following datasets for SpeechLMs.
-[SpeechGPT (2023)](../../Models/Speech_LLM/2023.05.18_SpeechGPT.md) and SpeechGPT-Gen \cite{speechgpt-gen} propose a two-stage instruction-tuning, including cross-modal instruction fine-tuning and chain-of-modality instruction fine-tuning.
+[SpeechGPT (2023)](../../Models/Speech_LLM/2023.05.18_SpeechGPT.md) and [SpeechGPT-Gen (2024)](../../Models/Speech_LLM/2024.01.24_SpeechGPT-Gen.md) propose a two-stage instruction-tuning, including cross-modal instruction fine-tuning and chain-of-modality instruction fine-tuning.
 In the first stage, instruction data are generated based on ASR datasets by appending the instruction to paired ASR data, asking the model to convert speech into text.
 Similarly, paired data is also used to create instruction data for performing TTS.
 In the second stage, they construct a speech-in-speech-out dataset by transforming a text-based instruction-following dataset using TTS.
