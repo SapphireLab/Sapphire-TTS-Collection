@@ -76,7 +76,9 @@ Therefore, we only discuss the works related to the pre-training and instruction
 The pre-training of the language model in SpeechLMs is a critical phase that significantly influences the model's ability to generate coherent and contextually relevant speech.
 This phase typically involves training the language model to autoregressively predict the next token on a large corpus of speech tokens.
 The primary objective during this stage is to learn the statistical patterns and dependencies inherent in the speech data, enabling the model to predict the next token in a sequence based on the preceding context.
-Table \ref{tab:datasets} includes popular datasets used in pre-training stage of SpeechLMs.
+Table.02 includes popular datasets used in pre-training stage of SpeechLMs.
+
+![](Images/Tab.02.png)
 
 #### Training data.
 
@@ -94,7 +96,9 @@ They found that [HuBERT (2021)](../../Models/Speech_Representaion/2021.06.14_HuB
 [SUTLM (2023)](../../Models/Speech_LLM/2023.10.12_SUTLM.md) also uses a transformer as the language model.
 They studied the critical problem of jointly modeling speech and text tokens by comparing four different modeling methods: speech-only, text-only, concatenated speech-text, and alternating (interleaving) speech-text.
 They showed that the setting of alternating speech-text performs the best in cross-modal evaluations.
-Table \ref{tab:modelingtypes} illustrates the four modeling methods.
+Table.03 illustrates the four modeling methods.
+
+![](Images/Tab.03.png)
 
 Some works leverage a different architecture from the standard transformer.
 Since there are no existing checkpoints for those self-proposed architectures, it is necessary to train them from scratch.

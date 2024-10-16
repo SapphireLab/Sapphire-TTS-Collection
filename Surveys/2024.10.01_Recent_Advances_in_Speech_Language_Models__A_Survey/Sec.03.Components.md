@@ -1,13 +1,18 @@
 # 3.Components in SpeechLM: 语音语言模型的组件
 
-There are three main components within a SpeechLM, namely speech tokenizer, language model, and token-to-speech synthesizer (vocoder), as illustrated in Figure \ref{fig:SLM architecture}.
+![Images/Fig.01.png](Images/Fig.01.png)
+
+There are three main components within a SpeechLM, namely speech tokenizer, language model, and token-to-speech synthesizer (vocoder), as illustrated in Fig.01.
 The fundamental reason for such a three-staged design pattern is to use the language modeling architecture (e.g., decoder-only transformer) to model speech autoregressively in the format of audio waveforms.
 Since both the input and output of a language model are discrete tokens, additional modules need to be attached to the language model to handle the I/O format.
 Specifically, the speech tokenizer first transforms continuous audio waveforms into discrete tokens to serve as input to the language model, then the language model performs the next-token prediction based on the input speech tokens.
 Finally, the vocoder transforms the discrete tokens outputted by the language model back into audio waveforms.
 We note that our focus here is on how the three components are grouped together to form a SpeechLM rather than a comprehensive overview of each component.
 Therefore, for speech tokenizer and vocoder, we mainly summarize the methods used in existing SpeechLMs.
-Table \ref{tab:components_summary} summarizes the popular choices of the three components in various SpeechLM papers.
+
+![](Images/Tab.01.png)
+
+Table.01 summarizes the popular choices of the three components in various SpeechLM papers.
 
 ## 3.1.Speech Tokenizer: 语音分词器
 

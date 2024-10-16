@@ -7,6 +7,8 @@ The tasks discussed here primarily consist of traditional speech-related tasks, 
 In contrast to TextLMs, which generate text containing only semantic information, SpeechLMs can model both semantic and paralinguistic information---such as pitch and timbre---making them more powerful models.
 We thereby categorize the downstream applications of SpeechLMs into three main classes: semantic-related applications, speaker-related applications, and paralinguistic applications.
 
+![](Images/Tab.04.png)
+
 ## 5.1.Semantic-Related Applications
 
 Semantic-related applications encompass key tasks that facilitate meaningful interactions between humans and machines.
