@@ -53,17 +53,17 @@ Additionally, we systematically survey the various capabilities of SpeechLMs, ca
 Large Language Models (LLMs) have demonstrated remarkable capabilities in generating text and performing a wide array of natural language processing tasks ([GPT-4 (2023)](../../Models/LLM/2023.03.15_GPT-4.md); [LLaMA3 (2024)](../../Models/LLM/2024.07.31_LLaMA3.md); [OPT (2022)](../../Models/LLM/2022.05.02_OPT.md)), serving as powerful foundation models for AI-driven language understanding and generation.
 Their success has also spurred numerous applications in various other domains, yet the reliance solely on text-based modalities presents a significant limitation.
 This leads to the development of speech-based generative models, which allow to interact with humans more naturally and intuitively.
-The inclusion of speech not only facilitates real-time voice interactions but also enriches communication by combining both text and speech information \cite{generativedialog2channel,[SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md)}.
+The inclusion of speech not only facilitates real-time voice interactions but also enriches communication by combining both text and speech information ([dGSLM (2022)](../../Models/Speech_LLM/2022.03.30_dGSLM.md); [SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md)).
 
 Given the extensive mutual information between text and speech, it is natural to modify existing LLMs to enable speech interaction capabilities.
-A straightforward approach is to adopt an "Automatic Speech Recognition (ASR) + LLM + Text-to-Speech (TTS)" framework (Figure \ref{fig: architecture of TextLM}) \cite{audiogptASRLLMTTS}.
+A straightforward approach is to adopt an "Automatic Speech Recognition (ASR) + LLM + Text-to-Speech (TTS)" framework (Figure \ref{fig: architecture of TextLM}) ([AudioGPT (2023)](../../Models/Speech_LLM/2023.04.25_AudioGPT.md)).
 In this setup, the user's spoken input is first processed by the ASR module, which converts it into text.
 The LLM then generates a text response based on this transcription.
 Finally, the TTS module transforms the text response back into speech, which is played back to the user.
 However, this naive solution mainly suffers from the following two problems.
 (1) **Information loss.** Speech signals not only contain semantic information (i.e., the meaning of the speech) but also paralinguistic information (e.g., pitch, timbre, tonality, etc.).
 Putting a text-only LLM in the middle will cause the complete loss of paralinguistic information in the input speech ([SpeechGPT (2023)](../../Models/Speech_LLM/2023.05.18_SpeechGPT.md)).
-(2) **Cumulative error.** A staged approach like this can easily lead to cumulative errors throughout the pipeline, particularly in the ASR-LLM stage \cite{audiochatllama}.
+(2) **Cumulative error.** A staged approach like this can easily lead to cumulative errors throughout the pipeline, particularly in the ASR-LLM stage ([AudioChatLLaMA (2023)](../../Models/Speech_LLM/2023.11.12_AudioChatLLaMA.md)).
 Specifically, transcription errors that occur when converting speech to text in the ASR module can negatively impact the language generation performance of the LLM.
 
 The limitations of the naive ASR + LLM + TTS framework have led to the development of Speech Language Models (SpeechLMs, Figure \ref{fig: architecture of SLM}).
