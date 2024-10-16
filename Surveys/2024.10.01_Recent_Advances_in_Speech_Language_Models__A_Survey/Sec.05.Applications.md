@@ -37,7 +37,7 @@ For SpeechLMs, the input would be a combination of the speech waveform and the i
 
 Keyword spotting can be considered a special type of ASR, where its primary objective is to identify specific words or phrases within continuous speech.
 While traditional ASR systems aim to transcribe entire spoken utterances into text, keyword spotting focuses specifically on identifying and extracting predefined keywords or phrases within continuous speech.
-The primary application of keyword spotting is to build oice-activated assistants in smart home devices.
+The primary application of keyword spotting is to build voice-activated assistants in smart home devices.
 Those devices are activated when the specific keywords are triggered.
 Therefore, although SpeechLMs are capable of spotting and understanding more than just a couple of words, keyword spotting can be used to efficiently trigger SpeechLMs to respond to user inputs.
 
@@ -57,7 +57,7 @@ To perform Intent Classification, it is more natural for SpeechLMs to take speec
 ### Slot Filling.
 
 Slot filling is an important task in spoken language understanding that involves identifying and extracting specific pieces of information from user inputs into predefined classes, such as intents, entities, and parameters that are essential for completing a task.
-For example, slot filling extracts the phrase `I want to fly from New York to San Francisco on June 5th.` into distinct slots like ``departure city` (New York), `destination city` (San Francisco), and `date` (June 5th).
+For example, slot filling extracts the phrase `I want to fly from New York to San Francisco on June 5th.` into distinct slots like `departure city` (New York), `destination city` (San Francisco), and `date` (June 5th).
 Similar to Intent Classification, it is more natural for SpeechLMs to take speech inputs and extract the pieces in texts.
 
 ### Query by Example Spoken Term Detection.
