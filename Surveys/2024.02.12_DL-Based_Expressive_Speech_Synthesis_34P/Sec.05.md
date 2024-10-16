@@ -1,7 +1,7 @@
 
 ## 5.表现性语音合成的主要挑战
 
-> In this section, we list and explain the most important challenges that face expressive TTS models and the main solutions that have been proposed in the literature to overcome these challenges. We then provide a summary of papers addressing each challenge in [Table 5]().
+In this section, we list and explain the most important challenges that face expressive TTS models and the main solutions that have been proposed in the literature to overcome these challenges. We then provide a summary of papers addressing each challenge in [Table 5]().
 
 本节列出并展示表现性语音合成模型面临的最重要挑战, 以及在现有文献中提出的克服这些挑战的主要解决方案. 在表格五种提供了解决每个挑战的文献的总览.
 
