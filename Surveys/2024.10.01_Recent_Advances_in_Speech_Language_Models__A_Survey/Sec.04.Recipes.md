@@ -339,13 +339,28 @@ They showed the model trained on their proposed speech QA dataset can generalize
 
 ## 4.3.Speech Generation Paradigm: 语音生成范式
 
+<details>
+<summary>展开原文</summary>
+
 In the previous sections, we discuss the typical generation paradigm for SpeechLMs, which involves taking a predefined input sequence and generating a complete response.
 However, this approach does not reflect the natural flow of voice interactions.
 For instance, during a conversation, one person may interrupt another, switching from listening to speaking.
 Additionally, a person might choose not to respond if the other is engaged in a conversation with someone else.
 Based on these observations, we identify two key aspects of advanced voice interaction skills for SpeechLMs: real-time interaction and silence mode.
 
-### Real-time Interaction
+</details>
+<br>
+
+在先前的章节中, 我们讨论了语音语言模型的典型生成范式, 涉及使用预定义的输入序列并生成完整的响应.
+然而, 这种方法并不能反映语音交互的自然流动.
+例如, 在对话过程中, 一个人可能会打断另一个, 从而切换从倾听到说话.
+此外, 一个人可能选择不作答, 如果另一个正在与其他人进行对话.
+基于这些观察, 我们认为语音语言模型的高级语音交互技能有两个关键方面: 实时交互和静默模式.
+
+### Real-time Interaction: 实时交互
+
+<details>
+<summary>展开原文</summary>
 
 Real-time Interaction refers to the capability of SpeechLMs to engage with users instantaneously.
 This interaction consists of two key components:
@@ -359,7 +374,24 @@ A cross-attention transformer layer is included to capture the interactions betw
 In contrast, [LSLM (2024)](../../Models/Speech_LLM/2024.08.05_LSLM.md) proposes a different approach, utilizing a single decoder-only Transformer to model one speaker's speech in the dialogue.
 This model incorporates a streaming SSL encoder that continuously processes input from the listening channel and fuses its embeddings with those from the speaking channel.
 
-### Silence Mode
+</details>
+<br>
+
+实时交互是指语音语言模型能够即时与用户进行交互的能力.
+这一交互由两个关键组件组成:
+- 用户打断: 语音语言模型应该能够被用户打断, 并应适当地响应对话过程中提供新的指令.
+- 同时响应: 语音语言模型应该能够在用户仍在说话的情况下生成响应.
+
+这两种能力都需要模型同时有效地执行语音理解 (处理输入) 和语音生成 (产生输出).
+- [dGSLM (2022)](../../Models/Speech_LLM/2022.03.30_dGSLM.md) 的研究引入了一个双 Transformer 架构, 用于处理两个发言人的对话, 使用一个 Transformer 来处理每个发言人的语音.
+引入了一个交叉注意力 Transformer 层, 以捕捉发言人的内容之间的互动.
+- [LSLM (2024)](../../Models/Speech_LLM/2024.08.05_LSLM.md) 提出了一个不同的方法, 使用单个的仅解码器的 Transformer 模型来处理对话中的一个发言人的语音.
+  该模型包含一个流式 SSL 编码器, 持续处理来自听觉通道的输入, 并将其嵌入和说话通道的嵌入融合.
+
+### Silence Mode: 静默模式
+
+<details>
+<summary>展开原文</summary>
 
 Silence Mode refers to the state in which the SpeechLMs remain inactive or silent during periods of non-interaction.
 This mode is essential for creating a natural conversational flow, allowing the model to avoid unnecessary interruptions.
@@ -368,3 +400,14 @@ Additionally, it is important for the model to learn when to disregard instructi
 [VITA (2024)](../../Models/MultiModal/2024.08.09_VITA.md) is currently the only work that integrates silence mode.
 This method involves training the model on both query speech and non-query audio, which may include environmental sounds or non-query speech.
 As a result, the model learns to output the **end-of-sequence** token to terminate its response when non-query audio is detected.
+
+</details>
+<br>
+
+静默模式指的是语音语言模型在非交互期间保持无声或静默的状态.
+这一模式对于创建自然的对话流是至关重要的, 允许模型避免不必要的中断.
+这在小组用户讨论的情况下尤其重要, 因为语音语言模型需要辨别何时加入, 何时保持沉默.
+此外, 对于模型来说, 学习何时忽略指令, 当用户不说话时尤为重要.
+目前唯一集成静默模式的方法是 [VITA (2024)](../../Models/MultiModal/2024.08.09_VITA.md).
+该方法涉及在查询语音和非查询音频上训练模型, 这可能包括环境声音或非查询语音.
+因此, 当检测到非查询音频时, 模型学会输出**终止序列** Token 以终止其响应.
