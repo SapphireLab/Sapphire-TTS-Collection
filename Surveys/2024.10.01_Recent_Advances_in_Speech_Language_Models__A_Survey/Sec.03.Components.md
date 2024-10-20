@@ -157,6 +157,9 @@ Building on SpeechTokenizer, Mimi ([Moshi (2024)](../../Models/Speech_LLM/2024.0
 
 ## 3.2.Language Model: 语言模型
 
+<details>
+<summary>展开原文</summary>
+
 Due to the success of TextLMs ([GPT-4 (2023)](../../Models/LLM/2023.03.15_GPT-4.md); [Gemini (2023)](../../Models/LLM/2023.12.19_Gemini.md); [LLaMA 3 (2024)](../../Models/LLM/2024.07.31_LLaMA3.md)), most SpeechLMs follow their architectures.
 They primarily employ [Transformers (2017)](../../Models/_Transformer/2017.06.12_Transformer.md) or decoder-only architectures (such as [OPT (2022)](../../Models/LLM/2022.05.02_OPT.md), [LLaMA (2023)](../../Models/LLM/2023.02.27_LLaMA.md)) to generate speech in an autoregressive manner.
 To formally define it, given $|V_t|$ as the vocabulary size and $h$ as the hidden dimension, a typical text-based decoder-only transformer language model consists of an embedding matrix $E_t \in \mathbb{R}^{|V_t| \times h}$, a sequence of \( L \) transformer decoder blocks \(\textbf{De} = \{ De_1, De_2, \ldots, De_L \} \), and an output embedding matrix $E'_t \in \mathbb{R}^{h \times |V_t|}$.
@@ -166,7 +169,7 @@ $$
     \textbf{t}^{\text{out}} \sim \text{LM}(\textbf{t}^{\text{in}}, (E_t, \textbf{De}, E'_t)).
 $$
 
-To adapt the language model to generate speech, the original text tokenizer is changed to the speech tokenizers illustrated in section \ref{sec:speechencoder}.
+To adapt the language model to generate speech, the original text tokenizer is changed to the speech tokenizers illustrated in [Section.3.1](#31speech-tokenizer-语音分词器).
 $E_t \in \mathbb{R}^{|V_t| \times h}$ is thus changed to a speech embedding matrix $E_s \in \mathbb{R}^{|V_s| \times h}$, where $|V_s|$ represents the vocabulary size of the speech tokenizer.
 The output embedding matrix is also changed from $E'_t \in \mathbb{R}^{h \times |V_t|}$ to $E'_s \in \mathbb{R}^{h \times |V_s|}$.
 As a result, the language model in an SpeechLM is represented as
@@ -184,7 +187,40 @@ $$
 \textbf{m}^{\text{out}} \sim \text{LM}(\textbf{m}^{\text{in}}, (E_j, \textbf{De}, E'_j)).
 $$
 
-By doing so, the model can generate both text and speech in a single sequence, enabling much more diverse applications (see \cref{sec:downstreamApps}).
+By doing so, the model can generate both text and speech in a single sequence, enabling much more diverse applications (see [Section.05 Application](Sec.05.Applications.md)).
+
+</details>
+<br>
+
+由于文本语言模型 ([GPT-4 (2023)](../../Models/LLM/2023.03.15_GPT-4.md); [Gemini (2023)](../../Models/LLM/2023.12.19_Gemini.md); [LLaMA 3 (2024)](../../Models/LLM/2024.07.31_LLaMA3.md)) 的成功, 许多语音语言模型遵循它们的架构.
+
+它们主要应用 [Transformer (2017)](../../Models/_Transformer/2017.06.12_Transformer.md) 或仅解码器的架构 (如 [OPT (2022)](../../Models/LLM/2022.05.02_OPT.md), [LLaMA (2023)](../../Models/LLM/2023.02.27_LLaMA.md)) 以自回归的方式生成语音.
+为了正式地定义它, 给定 $|V_t|$ 为词表大小, $h$ 为隐藏维度, 典型的基于文本的仅解码器 Transformer 语言模型由一个嵌入矩阵 $E_t \in \mathbb{R}^{|V_t| \times h}$, \( L \) 个 Transformer 解码器块组成的序列 \(\textbf{De} = \{ De_1, De_2, \ldots, De_L \} \) 和输出嵌入矩阵 $E'_t \in \mathbb{R}^{h \times |V_t|}$.
+
+因此, 语言模型 (LM) 可以表示为
+
+$$
+    \textbf{t}^{\text{out}} \sim \text{LM}(\textbf{t}^{\text{in}}, (E_t, \textbf{De}, E'_t)).
+$$
+
+为了将语言模型应用于生成语音, 原始文本分词器被改造为如 [3.1.Speech Tokenizer](#31speech-tokenizer-语音分词器) 所示的语音分词器.
+$E_t \in \mathbb{R}^{|V_t| \times h}$ 因此被改造为语音嵌入矩阵 $E_s \in \mathbb{R}^{|V_s| \times h}$, 其中 $|V_s|$ 表示语音分词器的词表大小.
+输出嵌入矩阵也被改造为 $E'_s \in \mathbb{R}^{h \times |V_s|}$, 因此语音语言模型中的语言模型可以表示为
+
+$$
+\textbf{s}^{\text{out}} \sim \text{LM}(\textbf{s}^{\text{in}}, (E_s, \textbf{De}, E'_s)).
+$$
+
+由于语音语言模型的语言模型架构是借鉴自文本语言模型的, 因此改造后的模型可以同时对文本和语音模态进行建模 ([SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md); [SpeechGPT (2023)](../../Models/Speech_LLM/2023.05.18_SpeechGPT.md)).
+为了实现这一目标, 最简单的和最流行的方法是将原始文本语言模型的词表扩展为包含文本和语音 Token 的词表.
+具体来说, 语音嵌入矩阵通常被追加到文本嵌入矩阵的末尾, 得到一个更大的嵌入矩阵 $E_m \in \mathbb{R}^{(|V_t|+|V_s|) \times h}$.
+令 $\textbf{m}$ 为包含语音和文本 Token 的 Token 序列, 则语言模型变为
+
+$$
+\textbf{m}^{\text{out}} \sim \text{LM}(\textbf{m}^{\text{in}}, (E_j, \textbf{De}, E'_j)).
+$$
+
+这样做可以使模型能够在单个序列中生成文本和语音, 这为许多不同应用提供了更多的可能性 (参见 [Section.05](Sec.05.Applications.md)).
 
 ## 3.3.Token-to-Speech Synthesizer (Vocoder): 音素转语音合成器
 
