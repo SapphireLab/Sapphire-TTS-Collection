@@ -389,34 +389,50 @@ Such a design choice enables the codec to better perform on pitch and speaker-re
 </details>
 <br>
 
+许多神经音频编解码器采用 GAN 架构, 它们可以在基于 GAN 的声码器的背景下进行讨论.
+类似于其作为分词器的角色, 虽然神经音频编解码器的主要目的是音频压缩, 编码后的紧凑 Token 序列捕获了音频波形中被埋藏的基本信息, 因此可以作为语音语言模型中的声码器.
+- [EnCodec (2022)](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) 使用 GAN 架构, 提出了一种新的生成器, 包括编码器, 量化器, 和解码器.
+  压缩的音频表示通过使用残差向量量化由量化器输出.
+- [Polyak et al. (2021)](../../Models/TTS3_Vocoder/2021.04.01_Speech_Resynthesis_from_Discrete_Disentangled_Self-Supervised_Representations.md) 利用 [HiFi-GAN (2020)](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md) 作为声码器的骨干, 提出了将声码器的输入特征解耦为不同性质, 其中包括语义 Token, 音高 Token, 和说话人嵌入.
+  这种设计选择使得编解码器在音高和说话人相关的任务 (如声音转换和 $F_0$ 操控方面) 表现得更好.
+
 ### 3.3.3.Other Types of Vocoder: 其他类型的声码器
+
+<details>
+<summary>展开原文</summary>
 
 The variety of vocoders is not restricted to the ones mentioned earlier, as those are the ones commonly employed in SpeechLMs.
 This section briefly outlines other potential vocoder types that are seldom explored as a component in SpeechLMs.
 
-#### Pure Signal Processing Vocoder.
+</details>
+<br>
+
+声码器的种类不仅限于前面提到的那些, 因为它们是语音语言模型中常用的声码器.
+本节简要概括了其他可能的声码器类型, 这些声码器在语音语言模型中很少作为组件被探索.
+
+#### Pure Signal Processing Vocoder: 纯信号处理声码器
 
 Pure signal processing vocoders are traditional methods that rely on deterministic algorithms rather than deep learning models to synthesize speech ([Griffin-Lim (1984)](../../Models/TTS3_Vocoder/1984.04.00_Griffin-Lim.md); [WORLD (2016)](../../Models/TTS3_Vocoder/2016.07.01_WORLD.md)).
 However, this kind of vocoders introduces noticeable artifacts in the synthesized audio and is thus rarely used.
 
-#### Autoregressive Vocoder.
+#### Autoregressive Vocoder: 自回归声码器
 
 Autoregressive vocoders generate audio waveforms one sample at a time, with each sample conditioned on the previously generated samples ([WaveNet (2016)](../../Models/TTS3_Vocoder/2016.09.12_WaveNet.md)).
 This approach allows for high-quality audio synthesis due to its sequential nature and the ability to capture intricate temporal dependencies within the audio signal.
 However, the sequential generation process can be computationally expensive and time-consuming, making autoregressive models less efficient compared to parallelized methods like GAN-based vocoders.
 
-#### Flow-based Vocoder.
+#### Flow-based Vocoder: 流模型声码器
 
 Flow-based vocoder aims to establish a series of invertible transformations that map a simple distribution, such as a Gaussian, to the complex distribution of audio samples.
 This mechanism allows for efficient sampling and density evaluation, enabling the model to synthesize audio in parallel rather than sequentially, which significantly enhances both speed and quality ([WaveGlow (2018)](../../Models/TTS3_Vocoder/2018.10.31_WaveGlow.md)).
 Compared to GAN-based vocoders, Flow-based vocoders typically need more parameters and memory to train the model, which hinders them from being effectively utilized ([MelGAN (2019)](../../Models/TTS3_Vocoder/2019.10.08_MelGAN.md)).
 
-#### VAE-based Vocoders.
+#### VAE-based Vocoders: VAE 声码器
 
 Variational Autoencoders (VAEs) are powerful generative models that learn to encode input data into a compressed latent space while allowing for the reconstruction of the original data ([VQ-VAE (2017)](../../Modules/VQ/2017.11.02_VQ-VAE.md); [VAE-WNV-VC (2018)](../../Models/Voice_Conversion/2018.11.27_VAE-WNV-VC.md)).
 However, VAE is seldom explored as the underlying architecture of vocoders.
 
-#### Diffusion-based Vocoder.
+#### Diffusion-based Vocoder: 扩散模型声码器
 
 Diffusion models have emerged in recent years as a powerful class of generative models that can be used for high-fidelity speech synthesis.
 They work by gradually adding noise to the input data (e.g., audio waveforms) to create a sequence of increasingly noisy representations, then learning to reverse this process to generate new samples ([DiffWave (2020)](../../Models/TTS3_Vocoder/2020.09.21_DiffWave.md); [WaveGrad (2020)](../../Models/TTS3_Vocoder/2020.09.02_WaveGrad.md); [PriorGrad (2021)](../../Models/TTS3_Vocoder/2021.06.11_PriorGrad.md)).
