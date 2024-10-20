@@ -283,13 +283,16 @@ $$
 
 ### 3.3.1.GAN-based Vocoder: 基于生成对抗网络的声码器
 
+<details>
+<summary>展开原文</summary>
+
 Generative Adversarial Network (GAN) is the most adopted architecture of the vocoders ([MelGAN (2019)](../../Models/TTS3_Vocoder/2019.10.08_MelGAN.md); [HiFi-GAN (2020)](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md);[Polyak et al. (2021)](../../Models/TTS3_Vocoder/2021.04.01_Speech_Resynthesis_from_Discrete_Disentangled_Self-Supervised_Representations.md); [Fre-GAN (2021)](../../Models/TTS3_Vocoder/2021.06.04_Fre-GAN.md); [BigVGAN (2022)](../../Models/TTS3_Vocoder/2022.06.09_BigVGAN.md)).
 It is well known for its fast and high-fidelity generation in speech synthesis tasks.
 The architecture of GAN includes a generator and a discriminator.
 Specifically, the generator creates realistic audio waveforms from random noise or input features, while the discriminator evaluates the authenticity of the generated audio against real audio samples.
 
 To utilize GAN to synthesize high-fidelity speech, various training objectives are designed, focusing on different aspects.
-First, \textbf{GAN loss} is utilized as the fundamental objective for the operation of the generator and the discriminator.
+First, **GAN loss** is utilized as the fundamental objective for the operation of the generator and the discriminator.
 Specifically, the typical choice GAN loss for the generator ($G$) and discriminator ($D$) is to use the least squares loss function.
 The GAN loss for the generator ($\mathcal{L}_{\text{GAN}}(G; D)$) and the discriminator ($\mathcal{L}_{\text{GAN}}(D; G)$) are
 
@@ -306,7 +309,7 @@ $$
 respectively.
 
 In these loss functions, $x$ represents the ground truth audio and $ms$ represents its mel-spectrogram.
-Second, most GAN-based vocoders synthesize speech waveform from mel-spectrograms, so \textbf{mel-spectrogram loss} is proposed to align the mel-spectrogram synthesized by the generator and the mel-spectrogram transformed from the ground-truth waveform, in order to improve the fidelity of the generated speech.
+Second, most GAN-based vocoders synthesize speech waveform from mel-spectrograms, so **mel-spectrogram loss** is proposed to align the mel-spectrogram synthesized by the generator and the mel-spectrogram transformed from the ground-truth waveform, in order to improve the fidelity of the generated speech.
 Mel-spectrogram loss ($\mathcal{L}_{\text{Mel}}(G)$) works by minimizing the L1 distance between the two versions of mel-spectrograms mentioned above.
 Its formula is shown below:
 
@@ -315,7 +318,7 @@ $$
 $$
 where $\phi(\cdot)$ is the function to transform a waveform into the corresponding mel-spectrogram.
 
-Third, to further enhance the generation fidelity, \textbf{feature matching loss} ($\mathcal{L}_{FM}(G;D)$) is proposed to align the discriminator-encoded features of the ground truth sample and the generated sample with L1 distance, which has the following formula:
+Third, to further enhance the generation fidelity, **feature matching loss** ($\mathcal{L}_{FM}(G;D)$) is proposed to align the discriminator-encoded features of the ground truth sample and the generated sample with L1 distance, which has the following formula:
 
 $$
     \mathcal{L}_{FM}(G;D) = \mathbb{E}_{(x,ms)} \left[ \sum_{i=1}^{T} \frac{1}{N_i} \left\lVert D^i(x) - D^i(G(ms)) \right\rVert_1 \right],
@@ -330,7 +333,51 @@ To preserve high-frequency content, [Fre-GAN (2021)](../../Models/TTS3_Vocoder/2
 Unlike traditional approaches like Average Pooling (AP), DWT efficiently decomposes the signal into low-frequency and high-frequency sub-bands.
 [BigVGAN (2022)](../../Models/TTS3_Vocoder/2022.06.09_BigVGAN.md) introduces a periodic activation function called snake function along with an anti-aliased representation to reduce the high-frequency artifacts in the synthesized audio.
 
+</details>
+<br>
+
+生成对抗网络 (Generative Adversarial Network, GAN) 是声码器最常采用的架构 ([MelGAN (2019)](../../Models/TTS3_Vocoder/2019.10.08_MelGAN.md); [HiFi-GAN (2020)](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md);[Polyak et al. (2021)](../../Models/TTS3_Vocoder/2021.04.01_Speech_Resynthesis_from_Discrete_Disentangled_Self-Supervised_Representations.md); [Fre-GAN (2021)](../../Models/TTS3_Vocoder/2021.06.04_Fre-GAN.md); [BigVGAN (2022)](../../Models/TTS3_Vocoder/2022.06.09_BigVGAN.md)).
+它在语音合成任务中以快速和高保真生成而闻名.
+GAN 架构包括生成器和判别器.
+具体来说, 生成器从随机噪声或输入特征创建真实的音频波形, 而判别器评估生成的音频和真实样本的真实性.
+
+为了利用 GAN 来合成高保真语音, 设计了不同的训练目标, 着重于不同的方面.
+
+- 首先, **GAN 损失** 被用作生成器和判别器的基本目标.
+具体来说, 生成器 $G$ 和判别器 $D$ 的经典的 GAN 损失是使用最小二乘损失函数.
+生成器 $G$ 和判别器 $D$ 的 GAN 损失分别为
+$$
+    \mathcal{L}_{\text{GAN}}(G; D) = \mathbb{E}_{ms} \left[ \left( D(G(ms)) - 1 \right)^2 \right]
+$$
+$$
+    \mathcal{L}_{\text{GAN}}(D; G) = \mathbb{E}_{(x, ms)} \left[ \left( D(x) - 1 \right)^2 + \left( D(G(ms)) \right)^2 \right],
+$$
+在这些损失函数中, $x$ 表示真实的音频, $ms$ 表示其梅尔频谱图 (Mel-spectrogram).
+
+- 其次, 大多数基于 GAN 的声码器从梅尔频谱合成语音波形, 所以**梅尔频谱损失**被提出用于对齐生成器合成的梅尔频谱和由真实音频转换的梅尔频谱, 以提高生成语音的真实度.
+梅尔频谱损失 ($\mathcal{L}_{\text{Mel}}(G)$) 通过最小化两个梅尔频谱之间的 L1 距离来实现, 其公式如下:
+$$
+    \mathcal{L}_{\text{Mel}}(G) = \mathbb{E}_{(x, ms)} \left[ \left\| \phi(x) - \phi(G(ms)) \right\|_1 \right],
+$$
+其中 $\phi(\cdot)$ 是将音频转换为相应梅尔频谱的函数.
+
+- 第三, 为了进一步增强生成的真实度, **特征匹配损失** ($\mathcal{L}_{FM}(G;D)$) 被提出, 使用 L1 距离来对齐判别器编码的真实样本和生成样本的特征, 其公式如下:
+$$
+    \mathcal{L}_{FM}(G;D) = \mathbb{E}_{(x,ms)} \left[ \sum_{i=1}^{T} \frac{1}{N_i} \left\lVert D^i(x) - D^i(G(ms)) \right\rVert_1 \right],
+$$
+其中 $D^i(\cdot)$ 和 $N_i$ 表示第 $i$ 层判别器的特征和特征数.
+
+在架构选择方面, 基于 GAN 的声码器专注于注入归纳偏置以生成音频波形.
+- [MelGAN (2019)](../../Models/TTS3_Vocoder/2019.10.08_MelGAN.md) 在生成器中加入了带有膨胀卷积的残差块, 以模拟音频时间步间的长期相关性, 并提出了多尺度架构的判别器, 以模拟不同频率范围的音频.
+- [HiFi-GAN (2020)](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md) 基于多尺度判别器提出了多周期判别器, 以模拟音频波形中的多种周期模式.
+- [Fre-GAN (2021)](../../Models/TTS3_Vocoder/2021.06.04_Fre-GAN.md) 为了保持高频内容, 采用离散小波变换 (Discrete Wavelet Transform, DWT) 来下采样和学习多频带的频谱分布.
+  和传统的方法如平均池化不同, 离散小波变换将信号分解为低频和高频子带.
+- [BigVGAN (2022)](../../Models/TTS3_Vocoder/2022.06.09_BigVGAN.md) 引入了名为蛇形函数的周期激活函数和抗锯齿表示, 以减少生成音频中的高频伪影.
+
 ### 3.3.2.GAN-based Neural Audio Codec: 基于生成对抗网络的神经音频编解码器
+
+<details>
+<summary>展开原文</summary>
 
 Given that many neural audio codecs employ a GAN architecture, they can be effectively discussed within the context of GAN-based vocoders.
 Similar to its role as a tokenizer, although the primary objective of neural audio codecs is for audio compression, the encoded compact token sequences capture the essential information buried in the audio waveforms and therefore can be leveraged as a vocoder in SpeechLMs.
@@ -338,6 +385,9 @@ Similar to its role as a tokenizer, although the primary objective of neural aud
 The compressed audio representations are outputted by the quantizer by using Residual Vector Quantization (RVQ).
 [Polyak et al. (2021)](../../Models/TTS3_Vocoder/2021.04.01_Speech_Resynthesis_from_Discrete_Disentangled_Self-Supervised_Representations.md) utilizes [HiFi-GAN (2020)](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md) as the vocoder backbone and proposes to disentangle the input features of a vocoder into distinct properties, which include semantic tokens, pitch tokens, and speaker embeddings.
 Such a design choice enables the codec to better perform on pitch and speaker-related tasks such as voice conversion and $F_0$ manipulation.
+
+</details>
+<br>
 
 ### 3.3.3.Other Types of Vocoder: 其他类型的声码器
 
