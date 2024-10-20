@@ -117,7 +117,10 @@ The second strategy leverages [**mixed tokens**](Sec.03.Components.md#313mixed-o
 - 第二种方式: 利用[混合 Token](Sec.03.Components.md#313mixed-objective-混合目标) 来同时建模语义和声学信息.
   这种方式在 [Moshi (2024)](../../Models/Speech_LLM/2024.09.17_Moshi.md) 和 [SpeechGPT-Gen (2024)](../../Models/Speech_LLM/2024.01.24_SpeechGPT-Gen.md) 中都取得了良好的结果.
 
-### Continuous Features
+### 4.1.2.Continuous Features: 连续特征
+
+<details>
+<summary>展开原文</summary>
 
 Continuous features, in contrast to discrete features, are unquantized, real-valued representations of speech signals that exist on a continuous scale.
 These features capture fine-grained, nuanced aspects of speech that may be lost in discretization processes.
@@ -126,6 +129,18 @@ The exploration of leveraging continuous features to condition SpeechLMs is stil
 [Spectron (2023)](../../Models/Speech_LLM/2023.05.24_Spectron.md) performs speech continuation by predicting the spectrograms frame-by-frame.
 However, the generation of speech spectrograms still needs to be conditioned on text transcripts, which is not an end-to-end speech generation approach.
 [Mini-Omni (2024)](../../Models/MultiModal/2024.08.27_Mini-Omni.md) extracts intermediate representations from a frozen Whisper encoder as input for the SpeechLM, whereas [LauraGPT (2023)](../../Models/Speech_LLM/2023.10.07_LauraGPT.md) employs an audio encoder trained alongside the SpeechLM to derive latent representations from input speech.
+
+</details>
+<br>
+
+连续特征与离散特征不同, 是语音信号的未量化的实值表示, 存在于连续尺度上.
+这些特征捕获了语音的细粒度微妙的方面, 这些方面在离散化过程中可能丢失.
+连续特征可以包括频谱表示 (如梅尔频谱) 或从神经网络中提取的隐表示.
+利用连续特征来条件化语音语言模型的探索仍处于初步阶段.
+[Spectron (2023)](../../Models/Speech_LLM/2023.05.24_Spectron.md) 通过逐帧预测语谱图来实现语音连续.
+然而, 生成语音频谱图仍然需要根据文本转录作为条件, 这不是端到端语音生成方法.
+[Mini-Omni (2024)](../../Models/MultiModal/2024.08.27_Mini-Omni.md) 从冻结的 Whisper 编码器中提取中间表示作为语音语言模型的输入.
+[LauraGPT (2023)](../../Models/Speech_LLM/2023.10.07_LauraGPT.md) 采用与语音语言模型一起训练的音频编码器, 从输入语音中提取隐表示.
 
 ## 4.2.Training Stages
 
