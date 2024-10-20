@@ -412,29 +412,78 @@ This section briefly outlines other potential vocoder types that are seldom expl
 
 #### Pure Signal Processing Vocoder: 纯信号处理声码器
 
+<details>
+<summary>展开原文</summary>
+
 Pure signal processing vocoders are traditional methods that rely on deterministic algorithms rather than deep learning models to synthesize speech ([Griffin-Lim (1984)](../../Models/TTS3_Vocoder/1984.04.00_Griffin-Lim.md); [WORLD (2016)](../../Models/TTS3_Vocoder/2016.07.01_WORLD.md)).
 However, this kind of vocoders introduces noticeable artifacts in the synthesized audio and is thus rarely used.
 
+</details>
+<br>
+
+纯信号处理声码器是依赖于确定性算法而不是深度学习模型的用于合成语音的传统方法 ([Griffin-Lim (1984)](../../Models/TTS3_Vocoder/1984.04.00_Griffin-Lim.md); [WORLD (2016)](../../Models/TTS3_Vocoder/2016.07.01_WORLD.md)).
+然而, 这类声码器会在合成的音频中引入显著的伪影, 因此很少被使用.
+
 #### Autoregressive Vocoder: 自回归声码器
+
+<details>
+<summary>展开原文</summary>
 
 Autoregressive vocoders generate audio waveforms one sample at a time, with each sample conditioned on the previously generated samples ([WaveNet (2016)](../../Models/TTS3_Vocoder/2016.09.12_WaveNet.md)).
 This approach allows for high-quality audio synthesis due to its sequential nature and the ability to capture intricate temporal dependencies within the audio signal.
 However, the sequential generation process can be computationally expensive and time-consuming, making autoregressive models less efficient compared to parallelized methods like GAN-based vocoders.
 
+</details>
+<br>
+
+自回归声码器一次生成一个音频波形样本, 每个样本都以之前生成的样本为条件 ([WaveNet (2016)](../../Models/TTS3_Vocoder/2016.09.12_WaveNet.md)).
+这种方法允许高质量的音频合成, 因为它是顺序生成的, 并且能够捕获音频信号中的复杂时序依赖关系.
+然而, 顺序生成过程可能是计算密集型的, 耗时耗力, 因此与 GAN-based 声码器相比, 自回归模型的效率较低.
+
 #### Flow-based Vocoder: 流模型声码器
+
+<details>
+<summary>展开原文</summary>
 
 Flow-based vocoder aims to establish a series of invertible transformations that map a simple distribution, such as a Gaussian, to the complex distribution of audio samples.
 This mechanism allows for efficient sampling and density evaluation, enabling the model to synthesize audio in parallel rather than sequentially, which significantly enhances both speed and quality ([WaveGlow (2018)](../../Models/TTS3_Vocoder/2018.10.31_WaveGlow.md)).
 Compared to GAN-based vocoders, Flow-based vocoders typically need more parameters and memory to train the model, which hinders them from being effectively utilized ([MelGAN (2019)](../../Models/TTS3_Vocoder/2019.10.08_MelGAN.md)).
 
+</details>
+<br>
+
+基于流模型的声码器旨在建立一系列可逆变换, 将简单分布 (如高斯分布) 映射到音频样本的复杂分布.
+这种机制允许高效的采样和密度评估, 使模型能够并行合成音频, 而不是顺序合成, 这有助于提高速度和质量 ([WaveGlow (2018)](../../Models/TTS3_Vocoder/2018.10.31_WaveGlow.md)).
+和基于 GAN 的声码器相比, 流模型声码器通常需要更多的参数和内存来训练模型, 这使得它们难以有效地被利用 ([MelGAN (2019)](../../Models/TTS3_Vocoder/2019.10.08_MelGAN.md)).
+
 #### VAE-based Vocoders: VAE 声码器
+
+<details>
+<summary>展开原文</summary>
 
 Variational Autoencoders (VAEs) are powerful generative models that learn to encode input data into a compressed latent space while allowing for the reconstruction of the original data ([VQ-VAE (2017)](../../Modules/VQ/2017.11.02_VQ-VAE.md); [VAE-WNV-VC (2018)](../../Models/Voice_Conversion/2018.11.27_VAE-WNV-VC.md)).
 However, VAE is seldom explored as the underlying architecture of vocoders.
 
+</details>
+<br>
+
+变分自编码器 (VAEs) 是一种强大的生成模型, 它能够学习将输入数据编码为压缩的潜在空间, 并允许对原始数据进行重构 ([VQ-VAE (2017)](../../Modules/VQ/2017.11.02_VQ-VAE.md); [VAE-WNV-VC (2018)](../../Models/Voice_Conversion/2018.11.27_VAE-WNV-VC.md)).
+然而, VAE 很少作为声码器的底层架构进行探索.
+
 #### Diffusion-based Vocoder: 扩散模型声码器
+
+<details>
+<summary>展开原文</summary>
 
 Diffusion models have emerged in recent years as a powerful class of generative models that can be used for high-fidelity speech synthesis.
 They work by gradually adding noise to the input data (e.g., audio waveforms) to create a sequence of increasingly noisy representations, then learning to reverse this process to generate new samples ([DiffWave (2020)](../../Models/TTS3_Vocoder/2020.09.21_DiffWave.md); [WaveGrad (2020)](../../Models/TTS3_Vocoder/2020.09.02_WaveGrad.md); [PriorGrad (2021)](../../Models/TTS3_Vocoder/2021.06.11_PriorGrad.md)).
 For instance, [DiffWave (2020)](../../Models/TTS3_Vocoder/2020.09.21_DiffWave.md) uses Denoising Diffusion Probabilistic Models (DDPM) to synthesize audio.
 Additionally, [CosyVoice (2024)](../../Models/Speech_LLM/2024.07.07_CosyVoice.md) introduces a Conditional Flow-Matching (CFM) model that serves as a vocoder in TTS systems.
+
+</details>
+<br>
+
+扩散模型是近年来出现的一种强大的生成模型, 它可以用于高保真语音合成.
+它们通过逐渐添加噪声到输入数据 (如音频波形) 来创建一系列噪声增加表示, 然后学习将这个过程反向进行, 来生成新的样本 ([DiffWave (2020)](../../Models/TTS3_Vocoder/2020.09.21_DiffWave.md); [WaveGrad (2020)](../../Models/TTS3_Vocoder/2020.09.02_WaveGrad.md); [PriorGrad (2021)](../../Models/TTS3_Vocoder/2021.06.11_PriorGrad.md)).
+例如: [DiffWave (2020)](../../Models/TTS3_Vocoder/2020.09.21_DiffWave.md) 使用 Denoising Diffusion Probabilistic Models (DDPM) 来合成音频.
+此外, [CosyVoice (2024)](../../Models/Speech_LLM/2024.07.07_CosyVoice.md) 引入了一个条件流匹配 (CFM) 模型, 作为 TTS 系统中的声码器.
