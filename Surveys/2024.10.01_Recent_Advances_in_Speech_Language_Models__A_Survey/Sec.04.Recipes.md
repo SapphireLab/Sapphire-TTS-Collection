@@ -89,6 +89,9 @@ It encodes a 3-second audio clip using [EnCodec (2022)](../../Models/Speech_Neur
 
 #### Discussion: 讨论
 
+<details>
+<summary>展开原文</summary>
+
 Different types of tokens influence the speech quality of SpeechLMs in different ways, often resulting in trade-offs ([AudioLM (2022)](../../Models/Speech_LLM/2022.09.07_AudioLM.md)).
 For example, while semantic tokens align well with text and excel in producing semantically coherent speech, the generated speech often lacks acoustic details, such as high-frequency information.
 Recovering and enhancing these details typically requires postprocessing, like a diffusion model, which significantly increases the model's latency.
@@ -97,7 +100,22 @@ Researchers have tried two ways to balance these trade-offs.
 The first involves combining semantic and acoustic tokens into a single sequence.
 [AudioLM (2022)](../../Models/Speech_LLM/2022.09.07_AudioLM.md) proposes a hierarchical modeling scheme that first models semantic tokens from [W2V-BERT (2021)](../../Models/Speech_Representaion/2021.08.07_W2V-BERT.md)  and then uses these tokens to predict acoustic tokens from [SoundStream (2021)](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md), which ultimately generates speech.
 However, this kind of approach increases sequence length, which increases modeling complexity.
-The second strategy leverages **mixed tokens** (see \cref{sec:mixedTokenizer}) to jointly model semantic and acoustic information, showing promising results in [Moshi (2024)](../../Models/Speech_LLM/2024.09.17_Moshi.md) and [SpeechGPT-Gen (2024)](../../Models/Speech_LLM/2024.01.24_SpeechGPT-Gen.md).
+The second strategy leverages [**mixed tokens**](Sec.03.Components.md#313mixed-objective-混合目标) to jointly model semantic and acoustic information, showing promising results in [Moshi (2024)](../../Models/Speech_LLM/2024.09.17_Moshi.md) and [SpeechGPT-Gen (2024)](../../Models/Speech_LLM/2024.01.24_SpeechGPT-Gen.md).
+
+</details>
+<br>
+
+不同类型的 Token 以不同的方式影响语音语言模型的语音质量, 通常需要权衡 ([AudioLM (2022)](../../Models/Speech_LLM/2022.09.07_AudioLM.md)).
+例如, 虽然语义 Token 与文本能够良好对齐, 并且在生成语义连贯的语音方面表现出色, 但生成的语音通常缺乏声学细节, 如高频信息.
+恢复和增强这些细节通常需要后处理, 如扩散模型, 这会显著增加模型的延迟.
+相反, 声学 Token 可以促进高保真音频的生成, 但在内容生成方面存在不确定性 ([SpeechTokenizer (2023)](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md)).
+研究人员尝试了两种方法来平衡这些权衡.
+
+- 第一种方式: 将语义 Token 与声学 Token 结合为单一序列.
+  [AudioLM (2022)](../../Models/Speech_LLM/2022.09.07_AudioLM.md) 提出了分层建模方案, 首先建模来自 [W2V-BERT (2021)](../../Models/Speech_Representaion/2021.08.07_W2V-BERT.md) 的语义 Token, 然后使用这些 Token 预测来自 [SoundStream (2021)](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md) 的声学 Token, 最后生成语音.
+  这种方法可以显著减少序列长度, 但会增加模型的复杂度.
+- 第二种方式: 利用[混合 Token](Sec.03.Components.md#313mixed-objective-混合目标) 来同时建模语义和声学信息.
+  这种方式在 [Moshi (2024)](../../Models/Speech_LLM/2024.09.17_Moshi.md) 和 [SpeechGPT-Gen (2024)](../../Models/Speech_LLM/2024.01.24_SpeechGPT-Gen.md) 中都取得了良好的结果.
 
 ### Continuous Features
 
