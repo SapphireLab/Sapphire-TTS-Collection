@@ -52,6 +52,9 @@ Additionally, we systematically survey the various capabilities of SpeechLMs, ca
 
 ![Images/Fig.01.png](Images/Fig.01.png)
 
+<details>
+<summary>展开原文</summary>
+
 Large Language Models (LLMs) have demonstrated remarkable capabilities in generating text and performing a wide array of natural language processing tasks ([GPT-4 (2023)](../../Models/LLM/2023.03.15_GPT-4.md); [LLaMA3 (2024)](../../Models/LLM/2024.07.31_LLaMA3.md); [OPT (2022)](../../Models/LLM/2022.05.02_OPT.md)), serving as powerful foundation models for AI-driven language understanding and generation.
 Their success has also spurred numerous applications in various other domains, yet the reliance solely on text-based modalities presents a significant limitation.
 This leads to the development of speech-based generative models, which allow to interact with humans more naturally and intuitively.
@@ -69,13 +72,42 @@ Putting a text-only LLM in the middle will cause the complete loss of paralingui
 Specifically, transcription errors that occur when converting speech to text in the ASR module can negatively impact the language generation performance of the LLM.
 
 The limitations of the naive ASR + LLM + TTS framework have led to the development of Speech Language Models (SpeechLMs, Fig.01 (b)).
-Unlike the naive framework, SpeechLMs directly encode speech waveforms into discrete tokens, capturing essential features and information from audio (\cref{sec:speechencoder}).
+Unlike the naive framework, SpeechLMs directly encode speech waveforms into discrete tokens, capturing essential features and information from audio ([Section.3.1](Sec.03.Components.md#31speech-tokenizer-语音分词器)).
 Although individual speech tokens may not carry word-level semantic meaning, they capture the semantic information of speech utterances and retain valuable paralinguistic information, which prevents the information loss.
-SpeechLMs then model these tokens autoregressively, without solely relying on text input, which allows them to use the additional paralinguistic information to generate more expressive and nuanced speech (\cref{sec:languagemodel}).
-Finally, the generated tokens are synthesized back to speech (\cref{sec:vocoder}).
+SpeechLMs then model these tokens autoregressively, without solely relying on text input, which allows them to use the additional paralinguistic information to generate more expressive and nuanced speech ([Section.3.2](Sec.03.Components.md#32language-model-语言模型)).
+Finally, the generated tokens are synthesized back to speech ([Section.3.3](Sec.03.Components.md#33token-to-speech-synthesizer-vocoder-音素转语音合成器)).
 By working directly with the encoded speech tokens, SpeechLMs effectively mitigate the cumulative errors, as their training is integrated with the speech encoding, whereas the training of LLMs (language modeling) is completely independent of the ASR (speech recognition) module in the naive framework.
 
+</details>
+<br>
+
+大语言模型 (Large Language Models, LLMs) 在生成文本和执行各种自然语言处理任务方面展现出了惊人的能力  ([GPT-4 (2023)](../../Models/LLM/2023.03.15_GPT-4.md); [LLaMA3 (2024)](../../Models/LLM/2024.07.31_LLaMA3.md); [OPT (2022)](../../Models/LLM/2022.05.02_OPT.md)), 正在作为 AI 驱动语言理解和生成的强大基础模型.
+其成功也促进了其他领域的许多应用, 然而, 仅依靠文本输入的限制会导致语音交互的局限性.
+这也导致了基于语音的生成模型的发展, 以允许人类更自然和直观地与之交互.
+语音的引入不仅可以促进实时语音交互, 而且还可以增强交流, 因为它可以结合文本和语音信息 ([dGSLM (2022)](../../Models/Speech_LLM/2022.03.30_dGSLM.md); [SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md)).
+
+给定文本和语音之间的广泛互信息, 可以自然地修改现有的 LLMs 以实现语音交互能力.
+一种直接的方法是采用 "自动语音识别 (ASR) + LLM + 文本转语音 (TTS)" 框架 (Fig.01 (a)) ([AudioGPT (2023)](../../Models/Speech_LLM/2023.04.25_AudioGPT.md)).
+在这种设置中, 用户的说话输入首先被 ASR 模块处理, 它将其转换为文本.
+然后, LLM 根据此转录文本生成文本响应.
+最后, TTS 模块将文本响应转换回语音, 并播放给用户.
+然而, 这种简单的解决方案主要存在以下两个问题.
+(1) **信息损失.** 语音信号不仅包含语义信息 (即语音的含义), 还包含其他副语言信息 (如音高, 音色, 音调等).
+将文本 LLM 放在中间将导致输入语音丢失全部的副语言信息 ([SpeechGPT (2023)](../../Models/Speech_LLM/2023.05.18_SpeechGPT.md)).
+(2) **累积错误.** 这种分阶段的方法容易导致流水线中的累积错误, 特别是在 ASR-LLM 阶段 ([AudioChatLLaMA (2023)](../../Models/Speech_LLM/2023.11.12_AudioChatLLaMA.md)).
+具体来说, ASR 模块将语音转换为文本时发生的错误会对 LLM 的语言生成性能产生负面影响.
+
+这种简单的 "ASR + LLM + TTS" 框架的局限性激发了**语音语言模型 (Speech Language Models, SpeechLMs)** 的发展 (Fig.01 (b)).
+与简单框架不同, 语音语言模型直接将语音波形编码为离散的 Token, 捕捉音频中的本质特征和信息. ([Section.3.1](Sec.03.Components.md#31speech-tokenizer-语音分词器)).
+尽管单个语音 Token 可能没有词级的语义意义, 但它们捕捉了语音话语的语义信息并保留了有价值的副语言信息, 从而防止信息损失 ([Section.3.2](Sec.03.Components.md#32language-model-语言模型)).
+语音语言模型随后自回归地建模这些 Token, 不单纯依赖文本输入, 这使得它们能够利用额外的副语言信息, 生成更具有表现力和细节细腻的语音.
+最后, 生成的 Token 被合成为语音 ([Section.3.3](Sec.03.Components.md#33token-to-speech-synthesizer-vocoder-音素转语音合成器)).
+通过直接处理编码的语音 Token, 语音语言模型有效地减轻了累计错误, 因为它们的训练与语音编码相结合, 而简单框架中 LLM (语言建模) 训练和 ASR (语音识别) 模块完全独立.
+
 ![Images/Fig.02.png](Images/Fig.02.png)
+
+<details>
+<summary>展开原文</summary>
 
 Beyond basic conversational abilities, SpeechLMs hold the potential to undertake more complex tasks, such as encoding speaker-specific information and emotional nuances (Fig.02).
 This capability allows SpeechLMs to distinguish between different speakers during a conversation and to comprehend and generate speech imbued with specific emotional tones.
@@ -83,15 +115,34 @@ Such advancements are crucial for applications in areas like personalized assist
 Furthermore, SpeechLMs can be designed to enable real-time voice interaction, where the model can be interrupted by humans or choose to speak while the user is still speaking, which resembles the pattern of human conversations more closely.
 
 In this survey, we present the first comprehensive overview of recent endeavors in constructing SpeechLMs.
-We explore the various components that constitute their architecture (\cref{sec:components}) and the training recipes (\cref{sec:trainingRecipes}) involved in their development.
+We explore the various components that constitute their architecture ([Sec.03](Sec.03.Components.md)) and the training recipes ([Sec.04](Sec.04.Recipes.md)) involved in their development.
 we aim to elucidate the current state of the field by analyzing these models from the above perspectives.
-Additionally, we survey the downstream applications of SpeechLMs (\cref{sec:downstreamApps}), classify metrics to evaluate SpeechLMs (\cref{sec:evaluation}), discuss the challenges encountered in this rapidly evolving area, and outline promising future research directions that could drive further advancements in SpeechLM technology (\cref{sec:challenges}).
+Additionally, we survey the downstream applications of SpeechLMs ([Sec.05](Sec.05.Applications.md)), classify metrics to evaluate SpeechLMs ([Sec.06](Sec.06.Evaluations.md)), discuss the challenges encountered in this rapidly evolving area, and outline promising future research directions that could drive further advancements in SpeechLM technology ([Sec.07](#7challenges-and-future-directions-挑战与未来方向)).
 Our contributions are summarized as follows:
 
 - We present the first survey in the field of SpeechLMs.
 - We propose a novel taxonomy (Fig.03) of classifying SpeechLMs from the underlying components and the training recipes.
 - We propose a novel classification system for the \mbox{evaluation} methods for SpeechLMs.
 - We identify several challenges in building SpeechLMs.
+
+</details>
+<br>
+
+除了基本的对话能力, 语音语言模型还具备执行更复杂任务的潜力, 例如编码特定说话人的信息和情感细微差别 (Fig.02).
+这种能力使得语音语言模型能够在对话中区分不同的说话人, 并理解和生成带有特定情感色彩的语音.
+这些进步对于个性化助手, 情感感知系统和更复杂的人机交互场景等应用领域至关重要.
+此外, 语音语言模型可以设计为支持实时语音交互, 其中模型可以被人类打断或选择在用户仍在说话时发声, 这与人类对话的模式更加相似.
+
+在本综述中, 我们首次全面概述了构造语音语言模型的近期努力.
+我们探索了构成其架构的各个组件 ([Sec.03](Sec.03.Components.md)) 和开发时涉及的训练方法 ([Sec.04](Sec.04.Recipes.md)).
+我们旨在通过分析这些模型的不同视角来阐明当前领域的状况.
+此外, 我们调研了语音语言模型的下游应用 ([Sec.05](Sec.05.Applications.md)), 用于评估语言模型的分类指标 ([Sec.06](Sec.06.Evaluations.md)), 讨论了在这一快速发展领域中遇到的挑战, 并概述了有望推动语音语言模型技术进展的有益研究方向 ([Sec.07](#7challenges-and-future-directions-挑战与未来方向)).
+
+我们的贡献总结如下:
+- 我们发表了语音语言模型领域的第一份综述.
+- 我们提出了一个新的分类体系 (Fig.03) 以区分语音语言模型的底层组件和训练方法.
+- 我们提出了一个新的分类系统用于评估语音语言模型的方法.
+- 我们确定了构建语音语言模型的几个挑战.
 
 ![Images/Fig.03.png](Images/Fig.03.png)
 
