@@ -255,7 +255,10 @@ To enable the listening ability of SpeechLMs while speaking, [LSLM (2024)](../..
 - [LSLM (2024)](../../Models/Speech_LLM/2024.08.05_LSLM.md) 为了使得语音语言模型在说话时具有听觉能力, 提出一种流式自监督学习 (SSL) 编码器, 并将其附加到自回归 Token-based TTS 模型.
 - [VioLA (2023)](../../Models/Speech_LLM/2023.05.25_VioLA.md) 引入了一个多任务自回归编解码语言模型 (MLAC), 用于自回归生成编解码器 Token, 而不是语音单元 Token.
 
-#### Continued Pre-Training: 持续预训练
+#### Continued Pre-Training: 继续预训练
+
+<details>
+<summary>展开原文</summary>
 
 In contrast to cold initialization, continued Pre-Training involves initializing the language model with pre-trained weights from a TextLM and then adapting it to handle speech tokens.
 This approach leverages the linguistic knowledge embedded in TextLMs, allowing for more efficient and effective training of SpeechLMs.
@@ -274,7 +277,30 @@ Consequently, both text and speech versions of the prompt can be utilized to tra
 Specifically, the input speech prompt is first transcribed into its text tokens, and then the model predicts the text token response.
 Finally, the text response is synthesized to output speech.
 
-### Language Model Instruction-Tuning
+</details>
+<br>
+
+和冷初始化相比, 继续预训练涉及使用预训练的 TextLM 权重来初始化语言模型, 然后将其修改为处理语音 Token.
+这种方法利用 TextLM 中内嵌的语言知识, 允许更有效和高效地训练语音语言模型.
+[TWIST (2023)](../../Models/Speech_LLM/2023.05.22_TWIST.md) 的研究发现从文本预训练语言模型 ([OPT (2022)](../../Models/LLM/2022.05.02_OPT.md) 和 [LLaMA (2023)](../../Models/LLM/2023.02.27_LLaMA.md)) 开始, 可以增强模型的收敛率并显著提高其语音理解能力.
+他们还证明虽然从文本预训练检查点开始训练优于冷初始化训练的结果, 但从图像预训练检查点开始训练得到的结果差于冷初始化训练.
+这表明并非所有预训练检查点都具有相同的有效性.
+此外, [AudioPaLM (2023)](../../Models/Speech_LLM/2023.06.22_AudioPaLM.md) 使用 [PaLM (2022)](../../Models/LLM/2022.04.05_PaLM.md) 和 [PaLM-2 (2023)](../../Models/LLM/2023.05.17_PaLM2.md) 训练语音语言模型, 展示了语音语言模型受到预训练检查点的大小和训练数据集的增大所带来的好处.
+
+语音语言模型的性能可以通过**对齐**文本和语音模态表示来进一步提高.
+- [SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md) 发现继续预训练 TextLM 检查点使用交替的文本和语音 Token 序列可以显著提高模型在语音理解和生成上的性能.
+  此外, 他们的可视化表明了文本和语音特征之间的相似性在交替 Token 序列训练的模型中显著高于不使用该方法训练的模型.
+- [AudioChatLLaMA (2023)](../../Models/Speech_LLM/2023.11.12_AudioChatLLaMA.md) 旨在确保模型在输入为文本或语音时都能产生一致的输出.
+  他们通过将 ASR 数据集中的文本数据用作提示, 使 LLaMA 生成相应的响应来解决这个问题.
+  因此, 模型可以利用文本和语音版本的提示来训练, 以提供适当的响应.
+- [Spectron (2023)](../../Models/Speech_LLM/2023.05.24_Spectron.md) 通过多目标监督联合训练模型解决了文本-语音表示对齐问题.
+  具体地, 输入语音提示首先被转录成文本 Token, 然后模型预测文本 Token 响应.
+  最后, 文本响应被合成输出语音.
+
+### 4.2.2.Language Model Instruction-Tuning: 语言模型指令微调
+
+<details>
+<summary>展开原文</summary>
 
 Instruction-tuning refers to the process of fine-tuning SpeechLMs to follow specific instructions to perform a wide range of tasks.
 This phase is crucial for enhancing the pre-trained model's generalization capabilities and making it more adaptable to diverse applications.
@@ -292,7 +318,26 @@ Finally, they synthesize the prompt/response pairs using TTS.
 [COSMIC (2023)](../../Models/Speech_LLM/2023.11.03_COSMIC.md) constructed speech QA data by asking GPT-3.5 to generate question-answer pairs based on the transcriptions of English TED talk speeches.
 They showed the model trained on their proposed speech QA dataset can generalize to unseen tasks such as speech-to-text translation using in-context learning.
 
-## 4.3.Speech Generation Paradigm
+</details>
+<br>
+
+指令微调是指堆语音语言模型进行微调, 使其遵循特定指令以执行广泛的任务.
+这一阶段对于增强预训练模型的泛化能力并使其更适应多样化应用至关重要.
+因此, 关键在于创建有效的指令遵循数据集.
+
+已经提出了几种方法来构建语音语言模型的指令遵循数据集.
+- [SpeechGPT (2023)](../../Models/Speech_LLM/2023.05.18_SpeechGPT.md) 和 [SpeechGPT-Gen (2024)](../../Models/Speech_LLM/2024.01.24_SpeechGPT-Gen.md) 提出了一种两阶段的指令微调, 包括跨模态指令微调和链式模态指令微调.
+第一阶段, 基于 ASR 数据集生成指令数据, 通过将指令附加到配对的 ASR 数据中, 要求模型将语音转换为文本.
+类似地, 配对的数据也用于创建 TTS 的指令数据.
+第二阶段, 通过使用 TTS 转换基于文本的指令遵循数据集来构造语音-语音的数据集.
+- [LLaMA-Omni (2024)](../../Models/MultiModal/2024.09.10_LLaMA-Omni.md) 也通过合成基于文本的数据集来创建指令遵循数据集, 遵循特定约束.
+  首先, 将输入文本提示转换为模仿自然语音模式的格式.
+  然后, 丢弃原始文本响应, 使用 TextLM 生成转换后提示的答案, 确保这些答案也遵循自然语音模式.
+  最后, 使用 TTS 合成提示/响应对.
+- [COSMIC (2023)](../../Models/Speech_LLM/2023.11.03_COSMIC.md) 通过询问 GPT-3.5 基于英语 TED 演讲语音的转录来生成问答对, 构建语音问答数据集.
+他们展示了在他们提出的语音问答数据集上训练的模型可以使用上下文学习泛化到未见过的任务, 如语音到文本的翻译.
+
+## 4.3.Speech Generation Paradigm: 语音生成范式
 
 In the previous sections, we discuss the typical generation paradigm for SpeechLMs, which involves taking a predefined input sequence and generating a complete response.
 However, this approach does not reflect the natural flow of voice interactions.
