@@ -2,6 +2,9 @@
 
 ![Images/Fig.01.png](Images/Fig.01.png)
 
+<details>
+<summary>展开原文</summary>
+
 There are three main components within a SpeechLM, namely speech tokenizer, language model, and token-to-speech synthesizer (vocoder), as illustrated in Fig.01.
 The fundamental reason for such a three-staged design pattern is to use the language modeling architecture (e.g., decoder-only transformer) to model speech autoregressively in the format of audio waveforms.
 Since both the input and output of a language model are discrete tokens, additional modules need to be attached to the language model to handle the I/O format.
@@ -10,9 +13,22 @@ Finally, the vocoder transforms the discrete tokens outputted by the language mo
 We note that our focus here is on how the three components are grouped together to form a SpeechLM rather than a comprehensive overview of each component.
 Therefore, for speech tokenizer and vocoder, we mainly summarize the methods used in existing SpeechLMs.
 
-![](Images/Tab.01.png)
-
 Table.01 summarizes the popular choices of the three components in various SpeechLM papers.
+
+</details>
+<br>
+
+语音语言模型内有三个主要组件: 语音分词器 (Speech Tokenizer), 语言模型 (Language Model),  Token 转语音合成器 (Vocoder), 如图 01 所示.
+形成这样的三阶段设计模式的根本原因是为了使用语言建模架构 (如, 仅有解码器的 Transformer) 来以音频波形的形式自回归地建模语音.
+由于语言模型的输入和输出都是离散的 Token, 因此需要附加一些模块来处理输入输出的格式.
+具体来说, 语音分词器首先将连续的音频波形编码为离散的 Token, 作为语言模型的输入, 然后语言模型基于输入的语音 Token 进行下一个 Token 的预测.
+最后, 声码器将语言模型输出的离散 Token 转换回音频波形.
+我们注意到这里的重点是如何将这三个组件组合在一起形成一个语音语言模型, 而不是对每个组件进行全面的概述.
+因此, 对于语音分词器和声码器, 我们主要总结了现有的语音语言模型所使用的方法.
+
+表格 01 总结了不同语音语言模型中三个组件的选择.
+
+![](Images/Tab.01.png)
 
 ## 3.1.Speech Tokenizer: 语音分词器
 
