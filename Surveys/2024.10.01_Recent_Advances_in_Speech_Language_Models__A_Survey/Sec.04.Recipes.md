@@ -142,7 +142,10 @@ However, the generation of speech spectrograms still needs to be conditioned on 
 [Mini-Omni (2024)](../../Models/MultiModal/2024.08.27_Mini-Omni.md) 从冻结的 Whisper 编码器中提取中间表示作为语音语言模型的输入.
 [LauraGPT (2023)](../../Models/Speech_LLM/2023.10.07_LauraGPT.md) 采用与语音语言模型一起训练的音频编码器, 从输入语音中提取隐表示.
 
-## 4.2.Training Stages
+## 4.2.Training Stages: 训练阶段
+
+<details>
+<summary>展开原文</summary>
 
 Training a SpeechLM involves training the three main components: speech tokenizer, language model, and vocoder.
 Similar to TextLMs, the key to training SpeechLMs lies in effectively modeling speech continuation, which is primarily the responsibility of the language model.
@@ -153,23 +156,61 @@ Following TextLMs, the training process for SpeechLMs can be divided into three 
 However, to our knowledge, there is currently no research specifically focused on the alignment process following instruction tuning.
 Therefore, we only discuss the works related to the pre-training and instruction-tuning stages of SpeechLMs.
 
-### Language Model Pre-Training
+</details>
+<br>
+
+训练一个语音语言模型涉及到训练三个主要组件: 语音分词器, 语言模型, 和声码器.
+类似于文本语言模型, 训练语音语言模型的关键在于有效地建模语音连续, 这主要是语言模型的责任.
+语音分词器和声码器通常依赖于成熟的方法, 并使用特定于每个语音语言模型方法的训练数据进行训练.
+因此, 本节回顾了用于训练语言模型组件的主要技术.
+
+与文本语言模型一样, 语音语言模型的训练过程可以分为三个阶段: 预训练, 指令调参, 和对齐.
+然而, 目前还没有专门研究关注指令调参之后的对齐过程.
+因此, 我们只讨论与语音语言模型预训练和指令调参阶段相关的工作.
+
+### 4.2.1.Language Model Pre-Training: 语言模型预训练
+
+<details>
+<summary>展开原文</summary>
 
 The pre-training of the language model in SpeechLMs is a critical phase that significantly influences the model's ability to generate coherent and contextually relevant speech.
 This phase typically involves training the language model to autoregressively predict the next token on a large corpus of speech tokens.
 The primary objective during this stage is to learn the statistical patterns and dependencies inherent in the speech data, enabling the model to predict the next token in a sequence based on the preceding context.
 Table.02 includes popular datasets used in pre-training stage of SpeechLMs.
 
+</details>
+<br>
+
+语音语言模型中语言模型的预训练是关键阶段, 它对模型的生成连贯且上下文相关的语音能力有着显著影响.
+这一阶段通常涉及训练语言模型在大规模语音 Token 语料库上以自回归的方式预测下一个 Token.
+这一阶段的主要目标是学习语音数据中的统计模式和依赖关系, 使模型能够根据前面的上下文预测序列中的下一个 Token.
+表格 02 列出了语音语言模型预训练阶段常用的数据集.
+
 ![](Images/Tab.02.png)
 
-#### Training data.
+#### Training Data: 训练数据
+
+<details>
+<summary>展开原文</summary>
 
 SpeechLMs pre-training mainly leverages large-scale open-sourced speech data.
 Commonly used datasets include those for ASR ([LibriSpeech (2015)](../../Datasets/2015.04.19_LibriSpeech.md); [Libri-Light (2019)](../../Datasets/2019.12.17_Libri-Light.md); [The People's Speech (2021)](../../Datasets/2021.11.17_The_People's_Speech.md); [VoxPopuli (2021)](../../Datasets/2021.01.02_VoxPopuli.md)), TTS ([LibriTTS (2019)](../../Datasets/2019.04.05_LibriTTS.md)), ST ([CVSS (2022)](../../Datasets/2022.01.11_CVSS.md); [VoxPopuli (2021)](../../Datasets/2021.01.02_VoxPopuli.md)), podcasts ([Spotify Podcast Dataset (2020)](../../Datasets/2020.04.08_Spotify_Podcast_Dataset.md)), and dialogues ([Fisher Corpus (2004)](../../Datasets/Fisher_Corpus.md)).
 Some datasets consist solely of speech data, while others include both speech and corresponding text transcripts.
 The inclusion of text transcripts can enhance the model's representation by allowing it to learn the relationship between spoken language and its written form, which will be discussed later.
 
-#### Cold Initialization.
+</details>
+<br>
+
+语音语言模型预训练主要利用大规模开源语音数据.
+常用的数据集包括用于 ASR ([LibriSpeech (2015)](../../Datasets/2015.04.19_LibriSpeech.md); [Libri-Light (2019)](../../Datasets/2019.12.17_Libri-Light.md); [The People's Speech (2021)](../../Datasets/2021.11.17_The_People's_Speech.md); [VoxPopuli (2021)](../../Datasets/2021.01.02_VoxPopuli.md)) 的语料库, 用于 TTS ([LibriTTS (2019)](../../Datasets/2019.04.05_LibriTTS.md)) 的语料库, 用于 ST ([CVSS (2022)](../../Datasets/2022.01.11_CVSS.md); [VoxPopuli (2021)](../../Datasets/2021.01.02_VoxPopuli.md)) 的语料库, 用于播客 ([Spotify Podcast Dataset (2020)](../../Datasets/2020.04.08_Spotify_Podcast_Dataset.md)) 的语料库, 以及用于对话 ([Fisher Corpus (2004)](../../Datasets/Fisher_Corpus.md)) 的语料库.
+
+一些数据集仅包含语音数据, 而另一些数据集既包含语音数据, 也包含相应的文本转录.
+包含文本转录可以增强模型的表示能力, 允许模型学习到口头语言与书面形式之间的关系, 后面会讨论到.
+
+#### Cold Initialization: 冷初始化
+
+<details>
+<summary>展开原文</summary>
 
 Some SpeechLMs use cold initialization during the pre-training phase, where model parameters are initialized randomly.
 The pioneering SpeechLM---[GSLM (2021)](../../Models/Speech_LLM/2021.02.01_GSLM.md)---trained a [Transformer (2017)](../../Models/_Transformer/2017.06.12_Transformer.md) from scratch to serve as the language model.
@@ -180,16 +221,41 @@ They studied the critical problem of jointly modeling speech and text tokens by 
 They showed that the setting of alternating speech-text performs the best in cross-modal evaluations.
 Table.03 illustrates the four modeling methods.
 
+</details>
+<br>
+
+一些语音语言模型在与训练阶段使用冷初始化, 其中模型参数随机初始化.
+- 最早的语音语言模型 [GSLM (2021)](../../Models/Speech_LLM/2021.02.01_GSLM.md) 以从头开始训练 [Transformer (2017)](../../Models/_Transformer/2017.06.12_Transformer.md) 作为语言模型.
+这一研究说明了语音语言模型流程的有效性, 并对不同的语音分词器选项进行了性能比较.
+他们发现 [HuBERT (2021)](../../Models/Speech_Representaion/2021.06.14_HuBERT.md) 在理解语音内容和生成自然语音方面优于 [CPC (2018)](../../Models/Speech_Representaion/2018.07.10_CPC.md) 和 [Wav2vec 2.0 (2020)](../../Models/Speech_Representaion/2020.06.20_Wav2Vec2.0.md).
+- [SUTLM (2023)](../../Models/Speech_LLM/2023.10.12_SUTLM.md) 也使用了 Transformer 作为语言模型.
+他们研究了联合建模语音和文本 Token 时的关键问题, 通过比较四种不同的建模方法: 仅语音, 仅文本, 连接语音文本, 交替 (交错) 语音文本.
+他们发现交替语音文本的设置在跨模态评估中表现最佳.
+表 03 总结了四种建模方法.
+
 ![](Images/Tab.03.png)
+
+<details>
+<summary>展开原文</summary>
 
 Some works leverage a different architecture from the standard transformer.
 Since there are no existing checkpoints for those self-proposed architectures, it is necessary to train them from scratch.
 For example, [pGSLM (2021)](../../Models/Speech_LLM/2021.09.07_pGSLM.md) proposes a multi-stream transformer language model (MS-TLM) that takes multiple streams of input and predicts multiple streams of output to generate speech units, duration, and pitch embeddings simultaneously.
 [dGSLM (2022)](../../Models/Speech_LLM/2022.03.30_dGSLM.md) introduced a dialogue transformer language model (DLM) to jointly model the dialogue speech data from the two speakers.
 To enable the listening ability of SpeechLMs while speaking, [LSLM (2024)](../../Models/Speech_LLM/2024.08.05_LSLM.md) proposes to attach a streaming self-supervised learning (SSL) Encoder to an autoregressive token-based TTS Model.
-[ViolLA (2023)](../../Models/Speech_LLM/2023.05.25_VioLA.md) introduced a multi-task auto-regressive codec language model to autoregressively generate codec tokens instead of speech unit tokens.
+[VioLA (2023)](../../Models/Speech_LLM/2023.05.25_VioLA.md) introduced a multi-task auto-regressive codec language model to autoregressively generate codec tokens instead of speech unit tokens.
 
-#### Continued Pre-Training.
+</details>
+<br>
+
+一些工作采用了来自标准 Transformer 的不同架构.
+因为对于这些自创的架构没有现有的权重检查点, 因此需要从头开始训练它们.
+- [pGSLM (2021)](../../Models/Speech_LLM/2021.09.07_pGSLM.md) 提出了多路的 Transformer 语言模型 (MS-TLM), 接受多个输入流, 预测多个输出流, 来同时生成语音单元, 时长, 和音高嵌入.
+- [dGSLM (2022)](../../Models/Speech_LLM/2022.03.30_dGSLM.md) 引入了对话 Transformer 语言模型 (DLM), 用于联合建模两个发言人的对话语音数据.
+- [LSLM (2024)](../../Models/Speech_LLM/2024.08.05_LSLM.md) 为了使得语音语言模型在说话时具有听觉能力, 提出一种流式自监督学习 (SSL) 编码器, 并将其附加到自回归 Token-based TTS 模型.
+- [VioLA (2023)](../../Models/Speech_LLM/2023.05.25_VioLA.md) 引入了一个多任务自回归编解码语言模型 (MLAC), 用于自回归生成编解码器 Token, 而不是语音单元 Token.
+
+#### Continued Pre-Training: 持续预训练
 
 In contrast to cold initialization, continued Pre-Training involves initializing the language model with pre-trained weights from a TextLM and then adapting it to handle speech tokens.
 This approach leverages the linguistic knowledge embedded in TextLMs, allowing for more efficient and effective training of SpeechLMs.
