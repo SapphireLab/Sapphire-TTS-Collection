@@ -32,12 +32,26 @@ Table.01 summarizes the popular choices of the three components in various Speec
 
 ## 3.1.Speech Tokenizer: 语音分词器
 
+<details>
+<summary>展开原文</summary>
+
 Speech tokenizer is the first component in SpeechLMs, which encodes continuous audio signals (waveforms) into latent representations and then converts the latent representations into discrete tokens (or sometimes called speech units).
 This conversion allows the audio input to be effectively processed by a language model for tasks such as speech recognition or synthesis.
 Speech tokenizer aims to capture essential features of the audio while reducing its dimensionality, facilitating the subsequent modeling and analysis of speech patterns.
 In this section, we categorize speech tokenizers based on their focus on modeling different aspects of the raw audio.
 
-### Semantic Understanding Objective: 语义理解目标
+</details>
+<br>
+
+语音分词器是语音语言模型的第一个组件, 它将连续的音频信号 (波形) 编码为隐表示, 然后将隐表示转换为离散的 Token (或有时被称为语音单元 Speech Unit).
+这一转换使得音频输入可以有效地被语言模型用于语音识别或合成等任务.
+语音分词器的目标是捕捉原始音频的基本特征, 同时降低其维度, 方便后续的语音模式的建模和分析.
+在本节中, 我们将语音分词器根据其对不同原始音频的建模关注点进行分类.
+
+### 3.1.1.Semantic Understanding Objective: 语义理解目标
+
+<details>
+<summary>展开原文</summary>
 
 Speech tokenizers designed with a semantic understanding objective aim to convert speech waveforms into tokens that accurately capture the content and meaning of the speech.
 These tokenizers focus on extracting semantic features from the waveforms, which enhances tasks like ASR.
@@ -59,7 +73,33 @@ To better align the representation of text and speech modalities, [Google USM (2
 While the majority of speech tokenizer studies focus on semantic-related tasks such as ASR and TTS, WavLM shows that speech denoising can boost the performance of non-semantic tasks such as speaker verification and speech separation.
 A full list of downstream tasks is listed in [section 5](Sec.05.Applications.md).
 
-### Acoustic Generation Objective: 声学生成目标
+</details>
+<br>
+
+按语义理解目标设计的语音分词器旨在将语音波形转换为准确捕捉语音内容和意义的 Token.
+这些分词器专注于从波形中提取语义特征, 这有助于提升如 ASR 等任务.
+
+语义理解语音分词器通常由一个语音编码器和一个量化器组成, 其中语音编码器编码波形中的基本信息, 量化器将连续表示离散化为离散的 Token.
+记参数化为 $\theta_{f_E}$ 的语音编码器 $f_E(\cdot)$, 则有 $\textbf{v} = f_E(\textbf{a}; \theta_{f_E})$, 其中 $\textbf{v} = (v_1, v_2, \ldots, v_P)$ 表示编码表示.
+由于 $\textbf{v}$ 仍然是连续的, 因此需要使用量化器 $d(\cdot)$ 来离散化表示.
+
+根据不同的设计选择, 离散语音 Token \(\textbf{s} = (s_1, s_2, \ldots, s_P)\) 可以是从音频波形 $\textbf{a}$ 或编码表示 $\textbf{v}$ 导出的.
+因此, 我们有 $\textbf{s} = d(\textbf{a}; \theta_d)$ 或 $\textbf{s} = d(\textbf{v}; \theta_d)$.
+之后, $\textbf{s}$ 可以被用作目标标签 (例如, 掩膜 $\textbf{a}_\text{mask} \subset \textbf{a}$ 并重构其对应的标签 $\textbf{s}_\text{mask} \subset \textbf{s}$ [HuBERT (2021)](../../Models/Speech_Representaion/2021.06.14_HuBERT.md)) 或用于训练后续的语言模型.
+
+关键的设计选择在于如何有效地将语音编码和量化为离散的 Token.
+- [Wav2Vec 2.0 (2020)](../../Models/Speech_Representaion/2020.06.20_Wav2Vec2.0.md) 使用卷积编码器后接[乘积量化模块 (Product Quantization)](../../Modules/VQ/PQ.md)来离散化连续的音频波形. 然后量化表示的一部分被掩膜, 并使用对比损失 (Contrastive Loss) 来建模.
+- [W2V-BERT (2021)](../../Models/Speech_Representaion/2021.08.07_W2V-BERT.md) 建立在 wav2vec 2.0 之上, 并提出使用掩码语言模型 (Masked Language Modeling, MLM) 损失 ([BERT (2018)](../../Models/LLM/2018.10.11_BERT.md)) 作为对比损失的补充项.
+- [HuBERT (2021)](../../Models/Speech_Representaion/2021.06.14_HuBERT.md) 使用 K 均值算法将语音句子聚类为一定数量的隐藏单元, 然后使用 MLM 从掩码的语音句子预测目标隐藏单元.
+- [Google USM (2023)](../../Models/Speech_LLM/2023.03.02_USM.md) 为了更好地对齐文本和语音模态之间的表示, 在第二阶段的预训练中使用文本注入损失 (Text-Injection Loss) ([Maestro (2022)](../../Models/Speech_Representaion/2022.04.07_Maestro.md)) 来提升下游任务的性能和鲁棒性.
+- [WavLM (2021)](../../Models/Speech_Representaion/2021.10.26_WavLM.md) 在预训练过程中加入语音降噪目标. 尽管语音分词器研究主要关注语义相关任务如 ASR 和 TTS, WavLM 展示了语音降噪可以增强非语义任务如说话人验证和语音分离的性能.
+
+下游任务的完整列表可以在 [Sec.05](Sec.05.Applications.md) 中找到.
+
+### 3.1.2.Acoustic Generation Objective: 声学生成目标
+
+<details>
+<summary>展开原文</summary>
 
 Speech tokenizers with an acoustic generation objective focus on capturing the acoustic features necessary for generating high-quality speech waveforms.
 These tokenizers prioritize the preservation of essential acoustic characteristics over semantic content, making them suitable for speech synthesis tasks.
@@ -68,7 +108,7 @@ To generate high-quality speech waveforms, acoustic generation speech tokenizers
 To achieve this, the architecture typically includes an encoder, a quantizer, and a decoder.
 Same as before, the encoder $f_E(\cdot)$ and quantizer $d(\cdot)$ transform the original waveform into discrete tokens.
 After that, the decoder $f_D(\cdot)$ reconstructs these tokens back into speech waveforms.
-This process is represented by $\hat{\textbf{a}} = f_D(\textbf{s}; \theta_{f_E})$, where $\hat{\textbf{a}}$ is the generated or reconstructed waveform.
+This process is represented by $\hat{\textbf{a}} = f_D(\textbf{s}; \theta_{f_D})$, where $\hat{\textbf{a}}$ is the generated or reconstructed waveform.
 
 Neural audio codecs are very suitable for and are primarily employed as acoustic generation speech tokenizers.
 These codecs utilize the advanced modeling capabilities of deep neural networks to compress audio signals into a compact representation, typically in the form of quantized tokens.
@@ -76,13 +116,44 @@ For example, both [SoundStream (2021)](../../Models/Speech_Neural_Codec/2021.07.
 This mechanism allows for codecs to efficiently transmit or store audio with minimal loss in quality.
 Since the output of codecs is in discrete format, they can also be leveraged by SpeechLM to autoregressively generate speech.
 
-### Mixed Objective: 混合目标
+</details>
+<br>
+
+按声学生成目标设计的语音分词器着重于捕获生成高质量语音波形所需的声学特征.
+这些分词器优先保留必要的声学特征而不是语义内容, 使得它们适合语音合成任务.
+
+为了生成高质量语音波形, 声学生成语音分词器采用了语音合成或语音重构目标.
+为此, 架构通常包括一个编码器, 量化器和解码器.
+和语义理解语音分词器一样, 编码器 $f_E(\cdot)$ 和量化器 $d(\cdot)$ 将原始波形转换为离散的 Token.
+之后, 解码器 $f_D(\cdot)$ 将这些 Token 重构回语音波形.
+这一过程可以表示为 $\hat{\textbf{a}} = f_D(\textbf{s}; \theta_{f_D})$, 其中 $\hat{\textbf{a}}$ 是生成或重构的波形.
+
+神经音频编解码器非常适合且主要作为声学生成语音分词器.
+这些编解码器利用深度神经网络的先进建模能力来压缩音频信号为紧凑表示, 通常以量化 Token 的形式出现.
+例如 [SoundStream (2021)](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md) 和 [EnCodec (2022)](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) 使用卷积块作为编码器, 使用**残差向量量化 (Residual Vector Quantization, RVQ)** 作为量化器.
+
+这一机制使得编解码器能够以最小的质量损失高效地传输和存储音频.
+因为这些编解码器的输出是离散形式, 它们可以被语音语言模型用于自回归生成语音.
+
+### 3.1.3.Mixed Objective: 混合目标
+
+<details>
+<summary>展开原文</summary>
 
 Speech tokenizers with a mixed objective aim to balance both semantic understanding and acoustic generation.
 Currently, the development of these tokenizers is in its early stages.
 Most existing mixed speech tokenizers primarily adopt the architecture of acoustic generation speech tokenizers and focus on distilling information from semantic tokenizers into the acoustic tokenizer.
 [SpeechTokenizer (2023)](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) utilizes the RVQ-GAN ([EnCodec (2022)](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md); [SoundStream (2021)](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md)) architecture, distilling semantic information from [HuBERT (2021)](../../Models/Speech_Representaion/2021.06.14_HuBERT.md) to the first layer of RVQ.
 Building on SpeechTokenizer, Mimi ([Moshi (2024)](../../Models/Speech_LLM/2024.09.17_Moshi.md)) employs a single vector quantizer (VQ) to extract information from [WavLM (2021)](../../Models/Speech_Representaion/2021.10.26_WavLM.md) and incorporates another RVQ module to learn the acoustic information.
+
+</details>
+<br>
+
+混合目标的语音分词器旨在平衡语义理解和声学生成.
+目前, 这些分词器的发展处于初期阶段.
+大多数现有的混合语音分词器主要采用声学生成语音分词器的架构, 着重于将语义分词器中的信息蒸馏到声学分词器中.
+- [SpeechTokenizer (2023)](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) 使用 RVQ-GAN ([EnCodec (2022)](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md); [SoundStream (2021)](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md)) 架构, 将 [HuBERT (2021)](../../Models/Speech_Representaion/2021.06.14_HuBERT.md) 的语义信息蒸馏到 RVQ 的第一层.
+- [Mimi (2024)](../../Models/Speech_LLM/2024.09.17_Moshi.md) 基于 SpeechTokenizer 使用单个向量量化器 (VQ) 从 [WavLM (2021)](../../Models/Speech_Representaion/2021.10.26_WavLM.md) 中提取信息, 并集成另一个 RVQ 模块来学习声学信息.
 
 ## 3.2.Language Model: 语言模型
 
