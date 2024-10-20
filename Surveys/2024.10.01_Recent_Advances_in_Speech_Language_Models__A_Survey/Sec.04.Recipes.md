@@ -1,21 +1,43 @@
 # 4.Training Recipes: 训练方法
 
+<details>
+<summary>展开原文</summary>
+
 In this section, we categorize and summarize the commonly used training recipes found in recent SpeechLM papers.
 This includes an overview of the types of features modeled in SpeechLMs, the various training stages along with the techniques employed in each stage, and the different paradigms for generating speech.
 
-## 4.1.Features Modeled
+</details>
+<br>
+
+在本节中, 我们分类并总结了最近的语音语言模型论文中常用的训练方法.
+这包括对语音语言模型中建模的特征类型, 训练阶段以及每个阶段所采用的技术, 以及用于生成语音的不同范式的概述.
+
+## 4.1.Features Modeled: 特征建模
+
+<details>
+<summary>展开原文</summary>
 
 The features modeled refer to the types of features outputted by the speech tokenizer and modeled by the language model component within a SpeechLM.
 These features play a crucial role in determining the capabilities and performance of SpeechLMs.
 Different features model the speech waveforms from different aspects.
 Based on recent developments, we can categorize the features modeled by SpeechLMs into two main types, including discrete features and continuous features.
 
-### Discrete Features
+</details>
+<br>
+
+特征建模是指语音语言模型中由语音分词器输出和语言模型组件建模的特征类型.
+这些特征在决定语音语言模型的能力和性能方面发挥着重要作用.
+根据最近的发展, 我们可以将语音语言模型所建模的特征分为两种主要类型, 包括离散特征和连续特征.
+
+### 4.1.1.Discrete Features: 离散特征
+
+<details>
+<summary>展开原文</summary>
 
 Discrete features refer to quantized representations of speech signals that can be represented as distinct, countable units or tokens.
 These features are typically derived from speech signals through various encoding and quantization processes, resulting in a finite set of possible values.
 Discrete features are the most used features by SpeechLMs as they can be represented as tokens and be modeled exactly the same as the text tokens within a TextLM.
-The majority of speech tokenizers produce discrete tokens that better model the **semantic information** within a speech waveform (semantic understanding speech tokenizers, \cref{sec:semanticUnderstandingTokenizer}), such as [W2V-BERT (2021)](../../Models/Speech_Representaion/2021.08.07_W2V-BERT.md); [HuBERT (2021)](../../Models/Speech_Representaion/2021.06.14_HuBERT.md).
+The majority of speech tokenizers produce discrete tokens that better model the **semantic information** within a speech waveform ([semantic understanding speech tokenizers](Sec.03.Components.md#311semantic-understanding-objective-语义理解目标)), such as [W2V-BERT (2021)](../../Models/Speech_Representaion/2021.08.07_W2V-BERT.md); [HuBERT (2021)](../../Models/Speech_Representaion/2021.06.14_HuBERT.md).
 This is because they primarily use understanding objectives such as MLM to model the contextual information of the waveforms when training the tokenizer.
 We refer to them as **semantic tokens** here.
 
@@ -31,14 +53,41 @@ Specifically, [pGSLM (2021)](../../Models/Speech_LLM/2021.09.07_pGSLM.md) propos
 Similarly, [SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md) complements the HuBERT semantic tokens with pitch and style tokens ([Sonar Expressive (2023)](../../Models/S2ST/Sonar_Expressive.md)).
 This incorporation of extra acoustic tokens allows SpeechLMs to more effectively capture expressive elements without significantly compromising semantic understanding ([SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md)).
 
-Another type is **acoustic tokens**, which are tokens aiming to capture the essential acoustic features to reconstruct high-fidelity speech, primarily obtained from neural audio codec models (see \cref{sec:acousticGenerationTokenizer}).
+Another type is **acoustic tokens**, which are tokens aiming to capture the essential acoustic features to reconstruct high-fidelity speech, primarily obtained from neural audio codec models (see [Acoustic Generation Speech Tokenizers](Sec.03.Components.md#312acoustic-generation-objective-声学生成目标)).
 Codec models aim to learn the compressed representation of audio, so it is anticipated that both the semantic and acoustic information present in a speech waveform can be encoded in the representation.
 Some studies attempt to directly model the codec tokens in an autoregressive manner.
 [VALL-E (2023)](../../Models/Speech_LLM/2023.01.05_VALL-E.md) utilizes codec tokens to achieve zero-shot TTS.
 It encodes a 3-second audio clip using [EnCodec (2022)](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) as a prompt, enabling the TTS system to synthesize speech that matches the timbre information of the prompt.
-[ViolLA (2023)](../../Models/Speech_LLM/2023.05.25_VioLA.md) uses codec tokens in a SpeechLM capable of performing ASR, TTS, and Machine Translation (in text).
+[VioLA (2023)](../../Models/Speech_LLM/2023.05.25_VioLA.md) uses codec tokens in a SpeechLM capable of performing ASR, TTS, and Machine Translation (in text).
 
-#### Discussion
+</details>
+<br>
+
+离散特征是指语音信号的量化表示, 可以表示为不同的可数的单元或 Token.
+这些特征通常通过各种编码和量化过程从语音信号中导出, 从而得到一组可能值的有限集合.
+离散特征是语音语言模型中最常用的特征, 因为它们可以表示为 Token, 并且可以与文本语言模型中的文本 Token 完全相同的方式建模.
+大多数语音分词器能够生成离散 Token 来更好地建模语音波形中的语义信息 ([语义理解语音分词器](Sec.03.Components.md#311semantic-understanding-objective-语义理解目标)), 例如 [W2V-BERT (2021)](../../Models/Speech_Representaion/2021.08.07_W2V-BERT.md); [HuBERT (2021)](../../Models/Speech_Representaion/2021.06.14_HuBERT.md).
+这是因为它们主要使用理解目标例如 MLM 在训练分词器是建模波形的上下文信息.
+在这里, 我们将它们称为**语义 Token (Semantic Tokens)**.
+
+大多数语音语言模型仅采用语义 Token 来表示语音.
+- [GSLM (2021)](../../Models/Speech_LLM/2021.02.01_GSLM.md) 是首个语音语言模型, 它比较了三个分词器, 包括 [Contrastive Predictive Coding (CPC) (2018)](../../Models/Speech_Representaion/2018.07.10_CPC.md), [Wav2Vec 2.0 (2020)](../../Models/Speech_Representaion/2020.06.20_Wav2Vec2.0.md), 和 [HuBERT (2021)](../../Models/Speech_Representaion/2021.06.14_HuBERT.md). 它得出结论, HuBERT 在各种任务上都表现最佳, 如语音重建和语音生成. 大量工作都遵循这一设置并使用 HuBERT 作为语音分词器 ([TWIST (2023)](../../Models/Speech_LLM/2023.05.22_TWIST.md); [SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md); [SpeechGPT (2023)](../../Models/Speech_LLM/2023.05.18_SpeechGPT.md)).
+- [AudioPaLM (2023)](../../Models/Speech_LLM/2023.06.22_AudioPaLM.md) 试验了 [W2V-BERT (2021)](../../Models/Speech_Representaion/2021.08.07_W2V-BERT.md) 、USM-v1 ([Google USM (2023)](../../Models/Speech_LLM/2023.03.02_USM.md)) 和 USM-v2 ([AudioPaLM (2023)](../../Models/Speech_LLM/2023.06.22_AudioPaLM.md)) (USM-v1 的修改版), 并得出结论, USM-v2 是语音分词器在 ASR 和 ST 任务上的最佳选择.
+
+尽管语义 Token 由于建模语音波形中的上下文信息而在生成语义意义的语音方面表现优异, 但研究人员发现, 仅仅使用语义 Token 生成的语音缺乏表现力, 如语调和不同的音高或音色 ([Expresso (2023)](../../Datasets/2023.08.10_Expresso.md); [SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md)).
+为了克服这一局限, **副语言 Token (Paralinguistic Tokens)** 可以被集成到建模过程中, 以捕捉表现性信息的语音.
+- [pGSLM (2021)](../../Models/Speech_LLM/2021.09.07_pGSLM.md) 提出使用基频 (F0) 和单元时长作为语调特征来补充 HuBERT 语义 Token, 并训练多路 Transformer 语言模型来分别预测语义 Token, 声调 (F0) 和单元持续时间.
+- [SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md) 使用声调和风格 Token 补充 HuBERT 语义 Token ([Sonar Expressive (2023)](../../Models/S2ST/Sonar_Expressive.md)).
+  这种额外的声学 Token 的整合允许语音语言模型能够有效地捕捉表现力元素而不显著牺牲语义理解 ([SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md)).
+
+其他类型的 Token 是**声学 Token**, 它们旨在捕捉必要的声学特征以重构高保真度的语音, 主要来自神经音频编解码器模型 (参见 [Sec.3.1.2](Sec.03.Components.md#312acoustic-generation-objective-声学生成目标)).
+编解码器模型旨在学习音频的压缩表示, 因此预计语音波形中的语义和声学信息都可以编码在表示中.
+一些研究试图直接在自回归方式下对编解码器 Token 建模.
+- [VALL-E (2023)](../../Models/Speech_LLM/2023.01.05_VALL-E.md) 使用编解码器 Token 实现零样本 TTS.
+  它使用 [EnCodec (2022)](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) 编码 3 秒的音频作为提示, 使得 TTS 系统能够合成与提示的音色信息匹配的语音.
+- [VioLA (2023)](../../Models/Speech_LLM/2023.05.25_VioLA.md) 使用编解码器 Token 在语音语言模型中实现 ASR, TTS 和机器翻译 (文本).
+
+#### Discussion: 讨论
 
 Different types of tokens influence the speech quality of SpeechLMs in different ways, often resulting in trade-offs ([AudioLM (2022)](../../Models/Speech_LLM/2022.09.07_AudioLM.md)).
 For example, while semantic tokens align well with text and excel in producing semantically coherent speech, the generated speech often lacks acoustic details, such as high-frequency information.
