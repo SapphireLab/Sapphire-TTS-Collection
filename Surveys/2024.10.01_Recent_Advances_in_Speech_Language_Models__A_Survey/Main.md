@@ -148,6 +148,9 @@ Our contributions are summarized as follows:
 
 ## 2.Problem Formulation: 问题形式化
 
+<details>
+<summary>展开原文</summary>
+
 In this section, we provide a formal definition of Speech Language Models.
 A Speech Language Model (SpeechLM) is an autoregressive foundation model that processes and generates speech data, utilizing contextual understanding for coherent sequence generation.
 It supports both speech and text modalities, such as speech-in-text-out, text-in-speech-out, or speech-in-speech-out, enabling a wide range of tasks with context-aware capabilities.
@@ -160,6 +163,26 @@ Similarly, a text span $\textbf{t} = (t_1, t_2, \ldots, t_K)$ consists of a sequ
 Let $\textbf{M} = (M_1, M_2, \ldots, M_N)$ denote a multimodal sequence of length $N$, where each element $M_i \in \{a_i, t_j\}$.
 We define $\textbf{M}^{\text{in}} = (M_1^{\text{in}}, M_2^{\text{in}}, \ldots, M_{N_\text{in}}^{\text{in}})$ as the input multimodal sequence and $\textbf{M}^{\text{out}} = (M_1^{\text{out}}, M_2^{\text{out}}, \ldots, M_{N_\text{out}}^{\text{out}})$ as the output multimodal sequence, where $N_\text{in} \geq 0$ and $N_\text{out} \geq 0$.
 Then, A SpeechLM parameterized by $\theta$ can then be represented as:
+
+$$
+    \textbf{M}^{\text{out}} = SpeechLM(\textbf{M}^{\text{in}}; \theta).
+$$
+
+</details>
+<br>
+
+在本节中, 我们提供了语音语言模型的正式定义.
+语音语言模型 (Speech Language Model, SpeechLM) 是一种自回归基石模型, 它处理和生成语音数据, 利用上下文理解来产生连贯的序列.
+它支持语音和文本模态, 如语音输入-文本输出, 文本输入-语音输出, 或语音输入-语音输出, 使得语音语言模型具备丰富的上下文感知能力来完成各种任务.
+值得注意的是, 语音语言模型与传统的基于文本的语言模型如大语言模型之间存在重要区别, 后者仅处理文本模态.
+因此, 为了避免混淆, 我们在本综述中将这些基于文本的语言模型称为 TextLMs.
+
+我们提供了一个统一的框架, 语音语言模型可以处理和生成语音数据, 文本数据, 甚至是交错的语音和文本数据.
+具体来说, 音频波形 $\textbf{a} = (a_1, a_2, \ldots, a_Q)$ 由一系列的音频样本 $a_i \in \mathbb{R}$ 组成, 其长度为 $Q$, 其中 $1 \leq q \leq Q$.
+类似地, 文本片段 $\textbf{t} = (t_1, t_2, \ldots, t_K)$ 由一系列的文本标记 $t_j$ (词, 子词, 字符等) 组成, 其长度为 $K$.
+记 $\textbf{M} = (M_1, M_2, \ldots, M_N)$ 为一个多模态序列, 其长度为 $N$, 其中每个元素 $M_i \in \{a_i, t_j\}$.
+我们定义 $\textbf{M}^{\text{in}} = (M_1^{\text{in}}, M_2^{\text{in}}, \ldots, M_{N_\text{in}}^{\text{in}})$ 为输入多模态序列, 而 $\textbf{M}^{\text{out}} = (M_1^{\text{out}}, M_2^{\text{out}}, \ldots, M_{N_\text{out}}^{\text{out}})$ 为输出多模态序列, 其中 $N_\text{in} \geq 0$ 且 $N_\text{out} \geq 0$.
+那么, 一个由参数 $\theta$ 所参数化的语音语言模型可以表示为:
 
 $$
     \textbf{M}^{\text{out}} = SpeechLM(\textbf{M}^{\text{in}}; \theta).
