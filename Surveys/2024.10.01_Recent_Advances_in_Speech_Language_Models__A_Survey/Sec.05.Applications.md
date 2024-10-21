@@ -264,25 +264,66 @@ Additionally, instead of giving the target vocal characteristics, SpeechLMs shou
 
 ## 5.3.Paralinguistic Applications: 副语言应用
 
+<details>
+<summary>展开原文</summary>
+
 Paralinguistics refers to the non-verbal elements of communication that accompany spoken language.
 It encompasses various vocal attributes that convey meaning beyond the actual words spoken.
 These elements can significantly influence how messages are interpreted and understood.
 The key elements of paralinguistics include pitch, timbre, column, rate of speech, pauses, etc.
 Since combining elements in paralinguistics in different ways can result in a speech with different emotions, we include emotion-related tasks as paralinguistic applications as well.
 
-### Emotion Recognition: 情绪识别
+</details>
+<br>
+
+副语言指的是交流中伴随口语的非语言元素.
+它包括传达超出实际说话内容的多种语音属性.
+这些元素可以显著影响信息的解读和理解.
+副语言的关键元素包括音高, 音色, 音量, 语速, 停顿等.
+由于以不同方式组合副语言学中的元素可以产生带有不同情感的语音, 因此我们也将与情感相关的任务视为副语言应用.
+
+### Emotion Recognition: 情感识别
+
+<details>
+<summary>展开原文</summary>
 
 Emotion recognition task involves identifying and classifying the emotion carried by a given speech into predefined classes.
 Similar to speaker identification, SpeechLMs are capable of not only directly performing this task but also implicitly recognizing users' emotions through their speech queries and responding accordingly.
 
+</details>
+<br>
+
+情感识别任务涉及识别并将给定语音所携带的情感分类到预定义的类别中.
+与说话人识别类似, 语音语言模型不仅能够直接执行此任务, 还能够通过用户的语音查询隐式识别用户的情感, 并相应地做出回应.
+
 ### Speech Separation: 语音分离
+
+<details>
+<summary>展开原文</summary>
 
 Speech separation refers to the process of isolating individual speech signals from a mixture of sounds, such as when multiple speakers are talking simultaneously.
 When separating the input speech, SpeechLMs can not only output the contents of each person in speech but also in text format (i.e., transcriptions).
 
+</details>
+<br>
+
+语音分离指的是从混合声音中分离出单独的语音信号的过程, 例如当多个说话人同时说话时.
+在分离输入语音时, 语音语言模型不仅可以输出每个说话人的语音内容, 还可以以文本格式输出 (即转录文本).
+
 ### Paralinguistics-Enhanced Generation: 副语言增强生成
+
+<details>
+<summary>展开原文</summary>
 
 Paralinguistics-enhanced generation refers to the process of instructing SpeechLMs to produce speech that exhibits specific paralinguistic characteristics.
 Users can define these characteristics in their prompts, allowing the model to generate speech that aligns with their specifications.
 Examples of paralinguistics-enhanced generation include synthesizing speech with a specific style, speaking at a fast pace, and even singing.
 This capability distinguishes SpeechLMs from TextLMs and facilitates a more engaging and interactive form of communication with the AI models.
+
+</details>
+<br>
+
+副语言增强生成指的是知道语音语言模型生成具有特定副语言特征的语音的过程.
+用户可以在提示中定义这些特征, 使模型生成符合其规格的语音.
+副语言增强生成的例子包括合成具有特定风格的语音, 以快速语速说话, 甚至唱歌.
+这一能力使得语音语言模型区别于文本语言模型, 并促进了与人工智能模型更引人入胜和互动形式的交流.
