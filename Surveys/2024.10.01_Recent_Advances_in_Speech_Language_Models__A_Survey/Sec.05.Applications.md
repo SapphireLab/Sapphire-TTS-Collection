@@ -176,12 +176,26 @@ Unlike traditional keyword spotting methods that rely on predefined lists of key
 
 ## 5.2.Speaker-Related Applications: 说话人相关应用
 
+<details>
+<summary>展开原文</summary>
+
 Speaker-related applications refer to the tasks that involve the processing of information related to speaker identity.
 It could involve classification tasks such as identifying, verifying, and distinguishing individual speakers based on their unique vocal characteristics, as well as generation tasks such as maintaining or modifying the timbre of a given speech.
 While we acknowledge that voice characteristics can be considered paralinguistic information, we believe that speaker-related applications are unique because they enable SpeechLMs to function in complex scenarios such as participating in multi-speaker conversations.
 In this section, we survey common speaker-related applications of SpeechLMs.
 
+</details>
+<br>
+
+与说话人相关的应用指的是涉及处理与说话人身份相关信息的任务.
+这可能包括分类任务, 如基于说话人独特的语音特征进行识别, 验证和区分个体说话人, 以及生成任务, 如维持或修改给定语音的音色.
+尽管我们承认语音特征可以被视为副语言信息, 但我们认为与说话人相关的应用是独特的, 因为它们使语音语言模型能够在复杂场景中发挥作用, 例如参与多方对话.
+在本节中, 我们将调研语音语言模型的常见说话人相关应用.
+
 ### Speaker Identification: 说话人识别
+
+<details>
+<summary>展开原文</summary>
 
 Speaker identification is the process of recognizing a person's identity based on their voice characteristics.
 It is a multi-class classification of a given speech as input.
@@ -189,24 +203,64 @@ SpeechLMs can perform this task by taking an input speech and outputting the cla
 Moreover, SpeechLMs can also identify different speakers implicitly.
 Specifically, it can chat with multiple speakers at the same time, distinguishing the words from different speakers and responding to each speaker appropriately.
 
+</details>
+<br>
+
+说话人识别是根据说话人的语音特征识别其身份的过程.
+它是对给定语音进行多类分类的任务.
+语音语言模型可以通过接受输入语音并以文本或语音格式输出分类结果来执行此任务.
+此外, 语音语言模型还可以隐式地识别不同说话人.
+具体来说, 它可以与多个说话人进行聊天, 区分不同说话人的词汇, 并相应地回应每个说话人.
+
 ### Speaker Verification: 说话人验证
+
+<details>
+<summary>展开原文</summary>
 
 Speaker verification involves determining whether the speakers of a pair of speeches match with each other.
 Unlike speaker identification, which is a multi-class classification process, speaker verification is a binary classification process.
 
+</details>
+<br>
+
+说话人验证涉及确定一对语音的说话人是否匹配.
+与多类分类过程的说话人识别不同, 说话人验证是二分类过程.
+
 ### Speaker Diarization: 说话人分割
+
+<details>
+<summary>展开原文</summary>
 
 Speaker diarization is the process of partitioning an audio stream into segments according to the identity of the speakers.
 It predicts "who is speaking when" for each timestamp ([SUPERB (2021)](../../Evaluations/2021.05.03_SUPERB.md)).
 A natural way to integrate speaker diarization into SpeechLMs is to have the model generate the transcript of each audio segment along with the identification of the speaker.
 
+</details>
+<br>
+
+说话人分割是将音频流根据说话人的身份划分为不同段落的过程.
+它预测每个时间戳的 "谁在说话" ([SUPERB (2021)](../../Evaluations/2021.05.03_SUPERB.md)).
+将说话人分割集成到语音语言模型的自然方式是, 模型生成每个音频段的转录, 并识别说话人的身份.
+
 ### Voice-Conditioned Speech Generation: 声学条件下的语音生成
+
+<details>
+<summary>展开原文</summary>
 
 Voice-conditioned speech generation involves synthesizing speech based on the vocal characteristics of a specific speaker.
 This could involve voice cloning and voice conversion.
 Voice cloning utilizes a sample of the speaker's voice as a reference, enabling the model to reproduce the speaker's timbre when generating speech from input text.
 Voice conversion, on the other hand, modifies an existing speech signal to sound like it was produced by a different speaker while retaining the original content.
 Additionally, instead of giving the target vocal characteristics, SpeechLMs should also be able to adapt their output timbre based on various speech or text instructions.
+
+</details>
+<br>
+
+基于声音条件的语音生成涉及根据特定说话人的语音特征合成语音.
+这包括语音克隆和语音转换.
+语音克隆利用说话人的声音样本作为参考, 使模型能够在输入文本生成语音时复现说话人的音色.
+另一方面, 语音转换修改现有的语音信号, 使其听起来像是由不同说话人产生的, 同时保留原始内容.
+此外, 与给定目标声学特征不同, 语音语言模型应该也能够根据各种语音或文本指令调整输出音色.
 
 ## 5.3.Paralinguistic Applications: 副语言应用
 
