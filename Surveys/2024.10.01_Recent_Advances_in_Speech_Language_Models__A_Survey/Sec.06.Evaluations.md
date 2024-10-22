@@ -65,7 +65,10 @@ This measures the information loss caused by discretizing the input speech into 
 然后, 字错误率 (WER) 或 字符错误率 (CER) 可以在输入和合成语音的 ASR 结果之间计算.
 这衡量了将输入语音离散化为语音 Token 所导致的信息损失, 从而评估潜在表示的鲁棒性.
 
-### Linguistic Evaluation.
+### Linguistic Evaluation: 语言学评估
+
+<details>
+<summary>展开原文</summary>
 
 Linguistics, including lexical, syntactic, and semantic evaluation methods, assess the model’s ability to generate and understand the rules for constructing words, sentences, and meaningful contents.
 These evaluations focus on the correctness and appropriateness of word choices, the grammatical structure of the outputs, and the coherence and relevance of the generated content.
@@ -74,7 +77,20 @@ sBLIMP ([sWUGGY (2020)](../../Evaluations/2020.11.23_sWUGGY.md)) evaluates at th
 Spoken StoryCloze ([TWIST (2023)](../../Models/Speech_LLM/2023.05.22_TWIST.md)) evaluates semantic comprehension by assessing the model's capability to select the genuine ending of a story from a pair of ending choices.
 All the evaluation is conducted by comparing the model's negative log-likelihood of the data pair.
 
-### Paralinguistic Evaluation.
+</details>
+<br>
+
+语言学, 包括词汇, 句法, 语义评估方法, 评估模型生成和理解构建词汇, 句子和有意义内容的规则的能力.
+这些评估关注词选择的正确性和适当性, 输出的语法结构, 以及生成内容的连贯性和相关性.
+在基准数据集方面, [sWUGGY (2020)](../../Evaluations/2020.11.23_sWUGGY.md) 通过判断模型能否区分真实词和 (真实, 非真实) 词对来评估词汇水平.
+sBLIMP ([sWUGGY (2020)](../../Evaluations/2020.11.23_sWUGGY.md)) 通过判断模型能否识别 (语法正确, 语法错误) 句子对来评估句法水平.
+Spoken StoryCloze ([TWIST (2023)](../../Models/Speech_LLM/2023.05.22_TWIST.md)) 通过判断模型能否正确选择故事的真实结尾来评估语义理解能力.
+所有评估都通过比较模型对数据对的负对数似然来进行.
+
+### Paralinguistic Evaluation: 副语言学评估
+
+<details>
+<summary>展开原文</summary>
 
 In contrast to linguistic evaluation, paralinguistic evaluation focuses on the non-verbal aspects of communication that accompany speech.
 Some works choose to utilize paralinguistic tokens alongside semantic tokens to enhance the paralinguistic abilities of SpeechLMs ([pGSLM (2021)](../../Models/Speech_LLM/2021.09.07_pGSLM.md); [SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md)), so one way is to evaluate the paralinguistic tokens.
@@ -86,7 +102,27 @@ They introduced a speech-text sentiment preservation benchmark (STSP), which req
 A sentiment classifier is used to assess the sentiment in the generated speech.
 It should be noted that although they only apply the preservation approach on sentiment, this idea can be generalized to other paralinguistic features, such as timbre or prosody.
 
-### Generation Quality and Diversity.
+</details>
+<br>
+
+副语言学评估与语言学评估相比, 关注的是伴随语音交流的非语言方面.
+一些研究选择利用副语言 Token 与语义 Token 一起, 以增强语音语言模型的副语言能力 ([pGSLM (2021)](../../Models/Speech_LLM/2021.09.07_pGSLM.md); [SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md)), 因此, 一种方法是评估副语言 Token.
+[pGSLM (2021)](../../Models/Speech_LLM/2021.09.07_pGSLM.md) 衡量了韵律 Token 的正确性, 一致性, 和表达性.
+- 正确性通过计算生成的韵律 Token 与参考韵律 Token 之间的最小平均绝对误差来评估模型生成准确韵律轮廓的能力.
+- 一致性通过提示韵律和其生成的延续韵律 Token 的平均值之间的 Pearson 相关系数来评估.
+- 表达性通过生成韵律 Token 值的标准差来评估, 期望其与真值方差相匹配.
+
+我们注意到相同的指标可以用于其他副语言 Token.
+
+除了从 Token 级别进行评估, [SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md) 提出了在感知层面上衡量.
+他们引入了一个语音-文本情感保留基准 (STSP), 要求模型生成一个文本或语音序列 Token, 该 Token 能够保留提示语音的情感.
+情感分类器用于评估生成的语音的情感.
+需要注意的是, 虽然他们只在情感上应用了保留方法, 但这个想法可以泛化到其他副语言特征, 如音色或韵律.
+
+### Generation Quality and Diversity: 生成质量和多样性
+
+<details>
+<summary>展开原文</summary>
 
 Quality and diversity are two crucial aspects of model generation.
 Typically, there is a trade-off between these dimensions when sampling model responses at different temperatures, so [GSLM (2021)](../../Models/Speech_LLM/2021.02.01_GSLM.md) suggests using the Area Under the Curve (AUC) with various temperature values.
@@ -94,19 +130,52 @@ Specifically, AUC on perplexity and VERT are employed to assess these factors, w
 Additionally, the ChatGPT score can be utilized to evaluate the quality of the generated speech.
 In this process, the generated speech is transcribed using state-of-the-art ASR models and then sent to ChatGPT for quality (and diversity) assessment.
 
-### Downstream Evaluation.
+</details>
+<br>
+
+质量和多样性是模型生成的两个重要方面.
+通常, 在不同温度下采样模型响应时, 这两个维度之间需要权衡, 因此 [GSLM (2021)](../../Models/Speech_LLM/2021.02.01_GSLM.md) 建议使用不同温度值下的曲线下面积.
+具体来说, 困惑度和 VERT 的 AUC 用于评估这些音素, 其中 VERT 表示生成语音中至少出现一次的 K-Gram 的比率的几何平均.
+
+此外, ChatGPT 得分可用于评估生成语音的质量.
+在这一过程中, 生成的语音可以使用最先进的 ASR 模型进行转录, 然后发送到 ChatGPT 进行质量 (和多样性) 评估.
+
+### Downstream Evaluation: 下游评估
+
+<details>
+<summary>展开原文</summary>
 
 Downstream evaluation refers to evaluating the ability of SpeechLMs to perform specific tasks, such as ASR, TTS, Speaker Identification, etc.
 The evaluation can be performed on pre-trained models by adding few-shot example(s) at the start of the prompt or on the instruction-tuned models by directly instructing them to do so.
 [SUPERB (2021)](../../Evaluations/2021.05.03_SUPERB.md) is a benchmark containing a wide range of downstream tasks that can be performed by SpeechLMs.
 
-## 6.2.Human (Subjective) Evaluation.
+</details>
+<br>
+
+下游评估指的是评估语音语言模型对特定任务的能力, 如 ASR, TTS, 说话人识别等.
+评估可以通过在提示开头添加少量示例对预训练模型进行, 或者通过直接指示指令微调模型来执行.
+[SUPERB (2021)](../../Evaluations/2021.05.03_SUPERB.md) 是一个包含广泛的下游任务的基准, 这些任务可以由语音语言模型进行.
+
+## 6.2.Human (Subjective) Evaluation: 人工评估 (主观评估)
+
+<details>
+<summary>展开原文</summary>
 
 Human evaluation plays a crucial role in assessing the performance of SpeechLMs, as ultimately, speech is designed to be heard and perceived by humans.
 This type of evaluation relies on human judgment to assess the quality of the outputs generated by SpeechLMs.
 Below, we outline several commonly used human evaluation methods.
 
-### Mean Opinion Score.
+</details>
+<br>
+
+人工评估在评估语音语言模型的性能中扮演着重要角色, 因为最后, 语音是为人类所听和感知的.
+这种类型的评估依赖于人类的判断来评估语音语言模型生成的输出的质量.
+下面, 我们简要介绍一些常用的人工评估方法.
+
+### Mean Opinion Score: 平均意见得分
+
+<details>
+<summary>展开原文</summary>
 
 Mean opinion score (MOS) is a widely used metric in the field of speech evaluation that quantifies the perceived quality of speech output as judged by human listeners.
 Typically, a group of evaluators listens to a series of audio samples generated by the SpeechLM and rates each sample on a predefined scale, often from 1 (poor quality) to 5 (excellent quality).
@@ -120,3 +189,19 @@ However, this process can be complicated due to the challenges of recruiting par
 As a result, researchers often turn to machine-based evaluations.
 They commonly employ neural network models specifically trained for these tasks.
 For instance, a naturalness prediction model ([NISQA (2021)](../../Evaluations/2021.04.19_NISQA.md)) can assess the naturalness of generated outputs, while a speaker identification model can evaluate timbre similarity.
+
+</details>
+<br>
+
+平均意见得分是语音评估领域中广泛使用的度量, 它衡量的是人类听众认为语音输出的质量.
+通常, 一组评估者听取由语音语言模型生成的音频样本, 并根据预定义的评分标准 (通常是 1 (差) 到 5 (优)) 对每个音频样本进行打分.
+
+MOS 通过计算所有评估者对每个音频样本的评分平均值来计算, 提供一个反映人类感知总体质量的单一得分.
+MOS 的变体关注语音质量的不同方面, 包括 MMOS, PMOS, 和 SMOS ([pGSLM (2021)](../../Models/Speech_LLM/2021.09.07_pGSLM.md); [SpeechGPT-Gen (2024)](../../Models/Speech_LLM/2024.01.24_SpeechGPT-Gen.md)).
+它们分别评估给定的语音的自然性, 韵律, 和音色相似性.
+
+通常, 评估自然性或音色相似性涉及收集人类意见.
+然而, 这一过程可能因招募参与者和收集评估而变得复杂.
+因此, 研究人员通常转向基于机器的评估.
+他们通常使用专门为此任务训练的神经网络模型.
+例如, 自然性预测模型 ([NISQA (2021)](../../Evaluations/2021.04.19_NISQA.md)) 可以评估生成的输出的自然性, 而说话人识别模型可以评估音色相似性.
