@@ -262,10 +262,10 @@ To enable the listening ability of SpeechLMs while speaking, [LSLM (2024)](../..
 
 In contrast to cold initialization, continued Pre-Training involves initializing the language model with pre-trained weights from a TextLM and then adapting it to handle speech tokens.
 This approach leverages the linguistic knowledge embedded in TextLMs, allowing for more efficient and effective training of SpeechLMs.
-Research by [TWIST (2023)](../../Models/Speech_LLM/2023.05.22_TWIST.md) found that starting with a textually pre-trained language model ([OPT (2022)](../../Models/LLM/2022.05.02_OPT.md) and [LLaMA (2023)](../../Models/LLM/2023.02.27_LLaMA.md)) can enhance the model's convergence rate and significantly improve its speech understanding capabilities.
+Research by [TWIST (2023)](../../Models/Speech_LLM/2023.05.22_TWIST.md) found that starting with a textually pre-trained language model ([OPT (2022)](../../Models/TextLM/2022.05.02_OPT.md) and [LLaMA (2023)](../../Models/TextLM/2023.02.27_LLaMA.md)) can enhance the model's convergence rate and significantly improve its speech understanding capabilities.
 They also demonstrated that while training from text-pretrained checkpoints outperforms cold initialization, training from image-pretrained checkpoints yields poorer results compared to cold initialization.
 This indicates that not all pre-trained checkpoints are equally effective.
-Additionally, [AudioPaLM (2023)](../../Models/Speech_LLM/2023.06.22_AudioPaLM.md) trained the SpeechLM using [PaLM (2022)](../../Models/LLM/2022.04.05_PaLM.md) and [PaLM-2 (2023)](../../Models/LLM/2023.05.17_PaLM2.md), showing that the SpeechLM benefits from both an increased size of the pre-trained checkpoint and a larger training dataset.
+Additionally, [AudioPaLM (2023)](../../Models/Speech_LLM/2023.06.22_AudioPaLM.md) trained the SpeechLM using [PaLM (2022)](../../Models/TextLM/2022.04.05_PaLM.md) and [PaLM-2 (2023)](../../Models/TextLM/2023.05.17_PaLM2.md), showing that the SpeechLM benefits from both an increased size of the pre-trained checkpoint and a larger training dataset.
 
 The performance of SpeechLMs can be further enhanced by **aligning** the text and speech modality representations.
 [SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md) found that continually pretraining on TextLM checkpoints using interleaving text and speech tokens can significantly boost the model's performance on speech understanding and generation.
@@ -282,10 +282,10 @@ Finally, the text response is synthesized to output speech.
 
 和冷初始化相比, 继续预训练涉及使用预训练的 TextLM 权重来初始化语言模型, 然后将其修改为处理语音 Token.
 这种方法利用 TextLM 中内嵌的语言知识, 允许更有效和高效地训练语音语言模型.
-[TWIST (2023)](../../Models/Speech_LLM/2023.05.22_TWIST.md) 的研究发现从文本预训练语言模型 ([OPT (2022)](../../Models/LLM/2022.05.02_OPT.md) 和 [LLaMA (2023)](../../Models/LLM/2023.02.27_LLaMA.md)) 开始, 可以增强模型的收敛率并显著提高其语音理解能力.
+[TWIST (2023)](../../Models/Speech_LLM/2023.05.22_TWIST.md) 的研究发现从文本预训练语言模型 ([OPT (2022)](../../Models/TextLM/2022.05.02_OPT.md) 和 [LLaMA (2023)](../../Models/TextLM/2023.02.27_LLaMA.md)) 开始, 可以增强模型的收敛率并显著提高其语音理解能力.
 他们还证明虽然从文本预训练检查点开始训练优于冷初始化训练的结果, 但从图像预训练检查点开始训练得到的结果差于冷初始化训练.
 这表明并非所有预训练检查点都具有相同的有效性.
-此外, [AudioPaLM (2023)](../../Models/Speech_LLM/2023.06.22_AudioPaLM.md) 使用 [PaLM (2022)](../../Models/LLM/2022.04.05_PaLM.md) 和 [PaLM-2 (2023)](../../Models/LLM/2023.05.17_PaLM2.md) 训练语音语言模型, 展示了语音语言模型受到预训练检查点的大小和训练数据集的增大所带来的好处.
+此外, [AudioPaLM (2023)](../../Models/Speech_LLM/2023.06.22_AudioPaLM.md) 使用 [PaLM (2022)](../../Models/TextLM/2022.04.05_PaLM.md) 和 [PaLM-2 (2023)](../../Models/TextLM/2023.05.17_PaLM2.md) 训练语音语言模型, 展示了语音语言模型受到预训练检查点的大小和训练数据集的增大所带来的好处.
 
 语音语言模型的性能可以通过**对齐**文本和语音模态表示来进一步提高.
 - [SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md) 发现继续预训练 TextLM 检查点使用交替的文本和语音 Token 序列可以显著提高模型在语音理解和生成上的性能.
