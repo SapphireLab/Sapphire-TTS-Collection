@@ -66,7 +66,7 @@ After that, $\textbf{s}$ can be used to train the speech tokenizer as a target l
 The key design choices lie in how to effectively encode and quantize the speech into discrete tokens.
 [Wav2Vec 2.0 (2020)](../../Models/Speech_Representaion/2020.06.20_Wav2Vec2.0.md) uses a convolutional encoder followed by a [product quantization module](../../Modules/VQ/PQ.md) to discretize the continuous waveform.
 Then, a portion of the quantized representations is masked and modeled using a contrastive loss.
-[W2V-BERT (2021)](../../Models/Speech_Representaion/2021.08.07_W2V-BERT.md) is built upon wav2vec 2.0 and proposes to use Masked Language Modeling (MLM) loss ([BERT (2018)](../../Models/LLM/2018.10.11_BERT.md)) in addition to contrastive loss.
+[W2V-BERT (2021)](../../Models/Speech_Representaion/2021.08.07_W2V-BERT.md) is built upon wav2vec 2.0 and proposes to use Masked Language Modeling (MLM) loss ([BERT (2018)](../../Models/TextLM/2018.10.11_BERT.md)) in addition to contrastive loss.
 Similarly, [HuBERT (2021)](../../Models/Speech_Representaion/2021.06.14_HuBERT.md) uses the k-means algorithm to cluster the speech utterances into a certain number of hidden units, and then perform MLM to predict the target hidden units from the masked speech utterances.
 To better align the representation of text and speech modalities, [Google USM (2023)](../../Models/Speech_LLM/2023.03.02_USM.md) utilizes text-injection loss ([Maestro (2022)](../../Models/Speech_Representaion/2022.04.07_Maestro.md)) at the second pre-training stage to improve the performance and robustness of the downstream tasks.
 [WavLM (2021)](../../Models/Speech_Representaion/2021.10.26_WavLM.md) adds the speech denoising objective during pre-training.
@@ -89,7 +89,7 @@ A full list of downstream tasks is listed in [section 5](Sec.05.Applications.md)
 
 关键的设计选择在于如何有效地将语音编码和量化为离散的 Token.
 - [Wav2Vec 2.0 (2020)](../../Models/Speech_Representaion/2020.06.20_Wav2Vec2.0.md) 使用卷积编码器后接[乘积量化模块 (Product Quantization)](../../Modules/VQ/PQ.md)来离散化连续的音频波形. 然后量化表示的一部分被掩膜, 并使用对比损失 (Contrastive Loss) 来建模.
-- [W2V-BERT (2021)](../../Models/Speech_Representaion/2021.08.07_W2V-BERT.md) 建立在 wav2vec 2.0 之上, 并提出使用掩码语言模型 (Masked Language Modeling, MLM) 损失 ([BERT (2018)](../../Models/LLM/2018.10.11_BERT.md)) 作为对比损失的补充项.
+- [W2V-BERT (2021)](../../Models/Speech_Representaion/2021.08.07_W2V-BERT.md) 建立在 wav2vec 2.0 之上, 并提出使用掩码语言模型 (Masked Language Modeling, MLM) 损失 ([BERT (2018)](../../Models/TextLM/2018.10.11_BERT.md)) 作为对比损失的补充项.
 - [HuBERT (2021)](../../Models/Speech_Representaion/2021.06.14_HuBERT.md) 使用 K 均值算法将语音句子聚类为一定数量的隐藏单元, 然后使用 MLM 从掩码的语音句子预测目标隐藏单元.
 - [Google USM (2023)](../../Models/Speech_LLM/2023.03.02_USM.md) 为了更好地对齐文本和语音模态之间的表示, 在第二阶段的预训练中使用文本注入损失 (Text-Injection Loss) ([Maestro (2022)](../../Models/Speech_Representaion/2022.04.07_Maestro.md)) 来提升下游任务的性能和鲁棒性.
 - [WavLM (2021)](../../Models/Speech_Representaion/2021.10.26_WavLM.md) 在预训练过程中加入语音降噪目标. 尽管语音分词器研究主要关注语义相关任务如 ASR 和 TTS, WavLM 展示了语音降噪可以增强非语义任务如说话人验证和语音分离的性能.
@@ -160,8 +160,8 @@ Building on SpeechTokenizer, Mimi ([Moshi (2024)](../../Models/Speech_LLM/2024.0
 <details>
 <summary>展开原文</summary>
 
-Due to the success of TextLMs ([GPT-4 (2023)](../../Models/LLM/2023.03.15_GPT-4.md); [Gemini (2023)](../../Models/LLM/2023.12.19_Gemini.md); [LLaMA 3 (2024)](../../Models/LLM/2024.07.31_LLaMA3.md)), most SpeechLMs follow their architectures.
-They primarily employ [Transformers (2017)](../../Models/_Transformer/2017.06.12_Transformer.md) or decoder-only architectures (such as [OPT (2022)](../../Models/LLM/2022.05.02_OPT.md), [LLaMA (2023)](../../Models/LLM/2023.02.27_LLaMA.md)) to generate speech in an autoregressive manner.
+Due to the success of TextLMs ([GPT-4 (2023)](../../Models/TextLM/2023.03.15_GPT-4.md); [Gemini (2023)](../../Models/TextLM/2023.12.19_Gemini.md); [LLaMA 3 (2024)](../../Models/TextLM/2024.07.31_LLaMA3.md)), most SpeechLMs follow their architectures.
+They primarily employ [Transformers (2017)](../../Models/_Transformer/2017.06.12_Transformer.md) or decoder-only architectures (such as [OPT (2022)](../../Models/TextLM/2022.05.02_OPT.md), [LLaMA (2023)](../../Models/TextLM/2023.02.27_LLaMA.md)) to generate speech in an autoregressive manner.
 To formally define it, given $|V_t|$ as the vocabulary size and $h$ as the hidden dimension, a typical text-based decoder-only transformer language model consists of an embedding matrix $E_t \in \mathbb{R}^{|V_t| \times h}$, a sequence of \( L \) transformer decoder blocks \(\textbf{De} = \{ De_1, De_2, \ldots, De_L \} \), and an output embedding matrix $E'_t \in \mathbb{R}^{h \times |V_t|}$.
 Therefore, the language model (LM) can be represented as
 
@@ -192,9 +192,9 @@ By doing so, the model can generate both text and speech in a single sequence, e
 </details>
 <br>
 
-由于文本语言模型 ([GPT-4 (2023)](../../Models/LLM/2023.03.15_GPT-4.md); [Gemini (2023)](../../Models/LLM/2023.12.19_Gemini.md); [LLaMA 3 (2024)](../../Models/LLM/2024.07.31_LLaMA3.md)) 的成功, 许多语音语言模型遵循它们的架构.
+由于文本语言模型 ([GPT-4 (2023)](../../Models/TextLM/2023.03.15_GPT-4.md); [Gemini (2023)](../../Models/TextLM/2023.12.19_Gemini.md); [LLaMA 3 (2024)](../../Models/TextLM/2024.07.31_LLaMA3.md)) 的成功, 许多语音语言模型遵循它们的架构.
 
-它们主要应用 [Transformer (2017)](../../Models/_Transformer/2017.06.12_Transformer.md) 或仅解码器的架构 (如 [OPT (2022)](../../Models/LLM/2022.05.02_OPT.md), [LLaMA (2023)](../../Models/LLM/2023.02.27_LLaMA.md)) 以自回归的方式生成语音.
+它们主要应用 [Transformer (2017)](../../Models/_Transformer/2017.06.12_Transformer.md) 或仅解码器的架构 (如 [OPT (2022)](../../Models/TextLM/2022.05.02_OPT.md), [LLaMA (2023)](../../Models/TextLM/2023.02.27_LLaMA.md)) 以自回归的方式生成语音.
 为了正式地定义它, 给定 $|V_t|$ 为词表大小, $h$ 为隐藏维度, 典型的基于文本的仅解码器 Transformer 语言模型由一个嵌入矩阵 $E_t \in \mathbb{R}^{|V_t| \times h}$, \( L \) 个 Transformer 解码器块组成的序列 \(\textbf{De} = \{ De_1, De_2, \ldots, De_L \} \) 和输出嵌入矩阵 $E'_t \in \mathbb{R}^{h \times |V_t|}$.
 
 因此, 语言模型 (LM) 可以表示为
