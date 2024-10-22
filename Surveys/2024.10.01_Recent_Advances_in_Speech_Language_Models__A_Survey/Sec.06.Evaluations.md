@@ -1,24 +1,45 @@
 # 6.Evaluations: 评估
 
+<details>
+<summary>展开原文</summary>
+
 Similar to TextLMs, SpeechLMs have a wide range of capabilities, making it challenging to compare different SpeechLMs.
 Consequently, it's essential to evaluate SpeechLMs from various perspectives to determine their effectiveness.
 In this section, we review the commonly used methods and benchmarks for evaluating SpeechLMs.
 We categorize these evaluation methods into automatic and human assessments, each containing distinct evaluation aspects.
 
-## 6.1.Automatic (Objective) Evaluation
+</details>
+<br>
+
+类似于文本语言模型, 语音语言模型也有广泛的能力, 使得对比不同的语音语言模型变得具有挑战性.
+
+## 6.1.Automatic (Objective) Evaluation: 自动评估 (客观评估)
+
+<details>
+<summary>展开原文</summary>
 
 Automatic evaluation methods are essential for providing quick and consistent assessments of SpeechLMs.
 These methods typically rely on quantitative metrics that can be computed without human intervention.
 Below, we outline some of the most commonly used automatic evaluation techniques.
 
-### Representation Evaluation.
+</details>
+<br>
+
+自动评估方法对于提供快速且一致的语音语言模型评估至关重要.
+这些方法通常依赖于定量指标, 这些指标可以在不需人工干预的情况下计算.
+下面, 我们简要介绍一些最常用的自动评估技术.
+
+### Representation Evaluation: 表示评估
+
+<details>
+<summary>展开原文</summary>
 
 Representation (embedding) is a crucial component in SpeechLMs (and TextLMs).
 It refers to how input data, such as speech or text, is transformed into a format that the model can understand and process.
 Effective representation lays a solid foundation for models to understand lexical, syntax, and contextual information, which are vital for generating coherent and contextually relevant outputs.
 
 In the context of SpeechLMs, representation evaluation focuses on how well the model encodes speech features into meaningful vectors.
-[GSLM (2021)](../../Models/Speech_LLM/2021.02.01_GSLM.md) uses \textit{between-speaker ABX score} to measure the embedding similarity.
+[GSLM (2021)](../../Models/Speech_LLM/2021.02.01_GSLM.md) uses between-speaker ABX score to measure the embedding similarity.
 It quantifies how well-separated the phonetic categories are.
 Specifically, It works by comparing three sound samples: two from the same category (A) and one from a different category (B).
 The test measures how often the system correctly identifies that two sounds from category A are more similar to each other than one sound from A is to a sound from B.
@@ -26,6 +47,23 @@ Another way of evaluating representations is through speech resynthesis ([GSLM (
 Specifically, an input speech is encoded into tokens and then synthesized back to speech.
 Then, word error rate (WER) or character error rate (CER) can be computed on the ASR results of the input and resynthesized speech.
 This measures the information loss caused by discretizing the input speech into speech tokens, thereby evaluating the robustness of the latent representations.
+
+</details>
+<br>
+
+表示 (嵌入) 是语音语言模型 (和文本语言模型) 的重要组成部分.
+它指的是如何将输入数据, 如语音或文本, 转换为模型可以理解和处理的格式.
+有效的表示为模型理解词汇, 语法和上下文信息提供了坚实的基础, 这对于生成连贯且上下文相关的输出至关重要.
+
+在语音语言模型的背景下, 表示评估关注的是模型如何将语音特征编码为有意义的向量.
+[GSLM (2021)](../../Models/Speech_LLM/2021.02.01_GSLM.md) 使用不同说话人的 ABX 得分来衡量嵌入的相似性.
+它量化了音素类别之间的分离程度.
+具体来说, 它通过比较三个音频样本: 两个来自同一类别 (A) 的样本和一个来自不同类别 (B) 的样本.
+这一测试衡量了系统正确识别两个来自类别 A 的音频样本比一个来自 A 的样本更相似于来自 B 的样本的频率.
+另一种评估表示的方法是通过语音重新合成 ([GSLM (2021)](../../Models/Speech_LLM/2021.02.01_GSLM.md)).
+具体来说, 输入语音编码为 Token, 然后再合成回语音.
+然后, 字错误率 (WER) 或 字符错误率 (CER) 可以在输入和合成语音的 ASR 结果之间计算.
+这衡量了将输入语音离散化为语音 Token 所导致的信息损失, 从而评估潜在表示的鲁棒性.
 
 ### Linguistic Evaluation.
 
