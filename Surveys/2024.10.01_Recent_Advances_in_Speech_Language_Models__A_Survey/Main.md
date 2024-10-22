@@ -55,7 +55,7 @@ Additionally, we systematically survey the various capabilities of SpeechLMs, ca
 <details>
 <summary>展开原文</summary>
 
-Large Language Models (LLMs) have demonstrated remarkable capabilities in generating text and performing a wide array of natural language processing tasks ([GPT-4 (2023)](../../Models/LLM/2023.03.15_GPT-4.md); [LLaMA3 (2024)](../../Models/LLM/2024.07.31_LLaMA3.md); [OPT (2022)](../../Models/LLM/2022.05.02_OPT.md)), serving as powerful foundation models for AI-driven language understanding and generation.
+Large Language Models (LLMs) have demonstrated remarkable capabilities in generating text and performing a wide array of natural language processing tasks ([GPT-4 (2023)](../../Models/TextLM/2023.03.15_GPT-4.md); [LLaMA3 (2024)](../../Models/TextLM/2024.07.31_LLaMA3.md); [OPT (2022)](../../Models/TextLM/2022.05.02_OPT.md)), serving as powerful foundation models for AI-driven language understanding and generation.
 Their success has also spurred numerous applications in various other domains, yet the reliance solely on text-based modalities presents a significant limitation.
 This leads to the development of speech-based generative models, which allow to interact with humans more naturally and intuitively.
 The inclusion of speech not only facilitates real-time voice interactions but also enriches communication by combining both text and speech information ([dGSLM (2022)](../../Models/Speech_LLM/2022.03.30_dGSLM.md); [SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md)).
@@ -81,7 +81,7 @@ By working directly with the encoded speech tokens, SpeechLMs effectively mitiga
 </details>
 <br>
 
-大语言模型 (Large Language Models, LLMs) 在生成文本和执行各种自然语言处理任务方面展现出了惊人的能力  ([GPT-4 (2023)](../../Models/LLM/2023.03.15_GPT-4.md); [LLaMA3 (2024)](../../Models/LLM/2024.07.31_LLaMA3.md); [OPT (2022)](../../Models/LLM/2022.05.02_OPT.md)), 正在作为 AI 驱动语言理解和生成的强大基础模型.
+大语言模型 (Large Language Models, LLMs) 在生成文本和执行各种自然语言处理任务方面展现出了惊人的能力  ([GPT-4 (2023)](../../Models/TextLM/2023.03.15_GPT-4.md); [LLaMA3 (2024)](../../Models/TextLM/2024.07.31_LLaMA3.md); [OPT (2022)](../../Models/TextLM/2022.05.02_OPT.md)), 正在作为 AI 驱动语言理解和生成的强大基础模型.
 其成功也促进了其他领域的许多应用, 然而, 仅依靠文本输入的限制会导致语音交互的局限性.
 这也导致了基于语音的生成模型的发展, 以允许人类更自然和直观地与之交互.
 语音的引入不仅可以促进实时语音交互, 而且还可以增强交流, 因为它可以结合文本和语音信息 ([dGSLM (2022)](../../Models/Speech_LLM/2022.03.30_dGSLM.md); [SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md)).
@@ -198,10 +198,22 @@ $$
 
 ## 7.Challenges and Future Directions: 挑战与未来方向
 
+<details>
+<summary>展开原文</summary>
+
 While SpeechLMs have demonstrated impressive abilities, the research in this area is still in its infancy.
 In this section, we survey challenges, unsolved questions, and possible directions for future research in the study of SpeechLMs.
 
-### 7.1.Understanding Different Component Choices
+</details>
+<br>
+
+尽管语音语言模型已经展示出了惊人的能力, 但该领域的研究仍处于起步阶段.
+在本节中, 我们总结了语音语言模型研究中的挑战, 未解决的问题, 以及未来可能的研究方向.
+
+### 7.1.Understanding Different Component Choices: 理解不同的组件选择
+
+<details>
+<summary>展开原文</summary>
 
 Current research on SpeechLMs encompasses key components such as speech tokenizers, language models, and vocoders, each offering a diverse range of options.
 While some studies have compared various component choices—primarily focusing on speech tokenizers—the comparisons tend to be limited in scope and depth ([GSLM (2021)](../../Models/Speech_LLM/2021.02.01_GSLM.md);  [AudioPaLM (2023)](../../Models/Speech_LLM/2023.06.22_AudioPaLM.md)).
@@ -209,14 +221,37 @@ Consequently, there remains a significant gap in understanding the advantages an
 Therefore, studies aimed at comprehensively comparing these choices are essential.
 Such an investigation would yield valuable insights and serve as a guide for selecting more efficient components when developing SpeechLMs.
 
-### 7.2.End-to-End Training
+</details>
+<br>
+
+当前关于语音语言模型的研究涵盖了语音分词器, 语言模型和声码器等关键组件, 这些组件都提供了多种选择.
+尽管一些研究已经比较了各种组件的选择, 主要集中在语音分词器上, 但这些比较往往在范围和深度上有限 ([GSLM (2021)](../../Models/Speech_LLM/2021.02.01_GSLM.md);  [AudioPaLM (2023)](../../Models/Speech_LLM/2023.06.22_AudioPaLM.md)).
+所以对于不同组件选择的优缺点仍存在显著的理解差距.
+因此, 旨在全面比较这些选择的研究至关重要.
+这样的研究将提供宝贵的见解, 并在开发语音语言模型时作为选择更高效组件的指南.
+
+### 7.2.End-to-End Training: 端到端训练
+
+<details>
+<summary>展开原文</summary>
 
 Although SpeechLMs can generate speech directly without relying on text signals, they still need to train the three components separately.
 This separate optimization may hinder the model's overall potential.
 Consequently, it would be worthwhile to investigate whether training can be conducted in an end-to-end manner, allowing gradients to be back-propagated from the vocoder's output to the tokenizer's input.
 By exploring this fully end-to-end approach, we could potentially enable SpeechLMs to produce more coherent, contextually relevant, and high-fidelity speech outputs.
 
-### 7.3.Real-Time Speech Generation
+</details>
+<br>
+
+尽管语音语言模型可以直接生成语音而不依赖于文本信号, 但它们仍然需要分别训练三个组件.
+这种单独优化可能限制了模型的整体潜力.
+因此, 研究是否可以进行端到端的训练是值得的, 允许梯度从声码器的输出反向传播到分词器的输入.
+通过探索这种完全端到端的方法, 我们可以使语音语言模型能够生成更连贯, 具有上下文相关性, 且更高质量的语音输出.
+
+### 7.3.Real-Time Speech Generation: 实时语音生成
+
+<details>
+<summary>展开原文</summary>
 
 Enabling real-time speech generation is crucial in SpeechLM as it fosters a more interactive way of engaging with humans.
 However, the most adopted approaches described in [section 3](Sec.03.Components.md) still result in noticeable delays between input and output speech generation.
@@ -225,29 +260,70 @@ One potential solution to improve latency is to develop a streamable vocoder, al
 Another option could involve the SpeechLM autonomously generating audio samples in waveform.
 Overall, this area of real-time speech generation remains under-explored and requires further investigation.
 
-### 7.4.Safety Risks in SpeechLMs
+</details>
+<br>
+
+实现实时语音生成对于语音语言模型至关重要, 因为它促进了与人类更互动的交流方式.
+然而, 第三节中描述的最常用方法仍然在输入和输出语音之间产生明显的延迟.
+这种延迟发生的原因是典型的声码器必须等待语言模型生成整个输出 Token 序列后才能工作, 这使得它成为推理流程中最耗时的过程.
+降低延迟的一个潜在解决方案是开发可流式传输的声码器, 使其能够在语言模型生合成输出语音 Token 的同时开始合成输出语音.
+另一个选择可以是语音语言模型自主生成波形音频样本.
+总的来说, 实时语音生成这一领域仍未得到充分探索, 还需要进一步的研究.
+
+### 7.4.Safety Risks in SpeechLMs: 语音语言模型的安全风险
+
+<details>
+<summary>展开原文</summary>
 
 Safety is a highly significant subject in the field of Machine Learning, particularly when it comes to large-scale generative AI models.
 While there has been extensive research on safety concerns in TextLMs, the safety issues in SpeechLMs have not been thoroughly investigated.
-The safety challenges in SpeechLMs present both similarities and unique aspects compared to TextLMs, as highlighted in OpenAI's recent report on the safety issues of [GPT-4o (2024)](../../Models/LLM/2024.09.06_GPT-4o.md)'s voice model.
+The safety challenges in SpeechLMs present both similarities and unique aspects compared to TextLMs, as highlighted in OpenAI's recent report on the safety issues of [GPT-4o (2024)](../../Models/TextLM/2024.09.06_GPT-4o.md)'s voice model.
 Therefore, it is crucial for future research to explore safety vulnerabilities in SpeechLMs and develop safer SpeechLMs.
 
 Primary concerns for the safety issues in SpeechLMs include but are not limited to toxicity and privacy.
 
 Toxicity refers to the harmful nature of the content generated by SpeechLMs.
 For instance, these models might produce semantically dangerous content, such as instructions for making explosives.
-Additionally, they could generate acoustically inappropriate content, like erotic speech ([GPT-4o (2024)](../../Models/LLM/2024.09.06_GPT-4o.md)), which presents a unique challenge.
+Additionally, they could generate acoustically inappropriate content, like erotic speech ([GPT-4o (2024)](../../Models/TextLM/2024.09.06_GPT-4o.md)), which presents a unique challenge.
 
 Privacy involves the risk of revealing personal information from the speech input after it has been processed by a SpeechLM.
 For example, the model might infer the speaker's identity based on the semantic content or acoustic features of the input.
-Even more concerning is the potential for the model to make biased inferences about the speaker, such as their ethnicity or religious beliefs, based on insufficient (e.g., acoustic) information ([GPT-4o (2024)](../../Models/LLM/2024.09.06_GPT-4o.md)).
+Even more concerning is the potential for the model to make biased inferences about the speaker, such as their ethnicity or religious beliefs, based on insufficient (e.g., acoustic) information ([GPT-4o (2024)](../../Models/TextLM/2024.09.06_GPT-4o.md)).
 
-### 7.5.Performance on Rare Languages
+</details>
+<br>
+
+安全性是机器学习领域中一个非常重要的话题, 尤其是大规模生成式 AI 模型方面.
+尽管在文本语言模型的安全性问题已经有大量研究, 但语音语言模型的安全性问题尚未得到充分探讨.
+正如 OpenAI 最近关于 [GPT-4o (2024)](../../Models/TextLM/2024.09.06_GPT-4o.md) 声音模型安全性问题的报告所揭示的, 语音语言模型的安全性挑战与文本语言模型的安全性挑战有相似之处, 但也有独特之处.
+因此, 未来研究应着力探索语音语言模型的安全性漏洞, 并开发更安全的语音语言模型.
+
+语音语言模型的主要安全性问题包括但不限于毒性和隐私.
+
+- 毒性指的是语音语言模型生成的内容的有害性质.
+  例如, 这些模型可能生成语义上危险的内容, 如制造爆炸物的质量.
+  此外, 它们可能生成声学上不适当的内容, 如色情语音, 这带来了独特的挑战.
+- 隐私涉及语音输入经过语音语言模型处理后可能泄露个人信息的风险.
+  例如, 模型可能根据输入的语义内容或声学特征推断说话人的身份.
+  更令人担忧的是, 模型可能基于不足的信息 (如声学信息) 对说话人做出偏见推断, 如种族或宗教信仰.
+
+### 7.5.Performance on Rare Languages: 稀有语言上的性能
+
+<details>
+<summary>展开原文</summary>
 
 SpeechLMs directly model speech data, which allows them to more effectively handle "low-resource" languages compared to TextLMs.
 "Low-resource" languages are those that lack extensive textual data, making it challenging for TextLMs to model them efficiently.
 In contrast, SpeechLM provides a better solution by modeling the speech data of these "low-resource" languages, which often have more available audio data than text ([GSLM (2021)](../../Models/Speech_LLM/2021.02.01_GSLM.md)).
 Therefore, future research could focus on training SpeechLMs in "low-resource" languages or dialects to expand their capabilities.
+
+</details>
+<br>
+
+语音语言模型直接建模语音数据, 这使得它们在处理“低资源”语言方面比起文本语言模型更有效.
+"低资源"语言是指缺乏大量文本数据的语言, 这使得文本语言模型难以对其进行有效建模.
+相比之下, 语音语言模型通过建模这些"低资源"语言的语音数据提供了一个更好的解决方案, 这些语言通常拥有比文本更多可用的音频数据.
+因此, 未来的研究可以专注于在"低资源"语言或方言上训练语音语言模型, 以扩展其能力.
 
 ## 8.Conclusions: 结论
 
