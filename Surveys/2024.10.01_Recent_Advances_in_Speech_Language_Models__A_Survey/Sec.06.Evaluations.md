@@ -39,11 +39,11 @@ It refers to how input data, such as speech or text, is transformed into a forma
 Effective representation lays a solid foundation for models to understand lexical, syntax, and contextual information, which are vital for generating coherent and contextually relevant outputs.
 
 In the context of SpeechLMs, representation evaluation focuses on how well the model encodes speech features into meaningful vectors.
-[GSLM (2021)](../../Models/Speech_LLM/2021.02.01_GSLM.md) uses between-speaker ABX score to measure the embedding similarity.
+[GSLM (2021)](../../Models/SpeechLM/2021.02.01_GSLM.md) uses between-speaker ABX score to measure the embedding similarity.
 It quantifies how well-separated the phonetic categories are.
 Specifically, It works by comparing three sound samples: two from the same category (A) and one from a different category (B).
 The test measures how often the system correctly identifies that two sounds from category A are more similar to each other than one sound from A is to a sound from B.
-Another way of evaluating representations is through speech resynthesis ([GSLM (2021)](../../Models/Speech_LLM/2021.02.01_GSLM.md)).
+Another way of evaluating representations is through speech resynthesis ([GSLM (2021)](../../Models/SpeechLM/2021.02.01_GSLM.md)).
 Specifically, an input speech is encoded into tokens and then synthesized back to speech.
 Then, word error rate (WER) or character error rate (CER) can be computed on the ASR results of the input and resynthesized speech.
 This measures the information loss caused by discretizing the input speech into speech tokens, thereby evaluating the robustness of the latent representations.
@@ -56,11 +56,11 @@ This measures the information loss caused by discretizing the input speech into 
 有效的表示为模型理解词汇, 语法和上下文信息提供了坚实的基础, 这对于生成连贯且上下文相关的输出至关重要.
 
 在语音语言模型的背景下, 表示评估关注的是模型如何将语音特征编码为有意义的向量.
-[GSLM (2021)](../../Models/Speech_LLM/2021.02.01_GSLM.md) 使用不同说话人的 ABX 得分来衡量嵌入的相似性.
+[GSLM (2021)](../../Models/SpeechLM/2021.02.01_GSLM.md) 使用不同说话人的 ABX 得分来衡量嵌入的相似性.
 它量化了音素类别之间的分离程度.
 具体来说, 它通过比较三个音频样本: 两个来自同一类别 (A) 的样本和一个来自不同类别 (B) 的样本.
 这一测试衡量了系统正确识别两个来自类别 A 的音频样本比一个来自 A 的样本更相似于来自 B 的样本的频率.
-另一种评估表示的方法是通过语音重新合成 ([GSLM (2021)](../../Models/Speech_LLM/2021.02.01_GSLM.md)).
+另一种评估表示的方法是通过语音重新合成 ([GSLM (2021)](../../Models/SpeechLM/2021.02.01_GSLM.md)).
 具体来说, 输入语音编码为 Token, 然后再合成回语音.
 然后, 字错误率 (WER) 或 字符错误率 (CER) 可以在输入和合成语音的 ASR 结果之间计算.
 这衡量了将输入语音离散化为语音 Token 所导致的信息损失, 从而评估潜在表示的鲁棒性.
@@ -93,8 +93,8 @@ Spoken StoryCloze ([TWIST (2023)](../../Models/Speech_LLM/2023.05.22_TWIST.md)) 
 <summary>展开原文</summary>
 
 In contrast to linguistic evaluation, paralinguistic evaluation focuses on the non-verbal aspects of communication that accompany speech.
-Some works choose to utilize paralinguistic tokens alongside semantic tokens to enhance the paralinguistic abilities of SpeechLMs ([pGSLM (2021)](../../Models/Speech_LLM/2021.09.07_pGSLM.md); [SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md)), so one way is to evaluate the paralinguistic tokens.
-[pGSLM (2021)](../../Models/Speech_LLM/2021.09.07_pGSLM.md) measures the correctness, consistency, and expressiveness of the prosodic tokens.
+Some works choose to utilize paralinguistic tokens alongside semantic tokens to enhance the paralinguistic abilities of SpeechLMs ([pGSLM (2021)](../../Models/SpeechLM/2021.09.07_pGSLM.md); [SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md)), so one way is to evaluate the paralinguistic tokens.
+[pGSLM (2021)](../../Models/SpeechLM/2021.09.07_pGSLM.md) measures the correctness, consistency, and expressiveness of the prosodic tokens.
 Correctness evaluates the model's ability to generate accurate prosodic profiles by calculating the minimal mean absolute error (min-MAE) of the prosodic tokens from 20 generated samples against the prosodic tokens from the reference, consistency is assessed through the Pearson correlation between the mean values of the prompt prosodic and its generated continuation prosodic tokens, and expressiveness is measured by the standard deviation of the generated prosody token values, with the expectation that it matches the variability of the ground truth.
 We note that the same metrics can also be applied to other paralinguistic tokens.
 Instead of evaluating from the token level, [SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md) propose to measure on the perceptual level.
@@ -106,8 +106,8 @@ It should be noted that although they only apply the preservation approach on se
 <br>
 
 副语言学评估与语言学评估相比, 关注的是伴随语音交流的非语言方面.
-一些研究选择利用副语言 Token 与语义 Token 一起, 以增强语音语言模型的副语言能力 ([pGSLM (2021)](../../Models/Speech_LLM/2021.09.07_pGSLM.md); [SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md)), 因此, 一种方法是评估副语言 Token.
-[pGSLM (2021)](../../Models/Speech_LLM/2021.09.07_pGSLM.md) 衡量了韵律 Token 的正确性, 一致性, 和表达性.
+一些研究选择利用副语言 Token 与语义 Token 一起, 以增强语音语言模型的副语言能力 ([pGSLM (2021)](../../Models/SpeechLM/2021.09.07_pGSLM.md); [SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md)), 因此, 一种方法是评估副语言 Token.
+[pGSLM (2021)](../../Models/SpeechLM/2021.09.07_pGSLM.md) 衡量了韵律 Token 的正确性, 一致性, 和表达性.
 - 正确性通过计算生成的韵律 Token 与参考韵律 Token 之间的最小平均绝对误差来评估模型生成准确韵律轮廓的能力.
 - 一致性通过提示韵律和其生成的延续韵律 Token 的平均值之间的 Pearson 相关系数来评估.
 - 表达性通过生成韵律 Token 值的标准差来评估, 期望其与真值方差相匹配.
@@ -125,7 +125,7 @@ It should be noted that although they only apply the preservation approach on se
 <summary>展开原文</summary>
 
 Quality and diversity are two crucial aspects of model generation.
-Typically, there is a trade-off between these dimensions when sampling model responses at different temperatures, so [GSLM (2021)](../../Models/Speech_LLM/2021.02.01_GSLM.md) suggests using the Area Under the Curve (AUC) with various temperature values.
+Typically, there is a trade-off between these dimensions when sampling model responses at different temperatures, so [GSLM (2021)](../../Models/SpeechLM/2021.02.01_GSLM.md) suggests using the Area Under the Curve (AUC) with various temperature values.
 Specifically, AUC on perplexity and VERT are employed to assess these factors, where VERT represents the geometric mean of the ratio of k-grams in the generated speech that appears at least once.
 Additionally, the ChatGPT score can be utilized to evaluate the quality of the generated speech.
 In this process, the generated speech is transcribed using state-of-the-art ASR models and then sent to ChatGPT for quality (and diversity) assessment.
@@ -134,7 +134,7 @@ In this process, the generated speech is transcribed using state-of-the-art ASR 
 <br>
 
 质量和多样性是模型生成的两个重要方面.
-通常, 在不同温度下采样模型响应时, 这两个维度之间需要权衡, 因此 [GSLM (2021)](../../Models/Speech_LLM/2021.02.01_GSLM.md) 建议使用不同温度值下的曲线下面积.
+通常, 在不同温度下采样模型响应时, 这两个维度之间需要权衡, 因此 [GSLM (2021)](../../Models/SpeechLM/2021.02.01_GSLM.md) 建议使用不同温度值下的曲线下面积.
 具体来说, 困惑度和 VERT 的 AUC 用于评估这些音素, 其中 VERT 表示生成语音中至少出现一次的 K-Gram 的比率的几何平均.
 
 此外, ChatGPT 得分可用于评估生成语音的质量.
@@ -181,7 +181,7 @@ Mean opinion score (MOS) is a widely used metric in the field of speech evaluati
 Typically, a group of evaluators listens to a series of audio samples generated by the SpeechLM and rates each sample on a predefined scale, often from 1 (poor quality) to 5 (excellent quality).
 
 MOS is calculated by averaging the scores given by all evaluators for each audio sample, providing a single score that reflects the overall quality as perceived by humans.
-Variations of MOS focus on different aspects of speech quality, including MMOS, PMOS, and SMOS ([pGSLM (2021)](../../Models/Speech_LLM/2021.09.07_pGSLM.md); [SpeechGPT-Gen (2024)](../../Models/Speech_LLM/2024.01.24_SpeechGPT-Gen.md)).
+Variations of MOS focus on different aspects of speech quality, including MMOS, PMOS, and SMOS ([pGSLM (2021)](../../Models/SpeechLM/2021.09.07_pGSLM.md); [SpeechGPT-Gen (2024)](../../Models/Speech_LLM/2024.01.24_SpeechGPT-Gen.md)).
 They evaluate the aspects of naturalness, prosody, and timbre similarity of the given speech, respectively.
 
 Typically, evaluating naturalness or timbre similarity involves collecting human opinions.
@@ -197,7 +197,7 @@ For instance, a naturalness prediction model ([NISQA (2021)](../../Evaluations/2
 通常, 一组评估者听取由语音语言模型生成的音频样本, 并根据预定义的评分标准 (通常是 1 (差) 到 5 (优)) 对每个音频样本进行打分.
 
 MOS 通过计算所有评估者对每个音频样本的评分平均值来计算, 提供一个反映人类感知总体质量的单一得分.
-MOS 的变体关注语音质量的不同方面, 包括 MMOS, PMOS, 和 SMOS ([pGSLM (2021)](../../Models/Speech_LLM/2021.09.07_pGSLM.md); [SpeechGPT-Gen (2024)](../../Models/Speech_LLM/2024.01.24_SpeechGPT-Gen.md)).
+MOS 的变体关注语音质量的不同方面, 包括 MMOS, PMOS, 和 SMOS ([pGSLM (2021)](../../Models/SpeechLM/2021.09.07_pGSLM.md); [SpeechGPT-Gen (2024)](../../Models/Speech_LLM/2024.01.24_SpeechGPT-Gen.md)).
 它们分别评估给定的语音的自然性, 韵律, 和音色相似性.
 
 通常, 评估自然性或音色相似性涉及收集人类意见.

@@ -58,7 +58,7 @@ Additionally, we systematically survey the various capabilities of SpeechLMs, ca
 Large Language Models (LLMs) have demonstrated remarkable capabilities in generating text and performing a wide array of natural language processing tasks ([GPT-4 (2023)](../../Models/TextLM/2023.03.15_GPT-4.md); [LLaMA3 (2024)](../../Models/TextLM/2024.07.31_LLaMA3.md); [OPT (2022)](../../Models/TextLM/2022.05.02_OPT.md)), serving as powerful foundation models for AI-driven language understanding and generation.
 Their success has also spurred numerous applications in various other domains, yet the reliance solely on text-based modalities presents a significant limitation.
 This leads to the development of speech-based generative models, which allow to interact with humans more naturally and intuitively.
-The inclusion of speech not only facilitates real-time voice interactions but also enriches communication by combining both text and speech information ([dGSLM (2022)](../../Models/Speech_LLM/2022.03.30_dGSLM.md); [SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md)).
+The inclusion of speech not only facilitates real-time voice interactions but also enriches communication by combining both text and speech information ([dGSLM (2022)](../../Models/SpeechLM/2022.03.30_dGSLM.md); [SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md)).
 
 Given the extensive mutual information between text and speech, it is natural to modify existing LLMs to enable speech interaction capabilities.
 A straightforward approach is to adopt an "Automatic Speech Recognition (ASR) + LLM + Text-to-Speech (TTS)" framework (Fig.01 (a)) ([AudioGPT (2023)](../../Models/Speech_LLM/2023.04.25_AudioGPT.md)).
@@ -84,7 +84,7 @@ By working directly with the encoded speech tokens, SpeechLMs effectively mitiga
 大语言模型 (Large Language Models, LLMs) 在生成文本和执行各种自然语言处理任务方面展现出了惊人的能力  ([GPT-4 (2023)](../../Models/TextLM/2023.03.15_GPT-4.md); [LLaMA3 (2024)](../../Models/TextLM/2024.07.31_LLaMA3.md); [OPT (2022)](../../Models/TextLM/2022.05.02_OPT.md)), 正在作为 AI 驱动语言理解和生成的强大基础模型.
 其成功也促进了其他领域的许多应用, 然而, 仅依靠文本输入的限制会导致语音交互的局限性.
 这也导致了基于语音的生成模型的发展, 以允许人类更自然和直观地与之交互.
-语音的引入不仅可以促进实时语音交互, 而且还可以增强交流, 因为它可以结合文本和语音信息 ([dGSLM (2022)](../../Models/Speech_LLM/2022.03.30_dGSLM.md); [SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md)).
+语音的引入不仅可以促进实时语音交互, 而且还可以增强交流, 因为它可以结合文本和语音信息 ([dGSLM (2022)](../../Models/SpeechLM/2022.03.30_dGSLM.md); [SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md)).
 
 给定文本和语音之间的广泛互信息, 可以自然地修改现有的 LLMs 以实现语音交互能力.
 一种直接的方法是采用 "自动语音识别 (ASR) + LLM + 文本转语音 (TTS)" 框架 (Fig.01 (a)) ([AudioGPT (2023)](../../Models/Speech_LLM/2023.04.25_AudioGPT.md)).
@@ -216,7 +216,7 @@ In this section, we survey challenges, unsolved questions, and possible directio
 <summary>展开原文</summary>
 
 Current research on SpeechLMs encompasses key components such as speech tokenizers, language models, and vocoders, each offering a diverse range of options.
-While some studies have compared various component choices—primarily focusing on speech tokenizers—the comparisons tend to be limited in scope and depth ([GSLM (2021)](../../Models/Speech_LLM/2021.02.01_GSLM.md);  [AudioPaLM (2023)](../../Models/Speech_LLM/2023.06.22_AudioPaLM.md)).
+While some studies have compared various component choices—primarily focusing on speech tokenizers—the comparisons tend to be limited in scope and depth ([GSLM (2021)](../../Models/SpeechLM/2021.02.01_GSLM.md); [AudioPaLM (2023)](../../Models/Speech_LLM/2023.06.22_AudioPaLM.md)).
 Consequently, there remains a significant gap in understanding the advantages and disadvantages of different component selections.
 Therefore, studies aimed at comprehensively comparing these choices are essential.
 Such an investigation would yield valuable insights and serve as a guide for selecting more efficient components when developing SpeechLMs.
@@ -225,7 +225,7 @@ Such an investigation would yield valuable insights and serve as a guide for sel
 <br>
 
 当前关于语音语言模型的研究涵盖了语音分词器, 语言模型和声码器等关键组件, 这些组件都提供了多种选择.
-尽管一些研究已经比较了各种组件的选择, 主要集中在语音分词器上, 但这些比较往往在范围和深度上有限 ([GSLM (2021)](../../Models/Speech_LLM/2021.02.01_GSLM.md);  [AudioPaLM (2023)](../../Models/Speech_LLM/2023.06.22_AudioPaLM.md)).
+尽管一些研究已经比较了各种组件的选择, 主要集中在语音分词器上, 但这些比较往往在范围和深度上有限 ([GSLM (2021)](../../Models/SpeechLM/2021.02.01_GSLM.md); [AudioPaLM (2023)](../../Models/Speech_LLM/2023.06.22_AudioPaLM.md)).
 所以对于不同组件选择的优缺点仍存在显著的理解差距.
 因此, 旨在全面比较这些选择的研究至关重要.
 这样的研究将提供宝贵的见解, 并在开发语音语言模型时作为选择更高效组件的指南.
@@ -314,7 +314,7 @@ Even more concerning is the potential for the model to make biased inferences ab
 
 SpeechLMs directly model speech data, which allows them to more effectively handle "low-resource" languages compared to TextLMs.
 "Low-resource" languages are those that lack extensive textual data, making it challenging for TextLMs to model them efficiently.
-In contrast, SpeechLM provides a better solution by modeling the speech data of these "low-resource" languages, which often have more available audio data than text ([GSLM (2021)](../../Models/Speech_LLM/2021.02.01_GSLM.md)).
+In contrast, SpeechLM provides a better solution by modeling the speech data of these "low-resource" languages, which often have more available audio data than text ([GSLM (2021)](../../Models/SpeechLM/2021.02.01_GSLM.md)).
 Therefore, future research could focus on training SpeechLMs in "low-resource" languages or dialects to expand their capabilities.
 
 </details>
