@@ -74,7 +74,7 @@ Linguistics, including lexical, syntactic, and semantic evaluation methods, asse
 These evaluations focus on the correctness and appropriateness of word choices, the grammatical structure of the outputs, and the coherence and relevance of the generated content.
 In terms of benchmark datasets, [sWUGGY (2020)](../../Evaluations/2020.11.23_sWUGGY.md) assesses at the lexical level by determining if the model can distinguish a real word from a (real, non-real) word pair.
 sBLIMP ([sWUGGY (2020)](../../Evaluations/2020.11.23_sWUGGY.md)) evaluates at the syntactic level by determining if the model can identify the grammatically correct sentence from a (grammatical, ungrammatical) sentence pair.
-Spoken StoryCloze ([TWIST (2023)](../../Models/Speech_LLM/2023.05.22_TWIST.md)) evaluates semantic comprehension by assessing the model's capability to select the genuine ending of a story from a pair of ending choices.
+Spoken StoryCloze ([TWIST (2023)](../../Models/SpeechLM/2023.05.22_TWIST.md)) evaluates semantic comprehension by assessing the model's capability to select the genuine ending of a story from a pair of ending choices.
 All the evaluation is conducted by comparing the model's negative log-likelihood of the data pair.
 
 </details>
@@ -84,7 +84,7 @@ All the evaluation is conducted by comparing the model's negative log-likelihood
 这些评估关注词选择的正确性和适当性, 输出的语法结构, 以及生成内容的连贯性和相关性.
 在基准数据集方面, [sWUGGY (2020)](../../Evaluations/2020.11.23_sWUGGY.md) 通过判断模型能否区分真实词和 (真实, 非真实) 词对来评估词汇水平.
 sBLIMP ([sWUGGY (2020)](../../Evaluations/2020.11.23_sWUGGY.md)) 通过判断模型能否识别 (语法正确, 语法错误) 句子对来评估句法水平.
-Spoken StoryCloze ([TWIST (2023)](../../Models/Speech_LLM/2023.05.22_TWIST.md)) 通过判断模型能否正确选择故事的真实结尾来评估语义理解能力.
+Spoken StoryCloze ([TWIST (2023)](../../Models/SpeechLM/2023.05.22_TWIST.md)) 通过判断模型能否正确选择故事的真实结尾来评估语义理解能力.
 所有评估都通过比较模型对数据对的负对数似然来进行.
 
 ### Paralinguistic Evaluation: 副语言学评估
@@ -93,11 +93,11 @@ Spoken StoryCloze ([TWIST (2023)](../../Models/Speech_LLM/2023.05.22_TWIST.md)) 
 <summary>展开原文</summary>
 
 In contrast to linguistic evaluation, paralinguistic evaluation focuses on the non-verbal aspects of communication that accompany speech.
-Some works choose to utilize paralinguistic tokens alongside semantic tokens to enhance the paralinguistic abilities of SpeechLMs ([pGSLM (2021)](../../Models/SpeechLM/2021.09.07_pGSLM.md); [SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md)), so one way is to evaluate the paralinguistic tokens.
+Some works choose to utilize paralinguistic tokens alongside semantic tokens to enhance the paralinguistic abilities of SpeechLMs ([pGSLM (2021)](../../Models/SpeechLM/2021.09.07_pGSLM.md); [SpiRit-LM (2024)](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md)), so one way is to evaluate the paralinguistic tokens.
 [pGSLM (2021)](../../Models/SpeechLM/2021.09.07_pGSLM.md) measures the correctness, consistency, and expressiveness of the prosodic tokens.
 Correctness evaluates the model's ability to generate accurate prosodic profiles by calculating the minimal mean absolute error (min-MAE) of the prosodic tokens from 20 generated samples against the prosodic tokens from the reference, consistency is assessed through the Pearson correlation between the mean values of the prompt prosodic and its generated continuation prosodic tokens, and expressiveness is measured by the standard deviation of the generated prosody token values, with the expectation that it matches the variability of the ground truth.
 We note that the same metrics can also be applied to other paralinguistic tokens.
-Instead of evaluating from the token level, [SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md) propose to measure on the perceptual level.
+Instead of evaluating from the token level, [SpiRit-LM (2024)](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md) propose to measure on the perceptual level.
 They introduced a speech-text sentiment preservation benchmark (STSP), which requires the model to generate a text or speech sequence of tokens that preserves the sentiment of the prompt.
 A sentiment classifier is used to assess the sentiment in the generated speech.
 It should be noted that although they only apply the preservation approach on sentiment, this idea can be generalized to other paralinguistic features, such as timbre or prosody.
@@ -106,7 +106,7 @@ It should be noted that although they only apply the preservation approach on se
 <br>
 
 副语言学评估与语言学评估相比, 关注的是伴随语音交流的非语言方面.
-一些研究选择利用副语言 Token 与语义 Token 一起, 以增强语音语言模型的副语言能力 ([pGSLM (2021)](../../Models/SpeechLM/2021.09.07_pGSLM.md); [SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md)), 因此, 一种方法是评估副语言 Token.
+一些研究选择利用副语言 Token 与语义 Token 一起, 以增强语音语言模型的副语言能力 ([pGSLM (2021)](../../Models/SpeechLM/2021.09.07_pGSLM.md); [SpiRit-LM (2024)](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md)), 因此, 一种方法是评估副语言 Token.
 [pGSLM (2021)](../../Models/SpeechLM/2021.09.07_pGSLM.md) 衡量了韵律 Token 的正确性, 一致性, 和表达性.
 - 正确性通过计算生成的韵律 Token 与参考韵律 Token 之间的最小平均绝对误差来评估模型生成准确韵律轮廓的能力.
 - 一致性通过提示韵律和其生成的延续韵律 Token 的平均值之间的 Pearson 相关系数来评估.
@@ -114,7 +114,7 @@ It should be noted that although they only apply the preservation approach on se
 
 我们注意到相同的指标可以用于其他副语言 Token.
 
-除了从 Token 级别进行评估, [SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md) 提出了在感知层面上衡量.
+除了从 Token 级别进行评估, [SpiRit-LM (2024)](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md) 提出了在感知层面上衡量.
 他们引入了一个语音-文本情感保留基准 (STSP), 要求模型生成一个文本或语音序列 Token, 该 Token 能够保留提示语音的情感.
 情感分类器用于评估生成的语音的情感.
 需要注意的是, 虽然他们只在情感上应用了保留方法, 但这个想法可以泛化到其他副语言特征, 如音色或韵律.
@@ -181,7 +181,7 @@ Mean opinion score (MOS) is a widely used metric in the field of speech evaluati
 Typically, a group of evaluators listens to a series of audio samples generated by the SpeechLM and rates each sample on a predefined scale, often from 1 (poor quality) to 5 (excellent quality).
 
 MOS is calculated by averaging the scores given by all evaluators for each audio sample, providing a single score that reflects the overall quality as perceived by humans.
-Variations of MOS focus on different aspects of speech quality, including MMOS, PMOS, and SMOS ([pGSLM (2021)](../../Models/SpeechLM/2021.09.07_pGSLM.md); [SpeechGPT-Gen (2024)](../../Models/Speech_LLM/2024.01.24_SpeechGPT-Gen.md)).
+Variations of MOS focus on different aspects of speech quality, including MMOS, PMOS, and SMOS ([pGSLM (2021)](../../Models/SpeechLM/2021.09.07_pGSLM.md); [SpeechGPT-Gen (2024)](../../Models/SpeechLM/2024.01.24_SpeechGPT-Gen.md)).
 They evaluate the aspects of naturalness, prosody, and timbre similarity of the given speech, respectively.
 
 Typically, evaluating naturalness or timbre similarity involves collecting human opinions.
@@ -197,7 +197,7 @@ For instance, a naturalness prediction model ([NISQA (2021)](../../Evaluations/2
 通常, 一组评估者听取由语音语言模型生成的音频样本, 并根据预定义的评分标准 (通常是 1 (差) 到 5 (优)) 对每个音频样本进行打分.
 
 MOS 通过计算所有评估者对每个音频样本的评分平均值来计算, 提供一个反映人类感知总体质量的单一得分.
-MOS 的变体关注语音质量的不同方面, 包括 MMOS, PMOS, 和 SMOS ([pGSLM (2021)](../../Models/SpeechLM/2021.09.07_pGSLM.md); [SpeechGPT-Gen (2024)](../../Models/Speech_LLM/2024.01.24_SpeechGPT-Gen.md)).
+MOS 的变体关注语音质量的不同方面, 包括 MMOS, PMOS, 和 SMOS ([pGSLM (2021)](../../Models/SpeechLM/2021.09.07_pGSLM.md); [SpeechGPT-Gen (2024)](../../Models/SpeechLM/2024.01.24_SpeechGPT-Gen.md)).
 它们分别评估给定的语音的自然性, 韵律, 和音色相似性.
 
 通常, 评估自然性或音色相似性涉及收集人类意见.
