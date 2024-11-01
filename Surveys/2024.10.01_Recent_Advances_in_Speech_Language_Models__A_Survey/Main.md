@@ -58,17 +58,17 @@ Additionally, we systematically survey the various capabilities of SpeechLMs, ca
 Large Language Models (LLMs) have demonstrated remarkable capabilities in generating text and performing a wide array of natural language processing tasks ([GPT-4 (2023)](../../Models/TextLM/2023.03.15_GPT-4.md); [LLaMA3 (2024)](../../Models/TextLM/2024.07.31_LLaMA3.md); [OPT (2022)](../../Models/TextLM/2022.05.02_OPT.md)), serving as powerful foundation models for AI-driven language understanding and generation.
 Their success has also spurred numerous applications in various other domains, yet the reliance solely on text-based modalities presents a significant limitation.
 This leads to the development of speech-based generative models, which allow to interact with humans more naturally and intuitively.
-The inclusion of speech not only facilitates real-time voice interactions but also enriches communication by combining both text and speech information ([dGSLM (2022)](../../Models/SpeechLM/2022.03.30_dGSLM.md); [SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md)).
+The inclusion of speech not only facilitates real-time voice interactions but also enriches communication by combining both text and speech information ([dGSLM (2022)](../../Models/SpeechLM/2022.03.30_dGSLM.md); [SpiRit-LM (2024)](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md)).
 
 Given the extensive mutual information between text and speech, it is natural to modify existing LLMs to enable speech interaction capabilities.
-A straightforward approach is to adopt an "Automatic Speech Recognition (ASR) + LLM + Text-to-Speech (TTS)" framework (Fig.01 (a)) ([AudioGPT (2023)](../../Models/Speech_LLM/2023.04.25_AudioGPT.md)).
+A straightforward approach is to adopt an "Automatic Speech Recognition (ASR) + LLM + Text-to-Speech (TTS)" framework (Fig.01 (a)) ([AudioGPT (2023)](../../Models/SpeechLM/2023.04.25_AudioGPT.md)).
 In this setup, the user's spoken input is first processed by the ASR module, which converts it into text.
 The LLM then generates a text response based on this transcription.
 Finally, the TTS module transforms the text response back into speech, which is played back to the user.
 However, this naive solution mainly suffers from the following two problems.
 (1) **Information loss.** Speech signals not only contain semantic information (i.e., the meaning of the speech) but also paralinguistic information (e.g., pitch, timbre, tonality, etc.).
-Putting a text-only LLM in the middle will cause the complete loss of paralinguistic information in the input speech ([SpeechGPT (2023)](../../Models/Speech_LLM/2023.05.18_SpeechGPT.md)).
-(2) **Cumulative error.** A staged approach like this can easily lead to cumulative errors throughout the pipeline, particularly in the ASR-LLM stage ([AudioChatLLaMA (2023)](../../Models/Speech_LLM/2023.11.12_AudioChatLLaMA.md)).
+Putting a text-only LLM in the middle will cause the complete loss of paralinguistic information in the input speech ([SpeechGPT (2023)](../../Models/SpeechLM/2023.05.18_SpeechGPT.md)).
+(2) **Cumulative error.** A staged approach like this can easily lead to cumulative errors throughout the pipeline, particularly in the ASR-LLM stage ([AudioChatLLaMA (2023)](../../Models/SpeechLM/2023.11.12_AudioChatLLaMA.md)).
 Specifically, transcription errors that occur when converting speech to text in the ASR module can negatively impact the language generation performance of the LLM.
 
 The limitations of the naive ASR + LLM + TTS framework have led to the development of Speech Language Models (SpeechLMs, Fig.01 (b)).
@@ -84,17 +84,17 @@ By working directly with the encoded speech tokens, SpeechLMs effectively mitiga
 大语言模型 (Large Language Models, LLMs) 在生成文本和执行各种自然语言处理任务方面展现出了惊人的能力  ([GPT-4 (2023)](../../Models/TextLM/2023.03.15_GPT-4.md); [LLaMA3 (2024)](../../Models/TextLM/2024.07.31_LLaMA3.md); [OPT (2022)](../../Models/TextLM/2022.05.02_OPT.md)), 正在作为 AI 驱动语言理解和生成的强大基础模型.
 其成功也促进了其他领域的许多应用, 然而, 仅依靠文本输入的限制会导致语音交互的局限性.
 这也导致了基于语音的生成模型的发展, 以允许人类更自然和直观地与之交互.
-语音的引入不仅可以促进实时语音交互, 而且还可以增强交流, 因为它可以结合文本和语音信息 ([dGSLM (2022)](../../Models/SpeechLM/2022.03.30_dGSLM.md); [SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md)).
+语音的引入不仅可以促进实时语音交互, 而且还可以增强交流, 因为它可以结合文本和语音信息 ([dGSLM (2022)](../../Models/SpeechLM/2022.03.30_dGSLM.md); [SpiRit-LM (2024)](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md)).
 
 给定文本和语音之间的广泛互信息, 可以自然地修改现有的 LLMs 以实现语音交互能力.
-一种直接的方法是采用 "自动语音识别 (ASR) + LLM + 文本转语音 (TTS)" 框架 (Fig.01 (a)) ([AudioGPT (2023)](../../Models/Speech_LLM/2023.04.25_AudioGPT.md)).
+一种直接的方法是采用 "自动语音识别 (ASR) + LLM + 文本转语音 (TTS)" 框架 (Fig.01 (a)) ([AudioGPT (2023)](../../Models/SpeechLM/2023.04.25_AudioGPT.md)).
 在这种设置中, 用户的说话输入首先被 ASR 模块处理, 它将其转换为文本.
 然后, LLM 根据此转录文本生成文本响应.
 最后, TTS 模块将文本响应转换回语音, 并播放给用户.
 然而, 这种简单的解决方案主要存在以下两个问题.
 (1) **信息损失.** 语音信号不仅包含语义信息 (即语音的含义), 还包含其他副语言信息 (如音高, 音色, 音调等).
-将文本 LLM 放在中间将导致输入语音丢失全部的副语言信息 ([SpeechGPT (2023)](../../Models/Speech_LLM/2023.05.18_SpeechGPT.md)).
-(2) **累积错误.** 这种分阶段的方法容易导致流水线中的累积错误, 特别是在 ASR-LLM 阶段 ([AudioChatLLaMA (2023)](../../Models/Speech_LLM/2023.11.12_AudioChatLLaMA.md)).
+将文本 LLM 放在中间将导致输入语音丢失全部的副语言信息 ([SpeechGPT (2023)](../../Models/SpeechLM/2023.05.18_SpeechGPT.md)).
+(2) **累积错误.** 这种分阶段的方法容易导致流水线中的累积错误, 特别是在 ASR-LLM 阶段 ([AudioChatLLaMA (2023)](../../Models/SpeechLM/2023.11.12_AudioChatLLaMA.md)).
 具体来说, ASR 模块将语音转换为文本时发生的错误会对 LLM 的语言生成性能产生负面影响.
 
 这种简单的 "ASR + LLM + TTS" 框架的局限性激发了**语音语言模型 (Speech Language Models, SpeechLMs)** 的发展 (Fig.01 (b)).
@@ -216,7 +216,7 @@ In this section, we survey challenges, unsolved questions, and possible directio
 <summary>展开原文</summary>
 
 Current research on SpeechLMs encompasses key components such as speech tokenizers, language models, and vocoders, each offering a diverse range of options.
-While some studies have compared various component choices—primarily focusing on speech tokenizers—the comparisons tend to be limited in scope and depth ([GSLM (2021)](../../Models/SpeechLM/2021.02.01_GSLM.md); [AudioPaLM (2023)](../../Models/Speech_LLM/2023.06.22_AudioPaLM.md)).
+While some studies have compared various component choices—primarily focusing on speech tokenizers—the comparisons tend to be limited in scope and depth ([GSLM (2021)](../../Models/SpeechLM/2021.02.01_GSLM.md); [AudioPaLM (2023)](../../Models/SpeechLM/2023.06.22_AudioPaLM.md)).
 Consequently, there remains a significant gap in understanding the advantages and disadvantages of different component selections.
 Therefore, studies aimed at comprehensively comparing these choices are essential.
 Such an investigation would yield valuable insights and serve as a guide for selecting more efficient components when developing SpeechLMs.
@@ -225,7 +225,7 @@ Such an investigation would yield valuable insights and serve as a guide for sel
 <br>
 
 当前关于语音语言模型的研究涵盖了语音分词器, 语言模型和声码器等关键组件, 这些组件都提供了多种选择.
-尽管一些研究已经比较了各种组件的选择, 主要集中在语音分词器上, 但这些比较往往在范围和深度上有限 ([GSLM (2021)](../../Models/SpeechLM/2021.02.01_GSLM.md); [AudioPaLM (2023)](../../Models/Speech_LLM/2023.06.22_AudioPaLM.md)).
+尽管一些研究已经比较了各种组件的选择, 主要集中在语音分词器上, 但这些比较往往在范围和深度上有限 ([GSLM (2021)](../../Models/SpeechLM/2021.02.01_GSLM.md); [AudioPaLM (2023)](../../Models/SpeechLM/2023.06.22_AudioPaLM.md)).
 所以对于不同组件选择的优缺点仍存在显著的理解差距.
 因此, 旨在全面比较这些选择的研究至关重要.
 这样的研究将提供宝贵的见解, 并在开发语音语言模型时作为选择更高效组件的指南.
