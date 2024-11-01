@@ -44,21 +44,21 @@ We refer to them as **semantic tokens** here.
 Most SpeechLMs only employ **semantic tokens** to represent speech.
 [GSLM (2021)](../../Models/SpeechLM/2021.02.01_GSLM.md) the first-ever SpeechLM, compares three tokenizers, which include [Contrastive Predictive Coding (CPC) (2018)](../../Models/Speech_Representaion/2018.07.10_CPC.md), [Wav2Vec 2.0 (2020)](../../Models/Speech_Representaion/2020.06.20_Wav2Vec2.0.md), and [HuBERT (2021)](../../Models/Speech_Representaion/2021.06.14_HuBERT.md).
 It concludes that HuBERT performs the best on various tasks such as speech resynthesis and speech generation.
-A large number of works follow this setting and use HuBERT as the speech tokenizer ([TWIST (2023)](../../Models/Speech_LLM/2023.05.22_TWIST.md); [SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md); [SpeechGPT (2023)](../../Models/Speech_LLM/2023.05.18_SpeechGPT.md)).
-[AudioPaLM (2023)](../../Models/Speech_LLM/2023.06.22_AudioPaLM.md) experiments the choice between [W2V-BERT (2021)](../../Models/Speech_Representaion/2021.08.07_W2V-BERT.md) , USM-v1 ([Google USM (2023)](../../Models/Speech_LLM/2023.03.02_USM.md)), and USM-v2 ([AudioPaLM (2023)](../../Models/Speech_LLM/2023.06.22_AudioPaLM.md)) (which is a modified version of USM-v1), and it concludes that USM-v2 is the best-performing speech tokenizer on ASR and Speech Translation (ST) tasks.
+A large number of works follow this setting and use HuBERT as the speech tokenizer ([TWIST (2023)](../../Models/SpeechLM/2023.05.22_TWIST.md); [SpiRit-LM (2024)](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md); [SpeechGPT (2023)](../../Models/SpeechLM/2023.05.18_SpeechGPT.md)).
+[AudioPaLM (2023)](../../Models/SpeechLM/2023.06.22_AudioPaLM.md) experiments the choice between [W2V-BERT (2021)](../../Models/Speech_Representaion/2021.08.07_W2V-BERT.md) , USM-v1 ([Google USM (2023)](../../Models/SpeechLM/2023.03.02_Google_USM.md)), and USM-v2 ([AudioPaLM (2023)](../../Models/SpeechLM/2023.06.22_AudioPaLM.md)) (which is a modified version of USM-v1), and it concludes that USM-v2 is the best-performing speech tokenizer on ASR and Speech Translation (ST) tasks.
 
-Although semantic tokens excel at generating semantically meaningful speech because of the modeling of the contextual information within speech waveforms, researchers find out that the speech generated solely upon semantic tokens lacks expressive information such as prosody and different pitches or timbres ([Expresso (2023)](../../Datasets/2023.08.10_Expresso.md); [SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md)).
+Although semantic tokens excel at generating semantically meaningful speech because of the modeling of the contextual information within speech waveforms, researchers find out that the speech generated solely upon semantic tokens lacks expressive information such as prosody and different pitches or timbres ([Expresso (2023)](../../Datasets/2023.08.10_Expresso.md); [SpiRit-LM (2024)](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md)).
 To conquer this limitation, **paralinguistic tokens** can be integrated into the modeling process to capture expressive information with speeches.
 Specifically, [pGSLM (2021)](../../Models/SpeechLM/2021.09.07_pGSLM.md) proposes to use the fundamental frequency (F0) and unit duration as prosody features to complement the HuBERT semantic tokens, and trains a multi-stream transformer language model to predict the semantic tokens, pitch (F0), and unit duration separately.
-Similarly, [SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md) complements the HuBERT semantic tokens with pitch and style tokens ([Sonar Expressive (2023)](../../Models/S2ST/Sonar_Expressive.md)).
-This incorporation of extra acoustic tokens allows SpeechLMs to more effectively capture expressive elements without significantly compromising semantic understanding ([SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md)).
+Similarly, [SpiRit-LM (2024)](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md) complements the HuBERT semantic tokens with pitch and style tokens ([Sonar Expressive (2023)](../../Models/S2ST/Sonar_Expressive.md)).
+This incorporation of extra acoustic tokens allows SpeechLMs to more effectively capture expressive elements without significantly compromising semantic understanding ([SpiRit-LM (2024)](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md)).
 
 Another type is **acoustic tokens**, which are tokens aiming to capture the essential acoustic features to reconstruct high-fidelity speech, primarily obtained from neural audio codec models (see [Acoustic Generation Speech Tokenizers](Sec.03.Components.md#312acoustic-generation-objective-声学生成目标)).
 Codec models aim to learn the compressed representation of audio, so it is anticipated that both the semantic and acoustic information present in a speech waveform can be encoded in the representation.
 Some studies attempt to directly model the codec tokens in an autoregressive manner.
 [VALL-E (2023)](../../Models/SpeechLM/2023.01.05_VALL-E.md) utilizes codec tokens to achieve zero-shot TTS.
 It encodes a 3-second audio clip using [EnCodec (2022)](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) as a prompt, enabling the TTS system to synthesize speech that matches the timbre information of the prompt.
-[VioLA (2023)](../../Models/Speech_LLM/2023.05.25_VioLA.md) uses codec tokens in a SpeechLM capable of performing ASR, TTS, and Machine Translation (in text).
+[VioLA (2023)](../../Models/SpeechLM/2023.05.25_VioLA.md) uses codec tokens in a SpeechLM capable of performing ASR, TTS, and Machine Translation (in text).
 
 </details>
 <br>
@@ -71,21 +71,21 @@ It encodes a 3-second audio clip using [EnCodec (2022)](../../Models/Speech_Neur
 在这里, 我们将它们称为**语义 Token (Semantic Tokens)**.
 
 大多数语音语言模型仅采用语义 Token 来表示语音.
-- [GSLM (2021)](../../Models/SpeechLM/2021.02.01_GSLM.md) 是首个语音语言模型, 它比较了三个分词器, 包括 [Contrastive Predictive Coding (CPC) (2018)](../../Models/Speech_Representaion/2018.07.10_CPC.md), [Wav2Vec 2.0 (2020)](../../Models/Speech_Representaion/2020.06.20_Wav2Vec2.0.md), 和 [HuBERT (2021)](../../Models/Speech_Representaion/2021.06.14_HuBERT.md). 它得出结论, HuBERT 在各种任务上都表现最佳, 如语音重建和语音生成. 大量工作都遵循这一设置并使用 HuBERT 作为语音分词器 ([TWIST (2023)](../../Models/Speech_LLM/2023.05.22_TWIST.md); [SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md); [SpeechGPT (2023)](../../Models/Speech_LLM/2023.05.18_SpeechGPT.md)).
-- [AudioPaLM (2023)](../../Models/Speech_LLM/2023.06.22_AudioPaLM.md) 试验了 [W2V-BERT (2021)](../../Models/Speech_Representaion/2021.08.07_W2V-BERT.md) 、USM-v1 ([Google USM (2023)](../../Models/Speech_LLM/2023.03.02_USM.md)) 和 USM-v2 ([AudioPaLM (2023)](../../Models/Speech_LLM/2023.06.22_AudioPaLM.md)) (USM-v1 的修改版), 并得出结论, USM-v2 是语音分词器在 ASR 和 ST 任务上的最佳选择.
+- [GSLM (2021)](../../Models/SpeechLM/2021.02.01_GSLM.md) 是首个语音语言模型, 它比较了三个分词器, 包括 [Contrastive Predictive Coding (CPC) (2018)](../../Models/Speech_Representaion/2018.07.10_CPC.md), [Wav2Vec 2.0 (2020)](../../Models/Speech_Representaion/2020.06.20_Wav2Vec2.0.md), 和 [HuBERT (2021)](../../Models/Speech_Representaion/2021.06.14_HuBERT.md). 它得出结论, HuBERT 在各种任务上都表现最佳, 如语音重建和语音生成. 大量工作都遵循这一设置并使用 HuBERT 作为语音分词器 ([TWIST (2023)](../../Models/SpeechLM/2023.05.22_TWIST.md); [SpiRit-LM (2024)](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md); [SpeechGPT (2023)](../../Models/SpeechLM/2023.05.18_SpeechGPT.md)).
+- [AudioPaLM (2023)](../../Models/SpeechLM/2023.06.22_AudioPaLM.md) 试验了 [W2V-BERT (2021)](../../Models/Speech_Representaion/2021.08.07_W2V-BERT.md) 、USM-v1 ([Google USM (2023)](../../Models/SpeechLM/2023.03.02_Google_USM.md)) 和 USM-v2 ([AudioPaLM (2023)](../../Models/SpeechLM/2023.06.22_AudioPaLM.md)) (USM-v1 的修改版), 并得出结论, USM-v2 是语音分词器在 ASR 和 ST 任务上的最佳选择.
 
-尽管语义 Token 由于建模语音波形中的上下文信息而在生成语义意义的语音方面表现优异, 但研究人员发现, 仅仅使用语义 Token 生成的语音缺乏表现力, 如语调和不同的音高或音色 ([Expresso (2023)](../../Datasets/2023.08.10_Expresso.md); [SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md)).
+尽管语义 Token 由于建模语音波形中的上下文信息而在生成语义意义的语音方面表现优异, 但研究人员发现, 仅仅使用语义 Token 生成的语音缺乏表现力, 如语调和不同的音高或音色 ([Expresso (2023)](../../Datasets/2023.08.10_Expresso.md); [SpiRit-LM (2024)](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md)).
 为了克服这一局限, **副语言 Token (Paralinguistic Tokens)** 可以被集成到建模过程中, 以捕捉表现性信息的语音.
 - [pGSLM (2021)](../../Models/SpeechLM/2021.09.07_pGSLM.md) 提出使用基频 (F0) 和单元时长作为语调特征来补充 HuBERT 语义 Token, 并训练多路 Transformer 语言模型来分别预测语义 Token, 声调 (F0) 和单元持续时间.
-- [SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md) 使用声调和风格 Token 补充 HuBERT 语义 Token ([Sonar Expressive (2023)](../../Models/S2ST/Sonar_Expressive.md)).
-  这种额外的声学 Token 的整合允许语音语言模型能够有效地捕捉表现力元素而不显著牺牲语义理解 ([SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md)).
+- [SpiRit-LM (2024)](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md) 使用声调和风格 Token 补充 HuBERT 语义 Token ([Sonar Expressive (2023)](../../Models/S2ST/Sonar_Expressive.md)).
+  这种额外的声学 Token 的整合允许语音语言模型能够有效地捕捉表现力元素而不显著牺牲语义理解 ([SpiRit-LM (2024)](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md)).
 
 其他类型的 Token 是**声学 Token**, 它们旨在捕捉必要的声学特征以重构高保真度的语音, 主要来自神经音频编解码器模型 (参见 [Sec.3.1.2](Sec.03.Components.md#312acoustic-generation-objective-声学生成目标)).
 编解码器模型旨在学习音频的压缩表示, 因此预计语音波形中的语义和声学信息都可以编码在表示中.
 一些研究试图直接在自回归方式下对编解码器 Token 建模.
 - [VALL-E (2023)](../../Models/SpeechLM/2023.01.05_VALL-E.md) 使用编解码器 Token 实现零样本 TTS.
   它使用 [EnCodec (2022)](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) 编码 3 秒的音频作为提示, 使得 TTS 系统能够合成与提示的音色信息匹配的语音.
-- [VioLA (2023)](../../Models/Speech_LLM/2023.05.25_VioLA.md) 使用编解码器 Token 在语音语言模型中实现 ASR, TTS 和机器翻译 (文本).
+- [VioLA (2023)](../../Models/SpeechLM/2023.05.25_VioLA.md) 使用编解码器 Token 在语音语言模型中实现 ASR, TTS 和机器翻译 (文本).
 
 #### Discussion: 讨论
 
@@ -100,7 +100,7 @@ Researchers have tried two ways to balance these trade-offs.
 The first involves combining semantic and acoustic tokens into a single sequence.
 [AudioLM (2022)](../../Models/SpeechLM/2022.09.07_AudioLM.md) proposes a hierarchical modeling scheme that first models semantic tokens from [W2V-BERT (2021)](../../Models/Speech_Representaion/2021.08.07_W2V-BERT.md)  and then uses these tokens to predict acoustic tokens from [SoundStream (2021)](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md), which ultimately generates speech.
 However, this kind of approach increases sequence length, which increases modeling complexity.
-The second strategy leverages [**mixed tokens**](Sec.03.Components.md#313mixed-objective-混合目标) to jointly model semantic and acoustic information, showing promising results in [Moshi (2024)](../../Models/Speech_LLM/2024.09.17_Moshi.md) and [SpeechGPT-Gen (2024)](../../Models/Speech_LLM/2024.01.24_SpeechGPT-Gen.md).
+The second strategy leverages [**mixed tokens**](Sec.03.Components.md#313mixed-objective-混合目标) to jointly model semantic and acoustic information, showing promising results in [Moshi (2024)](../../Models/SpeechLM/2024.09.17_Moshi.md) and [SpeechGPT-Gen (2024)](../../Models/SpeechLM/2024.01.24_SpeechGPT-Gen.md).
 
 </details>
 <br>
@@ -115,7 +115,7 @@ The second strategy leverages [**mixed tokens**](Sec.03.Components.md#313mixed-o
   [AudioLM (2022)](../../Models/SpeechLM/2022.09.07_AudioLM.md) 提出了分层建模方案, 首先建模来自 [W2V-BERT (2021)](../../Models/Speech_Representaion/2021.08.07_W2V-BERT.md) 的语义 Token, 然后使用这些 Token 预测来自 [SoundStream (2021)](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md) 的声学 Token, 最后生成语音.
   这种方法可以显著减少序列长度, 但会增加模型的复杂度.
 - 第二种方式: 利用[混合 Token](Sec.03.Components.md#313mixed-objective-混合目标) 来同时建模语义和声学信息.
-  这种方式在 [Moshi (2024)](../../Models/Speech_LLM/2024.09.17_Moshi.md) 和 [SpeechGPT-Gen (2024)](../../Models/Speech_LLM/2024.01.24_SpeechGPT-Gen.md) 中都取得了良好的结果.
+  这种方式在 [Moshi (2024)](../../Models/SpeechLM/2024.09.17_Moshi.md) 和 [SpeechGPT-Gen (2024)](../../Models/SpeechLM/2024.01.24_SpeechGPT-Gen.md) 中都取得了良好的结果.
 
 ### 4.1.2.Continuous Features: 连续特征
 
@@ -126,9 +126,9 @@ Continuous features, in contrast to discrete features, are unquantized, real-val
 These features capture fine-grained, nuanced aspects of speech that may be lost in discretization processes.
 Continuous features can include spectral representations like mel-spectrograms or latent representations extracted from neural networks.
 The exploration of leveraging continuous features to condition SpeechLMs is still in its infancy.
-[Spectron (2023)](../../Models/Speech_LLM/2023.05.24_Spectron.md) performs speech continuation by predicting the spectrograms frame-by-frame.
+[Spectron (2023)](../../Models/SpeechLM/2023.05.24_Spectron.md) performs speech continuation by predicting the spectrograms frame-by-frame.
 However, the generation of speech spectrograms still needs to be conditioned on text transcripts, which is not an end-to-end speech generation approach.
-[Mini-Omni (2024)](../../Models/MultiModal/2024.08.27_Mini-Omni.md) extracts intermediate representations from a frozen Whisper encoder as input for the SpeechLM, whereas [LauraGPT (2023)](../../Models/Speech_LLM/2023.10.07_LauraGPT.md) employs an audio encoder trained alongside the SpeechLM to derive latent representations from input speech.
+[Mini-Omni (2024)](../../Models/SpeechLM/2024.08.27_Mini-Omni.md) extracts intermediate representations from a frozen Whisper encoder as input for the SpeechLM, whereas [LauraGPT (2023)](../../Models/SpeechLM/2023.10.07_LauraGPT.md) employs an audio encoder trained alongside the SpeechLM to derive latent representations from input speech.
 
 </details>
 <br>
@@ -137,10 +137,10 @@ However, the generation of speech spectrograms still needs to be conditioned on 
 这些特征捕获了语音的细粒度微妙的方面, 这些方面在离散化过程中可能丢失.
 连续特征可以包括频谱表示 (如梅尔频谱) 或从神经网络中提取的隐表示.
 利用连续特征来条件化语音语言模型的探索仍处于初步阶段.
-[Spectron (2023)](../../Models/Speech_LLM/2023.05.24_Spectron.md) 通过逐帧预测语谱图来实现语音连续.
+[Spectron (2023)](../../Models/SpeechLM/2023.05.24_Spectron.md) 通过逐帧预测语谱图来实现语音连续.
 然而, 生成语音频谱图仍然需要根据文本转录作为条件, 这不是端到端语音生成方法.
-[Mini-Omni (2024)](../../Models/MultiModal/2024.08.27_Mini-Omni.md) 从冻结的 Whisper 编码器中提取中间表示作为语音语言模型的输入.
-[LauraGPT (2023)](../../Models/Speech_LLM/2023.10.07_LauraGPT.md) 采用与语音语言模型一起训练的音频编码器, 从输入语音中提取隐表示.
+[Mini-Omni (2024)](../../Models/SpeechLM/2024.08.27_Mini-Omni.md) 从冻结的 Whisper 编码器中提取中间表示作为语音语言模型的输入.
+[LauraGPT (2023)](../../Models/SpeechLM/2023.10.07_LauraGPT.md) 采用与语音语言模型一起训练的音频编码器, 从输入语音中提取隐表示.
 
 ## 4.2.Training Stages: 训练阶段
 
@@ -216,7 +216,7 @@ Some SpeechLMs use cold initialization during the pre-training phase, where mode
 The pioneering SpeechLM---[GSLM (2021)](../../Models/SpeechLM/2021.02.01_GSLM.md)--trained a [Transformer (2017)](../../Models/_Transformer/2017.06.12_Transformer.md) from scratch to serve as the language model.
 This study demonstrated the effectiveness of the SpeechLM pipeline and compared performance across various speech tokenizer options.
 They found that [HuBERT (2021)](../../Models/Speech_Representaion/2021.06.14_HuBERT.md) outperformed [CPC (2018)](../../Models/Speech_Representaion/2018.07.10_CPC.md) and [Wav2vec 2.0 (2020)](../../Models/Speech_Representaion/2020.06.20_Wav2Vec2.0.md) in understanding speech content and generating natural speech.
-[SUTLM (2023)](../../Models/Speech_LLM/2023.10.12_SUTLM.md) also uses a transformer as the language model.
+[SUTLM (2023)](../../Models/SpeechLM/2023.10.12_SUTLM.md) also uses a transformer as the language model.
 They studied the critical problem of jointly modeling speech and text tokens by comparing four different modeling methods: speech-only, text-only, concatenated speech-text, and alternating (interleaving) speech-text.
 They showed that the setting of alternating speech-text performs the best in cross-modal evaluations.
 Table.03 illustrates the four modeling methods.
@@ -228,7 +228,7 @@ Table.03 illustrates the four modeling methods.
 - 最早的语音语言模型 [GSLM (2021)](../../Models/SpeechLM/2021.02.01_GSLM.md) 以从头开始训练 [Transformer (2017)](../../Models/_Transformer/2017.06.12_Transformer.md) 作为语言模型.
 这一研究说明了语音语言模型流程的有效性, 并对不同的语音分词器选项进行了性能比较.
 他们发现 [HuBERT (2021)](../../Models/Speech_Representaion/2021.06.14_HuBERT.md) 在理解语音内容和生成自然语音方面优于 [CPC (2018)](../../Models/Speech_Representaion/2018.07.10_CPC.md) 和 [Wav2vec 2.0 (2020)](../../Models/Speech_Representaion/2020.06.20_Wav2Vec2.0.md).
-- [SUTLM (2023)](../../Models/Speech_LLM/2023.10.12_SUTLM.md) 也使用了 Transformer 作为语言模型.
+- [SUTLM (2023)](../../Models/SpeechLM/2023.10.12_SUTLM.md) 也使用了 Transformer 作为语言模型.
 他们研究了联合建模语音和文本 Token 时的关键问题, 通过比较四种不同的建模方法: 仅语音, 仅文本, 连接语音文本, 交替 (交错) 语音文本.
 他们发现交替语音文本的设置在跨模态评估中表现最佳.
 表 03 总结了四种建模方法.
@@ -242,8 +242,8 @@ Some works leverage a different architecture from the standard transformer.
 Since there are no existing checkpoints for those self-proposed architectures, it is necessary to train them from scratch.
 For example, [pGSLM (2021)](../../Models/SpeechLM/2021.09.07_pGSLM.md) proposes a multi-stream transformer language model (MS-TLM) that takes multiple streams of input and predicts multiple streams of output to generate speech units, duration, and pitch embeddings simultaneously.
 [dGSLM (2022)](../../Models/SpeechLM/2022.03.30_dGSLM.md) introduced a dialogue transformer language model (DLM) to jointly model the dialogue speech data from the two speakers.
-To enable the listening ability of SpeechLMs while speaking, [LSLM (2024)](../../Models/Speech_LLM/2024.08.05_LSLM.md) proposes to attach a streaming self-supervised learning (SSL) Encoder to an autoregressive token-based TTS Model.
-[VioLA (2023)](../../Models/Speech_LLM/2023.05.25_VioLA.md) introduced a multi-task auto-regressive codec language model to autoregressively generate codec tokens instead of speech unit tokens.
+To enable the listening ability of SpeechLMs while speaking, [LSLM (2024)](../../Models/SpeechLM/2024.08.05_LSLM.md) proposes to attach a streaming self-supervised learning (SSL) Encoder to an autoregressive token-based TTS Model.
+[VioLA (2023)](../../Models/SpeechLM/2023.05.25_VioLA.md) introduced a multi-task auto-regressive codec language model to autoregressively generate codec tokens instead of speech unit tokens.
 
 </details>
 <br>
@@ -252,8 +252,8 @@ To enable the listening ability of SpeechLMs while speaking, [LSLM (2024)](../..
 因为对于这些自创的架构没有现有的权重检查点, 因此需要从头开始训练它们.
 - [pGSLM (2021)](../../Models/SpeechLM/2021.09.07_pGSLM.md) 提出了多路的 Transformer 语言模型 (MS-TLM), 接受多个输入流, 预测多个输出流, 来同时生成语音单元, 时长, 和音高嵌入.
 - [dGSLM (2022)](../../Models/SpeechLM/2022.03.30_dGSLM.md) 引入了对话 Transformer 语言模型 (DLM), 用于联合建模两个发言人的对话语音数据.
-- [LSLM (2024)](../../Models/Speech_LLM/2024.08.05_LSLM.md) 为了使得语音语言模型在说话时具有听觉能力, 提出一种流式自监督学习 (SSL) 编码器, 并将其附加到自回归 Token-based TTS 模型.
-- [VioLA (2023)](../../Models/Speech_LLM/2023.05.25_VioLA.md) 引入了一个多任务自回归编解码语言模型 (MLAC), 用于自回归生成编解码器 Token, 而不是语音单元 Token.
+- [LSLM (2024)](../../Models/SpeechLM/2024.08.05_LSLM.md) 为了使得语音语言模型在说话时具有听觉能力, 提出一种流式自监督学习 (SSL) 编码器, 并将其附加到自回归 Token-based TTS 模型.
+- [VioLA (2023)](../../Models/SpeechLM/2023.05.25_VioLA.md) 引入了一个多任务自回归编解码语言模型 (MLAC), 用于自回归生成编解码器 Token, 而不是语音单元 Token.
 
 #### Continued Pre-Training: 继续预训练
 
@@ -262,18 +262,18 @@ To enable the listening ability of SpeechLMs while speaking, [LSLM (2024)](../..
 
 In contrast to cold initialization, continued Pre-Training involves initializing the language model with pre-trained weights from a TextLM and then adapting it to handle speech tokens.
 This approach leverages the linguistic knowledge embedded in TextLMs, allowing for more efficient and effective training of SpeechLMs.
-Research by [TWIST (2023)](../../Models/Speech_LLM/2023.05.22_TWIST.md) found that starting with a textually pre-trained language model ([OPT (2022)](../../Models/TextLM/2022.05.02_OPT.md) and [LLaMA (2023)](../../Models/TextLM/2023.02.27_LLaMA.md)) can enhance the model's convergence rate and significantly improve its speech understanding capabilities.
+Research by [TWIST (2023)](../../Models/SpeechLM/2023.05.22_TWIST.md) found that starting with a textually pre-trained language model ([OPT (2022)](../../Models/TextLM/2022.05.02_OPT.md) and [LLaMA (2023)](../../Models/TextLM/2023.02.27_LLaMA.md)) can enhance the model's convergence rate and significantly improve its speech understanding capabilities.
 They also demonstrated that while training from text-pretrained checkpoints outperforms cold initialization, training from image-pretrained checkpoints yields poorer results compared to cold initialization.
 This indicates that not all pre-trained checkpoints are equally effective.
-Additionally, [AudioPaLM (2023)](../../Models/Speech_LLM/2023.06.22_AudioPaLM.md) trained the SpeechLM using [PaLM (2022)](../../Models/TextLM/2022.04.05_PaLM.md) and [PaLM-2 (2023)](../../Models/TextLM/2023.05.17_PaLM2.md), showing that the SpeechLM benefits from both an increased size of the pre-trained checkpoint and a larger training dataset.
+Additionally, [AudioPaLM (2023)](../../Models/SpeechLM/2023.06.22_AudioPaLM.md) trained the SpeechLM using [PaLM (2022)](../../Models/TextLM/2022.04.05_PaLM.md) and [PaLM-2 (2023)](../../Models/TextLM/2023.05.17_PaLM2.md), showing that the SpeechLM benefits from both an increased size of the pre-trained checkpoint and a larger training dataset.
 
 The performance of SpeechLMs can be further enhanced by **aligning** the text and speech modality representations.
-[SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md) found that continually pretraining on TextLM checkpoints using interleaving text and speech tokens can significantly boost the model's performance on speech understanding and generation.
+[SpiRit-LM (2024)](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md) found that continually pretraining on TextLM checkpoints using interleaving text and speech tokens can significantly boost the model's performance on speech understanding and generation.
 Additionally, their visualizations demonstrate that the similarity between text and speech features is notably higher in models trained with interleaved token sequences compared to those trained without this approach.
-[AudioChatLLaMA (2023)](../../Models/Speech_LLM/2023.11.12_AudioChatLLaMA.md) aims to ensure that the model produces consistent outputs regardless of whether the input is text or speech.
+[AudioChatLLaMA (2023)](../../Models/SpeechLM/2023.11.12_AudioChatLLaMA.md) aims to ensure that the model produces consistent outputs regardless of whether the input is text or speech.
 They address this challenge by treating text data in ASR datasets as prompts, allowing LLaMA to generate the corresponding responses.
 Consequently, both text and speech versions of the prompt can be utilized to train the model to provide the appropriate response.
-[Spectron (2023)](../../Models/Speech_LLM/2023.05.24_Spectron.md) solves the text-speech representation alignment problem by jointly supervising multiple objectives.
+[Spectron (2023)](../../Models/SpeechLM/2023.05.24_Spectron.md) solves the text-speech representation alignment problem by jointly supervising multiple objectives.
 Specifically, the input speech prompt is first transcribed into its text tokens, and then the model predicts the text token response.
 Finally, the text response is synthesized to output speech.
 
@@ -282,18 +282,18 @@ Finally, the text response is synthesized to output speech.
 
 和冷初始化相比, 继续预训练涉及使用预训练的 TextLM 权重来初始化语言模型, 然后将其修改为处理语音 Token.
 这种方法利用 TextLM 中内嵌的语言知识, 允许更有效和高效地训练语音语言模型.
-[TWIST (2023)](../../Models/Speech_LLM/2023.05.22_TWIST.md) 的研究发现从文本预训练语言模型 ([OPT (2022)](../../Models/TextLM/2022.05.02_OPT.md) 和 [LLaMA (2023)](../../Models/TextLM/2023.02.27_LLaMA.md)) 开始, 可以增强模型的收敛率并显著提高其语音理解能力.
+[TWIST (2023)](../../Models/SpeechLM/2023.05.22_TWIST.md) 的研究发现从文本预训练语言模型 ([OPT (2022)](../../Models/TextLM/2022.05.02_OPT.md) 和 [LLaMA (2023)](../../Models/TextLM/2023.02.27_LLaMA.md)) 开始, 可以增强模型的收敛率并显著提高其语音理解能力.
 他们还证明虽然从文本预训练检查点开始训练优于冷初始化训练的结果, 但从图像预训练检查点开始训练得到的结果差于冷初始化训练.
 这表明并非所有预训练检查点都具有相同的有效性.
-此外, [AudioPaLM (2023)](../../Models/Speech_LLM/2023.06.22_AudioPaLM.md) 使用 [PaLM (2022)](../../Models/TextLM/2022.04.05_PaLM.md) 和 [PaLM-2 (2023)](../../Models/TextLM/2023.05.17_PaLM2.md) 训练语音语言模型, 展示了语音语言模型受到预训练检查点的大小和训练数据集的增大所带来的好处.
+此外, [AudioPaLM (2023)](../../Models/SpeechLM/2023.06.22_AudioPaLM.md) 使用 [PaLM (2022)](../../Models/TextLM/2022.04.05_PaLM.md) 和 [PaLM-2 (2023)](../../Models/TextLM/2023.05.17_PaLM2.md) 训练语音语言模型, 展示了语音语言模型受到预训练检查点的大小和训练数据集的增大所带来的好处.
 
 语音语言模型的性能可以通过**对齐**文本和语音模态表示来进一步提高.
-- [SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md) 发现继续预训练 TextLM 检查点使用交替的文本和语音 Token 序列可以显著提高模型在语音理解和生成上的性能.
+- [SpiRit-LM (2024)](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md) 发现继续预训练 TextLM 检查点使用交替的文本和语音 Token 序列可以显著提高模型在语音理解和生成上的性能.
   此外, 他们的可视化表明了文本和语音特征之间的相似性在交替 Token 序列训练的模型中显著高于不使用该方法训练的模型.
-- [AudioChatLLaMA (2023)](../../Models/Speech_LLM/2023.11.12_AudioChatLLaMA.md) 旨在确保模型在输入为文本或语音时都能产生一致的输出.
+- [AudioChatLLaMA (2023)](../../Models/SpeechLM/2023.11.12_AudioChatLLaMA.md) 旨在确保模型在输入为文本或语音时都能产生一致的输出.
   他们通过将 ASR 数据集中的文本数据用作提示, 使 LLaMA 生成相应的响应来解决这个问题.
   因此, 模型可以利用文本和语音版本的提示来训练, 以提供适当的响应.
-- [Spectron (2023)](../../Models/Speech_LLM/2023.05.24_Spectron.md) 通过多目标监督联合训练模型解决了文本-语音表示对齐问题.
+- [Spectron (2023)](../../Models/SpeechLM/2023.05.24_Spectron.md) 通过多目标监督联合训练模型解决了文本-语音表示对齐问题.
   具体地, 输入语音提示首先被转录成文本 Token, 然后模型预测文本 Token 响应.
   最后, 文本响应被合成输出语音.
 
@@ -307,7 +307,7 @@ This phase is crucial for enhancing the pre-trained model's generalization capab
 Therefore, the key focus is on creating effective instruction-following datasets.
 
 Several approaches have been proposed to construct instruction-following datasets for SpeechLMs.
-[SpeechGPT (2023)](../../Models/Speech_LLM/2023.05.18_SpeechGPT.md) and [SpeechGPT-Gen (2024)](../../Models/Speech_LLM/2024.01.24_SpeechGPT-Gen.md) propose a two-stage instruction-tuning, including cross-modal instruction fine-tuning and chain-of-modality instruction fine-tuning.
+[SpeechGPT (2023)](../../Models/SpeechLM/2023.05.18_SpeechGPT.md) and [SpeechGPT-Gen (2024)](../../Models/SpeechLM/2024.01.24_SpeechGPT-Gen.md) propose a two-stage instruction-tuning, including cross-modal instruction fine-tuning and chain-of-modality instruction fine-tuning.
 In the first stage, instruction data are generated based on ASR datasets by appending the instruction to paired ASR data, asking the model to convert speech into text.
 Similarly, paired data is also used to create instruction data for performing TTS.
 In the second stage, they construct a speech-in-speech-out dataset by transforming a text-based instruction-following dataset using TTS.
@@ -315,7 +315,7 @@ In the second stage, they construct a speech-in-speech-out dataset by transformi
 First, they transform the input text prompt into a format that mimics natural speech patterns.
 Next, they discard the original text response and employ a TextLM to generate answers to the converted prompts, ensuring these responses also follow natural speech patterns.
 Finally, they synthesize the prompt/response pairs using TTS.
-[COSMIC (2023)](../../Models/Speech_LLM/2023.11.03_COSMIC.md) constructed speech QA data by asking GPT-3.5 to generate question-answer pairs based on the transcriptions of English TED talk speeches.
+[COSMIC (2023)](../../Models/SpeechLM/2023.11.03_COSMIC.md) constructed speech QA data by asking GPT-3.5 to generate question-answer pairs based on the transcriptions of English TED talk speeches.
 They showed the model trained on their proposed speech QA dataset can generalize to unseen tasks such as speech-to-text translation using in-context learning.
 
 </details>
@@ -326,7 +326,7 @@ They showed the model trained on their proposed speech QA dataset can generalize
 因此, 关键在于创建有效的指令遵循数据集.
 
 已经提出了几种方法来构建语音语言模型的指令遵循数据集.
-- [SpeechGPT (2023)](../../Models/Speech_LLM/2023.05.18_SpeechGPT.md) 和 [SpeechGPT-Gen (2024)](../../Models/Speech_LLM/2024.01.24_SpeechGPT-Gen.md) 提出了一种两阶段的指令微调, 包括跨模态指令微调和链式模态指令微调.
+- [SpeechGPT (2023)](../../Models/SpeechLM/2023.05.18_SpeechGPT.md) 和 [SpeechGPT-Gen (2024)](../../Models/SpeechLM/2024.01.24_SpeechGPT-Gen.md) 提出了一种两阶段的指令微调, 包括跨模态指令微调和链式模态指令微调.
 第一阶段, 基于 ASR 数据集生成指令数据, 通过将指令附加到配对的 ASR 数据中, 要求模型将语音转换为文本.
 类似地, 配对的数据也用于创建 TTS 的指令数据.
 第二阶段, 通过使用 TTS 转换基于文本的指令遵循数据集来构造语音-语音的数据集.
@@ -334,7 +334,7 @@ They showed the model trained on their proposed speech QA dataset can generalize
   首先, 将输入文本提示转换为模仿自然语音模式的格式.
   然后, 丢弃原始文本响应, 使用 TextLM 生成转换后提示的答案, 确保这些答案也遵循自然语音模式.
   最后, 使用 TTS 合成提示/响应对.
-- [COSMIC (2023)](../../Models/Speech_LLM/2023.11.03_COSMIC.md) 通过询问 GPT-3.5 基于英语 TED 演讲语音的转录来生成问答对, 构建语音问答数据集.
+- [COSMIC (2023)](../../Models/SpeechLM/2023.11.03_COSMIC.md) 通过询问 GPT-3.5 基于英语 TED 演讲语音的转录来生成问答对, 构建语音问答数据集.
 他们展示了在他们提出的语音问答数据集上训练的模型可以使用上下文学习泛化到未见过的任务, 如语音到文本的翻译.
 
 ## 4.3.Speech Generation Paradigm: 语音生成范式
@@ -371,7 +371,7 @@ This interaction consists of two key components:
 Both of these abilities require the model to effectively perform speech understanding (processing input) and speech generation (producing output) simultaneously.
 The study by [dGSLM (2022)](../../Models/SpeechLM/2022.03.30_dGSLM.md) introduces a dual-transformer architecture to model two-speaker dialogues, using one transformer to handle speech from each speaker.
 A cross-attention transformer layer is included to capture the interactions between the speakers' content.
-In contrast, [LSLM (2024)](../../Models/Speech_LLM/2024.08.05_LSLM.md) proposes a different approach, utilizing a single decoder-only Transformer to model one speaker's speech in the dialogue.
+In contrast, [LSLM (2024)](../../Models/SpeechLM/2024.08.05_LSLM.md) proposes a different approach, utilizing a single decoder-only Transformer to model one speaker's speech in the dialogue.
 This model incorporates a streaming SSL encoder that continuously processes input from the listening channel and fuses its embeddings with those from the speaking channel.
 
 </details>
@@ -385,7 +385,7 @@ This model incorporates a streaming SSL encoder that continuously processes inpu
 这两种能力都需要模型同时有效地执行语音理解 (处理输入) 和语音生成 (产生输出).
 - [dGSLM (2022)](../../Models/SpeechLM/2022.03.30_dGSLM.md) 的研究引入了一个双 Transformer 架构, 用于处理两个发言人的对话, 使用一个 Transformer 来处理每个发言人的语音.
 引入了一个交叉注意力 Transformer 层, 以捕捉发言人的内容之间的互动.
-- [LSLM (2024)](../../Models/Speech_LLM/2024.08.05_LSLM.md) 提出了一个不同的方法, 使用单个的仅解码器的 Transformer 模型来处理对话中的一个发言人的语音.
+- [LSLM (2024)](../../Models/SpeechLM/2024.08.05_LSLM.md) 提出了一个不同的方法, 使用单个的仅解码器的 Transformer 模型来处理对话中的一个发言人的语音.
   该模型包含一个流式 SSL 编码器, 持续处理来自听觉通道的输入, 并将其嵌入和说话通道的嵌入融合.
 
 ### Silence Mode: 静默模式
@@ -397,7 +397,7 @@ Silence Mode refers to the state in which the SpeechLMs remain inactive or silen
 This mode is essential for creating a natural conversational flow, allowing the model to avoid unnecessary interruptions.
 It is crucial for situations where a small group of users is having a discussion, as the SpeechLM needs to discern when to join in and when to stay silent.
 Additionally, it is important for the model to learn when to disregard instructions when users are not speaking at it.
-[VITA (2024)](../../Models/MultiModal/2024.08.09_VITA.md) is currently the only work that integrates silence mode.
+[VITA (2024)](../../Models/SpeechLM/2024.08.09_VITA.md) is currently the only work that integrates silence mode.
 This method involves training the model on both query speech and non-query audio, which may include environmental sounds or non-query speech.
 As a result, the model learns to output the **end-of-sequence** token to terminate its response when non-query audio is detected.
 
@@ -408,6 +408,6 @@ As a result, the model learns to output the **end-of-sequence** token to termina
 这一模式对于创建自然的对话流是至关重要的, 允许模型避免不必要的中断.
 这在小组用户讨论的情况下尤其重要, 因为语音语言模型需要辨别何时加入, 何时保持沉默.
 此外, 对于模型来说, 学习何时忽略指令, 当用户不说话时尤为重要.
-目前唯一集成静默模式的方法是 [VITA (2024)](../../Models/MultiModal/2024.08.09_VITA.md).
+目前唯一集成静默模式的方法是 [VITA (2024)](../../Models/SpeechLM/2024.08.09_VITA.md).
 该方法涉及在查询语音和非查询音频上训练模型, 这可能包括环境声音或非查询语音.
 因此, 当检测到非查询音频时, 模型学会输出**终止序列** Token 以终止其响应.
