@@ -68,7 +68,7 @@ The key design choices lie in how to effectively encode and quantize the speech 
 Then, a portion of the quantized representations is masked and modeled using a contrastive loss.
 [W2V-BERT (2021)](../../Models/Speech_Representaion/2021.08.07_W2V-BERT.md) is built upon wav2vec 2.0 and proposes to use Masked Language Modeling (MLM) loss ([BERT (2018)](../../Models/TextLM/2018.10.11_BERT.md)) in addition to contrastive loss.
 Similarly, [HuBERT (2021)](../../Models/Speech_Representaion/2021.06.14_HuBERT.md) uses the k-means algorithm to cluster the speech utterances into a certain number of hidden units, and then perform MLM to predict the target hidden units from the masked speech utterances.
-To better align the representation of text and speech modalities, [Google USM (2023)](../../Models/Speech_LLM/2023.03.02_USM.md) utilizes text-injection loss ([Maestro (2022)](../../Models/Speech_Representaion/2022.04.07_Maestro.md)) at the second pre-training stage to improve the performance and robustness of the downstream tasks.
+To better align the representation of text and speech modalities, [Google USM (2023)](../../Models/SpeechLM/2023.03.02_Google_USM.md) utilizes text-injection loss ([Maestro (2022)](../../Models/Speech_Representaion/2022.04.07_Maestro.md)) at the second pre-training stage to improve the performance and robustness of the downstream tasks.
 [WavLM (2021)](../../Models/Speech_Representaion/2021.10.26_WavLM.md) adds the speech denoising objective during pre-training.
 While the majority of speech tokenizer studies focus on semantic-related tasks such as ASR and TTS, WavLM shows that speech denoising can boost the performance of non-semantic tasks such as speaker verification and speech separation.
 A full list of downstream tasks is listed in [section 5](Sec.05.Applications.md).
@@ -91,7 +91,7 @@ A full list of downstream tasks is listed in [section 5](Sec.05.Applications.md)
 - [Wav2Vec 2.0 (2020)](../../Models/Speech_Representaion/2020.06.20_Wav2Vec2.0.md) 使用卷积编码器后接[乘积量化模块 (Product Quantization)](../../Modules/VQ/PQ.md)来离散化连续的音频波形. 然后量化表示的一部分被掩膜, 并使用对比损失 (Contrastive Loss) 来建模.
 - [W2V-BERT (2021)](../../Models/Speech_Representaion/2021.08.07_W2V-BERT.md) 建立在 wav2vec 2.0 之上, 并提出使用掩码语言模型 (Masked Language Modeling, MLM) 损失 ([BERT (2018)](../../Models/TextLM/2018.10.11_BERT.md)) 作为对比损失的补充项.
 - [HuBERT (2021)](../../Models/Speech_Representaion/2021.06.14_HuBERT.md) 使用 K 均值算法将语音句子聚类为一定数量的隐藏单元, 然后使用 MLM 从掩码的语音句子预测目标隐藏单元.
-- [Google USM (2023)](../../Models/Speech_LLM/2023.03.02_USM.md) 为了更好地对齐文本和语音模态之间的表示, 在第二阶段的预训练中使用文本注入损失 (Text-Injection Loss) ([Maestro (2022)](../../Models/Speech_Representaion/2022.04.07_Maestro.md)) 来提升下游任务的性能和鲁棒性.
+- [Google USM (2023)](../../Models/SpeechLM/2023.03.02_Google_USM.md) 为了更好地对齐文本和语音模态之间的表示, 在第二阶段的预训练中使用文本注入损失 (Text-Injection Loss) ([Maestro (2022)](../../Models/Speech_Representaion/2022.04.07_Maestro.md)) 来提升下游任务的性能和鲁棒性.
 - [WavLM (2021)](../../Models/Speech_Representaion/2021.10.26_WavLM.md) 在预训练过程中加入语音降噪目标. 尽管语音分词器研究主要关注语义相关任务如 ASR 和 TTS, WavLM 展示了语音降噪可以增强非语义任务如说话人验证和语音分离的性能.
 
 下游任务的完整列表可以在 [Sec.05](Sec.05.Applications.md) 中找到.
@@ -144,7 +144,7 @@ Speech tokenizers with a mixed objective aim to balance both semantic understand
 Currently, the development of these tokenizers is in its early stages.
 Most existing mixed speech tokenizers primarily adopt the architecture of acoustic generation speech tokenizers and focus on distilling information from semantic tokenizers into the acoustic tokenizer.
 [SpeechTokenizer (2023)](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) utilizes the RVQ-GAN ([EnCodec (2022)](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md); [SoundStream (2021)](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md)) architecture, distilling semantic information from [HuBERT (2021)](../../Models/Speech_Representaion/2021.06.14_HuBERT.md) to the first layer of RVQ.
-Building on SpeechTokenizer, Mimi ([Moshi (2024)](../../Models/Speech_LLM/2024.09.17_Moshi.md)) employs a single vector quantizer (VQ) to extract information from [WavLM (2021)](../../Models/Speech_Representaion/2021.10.26_WavLM.md) and incorporates another RVQ module to learn the acoustic information.
+Building on SpeechTokenizer, Mimi ([Moshi (2024)](../../Models/SpeechLM/2024.09.17_Moshi.md)) employs a single vector quantizer (VQ) to extract information from [WavLM (2021)](../../Models/Speech_Representaion/2021.10.26_WavLM.md) and incorporates another RVQ module to learn the acoustic information.
 
 </details>
 <br>
@@ -153,7 +153,7 @@ Building on SpeechTokenizer, Mimi ([Moshi (2024)](../../Models/Speech_LLM/2024.0
 目前, 这些分词器的发展处于初期阶段.
 大多数现有的混合语音分词器主要采用声学生成语音分词器的架构, 着重于将语义分词器中的信息蒸馏到声学分词器中.
 - [SpeechTokenizer (2023)](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) 使用 RVQ-GAN ([EnCodec (2022)](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md); [SoundStream (2021)](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md)) 架构, 将 [HuBERT (2021)](../../Models/Speech_Representaion/2021.06.14_HuBERT.md) 的语义信息蒸馏到 RVQ 的第一层.
-- [Mimi (2024)](../../Models/Speech_LLM/2024.09.17_Moshi.md) 基于 SpeechTokenizer 使用单个向量量化器 (VQ) 从 [WavLM (2021)](../../Models/Speech_Representaion/2021.10.26_WavLM.md) 中提取信息, 并集成另一个 RVQ 模块来学习声学信息.
+- [Mimi (2024)](../../Models/SpeechLM/2024.09.17_Moshi.md) 基于 SpeechTokenizer 使用单个向量量化器 (VQ) 从 [WavLM (2021)](../../Models/Speech_Representaion/2021.10.26_WavLM.md) 中提取信息, 并集成另一个 RVQ 模块来学习声学信息.
 
 ## 3.2.Language Model: 语言模型
 
@@ -178,7 +178,7 @@ $$
 \textbf{s}^{\text{out}} \sim \text{LM}(\textbf{s}^{\text{in}}, (E_s, \textbf{De}, E'_s)).
 $$
 
-Because the language model architecture of SpeechLMs is borrowed from TextLMs, it is natural that the resulting model can jointly model both text and speech modalities ([SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md); [SpeechGPT (2023)](../../Models/Speech_LLM/2023.05.18_SpeechGPT.md)).
+Because the language model architecture of SpeechLMs is borrowed from TextLMs, it is natural that the resulting model can jointly model both text and speech modalities ([SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md); [SpeechGPT (2023)](../../Models/SpeechLM/2023.05.18_SpeechGPT.md)).
 To achieve this, a naive and most adopted approach is to expand the vocabulary of the original TextLM to incorporate both text and speech tokens.
 Specifically, the speech embedding matrix is usually appended to the end of the text embedding matrix, resulting in a larger embedding matrix $E_m \in \mathbb{R}^{(|V_t|+|V_s|) \times h}$.
 Let $\textbf{m}$ be a token sequence containing both speech and text tokens, the resulting language model becomes
@@ -211,7 +211,7 @@ $$
 \textbf{s}^{\text{out}} \sim \text{LM}(\textbf{s}^{\text{in}}, (E_s, \textbf{De}, E'_s)).
 $$
 
-由于语音语言模型的语言模型架构是借鉴自文本语言模型的, 因此改造后的模型可以同时对文本和语音模态进行建模 ([SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md); [SpeechGPT (2023)](../../Models/Speech_LLM/2023.05.18_SpeechGPT.md)).
+由于语音语言模型的语言模型架构是借鉴自文本语言模型的, 因此改造后的模型可以同时对文本和语音模态进行建模 ([SpiRit-LM (2024)](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md); [SpeechGPT (2023)](../../Models/SpeechLM/2023.05.18_SpeechGPT.md)).
 为了实现这一目标, 最简单的和最流行的方法是将原始文本语言模型的词表扩展为包含文本和语音 Token 的词表.
 具体来说, 语音嵌入矩阵通常被追加到文本嵌入矩阵的末尾, 得到一个更大的嵌入矩阵 $E_m \in \mathbb{R}^{(|V_t|+|V_s|) \times h}$.
 令 $\textbf{m}$ 为包含语音和文本 Token 的 Token 序列, 则语言模型变为
@@ -243,7 +243,7 @@ There are two main pipelines: **Direct synthesis** and **input-enhanced synthesi
 **Direct synthesis** is the pipeline where the vocoder directly converts speech tokens generated by the language model into audio waveforms.
 For example, [Polyak et al. (2021)](../../Models/TTS3_Vocoder/2021.04.01_Speech_Resynthesis_from_Discrete_Disentangled_Self-Supervised_Representations.md) adapts the [HiFi-GAN (2020)](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md) architecture and takes discrete tokens as inputs.
 
-In contrast, **input-enhanced synthesis** employs an additional module to transform the tokens into a continuous latent representation before they are fed into the vocoder ([Seed-TTS (2024)](../../Models/Speech_LLM/2024.06.04_Seed-TTS.md); [TorToise-TTS (2023)](../../Models/Diffusion/2023.05.12_TorToise-TTS.md)).
+In contrast, **input-enhanced synthesis** employs an additional module to transform the tokens into a continuous latent representation before they are fed into the vocoder ([Seed-TTS (2024)](../../Models/SpeechLM/2024.06.04_Seed-TTS.md); [TorToise-TTS (2023)](../../Models/Diffusion/2023.05.12_TorToise-TTS.md)).
 The main reason for using this pipeline is that vocoders typically require intermediate audio representations, such as mel-spectrograms ([MelGAN (2019)](../../Models/TTS3_Vocoder/2019.10.08_MelGAN.md); [HiFi-GAN (2020)](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md); [BigVGAN (2022)](../../Models/TTS3_Vocoder/2022.06.09_BigVGAN.md)), as input.
 When comparing the two pipelines, direct synthesis is generally simpler and faster than Input-Enhanced Synthesis.
 However, the choice of pipeline depends on the type of tokens used as input.
@@ -272,7 +272,7 @@ $$
 
 - **直接合成** 是指声码器直接将由语言模型生成的语音 Token 转换为音频波形的流程.
 如 [Polyak et al. (2021)](../../Models/TTS3_Vocoder/2021.04.01_Speech_Resynthesis_from_Discrete_Disentangled_Self-Supervised_Representations.md) 采用 [HiFi-GAN (2020)](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md) 架构并采用离散 Token 作为输入.
-- **输入增强合成** 是指采用额外模块将 Token 转换为连续潜在表示, 再将其输入声码器 ([Seed-TTS (2024)](../../Models/Speech_LLM/2024.06.04_Seed-TTS.md); [TorToise-TTS (2023)](../../Models/Diffusion/2023.05.12_TorToise-TTS.md)) 的流程.
+- **输入增强合成** 是指采用额外模块将 Token 转换为连续潜在表示, 再将其输入声码器 ([Seed-TTS (2024)](../../Models/SpeechLM/2024.06.04_Seed-TTS.md); [TorToise-TTS (2023)](../../Models/Diffusion/2023.05.12_TorToise-TTS.md)) 的流程.
   使用这一流程的主要原因是声码器通常需要中间音频表示作为输入, 如梅尔频谱 ([MelGAN (2019)](../../Models/TTS3_Vocoder/2019.10.08_MelGAN.md); [HiFi-GAN (2020)](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md); [BigVGAN (2022)](../../Models/TTS3_Vocoder/2022.06.09_BigVGAN.md)).
 
 在比较这两种流程时, 直接合成通常比输入增强合成更简单和更快.
@@ -478,7 +478,7 @@ However, VAE is seldom explored as the underlying architecture of vocoders.
 Diffusion models have emerged in recent years as a powerful class of generative models that can be used for high-fidelity speech synthesis.
 They work by gradually adding noise to the input data (e.g., audio waveforms) to create a sequence of increasingly noisy representations, then learning to reverse this process to generate new samples ([DiffWave (2020)](../../Models/TTS3_Vocoder/2020.09.21_DiffWave.md); [WaveGrad (2020)](../../Models/TTS3_Vocoder/2020.09.02_WaveGrad.md); [PriorGrad (2021)](../../Models/TTS3_Vocoder/2021.06.11_PriorGrad.md)).
 For instance, [DiffWave (2020)](../../Models/TTS3_Vocoder/2020.09.21_DiffWave.md) uses Denoising Diffusion Probabilistic Models (DDPM) to synthesize audio.
-Additionally, [CosyVoice (2024)](../../Models/Speech_LLM/2024.07.07_CosyVoice.md) introduces a Conditional Flow-Matching (CFM) model that serves as a vocoder in TTS systems.
+Additionally, [CosyVoice (2024)](../../Models/SpeechLM/2024.07.07_CosyVoice.md) introduces a Conditional Flow-Matching (CFM) model that serves as a vocoder in TTS systems.
 
 </details>
 <br>
@@ -486,4 +486,4 @@ Additionally, [CosyVoice (2024)](../../Models/Speech_LLM/2024.07.07_CosyVoice.md
 扩散模型是近年来出现的一种强大的生成模型, 它可以用于高保真语音合成.
 它们通过逐渐添加噪声到输入数据 (如音频波形) 来创建一系列噪声增加表示, 然后学习将这个过程反向进行, 来生成新的样本 ([DiffWave (2020)](../../Models/TTS3_Vocoder/2020.09.21_DiffWave.md); [WaveGrad (2020)](../../Models/TTS3_Vocoder/2020.09.02_WaveGrad.md); [PriorGrad (2021)](../../Models/TTS3_Vocoder/2021.06.11_PriorGrad.md)).
 例如: [DiffWave (2020)](../../Models/TTS3_Vocoder/2020.09.21_DiffWave.md) 使用 Denoising Diffusion Probabilistic Models (DDPM) 来合成音频.
-此外, [CosyVoice (2024)](../../Models/Speech_LLM/2024.07.07_CosyVoice.md) 引入了一个条件流匹配 (CFM) 模型, 作为 TTS 系统中的声码器.
+此外, [CosyVoice (2024)](../../Models/SpeechLM/2024.07.07_CosyVoice.md) 引入了一个条件流匹配 (CFM) 模型, 作为 TTS 系统中的声码器.
