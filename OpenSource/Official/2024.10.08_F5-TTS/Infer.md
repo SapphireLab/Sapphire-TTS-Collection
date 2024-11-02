@@ -1,4 +1,4 @@
-# 推理教程
+# F5-TTS 推理教程
 
 预训练模型检查点可以在 [HuggingFace](https://huggingface.co/SWivid/F5-TTS) 和 [Model Scope](https://www.modelscope.cn/models/SWivid/F5-TTS_Emilia-ZH-EN) 下载, 或者在运行推理脚本是自动下载.
 

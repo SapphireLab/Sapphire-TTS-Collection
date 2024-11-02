@@ -1,4 +1,4 @@
-# F5-TTS 评估
+# F5-TTS 评估教程
 
 对应文件: `src/f5_tts/eval/README.md`
 

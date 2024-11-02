@@ -126,7 +126,7 @@ F5-TTS
    │     │  └─ [ ] prepare_wenetspeech4tts.py
    │     ├─ [ ] finetune_cli.py
    │     ├─ [ ] finetune_gradio.py
-   │     ├─ [ ] README.md:                      训练说明 Train.md
+   │     ├─ [x] README.md:                      训练说明 Train.md
    │     └─ [ ] train.py
    └─ [ ] third_party
       └─ [ ] BigVGAN:                           https://github.com/NVIDIA/BigVGAN/tree/7d2b454564a6c7d014227f635b7423881f14bdac
