@@ -3,14 +3,47 @@
 ## 基本信息
 
 - 标题: F5-TTS: A Fairytaler that Fakes Fluent and Faithful Speech with Flow Matching
-- 链接: [HuggingFace](https://huggingface.co/SWivid/F5-TTS) | [ModelScope](https://www.modelscope.cn/models/SWivid/F5-TTS_Emilia-ZH-EN) | [GitHub](https://github.com/SWivid/F5-TTS) | [ArXiv](https://arxiv.org/abs/2410.06885)
-- 开源: MIT License
+- 链接: [HuggingFace](https://huggingface.co/SWivid/F5-TTS) | [ModelScope](https://www.modelscope.cn/models/SWivid/F5-TTS_Emilia-ZH-EN) | [WiseModel](https://wisemodel.cn/models/SJTU_X-LANCE/F5-TTS_Emilia-ZH-EN) | [GitHub](https://github.com/SWivid/F5-TTS) | [ArXiv](https://arxiv.org/abs/2410.06885)
+- 开源: [代码] MIT License; [模型] CC-BY-NC License (数据集 Emilia 限制)
 - 更新: 2024.11.02
 - 笔记: 2024.11.02
 
-## 更新备注
+主要内容:
+- **F5-TTS**: Diffusion Transformer with ConvNeXt V2, faster trained and inference.
+- **E2 TTS**: Flat-UNet Transformer, closest reproduction from [paper](https://arxiv.org/abs/2406.18009).
+- **Sway Sampling**: Inference-time flow step sampling strategy, greatly improves performance
+
+致谢列表:
+
+| 项目 | 贡献者 | 说明 |
+| --- | --- | --- |
+| [E2-TTS](../../../Models/Diffusion/2024.06.26_E2_TTS.md) | | 简单高效的杰出工作 |
+| [Emilia](../../../Datasets/2024.07.07_Emilia.md), [WenetSpeech4TTS](../../../Datasets/2024.06.09_WenetSpeech4TTS.md) | | 数据集 |
+| | [lucidrains](https://github.com/lucidrains) <br> [bfs](https://github.com/bfs18) | CFM 架构初始化|
+| [StableDiffusion3](../../../Models/Diffusion/2024.03.05_StableDiffusion3.md)<br>[HF Diffusers](https://github.com/huggingface/diffusers) | | DiT 和 MMDiT 代码结构 |
+| [TorchDiffEQ](https://github.com/rtqichen/torchdiffeq) | | ODE 求解器 |
+| [Vocos](https://huggingface.co/charactr/vocos-mel-24khz) | | 声码器 |
+| [FunASR](https://github.com/modelscope/FunASR)<br>[Faster-Whisper](https://github.com/SYSTRAN/faster-whisper)<br>[UniSpeech](https://github.com/microsoft/UniSpeech) | | 评估工具 |
+| [CTC-Forced-Aligner](https://github.com/MahmoudAshraf97/ctc-forced-aligner) | | CTC 强制对齐工具 |
+| [realmrfakename](https://x.com/realmrfakename) | | HF Space 示例项目 |
+| [F5-TTS-MLX](https://github.com/lucasnewman/f5-tts-mlx/tree/main) | [Lucas Newman](https://github.com/lucasnewman) | MLX 版本 |
+| [F5-TTS-ONNX](https://github.com/DakeQQ/F5-TTS-ONNX) | [DakeQQ](https://github.com/DakeQQ) | ONNX Runtime 版本 |
+
+引用信息:
+
+```
+@article{chen-etal-2024-f5tts,
+      title={F5-TTS: A Fairytaler that Fakes Fluent and Faithful Speech with Flow Matching},
+      author={Yushen Chen and Zhikang Niu and Ziyang Ma and Keqi Deng and Chunhui Wang and Jian Zhao and Kai Yu and Xie Chen},
+      journal={arXiv preprint arXiv:2410.06885},
+      year={2024},
+}
+```
+
+## 更新日志
 
 - 2024.10.23 PR#228: 项目结构重新组织, 将 `model/` 重构为 `src/f5_tts/model/`.
+- 2024.10.08 F5-TTS & E2-TTS 基础模型发布在 HuggingFace, ModelScope, WiseModel.
 
 ## 文件结构
 
@@ -88,7 +121,7 @@
 - [x] `.pre-commit-config.yaml`: 运行 Ruff 代码风格检查, 格式化 + YAML 校验.
 - [ ] `Dockerfile`
 - [x] `LICENSE`: MIT License
-- [ ] `README.md`
+- [x] `README.md`
 - [x] `pyproject.toml`: 环境配置文件
 - [x] `ruff.toml`: 行宽 120, python=3.10, 忽略私有变量, import 单行等.
 
@@ -96,6 +129,8 @@
 
 <details>
 <summary>环境配置</summary>
+
+Python = 3.10
 
 常用库
 - [x] torch==2.3.0+cu118
@@ -151,7 +186,33 @@ Lucidrains 复现
 
 </details>
 
-## 用法教程
+## 使用方法
+
+### 安装
+
+1. 以 pip 包的形式安装 (仅推理): `pip install git+https://github.com/SWivid/F5-TTS.git`
+2. 本地配置 (训练, 微调, 推理): `git clone https://github.com/SWivid/F5-TTS.git` + `pip install -e .`
+3. Docker 镜像: `docker build -t f5-tts:v1 .` + `docker pull ghcr.io/swivid/f5-tts:main`
+
+注意: `BigVGAN` 在 `git clone` 后需要在 `bigvgan.py` 开头添加路径 `sys.path.append(os.path.dirname(os.path.abspath(__file__)))`
+
+### [推理](Infer.md)
+
+### [训练 (Gradio APP)](Train.md)
+
+### 评估
+
+### 开发
+
+在提交 PR 之前, 请使用 `pre-commit` 来确保代码质量 (将会运行代码检查工具和格式化)
+注意: 一些模型组件对 E722 进行了额外处理, 以适应张量表示.
+
+```bash
+pip install pre-commit
+pre-commit install
+
+pre-commit run --all-files
+```
 
 ## 模型核心
 
