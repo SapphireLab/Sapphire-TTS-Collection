@@ -8,12 +8,17 @@
 - 更新: 2024.11.02
 - 笔记: 2024.11.02
 
-主要内容:
+### 主要内容
 - **F5-TTS**: Diffusion Transformer with ConvNeXt V2, faster trained and inference.
 - **E2 TTS**: Flat-UNet Transformer, closest reproduction from [paper](https://arxiv.org/abs/2406.18009).
 - **Sway Sampling**: Inference-time flow step sampling strategy, greatly improves performance
 
-致谢列表:
+### 更新日志
+
+- 2024.10.23 PR#228: 项目结构重新组织, 将 `model/` 重构为 `src/f5_tts/model/`.
+- 2024.10.08 F5-TTS & E2-TTS 基础模型发布在 HuggingFace, ModelScope, WiseModel.
+
+### 致谢列表
 
 | 项目 | 贡献者 | 说明 |
 | --- | --- | --- |
@@ -29,7 +34,7 @@
 | [F5-TTS-MLX](https://github.com/lucasnewman/f5-tts-mlx/tree/main) | [Lucas Newman](https://github.com/lucasnewman) | MLX 版本 |
 | [F5-TTS-ONNX](https://github.com/DakeQQ/F5-TTS-ONNX) | [DakeQQ](https://github.com/DakeQQ) | ONNX Runtime 版本 |
 
-引用信息:
+### 引用信息
 
 ```
 @article{chen-etal-2024-f5tts,
@@ -40,10 +45,6 @@
 }
 ```
 
-## 更新日志
-
-- 2024.10.23 PR#228: 项目结构重新组织, 将 `model/` 重构为 `src/f5_tts/model/`.
-- 2024.10.08 F5-TTS & E2-TTS 基础模型发布在 HuggingFace, ModelScope, WiseModel.
 
 ## 文件结构
 
@@ -176,7 +177,7 @@ Lucidrains 复现
 - [x] [soundfile](https://github.com/bastibe/python-soundfile): 读写音频文件
 
 语音识别
-- [ ] [modelscope]: 模型库
+- [x] [modelscope](https://github.com/modelscope/modelscope): 模型库
 - [x] [faster_whisper](https://github.com/SYSTRAN/faster-whisper): 语音识别
 - [x] [funasr](https://github.com/modelscope/FunASR): 语音识别
 - [x] [jiwer](https://github.com/jitsi/jiwer): 自动评估语音识别系统, 含词错误率, 匹配错误率, 词信息丢失, 词信息保留, 字符错误率等指标 (最小编辑距离使用 RapidFuzz, 底层基于 C++)
@@ -200,7 +201,7 @@ Lucidrains 复现
 
 ### [训练 (Gradio APP)](Train.md)
 
-### 评估
+### [评估](Eval.md)
 
 ### 开发
 
