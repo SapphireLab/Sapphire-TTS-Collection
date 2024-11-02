@@ -48,85 +48,89 @@
 
 ## 文件结构
 
-<details>
-<summary>项目结构</summary>
-
-- [x] .github/workflows/
-  - [x] `pre-commit.yaml`: 调用 `pre-commit-config.yaml`.
-  - [x] `publish-docker-image.yaml`: 发布 Docker 镜像.
-  - [x] `sync-hf.yaml`: 同步到 HuggingFace Space
-- [x] ckpts/
-  - [x] `README.md`
-  - [x] E2TTS_Base/`model_1200000.pt` 1.35 GB (pt或safetensors格式)
-  - [x] F5TTS_Base/`model_1200000.pt` 1.35 GB (pt或safetensors格式)
-- [x] data/
-  - [x] Emilia_ZH_EN_pinyin/`vocab.txt`: 2545 行
-  - [x] `librispeech_pc_test_clean_cross_sentence.lst`: 1127 行
-- [x] src/
-  - [x] f5_tts/
-    - [ ] eval/
-      - [ ] `README.md`
-      - [ ] `ecapa_tdnn.py`
-      - [ ] `eval_infer_batch.py`
-      - [ ] `eval_infer_batch.sh`
-      - [ ] `eval_librispeech_test_clean.py`
-      - [ ] `eval_seedtts_testset.py`
-      - [ ] `utils_eval.py`
-    - [ ] infer/
-      - [x] examples/
-        - [x] basis/
-          - [x] `basic.toml`: 推理的基础配置 (参考音频为 `basic_ref_en.wav`)
-          - [x] `basic_ref_en.wav`: 对应 "Some call me nature, others call me mother nature."
-          - [x] `basic_ref_cn.wav`
-        - [x] multi/
-          - [x] `country.flac`
-          - [x] `main.flac`
-          - [x] `story.toml`: 参考音频为 `main.flac` (另外有 `town.flac`, `country.flac` 子配置), 用于合成 `story.txt` 内的文本.
-          - [x] `story.txt`
-          - [x] `town.flac`
-        - [x] `vocab.txt`: 2545 行 (重复文件?)
-      - [ ] `README.md`
-      - [ ] `infer_cli.py`
-      - [ ] `infer_gradio.py`
-      - [ ] `speech_edit.py`
-      - [ ] `utils_infer.py`
-    - [ ] model/
-      - [ ] backbones/
-        - [x] `README.md`
-        - [ ] `dit.py`
-        - [ ] `mmdit.py`
-        - [ ] `unett.py`
-      - [x] `__init__.py`: 引入三种 backbone, CFM 和 trainer
-      - [ ] `cfm.py`
-      - [ ] `dataset.py`
-      - [ ] `modules.py`
-      - [ ] `trainer.py`
-      - [ ] `utils.py`
-    - [ ] scripts/
-      - [ ] `count_max_epoch.py`
-      - [ ] `count_params_gflops.py`
-    - [ ] train/
-      - [ ] dataset/
-        - [ ] `prepare_csv_wavs.py`
-        - [ ] `prepare_emilia.py`
-        - [ ] `prepare_wenetspeech4tts.py`
-      - [ ] `README.md`
-      - [ ] `finetune_cli.py`
-      - [ ] `finetune_gradio.py`
-      - [ ] `train.py`
-    - [ ] `api.py`
-  - [ ] third_party/
-    - [ ] BigVGAN: [Github](https://github.com/NVIDIA/BigVGAN/tree/7d2b454564a6c7d014227f635b7423881f14bdac)
-- [x] `.gitignore`
-- [x] `.gitmodules`: 引入 BigVGAN 仓库
-- [x] `.pre-commit-config.yaml`: 运行 Ruff 代码风格检查, 格式化 + YAML 校验.
-- [ ] `Dockerfile`
-- [x] `LICENSE`: MIT License
-- [x] `README.md`
-- [x] `pyproject.toml`: 环境配置文件
-- [x] `ruff.toml`: 行宽 120, python=3.10, 忽略私有变量, import 单行等.
-
-</details>
+```
+F5-TTS
+├─ [x] .github                                  Github 工作流配置
+│  └─ [x] workflows
+│     ├─ [x] pre-commit.yaml:                   调用 pre-commit-config.yaml
+│     ├─ [x] publish-docker-image.yaml:         发布 Docker 镜像
+│     └─ [x] sync-hf.yaml:                      同步到 HuggingFace Space
+├─ [x] .gitignore
+├─ [x] .gitmodules:                             引入 BigVGAN 仓库
+├─ [x] .pre-commit-config.yaml:                 运行 Ruff 代码风格检查, 格式化 + YAML 校验
+├─ [x] Dockerfile:                              Docker 镜像构建文件
+├─ [x] LICENSE:                                 MIT License
+├─ [x] pyproject.toml:                          环境配置文件
+├─ [x] README.md:                               项目说明
+├─ [x] ruff.toml:                               行宽 120, python=3.10, 忽略私有变量, import 单行等.
+├─ [x] ckpts                                    预训练模型
+│  ├─ [x] README.md                             模型文件结构说明
+│  ├─ [x] E2TTS_Base
+│  │  └─ [x] model_1200000.pt:                  1.35GB, 预训练模型 (pt 或 safetensors 格式)
+│  ├─ [x] F5TTS_Base
+│  │   └─ [x] model_1200000.pt:                 1.35GB, 预训练模型 (pt 或 safetensors 格式)
+│  └─ [x] F5TTS_Base_bigvgan
+│     └─ [x] model_1250000.pt:                  1.35GB, 预训练模型 (pt)
+├─ [x] data
+│  ├─ [x] Emilia_ZH_EN_pinyin
+│  │  └─ [x] vocab.txt:                         2545 行
+│  └─ [x] librispeech_pc_test_clean_cross_sentence.lst: 1127 行
+└─ [x] src
+   ├─ [x] f5_tts
+   │  ├─ [x] api.py
+   │  ├─ [ ] eval
+   │  │  ├─ [ ] ecapa_tdnn.py
+   │  │  ├─ [ ] eval_infer_batch.py
+   │  │  ├─ [ ] eval_infer_batch.sh
+   │  │  ├─ [ ] eval_librispeech_test_clean.py
+   │  │  ├─ [ ] eval_seedtts_testset.py
+   │  │  ├─ [x] README.md:                      评估说明 Eval.md
+   │  │  └─ [ ] utils_eval.py
+   │  ├─ [ ] infer
+   │  │  ├─ [x] examples                        推理示例
+   │  │  │  ├─ [x] basic                        基础推理示例
+   │  │  │  │  ├─ [x] basic.toml:               推理的基础配置 (参考音频为 `basic_ref_en.wav`)
+   │  │  │  │  ├─ [x] basic_ref_en.wav:         对应 "Some call me nature, others call me mother nature."
+   │  │  │  │  └─ [x] basic_ref_zh.wav
+   │  │  │  ├─ [x] multi                        多风格/多人推理示例
+   │  │  │  │  ├─ [x] country.flac              角色: 乡下老鼠参考音频
+   │  │  │  │  ├─ [x] main.flac                 角色: 主线旁白
+   │  │  │  │  ├─ [x] story.toml:               参考音频为 main.flac (另外有 town.flac, country.flac 指定角色音色), 用于合成 story.txt 内的文本
+   │  │  │  │  ├─ [x] story.txt:                待合成的故事文本
+   │  │  │  │  └─ [x] town.flac                 角色: 城镇老鼠参考音频
+   │  │  │  └─ [x] vocab.txt:                   2545 行 (重复文件?)
+   │  │  ├─ [ ] infer_cli.py
+   │  │  ├─ [ ] infer_gradio.py
+   │  │  ├─ [x] README.md:                      推理说明 Infer.md
+   │  │  ├─ [ ] speech_edit.py
+   │  │  └─ [ ] utils_infer.py
+   │  ├─ [ ] model
+   │  │  ├─ [ ] backbones
+   │  │  │  ├─ [ ] dit.py
+   │  │  │  ├─ [ ] mmdit.py
+   │  │  │  ├─ [ ] README.md
+   │  │  │  └─ [ ] unett.py
+   │  │  ├─ [ ] cfm.py
+   │  │  ├─ [ ] dataset.py
+   │  │  ├─ [ ] modules.py
+   │  │  ├─ [ ] trainer.py
+   │  │  ├─ [ ] utils.py
+   │  │  └─ [x] __init__.py:                    引入三种 backbone, CFM 和 trainer
+   │  ├─ [ ] scripts
+   │  │  ├─ [ ] count_max_epoch.py
+   │  │  └─ [ ] count_params_gflops.py
+   │  └─ [ ] train
+   │     ├─ [ ] datasets
+   │     │  ├─ [ ] prepare_csv_wavs.py
+   │     │  ├─ [ ] prepare_emilia.py
+   │     │  └─ [ ] prepare_wenetspeech4tts.py
+   │     ├─ [ ] finetune_cli.py
+   │     ├─ [ ] finetune_gradio.py
+   │     ├─ [ ] README.md:                      训练说明 Train.md
+   │     └─ [ ] train.py
+   └─ [ ] third_party
+      └─ [ ] BigVGAN:                           https://github.com/NVIDIA/BigVGAN/tree/7d2b454564a6c7d014227f635b7423881f14bdac
+```
 
 <details>
 <summary>环境配置</summary>
