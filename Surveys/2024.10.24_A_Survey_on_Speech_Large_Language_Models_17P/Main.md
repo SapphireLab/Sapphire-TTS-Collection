@@ -241,6 +241,105 @@ Lastly, Qwen-Audio significantly advances the field of audio interaction by scal
 
 ## 7.Challenges
 
+Despite significant progress in applying large language models (LLMs) to the field of speech recognition, especially in fixed tasks such as Automatic Speech Recognition (ASR), or leveraging the powerful capabilities of LLMs to accomplish some multitasking, numerous challenges and issues remain. We validated and tested some of the most cutting-edge current works, which helped to corroborate the problems we identified.
+
+### 7.1.LLM's Dormancy
+
+Regarding the method of using a projector to project audio feature embeddings into the text token space and combining them with text token embeddings of prompts, although it shows high accuracy and considerable generalization ability in ASR tasks, the LLM does not respond positively to prompts that were not seen during training. We refer to this phenomenon as LLM dormancy. To further illustrate the issue, we use SLAM-ASR and SALMONN as replication examples:
+
+The core idea of SLAM-ASR is projecting audio feature embeddings to text token embeddings through a projector composed of a linear neural network. Here, we use a recipe consisting of wavlm-large, a projector, and vicuna-7b, with whisper-large and vicuna-7b kept frozen during training while only the projector is trainable. We trained for three epochs on the librispeech-960h dataset and achieved results on the librispeech test\_clean and test\_other datasets close to the expectations outlined in the original paper.
+
+The core idea of SALMONN is to use a window-level Q-former to integrate audio information extracted by BERT and Whisper and map it into the text token space. During training, we updated the parameters of the LLM and encoder using LoRA and the window-level Q-former. We achieved results on librispeech \textit{test\_clean}, \textit{test\_other}, and Gigaspeech~\cite{chen2021gigaspeech} that matched the expectations of the original paper.
+
+We conducted a series of prompt tests on the two models mentioned above, with the results as shown in~\Cref{table:prompt_test}. From the table, we can see that SLAM-ASR almost does not respond to prompts, while SALMONN selectively responds to prompts, which precisely confirms our view that LLMs cannot maintain full model performance in the current framework.
+
+From the perspective of training strategies, SLAM-ASR did not update parameters for the encoder or LLM, thus making it more intuitive that the problem likely arises from the intermediate modality fusion step. To validate our approach, we attempted to reproduce the training process of SLAM-ASR. We then compared the average absolute value of the projected audio feature vectors with the average absolute value of the token embeddings obtained from encoding the prompt.
+
+From~\Cref{fig:mean_value}, we observe that the audio embeddings are significantly larger compared to the text embeddings.
+
+Referring back to the procedure in the transformer module in a typical large language model, the text is first converted into tokens and embeddings before calculating the attention mechanism, which includes positional embeddings. However, the audio feature vectors are projected and then directly concatenated with the text token embeddings in Speech LLM. Clearly, there is no attempt to capture the positional information of the two modalities here.
+
+A second potential issue arises during the calculation of attention scores. Recalling the standard steps involved in calculating attention scores in the attention mechanism,
+Given the audio-text modality embedding vector $E$, and since the LLM is kept frozen, the weight matrices $W^Q$, $W^K$, and $W^V$ are fixed. We transform $E$ into query, key, and value vectors using linear transformations, calculated as follows:
+
+$$
+\begin{aligned}
+Q &= E W^Q \\
+K &= E W^K \\
+V &= E W^V
+\end{aligned}
+$$
+
+Next, we compute the attention scores:
+$$
+\text{Attention Scores} = Q K^T
+$$
+where $K^T$ is the transpose of the key vector.
+
+To stabilize the training and inference process, we optionally scale the dot-product attention scores:
+$$
+\text{Scaled Scores} = \frac{Q K^T}{\sqrt{d_k}}
+$$
+where $d_k$ is the dimensionality of the key vectors.
+
+The scaled attention scores are then transformed into probability distributions using the softmax function:
+$$
+\text{Attention Weights} = \text{Softmax}(\text{Scaled Scores})
+$$
+
+Finally, we use the attention weights to perform a weighted sum of the value vectors to obtain the final attention output:
+$$
+\text{Attention Output} = \text{Attention Weights} \cdot V
+$$
+which in detail can be expressed as:
+$$
+\text{Attention Output} = \left( \text{Softmax}\left(\frac{Q K^T}{\sqrt{d_k}}\right) \right) \cdot V
+$$
+Here we can observe that since the large language model is frozen, only $E$ changes based on the input. The embedding $E$ is obtained by concatenating the audio feature embedding $A$ and the text feature embedding $T$:
+$$
+E = [A \; T]
+$$
+We can also decompose $Q$, $V$, and $K$ into vectors corresponding to $A$ and $T$, for example,
+$$
+Q = [Q^A \; Q^T]
+$$
+$$
+V = [V^A \; V^T]
+$$
+$$
+K = [K^A \; K^T]
+$$
+Since $A \gg T$, according to equations (1), (2), and (3), due to the shared weight matrices, $Q^A \gg Q^T$ and similarly for other vectors. It is clear that the final attention output from the speech part is much larger than that from the text part. As a result, the model is likely to neglect the text portion, leading to the large language model falling into dormancy.
+
+This can also be explained more broadly and intuitively using Bayes' theorem~\cite{tang2023salmonn}. Let $Y$ denote the output, $X$ denote the audio feature, and $I$ denote the instruction.
+
+$$
+P(Y|X,I) = \frac{P(Y|X) \cdot P(I|Y,X)}{P(I|X)}
+$$
+
+If we provide only one or a few corresponding outputs $Y$ for a given audio input, then:
+
+$$
+\frac{P(Y|X,I)}{P(Y|X)}
+$$
+is not negligible. In other words, the influence of $I$ on the result will not be significant.
+
+Models like SALMONN and Qwen-audio, which are Speech LLMs, perform poorly in tasks involving untrained speech emotion inference and environmental understanding~\cite{ao2024sd}, and may even provide irrelevant answers. This further supports the observation that we did not fully achieve modality alignment under the current framework.
+
+### 7.2.High cost
+
+The high usage costs can be divided into two main aspects: \textbf{time cost} and \textbf{memory cost}. Due to the complexity of the architecture and the large number of parameters in large language models, there is a significant delay during inference. For instance, models like Whisper that use the Transformer architecture are noticeably slower in inference compared to traditional models. Additionally, the large number of parameters imposes high demands on GPU memory, both during inference and training.
+
 ## 8.Future Exploration
 
+According to the challenges described earlier, the primary issue to address is \textbf{the alignment of text and speech modalities}. Currently, expanding the token space of large language models to include audio tokens can achieve a thorough integration of modalities, enabling the transition from large language models to multimodal models~\cite{zhan2024anygpt}. However, this approach faces issues such as data imbalance and high training costs. Additionally, simply using connectors for fine-tuning to enable the model to understand mappings between continuous feature embeddings has not yielded the expected results. The core problem is that current model architectures and training paradigms cannot guarantee an increase in task accuracy while maintaining the performance of large language models. Researchers are beginning to explore alternative alignment methods, such as constraining or normalizing continuous features and converting them into discrete representations before mapping them to text tokens in large language models~\cite{Tsunoo2024}.
+
+In terms of training strategies, innovation is also essential. Current training methods largely focus on pretraining and supervised fine-tuning, with \textbf{reinforcement learning (RL)} not yet being widely applied. However, when large language models are integrated into the model architecture, these training methods may not fully meet the requirements of training large models. Considering the diversity of inputs and outputs in large language models, exploring the incorporation of reinforcement learning strategies such as Proximal Policy Optimization (PPO)~\cite{schulman2017proximal} can be beneficial. Introducing perturbations in supervised learning can help maintain the model's multi-task performance. Additionally, to address hallucinations in large language models, techniques such as \textbf{Reinforcement Learning with Human Feedback (RLHF)} can be employed to apply "soft" constraints~\cite{huang2023survey}, alleviating issues such as repetitive outputs and other hallucination phenomena.
+
+Currently, large models are widely deployed in only a few specific tasks. Given the powerful contextual capabilities of large language models, researchers are beginning to explore their integration into more complex systems. For instance, there is a growing interest in incorporating large language models into \textbf{dialogue systems}~\cite{wang2024full}, using them as the "brain" to coordinate other components within the system. Researchers are also experimenting with integrating large language models into conference and translation systems~\cite{cheng2024towards}. The exceptional contextual understanding and reasoning capabilities of large language models can handle multi-state judgments and selections. More precisely, their outstanding performance has not yet been fully demonstrated across various domains. Considering latency and high training costs, it is more practical to utilize them as system coordinators.
+
+Meanwhile, the potential of Speech LLMs in challenging areas such as long speech recognition and keyword detection is worth noting. Given the strong contextual capabilities of large language models, we might improve inference quality by segmenting or refining long speech text content and incorporating keywords and contextual information into the prompt for more comprehensive and high-quality reasoning.
+
 ## 9.Conclusion
+
+This work presents a comprehensive exploration of Speech Large Language Models (Speech LLMs), focusing on their architecture, training strategies, and advancements in the field of Spoken Language Understanding (SLU). We examined the evolution from traditional methods to novel architectures that integrate Audio Feature Extraction, Multimodal Information Fusion, and LLM Inference, facilitating richer audio processing and deeper multimodal understanding. We summarized key methods for multimodal information fusion, including several approaches in audio-to-text modality conversion and combining audio and text feature spaces. Additionally, we discussed training strategies such as self-supervised learning and reinforcement learning that enable enhanced performance across various speech tasks. The survey highlights key improvements in Rich Audio Transcription and the potential for Cross-task Integration across SLU tasks. However, challenges such as the Dormancy of LLMs under certain conditions persist, underscoring the need for further innovation in training strategies and system design. By addressing these challenges and exploring future solutions, this work provides valuable insights into advancing Speech LLMs and their applications in multimodal contexts.
