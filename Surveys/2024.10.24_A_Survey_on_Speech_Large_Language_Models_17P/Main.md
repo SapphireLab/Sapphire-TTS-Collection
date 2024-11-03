@@ -149,9 +149,95 @@ Speech\&Text-to-Speech\&Text models (ST2ST) include an additional speech modalit
 
 ## 4.Multimodal Information Fusion
 
+Having established a preliminary understanding of the overall architecture of Speech LLMs, we will now examine the model's key components in greater detail. Beyond the well-known stages of audio feature extraction and large language model inference, the most critical issue in Speech LLM lies in the alignment between the audio modality and the text modality. Aligning these two modalities typically requires two steps, each addressing a specific problem: The first step, which we refer to as \textbf{Audio Feature Post-Process}, focuses on determining what specific audio modality information is needed. The second step, called \textbf{Audio and Text Connection}, addresses how to effectively combine these two types of information.
+
+### 4.1.Audio Feature Post-Process
+
+In this stage, researchers currently tend to directly use the final layer output of the encoder. The current mainstream approach is to extract the output of the final layer of the encoder as the primary source of audio modality information. However, there are other various alternative methods available. For instance, some approaches involve using intermediate layer outputs to capture more granular features~\cite{yang2021superb}. Others apply attention mechanisms to emphasize relevant parts of the audio signal~\cite{chen2022wavlm}.
+
+### 4.2.Audio and Text Connection
+
+Once the audio modality information is obtained, it must be integrated with the textual modality information to enable the LLM to perform the final inference. Currently, the methods used can be broadly classified into two categories: \textbf{transforming the audio feature into the textual modality space}, or \textbf{merging the audio and textual modality spaces}.
+
+#### 4.2.1.Audio-to-Text Modality Conversion
+
+Converting speech modality information into the text modality space is one of the most commonly used approaches today. This method fully considers that large language models (LLMs) are primarily designed for text modalities, enabling direct projection and integration of the audio modality into the text modality space. This effectively minimizes modifications to the LLM while preserving its powerful capabilities. To achieve this, a connector or projector is needed to transform or project the extracted audio modality features. This neural network structure should minimize the loss of audio feature information while ensuring smooth transfer from the audio feature space to the text feature space.
+
+Currently, two common methods are employed (illustrated in ~\Cref{fig:direct_projection} and~\Cref{fig:token_mapping}):
+
+- \textbf{Direct Projection}: The audio feature information is directly projected into the LLM's text feature space through a connector~\cite{ma2024,tang2023salmonn}. Specifically, the tensor containing audio features is projected into an embedding vector aligned with the text modality. These audio embeddings are then concatenated with the input text's embedding vector to create a new embedding vector that integrates both speech and text information. This combined vector is then fed into the LLM.Of course, some researchers have also implicitly handled the projection step by internalizing it within the original encoder, achieving the modality projection effect by adjusting the encoder's parameters during training~\cite{chu2023qwen}.
+
+
+- \textbf{Token Mapping}: The audio feature information is mapped into text tokens that the LLM can process~\cite{Tsunoo2024}. Initially, the audio features are passed through a projector or converter to generate symbols or representations that correspond to text tokens. These representations are then combined with the tokenized input text, forming a token sequence that includes both audio and text information. This sequence is subsequently input into the LLM for processing. This approach not only preserves the integrity of the audio feature information but also ensures consistent processing within the LLM.
+
+#### 4.2.2.Combining Audio and Text Feature Space
+
+Projecting the speech modality into the text modality is certainly straightforward, but it does not achieve lossless modality fusion in the true sense. Information loss and conflicts may occur during modality conversion (to be elaborated later). Therefore, researchers have proposed another modality alignment approach, which involves modifying the original input space of the large language model to integrate the audio modality~\cite{rubenstein2023audiopalm,zhang2023speechgpt,zhan2024anygpt}. Specifically, this method augments the token space by adding audio tokens on top of the existing text tokens, creating a new token space. These new audio token are synthesized from the audio features extracted in the previous step, thereby largely preserving the original audio information (illustrated in~\Cref{fig:space_combine}).
+
 ## 5.Training Strategies
 
+The training of current Speech LLMs mainly includes three approaches: pretraining, supervised fine-tuning (SFT), and reinforcement learning (RL). These approaches are used in different training stages and scenarios due to their varying principles and effects.
+
+### 5.1.Pretraining
+
+Pretraining involves training models on large-scale unlabeled data to enable them to learn broad, general knowledge. Typically, in Speech LLMs, speech encoders undergo pretraining on audio-text pairs to capture audio features. Common training strategies, including self-supervised learning (SSL)~\cite{bai2024seed}, are widely used. However, to better integrate speech encoders with LLMs, some researchers attempt to re-pretrain speech encoders~\cite{kong2024audio}, which allows for more direct acquisition of encoders with audio feature extraction capabilities.
+
+For Speech LLMs of~\Cref{sec:structure B}, as mentioned previously, a thorough re-training of multimodal large models is necessary. This involves referencing the pretraining phase of large language models. By organizing mixed audio and text data, we adapt the pretraining methods of large language models to accommodate bimodal information.
+
+### 5.2.Supervised Fine-tuning (SFT)
+
+For specific tasks in the speech domain, further fine-tuning is often required. Supervised fine-tuning is a common approach where high-quality labeled data from downstream task datasets is used to train the model, improving its performance on these tasks. In Speech LLMs, for models of structure as mentioned earlier in~\Cref{sec:structure A}, supervised fine-tuning is an extremely common method. It is generally used to achieve alignment between the speech encoder and the LLM and to enhance performance on specific tasks. Common training methods include fine-tuning connectors, fine-tuning the encoder, and LLMs, such as using methods like LoRA. This mainly involves handling modality alignment and completing the model's learning of text-token mapping. Similarly, models of structure described in ~\Cref{sec:structure B} also require supervised fine-tuning, which is essential for enhancing its performance on specific tasks.
+
+It is worth noting that supervised fine-tuning is also frequently used as a wake-up method for large language models. When modality alignment is completed, large language models might experience a certain degree of dormancy~\cite{tang2023salmonn}. Researchers use audio-based dialogue wake-up fine-tuning to reactivate large language models.
+
+### 5.3.Reinforcement Learning (RL)
+
+Reinforcement learning (RL) is a commonly used method in the training of large language models, especially in the field of large language model safety alignment~\cite{ji2023ai}.
+Unlike other training strategies, reinforcement learning ensures that the LLM optimizes in the desired direction while maintaining diversity in its outputs. In order to maintain and enhance cross-task integration capabilities of large language models under the Speech LLM paradigm, reinforcement learning is an effective training strategy that is worth further exploration~\cite{chen2024enhancing,tian2024preference}. However, it has not been widely used in Speech LLMs.
+
+Reinforcement learning is a framework where an agent interacts with an environment to maximize cumulative rewards over time. The agent learns by receiving feedback in the form of rewards, adjusting its actions to improve future rewards. Two commonly used RL algorithms in this context are Proximal Policy Optimization (PPO) and Direct Policy Optimization (DPO).
+
+**Proximal Policy Optimization (PPO)** is a policy gradient method that aims to optimize the objective function while limiting policy updates to avoid large deviations from the current policy. The objective function for PPO is defined as:
+
+$$
+    \mathcal{L}^{\text{PPO}}(\theta) = \hat{\mathbb{E}}_t \left[ \min \left( r_t(\theta) \hat{A}_t, \text{clip}(r_t(\theta), 1-\epsilon, 1+\epsilon) \hat{A}_t \right) \right]
+$$
+
+where $r_t(\theta) = \frac{\pi_\theta(a_t|s_t)}{\pi_{\theta_{\text{old}}}(a_t|s_t)}$ is the probability ratio between the new policy and the old policy, $\hat{A}_t$ is the advantage function, and $\epsilon$ is a hyperparameter that controls the clipping range. The clipping mechanism ensures that policy updates remain within a trust region, preventing overly aggressive updates that could harm the model's performance.
+
+**Direct Policy Optimization (DPO)**, on the other hand, focuses on directly optimizing the policy by defining a reward function specific to the task. The objective in DPO can be expressed as:
+
+$$
+    \mathcal{L}^{\text{DPO}}(\theta) = \hat{\mathbb{E}}_t \left[ R(s_t, a_t) \log \pi_\theta(a_t|s_t) \right]
+$$
+
+where $R(s_t, a_t)$ is the task-specific reward function, and $\pi_\theta(a_t|s_t)$ is the policy parameterized by $\theta$. DPO directly maximizes the expected reward by focusing on optimizing the policy without clipping, often used in settings where a more direct reward signal is available.
+
+Currently, RL is generally employed to further enhance the model's accuracy in a specific domain by setting reward signals in a reward model to guide the model's training~\cite{bai2024seed}, thereby achieving further performance improvement.
+
 ## 6.Performance in Speech Tasks
+
+With the evolution of Speech LLMs, the integration of large language models (LLMs) into speech-based systems has yielded substantial advancements across various dimensions. This section investigates the current performance of Speech LLMs in several pivotal tasks in speech understanding, evaluating how LLMs enhance the capabilities of speech models compared to traditional methods. We will primarily focus on two classic speech-related tasks: \textbf{Automatic Speech Recognition(ASR)}, and \textbf{Speech Translation(ST)}, each epitomizing a crucial aspect of speech applications. Meanwhile, we will further explore the \textbf{multi-tasking} and \textbf{cross-tasking} capabilities exhibited by Speech LLMs across various tasks in the speech understanding field.
+
+### 6.1.Automatic Speech Recognition
+
+In this survey, we assess the performance of various models via the \textbf{Word Error Rate (WER)} tested on the clean and other test set of LibriSpeech dataset~\cite{panayotov2015librispeech}, which is an essential benchmark for evaluating ASR systems.
+
+Traditional models based on LSTM or GRU architectures have consistently demonstrated strong performance across various benchmark datasets. For instance, the LSTM-based model Deep Speech 2 achieved a Word Error Rate (WER) of approximately 3.51\% on the LibriSpeech \textit{clean} test set and 10.62\% on the \textit{other} test set~\cite{amodei2016deep}. The introduction of Large Language Models (LLMs) has significantly improved these results. Notably, the Conformer model reduced the WER to 1.9\% and 3.9\% on the \textit{clean} and \textit{other} test sets, respectively~\cite{gulati2020conformer}. Similarly, the HuBERT Base model, trained solely with 960 hours of LibriSpeech audio, achieved WERs of 3.4\% and 8.1\%. Utilizing an extended dataset of 60,000 hours from Libri-light, the HuBERT X-Large model further reduced the WERs to 1.9\% on the \textit{clean} test set and 3.5\% on the \textit{other} test set. As of 2023, further advancements were seen with Whisper Large-V3, achieving a new low WER of 1.8\% on the \textit{clean} test set. Recent Speech LLM models like Qwen-audio~\cite{chu2023qwen} and SALMONN~\cite{tang2023salmonn} have also shown impressive results, approaching state-of-the-art performance, with WERs around 2\% on the \textit{clean} test set and below 5\% on the \textit{other} test set. Currently, the most advanced ASR system on the LibriSpeech dataset is Seed-ASR, which achieves a WER of 1.6\% on the \textit{clean} test set and 2.8\% on the \textit{other} test set~\cite{bai2024seed}.
+
+### 6.2.Speech Translation
+
+In the realm of natural language processing, translation tasks, encompassing both speech translation (ST) and machine translation (MT), are pivotal for enhancing global communication. Just like other NLP fields, these translation tasks have experienced significant progress due to the recent advancements in large language models (LLMs)~\cite{zhang2023prompting}. In this survey, we employ the BLEU (Bilingual Evaluation Understudy) score to evaluate the translation performance of each model on the two-way translation between Chinese and English. For speech translation, we utilize the FLEURS test sets~\cite{conneau2023fleurs}, and for machine translation from Chinese to English, we use the FLORES test sets~\cite{goyal2022flores, costa2022no}. Additionally, the WMT'20 test sets~\cite{loic2020findings} are used for English-to-Chinese machine translation.
+
+There are two primary objectives in the translation domain: enhancing translation quality and expanding language coverage. In machine translation, the NLLB model, which is fine-tuned on LLMs aiming to be a universal translation system, initially broadened its linguistic scope to include more than 200 languages~\cite{costa2022no}. Furthermore, BigTranslate, leveraging instruction tuning based on LLaMA, has expanded the translation applicability of LLMs to a broader array of languages, achieving results comparable to those of ChatGPT and Google Translate~\cite{yang2023bigtranslate}. The advent of LLMs has also propelled advancements in speech translation. Using a Cascaded ASR + MT approach, Whisper has shown notable efficacy in speech translation by utilizing extensive web-scale data~\cite{radford2023robust}. Subsequently, AudioPaLM2~\cite{rubenstein2023audiopalm} enhanced speech translation quality by integrating text and speech-based models, thereby achieving impressive results as an end-to-end speech translation model. Previously achieving state-of-the-art in both ST and MT tasks on various public datasets, SeamlessM4T~\cite{barrault2023seamlessm4t}, a foundational multilingual and multitask model, is now surpassed by GenTranslate. This model utilizes the information stored in N-best candidates instead of relying solely on beam search decoding's top-1 selection, a common practice among other models~\cite{hu2024gentranslate}.  Please refer to ~\Cref{fig:st} for a detailed performance comparison of these models.
+
+### 6.3.Multi-Tasking and Cross-Tasking Abilities
+
+Besides the above-mentioned two speech tasks, some Speech LLMs also demonstrate remarkable results on a wide range of speech tasks, showcasing their good multi-tasking and cross-tasking capabilities. Among these, Pengi is notable for its versatility, as it supports both open-ended tasks like Audio Captioning and Audio Question Answering (AQA), and close-ended tasks such as Sound Event and Scene Classification, without requiring any task-specific fine-tuning or extensions. Pengi's approach involves framing all audio tasks as text-generation tasks, leveraging a unified architecture that effectively blends audio and text inputs into text outputs, achieving state-of-the-art performance on several benchmarks, including audio question answering and sound event classification~\cite{deshmukh2023pengi}.
+
+Following Pengi, SALMONN further broadens these capabilities by integrating both speech and general audio inputs, such as music, into a single multimodal model. This integration enables SALMONN to perform well in emergent tasks that were not explicitly trained for, such as Audio-based Storytelling and Speech Audio Co-reasoning, illustrating its comprehensive cross-modal understanding. Its novel architecture allows it to handle complex tasks across different modalities, showcasing the potential for multimodal AI systems that can "hear" and comprehend a wide range of auditory information~\cite{tang2023salmonn}.
+
+Lastly, Qwen-Audio significantly advances the field of audio interaction by scaling up audio-language pre-training across more than \textbf{30} tasks involving various audio types. This model excels in areas like Acoustic Scene Classification, Speech Emotion Recognition, and Automatic Audio Captioning. By employing a multi-task training framework that minimizes interference from the diversity of tasks and audio types, Qwen-Audio achieves groundbreaking results in these areas, indicating a significant enhancement in audio understanding capabilities~\cite{chu2023qwen}.
 
 ## 7.Challenges
 
