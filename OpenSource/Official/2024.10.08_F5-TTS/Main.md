@@ -5,8 +5,8 @@
 - 标题: F5-TTS: A Fairytaler that Fakes Fluent and Faithful Speech with Flow Matching
 - 链接: [HuggingFace](https://huggingface.co/SWivid/F5-TTS) | [ModelScope](https://www.modelscope.cn/models/SWivid/F5-TTS_Emilia-ZH-EN) | [WiseModel](https://wisemodel.cn/models/SJTU_X-LANCE/F5-TTS_Emilia-ZH-EN) | [GitHub](https://github.com/SWivid/F5-TTS) | [ArXiv](https://arxiv.org/abs/2410.06885)
 - 开源: [代码] MIT License; [模型] CC-BY-NC License (数据集 Emilia 限制)
-- 更新: 2024.11.02
-- 笔记: 2024.11.02
+- 更新: 2024.11.03
+- 笔记: 2024.11.03
 
 ### 主要内容
 - **F5-TTS**: Diffusion Transformer with ConvNeXt V2, faster trained and inference.
@@ -78,6 +78,7 @@ F5-TTS
 └─ [x] src
    ├─ [x] f5_tts
    │  ├─ [x] api.py
+   │  ├─ [ ] socket.py
    │  ├─ [ ] eval
    │  │  ├─ [ ] ecapa_tdnn.py
    │  │  ├─ [ ] eval_infer_batch.py
