@@ -1,22 +1,25 @@
-# SapphireTTS
+# Sapphire-TTS-Collection
 
 本仓库收集/整理/学习语音合成技术相关资料.
 (可能含有部分 NLP 和其他语音相关技术)
+仍在初步更新中
+
+[模型总结表 Models.CSV](Models.csv)
 
 ## 推荐链接
 
-- [Metame AI - Awesome Audio Plaza](https://github.com/metame-ai/awesome-audio-plaza)
 - [Speech.Zone](https://speech.zone)
 - [语音之家](https://www.speechhome.com)
 - 课题组 [X-LANCE@SJTU](https://x-lance.sjtu.edu.cn)
 - 课题组 [ASLP@NPU](http://www.npu-aslp.org)
 - 课题组 [Speech@NTU](https://www.youtube.com/@HungyiLeeNTU)
 
-## 表格汇总·CSV Table
+## 同类项目
 
-- [ ] [作者基本信息表 Authors-Info](Authors.csv)
-- [ ] [作者论文对应表 Authors-Papers](Authors-Papers.csv)
-- [ ] [模型总结表 Models](Models.csv)
+- [Awesome Audio Plaza](https://github.com/metame-ai/awesome-audio-plaza) by Metame AI ![Star](https://img.shields.io/github/stars/metame-ai/awesome-audio-plaza?style=social)
+- [Speech Trident](https://github.com/ga642381/speech-trident) by 李宏毅 Team ![Star](https://img.shields.io/github/stars/ga642381/speech-trident)
+- [Awesome MLLM](https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models) by VITA Team ![Star](https://img.shields.io/github/stars/BradyFU/Awesome-Multimodal-Large-Language-Models?style=social)
+- [Awesome Large Speech Model](https://github.com/huangcanan/Awesome-Large-Speech-Model) by Huang Can'an ![Star](https://img.shields.io/github/stars/huangcanan/Awesome-Large-Speech-Model?style=social)
 
 ## 开源项目·Text-to-Speech
 
@@ -56,4 +59,4 @@
 |2024.10.15 Paper<br>2024.10.16 Code|**Mini-Omni2**<br>@启元世界&清华大学|[Github](https://github.com/gpt-omni/mini-omni2)<br>![Star](https://img.shields.io/github/stars/gpt-omni/mini-omni2)<br>[HuggingFace](https://huggingface.co/gpt-omni/mini-omni2)<br>[HF Mirror](https://hf-mirror.com/gpt-omni/mini-omni2)||[ArXiv](https://arxiv.org/abs/2410.11190)|
 |2024.10.24 Code|**GLM-4-Voice**<br>@智谱 AI|[Github](https://github.com/THUDM/GLM-4-Voice)<br>![Star](https://img.shields.io/github/stars/THUDM/GLM-4-Voice)<br>[HuggingFace](https://huggingface.co/THUDM)<br>[HF Mirror](https://hf-mirror.com/THUDM)<br>[ModelScope](https://modelscope.cn/models/ZhipuAI/)||ArXiv|
 |2024.11.01 Paper<br>2024.11.04 Code|**Freeze-Omni**<br>@VITA Team<br>(腾讯优图实验室&ASLP(NPU)&南京大学)|[Github](https://github.com/VITA-MLLM/Freeze-Omni)<br>![Star](https://img.shields.io/github/stars/VITA-MLLM/Freeze-Omni) | [Demo](https://freeze-omni.github.io) | [ArXiv](https://arxiv.org/abs/2411.00774) |
-|2024.11.03 Code|**Hertz-Dev** 8.5 B<br>@Standard Intelligence|[Github](https://github.com/Standard-Intelligence/hertz-dev)<br>![Star](https://img.shields.io/github/stars/Standard-Intelligence/hertz-dev?style=social)<br>[Checkpoints](https://ckpt.si.inc/hertz-dev/index.txt)|[Blog](https://si.inc/hertz-dev/)|
+|2024.11.03 Code|**Hertz-Dev**<br>@Standard Intelligence|[Github](https://github.com/Standard-Intelligence/hertz-dev)<br>![Star](https://img.shields.io/github/stars/Standard-Intelligence/hertz-dev?style=social)<br>[Checkpoints](https://ckpt.si.inc/hertz-dev/index.txt)|[Blog](https://si.inc/hertz-dev/)|
