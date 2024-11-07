@@ -104,17 +104,17 @@ The article is structured as follows: section \ref{sec:related_work} presents pr
 In this section, we will mention some of the works that are good sources for further research in the field of audio generation.
 Some of them investigate only a specific model architecture or sub-area, while others, like this work, show a broader view.
 
-In ["Applications of Deep Learning to Audio Generation (2019)"](../2019_Applications_of_DL_to_Audio_Generation/_ToC.md), deep learning discriminative and generative architectures are discussed, along with their applications in speech and music synthesis.
+In ["Applications of Deep Learning to Audio Generation (2019)"](../2019_Applications_of_DL_to_Audio_Generation/Main.md), deep learning discriminative and generative architectures are discussed, along with their applications in speech and music synthesis.
 The article covers discriminative neural networks such as Multi-Layer Perceptron (MLP), Convolutional Neural Networks (CNN), and Recurrent Neural Networks (RNN), as well as generative neural networks like Variational Autoencoders (VAE) and Deep Belief Networks (DBN).
 They also describe generative adversarial networks (GAN), their flaws, and enhancement strategies (with Wasserstein GAN as a standout).
 The study mainly focuses on speech generation and doesn't focus much on different hybrid models.
 
-In contrast, ["Deep Learning for Audio Signal Processing (2019)"](../2019_DL_for_Audio_Signal_Processing/_ToC.md) emphasizes other areas of modeling, including feature representations, loss functions, data, and evaluation methods.
+In contrast, ["Deep Learning for Audio Signal Processing (2019)"](../2019_DL_for_Audio_Signal_Processing/Main.md) emphasizes other areas of modeling, including feature representations, loss functions, data, and evaluation methods.
 It also investigates a variety of additional application fields, including enhancement as well as those outside of audio generation, such as source separation, audio classification, and tagging.
 They describe various audio aspects that are not covered here, such as the mel frequency cepstral coefficients (MFCC) and the constant-Q spectrogram.
 They do not cover as many architectures, but they do provide domain-specific datasets and evaluation methods.
 
-Unlike previous works, ["Deep Learning Techniques for Music Generation - A Survey (2017)"](../2017_DL_Techniques_for_Music_Generation__A_Survey/_ToC.md)  attempts to comprehensively examine a specific field of audio generation.
+Unlike previous works, ["Deep Learning Techniques for Music Generation - A Survey (2017)"](../2017_DL_Techniques_for_Music_Generation__A_Survey/Main.md)  attempts to comprehensively examine a specific field of audio generation.
 This study considers five dimensions of music generation: objective, representation, architecture, challenge, and strategy.
 It looks at a variety of representations, both domain-specific and more general.
 Explains the fundamentals of music theory, including notes, rhythm, and chords.
@@ -122,12 +122,12 @@ Introduces various previously established architectures such as MLP, VAE, RNN, C
 Finally, it discusses the many challenges of music generation and ways for overcoming them.
 The work is quite extensive; however, some sections may benefit from a more detailed explanation.
 
-["Deep Generative Models for Musical Audio Synthesis (2020)"](../2020_Deep_Generative_Models_for_Musical_Audio_Synthesis/_ToC.md) is another work that explores the subject of music generation and includes music translation.
+["Deep Generative Models for Musical Audio Synthesis (2020)"](../2020_Deep_Generative_Models_for_Musical_Audio_Synthesis/Main.md) is another work that explores the subject of music generation and includes music translation.
 It discusses data representation, generative neural networks, and two popular DNN-based synthesizers.
 It discusses the issue of long-term dependence and how conditioning might alleviate it.
 Explains the autoregressive (AR) and normalized flow (NF) models, as well as VAE and GAN.
 
-["Deep Learning for Audio and Music (2021)"](../2021_DL_for_Audio_and_Music/_ToC.md) provides an overview of deep learning techniques for audio.
+["Deep Learning for Audio and Music (2021)"](../2021_DL_for_Audio_and_Music/Main.md) provides an overview of deep learning techniques for audio.
 It distinguishes architectures from meta-architectures.
 The architectures include MLP, CNN, Temporal Convolutional Networks (TCN), and RNN, while the meta-architectures are Auto-Encoders (AE), VAE, GAN, Encoder/Decoder, Attention Mechanism, and Transformers.
 Divides audio representations into three categories: time-frequency, waveform, and knowledge-driven.
@@ -135,25 +135,25 @@ Time-frequency representations include the Short-Time Fourier Transform (STFT), 
 The article concludes with a list of applications for audio deep learning algorithms, including music content description, environmental sound description, and content processing.
 It also briefly discusses semi-supervised and self-supervised learning.
 
-["A Survey on Neural Speech Synthesis (2021)"](../2021.06.29_A_Survey_on_Neural_Speech_Synthesis_63P/_ToC.md) provides a comprehensive overview of TTS methods, including history.
+["A Survey on Neural Speech Synthesis (2021)"](../2021.06.29_A_Survey_on_Neural_Speech_Synthesis_63P/Main.md) provides a comprehensive overview of TTS methods, including history.
 It explains the basic components of TTS systems, such as text analysis, acoustic models, and vocoders, and includes a list of models in each area.
 Finally, it discusses advanced methods for implementing TTS systems in certain use situations, such as Fast TTS, Low-Resource TTS, and Robust TTS.
 
-["A Survey on Audio Synthesis and Audio-Visual Multimodal Processing (2021)"](../2021.08.01_A_Survey_on_Audio_Synthesis_&_Audio-Visual_Multimodal_Processing/_ToC.md) discusses TTS, music generation, audiovisual multi-modal processing, and datasets.
+["A Survey on Audio Synthesis and Audio-Visual Multimodal Processing (2021)"](../2021.08.01_A_Survey_on_Audio_Synthesis_&_Audio-Visual_Multimodal_Processing/Main.md) discusses TTS, music generation, audiovisual multi-modal processing, and datasets.
 This effort differs from earlier ones in that it organizes relevant articles by category rather than explaining subjects in depth.
 
-["Audio Representations for Deep Learning in Sound Synthesis: A Review (2021)"](../2021_Audio_Representations_for_Deep_Learning_in_Sound_Synthesis__A_Review/_ToC.md) is the closest work to this one.
+["Audio Representations for Deep Learning in Sound Synthesis: A Review (2021)"](../2021_Audio_Representations_for_Deep_Learning_in_Sound_Synthesis__A_Review/Main.md) is the closest work to this one.
 It follows a similar structure, starting with input representations including raw waveforms, spectrograms, acoustic characteristics, embeddings, and symbolic representations, followed by conditioning representations used to guide audio synthesis.
 Includes audio synthesis techniques such as AR, NF, GAN, and VAE.
 The article concludes with the following evaluation methods: perceptual evaluation, number of statistically different bins, inception score, distance-based measurements, spectral convergence, and log likelihood.
 
-["Transformers in Speech Processing: A Survey (2023)"](../2023.03.21_Transformers_in_Speech_Processing__A_Survey/_ToC.md) provides an overview of transformer architectures used in the field of speech processing.
+["Transformers in Speech Processing: A Survey (2023)"](../2023.03.21_Transformers_in_Speech_Processing__A_Survey/Main.md) provides an overview of transformer architectures used in the field of speech processing.
 The article provides a description of the transformer, a list of popular transformers for speech, and a literature review on its applications.
 
-["A Survey on Audio Diffusion Models: Text To Speech Synthesis and Enhancement in Generative AI (2023)"](../2023.03.23_A_Survey_on_Audio_Diffusion_Models__TTS_Synthesis_&_Enhancement_in_Generative_AI/_ToC.md) surveys TTS and speech enhancement, with a focus on diffusion models.
+["A Survey on Audio Diffusion Models: Text To Speech Synthesis and Enhancement in Generative AI (2023)"](../2023.03.23_A_Survey_on_Audio_Diffusion_Models__TTS_Synthesis_&_Enhancement_in_Generative_AI/Main.md) surveys TTS and speech enhancement, with a focus on diffusion models.
 Although the emphasis is on diffusion models, they also discuss the stages of TTS, pioneering work, and specialized models for distinct speech enhancement tasks.
 
-["A Review of Deep Learning Techniques for Speech Processing (2023)"](../2023_A_Review_of_DL_Techniques_for_Speech_Processing/_ToC.md)  conducted a comprehensive survey of deep learning techniques in speech processing.
+["A Review of Deep Learning Techniques for Speech Processing (2023)"](../2023_A_Review_of_DL_Techniques_for_Speech_Processing/Main.md)  conducted a comprehensive survey of deep learning techniques in speech processing.
 It begins with speech features and traditional speech processing models.
 It addresses the following deep learning architectures: RNN, CNN, Transformer, Conformer, Sequence-to-Sequence models (Seq2seq), Reinforcement learning, Graph neural networks (GNN), and diffusion probabilistic networks.
 Explains supervised, unsupervised, semi-supervised, and self-directed speech representation learning.
@@ -165,17 +165,17 @@ Finally, it discusses a variety of speech processing tasks, including neural spe
 在本节中, 我们将提及一些在音频生成领域进行深入研究的良好资源.
 其中一些仅研究特定的模型架构或子领域, 而其他的一些, 如本文, 则呈现了一个更广泛的视角.
 
-在 ["Applications of Deep Learning to Audio Generation (2019)"](../2019_Applications_of_DL_to_Audio_Generation/_ToC.md) 中, 讨论了深度学习的判别性和生成性架构, 以及它们在语音和音乐合成中的应用.
+在 ["Applications of Deep Learning to Audio Generation (2019)"](../2019_Applications_of_DL_to_Audio_Generation/Main.md) 中, 讨论了深度学习的判别性和生成性架构, 以及它们在语音和音乐合成中的应用.
 文章涵盖了判别性神经网络, 如多层感知机 (Mulit-Layer Perceptron, MLP), 卷积神经网络 (Convolutional Neural Networks, CNN), 循环神经网络 (Recurrent Neural Networks, RNN), 以及生成性神经网络, 如变分自编码器 (Variational Autoencoders, VAE) 和深度置信网络 (Deep Belief Networks, DBN).
 文章还描述了生成对抗网络 (Generative Adversarial Networks, GAN), 相应缺陷, 以及增强策略 (特别是 Wasserstein GAN).
 该研究主要集中在语音生成上, 并未过多关注不同的混合模型.
 
-相比之下, ["Deep Learning for Audio Signal Processing (2019)"](../2019_DL_for_Audio_Signal_Processing/_ToC.md) 注重于其他领域的建模, 如特征表示, 损失函数, 数据和评价方法.
+相比之下, ["Deep Learning for Audio Signal Processing (2019)"](../2019_DL_for_Audio_Signal_Processing/Main.md) 注重于其他领域的建模, 如特征表示, 损失函数, 数据和评价方法.
 它还探讨了额外的各种应用领域, 包括增强以及音频生成之外的领域, 如声源分离, 语音分类和标记.
 他们描述了本文未涉及到的各种音频方面, 例如梅尔频率倒谱系数 (Mel Frequency Cepstral Coefficients, MFCC) 和常量 Q 频谱图.
 他们并未涉及如本文这么多的架构, 但提供了特定领域的数据集和评价方法.
 
-和之前的工作不同, ["Deep Learning Techniques for Music Generation - A Survey (2017)"](../2017_DL_Techniques_for_Music_Generation__A_Survey/_ToC.md) 尝试全面地审视音频生成的一个特定领域.
+和之前的工作不同, ["Deep Learning Techniques for Music Generation - A Survey (2017)"](../2017_DL_Techniques_for_Music_Generation__A_Survey/Main.md) 尝试全面地审视音频生成的一个特定领域.
 该研究考虑音乐生成的五个维度: 目标, 表示, 架构, 挑战, 策略.
 它考察了各种表示, 包括特定领域和更通用的.
 解释了音乐理论的基础, 包括音符, 节奏和和弦.
@@ -183,12 +183,12 @@ Finally, it discusses a variety of speech processing tasks, including neural spe
 最后, 讨论了音乐生成的许多挑战, 以及如何克服这些挑战的方法.
 该研究相当广泛, 但某些部分可能需要更详细的解释.
 
-["Deep Generative Models for Musical Audio Synthesis (2020)"](../2020_Deep_Generative_Models_for_Musical_Audio_Synthesis/_ToC.md) 是另一项探讨音乐生成主题的工作, 包括音乐翻译.
+["Deep Generative Models for Musical Audio Synthesis (2020)"](../2020_Deep_Generative_Models_for_Musical_Audio_Synthesis/Main.md) 是另一项探讨音乐生成主题的工作, 包括音乐翻译.
 它讨论了数据表示, 生成性神经网络和两种流行的基于 DNN 的合成器.
 它讨论了长期依赖问题以及条件化如何缓解这一问题.
 解释了自回归 (AR) 和归一化流 (NF) 模型, 以及 VAE 和 GAN.
 
-["Deep Learning for Audio and Music (2021)"](../2021_DL_for_Audio_and_Music/_ToC.md) 提供了深度学习技术在音频领域的概述.
+["Deep Learning for Audio and Music (2021)"](../2021_DL_for_Audio_and_Music/Main.md) 提供了深度学习技术在音频领域的概述.
 它区分了架构和元架构.
 架构包括 MLP, CNN, 时域卷积网络 (Temporal Convolutional Networks, TCN), 和 RNN, 而元架构包括自编码器 (Auto-Encoders, AE), VAE, GAN, 编码器-解码器 (Encoder/Decoder), 注意力机制 (Attention Mechanism), 和 Transformers.
 它将音频表示分为三类: 时频, 波形, 知识驱动.
@@ -196,33 +196,25 @@ Finally, it discusses a variety of speech processing tasks, including neural spe
 文章最后列出了音频深度学习算法的应用, 包括音乐内容描述, 环境声音描述和内容处理.
 它还简要地讨论了半监督和无监督学习.
 
-["A Survey on Neural Speech Synthesis (2021)"](../2021.06.29_A_Survey_on_Neural_Speech_Synthesis_63P/_ToC.md) 提供了对文本转语音方法的全面概述, 包括历史.
+["A Survey on Neural Speech Synthesis (2021)"](../2021.06.29_A_Survey_on_Neural_Speech_Synthesis_63P/Main.md) 提供了对文本转语音方法的全面概述, 包括历史.
 它解释了文本转语音系统的基本组件, 如文本分析, 声学模型, 声码器, 并列出了每个子领域的模型列表.
 最后它讨论了在某些特定使用场景下实施文本转语音系统的先进方法, 如快速 TTS, 低资源 TTS, 和健壮 TTS.
 
-["A Survey on Audio Synthesis and Audio-Visual Multimodal Processing (2021)"](../2021.08.01_A_Survey_on_Audio_Synthesis_&_Audio-Visual_Multimodal_Processing/_ToC.md) 讨论了 TTS, 音乐生成, 视听多模态处理和数据集.
+["A Survey on Audio Synthesis and Audio-Visual Multimodal Processing (2021)"](../2021.08.01_A_Survey_on_Audio_Synthesis_&_Audio-Visual_Multimodal_Processing/Main.md) 讨论了 TTS, 音乐生成, 视听多模态处理和数据集.
 这项工作与之前的工作不同, 它按类别组织相关文章, 而不是深入解释主题.
 
-["Audio Representations for Deep Learning in Sound Synthesis: A Review (2021)"](../2021_Audio_Representations_for_Deep_Learning_in_Sound_Synthesis__A_Review/_ToC.md) 与本文最接近.
+["Audio Representations for Deep Learning in Sound Synthesis: A Review (2021)"](../2021_Audio_Representations_for_Deep_Learning_in_Sound_Synthesis__A_Review/Main.md) 与本文最接近.
 它遵循类似的结构, 从输入表示开始, 包括原始波形, 频谱图, 声学特征, 嵌入和符号表示, 然后是用于指导音频合成的条件表示.
 文章还包括了音频合成技术, 如 AR, NF, GAN 和 VAE.
 文章最后介绍了以下评估方法: 感知评估, 统计不同箱的数量, 初始分数, 基于距离的测量, 光谱收敛性和对数似然.
 
-<details>
-<summary>展开原文</summary>
-
-
-
-</details>
-<br>
-
-["Transformers in Speech Processing: A Survey (2023)"](../2023.03.21_Transformers_in_Speech_Processing__A_Survey/_ToC.md) 提供了在语音处理领域使用的 Transformer 架构的概述.
+["Transformers in Speech Processing: A Survey (2023)"](../2023.03.21_Transformers_in_Speech_Processing__A_Survey/Main.md) 提供了在语音处理领域使用的 Transformer 架构的概述.
 文章描述了 Transformer, 列出了用于语音的流行 Transformer, 并对其应用进行了文献综述.
 
-["A Survey on Audio Diffusion Models: Text To Speech Synthesis and Enhancement in Generative AI (2023)"](../2023.03.23_A_Survey_on_Audio_Diffusion_Models__TTS_Synthesis_&_Enhancement_in_Generative_AI/_ToC.md) 调查了文本转语音和语音增强, 重点是扩散模型.
+["A Survey on Audio Diffusion Models: Text To Speech Synthesis and Enhancement in Generative AI (2023)"](../2023.03.23_A_Survey_on_Audio_Diffusion_Models__TTS_Synthesis_&_Enhancement_in_Generative_AI/Main.md) 调查了文本转语音和语音增强, 重点是扩散模型.
 虽然重点是扩散模型, 但他们也讨论了 TTS 的阶段, 开创性工作以及针对特定语音增强任务的专业模型.
 
-["A Review of Deep Learning Techniques for Speech Processing (2023)"](../2023_A_Review_of_DL_Techniques_for_Speech_Processing/_ToC.md) 进行了一项关于深度学习技术在语音处理中的全面调查.
+["A Review of Deep Learning Techniques for Speech Processing (2023)"](../2023_A_Review_of_DL_Techniques_for_Speech_Processing/Main.md) 进行了一项关于深度学习技术在语音处理中的全面调查.
 它从语音特征和传统语音处理模型开始.
 它讨论了以下深度学习架构: RNN, CNN, Transformer, Conformer, 序列到序列模型 (Seq2seq), 强化学习, 图神经网络 (GNN) 和扩散概率网络.
 解释了监督, 无监督, 半监督和自我导向的语音表示学习.
@@ -233,12 +225,12 @@ Finally, it discusses a variety of speech processing tasks, including neural spe
 <a id="sec.background"></a>
 
 The main purpose of this section is to show how audio generation has developed over the years up to this point.
-Since audio generation is a broad field that encompasses many different areas, such as text-to-speech synthesis, voice conversion, speech enhancement,... ["Deep Learning for Audio and Music (2021)"](../2015_DL_for_Acoustic_Modeling_in_Parametric_Speech_Generation/_ToC.md), we will only focus on two different areas of audio generation: text-to-speech synthesis and music generation.
+Since audio generation is a broad field that encompasses many different areas, such as text-to-speech synthesis, voice conversion, speech enhancement,... ["Deep Learning for Audio and Music (2021)"](../2015_DL_for_Acoustic_Modeling_in_Parametric_Speech_Generation/Main.md), we will only focus on two different areas of audio generation: text-to-speech synthesis and music generation.
 There is no particular reason for this choice, except that they are among the more popular ones.
 The trend we want to show is how domain-specific knowledge is shifting towards general-purpose methods and how feature engineering is turning into feature recognition.
 
 本节的主要目的是展示音频生成领域多年来是如何发展到目前这个阶段的.
-由于音频生成是一个广泛的领域, 涵盖了许多不同的领域, 如文本到语音合成, 语音转换, 语音增强等 (["Deep Learning for Audio and Music (2021)"](../2015_DL_for_Acoustic_Modeling_in_Parametric_Speech_Generation/_ToC.md)),
+由于音频生成是一个广泛的领域, 涵盖了许多不同的领域, 如文本到语音合成, 语音转换, 语音增强等 (["Deep Learning for Audio and Music (2021)"](../2015_DL_for_Acoustic_Modeling_in_Parametric_Speech_Generation/Main.md)),
 
 我们将只关注音频生成的两个不同领域: 文本到语音合成和音乐生成.
 这个选择没有特别的理由, 只是因为它们是更受欢迎的领域之一.
