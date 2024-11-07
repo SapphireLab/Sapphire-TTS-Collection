@@ -311,7 +311,7 @@ Several approaches have been proposed to construct instruction-following dataset
 In the first stage, instruction data are generated based on ASR datasets by appending the instruction to paired ASR data, asking the model to convert speech into text.
 Similarly, paired data is also used to create instruction data for performing TTS.
 In the second stage, they construct a speech-in-speech-out dataset by transforming a text-based instruction-following dataset using TTS.
-[LLaMA-Omni (2024)](../../Models/MultiModal/2024.09.10_LLaMA-Omni.md) also creates instruction-following data by synthesizing text-based datasets, adhering to specific constraints.
+[LLaMA-Omni (2024)](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md) also creates instruction-following data by synthesizing text-based datasets, adhering to specific constraints.
 First, they transform the input text prompt into a format that mimics natural speech patterns.
 Next, they discard the original text response and employ a TextLM to generate answers to the converted prompts, ensuring these responses also follow natural speech patterns.
 Finally, they synthesize the prompt/response pairs using TTS.
@@ -330,7 +330,7 @@ They showed the model trained on their proposed speech QA dataset can generalize
 第一阶段, 基于 ASR 数据集生成指令数据, 通过将指令附加到配对的 ASR 数据中, 要求模型将语音转换为文本.
 类似地, 配对的数据也用于创建 TTS 的指令数据.
 第二阶段, 通过使用 TTS 转换基于文本的指令遵循数据集来构造语音-语音的数据集.
-- [LLaMA-Omni (2024)](../../Models/MultiModal/2024.09.10_LLaMA-Omni.md) 也通过合成基于文本的数据集来创建指令遵循数据集, 遵循特定约束.
+- [LLaMA-Omni (2024)](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md) 也通过合成基于文本的数据集来创建指令遵循数据集, 遵循特定约束.
   首先, 将输入文本提示转换为模仿自然语音模式的格式.
   然后, 丢弃原始文本响应, 使用 TextLM 生成转换后提示的答案, 确保这些答案也遵循自然语音模式.
   最后, 使用 TTS 合成提示/响应对.
