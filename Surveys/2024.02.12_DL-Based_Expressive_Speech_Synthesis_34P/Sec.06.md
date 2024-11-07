@@ -93,7 +93,7 @@ Besides, they have shown promising results in expressive speech synthesis, as th
 此外, 当考虑到不同语言和多个说话人时, 挑战变得更加复杂.
 然而, 随着将语言建模方法引入语音合成领域的新趋势, 使用上下文学习策略在大规模数据集上训练文本转语音模型成为可能.
 这些大量的数据提供了说话人, 说话风格和韵律的多样性, 即便存在嘈杂的噪音和不准确的转录也可以用于训练.
-实际上, 近期的基于语言建模的文本转语音模型, 例如 [VALL-E (2023)](../../Models/Speech_LLM/2023.01.05_VALL-E.md), [NaturalSpeech 2](../../Models/Diffusion/2023.04.18_NaturalSpeech2.md), [Voicebox](../../Models/_tmp/2023.06.23_VoiceBox.md) 等, 在各种语音相关任务上都取得了成功, 尤其是零样本语音合成.
+实际上, 近期的基于语言建模的文本转语音模型, 例如 [VALL-E (2023)](../../Models/SpeechLM/2023.01.05_VALL-E.md), [NaturalSpeech 2](../../Models/Diffusion/2023.04.18_NaturalSpeech2.md), [Voicebox](../../Models/SpeechLM/2023.06.23_VoiceBox.md) 等, 在各种语音相关任务上都取得了成功, 尤其是零样本语音合成.
 此外, 它们在表现性语音合成方面也取得了令人振奋的成果, 因为它们能够复制单个输入音频提示的语音风格和情感.
 
 As for open-source codes, several implementations and repositories are publicly available.
