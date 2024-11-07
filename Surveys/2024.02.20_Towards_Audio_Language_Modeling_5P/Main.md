@@ -447,7 +447,7 @@ Additionally, [AudioPaLM](../../Models/SpeechLM/2023.06.22_AudioPaLM.md)’s ini
 Moreover, [AudioPaLM](../../Models/SpeechLM/2023.06.22_AudioPaLM.md) adopts and extends the [SoundStream](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md) model to [SoundStorm (2023)](../../Models/SpeechLM/2023.05.16_SoundStorm.md).
 [LauraGPT (2023)](../../Models/SpeechLM/2023.10.07_LauraGPT.md) is a versatile language model built on a decoder-only text-based language model, [Qwen-2B (2023)](../../Models/TextLM/2023.09.28_Qwen.md).
 [LauraGPT](../../Models/SpeechLM/2023.10.07_LauraGPT.md) has the capability to process both audio and text inputs, generating outputs in either modality.
-[LauraGPT](../../Models/SpeechLM/2023.10.07_LauraGPT.md) encodes input audio into continuous representations using a [Conformer](../../Models/_Basis/2020.05.16_Conformer.md) encoder and decodes output audio using [FunCodec](../../Models/Speech_Neural_Codec/2023.09.14_FunCodec.md) discrete codes.
+[LauraGPT](../../Models/SpeechLM/2023.10.07_LauraGPT.md) encodes input audio into continuous representations using a [Conformer](../../Models/ASR/2020.05.16_Conformer.md) encoder and decodes output audio using [FunCodec](../../Models/Speech_Neural_Codec/2023.09.14_FunCodec.md) discrete codes.
 The authors claim this specific audio features design for inputs and outputs will result in improved performance for speech generation using some preliminary experimental results.
 
 </details>
@@ -456,7 +456,7 @@ The authors claim this specific audio features design for inputs and outputs wil
 [VioLA](../../Models/SpeechLM/2023.05.25_VioLA.md), [AudioPaLM](../../Models/SpeechLM/2023.06.22_AudioPaLM.md), 和 [LauraGPT](../../Models/SpeechLM/2023.10.07_LauraGPT.md) 的不同指出在于它们具有生成文本和音频的双重能力.
 - [VioLA](../../Models/SpeechLM/2023.05.25_VioLA.md) 试图解决 "是否只需要一个仅用解码器的生成模型就能完成语音识别, 合成和翻译?" 的问题, 通过采用结合 文本 Token 和音频 Token (由 [Encodec](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) 提取), 任务 ID 和语言 ID 进行语言建模.
 - [AudioPaLM](../../Models/SpeechLM/2023.06.22_AudioPaLM.md) 构造了一个统一的词汇表, 包括文本和音频 Token. 它是一个仅使用解码器, 自回归模型, 能够处理和生成文本和语音. 此外, 其初始化来自一个仅文本的语言模型 [PaLM-2 (2023)](../../Models/TextLM/2023.05.17_PaLM2.md). 其音频分词方式与 [AudioLM](../../Models/SpeechLM/2022.09.07_AudioLM.md) 类似. 此外, 还采用并扩展了 [SoundStream](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md) 到 [SoundStorm](../../Models/SpeechLM/2023.05.16_SoundStorm.md).
-- [LauraGPT](../../Models/SpeechLM/2023.10.07_LauraGPT.md) 是建立在仅使用解码器的基于文本的语言模型 [Qwen-2B (2023)](../../Models/TextLM/2023.09.28_Qwen.md) 的多功能语言模型, 它具有处理音频和文本输入的能力, 生成的双模态输出. 它采用 [Conformer](../../Models/_Basis/2020.05.16_Conformer.md) 编码器编码输入音频, 并使用 [FunCodec](../../Models/Speech_Neural_Codec/2023.09.14_FunCodec.md) 离散编码解码为输出音频. 作者声称特定的音频特征设计, 对于输入和输出, 将会提升语音生成的性能, 并给出了一些初步的实验结果.
+- [LauraGPT](../../Models/SpeechLM/2023.10.07_LauraGPT.md) 是建立在仅使用解码器的基于文本的语言模型 [Qwen-2B (2023)](../../Models/TextLM/2023.09.28_Qwen.md) 的多功能语言模型, 它具有处理音频和文本输入的能力, 生成的双模态输出. 它采用 [Conformer](../../Models/ASR/2020.05.16_Conformer.md) 编码器编码输入音频, 并使用 [FunCodec](../../Models/Speech_Neural_Codec/2023.09.14_FunCodec.md) 离散编码解码为输出音频. 作者声称特定的音频特征设计, 对于输入和输出, 将会提升语音生成的性能, 并给出了一些初步的实验结果.
 
 <details>
 <summary>原文</summary>
