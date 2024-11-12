@@ -2,6 +2,8 @@
 
 预训练模型检查点可以在 [HuggingFace](https://huggingface.co/SWivid/F5-TTS) 和 [Model Scope](https://www.modelscope.cn/models/SWivid/F5-TTS_Emilia-ZH-EN) 下载, 或者在运行推理脚本是自动下载.
 
+由社区驱动的更多模型检查点可以在 SHARED.md 文件中找到, 支持更多语言.
+
 当前支持单次生成三十秒音频, 该长度包含参考语音和输出语音.
 但是, 你可以为 `infer_cli` 和 `infer_gradio` 提供更长的文本, 它会自动进行分块生成. 长参考音频会被截断到 ~15s.
 
@@ -147,7 +149,7 @@ python src/f5_tts/infer/speech_edit.py
 要和 Socket 服务器进行通信, 你需要先运行:
 
 ```bash
-python src/f5_tts/socket.py
+python src/f5_tts/socket_server.py
 ```
 
 然后创建一个客户端来与服务器通信:
