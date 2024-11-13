@@ -37,15 +37,15 @@ Based on recent developments, we can categorize the features modeled by SpeechLM
 Discrete features refer to quantized representations of speech signals that can be represented as distinct, countable units or tokens.
 These features are typically derived from speech signals through various encoding and quantization processes, resulting in a finite set of possible values.
 Discrete features are the most used features by SpeechLMs as they can be represented as tokens and be modeled exactly the same as the text tokens within a TextLM.
-The majority of speech tokenizers produce discrete tokens that better model the **semantic information** within a speech waveform ([semantic understanding speech tokenizers](Sec.03.Components.md#311semantic-understanding-objective-语义理解目标)), such as [W2V-BERT (2021)](../../Models/Speech_Representaion/2021.08.07_W2V-BERT.md); [HuBERT (2021)](../../Models/Speech_Representaion/2021.06.14_HuBERT.md).
+The majority of speech tokenizers produce discrete tokens that better model the **semantic information** within a speech waveform ([semantic understanding speech tokenizers](Sec.03.Components.md#311semantic-understanding-objective-语义理解目标)), such as [W2V-BERT (2021)](../../Models/SpeechRepresentation/2021.08.07_W2V-BERT.md); [HuBERT (2021)](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md).
 This is because they primarily use understanding objectives such as MLM to model the contextual information of the waveforms when training the tokenizer.
 We refer to them as **semantic tokens** here.
 
 Most SpeechLMs only employ **semantic tokens** to represent speech.
-[GSLM (2021)](../../Models/SpeechLM/2021.02.01_GSLM.md) the first-ever SpeechLM, compares three tokenizers, which include [Contrastive Predictive Coding (CPC) (2018)](../../Models/Speech_Representaion/2018.07.10_CPC.md), [Wav2Vec 2.0 (2020)](../../Models/Speech_Representaion/2020.06.20_Wav2Vec2.0.md), and [HuBERT (2021)](../../Models/Speech_Representaion/2021.06.14_HuBERT.md).
+[GSLM (2021)](../../Models/SpeechLM/2021.02.01_GSLM.md) the first-ever SpeechLM, compares three tokenizers, which include [Contrastive Predictive Coding (CPC) (2018)](../../Models/SpeechRepresentation/2018.07.10_CPC.md), [Wav2Vec 2.0 (2020)](../../Models/SpeechRepresentation/2020.06.20_Wav2Vec2.0.md), and [HuBERT (2021)](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md).
 It concludes that HuBERT performs the best on various tasks such as speech resynthesis and speech generation.
 A large number of works follow this setting and use HuBERT as the speech tokenizer ([TWIST (2023)](../../Models/SpeechLM/2023.05.22_TWIST.md); [SpiRit-LM (2024)](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md); [SpeechGPT (2023)](../../Models/SpeechLM/2023.05.18_SpeechGPT.md)).
-[AudioPaLM (2023)](../../Models/SpeechLM/2023.06.22_AudioPaLM.md) experiments the choice between [W2V-BERT (2021)](../../Models/Speech_Representaion/2021.08.07_W2V-BERT.md) , USM-v1 ([Google USM (2023)](../../Models/SpeechLM/2023.03.02_Google_USM.md)), and USM-v2 ([AudioPaLM (2023)](../../Models/SpeechLM/2023.06.22_AudioPaLM.md)) (which is a modified version of USM-v1), and it concludes that USM-v2 is the best-performing speech tokenizer on ASR and Speech Translation (ST) tasks.
+[AudioPaLM (2023)](../../Models/SpeechLM/2023.06.22_AudioPaLM.md) experiments the choice between [W2V-BERT (2021)](../../Models/SpeechRepresentation/2021.08.07_W2V-BERT.md) , USM-v1 ([Google USM (2023)](../../Models/SpeechLM/2023.03.02_Google_USM.md)), and USM-v2 ([AudioPaLM (2023)](../../Models/SpeechLM/2023.06.22_AudioPaLM.md)) (which is a modified version of USM-v1), and it concludes that USM-v2 is the best-performing speech tokenizer on ASR and Speech Translation (ST) tasks.
 
 Although semantic tokens excel at generating semantically meaningful speech because of the modeling of the contextual information within speech waveforms, researchers find out that the speech generated solely upon semantic tokens lacks expressive information such as prosody and different pitches or timbres ([Expresso (2023)](../../Datasets/2023.08.10_Expresso.md); [SpiRit-LM (2024)](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md)).
 To conquer this limitation, **paralinguistic tokens** can be integrated into the modeling process to capture expressive information with speeches.
@@ -66,13 +66,13 @@ It encodes a 3-second audio clip using [EnCodec (2022)](../../Models/Speech_Neur
 离散特征是指语音信号的量化表示, 可以表示为不同的可数的单元或 Token.
 这些特征通常通过各种编码和量化过程从语音信号中导出, 从而得到一组可能值的有限集合.
 离散特征是语音语言模型中最常用的特征, 因为它们可以表示为 Token, 并且可以与文本语言模型中的文本 Token 完全相同的方式建模.
-大多数语音分词器能够生成离散 Token 来更好地建模语音波形中的语义信息 ([语义理解语音分词器](Sec.03.Components.md#311semantic-understanding-objective-语义理解目标)), 例如 [W2V-BERT (2021)](../../Models/Speech_Representaion/2021.08.07_W2V-BERT.md); [HuBERT (2021)](../../Models/Speech_Representaion/2021.06.14_HuBERT.md).
+大多数语音分词器能够生成离散 Token 来更好地建模语音波形中的语义信息 ([语义理解语音分词器](Sec.03.Components.md#311semantic-understanding-objective-语义理解目标)), 例如 [W2V-BERT (2021)](../../Models/SpeechRepresentation/2021.08.07_W2V-BERT.md); [HuBERT (2021)](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md).
 这是因为它们主要使用理解目标例如 MLM 在训练分词器是建模波形的上下文信息.
 在这里, 我们将它们称为**语义 Token (Semantic Tokens)**.
 
 大多数语音语言模型仅采用语义 Token 来表示语音.
-- [GSLM (2021)](../../Models/SpeechLM/2021.02.01_GSLM.md) 是首个语音语言模型, 它比较了三个分词器, 包括 [Contrastive Predictive Coding (CPC) (2018)](../../Models/Speech_Representaion/2018.07.10_CPC.md), [Wav2Vec 2.0 (2020)](../../Models/Speech_Representaion/2020.06.20_Wav2Vec2.0.md), 和 [HuBERT (2021)](../../Models/Speech_Representaion/2021.06.14_HuBERT.md). 它得出结论, HuBERT 在各种任务上都表现最佳, 如语音重建和语音生成. 大量工作都遵循这一设置并使用 HuBERT 作为语音分词器 ([TWIST (2023)](../../Models/SpeechLM/2023.05.22_TWIST.md); [SpiRit-LM (2024)](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md); [SpeechGPT (2023)](../../Models/SpeechLM/2023.05.18_SpeechGPT.md)).
-- [AudioPaLM (2023)](../../Models/SpeechLM/2023.06.22_AudioPaLM.md) 试验了 [W2V-BERT (2021)](../../Models/Speech_Representaion/2021.08.07_W2V-BERT.md) 、USM-v1 ([Google USM (2023)](../../Models/SpeechLM/2023.03.02_Google_USM.md)) 和 USM-v2 ([AudioPaLM (2023)](../../Models/SpeechLM/2023.06.22_AudioPaLM.md)) (USM-v1 的修改版), 并得出结论, USM-v2 是语音分词器在 ASR 和 ST 任务上的最佳选择.
+- [GSLM (2021)](../../Models/SpeechLM/2021.02.01_GSLM.md) 是首个语音语言模型, 它比较了三个分词器, 包括 [Contrastive Predictive Coding (CPC) (2018)](../../Models/SpeechRepresentation/2018.07.10_CPC.md), [Wav2Vec 2.0 (2020)](../../Models/SpeechRepresentation/2020.06.20_Wav2Vec2.0.md), 和 [HuBERT (2021)](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md). 它得出结论, HuBERT 在各种任务上都表现最佳, 如语音重建和语音生成. 大量工作都遵循这一设置并使用 HuBERT 作为语音分词器 ([TWIST (2023)](../../Models/SpeechLM/2023.05.22_TWIST.md); [SpiRit-LM (2024)](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md); [SpeechGPT (2023)](../../Models/SpeechLM/2023.05.18_SpeechGPT.md)).
+- [AudioPaLM (2023)](../../Models/SpeechLM/2023.06.22_AudioPaLM.md) 试验了 [W2V-BERT (2021)](../../Models/SpeechRepresentation/2021.08.07_W2V-BERT.md) 、USM-v1 ([Google USM (2023)](../../Models/SpeechLM/2023.03.02_Google_USM.md)) 和 USM-v2 ([AudioPaLM (2023)](../../Models/SpeechLM/2023.06.22_AudioPaLM.md)) (USM-v1 的修改版), 并得出结论, USM-v2 是语音分词器在 ASR 和 ST 任务上的最佳选择.
 
 尽管语义 Token 由于建模语音波形中的上下文信息而在生成语义意义的语音方面表现优异, 但研究人员发现, 仅仅使用语义 Token 生成的语音缺乏表现力, 如语调和不同的音高或音色 ([Expresso (2023)](../../Datasets/2023.08.10_Expresso.md); [SpiRit-LM (2024)](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md)).
 为了克服这一局限, **副语言 Token (Paralinguistic Tokens)** 可以被集成到建模过程中, 以捕捉表现性信息的语音.
@@ -98,7 +98,7 @@ Recovering and enhancing these details typically requires postprocessing, like a
 Conversely, acoustic tokens can facilitate the generation of high-fidelity audio but often struggle with inaccuracies in content generation ([SpeechTokenizer (2023)](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md)).
 Researchers have tried two ways to balance these trade-offs.
 The first involves combining semantic and acoustic tokens into a single sequence.
-[AudioLM (2022)](../../Models/SpeechLM/2022.09.07_AudioLM.md) proposes a hierarchical modeling scheme that first models semantic tokens from [W2V-BERT (2021)](../../Models/Speech_Representaion/2021.08.07_W2V-BERT.md)  and then uses these tokens to predict acoustic tokens from [SoundStream (2021)](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md), which ultimately generates speech.
+[AudioLM (2022)](../../Models/SpeechLM/2022.09.07_AudioLM.md) proposes a hierarchical modeling scheme that first models semantic tokens from [W2V-BERT (2021)](../../Models/SpeechRepresentation/2021.08.07_W2V-BERT.md)  and then uses these tokens to predict acoustic tokens from [SoundStream (2021)](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md), which ultimately generates speech.
 However, this kind of approach increases sequence length, which increases modeling complexity.
 The second strategy leverages [**mixed tokens**](Sec.03.Components.md#313mixed-objective-混合目标) to jointly model semantic and acoustic information, showing promising results in [Moshi (2024)](../../Models/SpeechLM/2024.09.17_Moshi.md) and [SpeechGPT-Gen (2024)](../../Models/SpeechLM/2024.01.24_SpeechGPT-Gen.md).
 
@@ -112,7 +112,7 @@ The second strategy leverages [**mixed tokens**](Sec.03.Components.md#313mixed-o
 研究人员尝试了两种方法来平衡这些权衡.
 
 - 第一种方式: 将语义 Token 与声学 Token 结合为单一序列.
-  [AudioLM (2022)](../../Models/SpeechLM/2022.09.07_AudioLM.md) 提出了分层建模方案, 首先建模来自 [W2V-BERT (2021)](../../Models/Speech_Representaion/2021.08.07_W2V-BERT.md) 的语义 Token, 然后使用这些 Token 预测来自 [SoundStream (2021)](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md) 的声学 Token, 最后生成语音.
+  [AudioLM (2022)](../../Models/SpeechLM/2022.09.07_AudioLM.md) 提出了分层建模方案, 首先建模来自 [W2V-BERT (2021)](../../Models/SpeechRepresentation/2021.08.07_W2V-BERT.md) 的语义 Token, 然后使用这些 Token 预测来自 [SoundStream (2021)](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md) 的声学 Token, 最后生成语音.
   这种方法可以显著减少序列长度, 但会增加模型的复杂度.
 - 第二种方式: 利用[混合 Token](Sec.03.Components.md#313mixed-objective-混合目标) 来同时建模语义和声学信息.
   这种方式在 [Moshi (2024)](../../Models/SpeechLM/2024.09.17_Moshi.md) 和 [SpeechGPT-Gen (2024)](../../Models/SpeechLM/2024.01.24_SpeechGPT-Gen.md) 中都取得了良好的结果.
@@ -215,7 +215,7 @@ The inclusion of text transcripts can enhance the model's representation by allo
 Some SpeechLMs use cold initialization during the pre-training phase, where model parameters are initialized randomly.
 The pioneering SpeechLM---[GSLM (2021)](../../Models/SpeechLM/2021.02.01_GSLM.md)--trained a [Transformer (2017)](../../Models/_Transformer/2017.06.12_Transformer.md) from scratch to serve as the language model.
 This study demonstrated the effectiveness of the SpeechLM pipeline and compared performance across various speech tokenizer options.
-They found that [HuBERT (2021)](../../Models/Speech_Representaion/2021.06.14_HuBERT.md) outperformed [CPC (2018)](../../Models/Speech_Representaion/2018.07.10_CPC.md) and [Wav2vec 2.0 (2020)](../../Models/Speech_Representaion/2020.06.20_Wav2Vec2.0.md) in understanding speech content and generating natural speech.
+They found that [HuBERT (2021)](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) outperformed [CPC (2018)](../../Models/SpeechRepresentation/2018.07.10_CPC.md) and [Wav2vec 2.0 (2020)](../../Models/SpeechRepresentation/2020.06.20_Wav2Vec2.0.md) in understanding speech content and generating natural speech.
 [SUTLM (2023)](../../Models/SpeechLM/2023.10.12_SUTLM.md) also uses a transformer as the language model.
 They studied the critical problem of jointly modeling speech and text tokens by comparing four different modeling methods: speech-only, text-only, concatenated speech-text, and alternating (interleaving) speech-text.
 They showed that the setting of alternating speech-text performs the best in cross-modal evaluations.
@@ -227,7 +227,7 @@ Table.03 illustrates the four modeling methods.
 一些语音语言模型在与训练阶段使用冷初始化, 其中模型参数随机初始化.
 - 最早的语音语言模型 [GSLM (2021)](../../Models/SpeechLM/2021.02.01_GSLM.md) 以从头开始训练 [Transformer (2017)](../../Models/_Transformer/2017.06.12_Transformer.md) 作为语言模型.
 这一研究说明了语音语言模型流程的有效性, 并对不同的语音分词器选项进行了性能比较.
-他们发现 [HuBERT (2021)](../../Models/Speech_Representaion/2021.06.14_HuBERT.md) 在理解语音内容和生成自然语音方面优于 [CPC (2018)](../../Models/Speech_Representaion/2018.07.10_CPC.md) 和 [Wav2vec 2.0 (2020)](../../Models/Speech_Representaion/2020.06.20_Wav2Vec2.0.md).
+他们发现 [HuBERT (2021)](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) 在理解语音内容和生成自然语音方面优于 [CPC (2018)](../../Models/SpeechRepresentation/2018.07.10_CPC.md) 和 [Wav2vec 2.0 (2020)](../../Models/SpeechRepresentation/2020.06.20_Wav2Vec2.0.md).
 - [SUTLM (2023)](../../Models/SpeechLM/2023.10.12_SUTLM.md) 也使用了 Transformer 作为语言模型.
 他们研究了联合建模语音和文本 Token 时的关键问题, 通过比较四种不同的建模方法: 仅语音, 仅文本, 连接语音文本, 交替 (交错) 语音文本.
 他们发现交替语音文本的设置在跨模态评估中表现最佳.
