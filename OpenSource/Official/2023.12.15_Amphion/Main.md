@@ -24,8 +24,8 @@
 - 2023.12.18 PR035 新增模型 [2023.04.18_NaturalSpeech2](../../../Models/Diffusion/2023.04.18_NaturalSpeech2.md) 复现代码;
 - 2023.12.18 PR039 **v0.1 版本发布**;
 - 2023.12.21 PR056 新增模型 [2020.09.21_DiffWave](../../../Models/TTS3_Vocoder/2020.09.21_DiffWave.md) 声码器复现代码;
-- 2024.01.11 PR097 支持基于 [2021.10.26_WavLM](../../../Models/Speech_Representaion/2021.10.26_WavLM.md) 的说话人相似性度量;
-- 2024.02.23 PR141 新增工具 [2024.02.20_SingVisio](../../../Models/SVS/2024.02.20_SingVisio.md) 构建代码;
+- 2024.01.11 PR097 支持基于 [2021.10.26_WavLM](../../../Models/SpeechRepresentation/2021.10.26_WavLM.md) 的说话人相似性度量;
+- 2024.02.23 PR141 新增工具 [2024.02.20_SingVisio](../../../Models/SVC/2024.02.20_SingVisio.md) 构建代码;
 - 2024.03.12 PR152 新增模型 [2024.03.05_FACodec](../../../Models/Speech_Neural_Codec/2024.03.05_FACodec.md) 构建代码;
 - 2024.06.22 PR220 发布模型 [2023.01.05_VALL-E](../../../Models/SpeechLM/2023.01.05_VALL-E.md) 新版本;
 - 2024.07.09 PR227 新增数据集 [2024.07.07_Emilia](../../../Datasets/2024.07.07_Emilia.md) 构建代码;
