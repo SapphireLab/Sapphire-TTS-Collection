@@ -18,6 +18,7 @@
 
 - [Awesome Audio Plaza](https://github.com/metame-ai/awesome-audio-plaza) by Metame AI ![Star](https://img.shields.io/github/stars/metame-ai/awesome-audio-plaza?style=social)
 - [Speech Trident](https://github.com/ga642381/speech-trident) by 李宏毅 Team ![Star](https://img.shields.io/github/stars/ga642381/speech-trident)
+- [Neural Codec & Speech Language Models](https://github.com/LqNoob/Neural-Codec-and-Speech-Language-Models) by LqNoob ![Star](https://img.shields.io/github/stars/LqNoob/Neural-Codec-and-Speech-Language-Models?style=social)
 - [Awesome MLLM](https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models) by VITA Team ![Star](https://img.shields.io/github/stars/BradyFU/Awesome-Multimodal-Large-Language-Models?style=social)
 - [Awesome Large Speech Model](https://github.com/huangcanan/Awesome-Large-Speech-Model) by Huang Can'an ![Star](https://img.shields.io/github/stars/huangcanan/Awesome-Large-Speech-Model?style=social)
 
@@ -42,14 +43,19 @@
 |2020.05.20|**XTTS v2**<br>@Coqui.AI|[Github](https://github.com/coqui-ai/TTS)<br>![Star](https://img.shields.io/github/stars/coqui-ai/TTS?style=social) ||[ArXiv](https://arxiv.org/abs/2406.04904)<br>[PaperNote](Models/SpeechLM/2024.06.07_XTTS.md)|
 |2017.11.14|**PaddleSpeech**<br>@百度飞桨|[Github](https://github.com/PaddlePaddle/PaddleSpeech)<br>![Star](https://img.shields.io/github/stars/PaddlePaddle/PaddleSpeech?style=social)|
 
+## 开源项目·Singing Voice Synthesis
+
+- [DiffSinger Website](https://DiffSinger.com)
+
 ## 开源项目·Speech Interaction
 
 按仓库创建时间排序
 
 |时间|名称|仓库|演示|论文|
 |---|---|:-:|---|---|
-|2023.11.07 Code<br>2023.11.14 Paper|**Qwen-Audio**<br>@阿里巴巴|[Github](https://github.com/QwenLM/Qwen-Audio)|[Demo](https://qwen-audio.github.io/Qwen-Audio/)|[ArXiv](https://arxiv.org/abs/2311.07919)|
+|2023.11.07 Code<br>2023.11.14 Paper|**Qwen-Audio**<br>@阿里巴巴|[Github](https://github.com/QwenLM/Qwen-Audio)<br>![Star](https://img.shields.io/github/stars/QwenLM/Qwen-Audio?style=social)|[Demo](https://qwen-audio.github.io/Qwen-Audio/)|[ArXiv](https://arxiv.org/abs/2311.07919)|
 |2024.05.14 Claim<br>2024.07.30 Release<br>2024.10.25 Paper|**GPT-4o** System Card<br>@OpenAI||[ChatGPT](https://chatgpt.com/)|[ArXiv](https://arxiv.org/abs/2410.21276)|
+|2024.05.30 <br>2024.08.23 V0.3<br>2024.08.27 v0.4<br>2024.11.13 v0.4.1|**Ultravox**<br>@Fixie AI|[Github](https://github.com/fixie-ai/ultravox)<br>![Star](https://img.shields.io/github/stars/fixie-ai/ultravox?style=social)<br>[HuggingFace](https://huggingface.co/fixie-ai/)<br>[HF Mirror](https://hf-mirror.com/fixie-ai)|[Page](https://docs.ultravox.ai)<br>[Blog](https://www.ultravox.ai/blog/ultravox-an-open-weight-alternative-to-gpt-4o-realtime)<br>[Demo](https://demo.ultravox.ai/)|ArXiv|
 |2024.07.02 Code<br>2024.10.20 Paper|**Ichigo**<br>@HomebrewResearch|[Github](https://github.com/homebrewltd/ichigo)|[Demo](https://ichigo.homebrew.ltd)|[ArXiv](https://arxiv.org/abs/2410.15316)|
 |2024.07.15 Paper<br>2024.07.16 Code|**Qwen2-Audio**<br>@阿里巴巴千问团队|[Github](https://github.com/QwenLM/Qwen2-Audio/)<br>![Star](https://img.shields.io/github/stars/QwenLM/Qwen2-Audio?style=social)<br>[HuggingFace](https://huggingface.co/Qwen/)<br>[ModelScope](https://modelscope.cn/models/qwen/)|[Space](https://modelscope.cn/studios/qwen/Qwen2-Audio-Instruct-Demo)<br>[Studio](https://modelscope.cn/studios/qwen/Qwen2-Audio-Instruct-Demo)<br>[Blog](https://qwenlm.github.io/blog/qwen2-audio)|[ArXiv](https://arxiv.org/abs/2407.10759)|
 |2024.08.07 Code<br>2024.09.17 Paper|**Moshi**<br>@法国 Kyutai 实验室|[Github](https://github.com/kyutai-labs/moshi)<br>![Star](https://img.shields.io/github/stars/kyutai-labs/moshi)<br>[HuggingFace](https://huggingface.co/kyutai)<br>[HF Mirror](https://hf-mirror.com/kyutai)|[Demo](https://moshi.chat/)|[ArXiv](https://arxiv.org/abs/2410.00037)|
