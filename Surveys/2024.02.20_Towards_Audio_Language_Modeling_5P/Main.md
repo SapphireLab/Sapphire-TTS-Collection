@@ -228,7 +228,7 @@ This low BPS is of utmost significance as it effectively addresses the challenge
 [SpeechTokenizer (2023)](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) is a unified speech tokenizer designed for speech language models.
 It implements an Encoder-Decoder architecture enhanced with RVQ.
 By integrating both semantic and acoustic tokens, [SpeechTokenizer](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) hierarchically separates various aspects of speech information across different RVQ layers.
-Specifically, [SpeechTokenizer](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) is designed to regularize the first RVQ layer to highlight semantic information by learning the [HuBERT (2021)](../../Models/Speech_Representaion/2021.06.14_HuBERT.md) tokens.
+Specifically, [SpeechTokenizer](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) is designed to regularize the first RVQ layer to highlight semantic information by learning the [HuBERT (2021)](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) tokens.
 Using such techniques can enhance the disentanglement of information across different RVQ layers.
 
 </details>
@@ -237,7 +237,7 @@ Using such techniques can enhance the disentanglement of information across diff
 [SpeechTokenizer (2023)](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) 是为语音语言模型设计的统一语音分词器.
 它采用了 RVQ 增强的编码器-解码器架构.
 通过整合语义 Token 和声学 Token, [SpeechTokenizer](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) 逐层地将语音信息分离到不同的 RVQ 层.
-具体来说, [SpeechTokenizer](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) 被设计成通过学习 [HuBERT (2021)](../../Models/Speech_Representaion/2021.06.14_HuBERT.md) Token 正则化第一个 RVQ 层, 以突出语义信息.
+具体来说, [SpeechTokenizer](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) 被设计成通过学习 [HuBERT (2021)](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) Token 正则化第一个 RVQ 层, 以突出语义信息.
 采用这样的技术可以增强不同 RVQ 层之间的信息解耦.
 
 <details>
@@ -330,7 +330,7 @@ To address this, they propose the application of a **Multi-Scale Multi-Band STFT
 <details>
 <summary>原文</summary>
 
-[SpeechTokenizer](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) utilizes semantic tokens from [HuBERT L9](../../Models/Speech_Representaion/2021.06.14_HuBERT.md) as a teacher for the RVQ process.
+[SpeechTokenizer](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) utilizes semantic tokens from [HuBERT L9](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) as a teacher for the RVQ process.
 This guidance enables the disentanglement of content information into the first layer of the tokenizer, while paralinguistic information is retained in subsequent layers.
 [FunCodec](../../Models/Speech_Neural_Codec/2023.09.14_FunCodec.md) seeks to integrate semantic information by combining, adding, or residualizing the audio codec with semantic tokens.
 The study reveals that including semantic tokens enhances audio quality, particularly with the residual inclusion method.
@@ -343,7 +343,7 @@ They demonstrate that using multiple residual groups achieves good reconstructio
 </details>
 <br>
 
-[SpeechTokenizer](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) 利用从 [HuBERT L9](../../Models/Speech_Representaion/2021.06.14_HuBERT.md) 提取的语义 Token 作为教师来指导 RVQ 过程.
+[SpeechTokenizer](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) 利用从 [HuBERT L9](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) 提取的语义 Token 作为教师来指导 RVQ 过程.
 这一指导使得内容信息在分词器的第一层被分离, 而其他语言相关的信息在后续层中被保留.
 
 [FunCodec](../../Models/Speech_Neural_Codec/2023.09.14_FunCodec.md) 试图通过结合, 添加或残差化音频编解码器和语义 Token 来融合语义信息.
@@ -408,14 +408,14 @@ Fig.02: Codec-Based Language Modeling.
 <summary>原文</summary>
 
 [AudioLM (2022)](../../Models/SpeechLM/2022.09.07_AudioLM.md) is the pioneering model in introducing codec codes for language modeling, utilizing a hierarchical approach that encompasses two distinct stages.
-The first stage generates semantic tokens using a self-supervised [W2V-BERT (2021)](../../Models/Speech_Representaion/2021.08.07_W2V-BERT.md) model.
+The first stage generates semantic tokens using a self-supervised [W2V-BERT (2021)](../../Models/SpeechRepresentation/2021.08.07_W2V-BERT.md) model.
 These tokens are then leveraged in the second stage as conditioning elements to create acoustic tokens using a [SoundStream (2021)](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md) neural codec.
 
 </details>
 <br>
 
 [AudioLM (2022)](../../Models/SpeechLM/2022.09.07_AudioLM.md) 是引入编解码器编码进行语言建模的先驱模型, 采用包含两个不同的阶段的分层方法.
-第一个阶段使用自监督 [W2V-BERT (2021)](../../Models/Speech_Representaion/2021.08.07_W2V-BERT.md) 模型生成语义 Token.
+第一个阶段使用自监督 [W2V-BERT (2021)](../../Models/SpeechRepresentation/2021.08.07_W2V-BERT.md) 模型生成语义 Token.
 第二个阶段使用这些 Token 作为条件化元素, 使用 [SoundStream (2021)](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md) 神经编解码器生成音频 Token.
 
 <details>
@@ -479,7 +479,7 @@ Additionally, there are other codec-based language models designed for sound mod
 [AudioGen (2022)](../../Models/SpeechLM/2022.09.30_AudioGen.md) trained a [SoundStream](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md) model to get audio tokens and subsequently trained a language model to utilize textual features as conditions for generating audio tokens.
 [MusicLM (2023)](../../Models/SpeechLM/2023.01.26_MusicLM.md) follows a training strategy similar to [AudioLM](../../Models/SpeechLM/2022.09.07_AudioLM.md) but extends its scope to encompass music features.
 It approaches the task of conditional music generation through a hierarchical sequence-to-sequence modeling approach.
-Initially, it utilizes music tokens from [Mulan](../../Models/_Basis/2022.08.26_MuLan.md)  to generate semantic tokens from the [W2V-BERT](../../Models/Speech_Representaion/2021.08.07_W2V-BERT.md) model.
+Initially, it utilizes music tokens from [Mulan](../../Models/_Basis/2022.08.26_MuLan.md)  to generate semantic tokens from the [W2V-BERT](../../Models/SpeechRepresentation/2021.08.07_W2V-BERT.md) model.
 Subsequently, it employs both music tokens and semantic tokens to generate acoustic features through [SoundStream](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md).
 [MusicGen (2023)](../../Models/SpeechLM/2023.06.08_MusicGen.md) is a music language model designed to work with [EnCodec](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) discrete tokens.
 It accepts textual descriptions or melodic features as input conditions to generate tokens, which can be reconstructed to high-fidelity music.
@@ -491,7 +491,7 @@ It accepts textual descriptions or melodic features as input conditions to gener
 - [AudioGen (2022)](../../Models/SpeechLM/2022.09.30_AudioGen.md) 训练了一个 [SoundStream](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md) 模型来获得音频 Token, 然后训练了一个语言模型来利用文本特征作为条件生成音频 Token.
 - [MusicLM (2023)](../../Models/SpeechLM/2023.01.26_MusicLM.md) 采取与 [AudioLM](../../Models/SpeechLM/2022.09.07_AudioLM.md) 类似的训练策略, 但扩展了其范围, 包括音乐特征.
   它采用层次序列到序列的建模方式来解决指导式音乐生成问题.
-  最初, 它利用 [Mulan](../../Models/_Basis/2022.08.26_MuLan.md) 中的音乐 Token 来生成语义 Token, 并利用 [W2V-BERT](../../Models/Speech_Representaion/2021.08.07_W2V-BERT.md) 模型来生成音频特征.
+  最初, 它利用 [Mulan](../../Models/_Basis/2022.08.26_MuLan.md) 中的音乐 Token 来生成语义 Token, 并利用 [W2V-BERT](../../Models/SpeechRepresentation/2021.08.07_W2V-BERT.md) 模型来生成音频特征.
   随后, 它采用音乐 Token 和语义 Token 来生成声学特征, 并使用 [SoundStream](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md).
 - [MusicGen (2023)](../../Models/SpeechLM/2023.06.08_MusicGen.md) 是为 [EnCodec](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) 离散 Token 设计的音乐语言模型.
   它接受文本描述或旋律特征作为输入条件, 生成 Token, 这些 Token 可以用于高保真的音乐生成.
@@ -524,7 +524,7 @@ By engaging in the pre-trained task of next-token prediction, these speech LMs p
 <summary>原文</summary>
 
 In the field of speech translation, recent advancements have been made possible through these discrete units.
-[Enhanced Direct Speech-to-Speech Translation Using Self-supervised Pre-training and Data Augmentation]() pre-trained a Unit mBART combined with a [Wav2Vec 2.0 (2020)](../../Models/Speech_Representaion/2020.06.20_Wav2Vec2.0.md) encoder to directly predict the translated discrete units.
+[Enhanced Direct Speech-to-Speech Translation Using Self-supervised Pre-training and Data Augmentation]() pre-trained a Unit mBART combined with a [Wav2Vec 2.0 (2020)](../../Models/SpeechRepresentation/2020.06.20_Wav2Vec2.0.md) encoder to directly predict the translated discrete units.
 [UnitY (2022)](../../Models/_Basis/2022.12.15_UnitY.md) further incorporates text modality to enhance speech translation.
 The Seamless models ([SeamlessM4T](../../Models/_Basis/2023.08.22_SeamlessM4T.md), [Seamless](../../Models/_Basis/2023.12.08_Seamless.md)) integrate the [UnitY](../../Models/_Basis/2022.12.15_UnitY.md) framework to perform expressive and streaming speech-to-text and speech-to-speech translation.
 With the development of these powerful speech LMs, researchers have begun to explore the use of prompting on speech LMs for various speech processing tasks, including prompt tuning, in-context learning, and instruction tuning.
@@ -532,7 +532,7 @@ With the development of these powerful speech LMs, researchers have begun to exp
 </details>
 <br>
 
-在语音翻译领域, 最近的进展已经成为可能, 例如 [Enhanced Direct Speech-to-Speech Translation Using Self-supervised Pre-training and Data Augmentation]() 预训练了一个 Unit mBART 与 [Wav2Vec 2.0 (2020)](../../Models/Speech_Representaion/2020.06.20_Wav2Vec2.0.md) 编码器, 直接预测翻译后的离散单元.
+在语音翻译领域, 最近的进展已经成为可能, 例如 [Enhanced Direct Speech-to-Speech Translation Using Self-supervised Pre-training and Data Augmentation]() 预训练了一个 Unit mBART 与 [Wav2Vec 2.0 (2020)](../../Models/SpeechRepresentation/2020.06.20_Wav2Vec2.0.md) 编码器, 直接预测翻译后的离散单元.
 [UnitY (2022)](../../Models/_Basis/2022.12.15_UnitY.md) 进一步整合了文本模态以增强语音翻译.
 [SeamlessM4T](../../Models/_Basis/2023.08.22_SeamlessM4T.md), [Seamless](../../Models/_Basis/2023.12.08_Seamless.md) 整合 [UnitY](../../Models/_Basis/2022.12.15_UnitY.md) 框架用于实现表达性和流式语音转文本和语音转语音翻译.
 随着这些强力语音语言模型, 研究人员开始探索在语音语言模型对于各种语音处理任务的提示使用, 包括

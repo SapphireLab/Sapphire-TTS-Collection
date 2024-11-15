@@ -61,15 +61,15 @@ Let $f_E(\cdot)$ denote the speech encoder parameterized by $\theta_{f_E}$, we h
 Since $\textbf{v}$ is still continuous, a quantizer $d(\cdot)$ is utilized to discretize the representation.
 Depending on different design choices, the discrete speech tokens \(\textbf{s} = (s_1, s_2, \ldots, s_P)\) can either be derived from $\textbf{a}$ or $\textbf{v}$.
 Therefore, we have $\textbf{s} = d(\textbf{v}; \theta_d)$ or $\textbf{s} = d(\textbf{a}; \theta_d)$.
-After that, $\textbf{s}$ can be used to train the speech tokenizer as a target label (such as masking $\textbf{a}_\text{mask} \subset \textbf{a}$ and reconstructing its corresponding label $\textbf{s}_\text{mask} \subset \textbf{s}$ [HuBERT (2021)](../../Models/Speech_Representaion/2021.06.14_HuBERT.md)) or to train the following language model.
+After that, $\textbf{s}$ can be used to train the speech tokenizer as a target label (such as masking $\textbf{a}_\text{mask} \subset \textbf{a}$ and reconstructing its corresponding label $\textbf{s}_\text{mask} \subset \textbf{s}$ [HuBERT (2021)](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md)) or to train the following language model.
 
 The key design choices lie in how to effectively encode and quantize the speech into discrete tokens.
-[Wav2Vec 2.0 (2020)](../../Models/Speech_Representaion/2020.06.20_Wav2Vec2.0.md) uses a convolutional encoder followed by a [product quantization module](../../Modules/VQ/PQ.md) to discretize the continuous waveform.
+[Wav2Vec 2.0 (2020)](../../Models/SpeechRepresentation/2020.06.20_Wav2Vec2.0.md) uses a convolutional encoder followed by a [product quantization module](../../Modules/VQ/PQ.md) to discretize the continuous waveform.
 Then, a portion of the quantized representations is masked and modeled using a contrastive loss.
-[W2V-BERT (2021)](../../Models/Speech_Representaion/2021.08.07_W2V-BERT.md) is built upon wav2vec 2.0 and proposes to use Masked Language Modeling (MLM) loss ([BERT (2018)](../../Models/TextLM/2018.10.11_BERT.md)) in addition to contrastive loss.
-Similarly, [HuBERT (2021)](../../Models/Speech_Representaion/2021.06.14_HuBERT.md) uses the k-means algorithm to cluster the speech utterances into a certain number of hidden units, and then perform MLM to predict the target hidden units from the masked speech utterances.
-To better align the representation of text and speech modalities, [Google USM (2023)](../../Models/SpeechLM/2023.03.02_Google_USM.md) utilizes text-injection loss ([Maestro (2022)](../../Models/Speech_Representaion/2022.04.07_Maestro.md)) at the second pre-training stage to improve the performance and robustness of the downstream tasks.
-[WavLM (2021)](../../Models/Speech_Representaion/2021.10.26_WavLM.md) adds the speech denoising objective during pre-training.
+[W2V-BERT (2021)](../../Models/SpeechRepresentation/2021.08.07_W2V-BERT.md) is built upon wav2vec 2.0 and proposes to use Masked Language Modeling (MLM) loss ([BERT (2018)](../../Models/TextLM/2018.10.11_BERT.md)) in addition to contrastive loss.
+Similarly, [HuBERT (2021)](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) uses the k-means algorithm to cluster the speech utterances into a certain number of hidden units, and then perform MLM to predict the target hidden units from the masked speech utterances.
+To better align the representation of text and speech modalities, [Google USM (2023)](../../Models/SpeechLM/2023.03.02_Google_USM.md) utilizes text-injection loss ([Maestro (2022)](../../Models/SpeechRepresentation/2022.04.07_Maestro.md)) at the second pre-training stage to improve the performance and robustness of the downstream tasks.
+[WavLM (2021)](../../Models/SpeechRepresentation/2021.10.26_WavLM.md) adds the speech denoising objective during pre-training.
 While the majority of speech tokenizer studies focus on semantic-related tasks such as ASR and TTS, WavLM shows that speech denoising can boost the performance of non-semantic tasks such as speaker verification and speech separation.
 A full list of downstream tasks is listed in [section 5](Sec.05.Applications.md).
 
@@ -85,14 +85,14 @@ A full list of downstream tasks is listed in [section 5](Sec.05.Applications.md)
 
 根据不同的设计选择, 离散语音 Token \(\textbf{s} = (s_1, s_2, \ldots, s_P)\) 可以是从音频波形 $\textbf{a}$ 或编码表示 $\textbf{v}$ 导出的.
 因此, 我们有 $\textbf{s} = d(\textbf{a}; \theta_d)$ 或 $\textbf{s} = d(\textbf{v}; \theta_d)$.
-之后, $\textbf{s}$ 可以被用作目标标签 (例如, 掩膜 $\textbf{a}_\text{mask} \subset \textbf{a}$ 并重构其对应的标签 $\textbf{s}_\text{mask} \subset \textbf{s}$ [HuBERT (2021)](../../Models/Speech_Representaion/2021.06.14_HuBERT.md)) 或用于训练后续的语言模型.
+之后, $\textbf{s}$ 可以被用作目标标签 (例如, 掩膜 $\textbf{a}_\text{mask} \subset \textbf{a}$ 并重构其对应的标签 $\textbf{s}_\text{mask} \subset \textbf{s}$ [HuBERT (2021)](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md)) 或用于训练后续的语言模型.
 
 关键的设计选择在于如何有效地将语音编码和量化为离散的 Token.
-- [Wav2Vec 2.0 (2020)](../../Models/Speech_Representaion/2020.06.20_Wav2Vec2.0.md) 使用卷积编码器后接[乘积量化模块 (Product Quantization)](../../Modules/VQ/PQ.md)来离散化连续的音频波形. 然后量化表示的一部分被掩膜, 并使用对比损失 (Contrastive Loss) 来建模.
-- [W2V-BERT (2021)](../../Models/Speech_Representaion/2021.08.07_W2V-BERT.md) 建立在 wav2vec 2.0 之上, 并提出使用掩码语言模型 (Masked Language Modeling, MLM) 损失 ([BERT (2018)](../../Models/TextLM/2018.10.11_BERT.md)) 作为对比损失的补充项.
-- [HuBERT (2021)](../../Models/Speech_Representaion/2021.06.14_HuBERT.md) 使用 K 均值算法将语音句子聚类为一定数量的隐藏单元, 然后使用 MLM 从掩码的语音句子预测目标隐藏单元.
-- [Google USM (2023)](../../Models/SpeechLM/2023.03.02_Google_USM.md) 为了更好地对齐文本和语音模态之间的表示, 在第二阶段的预训练中使用文本注入损失 (Text-Injection Loss) ([Maestro (2022)](../../Models/Speech_Representaion/2022.04.07_Maestro.md)) 来提升下游任务的性能和鲁棒性.
-- [WavLM (2021)](../../Models/Speech_Representaion/2021.10.26_WavLM.md) 在预训练过程中加入语音降噪目标. 尽管语音分词器研究主要关注语义相关任务如 ASR 和 TTS, WavLM 展示了语音降噪可以增强非语义任务如说话人验证和语音分离的性能.
+- [Wav2Vec 2.0 (2020)](../../Models/SpeechRepresentation/2020.06.20_Wav2Vec2.0.md) 使用卷积编码器后接[乘积量化模块 (Product Quantization)](../../Modules/VQ/PQ.md)来离散化连续的音频波形. 然后量化表示的一部分被掩膜, 并使用对比损失 (Contrastive Loss) 来建模.
+- [W2V-BERT (2021)](../../Models/SpeechRepresentation/2021.08.07_W2V-BERT.md) 建立在 wav2vec 2.0 之上, 并提出使用掩码语言模型 (Masked Language Modeling, MLM) 损失 ([BERT (2018)](../../Models/TextLM/2018.10.11_BERT.md)) 作为对比损失的补充项.
+- [HuBERT (2021)](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) 使用 K 均值算法将语音句子聚类为一定数量的隐藏单元, 然后使用 MLM 从掩码的语音句子预测目标隐藏单元.
+- [Google USM (2023)](../../Models/SpeechLM/2023.03.02_Google_USM.md) 为了更好地对齐文本和语音模态之间的表示, 在第二阶段的预训练中使用文本注入损失 (Text-Injection Loss) ([Maestro (2022)](../../Models/SpeechRepresentation/2022.04.07_Maestro.md)) 来提升下游任务的性能和鲁棒性.
+- [WavLM (2021)](../../Models/SpeechRepresentation/2021.10.26_WavLM.md) 在预训练过程中加入语音降噪目标. 尽管语音分词器研究主要关注语义相关任务如 ASR 和 TTS, WavLM 展示了语音降噪可以增强非语义任务如说话人验证和语音分离的性能.
 
 下游任务的完整列表可以在 [Sec.05](Sec.05.Applications.md) 中找到.
 
@@ -143,8 +143,8 @@ Since the output of codecs is in discrete format, they can also be leveraged by 
 Speech tokenizers with a mixed objective aim to balance both semantic understanding and acoustic generation.
 Currently, the development of these tokenizers is in its early stages.
 Most existing mixed speech tokenizers primarily adopt the architecture of acoustic generation speech tokenizers and focus on distilling information from semantic tokenizers into the acoustic tokenizer.
-[SpeechTokenizer (2023)](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) utilizes the RVQ-GAN ([EnCodec (2022)](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md); [SoundStream (2021)](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md)) architecture, distilling semantic information from [HuBERT (2021)](../../Models/Speech_Representaion/2021.06.14_HuBERT.md) to the first layer of RVQ.
-Building on SpeechTokenizer, Mimi ([Moshi (2024)](../../Models/SpeechLM/2024.09.17_Moshi.md)) employs a single vector quantizer (VQ) to extract information from [WavLM (2021)](../../Models/Speech_Representaion/2021.10.26_WavLM.md) and incorporates another RVQ module to learn the acoustic information.
+[SpeechTokenizer (2023)](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) utilizes the RVQ-GAN ([EnCodec (2022)](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md); [SoundStream (2021)](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md)) architecture, distilling semantic information from [HuBERT (2021)](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) to the first layer of RVQ.
+Building on SpeechTokenizer, Mimi ([Moshi (2024)](../../Models/SpeechLM/2024.09.17_Moshi.md)) employs a single vector quantizer (VQ) to extract information from [WavLM (2021)](../../Models/SpeechRepresentation/2021.10.26_WavLM.md) and incorporates another RVQ module to learn the acoustic information.
 
 </details>
 <br>
@@ -152,8 +152,8 @@ Building on SpeechTokenizer, Mimi ([Moshi (2024)](../../Models/SpeechLM/2024.09.
 混合目标的语音分词器旨在平衡语义理解和声学生成.
 目前, 这些分词器的发展处于初期阶段.
 大多数现有的混合语音分词器主要采用声学生成语音分词器的架构, 着重于将语义分词器中的信息蒸馏到声学分词器中.
-- [SpeechTokenizer (2023)](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) 使用 RVQ-GAN ([EnCodec (2022)](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md); [SoundStream (2021)](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md)) 架构, 将 [HuBERT (2021)](../../Models/Speech_Representaion/2021.06.14_HuBERT.md) 的语义信息蒸馏到 RVQ 的第一层.
-- [Mimi (2024)](../../Models/SpeechLM/2024.09.17_Moshi.md) 基于 SpeechTokenizer 使用单个向量量化器 (VQ) 从 [WavLM (2021)](../../Models/Speech_Representaion/2021.10.26_WavLM.md) 中提取信息, 并集成另一个 RVQ 模块来学习声学信息.
+- [SpeechTokenizer (2023)](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) 使用 RVQ-GAN ([EnCodec (2022)](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md); [SoundStream (2021)](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md)) 架构, 将 [HuBERT (2021)](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) 的语义信息蒸馏到 RVQ 的第一层.
+- [Mimi (2024)](../../Models/SpeechLM/2024.09.17_Moshi.md) 基于 SpeechTokenizer 使用单个向量量化器 (VQ) 从 [WavLM (2021)](../../Models/SpeechRepresentation/2021.10.26_WavLM.md) 中提取信息, 并集成另一个 RVQ 模块来学习声学信息.
 
 ## 3.2.Language Model: 语言模型
 
@@ -178,7 +178,7 @@ $$
 \textbf{s}^{\text{out}} \sim \text{LM}(\textbf{s}^{\text{in}}, (E_s, \textbf{De}, E'_s)).
 $$
 
-Because the language model architecture of SpeechLMs is borrowed from TextLMs, it is natural that the resulting model can jointly model both text and speech modalities ([SpiRit-LM (2024)](../../Models/Speech_LLM/2024.02.08_SpiRit-LM.md); [SpeechGPT (2023)](../../Models/SpeechLM/2023.05.18_SpeechGPT.md)).
+Because the language model architecture of SpeechLMs is borrowed from TextLMs, it is natural that the resulting model can jointly model both text and speech modalities ([SpiRit-LM (2024)](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md); [SpeechGPT (2023)](../../Models/SpeechLM/2023.05.18_SpeechGPT.md)).
 To achieve this, a naive and most adopted approach is to expand the vocabulary of the original TextLM to incorporate both text and speech tokens.
 Specifically, the speech embedding matrix is usually appended to the end of the text embedding matrix, resulting in a larger embedding matrix $E_m \in \mathbb{R}^{(|V_t|+|V_s|) \times h}$.
 Let $\textbf{m}$ be a token sequence containing both speech and text tokens, the resulting language model becomes
