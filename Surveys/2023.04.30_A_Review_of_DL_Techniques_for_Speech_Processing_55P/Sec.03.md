@@ -447,3 +447,48 @@ Furthermore, VALL-E X \cite{zhang2023speak} is an extension of VALL-E that enabl
 The timeline highlights the development of large transformer based models for speech processing is shown in \Cref{fig:timeline}.
 The size of the models has grown exponentially, with significant breakthroughs achieved in speech recognition, synthesis, and translation.
 These large models have set new performance benchmarks in the field of speech processing, but also pose significant computational and data requirements for training and inference.
+
+## 3.5·Conformer
+
+### 3.5.1·Architecture
+
+The Transformer architecture, which utilizes a self-attention mechanism, has successfully replaced recurrent operations in previous architectures.
+Over the past few years, various Transformer variants have been proposed \cite{gulati2020conformer}.
+Architectures combining Transformers and CNNs have recently shown promising results on speech-processing tasks \cite{9414087}.
+To efficiently model both local and global dependencies of an audio sequence, several attempts have been made to combine CNNs and Transformers.
+One such architecture proposed by the authors is the Conformer \cite{gulati2020conformer}, a convolution-augmented transformer for speech recognition.
+Conformer outperforms RNNs, previous Transformers, and CNN-based models, achieving state-of-the-art performance in speech recognition.
+The Conformer model consists of several building blocks, including convolutional layers, self-attention layers, and feedforward layers.
+
+The architecture of the Conformer model can be summarized as follows:
+- Input Layer: The Conformer model inputs a sequence of audio features, such as MFCCs or Mel spectrograms.
+- Convolutional Layers: Local features are extracted from the audio signal by processing the input sequence through convolutional layers.
+- Self-Attention Layers: The Conformer model incorporates self-attention layers following the convolutional layers.
+Self-attention is a mechanism that enables the model to focus on various sections of the input sequence while making predictions.
+This is especially advantageous for speech recognition because it facilitates capturing long-term dependencies in the audio signal.
+- Feedforward Layers: After the self-attention layers, the Conformer model applies a sequence of feedforward layers intended to process the output of the self-attention layers further and ready it for the ultimate prediction.
+- Output Layer: Finally, the output from the feedforward layers undergoes a softmax activation function to generate the final prediction, typically representing a sequence of character labels or phonemes.
+
+The conformer model has emerged as a promising neural network architecture for various speech-related research tasks, including but not limited to speech recognition, speaker recognition, and language identification.
+In a recent study by \citet{gulati2020conformer}, the conformer model was demonstrated to outperform previous state-of-the-art models, particularly in speech recognition significantly.
+This highlights the potential of the conformer model as a key tool for advancing speech-related research.
+
+### 3.5.2·Application
+
+The Conformer model stands out among other speech recognition models due to its ability to efficiently model both local and global dependencies of an audio sequence.
+This is crucial for speech recognition, language translation, and audio classification \cite{assemblyai,gulati2020conformer,nvidiadocs}.
+The model achieves this through self-attention and convolution modules, combining the strengths of CNNs and Transformers.
+While CNNs capture local information in audio sequences, the self-attention mechanism captures global dependencies \cite{nvidiadocs}.
+The Conformer model has achieved remarkable performance in speech recognition tasks, setting benchmarks on datasets such as LibriSpeech and AISHELL-1.
+
+Despite these successes, speech synthesis and recognition challenges persist, including difficulties generating natural-sounding speech in non-English languages and real-time speech generation.
+To address these limitations, Wang et al.
+\cite{zhang2020pushing} proposed a novel approach that combines noisy student training with SpecAugment and large Conformer models pre-trained on the Libri-Light dataset using the wav2vec 2.0 pre-training method.
+This approach achieved state-of-the-art word error rates on the LibriSpeech dataset.
+Recently, \citet{wang2022conformer} developed Conformer-LHUC, an extension of the Conformer model that employs learning hidden unit contribution (LHUC) for speaker adaptation.
+Conformer-LHUC has demonstrated exceptional performance in elderly speech recognition and shows promise for the clinical diagnosis and treatment of Alzheimer's disease.
+
+Several enhancements have been made to the Conformer-based model to address high word error rates without a language model, as documented in \cite{liu2022improvement}.
+\citet{wu2022deep} proposed a deep sparse Conformer to improve its long-sequence representation capabilities.
+Furthermore, \citet{burchi2023audio} have recently enhanced the noise robustness of the Efficient Conformer architecture by processing both audio and visual modalities.
+In addition, models based on Conformer, such as Transducers \cite{kim2021generalizing}, have been adopted for real-time speech recognition \cite{papastratis2021speech} due to their ability to process audio data much more quickly than conventional recurrent neural network (RNN) models.
