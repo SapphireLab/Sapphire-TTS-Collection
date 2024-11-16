@@ -492,3 +492,70 @@ Several enhancements have been made to the Conformer-based model to address high
 \citet{wu2022deep} proposed a deep sparse Conformer to improve its long-sequence representation capabilities.
 Furthermore, \citet{burchi2023audio} have recently enhanced the noise robustness of the Efficient Conformer architecture by processing both audio and visual modalities.
 In addition, models based on Conformer, such as Transducers \cite{kim2021generalizing}, have been adopted for real-time speech recognition \cite{papastratis2021speech} due to their ability to process audio data much more quickly than conventional recurrent neural network (RNN) models.
+
+## 3.6·Sequence to Sequence Models
+
+### 3.6.1·Architecture
+
+The sequence-to-sequence (seq2seq) model in speech processing is popularly used for ASR, ST, and TTS tasks.
+The general architecture of the seq2seq model involves an encoder-decoder network that learns to map an input sequence to an output sequence of varying lengths.
+In the case of ASR, the input sequence is the speech signal, which is processed by the encoder network to produce a fixed-length feature vector representation of the input signal.
+The decoder network inputs this feature vector and produces the corresponding text sequence.
+This can be achieved through a stack of RNNs \cite{prabhavalkar2017comparison}, Transformer \cite{8462506} or Conformer \cite{gulati2020conformer} in the encoder and decoder networks.
+
+The sequence-to-sequence model has emerged as a potent tool in speech translation.
+It can train end-to-end to efficiently map speech spectrograms in one language to their corresponding spectrograms in another.
+The notable advantage of this approach is eliminating the need for an intermediate text representation, resulting in improved efficiency.
+Additionally, the Seq2seq models have been successfully implemented in speech generation tasks, where they reverse the ASR approach.
+In such applications, the input text sequence serves as the input, with the encoder network creating a feature vector representation of the input text.
+The decoder network then leverages this representation to generate the desired speech signal.
+
+\citet{karita2019comparative} conducted an extensive study comparing the performance of transformer and traditional RNN models on 15 different benchmarks for Automatic Speech Recognition (ASR), including a multilingual ASR benchmark, a Speech Translation (ST) benchmark, and two Text-to-Speech (TTS) benchmarks.
+In addition, they proposed a shared Sequence-to-Sequence (S2S) architecture for AST, TTS, and ST tasks, which is depicted in \Cref{fig:s2s}.
+
+- Encoder
+    $$
+    \begin{aligned}
+        X_{0} &= EncoderPreNet(X), \\
+        X_{e} &= EncoderMain(X_{0})
+    \end{aligned}
+    $$
+    where $X$ is the sequence of speech features (e.g.
+Mel spectrogram) for AST and ST and phoneme or character sequence for TTS.
+- Decoder
+    $$
+    \begin{aligned}
+        Y_{0}[1:t-1] &= DecoderPreNet(Y[1:t-1]),\\
+        Y_{d}[t] &= DecoderMain(X_{e},Y_{0}[1:t-1]),\\
+        Y_{post}[1:t] &= DecoderPostNet(Y_{d}[1:t]),
+    \end{aligned}
+    $$
+During the training stage, input to the decoder is ground truth target sequence $Y[1:t-1]$.
+The Decoder-Main module is utilized to produce a subsequent target frame.
+This is accomplished by utilizing the encoded sequence $X_{e}$ and the prefix of the target prefix $Y_{0}[1: t-1]$.
+The decoder is mostly unidirectional for sequence generation and often uses an attention mechanism \cite{bahdanau2014neural} to produce the output.
+
+Seq2seq models have been widely used in speech processing, initially based on RNNs.
+However, RNNs face the challenge of processing long sequences, which can lead to the loss of the initial context by the end of the sequence \cite{karita2019comparative}.
+To overcome this limitation, the transformer architecture has emerged, leveraging self-attention mechanisms to handle sequential data.
+The transformer has shown remarkable performance in tasks such as ASR, ST, and speech synthesis.
+As a result, the use of RNN-based seq2seq models has declined in favour of the transformer-based approach.
+
+### 3.6.1·Application
+
+Seq2seq models have been used for speech processing tasks such as voice conversion \cite{8683282,huang2019voice}, speech synthesis \cite{wang2017tacotron,wang2019deep,okamoto2019real,9003956,huang2019voice}, and speech recognition.
+The field of ASR has seen significant progress, with several advanced techniques emerging as popular options.
+These include the CTC approach, which has been further developed and improved upon through recent advancements \cite{graves2014towards}, as well as attention-based approaches that have also gained traction \cite{chorowski2015attention}.
+The growing interest in these techniques has increased the use of seq2seq models in the speech community.
+
+- Attention-based Approaches: The attention mechanism is a crucial component of sequence-to-sequence models, allowing them to effectively weigh input acoustic features during decoding \cite{bahdanau2014neural,luong2015effective}.
+Attention-based Seq2seq models utilize previously generated output tokens and the complete input sequence to factorize the joint probability of the target sequence into individual time steps.
+The attention mechanism is conditioned on the current decoder states and runs over the encoder output representations to incorporate information from the input sequence into the decoder output.
+Incorporating attention mechanisms in Seq2Seq models has resulted in an impressive performance in various speech processing tasks, such as speech recognition \cite{nankaku2021neural,prabhavalkar2017comparison,tuske2019advancing,weng2018improving}, text-to-speech \cite{shen2018natural,8682353,9053915}, and voice conversion \cite{8683282,huang2019voice}.
+These models have demonstrated competitiveness with traditional state-of-the-art approaches.
+Additionally, attention-based Seq2Seq models have been used for confidence estimation tasks in speech recognition, where confidence scores generated by a speech recognizer can assess transcription quality \cite{li2021confidence}.
+Furthermore, these models have been explored for few-shot learning, which has the potential to simplify the training and deployment of speech recognition systems \cite{higy2018few}.
+- Connectionist Temporal Classification: While attention-based methods create a soft alignment between input and target sequences, approaches that utilize CTC loss aim to maximize log conditional likelihood by considering all possible monotonic alignments between them.
+These CTC-based Seq2Seq models have delivered competitive results across various ASR benchmarks \cite{higuchi2022bert,majumdar2021citrinet,synnaeve2020end,gulati2020conformer} and have been extended to other speech-processing tasks such as voice conversion \cite{zhang2019sequence,9362095,liu2021any}, speech synthesis \cite{zhang2019sequence} etc.
+Recent studies have concentrated on enhancing the performance of Seq2Seq models by combining CTC with attention-based mechanisms, resulting in promising outcomes.
+This combination remains a subject of active investigation in the speech-processing domain.
