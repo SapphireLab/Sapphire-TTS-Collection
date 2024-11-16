@@ -241,3 +241,56 @@ For instance,
 the architecture proposed in \cite{li2021real,tzinis2022remixit} for Deep Noise Suppression (DNS) \cite{reddy2020interspeech} challenge and Google's Tacotron2 \cite{shen2018natural} are examples of models that use CNNs as their core building blocks.
 In addition to traditional tasks like ASR and speaker identification, CNNs have also been applied to non-traditional speech processing tasks like emotion recognition \cite{kakuba2022deep}, Parkinson's disease detection \cite{johri2019parkinson}, language identification \cite{singh2021spoken} and sleep apnea detection \cite{simply2019diagnosis}.
 In all these tasks, CNN extracted features from speech signals and fed them into the task classification model.
+
+## 3.3·Temporal Convolution Neural Networks
+
+Recurrent neural networks, including RNNs, LSTMs, and GRUs, have long been popular for deep-learning sequence modeling tasks.
+They are especially favored in the speech-processing domain.
+However, recent studies have revealed that certain CNN architectures can achieve state-of-the-art accuracy in tasks such as audio synthesis, word-level language modelling, and machine translation, as reported in \cite{kalchbrenner2016neural,kalchbrenner2014convolutional,dauphin2017language}.
+The advantage of convolutional neural networks is that they enable faster training by allowing parallel computation.
+They can avoid common issues associated with recurrent models, such as the vanishing or exploding gradient problem or the inability to retain long-term memory.
+
+In a recent study by \citet{bai2018empirical}, they proposed a generic Temporal Convolutional Neural Network (TCNN) architecture that can be applied to various speech-related tasks.
+This architecture combines the best practices of modern CNNs and has demonstrated comparable performance to recurrent architectures such as LSTMs and GRUs.
+The TCN approach could revolutionize speech processing by providing an alternative to the widely used recurrent neural network models.
+
+### 3.3.1·TCNN Model Variants
+
+The architecture of TCNN is based upon two principles:(1) There is no information “leakage” from future to past;(2) the architecture can map an input sequence of any length to an output sequence of the same length, similar to RNN.
+TCN consists of dilated, causal 1D fully-convolutional layers with the same input and output lengths to satisfy the above conditions.
+In other words, TCNN is simply a 1D fully-convolutional network (FCN) with casual convolutions as shown in \Cref{dilation}.
+
+- Causal Convolution~\cite{oord2016wavenet}: Causal convolution convolves the input at a specific time point $t$ solely with the temporally-prior elements.
+- Dilated Convolution~\cite{Yu2015MultiScaleCA}: By itself, causal convolution filters have a limited range of perception, meaning they can only consider a fixed number of elements in the past.
+Therefore, it is challenging to learn any dependency between temporally distant elements for longer sequences.
+Dilated convolution ameliorates this limitation by repeatedly applying dilating filters to expand the range of perception, as shown in \Cref{dilation}.
+The dilation is achieved by uniformly inserting zeros between the filter weights.
+Consider a 1-D sequence $x \in \mathbf{R}^{n}$ and a filter: $f: \{0,...,k-1\} \rightarrow \mathbf{R}$, the dilated convolution operation $F_d$ on an element $y$ of the sequence is defined as
+$$
+    F_d(y) = (x*_{d}f)(s) = \sum_{i=0}^{k-1}f(i).x_{y-d.i},
+$$
+where $k$ is filter size, $d$ is dilation factor, and $y-d.i$ is the span along the past.
+The dilation step introduces a fixed step between every two adjacent filter taps.
+When $d=1$, a dilated convolution acts as a normal convolution.
+Whereas, for larger dilation, the filter acts on a wide but non-contiguous range of inputs.
+Therefore, dilation effectively expands the receptive field of the convolutional networks.
+
+#### 3.3.2·Application
+
+Recent studies have shown that the TCNN architecture not only outperforms traditional recurrent networks like LSTMs and GRUs in terms of accuracy but also possesses a set of advantageous properties, including:
+
+- Parallelism is a key advantage of TCNN over RNNs.
+In RNNs, time-step predictions depend on their predecessors' completion, which limits parallel computation.
+In contrast, TCNNs apply the same filter to each span in the input, allowing parallel application thereof.
+This feature enables more efficient processing of long input sequences compared to RNNs that process sequentially.
+- The receptive field size can be modified in various ways to enhance the performance of TCNNs.
+For example, incorporating additional dilated convolutional layers, employing larger dilation factors, or augmenting the filter size are all effective methods.
+Consequently, TCNNs offer superior management of the model's memory size and are highly adaptable to diverse domains.
+- When dealing with lengthy input sequences, LSTM and GRU models tend to consume a significant amount of memory to retain the intermediate outcomes for their numerous cell gates.
+On the other hand, TCNNs utilize shared filters throughout a layer, and the back-propagation route depends solely on the depth of the network.
+This makes TCNNs a more memory-efficient alternative to LSTMs and GRUs, especially in scenarios where memory constraints are a concern.
+
+TCNNs can perform real-time speech enhancement in the time domain \cite{pandey2019tcnn}.
+They have much fewer trainable parameters than earlier models, making them more efficient.
+TCNs have also been used for speech and music detection in radio broadcasts \cite{hung2022large,lemaire2019temporal}.
+They have been used for single channel speech enhancement \cite{9601275,richter2020speech} and are trained as filter banks to extract features from waveform to improve the performance of ASR \cite{li2019single}.
