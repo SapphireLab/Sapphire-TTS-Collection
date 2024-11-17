@@ -681,3 +681,55 @@ The authors of a recent study \cite{nguyen2022multi} propose a novel approach to
 The algorithm aims to extract speech and noise from noisy signals by computing the Power Spectral Density (PSD) matrices of the noise and the speech signal of interest and then obtaining optimal weights for the beam former using a frequency-time mask.
 The proposed method combines the MVDR beam former with a super-Gaussian joint maximum a posteriori (SGJMAP) based SE gain function and a GCN-based separation network.
 The SGJMAP-based SE gain function is used to enhance the speech signals, while the GCN-based separation network is used to separate the speech from the noise further.
+
+## 3.9·Diffusion Probabilistic Models (DPMs)
+
+### 3.9.1·Architecture
+
+Diffusion probabilistic models, inspired by non-equilibrium thermodynamics \cite{ho2020denoising, sohl2015deep}, have proven to be highly effective for generating high-quality images and audio.
+These models create a Markov chain of diffusion steps ($x_t \sim q(x_t|x_{t-1})$) from the original data ($x_{0}$) to the latent variable $x_{T}\sim \mathcal{N}(\mathbf{0}, \mathbf{I})$ by gradually adding pre-scheduled noise to the data.
+The reverse diffusion process then reconstructs the desired data samples ($x_{0}$) from the noise $x_{T}$, as shown in \cref{fig:diffusion}.
+Unlike VAE or flow models, diffusion models keep the dimensionality of the latent variables fixed.
+While mostly used for image and audio synthesis, diffusion models have potential applications in speech-processing tasks, such as speech synthesis and enhancement.
+This section offers a comprehensive overview of the fundamental principles of diffusion models and explores their potential uses in the speech domain.
+
+#### Forward diffusion process
+
+Given a clean speech data $x_{0}\sim q_{data}(x_{0})$,
+
+$$
+    q(x_{1},...,x_{T}|x_{0}) = \prod_{t=1}^{T} q(x_{t}|x_{t-1}).
+$$
+
+At every time step $t$, $q(x_{t}|x_{t-1}):=\mathcal{N}(x_{t};\sqrt{1-\beta_{t}}x_{t-1},\beta_{t}\mathbf{I})$ where $\{\beta_{t} \in (0,1)\}_{t=1}^{T}$.
+As the forward process progresses, the data sample $x_{0}$ losses its distinguishable features, and as $T \to \infty$, $x_T$ approaches a standard Gaussian distribution.
+
+#### Reverse diffusion process
+
+The reverse diffusion process is defined by a Markov chain from $x_{T}\sim \mathcal{N}(\mathbf{0}, \mathbf{I})$ to $x_{0}$ and parameterized by $\theta$:
+
+$$
+    p_{\theta}(x_{0},...,x_{T-1}|x_{T}) = \prod_{t=1}^{T} p_{\theta}(x_{t-1}|x_{t})
+$$
+
+where $x_T \sim \mathcal{N}(0,I)$ and the transition probability $p_{\theta}(x_{t-1}|x_{t})$ is learnt through noise-estimation.
+This process eliminates the Gaussian noise added in the forward diffusion process.
+
+### 3.9.2·Application
+
+Diffusion models have emerged as a leading approach for generating high-quality speech in recent years \cite{chen2020wavegrad,kong2020diffwave,popov2021grad,popov2021diffusion,jeong2021diff,huang2022fastdiff}.
+These non-autoregressive models transform white noise signals into structured waveforms via a Markov chain with a fixed number of steps.
+One such model, FastDiff, has achieved impressive results in high-quality speech synthesis \cite{huang2022fastdiff}.
+By leveraging a stack of time-aware diffusion processes, FastDiff can generate high-quality speech samples 58 times faster than real-time on a V100 GPU, making it practical for speech synthesis deployment for the first time.
+It also outperforms other competing methods in end-to-end text-to-speech synthesis.
+Another powerful diffusion probabilistic model proposed for audio synthesis is DiffWave \cite{kong2020diffwave}.
+It is non-autoregressive and generates high-fidelity audio for different waveform generation tasks, such as neural vocoding conditioned on mel spectrogram, class-conditional generation, and unconditional generation.
+DiffWave delivers speech quality on par with the strong WaveNet vocoder \cite{oord2016wavenet} while synthesizing audio much faster.
+
+Diffusion models have shown great promise in speech processing, particularly in speech enhancement \cite{9689602,serra2022universal,qiu2022srtnet,9746901}.
+Recent advances in diffusion probabilistic models have led to the development of a new speech enhancement algorithm that incorporates the characteristics of the noisy speech signal into the diffusion and reverses processes \cite{lu2022conditional}.
+This new algorithm is a generalized form of the probabilistic diffusion model, known as the conditional diffusion probabilistic model.
+During its reverse process, it can adapt to non-Gaussian real noises in the estimated speech signal.
+In addition, \citet{qiu2022srtnet} propose SRTNet, a novel method for speech enhancement that uses the diffusion model as a module for stochastic refinement.
+The proposed method comprises a joint network of deterministic and stochastic modules, forming the “enhance-and-refine” paradigm.
+The paper also includes a theoretical demonstration of the proposed method’s feasibility and presents experimental results to support its effectiveness.
