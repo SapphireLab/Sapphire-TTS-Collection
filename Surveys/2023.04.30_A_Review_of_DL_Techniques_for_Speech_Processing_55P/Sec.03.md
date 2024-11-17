@@ -559,3 +559,71 @@ Furthermore, these models have been explored for few-shot learning, which has th
 These CTC-based Seq2Seq models have delivered competitive results across various ASR benchmarks \cite{higuchi2022bert,majumdar2021citrinet,synnaeve2020end,gulati2020conformer} and have been extended to other speech-processing tasks such as voice conversion \cite{zhang2019sequence,9362095,liu2021any}, speech synthesis \cite{zhang2019sequence} etc.
 Recent studies have concentrated on enhancing the performance of Seq2Seq models by combining CTC with attention-based mechanisms, resulting in promising outcomes.
 This combination remains a subject of active investigation in the speech-processing domain.
+
+## 3.7·Reinforcement Learning (RL)
+
+Reinforcement learning (RL) is a machine learning paradigm that trains an agent to perform discrete actions in an environment and receive rewards or punishments based on its interactions.
+The agent aims to learn a policy that maximizes its long-term reward.
+In recent years, RL has become increasingly popular and has been applied to various domains, including robotics, game playing, and natural language processing.
+RL has been utilized in speech recognition, speaker diarization, and speech enhancement tasks in the speech field.
+One of the significant benefits of using RL for speech tasks is its ability to learn directly from raw audio data, eliminating the need for hand-engineered features.
+This can result in better performance compared to traditional methods that rely on feature extraction.
+By capturing intricate patterns and relationships in the audio data, RL-based speech systems have the potential to enhance accuracy and robustness.
+
+### 3.7.1·Basic Models
+
+The utilization of deep reinforcement learning (DRL) in speech processing involves the environment (a set of states $S$), agent, actions ($A$), and reward ($r$).
+The semantics of these components depends on the task at hand.
+For instance, in ASR tasks, the environment can be composed of speech features, the action can be the choices of phonemes, and the reward could be the correctness of those phonemes given the input.
+Audio signals are one-dimensional time-series signals that undergo pre-processing and feature extraction procedures.
+Pre-processing steps include noise suppression, silence removal, and channel equalization, improving audio signal quality and creating robust and efficient audio-based systems.
+Previous research has demonstrated that pre-processing improves the performance of deep learning-based audio systems \cite{latif2020speech}.
+
+Feature extraction is typically performed after pre-processing to convert the audio signal into meaningful and informative features while reducing their number.
+MFCCs and spectrograms are popular feature extraction choices in speech-based systems \cite{latif2020speech}.
+These features are then given to the DRL agent to perform various tasks depending on the application.
+For instance, consider the scenario where a human speaks to a DRL-trained machine, where the machine must act based on features derived from audio signals.
+- \textit{Value-based DRL:}
+Given the state of the environment ($s$), a value function $Q: S\times A \rightarrow \mathbb{R}$ is learned to estimate overall future reward $Q(s, a)$ should an action $a$ be taken.
+This value function is parameterized with deep networks like CNN, Transformers, etc.
+- \textit{Policy-based DRL:} As opposed to value-based RL, policy-based RL methods learns a policy function $\pi: S \rightarrow A$ that chooses the best possible action ($a$) based on reward.
+- \textit{Model-based DRL:}
+Unlike the previous two approaches, model-based RL learns the dynamics of the environment in terms of the state transition probabilities, i.e., a function $M: S\times A\times S \rightarrow \mathbb{R}$.
+Given such a model, policy, or value functions are optimized.
+
+### 3.7.2·Application
+
+In speech-related research, deep reinforcement learning can be used for several purposes, including:
+
+#### Speech recognition and Emotion modeling
+
+Deep reinforcement learning (DRL) can be used to train speech recognition systems \cite{kala2018reinforcement,rajapakshe2020deep,tjandra2018sequence,chung2020semi,9207023} to transcribe speech accurately.
+In this case, the system receives an audio input and outputs a text sequence corresponding to the spoken words.
+The environmental states might be learned from the input audio features.
+The actions might be the generated phonemes.
+The reward could be the similarity between the generated and gold phonemes, quantified in edit distance.
+Several works have also achieved promising results for non-native speech recognition \cite{radzikowski2019dual}
+
+DRL pre-training has shown promise in reducing training time and enhancing performance in various Human-Computer Interaction (HCI) applications, including speech recognition \cite{rajapakshe2020deep}.
+Recently, researchers have suggested using a reinforcement learning algorithm to develop a Speech Enhancement (SE) system that effectively improves ASR systems.
+However, ASR systems are often complicated and composed of non-differentiable units, such as acoustic and language models.
+Therefore, the ASR system's recognition outcomes should be employed to establish the objective function for optimizing the SE model.
+Other than ASR, SE, some studies have also focused on SER using DRL algorithms \cite{lakomkin2018emorl,rajapakshe2022novel,kansizoglou2019active}
+
+#### Speaker identification
+
+Similarly, for speaker identification tasks, the actions can be the speaker's choices, and a binary reward can be the correctness of choice.
+
+#### Speech synthesis and coding
+
+Likewise, the states can be the input text, the actions can be the generated audio, and the reward could be the similarity between the gold and generated mel-spectrogram.
+
+### 3.7.3·Summary
+
+Deep reinforcement learning has several advantages over traditional machine learning techniques.
+It can learn from raw data without needing hand-engineered features, making it more flexible and adaptable.
+It can also learn from feedback, making it more robust and able to handle noisy environments.
+
+However, deep reinforcement learning also has some challenges that must be addressed.
+It requires a lot of data to train and can be computationally expensive.
+It also requires careful selection of the reward function to ensure that the system learns the desired behavior.
