@@ -627,3 +627,57 @@ It can also learn from feedback, making it more robust and able to handle noisy 
 However, deep reinforcement learning also has some challenges that must be addressed.
 It requires a lot of data to train and can be computationally expensive.
 It also requires careful selection of the reward function to ensure that the system learns the desired behavior.
+
+## 3.8·Graph Neural Networks (GNNs)
+
+Over the past few years, the field of Graph Neural Networks (GNNs) has witnessed a remarkable expansion as a widely adopted approach for analysing and learning from data on graphs.
+GNNs have demonstrated their potential in various domains, including computer science, physics, mathematics, chemistry, and biology, by delivering successful outcomes.
+Furthermore, in recent times, the speech-processing domain has also witnessed the growth of GNNs.
+
+### 3.8.1·Basic Models
+
+Speech processing involves analysing and processing audio signals, and GNNs can be useful in this context when we represent the audio data as a graph.
+In this answer, we will explain the architecture of GNNs for speech processing.
+The standard GNN pipeline is shown in \Cref{fig:GNN}, according to the application the GNN layer can consist of Graph Convolutional Layers \cite{zhang2019graph}, Graph Attention Layers \cite{velickovic2017graph}, or Graph Transformer \cite{yun2019graph}.
+
+#### Graph Representation of Speech Data
+
+The first step in using GNNs for speech processing is representing the speech data as a graph.
+One way to do this is to represent the speech signal as a sequence of frames, each representing a short audio signal segment.
+We can then represent each frame as a node in the graph, with edges connecting adjacent frames.
+
+#### Graph Convolutional Layers
+
+Once the speech data is represented as a graph, we can use graph convolutional layers to learn representations of the graph nodes.
+Graph convolutional layers are similar to traditional ones, but instead of operating on a grid-like structure, they operate on graphs.
+These layers learn to aggregate information from neighboring nodes to update the features of each node.
+
+#### Graph Attention Layers
+
+Graph attention layers can be combined with graph convolutional layers to give more importance to certain nodes in the graph.
+Graph attention layers learn to assign weights to neighbor nodes based on their features, which can help capture important patterns in speech data.
+Several works have used graph attention layers for neural speech synthesis \cite{liu2021graphspeech} or speaker verification \cite{jung2021graph} and diarization \cite{kwon2022multi}.
+
+#### Recurrent Layers
+
+Recurrent layers can be used in GNNs for speech processing to capture temporal dependencies between adjacent frames in the audio signal.
+Recurrent layers allow the network to maintain an internal state that carries information from previous time steps, which can be useful for modeling the dynamics of speech signals.
+
+#### Output Layers
+
+The output layer of a GNN for speech processing can be a classification layer that predicts a label for the speech data (e.g., phoneme or word) or a regression layer that predicts a continuous value (e.g., pitch or loudness).
+The output layer can be a traditional fully connected layer or a graph pooling layer that aggregates information from all the nodes in the graph.
+
+### 3.8.2·Application
+
+The advantages of using GNNs for speech processing tasks include their ability to represent the dependencies and interrelationships between various entities, which is suitable for speech processing tasks such as speaker diarization \cite{singh2023supervised,9054176,9688271}, speaker verification \cite{9414057,9746257}, speech synthesis \cite{9053355,liu2021graphspeech,sun2021graphpb}, or speech separation \cite{wang2023time,von2021graph}, which require the analysis of complex data representations.
+GNNs retain a state representing information from their neighborhood with arbitrary depth, unlike standard neural networks.
+GNNs can be used to model the relationship between phonemes and words.
+GNNs can learn to recognize words in spoken language by treating the phoneme sequence as a graph.
+GNNs can also be used to model the relationship between different acoustic features, such as pitch, duration, and amplitude, in speech signals, improving speech recognition accuracy.
+
+GNNs have shown promising results in multichannel speech enhancement, where they are used for extracting clean speech from noisy mixtures captured by multiple microphones \cite{tzirakis2021multi}.
+The authors of a recent study \cite{nguyen2022multi} propose a novel approach to multichannel speech enhancement by combining Graph Convolutional Networks (GCNs) with spatial filtering techniques such as the Minimum Variance Distortionless Response (MVDR) beamformer.
+The algorithm aims to extract speech and noise from noisy signals by computing the Power Spectral Density (PSD) matrices of the noise and the speech signal of interest and then obtaining optimal weights for the beam former using a frequency-time mask.
+The proposed method combines the MVDR beam former with a super-Gaussian joint maximum a posteriori (SGJMAP) based SE gain function and a GCN-based separation network.
+The SGJMAP-based SE gain function is used to enhance the speech signals, while the GCN-based separation network is used to separate the speech from the noise further.
