@@ -944,3 +944,92 @@ By addressing these challenges, the aim is to enable more robust and accurate sp
 
 Recent studies, including the comprehensive analysis of the performance of different models and techniques for Keyword Spotting (KS) and Slot Filling (SF) tasks on Google Speech Commands and ATIS benchmark datasets (\cref{performance:ks}), have furnished valuable insights into the strengths and limitations of such approaches in SLU.
 Capitalizing on these findings and leveraging the latest advances in deep learning and speech recognition could help us continue to expand the frontiers of spoken language understanding and drive further innovation in this domain.
+
+## 5.12·Audio/Visual MultiModal Speech Processing
+
+The process of speech perception in humans is intricate and involves multiple sensory modalities, including auditory and visual cues.
+The generation of speech sounds involves articulators such as the tongue, lips, and teeth, whose movements are critical for producing different speech sounds and visible to others.
+The importance of visual cues becomes more pronounced for individuals with hearing impairments who depend on lip-reading to comprehend spoken language, while individuals with normal hearing can also benefit from visual cues in noisy environments.
+
+When investigating language comprehension and communication, it is essential to consider both auditory and visual information, as studies have demonstrated that visual information can assist in distinguishing between acoustically similar sounds that differ in articulatory characteristics.
+A comprehensive understanding of the interaction between these sensory modalities can lead to the development of assistive technologies for individuals with hearing impairments and enhance communication strategies in challenging listening environments.
+
+### 5.12.1·Task Description
+
+The tasks under audiovisual multimodal processing can be subdivided into the following categories.
+
+- \textit{Lip-reading}: Lip-reading is a remarkable ability that allows us to comprehend spoken language from silent videos.
+However, it is a challenging task even for humans.
+Recent advancements in deep learning technology have enabled the development of neural network-based lip-reading models to accomplish this task with high accuracy.
+These models take silent facial videos as input and produce the corresponding speech audio or characters as output.
+The potential applications of automatic lip-reading models are vast and diverse, including enabling videoconferencing in noisy environments, using surveillance videos as long-range listening devices, and facilitating conversations in noisy social settings.
+Developing these models could significantly improve our daily lives.
+- \textit{Audiovisual speech separation}: Recent years have witnessed a growing interest in audiovisual speech separation, driven by the remarkable human capacity to selectively focus on a specific sound source amidst background noise, commonly known as the "cocktail party effect." This phenomenon poses a significant challenge in computer speech recognition, prompting the development of automatic speech separation techniques aimed at isolating individual speech sources from complex audio signals.
+In a noteworthy study by Ephrat et al.
+(2018) \citet{ephrat2018looking}, the authors proposed that audiovisual speech separation surpasses audio-only approaches by leveraging visual cues from a speaker's face to resolve ambiguity in speech signals.
+By integrating visual information, the model's ability to disentangle overlapping speech signals is enhanced.
+The implications of automatic speech separation extend across diverse applications, including assistive technologies for individuals with hearing impairments and head-mounted devices designed to facilitate effective communication in noisy meeting scenarios.
+- \textit{Talking face generation}: Generating a realistic talking face of a target character, synchronized with a given speech and ensuring smooth transitions between facial images, is the objective of talking face generation.
+This task has garnered substantial interest and poses a significant challenge due to the dynamic nature of facial movements, which depend on both visual information (input face image) and acoustic information (input speech audio) to achieve accurate lip-speech synchronization.
+Despite its challenges, talking face generation holds immense potential for various applications, including teleconferencing, creating virtual characters with specific facial expressions, and enhancing speech comprehension.
+In recent years, significant advancements have been made in the field of talking face generation, as evidenced by notable studies \cite{song2018talking, zhou2019talking, chen2019hierarchical, eskimez2020end, eskimez2021speech}.
+
+### 5.12.2·Datasets
+
+Several datasets are widely used for audiovisual multimodal research, including VoxCeleb, TCD-TIMID \cite{harte2015tcd} , etc.
+We briefly discuss some of them in the following section.
+
+- \emph{TCD-TIMID \cite{harte2015tcd}:} This is an extensive and diverse audiovisual dataset that encompasses both audio and video recordings of 600 distinct sentences spoken by 60 participants.
+The dataset features a wide range of speakers with different genders, accents, and backgrounds, making it highly suitable for talker-independent speech recognition research.
+The audio recordings are of exceptional quality, captured using high-fidelity microphones with a sampling rate of 48kHz.
+Meanwhile, the video footage is of 720p resolution and includes depth information for every frame
+- \emph{LipReading in the Wild (LRW) \cite{chung2017lip}:} The LRW is a comprehensive audiovisual dataset that encompasses 500 distinct words spoken by more than 1000 speakers.
+This dataset has been segmented into distinct training, evaluation, and test sets to facilitate efficient research.
+Additionally, the LRW-1000 dataset \cite{8756582} represents a subset of LRW, featuring a 1000-word vocabulary.
+Researchers can benefit from pre-trained weights included with this dataset, simplifying the evaluation process.
+Overall, these datasets are highly regarded in the scientific community for their size and versatility in supporting research related to speech recognition and natural language processing
+- \emph{LRS2 and LRS3 \footnote{https://www.robots.ox.ac.uk/\~vgg/data/lip\_reading/lrs2.html}}: The LRS2 and LRS3 datasets are additional examples of audiovisual speech recognition datasets that have been gathered from videos captured in real-world settings.
+Each of these datasets has its own distinct train/test split and includes cropped face tracks as well as corresponding audio clips sourced from British television.
+Both datasets are considered to be of significant value to researchers in the field of speech recognition, particularly those focused on audiovisual analysis.
+- \emph{GRID \cite{cooke2006audio}:} This dataset comprises high-fidelity audio and video recordings of more than 1000 sentences spoken by 34 distinct speakers, including 18 males and 16 females.
+The sentences were gathered using the prompt "put red at G9 now" and are widely employed in research related to audio-visual speech separation and talking face synthesis.
+The dataset is considered to be of exceptional quality and is highly sought after in the scientific community.
+
+### 5.12.3·Models
+
+In recent years, there has been a remarkable surge in the development of algorithms tailored for multimodal tasks.
+Specifically, significant attention has been devoted to the advancement of neural networks for Text-to-Speech (TTS) applications \cite{ren2019fastspeech, ren2020fastspeech, ren2021portaspeech, kim2021conditional}.
+The integration of visual and auditory modalities through multimodal processing has played a pivotal role in enhancing various tasks relevant to our daily lives.
+Lip-reading, for instance, has witnessed notable progress in recent years, whether accompanied by audio or not.
+Son et al.
+have made a significant contribution to this field with their hybrid model \cite{son2017lip}.
+Combining convolutional neural networks (CNN), long short-term memory (LSTM) networks, and an attention mechanism, their model captures correlations between lip videos and audio, enabling accurate character generation.
+Additionally, the authors introduce a new dataset called LRS, which facilitates the development of lip-reading models.
+
+Another noteworthy model, LiRA \cite{ma2021lira}, focuses on self-supervised learning for lip-reading.
+It leverages lip image sequences and audio waveforms to derive high-level representations during the pre-training stage, achieving word-level and sentence-level lip-reading capabilities.
+In the realm of capturing human emotions expressed through acoustic signals, Ephrat et al.
+\cite{ephrat2017improved} propose an innovative model that frames the task as an acoustic regression problem instead of a visual-to-text modeling approach.
+Their work emphasizes the advantages of this perspective.
+Furthermore, Vid2Speech \cite{ephrat2017vid2speech}, a CNN-based model, takes facial image sequences as input and generates corresponding speech audio waveforms.
+It employs a two-tower CNN model that processes facial grayscale images while calculating optical flow between frames.
+Additionally, other models such as those based on mutual information maximization \cite{zhao2020mutual} and spatiotemporal fusion \cite{zhang2019spatio} have been proposed for the lip-reading task, further expanding the methodologies explored in this domain.
+
+In an early attempt to develop algorithms for audiovisual speech separation, the authors of \cite{ephrat2018looking} proposed a CNN-based architecture that encodes facial images and speech spectrograms to compute a complex mask for speech separation.
+Additionally, they introduced the AVspeech dataset in this work.
+AV-CVAE \cite{nguyen2021deep} utilizes a conditional VAE to detect the lip movements of the speaker and predict separated speech.
+In a deviation from speech signals, \cite{montesinos2021cappella} focuses on audiovisual singing separation and employs a two-stream CNN architecture, Y-Net \cite{mehta2018net}, to process audio and video separately.
+This work introduces a large dataset of solo singing videos for audiovisual singing separation.
+The VisualSpeech \cite{gao2021visualvoice} architecture takes a face image sequence and mixed audio of lip movement as input and predicts a complex mask.
+It also proposes a cross-modal embedding space to facilitate the correlation of audio and visual modalities.
+Finally, FaceFilter \cite{chung2020facefilter} uses still images as visual information, and other methods for the audiovisual speech separation task are proposed in \cite{afouras2018conversation,michelsanti2021overview,gabbay2017visual}.
+
+The rise of Deepfake videos on the internet has led to a surge in demand for creating realistic talking faces for various applications, such as video production, marketing, and entertainment.
+Previously, the conventional approach involved manipulating 3D meshes to create specific faces, which was time-consuming and limited to certain identities.
+However, recent advancements in deep generative models have made significant progress.
+For example, DAVS \cite{zhou2019talking} introduced an end-to-end trainable deep neural network capable of learning a joint audiovisual representation, which uses adversarial training to disentangle the latent space.
+Another architecture proposed by ATVGnet \cite{chen2019hierarchical} consists of an audio transformation network (AT-net) and a visual generation network (VG-net) for processing acoustic and visual information, respectively.
+This method introduced a regression-based discriminator, a dynamically adjustable pixel-wise loss, and an attention mechanism.
+In \cite{zhu2018arbitrary}, a novel framework for talking face generation was presented, which discovers audiovisual coherence through an asymmetrical mutual information estimator.
+Furthermore, the authors in \cite{eskimez2020end} proposed an end-to-end approach based on generative adversarial networks that use noisy speech for talking face generation.
+In addition, alternative methods based on conditional recurrent adversarial networks and speech-driven talking face generation were introduced in \cite{song2018talking,eskimez2021speech}.
