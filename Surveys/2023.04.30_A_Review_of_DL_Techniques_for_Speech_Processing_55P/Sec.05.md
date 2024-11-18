@@ -599,3 +599,53 @@ Notable examples of such works include those by \citet{bullock2020overlap} and \
 In addition to the above work, end-to-end speaker diarization systems have gained the attention of the research community due to their ability to handle speaker overlaps and their optimization to minimize diarization errors directly.
 In one such work, the authors propose end-to-end neural speaker diarization that does not rely on clustering and instead uses a self-attention-based neural network to directly output the joint speech activities of all speakers for each segment \cite{fujita2019end}.
 Following the trend, several other works propose enhanced architectures based on self-attention \cite{lin2020self,yu2022auxiliary}.
+
+## 5.5·Speech-to-Speech Translation
+
+### 5.5.1·Task Description
+
+Speech-to-text translation (ST) is the process of converting spoken language from one language to another in text form.
+Traditionally, this has been achieved using a cascaded structure that incorporates automatic speech recognition (ASR) and machine translation (MT) components.
+However, a more recent end-to-end (E2E)  method \cite{sung2019towards,salesky2019exploring,zhang2020adaptive,chen2020mam,han2021learning,zheng2021fused,ansari2020findings} has gained popularity due to its ability to eliminate issues with error propagation and high latency associated with cascaded methods \cite{sperber2020speech, chen2021specrec}.
+The E2E method uses an audio encoder to analyze audio signals and a text decoder to generate translated text.
+
+One notable advantage of ST systems is that they allow for more natural and fluent communication than other language translation methods.
+By translating speech in real-time, ST systems can capture the subtleties of speech, including tone, intonation, and rhythm, which are essential for effective communication.
+Developing ST systems is a highly intricate process that involves integrating various technologies such as speech recognition, natural language processing, and machine translation.
+One significant obstacle in ST is the variation in accents and dialects across different languages, which can significantly impact the accuracy of the translation.
+
+### 5.5.2·Dataset
+
+There are numerous datasets available for the end-to-end speech translation task, with some of the most widely used ones being MuST-C \cite{cattoni2021must}, IWSLT \cite{scarton2019estimating}, and CoVoST 2 \cite{wang2020covost}.
+These datasets cover a variety of languages, including English, German, Spanish, French, Italian, Dutch, Portuguese, Romanian, Arabic, Chinese, Japanese, Korean, and Russian.
+For instance, TED-LIUM \cite{rousseau2012ted} is a suitable dataset for speech-to-text, text-to-speech, and speech-to-speech translation tasks, as it contains transcriptions and audio recordings of TED talks in English, French, German, Italian, and Spanish.
+Another open-source dataset is Common Voice, which covers several languages, including English, French, German, Italian, and Spanish.
+Additionally, VoxForge\footnote{http://www.voxforge.org/} is designed for acoustic model training and includes speech recordings and transcriptions in several languages, including English, French, German, Italian, and Spanish.
+LibriSpeech \cite{panayotov2015librispeech} is a dataset of spoken English specifically designed for speech recognition and speech-to-text translation tasks.
+Lastly, How2 \cite{duarte2021how2sign} is a multimodal machine translation dataset that includes speech recordings, text transcriptions, and video and image data, covering English, German, Italian, and Spanish.
+These datasets have been instrumental in training state-of-the-art speech-to-speech translation models and will continue to play a crucial role in further advancing the field.
+
+### 5.5.3·Models
+
+End-to-end speech translation models are a promising approach to direct the speech translation field.
+These models use a single sequence-to-sequence model for speech-to-text translation and then text-to-speech translation.
+In 2017, researchers demonstrated that end-to-end models outperform cascade models[3].
+One study published in 2019 provides an overview of different end-to-end architectures and the usage of an additional connectionist temporal classification (CTC) loss for better convergence \cite{bahar2019comparative}.
+The study compares different end-to-end architectures for speech-to-text translation.
+In 2019, Google introduced Translatotron \cite{jia2022translatotron}, an end-to-end speech-to-speech translation system.
+Translatotron uses a single sequence-to-sequence model for speech-to-text translation and then text-to-speech translation.
+No transcripts or other intermediate text representations are used during inference.
+The system was validated by measuring the BLEU score, computed with text transcribed by a speech recognition system.
+Though the results lag behind a conventional cascade system, the feasibility of the end-to-end direct speech-to-speech translation was demonstrated \cite{jia2022translatotron}.
+
+In a recent publication from 2020, researchers presented a study on an end-to-end speech translation system.
+This system incorporates pre-trained models such as Wav2Vec 2.0 and mBART, along with coupling modules between the encoder and decoder.
+The study also introduces an efficient fine-tuning technique, which selectively trains only $20\%$ of the total parameters \cite{ye2021end}.
+The system developed by the UPC Machine Translation group actively participated in the IWSLT 2021 offline speech translation task, which aimed to develop a system capable of translating English audio recordings from TED talks into German text.
+
+E2E ST is often improved by pretraining the encoder and/or decoder with transcripts from speech recognition or text translation tasks \cite{di2019adapting,wang2020fairseq,zhang2020adaptive,xu2021stacked}.
+Consequently, it has become the standard approach used in various toolkits \cite{inaguma2020espnet,wang2020fairseq,zhao2020neurst,zheng2021fused}.
+However, transcripts are not always available, and the significance of pretraining for E2E ST is rarely studied.
+\citet{zhang2022revisiting} explored the effectiveness of E2E ST trained solely on speech-translation pairs and proposed an algorithm for training from scratch.
+The proposed system outperforms previous studies in four benchmarks covering 23 languages without pretraining.
+The paper also discusses neural acoustic feature modeling, which extracts acoustic features directly from raw speech signals to simplify inductive biases and enhance speech description.
