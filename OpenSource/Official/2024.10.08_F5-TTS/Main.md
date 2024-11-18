@@ -3,10 +3,10 @@
 ## 基本信息
 
 - 标题: F5-TTS: A Fairytaler that Fakes Fluent and Faithful Speech with Flow Matching
-- 链接: [HuggingFace](https://huggingface.co/SWivid/F5-TTS) | [ModelScope](https://www.modelscope.cn/models/SWivid/F5-TTS_Emilia-ZH-EN) | [WiseModel](https://wisemodel.cn/models/SJTU_X-LANCE/F5-TTS_Emilia-ZH-EN) | [GitHub](https://github.com/SWivid/F5-TTS) | [ArXiv](https://arxiv.org/abs/2410.06885)
+- 链接: [HuggingFace](https://huggingface.co/SWivid/F5-TTS) | [ModelScope](https://www.modelscope.cn/models/SWivid/F5-TTS_Emilia-ZH-EN) | [WiseModel](https://wisemodel.cn/models/SJTU_X-LANCE/F5-TTS_Emilia-ZH-EN) | [GitHub](https://github.com/SWivid/F5-TTS) | [ArXiv](https://arxiv.org/abs/2410.06885) | [PaperNote](../../../Models/Diffusion/2024.10.09_F5-TTS.md)
 - 开源: [代码] MIT License; [模型] CC-BY-NC License (数据集 Emilia 限制)
-- 更新: 2024.11.03
-- 笔记: 2024.11.03
+- 更新: 2024.11.18
+- 笔记: 2024.11.18
 
 ### 主要内容
 - **F5-TTS**: Diffusion Transformer with ConvNeXt V2, faster trained and inference.
@@ -15,6 +15,7 @@
 
 ### 更新日志
 
+- 2024.11.11 v0.1.1 版本
 - 2024.10.23 PR#228: 项目结构重新组织, 将 `model/` 重构为 `src/f5_tts/model/`.
 - 2024.10.08 F5-TTS & E2-TTS 基础模型发布在 HuggingFace, ModelScope, WiseModel.
 
@@ -51,6 +52,12 @@
 ```
 F5-TTS
 ├─ [x] .github                                  Github 工作流配置
+│  ├─ [ ] ISSUE_TEMPLATE
+│  │  ├─ [ ] bug_report.yml
+│  │  ├─ [ ] config.yml
+│  │  ├─ [ ] feature_request.yml
+│  │  ├─ [ ] help_wanted.yml
+│  │  └─ [ ] question.yml
 │  └─ [x] workflows
 │     ├─ [x] pre-commit.yaml:                   调用 pre-commit-config.yaml
 │     ├─ [x] publish-docker-image.yaml:         发布 Docker 镜像
@@ -78,7 +85,7 @@ F5-TTS
 └─ [x] src
    ├─ [x] f5_tts
    │  ├─ [x] api.py
-   │  ├─ [ ] socket.py
+   │  ├─ [ ] socket_server.py
    │  ├─ [ ] eval
    │  │  ├─ [ ] ecapa_tdnn.py
    │  │  ├─ [ ] eval_infer_batch.py
@@ -103,6 +110,7 @@ F5-TTS
    │  │  ├─ [ ] infer_cli.py
    │  │  ├─ [ ] infer_gradio.py
    │  │  ├─ [x] README.md:                      推理说明 Infer.md
+   │  │  ├─ [ ] SHARED.md:                      共享模型说明
    │  │  ├─ [ ] speech_edit.py
    │  │  └─ [ ] utils_infer.py
    │  ├─ [ ] model
@@ -114,7 +122,7 @@ F5-TTS
    │  │  ├─ [ ] cfm.py
    │  │  ├─ [ ] dataset.py
    │  │  ├─ [ ] modules.py
-   │  │  ├─ [ ] trainer.py
+   │  │  ├─ [x] trainer.py                      使用 Accelerate 训练 CFM
    │  │  ├─ [ ] utils.py
    │  │  └─ [x] __init__.py:                    引入三种 backbone, CFM 和 trainer
    │  ├─ [ ] scripts
@@ -231,3 +239,72 @@ pre-commit run --all-files
 ### CFM
 
 ### Trainer
+
+- 从模型文件夹中导入 CFM,
+- 从模型文件夹的数据集文件中导入 DynamicBatchSampler, collate_fn
+- 从 utils 文件中导入 default, exists
+
+整个 Trainer 包含:
+- 初始化函数
+- is_main 判断函数
+- save_checkpoint 保存函数
+- load_checkpoint 加载函数
+- train 训练函数
+
+初始化函数需要了解:
+- Accelerator 的用法;
+- wandb/tensorboard 记录的用法;
+- model 为 CFM
+- 若 is_main 函数结果 (is_main_process) 为真, 则创建 EMA 模型
+- 训练参数配置: epochs, num_warmup_updates, save_per_updates, last_per_steps, checkpoint_path, batch_size, batch_size_type, max_samples, grad_accumulation_steps, max_grad_norm
+- vocoder_name (mel_spec_type := vocos)
+- noise_scheduler
+- duration_predictor
+- 优化器: 量化 bnb_optimizer (AdamW8bit)/AdamW
+
+保存函数略过, 加载函数做了一些处理:
+- 若有 model_last 则加载, 否则对文件名按数字排序
+- 将检查点加载到 CPU
+- 确保能反向传播的补丁: 删除掉 ema_model 梅尔频谱 mel_stft 的 mel_scale.fb 和 spectrogram.window ?
+- 主进程加载 EMA 模型参数
+- 如果检查点内含有 step, 同样删除 model 梅尔频谱的两个键; 加载模型和优化器, 如果调度器存在, 则加载调度器
+- 如果检查点内不含有 step, 则从 EMA 模型中加载模型参数, step 从 0 开始
+
+核心的训练函数:
+- 如果需要记录样本, 则加载声码器, 并设置好目标采样率;
+- 如果随机种子存在, 则进行设置;
+- 若 batch_size_type 为样本点, 创建 DataLoader (以 batch_size 和打乱实现),
+- 若 batch_size_type 为帧, 则调用 SequentialSampler 然后用 DynamicBatchSampler 进行二次创建 batch_sampler, 然后创建 DataLoader;
+- 使用多 GPU 时, 考虑固定的热身步数, 并准备好学习率调度器, 以设置学习率.
+- 加载模型并读取可能的训练步数, 并继续训练.
+- 核心部分如下:
+```python
+global_step = start_step
+for epoch in range(start_epoch, epochs):
+
+      for batch in train_dataloader:
+            with accelerator.accumulate(model):
+                  text = batch['text']
+                  mel_spec = batch["mel"].permute(0, 2, 1)
+                  mel_lengths = batch["mel_length"]
+
+                  if duration_predictor:
+                        dur_loss = duration_predictor(mel_length, lens=batch["durations"])
+
+                  loss, cond, pred = model(mel_spec, text, mel_lengths, noise_scheduler)
+                  accelerator.backward(loss)
+
+                  accelerator.clip_grad_norm_(model.parameters(), max_grad_norm)
+                  optimizer.step()
+                  scheduler.step()
+                  optimizer.zero_grad()
+
+            if is_main():
+                  ema_model.update()
+
+            global_step += 1
+```
+
+- 后面是在循环中打印信息, 记录信息, 保存模型, 评估时通过声码器解码 mel 得到参考音频, 模型预测 mel 然后同样解码得到预测音频, 并保存.
+
+**总结: Trainer 的核心是 CFM 模型的前向过程, 其他的代码逻辑主要是 Accelerator 的使用**.
