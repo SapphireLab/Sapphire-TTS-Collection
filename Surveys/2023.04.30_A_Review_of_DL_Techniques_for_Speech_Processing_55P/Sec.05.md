@@ -475,3 +475,127 @@ TESA \cite{mary2021s} is an architecture based on the Transformer's encoder, pro
 TESA outperforms PLDA on the same dataset by utilizing the next sentence prediction task of BERT \cite{devlin2018bert}.
 \citet{zhu2021serialized} proposed a method to create fixed-dimensional speaker verification representation using a serialized multi-layer multi-head attention mechanism.
 Unlike other studies that redesign the inner structure of the attention module, their approach strictly follows the original Transformer, providing simple but effective modifications.
+
+## 5.4·Speaker Diarization
+
+### 5.4.1·Task Description
+
+Speaker diarization is a critical component in the analysis of multi-speaker audio data, and it addresses the question of "who spoke when." The term "diarize" refers to the process of making a note or keeping a record of events, as per the English dictionary.
+A traditional speaker diarization system comprises several crucial components  that work together to achieve accurate and efficient speaker diarization.
+In this section, we will discuss the different components of a speaker diarization system (\Cref{fig:sd}) and their role in achieving accurate speaker diarization.
+
+- **Acoustic Features Extraction**: In the analysis of multi-speaker speech data, one critical component is the extraction of acoustic features \cite{anguera2012speaker,tranter2006overview}.
+This process involves extracting features such as pitch, energy, and MFCCs from the audio signal.
+These acoustic features play a crucial role in identifying different speakers by analyzing their unique characteristics.
+- **Segmentation**: Segmentation is a crucial component in the analysis of multi-speaker audio data, where the audio signal is divided into smaller segments based on the silence periods between speakers \cite{anguera2012speaker,tranter2006overview}.
+This process helps in reducing the complexity of the problem and makes it easier to identify different speakers in smaller segments
+- **Speaker Embedding Extraction**: This process involves obtaining a low-dimensional representation of each speaker's voice, which is commonly referred to as speaker embedding.
+This is achieved by passing the acoustic features extracted from the speech signal through a deep neural network, such as a CNN or RNN\cite{snyder2017deep}.
+- **Clustering**: In this component, the extracted speaker embeddings are clustered based on similarity, and each cluster represents a different speaker \cite{anguera2012speaker,tranter2006overview}.
+This process commonly uses unsupervised clustering algorithms, such as k-means clustering.
+- **Speaker Classification**: In this component, the speaker embeddings are classified into different speaker identities using a supervised classification algorithm, such as SVM or MLP \cite{anguera2012speaker,tranter2006overview}.
+- **Re-segmentation**: This component is responsible for refining the initial segmentation by adjusting the segment boundaries based on the classification results.
+It helps in improving the accuracy of speaker diarization by reducing the errors made during the initial segmentation.
+
+Various studies focus on traditional speaker diarization systems \cite{anguera2012speaker,tranter2006overview}.
+This paper will review the recent efforts toward deep learning-based speaker diarizations techniques.
+
+### 5.4.2·Dataset
+
+- NIST SRE 2000 (Disk-8) or CALLHOME dataset: The NIST SRE 2000 (Disk-8) corpus, also referred to as the CALLHOME dataset, is a frequently utilized resource for speaker diarization in contemporary research papers.
+Originally released in 2000, this dataset comprises conversational telephone speech (CTS) collected from diverse speakers representing a wide range of ages, genders, and dialects.
+It includes 500 sessions of multilingual telephonic speech, each containing two to seven speakers, with two primary speakers in each conversation.
+The dataset covers various topics, including personal and familial relationships, work, education, and leisure activities.
+The audio recordings were obtained using a single microphone and had a sampling rate of 8 kHz, with 16-bit linear quantization.
+- Directions into Heterogeneous Audio Research (DIHARD) Challenge and dataset: The DIHARD Challenge, organized by the National Institute of Standards and Technology (NIST), aims to enhance the accuracy of speech recognition and diarization in challenging acoustic environments, such as crowded spaces, distant microphones, and reverberant rooms.
+The challenge comprises tasks requiring advanced machine-learning techniques, including speaker diarization, recognition, and speech activity detection.
+The DIHARD dataset used in the challenge comprises over 50 hours of speech from more than 500 speakers, gathered from diverse sources like meetings, broadcast news, and telephone conversations.
+These recordings feature various acoustic challenges, such as overlapping speech, background noise, and distant or reverberant speech, captured through different microphone setups.
+To aid in the evaluation process, the dataset has been divided into separate development and evaluation sets.
+The assessment metrics used to gauge performance include diarization error rate (DER), as well as accuracy in speaker verification, identification, and speech activity detection.
+- Augmented Multi-party Interaction (AMI) database: The AMI database is a collection of audio and video recordings that capture real-world multi-party conversations in office environments.
+The database was developed as part of the AMI project, which aimed to develop technology for automatically analyzing multi-party meetings.
+The database contains over 100 hours of audio and video recordings of meetings involving four to seven participants, totaling 112 meetings.
+The meetings were held in multiple offices and were designed to reflect the kinds of discussions that take place in typical business meetings.
+The audio recordings were captured using close-talk microphones placed on each participant and additional microphones placed in the room to capture ambient sound.
+The video recordings were captured using multiple cameras placed around the room.
+In addition to the audio and video recordings, the database also includes annotations that provide additional information about the meetings, including speaker identities, speech transcriptions, and information about the meeting structure (e.g., turn-taking patterns).
+The AMI database has been used extensively in research on automatic speech recognition, speaker diarization, and other related speech and language processing topics.
+- VoxSRC Challenge and VoxConverse corpus: The VoxCeleb Speaker Recognition Challenge (VoxSRC) is an annual competition designed to assess the capabilities of speaker recognition systems in identifying speakers from speech recorded in real-world environments.
+The challenge provides participants with a dataset of audio and visual recordings of interviews, news shows, and talk shows featuring famous individuals.
+The VoxSRC encompasses several tracks, including speaker diarization, and comprises a development set (20.3 hours, 216 recordings) and a test set (53.5 hours, 310 recordings).
+Recordings in the dataset may feature between one and 21 speakers, with a diverse range of ambient noises, such as background music and laughter.
+To facilitate the speaker diarization track of the VoxSRC-21 and VoxSRC-22 competitions, VoxConverse, an audio-visual diarization dataset containing multi-speaker clips of human speech sourced from YouTube videos, is available, and additional details are provided on the project website \footnote{https://www.robots.ox.ac.uk/~vgg/data/voxconverse/}.
+- LibriCSS: The LibriCSS corpus is a valuable resource for researchers studying speech separation, recognition, and speaker diarization.
+The corpus comprises 10 hours of multichannel recordings captured using a 7-channel microphone array in a real meeting room.
+The audio was played from the LibriSpeech corpus, and each of the ten sessions was subdivided into six 10-minute mini-sessions.
+Each mini-session contained audio from eight speakers and was designed to have different overlap ratios ranging from 0\% to 40\%.
+To make research easier, the corpus includes baseline systems for speech separation and Automatic Speech Recognition (ASR) and a baseline system that integrates speech separation, speaker diarization, and ASR.
+These baseline systems have already been developed and made available to researchers.
+- Rich Transcription Evaluation Series: The Rich Transcription Evaluation Series dataset is a collection of speech data used for speaker diarization evaluation.
+The Rich Transcription Fall 2003 Evaluation (RT-03F) was the first evaluation in the series focused on "Who Said What" tasks.
+The dataset has been used in subsequent evaluations, including the Second DIHARD Diarization Challenge, which used the Jaccard index to compute the JER (Jaccard Error Rate) for each pair of segmentations.
+The dataset is essential for data-driven spoken language processing methods and calculates speaker diarization accuracy at the utterance level.
+The dataset includes rules, evaluation methods, and baseline systems to promote reproducible research in the field.
+The dataset has been used in various speaker diarization systems and their subtasks in the context of broadcast news and CTS data
+- CHiME-5/6 challenge and dataset: The CHiME-5/6 challenge is a speech processing challenge focusing on distant multi-microphone conversational speech diarization and recognition in everyday home environments.
+The challenge provides a dataset of recordings from everyday home environments, including dinner recordings originally collected for and exposed during the CHiME-5 challenge.
+The dataset is designed to be representative of natural conversational speech.
+The challenge features two audio input conditions: single-channel and multichannel.
+Participants are provided with baseline systems for speech enhancement, speech activity detection (SAD), and diarization, as well as results obtained with these systems for all tracks.
+The challenge aims to improve the robustness of diarization systems to variations in recording equipment, noise conditions, and conversational domains.
+- MI dataset: The AMI database is a comprehensive collection of 100 hours of recordings sourced from 171 meeting sessions held across various locations.
+It features two distinct audio sources – one recorded using lapel microphones for individual speakers and the other using omnidirectional microphone arrays placed on the table.
+It is an ideal dataset for evaluating speaker diarization systems integrated with the ASR module.
+AMI's value proposition is further enhanced by providing forced alignment data, which captures the timings at the word and phoneme levels and speaker labeling.
+Finally, it's worth noting that each meeting session involves a small group of three to five speakers.
+
+### 5.4.3·Models
+
+Speaker diarization has been a subject of research in the field of audio processing, with the goal of separating speakers in an audio recording.
+In recent years, deep learning has emerged as a powerful technique for speaker diarization, leading to significant advancements in this field.
+In this article, we will explore some of the recent developments in deep learning architecture for speaker diarization, focusing on different modules of speaker diarization as outlined in Figure \ref{fig:sd}.
+Through this discussion, we will highlight major advancements in each module.
+
+#### Segmentation and Clustering
+
+Speaker diarization systems typically use a range of techniques for segmenting speech, such as identifying speaker change, uniform speaker segmentation, ASR-based word segmentation, and supervised speaker turn detection.
+However, each approach has its own benefits and drawbacks.
+Uniform speaker segmentation involves dividing speech into segments of equal length, which can be difficult to optimize to capture speaker turn boundaries and include enough speaker information.
+ASR-based word segmentation identifies word boundaries using automatic speech recognition, but the resulting segments may be too brief to provide adequate speaker information.
+Supervised speaker turn detection, on the other hand, involves a specialized model that can accurately identify speaker turn timestamps.
+While this method can achieve high accuracy, it requires labeled data for training.
+These techniques have been widely discussed in previous research, and choosing the appropriate one depends on the specific requirements of the application.
+- The authors in \cite{coria2021overlap} propose real-time speaker diarization system that combines incremental clustering and local diarization applied to a rolling window of speech data and is designed to handle overlapping speech segments.
+The proposed pipeline is designed to utilize end-to-end overlap-aware segmentation to detect and separate overlapping speakers.
+- In another related work, authors in \cite{zhang2022towards} introduce a novel speaker diarization system with a generalized neural speaker clustering module as the backbone.
+- In a recent study conducted by \citet{park2019auto}, a new framework for spectral clustering is proposed that allows for automatic parameter tuning of the clustering algorithm in the context of speaker diarization.
+The proposed technique utilizes normalized maximum eigengap (NME) values to determine the number of clusters and threshold parameters for each row in an affinity matrix during spectral clustering.
+The authors demonstrated that their method outperformed existing state-of-the-art methods on two different datasets for speaker diarization.
+- Bayesian HMM clustering of x-vector sequences (VBx) diarization approach, which clusters x-vectors using a Bayesian hidden Markov model (BHMM) \cite{landini2022bayesian}, combined with a ResNet101  (\citet{he2016deep}) $x$-vector extractor achieves superior results on CALLHOME \cite{diez2020optimizing}, AMI \cite{carletta2006ami} and DIHARD II \cite{ryant2019second} datasets
+
+#### Speaker Embedding Extraction and Classification
+
+- Attentive Aggregation for Speaker Diarization \cite{kwon2021adapting}: This approach uses an attention mechanism to aggregate embeddings from multiple frames and generate speaker embeddings.
+The speaker embeddings are then used for clustering to identify speaker segments.
+-  End-to-End Speaker Diarization with Self-Attention \cite{fujita2019end}: This method uses a self-attention mechanism to capture the correlations between the input frames and generates embeddings for each frame.
+The embeddings are then used for clustering to identify speaker segments.
+- \citet{wang2022similarity} present an innovative method for measuring similarity between speaker embeddings in speaker diarization using neural networks.
+The approach incorporates past and future contexts and uses a segmental pooling strategy.
+Furthermore, the speaker embedding network and similarity measurement model are jointly trained.
+The paper extends this framework to target-speaker voice activity detection (TS-VAD) \cite{medennikov2020target}.
+The proposed method effectively learns the similarity between speaker embeddings by considering both past and future contexts.
+- Time-Depth Separable Convolutions for Speaker Diarization \cite{koluguri2022titanet}: This approach uses time-depth separable convolutions to generate embeddings for each frame, which are then used for clustering to identify speaker segments.
+The method is computationally efficient and achieves state-of-the-art performance on several benchmark datasets.
+
+#### Re-segmentation
+
+- Numerous studies in this field centre around developing a re-segmentation strategy for diarization systems that can effectively handle both voice activity and overlapped speech detection.
+This approach can also be a post-processing step to identify and assign overlapped speech regions accurately.
+Notable examples of such works include those by \citet{bullock2020overlap} and \citet{bredin2021end}.
+
+#### End-to-End Neural Diarization
+
+In addition to the above work, end-to-end speaker diarization systems have gained the attention of the research community due to their ability to handle speaker overlaps and their optimization to minimize diarization errors directly.
+In one such work, the authors propose end-to-end neural speaker diarization that does not rely on clustering and instead uses a self-attention-based neural network to directly output the joint speech activities of all speakers for each segment \cite{fujita2019end}.
+Following the trend, several other works propose enhanced architectures based on self-attention \cite{lin2020self,yu2022auxiliary}.
