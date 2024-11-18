@@ -578,7 +578,7 @@ The authors demonstrated that their method outperformed existing state-of-the-ar
 
 - Attentive Aggregation for Speaker Diarization \cite{kwon2021adapting}: This approach uses an attention mechanism to aggregate embeddings from multiple frames and generate speaker embeddings.
 The speaker embeddings are then used for clustering to identify speaker segments.
--  End-to-End Speaker Diarization with Self-Attention \cite{fujita2019end}: This method uses a self-attention mechanism to capture the correlations between the input frames and generates embeddings for each frame.
+- End-to-End Speaker Diarization with Self-Attention \cite{fujita2019end}: This method uses a self-attention mechanism to capture the correlations between the input frames and generates embeddings for each frame.
 The embeddings are then used for clustering to identify speaker segments.
 - \citet{wang2022similarity} present an innovative method for measuring similarity between speaker embeddings in speaker diarization using neural networks.
 The approach incorporates past and future contexts and uses a segmental pooling strategy.
@@ -859,3 +859,88 @@ Diffusion models have been proven to be highly effective in various machine lear
 The recent development of DiffSep \cite{scheibler2022diffusion} for speech separation, which is based on score-matching of a stochastic differential equation, has shown competitive performance on the VoiceBank-DEMAND dataset.
 Additionally, Separate And Diffuse \cite{lutati2023separate}, another diffusion-based model that utilizes a pretrained diffusion model, currently represents the state-of-the-art performance in various speech separation benchmarks (refer to \Cref{performance:SS}).
 These advancements demonstrate the significant potential of diffusion models in advancing the field of machine learning and speech processing.
+
+## 5.11·Spoken Language Understanding
+
+### 5.11.1·Task Description
+
+Spoken Language Understanding (SLU) is a rapidly developing field that brings together speech processing and natural language processing to help machines comprehend human speech and respond appropriately.
+The ultimate goal of SLU is to bridge the gap between human and machine understanding.
+Typically, SLU tasks involve identifying the domain or topic of a spoken utterance, determining the speaker's intent or goal in making the utterance, and filling in any relevant slots or variables associated with that intent.
+For example, consider the spoken utterance, "\textit{What is the weather like in San Francisco today}?" An SLU system would need to identify the domain (weather), the intent (obtaining current weather information), and the specific slot to be filled (location-San Francisco) to generate an appropriate response.
+By improving SLU capabilities, we can enable more effective communication between humans and machines, making interactions more natural and efficient.
+
+Data-driven methods are frequently utilized to achieve these tasks, employing large datasets to train models capable of accurately recognizing and interpreting spoken language.
+Among these methods, machine learning techniques, such as deep neural networks, are widely employed, given their exceptional ability to handle complex and ambiguous speech data.
+The SLU task may be subdivided into the following categories for greater clarity.
+
+- \textit{ Keyword Spotting}: Keyword Spotting (KS) is a technique used in speech processing to identify specific words or phrases within spoken language.
+It involves analysing audio recordings and detecting instances of pre-defined keywords or phrases.
+This technique is commonly used in applications such as voice assistants, where the system needs to recognize specific commands or questions from the user.
+- \textit{Intent Classification}: Intent Classification (IC) is a spoken language understanding task that involves identifying the intent behind a spoken sentence.
+It is usually implemented as a pipeline process, with a speech recognition module followed by text processing that classifies the intents.
+However, end-to-end intent classification using speech has numerous advantages compared to the conventional pipeline approach using AST followed by NLP modules.
+- \textit{Slot Filling}: Slot Filling (SF) is a widely used technique in Speech Language Understanding (SLU) that enables the extraction of important information, such as names, dates, and locations, from a user's speech.
+The process involves identifying the specific pieces of information that are relevant to the user's request and placing them into pre-defined slots.
+For instance, if a user asks for the weather in a particular city, the system will identify the city name and fill it into the appropriate slot, thereby providing an accurate and relevant response.
+
+### 5.11.2·Dataset
+
+#### Keyword Spotting Datasets
+
+- \textit{\citet{coucke2019efficient}}: This dataset is a speech command recognition dataset that consists of 105,000 spoken commands in English, with each command being one of 35 keywords.
+The dataset is designed to be highly varied and challenging, with a diverse set of speakers and background noise conditions.
+- \textit{\citet{leroy2019federated}}: This dataset is a federated learning-based keyword spotting dataset, it is composed of data from multiple sources that are trained together without sharing the raw data.
+The dataset consists of audio recordings from multiple devices and environments, with the goal of improving the robustness of KS across different devices and settings
+- \textit{Auto-KWS} \cite{wang2021auto}: This dataset is automatically generated using TTS approach.
+The dataset consists of 1000 keywords spoken by 100 different synthetic voices, with variations in accent, gender, and age.
+- \textit{Speech Commands} \cite{warden2018speech}: This data is a large-scale dataset for KS task that consists of over $100,000$ spoken commands in English, with each command belonging to 35 different keywords.
+The dataset is specifically designed to be highly varied and challenging, with a diverse set of speakers and background noises.
+It is commonly used as a benchmark dataset for KS research.
+
+#### Intent Classification and Slot Filling
+
+- \textit{ATIS} \cite{hemphill1990atis}: The Airline Travel Information System (ATIS) dataset is a collection of spoken queries and responses related to airline travel, such as flight reservations, flight status, and airport information.
+The dataset is annotated with both intent labels (e.g.
+“flight booking”, “flight status inquiry") and slot labels (e.g.
+depart city, arrival city, date).
+The ATIS dataset has been used extensively as a benchmark for natural language understanding models.
+- \textit{SNIPS} \cite{coucke2018snips}: SNIPS is a dataset of voice commands designed for building a natural language understanding system.
+It consists of thousands of examples of spoken requests, each annotated with the intent of the request (e.g.
+“play music”, “set an alarm”, etc.).
+The dataset is widely used for training IC and SF models.
+- \textit{Fluent Speech Commands} \cite{lugosch2019speech}: It is a dataset of voice commands for controlling smart home devices, such as lights, thermostats, and locks.
+The dataset consists of over 1,5000 spoken commands, each labeled with the intended devices and action (e.g.
+“turn on the living room lights”, “set the thermostat to 72 degrees”).
+The dataset is designed to have variations in speaker accent, background noise, and device placement.
+- \textit{MIT-Restaurant and MIT-Movie} \cite{liu2013asgard}: These are two datasets created by researchers at MIT for training natural language understanding models from restaurant and movie information requests.
+The dataset contains spoken and text-based queries, each labeled with the intent of the request (e.g.
+“find a nearby Italian restaurant”,” get information about the movie Inception”) and relevant slot information (e.g.
+restaurant type, movie name, etc).
+The datasets are widely used for benchmarking natural language understanding models.
+
+### 5.11.3·Models
+
+- Keyword Spotting: The state-of-the-art techniques for keyword spotting in speech involve deep learning models, such as CNNs \cite{rostami2022keyword} and transformers \cite{berg2021keyword}.
+Wav2Keyword is one of the popular model based on Wav2Vec2.0 architecture \cite{seo2021wav2kws} and have achieved SOTA results on Speech Commands data V1 and V21.
+Another model that achieves SOTA classification accuracy on the Google Speech commands dataset is Keyword Transformer (KWT) \cite{seo2021wav2kws}.
+KWT uses a transformer model and achieves $98.6\%$ and $97.7\%$ accuracy on the 12 and 35-word tasks, respectively.
+KWT also has low latency and can be used on mobile devices.
+- The DIET architecture, as introduced in \cite{bunk2020diet}, is a transformer-based multitask model that addresses intent classification and entity recognition simultaneously.
+DIET allows for the seamless integration of various pre-trained embeddings such as BERT, GloVe, and ConveRT.
+Results from experiments show that DIET outperforms fine-tuned BERT and has the added benefit of being six times faster to train.
+- \citet{chang2022exploration} investigated the effectiveness of prompt tuning on the GSLM architecture and showcased its competitiveness on various SLU tasks, such as KS, IC, and SF.
+Impressively, this approach achieves comparable results with fewer trainable parameters than full fine-tuning.
+Despite being a popular and effective technique in numerous NLP tasks, prompt tuning has not received much attention in the speech community.
+Additionally, other researchers have pursued a different path by utilizing pre-trained wav2vec2.0 and different adapters \cite{li2023evaluating} to attain state-of-the-art outcomes.
+
+Despite the remarkable progress made in the field of SLU, accurately comprehending human speech in real-life situations continues to pose significant challenges.
+These challenges are amplified by the presence of diverse accents, dialects, and linguistic variations.
+In a notable study, Vanzo et al.
+\cite{vanzo2016robust} emphasize the significance of SLU in facilitating effective human-robot interaction, particularly within the context of house service robots.
+The authors delve into the specific obstacles encountered in this domain, which encompass handling noisy and unstructured speech, accommodating various accents and speech variations, and deciphering complex commands involving multiple actions.
+To overcome these obstacles, ongoing research endeavors are dedicated to developing innovative solutions that enhance the precision and efficacy of SLU systems.
+By addressing these challenges, the aim is to enable more robust and accurate speech comprehension in diverse real-life scenarios.
+
+Recent studies, including the comprehensive analysis of the performance of different models and techniques for Keyword Spotting (KS) and Slot Filling (SF) tasks on Google Speech Commands and ATIS benchmark datasets (\cref{performance:ks}), have furnished valuable insights into the strengths and limitations of such approaches in SLU.
+Capitalizing on these findings and leveraging the latest advances in deep learning and speech recognition could help us continue to expand the frontiers of spoken language understanding and drive further innovation in this domain.
