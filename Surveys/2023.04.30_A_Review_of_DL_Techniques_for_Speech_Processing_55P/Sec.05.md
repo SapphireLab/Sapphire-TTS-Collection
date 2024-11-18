@@ -727,3 +727,33 @@ To further enhance audio super-resolution, the paper proposes a time-frequency n
 Finally, recent advancements in diffusion models have introduced new approaches to neural audio upsampling.
 Specifically, \citet{lee2021nu}, and \citet{han2022nu} propose NU-Wave 1 and 2 diffusion probabilistic models, respectively, which can produce high-quality waveforms with a sampling rate of 48kHz from coarse 16kHz or 24kHz inputs.
 These models are a promising direction for improving audio super-resolution.
+
+## 5.8·Voice Activity Detection (VAD)
+
+### 5.8.1·Task Description
+
+Due to the increasing sophistication of mobile devices like smartphones, speech-controlled applications have become incredibly popular.
+These apps offer a hands-free method for controlling home devices, facilitating telephony, and allowing drivers to safely use their vehicle's infotainment systems while on the go.
+However, accurately distinguishing between noise and human speech is critical for these applications to work without interruption.
+To overcome this issue, Voice Activity Detection (VAD) systems have been created to recognize speech presence or absence, thus ensuring consistent and effective operation.
+
+### 5.8.2·Datasets
+
+Voice activity detection models can be trained and evaluated using various datasets, each with unique features.
+The TIMIT dataset is popular, providing, $6300$ phonetically transcribed utterances from 630 speakers.
+On the other hand, CHiME-$5$ is designed for speech separation and recognition in real-world environments and includes multichannel recordings of $20$ speakers in locations such as cafés, buses, and pedestrian areas.
+Despite its primary purpose, CHiME-5 is widely used for voice activity detection.
+AURORA-$4$ is specifically designed to evaluate the robustness of ASR systems and contains over $10,000$ in noisy speech utterances recorded in environments like car noise, babble noise, and street noise.
+It is also extended to VAD for evaluating challenging scenarios.
+DEMAND is a suitable dataset for evaluating VAD algorithms as it includes over 1200 artificially created noise signals with various noise types like white noise, pink noise, and café noise.
+Finally, VoxCeleb contains over 100,000 utterances from more than 6,000 speakers, primarily designed for speaker recognition systems evaluation, but it can also be used for voice activity detection.
+
+### 5.8.3·Models
+
+Recent advances in deep learning have greatly improved the performance of voice activity detection (VAD), particularly in noisy environments \cite{rho2022vad,mihalache2022using}.
+To further improve VAD accuracy, researchers have explored various deep learning architectures, including NAS-VAD \cite{rho2022vad} and self-attentive VAD \cite{jo2021self}.
+NAS-VAD employs neural architecture search to reduce the need for human effort in network design and has demonstrated superior performance in terms of AUC and F1-score compared to other models.
+Similarly, self-attentive VAD uses a self-attention mechanism to capture long-term dependencies in input signals and has also outperformed other models on the TIMIT dataset.
+Additionally, a deep neural network (DNN) system has been proposed for automatic speech detection in audio signals \cite{mihalache2022using}.
+This system uses MLPs, RNNs, and CNNs, with CNNs delivering the best performance.
+Furthermore, a hybrid acoustic-lexical deep learning approach has been proposed for deception detection, combining both acoustic and lexical features.
