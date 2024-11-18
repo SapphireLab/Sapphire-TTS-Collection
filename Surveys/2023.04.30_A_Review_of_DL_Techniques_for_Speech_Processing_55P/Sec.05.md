@@ -757,3 +757,37 @@ Similarly, self-attentive VAD uses a self-attention mechanism to capture long-te
 Additionally, a deep neural network (DNN) system has been proposed for automatic speech detection in audio signals \cite{mihalache2022using}.
 This system uses MLPs, RNNs, and CNNs, with CNNs delivering the best performance.
 Furthermore, a hybrid acoustic-lexical deep learning approach has been proposed for deception detection, combining both acoustic and lexical features.
+
+## 5.9·Speech Quality Assessment
+
+### 5.9.1·Task Description
+
+Speech quality assessment is a crucial process that involves the objective evaluation of speech signals using various metrics and measures.
+The primary aim of this assessment is to determine the level of intelligibility and comprehensibility of speech to a human listener.
+Although human evaluation is considered the gold standard for assessing speech quality, it can be time-consuming, expensive, and not scalable.
+Mean opinion score (MOS) is the most commonly used and reliable method of obtaining human judgments for speech quality estimation.
+Accurate speech quality assessment is essential in the development and design of real-world applications such as ASR, Speech Enhancement, and VoIP.
+
+### 5.9.2·Datasets
+
+The speech quality assessment algorithms are evaluated using several datasets, each with unique characteristics.
+The TIMIT Acoustic-Phonetic Continuous Speech Corpus \cite{garofolo1993timit} has clean speech recordings and artificially generated degraded versions for speech synthesis and quality assessment research.
+The NOIZEUS dataset \cite{hu2007evaluation} is designed for evaluating noise reduction and speech quality assessment algorithms, with clean speech and artificially degraded versions containing various types of noise and distortion.
+The ETSI Aurora databases \cite{macho2002evaluation} are used for evaluating speech enhancement techniques and quality assessment algorithms, containing speech recordings with different types of distortions like acoustic echo and background noise.
+Furthermore, for training and validation, the clean speech recordings from the DNS Challenge \cite{reddy2020interspeech} can be used along with the noise dataset such as FSDK50 \cite{fonseca2021fsd50k} for additive noise degradation.
+
+### 5.9.3·Models
+
+Current objective methods such as Perceptual Evaluation of Speech Quality (PESQ) \cite{rix2001perceptual} and  Perceptual Objective Listening Quality Assessment (POLQA) \cite{beerends2013perceptual} for evaluating the quality of speech mostly rely on the availability of the corresponding clean reference.
+These methods fail in real-world scenarios where the ground truth clean reference is unavailable.
+In recent years, several attempts to automatically estimate the MOS using neural networks for performing quality assessment and predicting ratings or scores have attracted much attention \cite{soni2016novel,ooster2019improving,catellier2020wawenets,dong2020attention,dong2020pyramid,cauchi2019non}.
+These approaches outperform traditional approaches without the need for a clean reference.
+However, they lack robustness and generalization capabilities, limiting their use in real-world applications.
+
+The authors in \cite{ooster2019improving} explore Deep machine listening for Estimating Speech Quality (DESQ) for predicting the perceived speech quality based on phoneme posterior probabilities obtained using a deep neural network.
+
+In recent years, there have been several quality assessment frameworks developed to estimate speech quality, such as NORESQA \cite{manocha2021noresqa} based on non-matching reference (NMR).
+NORESQA takes inspiration from the human ability to assess speech quality even when the content is non-matching.
+Additionally, NORESQA introduces two new metrics - NORESQA-score, which is based on SI-SDR for speech, and NORESQA-MOS, which evaluates the Mean Opinion Score (MOS) of a speech recording using non-matching references.
+A recent extension to NORESQA, known as NORESQA-MOS, has been proposed in \cite{manocha2022speech}.
+The primary difference between these frameworks is that while NORESQA estimates speech quality using non-matching references through NORESQA-score and NORESQA-MOS, NORESQA-MOS is specifically designed to assess the MOS of a given speech recording using NMRs.
