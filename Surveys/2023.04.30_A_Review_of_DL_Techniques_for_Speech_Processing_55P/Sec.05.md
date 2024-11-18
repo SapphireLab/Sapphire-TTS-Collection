@@ -689,3 +689,41 @@ Furthermore, authors in \cite{yen2022cold} propose cold diffusion process is an 
 According to the authors, it can be utilized to restore high-quality samples from arbitrary degradations.
 Table \ref{performance:se} summarizing the performance of different speech enhancement algorithms on the Deep
 Noise Suppression (DNS) Challenge dataset using different metrics.
+
+## 5.7·Audio Super Resolution
+
+### 5.7.1·Task Description
+
+Audio super-resolution is a technique that involves predicting the missing high-resolution components of low-resolution audio signals.
+Achieving this task can be difficult due to the continuous nature of audio signals.
+Current methods typically approach super-resolution by treating audio as discrete data and focusing on fixed scale factors.
+In order to accomplish audio super-resolution, deep neural networks are trained using pairs of low and high-quality audio examples.
+During testing, the model predicts missing samples within a low-resolution signal.
+Some recent deep network approaches have shown promise by framing the problem as a regression issue either in the time or frequency domain \cite{8462049}.
+These methods have been able to achieve impressive results.
+
+### 5.7.2·Datasets
+
+This section provides an overview of the diverse datasets utilized in Audio Super Resolution literature.
+One of the most frequently used datasets is the MUSDB18, specifically designed for music source separation and enhancement.
+This dataset encompasses more than 150 songs with distinct tracks for individual instruments.
+Another prominent dataset is UrbanSound8K, which comprises over, $8000$ environmental sound files collected from 10 different categories, making it ideal for evaluating Audio Super Resolution algorithms in noisy environments.
+Furthermore, the VoiceBank dataset is another essential resource for evaluating Audio Super Resolution systems, comprising over 10,000 speech recordings from five distinct speakers.
+This dataset offers a rich source of information for assessing speech processing systems, including Audio Super Resolution.
+Another dataset, LibriSpeech, features more than 1000 hours of spoken words from several books and speakers, making it valuable for evaluating Audio Super Resolution algorithms to enhance the quality of spoken words.
+Finally, the TED-LIUM dataset, which includes over 140 hours of speech recordings from various speakers giving TED talks, provides a real-world setting for evaluating Audio Super Resolution algorithms for speech enhancement.
+By using these datasets, researchers can evaluate Audio Super Resolution systems for a wide range of audio signals and improve the generalizability of these algorithms for real-world scenarios.
+
+### 5.7.3·Models
+
+Audio super-resolution has been extensively explored using deep learning architectures \cite{rakotonirina2021self,yoneyama2022nonparallel,8462049,lee2021nu,han2022nu,birnbaum2019temporal,abdulatif2022cmgan,nguyen2022tunet,kim2022learning,liu2022neural}.
+One notable paper by \citet{rakotonirina2021self} proposes a novel network architecture that integrates convolution and self-attention mechanisms for audio super-resolution.
+Specifically, they use Attention-based Feature-Wise Linear Modulation (AFiLM) \cite{rakotonirina2021self} to modulate the activations of the convolutional model.
+In another recent work by \citet{yoneyama2022nonparallel}, the super-resolution task is decomposed into domain adaptation and resampling processes to handle acoustic mismatch in unpaired low- and high-resolution signals.
+To address this, they jointly optimize the two processes within the CycleGAN framework.
+
+Moreover, the Time-Frequency Network (TFNet) \cite{8462049} proposed a deep network that achieves promising results by modeling the task as a regression problem in either time or frequency domain.
+To further enhance audio super-resolution, the paper proposes a time-frequency network that combines time and frequency domain information.
+Finally, recent advancements in diffusion models have introduced new approaches to neural audio upsampling.
+Specifically, \citet{lee2021nu}, and \citet{han2022nu} propose NU-Wave 1 and 2 diffusion probabilistic models, respectively, which can produce high-quality waveforms with a sampling rate of 48kHz from coarse 16kHz or 24kHz inputs.
+These models are a promising direction for improving audio super-resolution.
