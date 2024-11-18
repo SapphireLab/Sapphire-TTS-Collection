@@ -791,3 +791,71 @@ NORESQA takes inspiration from the human ability to assess speech quality even w
 Additionally, NORESQA introduces two new metrics - NORESQA-score, which is based on SI-SDR for speech, and NORESQA-MOS, which evaluates the Mean Opinion Score (MOS) of a speech recording using non-matching references.
 A recent extension to NORESQA, known as NORESQA-MOS, has been proposed in \cite{manocha2022speech}.
 The primary difference between these frameworks is that while NORESQA estimates speech quality using non-matching references through NORESQA-score and NORESQA-MOS, NORESQA-MOS is specifically designed to assess the MOS of a given speech recording using NMRs.
+
+## 5.10·Speech Separation
+
+### 5.10.1·Task Description
+
+Speech separation refers to separating a mixed audio signal into its sources, including speech, music, and background noise.
+The problem is often referred to as the cocktail party problem \cite{haykin2005cocktail}, as it mimics the difficulty of listening to a conversation in a noisy room with multiple speakers.
+This problem is particularly relevant in real-world scenarios such as phone conversations, meetings, and live events, where various extraneous sounds may contaminate speech.
+Traditionally, speech separation has been studied as a signal-processing problem, where researchers have focused on developing algorithms to separate sources based on their spectral characteristics \cite{zeremdini2015comparison,vincent2018audio}.
+However, recent advances in machine learning have led to a new approach that formulates speech separation as a supervised learning problem \cite{hershey2016deep,wang2018alternative,luo2018real}.
+This approach has seen a significant improvement in performance with the advent of deep neural networks, which can learn complex relationships between input features and output sources.
+
+### 5.10.2·Datasets
+
+The WSJ0-2mix dataset comprises mixtures of two Wall Street Journal corpus (WSJ) speakers.
+It consists of a training set of 30,000 mixtures and a test set of 5000 mixtures, and it has been widely used to evaluate speech separation algorithms.
+CHiME-4 is a dataset that contains recordings of multiple speakers in real-world environments, such as a living room, a kitchen, and a café and is designed to test algorithms in challenging acoustic environments.
+TIMIT-2mix is a dataset based on the TIMIT corpus, consisting of mixtures of two speakers, and includes a training set of 462 mixtures and a test set of 400 mixtures.
+The dataset provides a more controlled environment than CHiME-4 to test speech separation algorithms.
+LibriMix is derived from the LibriSpeech corpus and includes mixtures of up to four speakers, with a training set of 100,000 mixtures and a test set of 1,000 mixtures, providing a more realistic and challenging environment than WSJ0-2mix.
+Lastly, the MUSDB18 dataset contains mixtures of music tracks separated into individual stems, including vocals, drums, bass, and other instruments.
+It consists of a training set of 100 songs and a test set of 50 songs.
+Despite not being specifically designed for that purpose, it has been used as a benchmark for evaluating speech separation algorithms.
+
+### 5.10.3·Models
+
+Deep Clustering++ \cite{hershey2016deep}, first proposed in 2015, employs deep neural networks to extract features from the input signal and cluster similar feature vectors in a latent space to separate different speakers.
+The model's performance is improved using spectral masking and a permutation invariant training method.
+The advantage of this model is its ability to handle multiple speakers, but it also has a high computational cost.
+Chimera++ \cite{wang2018alternative} is another effective model that combines deep clustering with mask-inference networks in a multi-objective training scheme.
+The model is trained using a multitask learning approach, optimizing speech enhancement and speaker identification.
+Chimera++ can perform speech enhancement and speaker identification but has a relatively long training time.
+
+TasNet v2 \cite{luo2018real} employs a convolutional neural network (CNN) to process the input signal and generate a time-frequency mask for each source.
+The model is trained using an invariant permutation training (PIT) method \cite{kolbaek2017multitalker}, which enables it to separate multiple sources accurately.
+TasNet v2 achieves state-of-the-art performance in various speech separation tasks with high separation accuracy, but its disadvantage is its relatively high computational cost.
+The variant of TasNet based on CNNs is proposed in \cite{luo2019conv}.
+The model is called Conv-TasNet and can generate a time-frequency mask for each source to obtain the separated source's signal.
+Compared to previous models, Conv-TasNet has faster processing time but lower accuracy.
+
+In recent research, encoder-decoder architectures have been explored for effectively separating source signals.
+One promising approach is the Hybrid Tasnet architecture \cite{yang2019improved}, which utilizes an encoder to extract features from the input signal and a decoder to generate the independent sources.
+This hybrid architecture captures both short-term and long-term dependencies in the input signal, leading to improved separation performance.
+However, it should be noted that this model's higher computational cost should be considered when selecting an appropriate separation method.
+
+Dual-path RNN \cite{luo2020dual} uses RNN architecture to perform speech separation.
+The model uses a dual-path structure \cite{luo2020dual} to capture low-frequency and high-frequency information in the input signal.
+Dual-path RNN achieves impressive performance in various speech separation tasks.
+The advantage of this model is its ability to capture low-frequency and high-frequency information, but its disadvantage is its high computational cost.
+Gated DualPathRNN \cite{nachmani2020voice} is a variant of Dual-path RNN that employs gated recurrent units (GRUs) to improve the model's performance.
+The model uses a gating mechanism to control the flow of information in the recurrent network, allowing it to capture long-term dependencies in the input signal.
+Gated DualPathRNN achieves state-of-the-art performance in various speech separation tasks.
+The advantage of this model is its ability to capture long-term dependencies, but its disadvantage is its higher computational cost than other models.
+
+Wavesplit \cite{zeghidour2021wavesplit} employs a Wave-U-Net \cite{stoller2018wave} architecture to perform speech separation.
+The model uses a fully convolutional neural network to extract features from the input signal and generate a time-frequency mask for each source.
+Wavesplit achieves impressive performance in various speech separation tasks.
+The advantage of this model is its high separation accuracy and relatively fast processing time, but its disadvantage is its relatively high memory usage.
+
+Numerous studies have investigated the application of Transformer architecture in the context of speech separation.
+One such study is SepFormer \cite{subakan2021attention}, which has yielded encouraging outcomes on the WSJ0-2mix and WSJ0-3mix datasets, as evidenced by the data presented in \Cref{performance:SS}.
+Additionally, MossFormer \cite{zhao2023mossformer} is another cutting-edge architecture that has successfully pushed the boundaries of monaural speech separation across multiple speech separation benchmarks.
+It is worth noting that although both models employ attention mechanisms, MossFormer integrates a blend of convolutional modules to further amplify its performance.
+
+Diffusion models have been proven to be highly effective in various machine learning tasks related to computer vision, as well as speech-processing tasks.
+The recent development of DiffSep \cite{scheibler2022diffusion} for speech separation, which is based on score-matching of a stochastic differential equation, has shown competitive performance on the VoiceBank-DEMAND dataset.
+Additionally, Separate And Diffuse \cite{lutati2023separate}, another diffusion-based model that utilizes a pretrained diffusion model, currently represents the state-of-the-art performance in various speech separation benchmarks (refer to \Cref{performance:SS}).
+These advancements demonstrate the significant potential of diffusion models in advancing the field of machine learning and speech processing.
