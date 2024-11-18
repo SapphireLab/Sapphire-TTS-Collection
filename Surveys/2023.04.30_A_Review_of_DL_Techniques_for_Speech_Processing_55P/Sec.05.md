@@ -395,3 +395,83 @@ One of these is the use of semi-supervised speech synthesis methods that utilize
 Another method involves cascading pre-trained models for ASR, MT, and TTS to increase data size from unlabelled speech, as proposed by \citet{nguyen2022improving}.
 In addition, researchers have employed crowdsourced acoustic data collection to develop TTS systems for low-resource languages, as shown in a study by \citet{butryna2020google}.
 \citet{huang2022generspeech} introduced a zero-shot style transfer approach for out-of-domain speech synthesis that generates speech samples exhibiting a new and distinctive style, such as speaker identity, emotion, and prosody.
+
+## 5.3·Speaker Recognition
+
+### 5.3.1·Task Description
+
+Speech signal consists of information on various characteristics of a speaker, such as origin, identity, gender, emotion, etc.
+This property of speech allows speech-based speaker profiling with a wide range of applications in forensics, recommendation systems, etc.
+The research on recognizing speakers is extensive and aims to solve two major tasks: speaker identification (what is the identity?) and speaker verification (is the speaker he/she claims to be?).
+Speaker recognition/verification tasks require extracting a fixed-length vector, called speaker embedding, from unconstrained utterances.
+These embeddings represent the speakers and can be used for identification or verification tasks.
+Recent state-of-the-art speaker-embedding-extractor models are based on DNNs and have shown superior performance on both speaker identification and verification tasks.
+
+- Speaker Recognition (SR) relies on speaker identification as a key aspect, where an unknown speaker's speech sample is compared to speech models of known speakers to determine their identity.
+The primary aim of speaker identification is to distinguish an individual's identity from a group of known speakers.
+This process involves a detailed analysis of the speaker's voice characteristics such as pitch, tone, accent, and other pertinent features to establish their identity.
+Recent advancements in deep learning techniques have significantly enhanced speaker identification, leading to the creation of accurate, efficient, and end-to-end models.
+Various deep learning-based models such as CNNs, RNNs, and their combinations have demonstrated exceptional performance in several subtasks of speaker identification, including verification, identification, diarization, and robust recognition \cite{ravanelli2020multi,kawakami2020learning,kinoshita2020improving}.
+- Speaker Verification (SV) is a process that involves confirming the identity of a speaker through their speech.
+It differs from speaker identification, which aims to identify unknown speakers by comparing their voices with that of registered speakers in a database.
+Speaker verification verifies whether a speaker is who they claim to be by comparing their voice with an available speaker template.
+Deep learning-based speaker verification relies on Speaker Representation based on embeddings, which involves learning low-dimensional vector representations from speech signals that capture speaker characteristics, such as pitch and speaking style, and can be used to compare different speech signals and determine their similarity.
+
+### 5.3.2·Dataset
+
+The VoxCeleb dataset (VoxCeleb 1 \& 2) is widely used in speaker recognition research, as mentioned in \cite{Nagrani17}.
+This dataset consists of speech data collected from publicly available media, employing a fully automated pipeline that incorporates computer vision techniques.
+The pipeline retrieves videos from YouTube and applies active speaker verification using a two-stream synchronization CNN.
+Speaker identity is further confirmed through CNN-based facial recognition.
+Another commonly employed dataset is TIMIT, which comprises recordings of phonetically balanced English sentences spoken by a diverse set of speakers.
+TIMIT is commonly used for evaluating speech recognition and speaker identification systems, as referenced in \cite{garofolo1993timit}.
+
+Other noteworthy datasets in the field include the SITW database \cite{mclaren2016speakers}, which provides hand-annotated speech samples for benchmarking text-independent speaker recognition technology, and the RSR2015 database \cite{larcher2012rsr2015}, which contains speech recordings acquired in a typical office environment using multiple mobile devices.
+Additionally, the RedDots project \cite{lee2015reddots} and VOICES corpus \cite{richey2018voices} offer unique collections of offline voice recordings in furnished rooms with background noise, while the CN-CELEB database \cite{fan2020cn} focuses on a specific person of interest extracted from bilibili.com using an automated pipeline followed by human verification.
+
+The BookTubeSpeech dataset \cite{pham2020toward} was also collected using an automated pipeline from BookTube videos, and the Hi-MIA database \cite{qin2020hi} was designed specifically for far-field scenarios using multiple microphone arrays.
+The FFSVC20 challenge \cite{qin2020ffsvc} and DIHARD challenge \cite{ryant2018first} are speaker verification and diarization research initiatives focusing on far-field and robustness challenges, respectively.
+Finally, the LibriSpeech dataset \cite{panayotov2015librispeech}, originally intended for speech recognition, is also useful for speaker recognition tasks due to its included speaker identity labels.
+
+### 5.3.3·Models
+
+Speaker identification (SI) and verification (SV) are crucial research topics in the field of speech technology due to their significant importance in various applications such as security \cite{edu2020smart}, forensics \cite{koval2020practice}, biometric authentication \cite{hanifa2021review}, and speaker diarization \cite{xiao2021microsoft}.
+Speaker recognition has become more popular with technological advancements, including the Internet of Things (IoT), smart devices, voice assistants, smart homes, and humanoids.
+Therefore, a significant quantity of research has been conducted in this field, and many methods have been developed, making the state-of-the-art in this field quite mature and versatile.
+However, it has become increasingly challenging to provide an overview of the various methods due to the high number of studies in the field.
+
+A neural network approach for speaker verification was first attempted by \citet{6854363} in 2014, utilizing four fully connected layers for speaker classification.
+Their approach has successfully verified speakers with short-duration utterances by obtaining the $d$-vector by averaging the output of the last hidden layer across frames.
+Although various attempts have been made to directly learn speaker representation from raw waveforms by other researchers (\citet{ravanelli2018speaker,jung2019rawnet}), other well-designed neural networks like CNNs and RNNs have been proposed for speaker verification tasks by \citet{ye2021deep}.
+Nevertheless, the field still requires more powerful deep neural networks for superior extraction of speaker features.
+
+Speaker verification has seen notable advancements with the advent of more powerful deep neural networks.
+One such model is the $x$-vector-based system proposed by \citet{snyder2018x}, which has gained widespread popularity due to its remarkable performance.
+Since its introduction, the $x$-vector system has undergone significant architectural enhancements and optimized training procedures \cite{deng2019arcface}.
+The widely-used ResNet \cite{he2016deep} architecture has been incorporated into the system to improve its performance further.
+Adding residual connections between frame-level layers has been found to improve the embeddings \cite{garcia2020jhu,zeinali2019but}.
+This technique has also aided in faster convergence of the back-propagation algorithm and mitigated the vanishing gradient problem \cite{he2016deep}.
+\citet{tang2019deep} proposed further improvements to the $x$-vector system.
+They introduced a hybrid structure based on TDNN and LSTM to generate complementary speaker information at different levels.
+They also suggested a multi-level pooling strategy to collect the speaker information from global and local perspectives.
+These advancements have significantly improved speaker verification systems' performance and paved the way for further developments in the field.
+
+\citet{desplanques2020ecapa} propose a state-of-the-art architecture for speaker verification utilizing a Time Delay Neural Network (TDNN) called ECAPA-TDNN.
+The paper presents a range of enhancements to the existing $x$-vector architecture that leverages recent developments in face verification and computer vision.
+Specifically, the authors suggest three major improvements.
+Firstly, they propose restructuring the initial frame layers into 1-dimensional Res2Net modules with impactful skip connections, which can better capture the relationships between different time frames.
+Secondly, they introduce Squeeze-and-Excitation blocks to the TDNN layers, which help highlight the most informative channels and improve feature discrimination.
+Lastly, the paper proposes channel attention propagation and aggregation to efficiently propagate attention weights through multiple TDNN layers, further enhancing the model's ability to discriminate between speakers.
+
+Additionally, the paper presents a new approach that utilizes ECAPA-TDNN from the speaker recognition domain as the backbone network for a multiscale channel adaptive module.
+The proposed method achieves promising results, demonstrating the effectiveness of the proposed architecture in speaker verification.
+Overall, ECAPA-TDNN  offers a comprehensive solution to speaker verification by introducing several novel contributions that improve the existing $x$-vector architecture, which has been state-of-the-art in speaker verification for several years.
+The proposed approach also achieves promising results, suggesting that the proposed architecture can effectively tackle the challenges of speaker verification.
+
+The attention mechanism is a powerful method for obtaining a more discriminative utterance-level feature by explicitly selecting frame-level representations that better represent speaker characteristics.
+Recently, the Transformer model with a self-attention mechanism has become effective in various application fields, including speaker verification.
+The Transformer architecture has been extensively explored for speaker verification.
+TESA \cite{mary2021s} is an architecture based on the Transformer's encoder, proposed as a replacement for conventional PLDA-based speaker verification to capture speaker characteristics better.
+TESA outperforms PLDA on the same dataset by utilizing the next sentence prediction task of BERT \cite{devlin2018bert}.
+\citet{zhu2021serialized} proposed a method to create fixed-dimensional speaker verification representation using a serialized multi-layer multi-head attention mechanism.
+Unlike other studies that redesign the inner structure of the attention module, their approach strictly follows the original Transformer, providing simple but effective modifications.
