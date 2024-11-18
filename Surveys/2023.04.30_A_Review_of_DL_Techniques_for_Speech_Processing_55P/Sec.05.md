@@ -649,3 +649,43 @@ However, transcripts are not always available, and the significance of pretraini
 \citet{zhang2022revisiting} explored the effectiveness of E2E ST trained solely on speech-translation pairs and proposed an algorithm for training from scratch.
 The proposed system outperforms previous studies in four benchmarks covering 23 languages without pretraining.
 The paper also discusses neural acoustic feature modeling, which extracts acoustic features directly from raw speech signals to simplify inductive biases and enhance speech description.
+
+## 5.6·Speech Enhancement
+
+### 5.6.1·Task Description
+
+In situations where there is ambient noise present, speech recognition systems can encounter difficulty in correctly interpreting spoken language signals, resulting in reduced performance \cite{du2014robust}.
+One possible solution to address this issue is the development of speech enhancement systems that can eliminate noise and other types of signal distortion from spoken language, thereby improving signal quality.
+These systems are frequently implemented as a preprocessing step to enhance the accuracy of speech recognition and can serve as an effective approach for enhancing the performance of ASR systems in noisy environments.
+This section will delve into the significance of speech enhancement technology in boosting the accuracy of speech recognition.
+
+### 5.6.2·Dataset
+
+One popular dataset for speech enhancement tasks is AISHELL-4, which comprises authentic Mandarin speech recordings captured during conferences using an 8-channel circular microphone array.
+In accordance with \cite{fu2021aishell}, AISHELL-4 is composed of 211 meeting sessions, each featuring 4 to 8 speakers, for a total of 120 hours of content.
+This dataset is of great value for research into multi-speaker processing owing to its realistic acoustics and various speech qualities, including speaker diarization and speech recognition
+
+Another popular dataset used for speech enhancement is the dataset from Deep Noise Suppression (DNS) challenge \cite{reddy2020interspeech}, a large-scale dataset of noisy speech signals and their corresponding clean speech signals.
+The DNS dataset contains over $10,000$ hours of noisy speech signals and over $1,000$ hours of clean speech signals, making it useful for training deep learning models for speech enhancement.
+The Voice Bank Corpus (VCTK)  is another dataset containing speech recordings from 109 speakers, each recording approximately $400$ sentences.
+The dataset contains clean and noisy speech recordings, making it useful for training speech enhancement models.
+These datasets provide realistic acoustics, rich natural speech characteristics, and large-scale noisy and clean speech signals, making them useful for training deep learning models.
+
+### 5.6.3·Models
+
+Several Classical algorithms have been reported in the literature for speech enhancement, including spectral subtraction \cite{boll1979suppression}, Wiener and Kalman filtering \cite{lim1978all,scalart1996speech}, MMSE estimation \cite{ephraim1992bayesian}, comb filtering \cite{jin2009speech}, subspace methods \cite{hansen1997signal}.
+Phase spectrum compensation \cite{paliwal2011importance}.
+However, classical algorithms such as spectral subtraction and Wiener filtering approach the problem in the spectral domain and are restricted to stationary or quasi-stationary noise.
+
+Neural network-based approaches inspired from other areas such as computer vision \cite{hou2018audio,gabbay2017visual,afouras2018conversation} and generative adversarial networks \cite{wu2019speech,lin2019speech,routray2022phase,fu2019metricgan} or developed for general audio processing tasks \cite{wang2020complex,giri2019attention} have outperformed the classical approaches.
+Various neural network models based on different architectures, including fully connected neural networks \cite{xu2014regression}, deep denoising autoencoder \cite{lu2013speech}, CNN \cite{fu2016snr}, LSTM \cite{chen2015speech}, and Transformer \cite{koizumi2020speech} have effectively handled diverse noisy conditions.
+
+Diffusion-based models have also shown promising results for speech enhancement \cite{lemercier2022storm,yen2022cold,lu2022conditional} and have led to the development of novel speech enhancement algorithms called Conditional Diffusion Probabilistic Model (CDiffuSE) that incorporates characteristics of the observed noisy speech signal into the diffusion and reverse processing \cite{lu2022conditional}.
+CDiffuSE is a generalized formulation of the diffusion probabilistic model that can adapt to non-Gaussian real noises in the estimated speech signal.
+Another diffusion-based model for speech enhancement is StoRM \cite{lemercier2022storm}, which stands for Stochastic Regeneration Model.
+It uses a predictive model to remove vocalizing and breathing artifacts while producing high-quality samples using a diffusion process, even in adverse conditions.
+StoRM has shown great ability at bridging the performance gap between predictive and generative approaches for speech enhancement.
+Furthermore, authors in \cite{yen2022cold} propose cold diffusion process is an advanced iterative version of the diffusion process to recover clean speech from noisy speech.
+According to the authors, it can be utilized to restore high-quality samples from arbitrary degradations.
+Table \ref{performance:se} summarizing the performance of different speech enhancement algorithms on the Deep
+Noise Suppression (DNS) Challenge dataset using different metrics.
