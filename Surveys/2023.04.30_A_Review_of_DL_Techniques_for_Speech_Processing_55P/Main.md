@@ -73,3 +73,59 @@ By examining the field's evolution, comparing and contrasting different approach
   - 6.2·Meta Learning
   - 6.3·Parameter-Efficient Transfer Learning
 - 7·Conclusion and Future Research Directions
+
+## 7·Conclusion and Future Research Directions
+
+The rapid advancements in deep learning techniques have revolutionized speech processing tasks, enabling significant progress in speech recognition, speaker recognition, and speech synthesis.
+This paper provides a comprehensive review of the latest developments in deep learning techniques for speech-processing tasks.
+We begin by examining the early developments in speech processing, including representation learning and HMM-based modeling, before presenting a concise summary of fundamental deep learning techniques and their applications in speech processing.
+Furthermore, we discuss key speech-processing tasks, highlight the datasets used in these tasks, and present the latest and most relevant research works utilizing deep learning techniques.
+
+
+We envisage several lines of development in speech processing:
+
+- **Large Speech Models**: In addition to the advancements made with wav2vec2.0, further progress in the field of ASR and TTS models involves the development of larger and more comprehensive models, along with the utilization of larger datasets.
+By leveraging these resources, it becomes possible to create TTS models that exhibit enhanced naturalness and human-like prosody.
+One promising approach to achieve this is through the application of adversarial training, where a discriminator is employed to distinguish between machine-generated speech and reference speech.
+This adversarial framework facilitates the generation of TTS models that closely resemble human speech, providing a significant step forward in achieving more realistic and high-quality synthesized speech.
+By exploring these avenues, researchers aim to push the boundaries of speech synthesis technology, ultimately enhancing the overall performance and realism of TTS systems.
+- **Multilingual Models**: Self-supervised learning has emerged as a transformative approach in the field of speech recognition, particularly for low-resource languages characterized by scarce or unavailable labeled datasets.
+The recent development of the XLS-R model, a state-of-the-art self-supervised speech recognition model, represents a significant milestone in this domain.
+With a remarkable scale of over 2 billion parameters, the XLS-R model has been trained on a diverse dataset spanning 128 languages, surpassing its predecessor in terms of language coverage.
+The notable advantage of scaling up larger multilingual models like XLS-R lies in the substantial performance improvements they offer.
+As a result, these models are poised to outperform single-language models and hold immense promise for the future of speech recognition.
+By harnessing the power of self-supervised learning and leveraging multilingual datasets, the XLS-R model showcases the potential for addressing the challenges posed by low-resource languages and advancing the field of speech recognition to new heights.
+- **Multimodal Speech Models**: Traditional speech and text models have typically operated within a single modality, focusing solely on either speech or text inputs and outputs.
+However, as the scale of generative models continues to grow exponentially, the integration of multiple modalities becomes a natural progression.
+This trend is evident in the latest developments, such as the unveiling of groundbreaking language models like GPT-4~\cite{OpenAI2023GPT4TR} and Kosmos-I~\cite{Huang2023LanguageIN}, which demonstrate the ability to process both images and text jointly.
+These pioneering multimodal models pave the way for the emergence of large-scale architectures that can seamlessly handle speech and other modalities in a unified manner.
+The convergence of multiple modalities within a single model opens up new avenues for comprehensive understanding and generation of multimodal content, and it is highly anticipated that we will witness the rapid development of large multimodal models tailored for speech and beyond in the near future.
+- **In-Context Learning**: Utilizing mixed-modality models opens up possibilities for the development of in-context learning approaches for a wide range of speech-related tasks.
+This paradigm allows the tasks to be explicitly defined within the input, along with accompanying examples.
+Remarkable progress has already been demonstrated in large language models (LLMs), including notable works such as InstructGPT~\cite{Ouyang2022TrainingLM}, FLAN-T5~\cite{Chung2022ScalingIL}, and LLaMA~\cite{Touvron2023LLaMAOA}.
+These models showcase the efficacy of in-context learning, where the integration of context-driven information empowers the models to excel in various speech tasks.
+By leveraging mixed-modality models and incorporating contextual cues, researchers are advancing the boundaries of speech processing capabilities, paving the way for more versatile and context-aware speech systems.
+- **Controllable Speech Generation**:An intriguing application stemming from the aforementioned concept is controllable text-to-speech (TTS), which allows for fine-grained control over various attributes of the synthesized speech.
+Attributes such as tone, accent, age, gender, and more can be precisely controlled through in-context text guidance.
+This controllability in TTS opens up exciting possibilities for personalization and customization, enabling users to tailor the synthesized speech to their specific requirements.
+By leveraging advanced models and techniques, researchers are making significant strides in developing controllable TTS systems that provide users with a powerful and flexible speech synthesis experience.
+- **Parameter-efficient Learning**: With the increasing scale of LLMs and speech models, it becomes imperative to adapt these models with minimal parameter updates.
+This necessitates the development of specialized adapters that can efficiently update these emerging mixed-modality large models.
+Additionally, model compression techniques have proven to be practical solutions in addressing the challenges posed by these large models.
+Recent research~\cite{DBLP:journals/corr/abs-2106-05933, 9053878, peng-etal-2021-shrinking} has demonstrated the effectiveness of model compression, highlighting the sparsity that exists within these models, particularly for specific tasks.
+By employing model compression techniques, researchers can reduce the computational requirements and memory footprint of these models while preserving their performance, making them more practical and accessible for real-world applications.
+- **Explainability**: Explainability remains elusive to these large networks as they grow.
+Researchers are steadfast in explaining these networks' functioning and learning dynamics.
+Recently, much work has been done to learn the fine-tuning and in-context learning dynamics of these large models for text under the neural-tangent-kernel (NTK) asymptotic framework~\cite{Malladi2022AKV}.
+Such exploration is yet to be done in the speech domain.
+More yet, explainability could be built-in as inductive bias in architecture.
+To this end, brain-inspired architectures~\cite{millet2022toward} are being developed, which may shed more light on this aspect of large models.
+- **Neuroscience-inspired Architectures**:In recent years, there has been significant research exploring the parallels between speech-processing architectures and the intricate workings of the human brain~\cite{millet2022toward}.
+These studies have unveiled compelling evidence of a strong correlation between the layers of speech models and the functional hierarchy observed in the human brain.
+This intriguing finding has served as a catalyst for the development of neuroscience-inspired speech models that demonstrate comparable performance to state-of-the-art (SOTA) models~\cite{millet2022toward}.
+By drawing inspiration from the underlying principles of neural processing in the human brain, these innovative speech models aim to enhance our understanding of speech perception and production while pushing the boundaries of performance in the field of speech processing.
+- **Text-to-Audio Models for Text-to-Speech**: Lately, transformer and diffusion-based text-to-audio (TTA) model development is turning into an exciting area of research.
+Until recently, most of these models~\cite {Liu2023AudioLDMTG,Kreuk2022AudioGenTG,yang2022diffsound,ghosal2023texttoaudio,wang2023audit} overlooked speech in favour of general audio.
+In the future, however, the models will likely strive to be equally performant in both audio and speech.
+To that end, current TTS methods will likely be an integral part of those models.
+Recently, \citet{bark} have aimed at striking a good balance between general audio and speech, although their implementation is not public, nor have they provided any detailed paper.
