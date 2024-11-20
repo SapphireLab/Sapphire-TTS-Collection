@@ -244,3 +244,81 @@ The speech decoder mainly consists of the NAR decoder, the AR decoder, and the f
 Both the NAR decoder and AR decoder are built upon transformer blocks.
 The NAR decoder is used to model the semantic features from the output of LLM, and then the AR decoder generates speech tokens based on the output of the NAR decoder.
 Finally, the decoder of the codec model converts the speech tokens into a speech stream.
+
+## 3.3·Discussions about Representation used in Spoken Dialogue Systems
+
+### 3.3.1·emantic Representation vs Acoustic Representation
+
+Current dialogue systems typically choose different approaches for the understanding (input) and generation (output) sides based on task requirements.
+For example, Spirit-LM \cite{nguyen2024spirit} uses semantic representations (HuBERT \cite{hsu2021hubert}) consistently on both ends, while Mini-Omni \cite{xie2024mini} uses semantic representations (Whisper \cite{radford2023robust}) on the input side and acoustic representations (SNAC \cite{siuzdak2024snac}) on the output side.
+Each combination offers unique advantages and trade-offs, and a consensus on a unified speech representation approach has yet to be reached in practical applications.
+
+We revisited the differences between semantic and acoustic representations, as shown in Table~\ref{comparison_of_rep}.
+Benefiting from specific task objectives, models such as Wav2Vec \cite{schneider2019wav2vec}, HuBERT \cite{hsu2021hubert}, WavLM \cite{chen2022wavlm}, and Whisper \cite{radford2023robust} focus on extracting semantic information embedded within the spoken content.
+This inherent advantage allows speech to be directly mapped into the embedding space of large language models (LLMs), facilitating alignment with other modalities and fully leveraging the LLM’s strengths.
+In contrast, acoustic representations extracted by models like EnCodec \cite{defossez2022high} and DAC \cite{kumar2024high} are less conducive to LLM understanding, which is why SpeechTokenizer \cite{zhang2023speechtokenizer} and Mimi \cite{defossez2024moshi} opt for semantic distillation.
+In addition, semantic representations offer higher compression rates.
+By configuring various downsampling parameters in convolutional layers, models like HuBERT and Whisper easily achieve frame rates of 25Hz to 50Hz.
+Spirit-LM \cite{nguyen2024spirit}, for instance, uses 25Hz HuBERT units, meaning that only 25 tokens are needed to represent one second of speech.
+In contrast, acoustic features are designed with compression and reconstruction in mind, where the constraints of signal transmission make extreme compression and high-quality reconstruction challenging to achieve simultaneously.
+Although Mimi \cite{defossez2024moshi} has achieved a frame rate of 12.5Hz, its use of 8 codebooks means that autoregressively predicting one second of speech requires 100 steps.
+Finally, in certain scenarios, semantic representations hold distinct advantages.
+
+However, we must acknowledge that purely semantic representations fall short in naturalness and expressiveness, especially in tasks involving emotional expression or complex speech dynamics, where acoustic representations provide more nuanced information.
+For instance, HuBERT \cite{hsu2021hubert} cannot extract prosodic and stylistic features as effectively as EnCodec \cite{defossez2022high} or Emotion2Vec \cite{ma2023emotion2vec}.
+Notably, using acoustic representations allows for flexible handling of various data types—speech, audio, music, and sound—making dialogue systems more unified and versatile.
+Moreover, when acoustic representations are used as the output of a language model, they can seamlessly connect to the codec decoder for speech synthesis.
+In contrast, dialogue systems using semantic features often require separately trained vocoders \cite{nguyen2024spirit, kim2024unified} or rely on additional text-to-speech toolkits \cite{fang2024llama}.
+This gap is crucial for dialogue systems, as the resulting latency directly impacts the user experience.
+
+Given the unique advantages of semantic and acoustic features across different tasks, future research may shift toward integrating these features.
+A valuable perspective is that models like SpeechTokenizer \cite{zhang2023speechtokenizer} and Mimi \cite{defossez2024moshi} have already attempted to distill semantic representations from HuBERT \cite{hsu2021hubert} or WavLM \cite{chen2022wavlm} into RVQ-1, ensuring a balanced representation of both semantic and acoustic information in the system.
+With technological advancements, we look forward to more unified and refined modeling approaches.
+A promising direction would be to design new training objectives for speech tokenizers, exploring both data-driven and objective-driven methods, thus avoiding the need for additional pre-trained models.
+As spoken dialogue Systems are still evolving, exploring more robust hybrid representations is indeed valuable.
+
+### 3.3.2·Continuous Representation vs Discrete Representation
+
+There is still no consensus on whether to use continuous or discrete representations in the spoken dialogue systems.
+Considerations on the input side mainly depend on the type of representation model chosen by the system.
+Some systems \cite{xie2024mini, xie2024miniomni2opensourcegpt4ovision, fang2024llama} use models like HuBERT \cite{hsu2021hubert} or Whisper \cite{radford2023robust} to extract continuous speech representations, which requires adding a speech adapter and an additional training phase focused on modality alignment.
+Another systems \cite{zhang2023speechgpt, chen2024emova, defossez2024moshi} use models like EnCodec \cite{defossez2022high} or Mimi \cite{defossez2024moshi} to extract discrete speech representations, adding speech tokens directly to the LLM’s vocabulary, thereby shifting the training burden onto the LLM itself.
+Despite the different approaches, the key is to enable large language models to effectively understand speech features.
+For autoregressive models, using discrete inputs may appear more manageable; however, whether this truly outperforms continuous inputs in terms of performance remains to be explored.
+
+Language models trained with next-token prediction objectives tend to favor discrete modalities.
+Using discrete features on the output side naturally supports simple codec decoders \cite{xie2024mini, xie2024miniomni2opensourcegpt4ovision, defossez2024moshi, xiong2024freeze} for reconstructing high-fidelity speech, enhancing speech quality and acoustic control while enabling an end-to-end system.
+In contrast, continuous features may require additional text-to-speech toolkits \cite{fu2024vita} or vocoders \cite{fang2024llama}, resulting in a cascaded pipeline and making it difficult to preserve detailed acoustic information.
+Another notable advantage of using discrete representations as output is the ability to quickly feed them into the input of the next dialogue round, as demonstrated in OmniFlatten \cite{zhang2024omniflatten}.
+In the field of computer vision, a range of work \cite{zhou2024transfusion, xie2024show} has emerged that combines discrete and continuous representations, aiming to fully integrate these modes without information loss, and has already achieved success in certain areas.
+These approaches may provide valuable insights for the next generation of spoken dialogue systems.
+
+### 3.3.3·Single-Layer Quantizer vs Multi-Layer Quantizer
+
+As previously mentioned regarding compression rates, the number of quantizers must be carefully considered when using the speech codec.
+Currently, dialogue systems commonly use multi-layer quantizers, such as those in EnCodec \cite{defossez2022high}, SpeechTokenizer \cite{zhang2023speechtokenizer}, SNAC \cite{siuzdak2024snac} and Mimi \cite{defossez2024moshi}.
+This inevitably introduces generation latency, as residual vector quantization requires each quantizer’s input to depend on the output of the previous quantizer.
+Mini-Omni \cite{xie2024mini} and Mini-Omni 2 \cite{xie2024miniomni2opensourcegpt4ovision} adopt an approach similar to MusicGen \cite{copet2024simple}, introducing delayed steps to enable parallel generation across multiple quantizers.
+Moshi \cite{defossez2024moshi} proposes splitting the RVQ, allowing the eight VQs to generate independently in parallel.
+These strategies help mitigate latency issues to some extent but still fall short of the efficiency achieved with semantic representations.
+
+
+Recently, research on single-layer quantizers has shown promising breakthroughs.
+Models like WavTokenizer \cite{ji2024wavtokenizer}, Single-Codec \cite{li2024single}, and BigCodec \cite{xin2024bigcodec} advocate using a single VQ to discretize speech, achieving competitive results in both reconstruction and generation tasks.
+Notably, WavTokenizer \cite{ji2024wavtokenizer} has already achieved an impressive compression rate of 40Hz.
+Integrating a single-layer quantizer with dialogue systems is promising, as it allows for rapid extraction of speech features on the input side and significantly reduces the burden of autoregressive modeling.
+
+### 3.3.4·With Text Guidance vs Without Text Guidance
+
+In practice, researchers have found direct speech-to-speech generation challenging \cite{xie2024mini, xie2024miniomni2opensourcegpt4ovision, fang2024llama} due to complex mapping relationships, so intermediate texts are often generated to achieve higher generation quality.
+Current end-to-end dialogue systems commonly adopt one of two strategies: one \cite{fang2024llama, zhang2024intrinsicvoice} generates the hidden states corresponding to the text response first, which are then post-processed to obtain speech tokens; the other \cite{xie2024mini, xie2024miniomni2opensourcegpt4ovision, defossez2024moshi} generates text and speech tokens in parallel.
+These approaches leverage the text modeling capabilities of large language models, essentially guiding the synthesis of semantically consistent speech by first generating text.
+However, this comes at the expense of response speed.
+
+Although directly performing speech-to-speech generation presents challenges such as increased model complexity and inference difficulty, we believe it remains a promising direction for future research.
+One approach is to retrain large spoken language models to adapt to specific speech representations.
+However, this faces challenges related to data resources, as large-scale and high-quality conversational datasets remain scarce.
+Additionally, this method cannot completely eliminate text prompts and requires multi-stage training, starting with text-speech pairs to allow the model to progressively acquire conversational capabilities.
+Another approach could begin with speech codecs, as demonstrated by SpeechTokenizer and Mimi’s extensive work in semantic distillation.
+We envision a novel speech codec that aligns text and speech during the encoding phase, thereby reducing the generation burden on large language models.
+By aligning speech representations with the text representation space earlier in the process, the autoregressive modeling would no longer require text guidance, giving rise to an entirely new paradigm for conversational systems.
