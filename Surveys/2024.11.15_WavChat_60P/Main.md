@@ -41,10 +41,12 @@ Recent advancements in spoken dialogue models, exemplified by systems like GPT-4
 In the broader context of multimodal models, the speech modality offers a direct interface for human-computer interaction, enabling direct communication between AI and users.
 Compared to traditional three-tier cascaded spoken dialogue models that comprise speech recognition (ASR), large language models (LLMs), and text-to-speech (TTS), modern spoken dialogue models exhibit greater intelligence.
 These advanced spoken dialogue models not only comprehend audio, music, and other speech-related features, but also capture stylistic and timbral characteristics in speech.
-Moreover, they erate high-quality, multi-turn speech responses with low latency, enabling real-time interaction through simultaneous listening and speaking capability.
+Moreover, they generate high-quality, multi-turn speech responses with low latency, enabling real-time interaction through simultaneous listening and speaking capability.
 Despite the progress in spoken dialogue systems, there is a lack of comprehensive surveys that systematically organize and analyze these systems and the underlying technologies.
-To address this, \textbf{we have first compiled existing spoken dialogue systems in the chronological order and categorized them into the cascaded and end-to-end paradigms.} We then provide an in-depth overview of the core technologies in spoken dialogue models, covering aspects such as \textbf{speech representation, training paradigm, streaming, duplex, and interaction capabilities.} Each section discusses the limitations of these technologies and outlines considerations for future research.
-Additionally, we present a thorough review of \textbf{relevant datasets, evaluation metrics, and benchmarks} from the perspectives of training and evaluating spoken dialogue systems.
+To address this, **we have first compiled existing spoken dialogue systems in the chronological order and categorized them into the cascaded and end-to-end paradigms**.
+We then provide an in-depth overview of the core technologies in spoken dialogue models, covering aspects such as **speech representation, training paradigm, streaming, duplex, and interaction capabilities**.
+Each section discusses the limitations of these technologies and outlines considerations for future research.
+Additionally, we present a thorough review of **relevant datasets, evaluation metrics, and benchmarks** from the perspectives of training and evaluating spoken dialogue systems.
 We hope this survey will contribute to advancing both academic research and industrial applications in the field of spoken dialogue systems.
 The related material is available at [Github](https://github.com/jishengpeng/WavChat).
 
