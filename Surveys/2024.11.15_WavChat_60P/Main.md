@@ -96,13 +96,3 @@ At the end of each section, we include a summary and discussion to reflect on th
 - Finally, in Section 7, we conclude the survey by summarizing the major findings and discussing open issues for future research.
 
 Given the complexity of the technical points, we provide an overview of the structure of this survey in Figure \ref{fig:img4}.
-
-## 2·Related Works: 相关工作
-
-## 3·Methodology: 方法
-
-## 4·Experiments: 实验
-
-## 5·Results: 结果
-
-## 6·Conclusions: 结论
