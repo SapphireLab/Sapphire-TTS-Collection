@@ -6,24 +6,24 @@
 - 标题: "WavChat: A Survey of Spoken Dialogue Models"
 - 作者:
   - 01 Shengpeng Ji (浙江大学, shengpengji@zju.edu.cn)
-  - 00 Yifu Chen (浙江大学)
-  - 00 Minghui Fang (浙江大学)
-  - 00 Jialong Zuo (浙江大学)
-  - 00 Jingyu Lu (浙江大学)
-  - 00 Hanting Wang (浙江大学)
-  - 00 Ziyue Jiang (浙江大学)
-  - 00 Long Zhou (微软)
-  - 00 Shujie Liu (微软)
-  - 00 Xize Cheng (浙江大学)
-  - 00 Xiaoda Yang (浙江大学)
-  - 00 Zehan Wang (浙江大学)
-  - 00 Qian Yang (浙江大学)
-  - 00 Jian Li (腾讯优图实验室)
-  - 00 Yidi Jiang (阿里巴巴)
-  - 00 Jingzhen He (阿里巴巴)
-  - 00 Yunfei Chu (阿里巴巴)
-  - 00 Jin Xu (阿里巴巴)
-  - 00 Zhou Zhao (浙江大学, zhaozhou@zju.edu.cn)
+  - 02 Yifu Chen (浙江大学)
+  - 03 Minghui Fang (浙江大学)
+  - 04 Jialong Zuo (浙江大学)
+  - 05 Jingyu Lu (浙江大学)
+  - 06 Hanting Wang (浙江大学)
+  - 07 Ziyue Jiang (浙江大学)
+  - 08 Long Zhou (微软)
+  - 09 Shujie Liu (微软)
+  - 10 Xize Cheng (浙江大学)
+  - 11 Xiaoda Yang (浙江大学)
+  - 12 Zehan Wang (浙江大学)
+  - 13 Qian Yang (浙江大学)
+  - 14 Jian Li (腾讯优图实验室)
+  - 15 Yidi Jiang (阿里巴巴)
+  - 16 Jingzhen He (阿里巴巴)
+  - 17 Yunfei Chu (阿里巴巴)
+  - 18 Jin Xu (阿里巴巴)
+  - 19 Zhou Zhao (浙江大学, zhaozhou@zju.edu.cn)
 - 链接:
   - [ArXiv](https://arxiv.org/abs/2411.13577)
   - [Publication]
@@ -96,3 +96,26 @@ At the end of each section, we include a summary and discussion to reflect on th
 - Finally, in Section 7, we conclude the survey by summarizing the major findings and discussing open issues for future research.
 
 Given the complexity of the technical points, we provide an overview of the structure of this survey in Figure \ref{fig:img4}.
+
+## [2·Overall: 整体视角](Sec.02.md)
+
+## [3·Representations of Spoken Dialogue Models: 口语对话模型的表示](Sec.03.md)
+
+## [4·Training Paradigm of Spoken Dialogue Model: 口语对话模型的训练范式](Sec.04.md)
+
+## [5·Streaming, Duplex, and Interaction: 流式, 双工, 和交互](Sec.05.md)
+
+## [6·Training Resources and Evaluation: 训练资源和评估](Sec.06.md)
+
+## 7·Conclusions: 结论
+
+In this work, we systematically review the research related to spoken dialogue models, categorizing it according to two paradigms: cascaded spoken dialogue models and end-to-end spoken dialogue models.
+Additionally, we provide a detailed overview of the core technologies behind spoken dialogue models, including speech representation, training paradigms, streaming duplex systems, and interaction mechanisms.
+In the speech representation module, we classify and explain the representations from both the input and output perspectives, focusing on different types of semantic and acoustic representations.
+In the training paradigm module, we thoroughly discuss five modalities of alignment for spoken dialogue models, multi-stage training strategies, model architectures, and generation paradigms.
+Following this, we provide an in-depth analysis of streaming input and output for spoken dialogue models, as well as the related duplex interaction technologies.
+Finally, we compile key training resources, evaluation metrics, and benchmarks relevant to spoken dialogue models.
+We specifically address the evaluation of different levels of intelligence in spoken dialogue models across various scenarios.
+It is important to note that, given that spoken dialogue models are a relatively new and emerging technology, many aspects such as semantic and acoustic representations, still lack well-established paradigms.
+Therefore, at the end of each section, we include a dedicated discussion module to explore these open issues.
+We hope that this survey will contribute to the further development of the field of spoken dialogue systems.
