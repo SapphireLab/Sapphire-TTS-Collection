@@ -88,3 +88,61 @@ IntrinsicVoice \cite{zhang2024intrinsicvoice} utilizes a specific model to gener
 Align-SLM \cite{lin2024alignslmtextlessspokenlanguage} utilizes a pre-trained self-supervised Hubert model \cite{hsu2021hubert} with K-means clustering \cite{hassid2024textually} to convert continuous speech representations into discrete units.
 It employs LoRA adapter \cite{hu2021lora} fine-tuning on a pre-trained Twist \cite{hassid2024textually} to produce multiple speech continuations from a given prompt and uses semantic metrics to generate preference data for Direct Preference Optimization (DPO) \cite{rafailov2024direct}.
 Experimental results indicate that integrating the preference optimization method significantly improves the semantic comprehension of the Spoken LLM.
+
+## 4.2·Multi-Stage Training Strategy
+
+This section primarily discusses the training process of the Spoken Dialogue Model, building upon previous work on spoken dialogue systems.
+Generally, this process consists of four stages: text LLM pre-training, modality adaptation and alignment post-training, followed by supervised fine-tuning, and optionally, preference optimization.
+The primary goal in training most spoken dialogue systems is to preserve the model's original capabilities while integrating the speech modality for voice interaction into the LLM.
+The diagram of multi-stage training can be referred to in Figure ~\ref{fig:archi_img2}.
+
+### 4.2.1·Text LLM Pre-Training
+
+The goal is to develop a text-intelligent LLM model capable of handling complex contexts and possessing knowledge reasoning abilities, thus preparing it for integration with speech-intelligent LLMs.
+Most spoken dialogue systems utilize pre-trained large language models as foundational models rather than pre-training with separate text data themselves.
+A series of approaches \cite{zhang2023speechgpt,zhang2024speechgpt,nguyen2024spirit,chen2024emova,fang2024llama,veluri2024beyond} use the LLaMA model and its variants as their foundational language model.
+On the other hand, \cite{du2023lauragpt,xie2024mini,xie2024miniomni2opensourcegpt4ovision,zhang2024omniflatten} employ the Qwen \cite{bai2023qwen,yang2024qwen2} family of large language models as their backbone.
+Meanwhile, Moshi \cite{defossez2024moshi} employs an RQ-Transformer for hierarchical autoregressive modeling of speech, utilizing a unique structure that involves pre-training a text-only language model with datasets from the internet (e.g., Wikipedia \footnote{\url{https://dumps.wikimedia.org/}} and StackExchange \footnote{\url{https://archive.org/details/stackexchange/}}).
+The collected data was filtered using a comprehensive preprocessing pipeline to ensure quality and relevance, which included deduplication to remove redundant entries, language identification to retain text in the desired language, and quality filtering to exclude low-quality or irrelevant content based on criteria such as coherence and completeness.
+VITA \cite{fu2024vita} utilizes Mixtral 8x7B1 \cite{jiang2024mixtral}, a representative LLM with a sparse mixture of experts (SMoE) architecture, and performs pure-text instruction tuning for its extended Chinese vocabulary.
+
+### 4.2.2·Modality Adaptation and Alignment Post-training
+
+This phase explores strategies to adapt text-based large language models (LLMs) for speech modality input, focusing on aligning text and audio modalities effectively.
+The primary goal is to enhance the models' ability to understand and generate speech by bridging the gap between these two modalities.
+Common approaches include multimodal training techniques, leveraging unlabeled speech corpora, and employing multi-task learning frameworks.
+These methods typically involve fine-tuning existing LLMs with speech-related tasks and integrating speech-specific modules, such as speech adaptors and decoders, to facilitate seamless interaction between text and speech modalities.
+Different training tasks for modality adaptation and alignment are shown in Figure ~\ref{fig:archi_img3}.
+Spirit-LM \cite{nguyen2024spirit} continuously pretrains on text LLM checkpoints using interleaved text and speech tokens to improve the model's performance in speech understanding and generation.
+LLaMA-Omni \cite{fang2024llama} adopts a two-stage training strategy: the first stage jointly trains a speech adaptor and LLM with speech input and text responses, while the second stage uses the same dataset to train a streaming speech decoder independently.
+Consequently, this LLM primarily possesses the capability for speech input understanding, with speech generation handled by a separate decoder module.
+SpeechGPT \cite{zhang2023speechgpt}, Moshi \cite{defossez2024moshi}, and VITA \cite{fu2024vita} utilize unlabeled speech corpora to train models in a next-token prediction task.
+In the first phase, VITA focuses on training the audio encoder and connector, while in the second phase, it optimizes both the connector and the LLM model through multimodal training.
+Although capable of processing speech input, it outputs only text.
+Spectron \cite{nachmani2023spoken} addresses the alignment issue between text and speech representations by jointly supervising multiple objectives.
+IntrinsicVoice \cite{zhang2024intrinsicvoice} employs a two-stage training approach, constructing multiple cross-modal tasks from a single dataset to enable the model to better learn the semantic consistency between speech and text.
+Mini-Omni \cite{xie2024mini}, EMOVA \cite{chen2024emova}, and OmniFlatten \cite{zhang2024omniflatten} adopt similar methodologies, commencing with supervised multi-task fine-tuning of the text LLM backbone to achieve speech-text modality alignment and develop a multimodal LLM~\cite{jin2024efficientmllm, li2024surveybenchmarksmultimodallarge} using Automatic Speech Recognition (ASR) and Text-to-Speech (TTS) tasks.
+Notably, Mini-Omni divides the training of various modules into three phases: the first phase utilizes data from speech recognition and synthesis to enhance the model’s abilities in these aspects, training only the ASR and TTS adapters.
+The second phase focuses exclusively on enhancing the model’s text capabilities when given speech inputs, updating only the LLM parameters while freezing other modules.
+Through these two training phases, the original language LLM’s capabilities are maximally preserved, while adapting to speech modality input and output, thereby addressing the primary modality alignment tasks.
+
+### 4.2.3·upervised Fine-tuning or Dialogue Dataset Fine-tuning
+
+During this stage, most models use instruction-following datasets or dialogue data for supervised fine-tuning of the LLM, enhancing natural conversational abilities.
+\cite{zhang2023speechgpt,zhang2024speechgpt} propose a two-stage instruction-tuning process that includes cross-modal instruction fine-tuning and chain-of-modality instruction fine-tuning.
+Ultimately, the model follows the A-T-T-A method to achieve end-to-end speech input and output.
+EMOVA \cite{chen2024emova} employs a similar chain-of-modality concept to construct instruction-tuning datasets, empowering it to respond accurately to speech instructions.
+Moshi \cite{defossez2024moshi}, Mini-Omni \cite{xie2024mini}, OmniFlatten \cite{zhang2024omniflatten}, and SyncLLM \cite{veluri2024beyond} utilize spoken dialogue datasets for fine-tuning, endowing the models with conversational interaction capabilities.
+Remarkably, Moshi constructs a more natural and realistic dialogue dataset that incorporates elements such as noise and overlap, enabling the model to learn authentic multi-stream interactions.
+OmniFlatten fine-tunes the speech-text LLM using interleaved and serialized dialogues across three stages to progressively train the model in acquiring half-duplex and full-duplex communication capabilities.
+Similarly, SyncLLM employs a three-stage training procedure that predominantly uses synthetic spoken dialogue data along with a relatively small amount of real-world spoken dialogue data to develop a full-duplex voice agent.
+
+### 4.2.4·Preference Optimization and Reinforcement Learning
+
+The research on leveraging preference optimization to align a spoken dialogue model with human preferences is virtually absent.
+Recently, \cite{anastassiou2024seed,zhang2024speechalign,chen2024enhancing} adopted preference optimization for Text-to-Speech (TTS) models to align speech synthesis quality with human preferences but not for spoken dialogue models.
+Align-SLM \cite{lin2024alignslmtextlessspokenlanguage} pioneers the integration of Direct Preference Optimization (DPO) \cite{rafailov2024direct} in textless Spoken Language Models (SLMs) to enhance semantic understanding.
+It transforms continuous speech into discrete units using a pre-trained Hubert model and K-means clustering.
+LoRA fine-tuning on a Spoken LLM generates multiple speech continuations from prompts.
+Semantic metrics create preference data offline, making DPO training efficient and stable, eliminating the need for an external reward model.
+Coupled with curriculum learning \cite{bengio2009curriculum}, Align-SLM progressively refines preference data selection, optimizing semantic feedback, and improving SLM performance.
