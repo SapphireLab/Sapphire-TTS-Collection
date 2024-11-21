@@ -37,6 +37,9 @@
 
 ## Abstract: 摘要
 
+<details>
+<summary>展开原文</summary>
+
 Recent advancements in spoken dialogue models, exemplified by systems like GPT-4o, have captured significant attention in the speech domain.
 In the broader context of multimodal models, the speech modality offers a direct interface for human-computer interaction, enabling direct communication between AI and users.
 Compared to traditional three-tier cascaded spoken dialogue models that comprise speech recognition (ASR), large language models (LLMs), and text-to-speech (TTS), modern spoken dialogue models exhibit greater intelligence.
@@ -49,6 +52,25 @@ Each section discusses the limitations of these technologies and outlines consid
 Additionally, we present a thorough review of **relevant datasets, evaluation metrics, and benchmarks** from the perspectives of training and evaluating spoken dialogue systems.
 We hope this survey will contribute to advancing both academic research and industrial applications in the field of spoken dialogue systems.
 The related material is available at [Github](https://github.com/jishengpeng/WavChat).
+
+</details>
+<br>
+
+口语对话模型的近期进展, 如 GPT-4o 等系统为代表, 在语音领域获得了广泛关注.
+在多模态模型的更广泛背景下, 语音模态为人机交互提供了直接的接口, 使得人工智能和用户之间可以直接交流.
+和传统的由自动语音识别 (ASR) + 大语言模型 (LLM) + 文本转语音 (TTS) 组成的三层级联口语对话模型相比, 现代的口语对话模型展现出更高的智能.
+这些先进的口语对话模型不仅能够理解音频, 音乐, 以及其他与语音相关的特征, 还能够捕获语音的风格和音色特征.
+此外, 它们能够以低延迟生成高质量, 多轮次的语音响应.
+
+尽管口语对话系统取得了不少进步, 但缺乏全面的综述, 来系统地组织和分析这些系统和底层技术.
+
+- 为了解决这一问题, **我们首先将现有的口语对话系统按时间顺序排列, 并将它们分类为级联范式和端到端范式**.
+- 然后我们对口语对话模型的核心技术进行了深入的概述, 涵盖了**语音表示**, **训练范式**, **流式/双工/交互能力**等方面.
+每一节讨论这些技术的局限性, 并概述了未来研究的考虑因素.
+- 此外, 我们从训练和评估口语对话模型的角度, 全面回顾了相关的**数据集**, **评估指标**, 和**基准**.
+
+我们希望这项工作能够促进口语对话系统的学术研究和工业应用的发展.
+相关材料可在 [Github](https://github.com/jishengpeng/WavChat) 获得.
 
 ## 1·Introduction: 引言
 
