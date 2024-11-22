@@ -132,7 +132,70 @@ Our literature survey reveals that there was a performance gap between cascade a
 These studies, however, are done on limited language pairs and may not generalize.
 Therefore, it remains to see an exhaustive comparison over multiple and distant language pairs involving large-scale datasets to truly establish the claim that the performance gap is indeed closed.
 
-## 4·Experiments: 实验
+## 4·Strategies for Addressing Data Scarcity: 处理数据不足的策略
+
+Parallel speech corpora are crucial for training direct S2ST models, and their scarcity can significantly affect their training, performance, and robustness.
+Creating parallel speech corpora requires substantial resource investment \cite{Chen2023_DataAugment_survey}, resulting in limited available datasets, as shown in Table \ref{Dataset_Stats} in the appendix.
+While this scarcity of supervised S2ST datasets prevents the application of direct S2ST systems to low-resource languages, techniques like data augmentation, pre-training, self-training, back-translation, knowledge distillation, and speech mining are employed to address data scarcity and enable S2ST for low-resource languages.
+These methods are further elaborated in the following sections.
+
+### Data Augmentation: 数据增强
+
+Data augmentation (DA) refers to techniques that boost the number of data points to enhance diversity without requiring the explicit collection of real supervised data points \cite{Feng2021_DataAug_survey}.
+The DA techniques suitable for various NLP tasks may not be directly applicable to S2ST since S2ST involves parallel speech, posing a challenge for augmenting existing data.
+Speech data can be augmented in various ways.
+For example, by adding noise, speed and pitch perturbation, time and frequency masking, etc.
+In \cite{Jia2021}, data augmentation technique \emph{ConcatAug} is employed to preserve the speaker's voice on their turn.
+In particular,  training data is enhanced by randomly selecting pairs of training examples and concatenating their source speech, target speech, and target phoneme sequences to create new training examples.
+These new examples incorporate the voices of two different speakers in both the source and target speech, allowing the model to learn from instances that include speaker turns.
+Many studies utilize synthesized speech from the target text in ST data \cite{Jia2019, Jia2021, Lee2022, nachmani_2023_translatotron3}, while others make use of MT and TTS models to label ASR corpora through pseudo-labeling \cite{Dong2022_Psudo_Labeled, Jia2022_Leveraging, Popuri2022_Enahancing_SelfSupervised,huang-etal-2023-xiaomi}.
+
+### Pre-training: 预训练
+
+Pre-training \cite{Popuri2022_Enahancing_SelfSupervised, Wei_2013_joint_pre-train_s2st} aims to improve the performance of the task in one domain with the learned knowledge from the tasks in another domain \cite{Pan2010_TransferLearning, Wang2022_Pre-Training_Application}.
+Models learn salient features from an extensive training corpus during pre-training.
+Subsequently, the pre-trained model is applied to another (target) task, employing smaller datasets for fine-tuning~\cite{Van_dem_ordo_RepresentationLearning,tang-etal-2022-unified}.
+In recent works, self-supervised strategies are used for pre-training, to leverage the availability of large unlabeled datasets.
+Several pre-trained DL models, including BERT \cite{Devlin2019_BERT}, BART \cite{lewis-etal-2020-BART} (using unit mBART version), Wav2Vec 2.0 \cite{baevski2020_wav2vec2.0}, HuBERT \cite{Hsu_2021_HuBERT}, w2v-BERT \cite{Chung2021_w2V-BERT}, and VQ-VAE \cite{Van_Oord_2017_VQ-VAE}, which are trained on extensive unlabeled data, serve as the foundation for various NLP and speech tasks.
+The pre-trained models are used as encoders/decoders in direct S2ST models \cite{bansal2018pre, tsiamas-etal-2022-pretrained, Lee2022_Representation_Learning_for_Speech} (refer to \S \ref{sec:direct_s2st})
+
+### Self-Training & Back-Translation: 自训练与回译
+
+Self-training and Back-translation (BT) algorithms leverage monolingual data to train models requiring supervised data but lacking a supervised parallel corpus.
+These algorithms use the model's own confident predictions for monolingual data, which are initially trained on available parallel data \cite{edunov-etal-2018-understanding_BT, yang2022survey_semi_super}.
+Self-training utilizes source monolingual data, while BT utilizes target monolingual data to generate augmented data.
+Let us consider a utterance-wise parallel speech corpus denoted as $\mathcal{D}=\{(x_i, y_i)\}_{i=1}^n$, with $(x_i,y_i)$ representing the source and  target utterance, respectively.
+Additionally, we have source monolingual corpus $\mathcal{M}_{src} = \{u_j\}_{j = 1}^m$, and target monolingual corpus $\mathcal{M}_{tgt} = \{v_k\}_{k = 1}^q$, where \(m,q \gg n\).
+The forward translation model $f_{x\rightarrow y}$ is optimized for the parameter  \(\theta_{x\rightarrow y} = \text{argmin}_\theta \sum_{(x_i, y_i) \in \mathcal{D}} \mathcal{L}(f^\theta_{x\rightarrow y}(x_i), y_i)\), where $\mathcal{L}$ is the loss function.
+Similarly, another model in backward direction, $f_{y\rightarrow x}$, is optimized for the parameter \(\theta_{y\rightarrow x} = \text{argmin}_\theta \sum_{(x_i, y_i) \in \mathcal{D}} \mathcal{L}(f^\theta_{y\rightarrow x}(y_i), x_i)\).
+Using the already trained model \(f_{x \rightarrow y}\) and \(\mathcal{M}_{src}\), pseudo-labeled utterances \(\hat{y}\) are generated to create a new auxiliary parallel corpus $\mathcal{A}^s = \{(u_j, \hat{y}_j)\}_{j=1}^{m'}$ by selecting confident predictions.
+In self-training, as shown in Figure \ref{fig:BT_KD_ST}(a), the model \(f_{x \rightarrow y}\) is retrained on the augmented data \(\mathcal{D} \cup \mathcal{A}^s\) \cite{He2020_revisiting_SelfTraining}.
+Similarly, an auxiliary parallel corpus \(\mathcal{A}^t = \{(\hat{x}_k, v_k)\}_{k=1}^{q'} \) is generated using the backward-trained model \(f_{y \rightarrow x}\).
+When employing back-translation (BT) the model \(f_{x \rightarrow y}\) is trained in the forward direction on the newly augmented data \(\mathcal{D} \cup \mathcal{A}^t\) as depicted in Figure \ref{fig:BT_KD_ST}(b) \cite{sennrich-etal-2016-improving}.
+Various studies utilize a denoising version of BT, where noise is added to the input \cite{fu_2023_improving_BackTranslation}.
+Several studies demonstrate that self-training \cite{Pino2020_ST_4ST} and BT \cite{Pino2020_ST_4ST} are highly beneficial, particularly for low-resource languages compared to high-resource ones.
+These algorithms also benefit S2ST directly or indirectly, with the indirect method proving more effective \cite{Popuri2022_Enahancing_SelfSupervised,nachmani_2023_translatotron3}.
+
+### Knowledge Distillation: 知识蒸馏
+
+Knowledge Distillation (KD) transfers learned knowledge from a large ensemble model to a smaller model as shown in Figure \ref{fig:BT_KD_ST}(c) \cite{Hinton2015_KnowledgeDistilation, Treviso2023_NLP_Methods_Survey}.
+The KD process is based on the teacher-student learning paradigm: the larger model serves as the teacher, while the smaller model acts as the student.
+
+KD proves to be valuable for tasks such as  ASR \cite{Hinton2015_KnowledgeDistilation}, ST \cite{Inaguma2021, Liu2019d_KnowledgeDistillation}, and S2ST \cite{Huang2022_TranSpeech} in scenarios with limited resources.
+In particular, AV-TranSpeech  \citet{Huang2022_TranSpeech} applies cross-modal distillation from audio-only pre-trained S2ST \cite{Popuri2022_Enahancing_SelfSupervised} to AV-TranSpeech.
+Doing so initializes the audio encoder and unit decoder and alleviates the low-resource problem of audio-visual data.
+Nonetheless, this approach remains relatively under-explored in the context of direct S2ST models.
+
+### Speech Mining: 语音挖掘
+
+Speech mining is an extension of \textbf{bitext mining} \cite{resnik-1998-parallel}, designed to discover parallel speech corpora from monolingual speech corpora.
+Bitext refers to text-to-text parallel data where the source and target sentences are in different languages.
+Bitext mining has been done in a supervised and unsupervised way (no cross-lingual resources like parallel text or bilingual lexicons are used) \cite{keung-etal-2020-unsupervised}.
+Multilingual fixed-length sentence embedding
+\cite{heffernan-etal-2022-bitext} using KD, contrastive learning \cite{tan2022bitext} are used for mining bitext in low-resource settings.
+Sentence embedding serves to cluster similar sentences closely together within the latent space \cite{schwenk-2018-filtering,artetxe-schwenk-2019-massively}.
+Similarly, for speech mining, multilingual fixed-length speech embedding is employed to represent the variable-length speech utterances.
+Speech mining has been used by a few works such as \citet{Duquenne_2021_Speech_Mining} where they utilize a teacher-student approach to train the multilingual speech embedding, which produces speech representations that are compatible with the output of text embedding layer.
 
 ## 5·Results: 结果
 
