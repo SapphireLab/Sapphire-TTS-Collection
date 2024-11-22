@@ -491,3 +491,7 @@ A hybrid model design combining discrete units and spectrograms can acquire ling
 ### 11.8·Faster Token Generation
 
 Many direct models primarily rely on autoregressive models as their sub-modules, in which the current output depends on previous inputs, resulting in a high degree of input dependency. Decreasing the number of modules or layers is essential to reduce the average latency of direct S2ST models. Moreover, shifting the focus from autoregressive models to non-autoregressive models is advisable. This shift in focus is crucial for enabling real-time usage scenarios.
+
+## 12·Conclusion
+
+We present a comprehensive survey of direct S2ST models. In particular, we discussed the comparison of E2E and cascade models, data scarcity, representation, and segmentation issues in S2ST modeling. A bird-eye view of architectures of offline, simultaneous, and LLM-based S2ST models is discussed in detail. We also offer training strategies and application issues that may be beneficial to industry practitioners. Finally, we enumerate a list of open problems and challenges that remain to be solved. Thus, we hope that the review will be a torch-bearer for someone starting their work in the S2ST domain.
