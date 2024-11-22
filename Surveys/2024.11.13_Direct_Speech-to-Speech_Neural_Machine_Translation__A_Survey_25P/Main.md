@@ -283,5 +283,132 @@ Such representations enable the integration of NLP tools into the speech domain.
 Among them, the popular choices are Wav2Vec \citep{schneider2019wav2vec} and its variants such as w2v-BERT \citep{Chung2021_w2V-BERT, Jia2022_Leveraging} and Wav2Vec 2.0 \citep{baevski2020_wav2vec2.0, Chen2022, song_2023_styles2st} and Hidden-Units BERT (HuBERT) \citep{hsu2021hubert}.
 What makes these representation methods take over the MFCC is that they can extract \emph{semantic-units}.
 Hence recent S2ST models invariably exploit HuBERT \cite{Huang2022_TranSpeech, wang2023speechtospeech, diwan2024textless, peng2024mslms2st, kaur2024direct} for semantic-unit discrete representation.
- HuBERT utilizes a self-supervised approach to representation learning through masked prediction and employs $k$-means clustering to convert speech into discrete units \cite{Hsu_2021_HuBERT}.
- Vector Quantized Variational Autoencoder (VQ-VAE) is another popular discrete unit representation model employing unsupervised speech representational learning \cite{Van_Oord_2017_VQ-VAE}.
+HuBERT utilizes a self-supervised approach to representation learning through masked prediction and employs $k$-means clustering to convert speech into discrete units \cite{Hsu_2021_HuBERT}.
+Vector Quantized Variational Autoencoder (VQ-VAE) is another popular discrete unit representation model employing unsupervised speech representational learning \cite{Van_Oord_2017_VQ-VAE}.
+
+## 7·Direct S2ST Models: 直接 S2ST 模型
+
+Direct S2ST models can be classified broadly into three main categories: offline, simultaneous (Simul), and LLM-based S2ST\footnote{LLM-based S2ST is a very recent approach to S2ST modeling and is given special treatment due to their superior performance.}.
+Offline models, as the name suggests, start decoding after having seen the entire utterance, whereas simultaneous (aka streaming models) models can start decoding only with partial utterances.
+As such, Simul-S2ST is amenable to real-time translation, dubbing, etc.
+In this section, we will delve deeper into these three category models.
+In particular, we will discuss the architectural level changes made in vanilla Seq2Seq to devise the offline/Simul/LLM-S2ST models.
+
+### 7.1·Offline S2ST models
+
+As mentioned previously, offline direct S2ST models start decoding after having seen the entire utterance.
+The typical architecture of such models is shown in Fig.
+\ref{fig:GenericDirectS2ST} which is based on Seq2Seq with attention (not shown in Fig.).
+These models have \emph{translation model} component besides speech encoder (as mentioned in \S \ref{repr}) and vocoder (for speech synthesis).
+Dashed arrow components are optional and used in a few existing works.
+This section will discuss various design choices used by existing works for translation model component as well as vocoder.
+Style adapters and duration predictors will also be explained as they play an important role in designing offline direct S2ST models.
+
+#### 7.1.1·Encoder Architecture
+
+Some models use separate \emph{speech encoders} to convert raw speech into spectrograms or discrete units, which are then fed into the translation model's encoder \cite{Jia2019, diwan2024textless}.
+Others integrate both into a single and directly feed raw speech into the translation model's encoder \cite{Popuri2022_Enahancing_SelfSupervised, Li2023_TextLess_Direct}.
+
+For example, Translatotron 1 \cite{Jia2019} uses a spectrogram as input fed to the LSTM encoder.
+Conformer \cite{Gulati2020_Conformer} is used as the encoder in Translatotron 2 and 3 \cite{Jia2021, nachmani_2023_translatotron3}.
+Essentially, recent direct S2ST models rely on transformers and their variants for encoder \cite{lee-etal-2022-textless, Li2023_TextLess_Direct}.
+To handle large speech inputs, there is often a downsampling module pre-pended before the encoder.
+1-D CNN, Connectionist Temporal Classification (CTC) \cite{GravesConnectionistTC}, and adapters are commonly used for length mismatch \cite{lee-etal-2022-textless, Popuri2022_Enahancing_SelfSupervised}.
+As shown in Fig.\ref{fig:GenericDirectS2ST}, there is \emph{optional} auxiliary task module attached to the encoder.
+The auxiliary task again relies on transformer blocks to predict source and/or target phonemes/char/word or discrete units depending upon the text data availability \cite{Jia2021, lee-etal-2022-textless}.
+Dual-encoders disentangling semantic and acoustic information have been proposed \cite{le2024transvip}.
+
+#### 7.1.2·Decoder Architecture
+
+Similar to the encoder, the decoder of the translation model outputs either text \cite{Wang2022SimpleAE} or discrete unit \cite{lee-etal-2022-textless, duquenne_2022_SpeechMatrix, Li2023_TextLess_Direct}.
+Decoders in the existing works have been designed either in a \textbf{Autoregressive} (AR) or \textbf{Non-autoregressive} (NAR) way, as explained below.
+Further, they could be \textbf{single-pass} or \textbf{double-pass} decoders.
+Double-pass decoders employ a linguistic and an acoustic decoder, contrary to single-pass decoders with only an acoustic decoder.
+Due to multi-level speech processing and the ability to solve complex \emph{multimodal distribution}\footnote{S2ST is considered a multimodal problem due to (a) linguistic diversity during translation, and (b) diverse acoustic conditions, e.g., pitch, duration, energy, etc.
+}, double-pass decoders are shown to outperform single-pass decoders \cite{Jia2021, inaguma_2023_unity}.
+
+In AR decoding, output tokens are predicted in a \emph{causal} manner, i.e., current output depends only on the previously generated tokens.
+LSTMs and transformer-based decoders are preferred choices for autoregressive decoding.
+For example, unit mBART is used as a unit decoder in \cite{Popuri2022_Enahancing_SelfSupervised, diwan2024textless} whereas Translatotron 1 and 2 use  LSTMs.
+The CTC-based decoder is optionally added with the decoder as an auxiliary task \cite{lee-etal-2022-textless}.
+Despite high-quality translations, two-pass autoregressive decoders suffer from \emph{high-latency} issue because of their sequential generation.
+
+To address the high-latency decoding problem, NAR S2ST models have been proposed.
+NAR models can generate target speech in parallel by assuming conditional independence among the outputs.
+However, it becomes challenging to address the multimodal problem of the target speech via NAR compared to AR \cite{gu2018nonautoregressive}.
+To solve the linguistic modality problem, directed acyclic transformer \cite{pmlr-v162-huang22m}  and FastSpeech 2 as two-pass decoders are used by DASpeech \cite{Fang2023_DASpeech} whereas knowledge-distillation from AR model to NAR model is used in \cite{Huang2022_TranSpeech}.
+
+Besides AR and NAR decoding, there are other possible decoding choices.
+For example, it has been proven that translating multiple sentences of varying lengths can improve performance \cite{Huang2022_TranSpeech}.
+As such, \textbf{Top-K} length beam candidates are selected and decoded in parallel.
+\textbf{Noisy parallel decoding} is another option that uses AR decoding as a teacher to capture the more accurate optimum of the target distribution and compute the best translation for each fertility sequence \cite{Huang2022_TranSpeech}.
+
+#### 7.1.3·Vocoder
+
+After the translation module is a vocoder whose job is to synthesize the speech from the decoder output which can be either text, discrete unit, or spectrogram.
+Recent and advanced speech models are adapted for synthesizing speech.
+For example, the majority of works leverage HiFi-GAN \cite{Kong2020_HiFiGAN} such as \cite{lee-etal-2022-textless,Popuri2022_Enahancing_SelfSupervised, Dong2022_Psudo_Labeled, diwan2024textless}, etc., as vocoder.
+Other speech synthesis models include non-autoregressive Transformer stack initialized by VQ-VAE \cite{Li2023_TextLess_Direct},  Light Convolution Blocks \cite{zhang_2022_direct_botelneck}, Non-Attentive Tacotron (NAT) \cite{shen2021nonattentive} which has duration prediction module, an LSTM module, and a residual convolutional block \cite{Jia2021}.
+Traditional estimation algorithms such as  Griffin  Lim \cite{GriffinLim} may also be used to convert the mel-spectrogram to waveform.
+To support multilingual S2ST, multilingual vocoders have been trained with language embedding and language ID as an auxiliary loss \cite{gong2023multilingual_S2ST}.
+
+#### 7.1.4·Style Adapter
+
+One of the desired characteristics of S2ST systems is that the translated speech should preserve (if need be) the original speaker's paralinguistic features, such as speaking rate, tone, intonation, etc.
+To this end, existing works insert \emph{style adapter} layer between the translator's encoder and decoder.
+\emph{Speech normalization} \cite{lee-etal-2022-textless} is one such technique to adapt to the source speaker's voice.
+The key idea is to extract discrete units from the reference speaker and then train the speech normalization module (which consists of pre-trained HuBERT  + CTC) using multi-speaker data as input and reference discrete units as targets.
+For example, Translatotron 1 uses a discriminatively pre-trained encoder on speaker verification to condition the decoder for voice preservation.
+Due to \textbf{voice cloning} issue, the aforementioned technique is unsuitable for production deployment.
+An approach to address this issue is to train on the same speaker's speech on the source and target side so that the model can transfer prosodic information at inference time \cite{Jia2021}.
+A side benefit that comes for free is that the S2ST model does not require speaker segmentation for translating multi-speaker utterances.
+Interestingly, recent S2ST models implicitly model the para-/non-linguistic characteristics during decoding  \cite{Dong2023_PolyVoice, peng2024mslms2st}.
+
+#### 7.1.5·Duration Predictor
+
+Duration predictor is a module often applied (but not always) along with the speech synthesizer.
+Its job is to predict the duration of each output element-- be it a phoneme or discrete unit, which is later converted to a waveform.
+For example, Translatotron 2 uses NAT TTS \cite{shen2021nonattentive}, which predicts the duration of each element followed by upsampling.
+However, unlike NAT, it optimizes $\mathcal{L}^2$ loss on the total duration predicted instead of \emph{per-phoneme} level which is costly to obtain.
+ TTS models like Fastspeech 2 \cite{Ren2020_FastSpeech2} have an in-built duration predictor, which has been used by \cite{Lee2022}.
+Works employing unit-to-speech conversion \cite{lee-etal-2022-textless, inaguma_2023_unity, Fang2023_DASpeech, zhu-etal-2023-diffs2ut, Shi_2023_Multiple_TTS} via HiFi-GAN TTS enhance the latter via duration prediction module from \cite{Ren2020_FastSpeech2}.
+
+### 7.2·Simultaneous (Simul-) S2ST Models
+
+The models following the offline setting consider all the input speech to be available before commencing the translation process.
+In contrast, simultaneous models initiate translation upon receiving partial input speech \cite{agrawal-etal-IWSLT-2023-findings}.
+Simul-S2ST models may borrow encoders, decoders, and vocoders used by offline models (optionally style adapter and duration predictor as well) as mentioned in the previous section.
+However, they differ in how they process and segment the speech.
+
+Simul-S2ST is an important problem; however, simultaneously enhancing \textbf{ translation quality} while reducing \textbf{ latency} presents a formidable challenge.
+The Simul-S2ST problem faces several issues in practical implementation; {\bf reordering,  acoustic ambiguity, variable speech rate, and long inputs} being prominent among them.
+One of the most important decisions in Simul-S2ST is to decide when to start the translation while balancing latency and quality.
+As such, there are \textbf{fixed} (like wait-$k$ \cite{ma-etal-2020-simulmt}) and \textbf{adaptive} policies ( like MILk, MMA \cite{Arivazhagan2019_MonotonicLookback, ma2022directMonotonicMultiHead}, etc.
+For more details on these policies, refer to \cite{Ma2019MonotonicMA}) proposed in Simul-MT and Simul-ST literature may be borrowed while designing effective and practical Simul-S2ST models.
+
+Traditional Simul-S2ST models (cascaded Simul-S2ST) have studied latency-quality trade-off under various policies \cite{zheng-etal-2020-fluent, dugan2023_when_to_speak} and find that no-single best-policy exist for all languages.
+Hence, it is recommended to tune the policy per language basis.
+The research on designing direct Simul-S2ST is severely limited.
+For example, a simultaneous policy, V-MMA (Variational Monotonic MultiHead Attention \cite{ma2022directMonotonicMultiHead}) considers every attention head as independent monotonic attention and models the alignment between the source and target sequences using latent variables instead of recurrent estimation which leads to an inferior estimate of the alignment matrix.
+ Direct Simul-S2ST using V-MMA policy, which adopts a discrete unit-based direct approach, reduces the average latency but compromises translation accuracy \cite{ma2022directMonotonicMultiHead}.
+
+### 7.3·Large Language Models (LLM)-S2ST
+
+Our third category of S2ST models is LLM-based.
+The recent success of  Generative Pre-Trained Transformers (GPT) \cite{ Openai_2018_GPT, Brown2020_GPT3,ouyang2022training_GPT} and BERT models \cite{Devlin2019_BERT} over various NLP tasks gives rise to what we know as LLMs.
+These models exhibit in-context learning (ICL) when trained on vast datasets.
+Extensive training unlocks their latent \emph{emergent abilities} \citep{Wei2022EmergentAO}, enabling them to perform few-shot and zero-shot learning through prompting.
+It alludes to using LLMs for S2ST tasks as well.
+On a high level, LLM-based S2ST works leverage speech LM, which is prompted for speech generation in a target language.
+One issue is that LLMs operate on discrete tokens, whereas speech involves continuous values and cannot be directly applied to these models.
+Several research \cite{Wu2023_SpeechGen, zhang2023speak_forign_Languages, Dong2023_PolyVoice} utilize discrete-unit speech representation of the source/target speech.
+
+The effectiveness of LLM-based S2ST lies in several strategies, such as (a) what prompt to use? (b) how to do prompt-tuning? (c) which LM to use?  Works such as \cite{Wu2023_SpeechGen} use task ID as a prompt while others \cite{ zhang2023speak_forign_Languages, peng2024mslms2st, Dong2023_PolyVoice,  gong2024seamlessexpressivelm} use source and target semantic units and source acoustic units for prompting.
+Deep prompt tuning \cite{li-liang-2021-prefix}, chain-of-thought prompting \cite{gong2024seamlessexpressivelm}
+have been explored in recent works.
+For LM, mBART \cite{Wu2023_SpeechGen}, VALL-E and its extension VALL-EX
+\cite{zhang2023speak_forign_Languages} have been the preferred choice.
+Expressive S2ST \cite{gong2024seamlessexpressivelm} claims to preserve the speaker style without relying on aligned
+speech-text data or speaker-aligned speech.
+ There are still some questions that need to be answered.
+For example, what is the best strategy for prompt design, and how to pre-train/fine-tune them parameter-efficiently for S2ST tasks? Further, the use of LLMs for Simul-MT has been recently proposed \citep{Agostinelli2023SimulLLMAF} and it remains to see how to adapt Simul-MT to Simul-S2ST.
