@@ -412,3 +412,35 @@ Expressive S2ST \cite{gong2024seamlessexpressivelm} claims to preserve the speak
 speech-text data or speaker-aligned speech.
  There are still some questions that need to be answered.
 For example, what is the best strategy for prompt design, and how to pre-train/fine-tune them parameter-efficiently for S2ST tasks? Further, the use of LLMs for Simul-MT has been recently proposed \citep{Agostinelli2023SimulLLMAF} and it remains to see how to adapt Simul-MT to Simul-S2ST.
+
+
+## 8·Training Strategies
+
+Training of E2E S2ST, in general, follows the training of DL models \cite{DBLP:journals/corr/abs-1206-5533}.
+Pre-training, self-supervised, unsupervised, and weakly supervised training approaches are primarily used to solve data scarcity as mentioned in \S \ref{datapaucity}.
+Therefore, we split our discussion on training based on the availability of \emph{external data}.
+
+### 8.1·Training with External Data
+
+Training of direct S2ST models optimizes the negative conditional log-likelihood as given in \eqref{nll}.
+However, there are cases when external sources and/or target transcripts are available along with target speech.
+Therefore, a natural question arises on how to leverage such external data.
+
+As depicted in Fig.\ref{fig:GenericDirectS2ST}, the architecture includes both an encoder and a decoder auxiliary task and is supervised by available labeled transcripts.
+Different sub-tasks are optimized simultaneously employing the E2E training approach \cite{Prabhavalkar2023_ASR_Survey, Tampuu2020_End-to-End_Driving}.
+Training with external data often invariably uses \textbf{Multitask Learning} (MTL) and is employed for \textbf{high-resource written} languages that have abundant text and/or speech data.
+
+Several studies such as \citet{Jia2019, Jia2021, Kano2020_Transcoding, le2024transvip} employ MTL to propose the direct S2ST system.
+For example, Translatotron \cite{Jia2019} is the first direct S2ST model trained with two different setups: one with an MTL approach employing textual supervision using an auxiliary network of decoders that predict phonemes and the other without MTL.
+However, Translatotron's performance is significantly poor without MTL.
+
+There are several issues present in Translatotron \cite{Jia2019} such as: (1) Auxiliary tasks for textual supervision are underutilized, as the learnings from auxiliary attention are not fully transferred to the main module, (2) the model faces difficulty mapping lengthy source speech spectrograms to target spectrograms, (3) over generation and under generation problem due to attention mechanism \cite{Ren2019_FastSpeech, Zheng_2019_E2E_TTS, Shen_2020_RobustControlled_TTS}.
+The existing bottlenecks are mitigated through architectural changes in Translatotron2 \cite{Jia2021} with four sub-modules.
+The single attention mechanism, based on Transformer \cite{Vaswani2017_Attention} alleviates the issue of lengthy spectrogram sequences by aligning them with shorter-length phonemes.
+Additionally, a Non-Attentive Tacotron (NAT) \cite{shen2021nonattentive} based TTS is employed to mitigate problems of over-generation and under-generation.
+Several models following the above architecture also use unsupervised data using techniques such as pre-training, BT, self-training, and pseudo-labeling to improve the performance of models \cite{Dong2022_Psudo_Labeled, Jia2022_Leveraging, nachmani_2023_translatotron3}.
+
+### 8.2·Training w/o External Data aka Textless Training
+
+Compared to high-resource written languages, low-resource unwritten languages lack transcripts. For these languages, recent efforts in direct S2ST modeling propose \emph{textless} training. One approach is to train the model on speech spectrograms, but this method struggles to learn generalized patterns without text. Alternatively, textless training can use self-supervised (e.g., HuBERT) or unsupervised (e.g., VQ-VAE) discrete unit speech encoders.  This encoder converts continuous speech into discrete tokens (similar to text), enabling the application of textual NLP tools to speech.
+For example, The textless model in \cite{Zhang2021_UWSpeech}  comprises three modules: converter, translator, and inverter. The converter transforms target speech into discrete units, the translator translates source speech into target discrete units, and the inverter inverts the predicted discrete units back into a speech waveform. Target discrete units enable the model to use the cross-entropy loss for model optimization. This architecture is beneficial for untranscribed languages \cite{Tjandra_2019_untranscribe, Zhang2021_UWSpeech,lee-etal-2022-textless, Huang2022_TranSpeech} or speech datasets without labelled transcripts \cite{Huang2022_TranSpeech, Lee2022}. The process of acquiring phonetic knowledge from languages that share syntactic similarities and have a written form might aid in learning representations for unwritten languages \cite{yallop2007_phonetics_phonology, Kuhl2008_phonetics_learning}. Nevertheless, the extent to which this assistance proves effective depends on the degree of similarity between the languages. Hence, leveraging the benefits of related languages with writing systems, XL-VAE \cite{Zhang2021_UWSpeech} is trained in a supervised manner by using phonemes from the related language as targets.
