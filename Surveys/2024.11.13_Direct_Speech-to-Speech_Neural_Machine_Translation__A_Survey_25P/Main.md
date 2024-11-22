@@ -70,7 +70,48 @@ The performance metrics are presented in \S\ref{metrics} while \S\ref{repr} eluc
 Models and training strategies are discussed in \S\ref{sec:direct_s2st} and \S\ref{trainstr}, respectively.
 Application issues are discussed in \S\ref{application},  experiments in \S\ref{experiment}, challenges in \S\ref{challenges}, and finally concluded in \S\ref{challenges}.
 
-## 2·Related Works: 相关工作
+## 2·Task Definition: 任务定义
+
+Given a parallel speech corpus, denoted as $\mathcal{D}=\{(x_i,y_i)\}_{i=1}^n$.
+In this context, $x=\{f^s_1,\ldots, f^s_k\}$ and $y=\{f^t_1,\ldots, f^t_l\}$ represents the source and target speech utterances, respectively.
+Here, $f^s$ and $f^t$ refer to the source and target speech frames, and $k$ and $l$ represent utterance length in frames, respectively.
+The objective of direct S2ST models is to maximize the conditional probability $\mathcal{P}(y|x;\theta)$ as in \eqref{condobj} or minimize the negative log-likelihood loss \eqref{nll}.
+
+$$
+  \mathcal{P}(y|x;\theta)=\overset{k}{\underset{T=1}{\prod}}\mathcal{P}(f^t_T|f^t_{<T},x;\theta)
+$$
+
+$$
+  \mathcal{L}_{(x,y)\in D}=-\overset{n}{\underset{i=1}{\sum}} \log \mathcal{P}(y_i|x_i;\theta)
+$$
+
+where $\mathcal{L}_{(x,y)\in D}$ is the cumulative loss on the dataset $D$ and $\theta$ is a model parameter.
+Note that the problem formulation given in \eqref{condobj} is for \emph{Autoregressive} (AR) models \footnote{Non-autoregressive (NAR) models are an alternative modeling approach that have been proposed in the past few years.
+Only a sparse number of works exist in the literature on S2ST where they use NAR in decoders of encoder-decoder frameworks.
+We discuss NAR briefly in \S \ref{decoderarch}}
+
+On the other hand, cascade models have access to source transcripts denoted as a sequence of tokens (words) $w^s= \{w^s_1, \ldots, w^s_p\}$,  and the target transcript as a sequence of tokens, represented as  $w^t = \{w^t_1, \ldots, w^t_q\}$.
+In the 3-stage cascade model, the optimization objectives are as follows:
+
+$$
+  \mathcal{L}_{asr}=-\overset{n}{\underset{i=1}{\sum}} \log \mathcal{P}(w^s_i|x_i;\theta^{asr})
+$$
+
+$$
+  \mathcal{L}_{mt}=-\overset{n}{\underset{i=1}{\sum}} \log \mathcal{P}(w^t_i|w^s_i;\theta^{mt})
+$$
+
+$$
+  \mathcal{L}_{tts}=-\overset{n}{\underset{i=1}{\sum}} \log \mathcal{P}(f^t_i|w^t_i;\theta^{tts})
+$$
+
+$$
+  \mathcal{L}_{st}=-\overset{n}{\underset{i=1}{\sum}} \log \mathcal{P}(w^t_i|x_i;\theta^{st})
+$$
+
+A 3-stage cascade model is built by independently minimizing the losses in \eqref{eq:asr_loss}, \eqref{eq:mt_loss}, and \eqref{eq:tts_loss}.
+A direct E2E ST model \cite{Berard2018_Audiobook, Kano2020} optimizes the loss in \eqref{eq:st_loss} (may also use losses in \eqref{eq:asr_loss}, \eqref{eq:mt_loss} in a multitask setup).
+This ST model is combined with the TTS model to form a 2-stage cascade S2ST model.
 
 ## 3·Methodology: 方法
 
