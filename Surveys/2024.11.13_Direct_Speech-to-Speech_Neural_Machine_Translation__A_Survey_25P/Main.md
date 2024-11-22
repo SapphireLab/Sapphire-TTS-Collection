@@ -442,18 +442,52 @@ Several models following the above architecture also use unsupervised data using
 
 ### 8.2·Training w/o External Data aka Textless Training
 
-Compared to high-resource written languages, low-resource unwritten languages lack transcripts. For these languages, recent efforts in direct S2ST modeling propose \emph{textless} training. One approach is to train the model on speech spectrograms, but this method struggles to learn generalized patterns without text. Alternatively, textless training can use self-supervised (e.g., HuBERT) or unsupervised (e.g., VQ-VAE) discrete unit speech encoders.  This encoder converts continuous speech into discrete tokens (similar to text), enabling the application of textual NLP tools to speech.
-For example, The textless model in \cite{Zhang2021_UWSpeech}  comprises three modules: converter, translator, and inverter. The converter transforms target speech into discrete units, the translator translates source speech into target discrete units, and the inverter inverts the predicted discrete units back into a speech waveform. Target discrete units enable the model to use the cross-entropy loss for model optimization. This architecture is beneficial for untranscribed languages \cite{Tjandra_2019_untranscribe, Zhang2021_UWSpeech,lee-etal-2022-textless, Huang2022_TranSpeech} or speech datasets without labelled transcripts \cite{Huang2022_TranSpeech, Lee2022}. The process of acquiring phonetic knowledge from languages that share syntactic similarities and have a written form might aid in learning representations for unwritten languages \cite{yallop2007_phonetics_phonology, Kuhl2008_phonetics_learning}. Nevertheless, the extent to which this assistance proves effective depends on the degree of similarity between the languages. Hence, leveraging the benefits of related languages with writing systems, XL-VAE \cite{Zhang2021_UWSpeech} is trained in a supervised manner by using phonemes from the related language as targets.
+Compared to high-resource written languages, low-resource unwritten languages lack transcripts.
+For these languages, recent efforts in direct S2ST modeling propose \emph{textless} training.
+One approach is to train the model on speech spectrograms, but this method struggles to learn generalized patterns without text.
+Alternatively, textless training can use self-supervised (e.g., HuBERT) or unsupervised (e.g., VQ-VAE) discrete unit speech encoders.
+This encoder converts continuous speech into discrete tokens (similar to text), enabling the application of textual NLP tools to speech.
+For example, The textless model in \cite{Zhang2021_UWSpeech}  comprises three modules: converter, translator, and inverter.
+The converter transforms target speech into discrete units, the translator translates source speech into target discrete units, and the inverter inverts the predicted discrete units back into a speech waveform.
+Target discrete units enable the model to use the cross-entropy loss for model optimization.
+This architecture is beneficial for untranscribed languages \cite{Tjandra_2019_untranscribe, Zhang2021_UWSpeech,lee-etal-2022-textless, Huang2022_TranSpeech} or speech datasets without labelled transcripts \cite{Huang2022_TranSpeech, Lee2022}.
+The process of acquiring phonetic knowledge from languages that share syntactic similarities and have a written form might aid in learning representations for unwritten languages \cite{yallop2007_phonetics_phonology, Kuhl2008_phonetics_learning}.
+Nevertheless, the extent to which this assistance proves effective depends on the degree of similarity between the languages.
+Hence, leveraging the benefits of related languages with writing systems, XL-VAE \cite{Zhang2021_UWSpeech} is trained in a supervised manner by using phonemes from the related language as targets.
 
 ## 9·Applications issues
 
-Offline direct S2ST models find applications in the dubbing of movies and lectures. When deploying direct S2ST models for such applications, several things to be kept in mind. Firstly, getting a clean speech from a real-world environment is a challenging task. Cross-talk, noise, and background music removal must be done. Secondly, the challenge lies in handling various accents while translating, and voice preservation should be taken care of. The third important requirement of dubbing is {\bf isochrony}, i.e. dubbed speech has to closely match the timing of speech and pauses of the original audio. Inserting pauses, handling verbosity, and prosodic alignment are a few techniques to achieve isochrony. On the other hand, Simul-S2ST is more practical for real-world dubbing. Contrary to offline S2ST, these models require latency-quality handled in a better way along with isochrony.
+Offline direct S2ST models find applications in the dubbing of movies and lectures.
+When deploying direct S2ST models for such applications, several things to be kept in mind.
+Firstly, getting a clean speech from a real-world environment is a challenging task.
+Cross-talk, noise, and background music removal must be done.
+Secondly, the challenge lies in handling various accents while translating, and voice preservation should be taken care of.
+The third important requirement of dubbing is {\bf isochrony}, i.e.
+dubbed speech has to closely match the timing of speech and pauses of the original audio.
+Inserting pauses, handling verbosity, and prosodic alignment are a few techniques to achieve isochrony.
+On the other hand, Simul-S2ST is more practical for real-world dubbing.
+Contrary to offline S2ST, these models require latency-quality handled in a better way along with isochrony.
 
 ## 10·Experimental Results and Discussion
 
-Table \ref{tab:performance_table} compares the performance of cascade and direct S2ST models from various studies. Results show a significant performance gap in BLEU scores between textless direct models without external data and cascade models (ID:1-4). The discrete unit-based Translatotron 2 \cite{Li2023_TextLess_Direct} outperforms other direct and cascade models in the Fisher Es$\rightarrow$En group (ID:5-10). \emph{UnitY} \cite{inaguma_2023_unity}, with dual decoders, surpasses all counterparts in its datasets and language directions and demonstrates performance comparable to cascade models (ID:14, 21, 26, 33). Utilizing text data through MTL and external data via pre-training benefits models \cite{Jia2019, Popuri2022_Enahancing_SelfSupervised, Lee2022}. Models with dual decoders outperform single-decoder models \cite{Jia2021, inaguma_2023_unity, Li2023_TextLess_Direct}. The MOS of direct models is slightly lower than cascade models perhaps due to training with synthesized target speech (ID:5-7,11,12), limiting their scores. MOS also depends on vocoder performance; lower translation quality negatively impacts MOS ratings \cite{Jia2019}. Using natural speech in the target can surpass the MOS of cascade models (ID:18, 24). Table \ref{tab:performance_Simul_LLM} shows results for Simultaneous and LLM-based models, though limited literature and no common comparison ground exist.
+Table \ref{tab:performance_table} compares the performance of cascade and direct S2ST models from various studies.
+Results show a significant performance gap in BLEU scores between textless direct models without external data and cascade models (ID:1-4).
+The discrete unit-based Translatotron 2 \cite{Li2023_TextLess_Direct} outperforms other direct and cascade models in the Fisher Es$\rightarrow$En group (ID:5-10).
+\emph{UnitY} \cite{inaguma_2023_unity}, with dual decoders, surpasses all counterparts in its datasets and language directions and demonstrates performance comparable to cascade models (ID:14, 21, 26, 33).
+Utilizing text data through MTL and external data via pre-training benefits models \cite{Jia2019, Popuri2022_Enahancing_SelfSupervised, Lee2022}.
+Models with dual decoders outperform single-decoder models \cite{Jia2021, inaguma_2023_unity, Li2023_TextLess_Direct}.
+The MOS of direct models is slightly lower than cascade models perhaps due to training with synthesized target speech (ID:5-7,11,12), limiting their scores.
+MOS also depends on vocoder performance; lower translation quality negatively impacts MOS ratings \cite{Jia2019}.
+Using natural speech in the target can surpass the MOS of cascade models (ID:18, 24).
+Table \ref{tab:performance_Simul_LLM} shows results for Simultaneous and LLM-based models, though limited literature and no common comparison ground exist.
 
-A standard dataset and language pair are necessary to compare the models fairly. Therefore, we implemented some existing models on the Es$\rightarrow$En language pair of the CVSS-C dataset, as shown in Table \ref{Experiment_result}, acknowledging that only some models are implemented due to code reproducibility issues and limited computing resources. The Fairseq library \cite{ott-etal-2019-fairseq} is used on a single NVIDIA Quadro GV100 GPU machine. The models (ID: 42-48) are trained from scratch with the provided hyperparameter settings. The results indicate that the performance of the direct model is deficient without MTL (ID: 45). However, when textual supervision is introduced through MTL, the performance of the discrete unit-based model \cite{Lee2022} shows significant improvement (ID: 46), while the spectrogram-based model \cite{Jia2019} still struggles with the provided amount of data (ID: 46). The model by \citet{Popuri2022_Enahancing_SelfSupervised}, which uses a pre-trained encoder and decoder and fine-tunes on CVSS-C dataset, outperforms all models trained without pre-training (ID: 49-52) and also outperforms the cascade 2-stage models, but falls short compared to the cascade 3-stage model.
+A standard dataset and language pair are necessary to compare the models fairly.
+Therefore, we implemented some existing models on the Es$\rightarrow$En language pair of the CVSS-C dataset, as shown in Table \ref{Experiment_result}, acknowledging that only some models are implemented due to code reproducibility issues and limited computing resources.
+The Fairseq library \cite{ott-etal-2019-fairseq} is used on a single NVIDIA Quadro GV100 GPU machine.
+The models (ID: 42-48) are trained from scratch with the provided hyperparameter settings.
+The results indicate that the performance of the direct model is deficient without MTL (ID: 45).
+However, when textual supervision is introduced through MTL, the performance of the discrete unit-based model \cite{Lee2022} shows significant improvement (ID: 46), while the spectrogram-based model \cite{Jia2019} still struggles with the provided amount of data (ID: 46).
+The model by \citet{Popuri2022_Enahancing_SelfSupervised}, which uses a pre-trained encoder and decoder and fine-tunes on CVSS-C dataset, outperforms all models trained without pre-training (ID: 49-52) and also outperforms the cascade 2-stage models, but falls short compared to the cascade 3-stage model.
 
 ## 11·Research Challenges and Future Directions
 
@@ -461,37 +495,63 @@ This section highlights challenges that may be explored by researchers working o
 
 ### 11.1·Cascade vs End-to-End S2ST Models
 
-As discussed in \S \ref{cascadevse2e}, there has been limited empirical study comparing the cascade and E2E S2ST models. Furthermore, to our knowledge, no thorough assessment has been done for low-resource languages using E2E and cascade models. It may be interesting to compare E2E and cascade S2ST models on various S2ST datasets, particularly for low-resource and unwritten languages.
+As discussed in \S \ref{cascadevse2e}, there has been limited empirical study comparing the cascade and E2E S2ST models.
+Furthermore, to our knowledge, no thorough assessment has been done for low-resource languages using E2E and cascade models.
+It may be interesting to compare E2E and cascade S2ST models on various S2ST datasets, particularly for low-resource and unwritten languages.
 
 ### 11.2·S2ST on Code-Mix data
 
-Our literature review reveals a gap in research regarding the S2ST model applied to code-mix data. Code-mix data presents challenges like diverse lexicons, syntax variations, and a lack of labeled data. Hence, exploring the following questions would be intriguing: (a) Developing Code-mix S2ST datasets encompassing additional languages, (b) Evaluating the performance of current S2ST models on Code-mix S2ST data, and (c) Investigating whether pre-training across multiple languages aids in addressing code-mixing challenges.
+Our literature review reveals a gap in research regarding the S2ST model applied to code-mix data.
+Code-mix data presents challenges like diverse lexicons, syntax variations, and a lack of labeled data.
+Hence, exploring the following questions would be intriguing: (a) Developing Code-mix S2ST datasets encompassing additional languages, (b) Evaluating the performance of current S2ST models on Code-mix S2ST data, and (c) Investigating whether pre-training across multiple languages aids in addressing code-mixing challenges.
 
 ### 11.3·Discrepancy between Automatic and Human Evaluation
 
-Current S2ST systems are evaluated by conducting ASR on the generated waveform and comparing it to the ground truth target text. Errors in ASR can impede evaluation via BLEU. As emphasized in \citep{marie-etal-2021-scientific}, the BLEU score is reported by more than 99\% of MT papers without considering statistical significance testing or human evaluation. Our examination of S2ST papers indicates a similar trend. The development of metrics that directly compare and evaluate source and target speech utterances without resorting to textual analysis remains an open challenge.
+Current S2ST systems are evaluated by conducting ASR on the generated waveform and comparing it to the ground truth target text.
+Errors in ASR can impede evaluation via BLEU.
+As emphasized in \citep{marie-etal-2021-scientific}, the BLEU score is reported by more than 99\% of MT papers without considering statistical significance testing or human evaluation.
+Our examination of S2ST papers indicates a similar trend.
+The development of metrics that directly compare and evaluate source and target speech utterances without resorting to textual analysis remains an open challenge.
 
 ### 11.4·Multiple Speakers and Noise Handling
 
-In real-world scenarios, audio or video often feature multiple speakers in a noisy environment, each potentially with their accent, dialect, pitch, and tone. Conducting \emph{speech separation} beforehand could prove beneficial before inputting the data into the S2ST. Similarly, factors such as ambient noise, background music, cross-talk, and non-verbal sounds can pose challenges for S2ST model training. Distinguishing between meaningful speech and ambient noise presents a non-trivial task for the model.
+In real-world scenarios, audio or video often feature multiple speakers in a noisy environment, each potentially with their accent, dialect, pitch, and tone.
+Conducting \emph{speech separation} beforehand could prove beneficial before inputting the data into the S2ST.
+Similarly, factors such as ambient noise, background music, cross-talk, and non-verbal sounds can pose challenges for S2ST model training.
+Distinguishing between meaningful speech and ambient noise presents a non-trivial task for the model.
 
 ### 11.5·Multilingual and Simultaneous S2ST
 
-The recent surge in interest in multilingual S2ST is driven by its significance in real-world applications. For instance, a single speech may need to be delivered to multilingual communities, such as during a conference attended by a diverse audience. Multilingual S2ST can encompass various scenarios, including one-to-many, many-to-one, and many-to-many language translations. However, our literature review indicates a scarcity of research in this area. Moreover, there is an opportunity to explore simultaneous multilingual S2ST\footnote{In May 2024, Microsoft launched such a service in their Azure product.}, representing the most practical setting.
+The recent surge in interest in multilingual S2ST is driven by its significance in real-world applications.
+For instance, a single speech may need to be delivered to multilingual communities, such as during a conference attended by a diverse audience.
+Multilingual S2ST can encompass various scenarios, including one-to-many, many-to-one, and many-to-many language translations.
+However, our literature review indicates a scarcity of research in this area.
+Moreover, there is an opportunity to explore simultaneous multilingual S2ST\footnote{In May 2024, Microsoft launched such a service in their Azure product.}, representing the most practical setting.
 
 ### 11.6·Low-resource S2ST Datasets and Models
 
-Most current research efforts have concentrated on constructing S2ST models and datasets for languages with ample resources. However, given that the effectiveness of S2ST models hinges on parallel speech-to-speech corpora, there is a need for greater emphasis on developing datasets for low-resource languages. Thus, there is merit in constructing models that can transfer learning from language pairs with abundant resources to those with limited resources.
+Most current research efforts have concentrated on constructing S2ST models and datasets for languages with ample resources.
+However, given that the effectiveness of S2ST models hinges on parallel speech-to-speech corpora, there is a need for greater emphasis on developing datasets for low-resource languages.
+Thus, there is merit in constructing models that can transfer learning from language pairs with abundant resources to those with limited resources.
 
 ### 11.7·Voice Cloning
 
-The true challenge for direct models lies in attaining both lower latency and higher translation quality to fulfill real-time usage requirements. Simultaneously preserving the authenticity of the voice presents a challenge, as it is essential to guard against the misuse of voice cloning.
+The true challenge for direct models lies in attaining both lower latency and higher translation quality to fulfill real-time usage requirements.
+Simultaneously preserving the authenticity of the voice presents a challenge, as it is essential to guard against the misuse of voice cloning.
 A hybrid model design combining discrete units and spectrograms can acquire linguistic and para-linguistic features, thereby enhancing translation quality, naturalness, and voice preservation.
 
 ### 11.8·Faster Token Generation
 
-Many direct models primarily rely on autoregressive models as their sub-modules, in which the current output depends on previous inputs, resulting in a high degree of input dependency. Decreasing the number of modules or layers is essential to reduce the average latency of direct S2ST models. Moreover, shifting the focus from autoregressive models to non-autoregressive models is advisable. This shift in focus is crucial for enabling real-time usage scenarios.
+Many direct models primarily rely on autoregressive models as their sub-modules, in which the current output depends on previous inputs, resulting in a high degree of input dependency.
+Decreasing the number of modules or layers is essential to reduce the average latency of direct S2ST models.
+Moreover, shifting the focus from autoregressive models to non-autoregressive models is advisable.
+This shift in focus is crucial for enabling real-time usage scenarios.
 
 ## 12·Conclusion
 
-We present a comprehensive survey of direct S2ST models. In particular, we discussed the comparison of E2E and cascade models, data scarcity, representation, and segmentation issues in S2ST modeling. A bird-eye view of architectures of offline, simultaneous, and LLM-based S2ST models is discussed in detail. We also offer training strategies and application issues that may be beneficial to industry practitioners. Finally, we enumerate a list of open problems and challenges that remain to be solved. Thus, we hope that the review will be a torch-bearer for someone starting their work in the S2ST domain.
+We present a comprehensive survey of direct S2ST models.
+In particular, we discussed the comparison of E2E and cascade models, data scarcity, representation, and segmentation issues in S2ST modeling.
+A bird-eye view of architectures of offline, simultaneous, and LLM-based S2ST models is discussed in detail.
+We also offer training strategies and application issues that may be beneficial to industry practitioners.
+Finally, we enumerate a list of open problems and challenges that remain to be solved.
+Thus, we hope that the review will be a torch-bearer for someone starting their work in the S2ST domain.
