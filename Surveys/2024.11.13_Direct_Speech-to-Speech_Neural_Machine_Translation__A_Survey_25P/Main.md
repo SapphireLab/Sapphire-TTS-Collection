@@ -244,4 +244,44 @@ It is warranted that S2ST models are evaluated holistically using objective and 
 Further, the development of more effective textless S2ST quality metrics
 is recommended.
 
-## 6·Conclusions: 结论
+## 6·Segmentation & Representation Learning: 分割与表示学习
+
+S2ST models essentially take speech and optionally take text as inputs.
+Before we can train E2E S2ST models, we need to segment the speech and text followed by how to learn their representations.
+
+Handling long speech and text sequences is a challenging task \cite{kim2017joint, Tsiamas2022SHASAO}.
+The following section discusses segmentation and representation learning related to speech and text.
+
+### 6.1·Segmentation Learning: 分割学习
+
+Breaking down text into segments is a simpler task--it involves splitting based on robust punctuation marks used by current MT models.
+E2E S2ST models necessitate intricate speech segmentation, primarily because of the significant role played by the \emph{out-of-order} word relationships between input and output, alongside the absence of linguistic features.
+Traditionally, manual segmentation has been the norm for speech processing.
+However, due to its labor-intensive nature, there is a growing need for segmentation learning.
+Speech segmentation typically relies on either fixed-length splits which split the speech at fixed lengths, sometimes randomly \cite{Huang2022_TranSpeech} or \emph{pause} which splits the speech on Voice Activity Detection (VAD), as outlined by  \citet{Sohn1999ASM}.
+A third method, the \emph{hybrid} approach, integrates both length and linguistic cues for segmentation, as discussed by  \cite{Potapczyk2020SRPOLsSF, Gaido2021BeyondVA, Tsiamas2022SHASAO}.
+Notably, the hybrid approach demonstrates superior performance compared to length and pause-based methods \citep{Gaido2021BeyondVA}.
+However, there is still a gap in the hybrid and manual approaches to segmentation, and future work may consider paying attention to this.
+
+### 6.2·Representation Learning: 表示学习
+
+Representation learning is an important issue in S2ST because speech in two different languages are two different modalities that may reside in different representation spaces.
+Hence, we not only need better representation learning methods for speech and text but also their joint representation learning.
+
+Existing works leveraging text data for S2ST modeling utilize LSTM \cite{Kano2021_Transformer}, Transformers \cite{Lee2022}, etc.
+for representation learning.
+As the current trend is towards building \emph{textless} models, more recent works focus on learning efficient speech representations.
+Among them, the popular choices are \emph{raw waveform, spectrogram-based, unsupervised ASR}, and \emph{discrete-units based}.
+The raw waveform is the use of raw speech signal directly fed to the Sequence-to-Sequence (Seq2Seq) model and has been utilized by \cite{wang2023speechtospeech, KimLCL24}, inter alia.
+Mel-Filter Cepstral Coefficient (MFCC) feature, a spectrogram-based method, has been one of the most used speech representation methods \cite{Jia2019, jia2019leveraging_S2T, Tjandra_2019_untranscribe, Kano2021_Transformer, Lee2022, Huang2022_TranSpeech, Chen2023}, etc.
+where 80-dimension mel-spectrogram is computed.
+
+Obtaining a substantial volume of labeled speech data for supervised feature representation learning poses significant challenges.
+Consequently, recent studies have turned to leveraging speech features acquired through \emph{unsupervised} and \emph{self-supervised}  methods.
+These approaches involve mapping continuous speech signals into discrete units-- akin to words and sub-words in the text domain.
+Such representations enable the integration of NLP tools into the speech domain.
+Among them, the popular choices are Wav2Vec \citep{schneider2019wav2vec} and its variants such as w2v-BERT \citep{Chung2021_w2V-BERT, Jia2022_Leveraging} and Wav2Vec 2.0 \citep{baevski2020_wav2vec2.0, Chen2022, song_2023_styles2st} and Hidden-Units BERT (HuBERT) \citep{hsu2021hubert}.
+What makes these representation methods take over the MFCC is that they can extract \emph{semantic-units}.
+Hence recent S2ST models invariably exploit HuBERT \cite{Huang2022_TranSpeech, wang2023speechtospeech, diwan2024textless, peng2024mslms2st, kaur2024direct} for semantic-unit discrete representation.
+ HuBERT utilizes a self-supervised approach to representation learning through masked prediction and employs $k$-means clustering to convert speech into discrete units \cite{Hsu_2021_HuBERT}.
+ Vector Quantized Variational Autoencoder (VQ-VAE) is another popular discrete unit representation model employing unsupervised speech representational learning \cite{Van_Oord_2017_VQ-VAE}.
