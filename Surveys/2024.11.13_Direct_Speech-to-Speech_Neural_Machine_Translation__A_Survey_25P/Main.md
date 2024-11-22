@@ -56,7 +56,8 @@ Nonetheless, the cascade models have been the de-facto choice for S2ST for a lon
 However, they are being challenged by direct S2ST models in recent years owing to error propagation, higher training time, and memory cost of cascade models (refer to \S \ref{cascadevse2e} for more).
 
 Direct S2ST models translate source speech into target speech without using intermediate text representation.
-They are being popularised by the possibility of learning paralinguistic and non-linguistic features, including speaking style, emotions, energy, prosody, etc. \cite{Jia2019, Jia2021, Lee2022}.
+They are being popularised by the possibility of learning paralinguistic and non-linguistic features, including speaking style, emotions, energy, prosody, etc.
+\cite{Jia2019, Jia2021, Lee2022}.
 Languages without a writing system, often called unwritten languages, constitute 40\% of all languages \cite{lee-etal-2022-textless}.
 Text-based model training is not feasible for these languages.
 The direct S2ST models can potentially address the challenge posed by unwritten languages \cite{Tjandra_2019_untranscribe, Zhang2021_UWSpeech, lee-etal-2022-textless}.
@@ -113,7 +114,23 @@ A 3-stage cascade model is built by independently minimizing the losses in \eqre
 A direct E2E ST model \cite{Berard2018_Audiobook, Kano2020} optimizes the loss in \eqref{eq:st_loss} (may also use losses in \eqref{eq:asr_loss}, \eqref{eq:mt_loss} in a multitask setup).
 This ST model is combined with the TTS model to form a 2-stage cascade S2ST model.
 
-## 3·Methodology: 方法
+## 3·Cascade vs End-to-End S2ST models: 级联模型与端到端模型
+
+The traditional S2ST systems follow a cascade architecture \cite{Laive_1997, Ney_1999_ST, Nakamura2006, Wahlster2000_Verbmobli}.
+They are designed either by chaining ASR, MT, and TTS or ST followed by TTS as illustrated in Figure \ref{fig:S2ST_Cascade_Vs_Direct} (i) and (ii) respectively.
+Either way, the cascade system relies on intermediate text.
+As such, they face several issues in modeling S2ST effectively.
+Firstly, they face challenges when dealing with low-resource languages lacking annotated corpora or unwritten languages \cite{Chen2022}.
+Secondly, paralinguistic features such as prosody, intonation, emotions, etc.
+are lost when representing speech via intermediate text, quintessential for building a real-world S2ST system.
+Thirdly, error propagation from one module to another \cite{Jia2019}, higher training time \cite{Huang2022_TranSpeech}, and memory footprint (due to 3 models vs 1 in direct S2ST) prohibit their application to low-powered devices.
+
+The above issues with cascade systems catapulted the development of direct S2ST systems bypassing the intermediate text generation, reducing training time and memory cost.
+There has been a lot of work developing direct S2ST models \cite{Jia2019, Jia2021, jia-etal-2022-cvss, Huang2022_TranSpeech, diwan2024textless}, etc.
+Therefore, it is imperative to compare cascade and direct models on quantitative and qualitative metrics (discussed in \S \ref{metrics}).
+Our literature survey reveals that there was a performance gap between cascade and direct models (both in terms of BLEU and mean opinion score (MOS)) \cite{Jia2019, Jia2021, lee-etal-2022-textless, zhu-etal-2023-diffs2ut, Huang2022_TranSpeech} which is now almost closed \cite{Chen2022, peng2024mslms2st}.
+These studies, however, are done on limited language pairs and may not generalize.
+Therefore, it remains to see an exhaustive comparison over multiple and distant language pairs involving large-scale datasets to truly establish the claim that the performance gap is indeed closed.
 
 ## 4·Experiments: 实验
 
