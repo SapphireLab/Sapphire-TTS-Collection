@@ -197,6 +197,51 @@ Sentence embedding serves to cluster similar sentences closely together within t
 Similarly, for speech mining, multilingual fixed-length speech embedding is employed to represent the variable-length speech utterances.
 Speech mining has been used by a few works such as \citet{Duquenne_2021_Speech_Mining} where they utilize a teacher-student approach to train the multilingual speech embedding, which produces speech representations that are compatible with the output of text embedding layer.
 
-## 5·Results: 结果
+## 5·Performance Parameters & Metrics: 性能参数与指标
+
+Offline S2ST systems are evaluated using Various text-based metrics such as BLEU \cite{papineni-etal-2002-bleu}, ScareBLEU \cite{Post2018_scareBLEU}, BLEURT \cite{Sellam2020_BLEURT}, COMET \cite{Rei2020_COMET, Rei2022_COMET-22}, and chrF \cite{Popovic_2015_chrF} are employed to measure the quality of translated speech.
+These metrics are used after transcribing the speech through ASR due to the absence of direct evaluation metrics.
+These metrics depend on the performance of ASR models, and they also pose challenges for low-resource and unwritten languages.
+This is primarily due to either the unavailability of ASR systems or the existence of poor-quality models \cite{Salesky2021}.
+Recently, \citet{Chen2023_BLASER} introduced a metric called \textbf{BLASER}\footnote{Balanced Accuracy for Speech Evaluation by Recognition}, which is a text-free S2ST quality metric.
+BLASER takes source, reference, and generated speeches, embeds them to a common representation space via a shared encoder, and finally computes a score via a neural regressor.
+Formally, \emph{unsupervised} BLASER score is given below.
+
+$$
+  \text{BLASER}_U = \frac{cos(h_{src}, h_{mt})+cos(h_{mt},h_{ref})}{2}
+$$
+
+where cos(·, ·) is the cosine similarity function, $h_{src}, h_{mt}$, and $h_{ref}$ are the source, generated, and reference speech representations, respectively.
+
+There is also a supervised BLASER score proposed \cite{Chen2023_BLASER}.
+
+### Naturalness
+
+Naturalness measures how closely synthesized speech resembles natural speech.
+This is measured by a human-based subjective metric known as \textbf{MOS} (Mean Opinion Score).
+It is a numerical measure that represents the average subjective rating given by human listeners to the quality of a speech signal.
+MOS provides a simple and intuitive measure of speech quality that correlates well with human perception.
+Though MOS is widely used for speech quality, it has a few limitations such as subjective evaluation, bias, limited sample size,  time, and cost.
+Therefore, it is recommended also to report some \emph{objective} metrics along with MOS, especially those that capture the perception of speech quality.
+For example, the Perceptual Evaluation of Speech Quality (PESQ) \cite{rix2001perceptual}, its extension Perceptual Objective Listening Quality Analysis  (POLQA) \cite{beerends2013perceptual}, Short-Time Objective Intelligibility (STOI) \cite{taal2011algorithm} are a few objective algorithms designed to predict the perceived quality of speech as heard by human listeners.
+
+### Voice-preservation
+
+Voice-preservation measures the extent to which predicted speech is similar to a particular speaker's voice.
+It can be calculated using metrics for evaluating voice cloning.
+Measuring voice cloning involves a combination of subjective and objective methods to evaluate various aspects of the cloned voice, such as its similarity to the original voice (via speaker embedding similarity as done in \cite{Dong2023_PolyVoice}), naturalness, intelligibility, and acoustic properties.
+
+Simultaneous S2ST (Simul-S2ST) systems are evaluated using quality-based metrics for offline S2ST models along with \textbf{latency} metrics.
+Calculating the latency of the offline S2ST is straightforward: It is equal to the time elapsed in starting to produce the output from the decoder.
+For Simul-S2ST, calculating the average latency poses a significant challenge since it sees only the partial input.
+Due to the absence of such metrics, simultaneous text-to-text (Simul-T2T) latency metrics such as AP (average proportion) \cite{cho2016neural_AP} and AL (Average Lagging) \cite{ma-etal-2019-stacl_AL} are used as proxy.
+AL is further adapted for the Simul-S2T task \cite{Ren2020_SimulSpeech}, which is also used for the Simul-S2ST task with the help of ASR due to the non-availability of direct metrics.
+
+### Discussion
+
+Current practice in S2ST works is that authors report only text-based quality metrics ignoring objective and subjective metrics as described in this section.
+It is warranted that S2ST models are evaluated holistically using objective and subjective metrics as well.
+Further, the development of more effective textless S2ST quality metrics
+is recommended.
 
 ## 6·Conclusions: 结论
