@@ -162,7 +162,7 @@ Although dGSLM lacks integration with LLMs and even basic textual intelligence, 
 Following the release of [dGSLM [157]](../../Models/SpeechLM/2022.03.30_dGSLM.md), the progress in the domain of end-to-end spoken dialogue systems stagnated for a few months.
 However, with the advent of ChatGPT, this field experienced rapid development.
 A representative approach is [SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md), which employs autoregressive language modeling by using a sequence of speech tokens, text tokens, text tokens, and speech tokens.
-This method enables the direct generation of speech tokens using textual intelligence, inspiring subsequent end-to-end spoken dialogue systems such as [Spectron [146]](../../Models/SpeechLM/2023.05.24_Spectron.md), [SpeechGPT-Gen [244]](../../Models/SpeechLM/2024.01.24_SpeechGPT-Gen.md), [GLM-4-Voice [Github]](https://github.com/THUDM/GLM-4-Voice), and [EMOVA [25]](../../Models/SpeechLM/2024.09.26_EMOVA.md).
+This method enables the direct generation of speech tokens using textual intelligence, inspiring subsequent end-to-end spoken dialogue systems such as [Spectron [156]](../../Models/SpeechLM/2023.05.24_Spectron.md), [SpeechGPT-Gen [244]](../../Models/SpeechLM/2024.01.24_SpeechGPT-Gen.md), [GLM-4-Voice [Github]](https://github.com/THUDM/GLM-4-Voice), and [EMOVA [25]](../../Models/SpeechLM/2024.09.26_EMOVA.md).
 These systems continue to use an autoregressive framework, generating the text tokens followed by the speech tokens.
 Although this approach allows LLMs to generate speech tokens directly, it introduces latency issues since speech token generation cannot begin until the generation of text tokens is complete.
 This leads to problems in multi-turn dialogue and overall system delay.
