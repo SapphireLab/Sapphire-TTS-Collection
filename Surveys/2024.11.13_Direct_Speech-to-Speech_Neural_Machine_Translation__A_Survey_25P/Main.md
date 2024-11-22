@@ -46,6 +46,30 @@ S2ST 对于弥合社区之间的沟通障碍至关重要, 并具有多样化的�
 
 ## 1·Introduction: 引言
 
+The S2ST task is the process of transforming speech in a source language to speech in a target language.
+It finds applications in live audio/video translation,  international conferences and meeting translations, educational video translation, and movie dubbing, to name a few.
+The rising computational power of computing devices, the expanding bandwidth of communication channels, and the progress in deep learning (DL) and machine learning (ML) techniques have enabled seamless communication.
+
+Traditionally, the S2ST problem is solved by the cascade approach in that automatic speech recognition (ASR), machine translation (MT), and text-to-speech synthesis (TTS) models are glued together \cite{Laive_1997, Nakamura2006}.
+Another approach to building a cascade S2ST model is by chaining speech-to-text translation (ST) and TTS models.
+Nonetheless, the cascade models have been the de-facto choice for S2ST for a long time due to the easier availability of the pre-trained component models (ASR, MT, and TTS).
+However, they are being challenged by direct S2ST models in recent years owing to error propagation, higher training time, and memory cost of cascade models (refer to \S \ref{cascadevse2e} for more).
+
+Direct S2ST models translate source speech into target speech without using intermediate text representation.
+They are being popularised by the possibility of learning paralinguistic and non-linguistic features, including speaking style, emotions, energy, prosody, etc. \cite{Jia2019, Jia2021, Lee2022}.
+Languages without a writing system, often called unwritten languages, constitute 40\% of all languages \cite{lee-etal-2022-textless}.
+Text-based model training is not feasible for these languages.
+The direct S2ST models can potentially address the challenge posed by unwritten languages \cite{Tjandra_2019_untranscribe, Zhang2021_UWSpeech, lee-etal-2022-textless}.
+Direct models follow an end-to-end (E2E) training approach, reducing error propagation and offering lower latency than cascade models \cite{Jia2019, Jia2021, Lee2022}.
+However, despite their advantages, these models encounter notable challenges such as: (a) getting sufficient parallel speech corpus in two different languages is extremely hard, thus hampering model development, (b) training with the speech of unwritten languages and their evaluation, (c) the potential threat of voice cloning, (d) absence of metrics directly taking generated and reference speech as input and returning a quality score, and (e) segmentation issue especially in simultaneous S2ST, and so on.
+Further advancements are still required for S2ST systems to attain the level of quality necessary for hassle-free communication.
+
+To provide an overview of research done in the S2ST field and a bucket of open problems,  the present work comprehensively reviews the direct S2ST literature, whose broad taxonomy is shown in Fig.\ref{taxonomy}.
+Overall, the manuscript is organized as follows: \S\ref{Task_definition} defines the S2ST task; \S\ref{cascadevse2e} presents the cascade vs E2E models; \S\ref{datapaucity} discusses the data scarcity.
+The performance metrics are presented in \S\ref{metrics} while \S\ref{repr} elucidates the segmentation and representation issues.
+Models and training strategies are discussed in \S\ref{sec:direct_s2st} and \S\ref{trainstr}, respectively.
+Application issues are discussed in \S\ref{application},  experiments in \S\ref{experiment}, challenges in \S\ref{challenges}, and finally concluded in \S\ref{challenges}.
+
 ## 2·Related Works: 相关工作
 
 ## 3·Methodology: 方法
