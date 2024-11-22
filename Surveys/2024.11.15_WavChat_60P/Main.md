@@ -27,7 +27,7 @@
 - 链接:
   - [ArXiv](https://arxiv.org/abs/2411.13577)
   - [Publication]
-  - [Github](https://github.com/jishengpeng/WavChat)0
+  - [Github](https://github.com/jishengpeng/WavChat)
   - [Demo]
 - 文件:
   - [ArXiv](2411.13577v1__Survey__WavChat__A_Survey_of_Spoken_Dialogue_Models.pdf)
