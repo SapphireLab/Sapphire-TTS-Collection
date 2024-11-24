@@ -74,7 +74,10 @@ The related material is available at [Github](https://github.com/jishengpeng/Wav
 
 ## 1·Introduction: 引言
 
-Spoken dialogue models ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md); [SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md); [Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md)) represent one of the most direct methods of human-computer interaction, evolving from traditional voice assistants such as Alexa ([Website](https://www.alexa.com/)), Siri ([Website](https://www.apple.com/siri/)), and Google Assistant ([Website](https://assistant.google.com/)) to the latest intelligent dialogue systems, such as GPT-4o ([Website](https://openai.com/index/chatgpt-can-now-see-hear-and-speak/)).
+<details>
+<summary>展开原文</summary>
+
+Spoken dialogue models ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md); [SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md); [Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md)) represent one of the most direct methods of human-computer interaction, evolving from traditional voice assistants such as [Alexa [Website]](https://www.alexa.com/), [Siri [Website]](https://www.apple.com/siri/), and [Google Assistant [Website]](https://assistant.google.com/) to the latest intelligent dialogue systems, such as [GPT-4o [Website]](https://openai.com/index/chatgpt-can-now-see-hear-and-speak/).
 The fundamental definition of a spoken dialogue model refers to a dialogue system capable of generating intelligent verbal responses based on the input speech.
 On the one hand, the **speech modality** serves as both the input and output interface for the human-computer interaction in the spoken dialogue models.
 On the other hand, the **dialogue system** ([LLaMA3 [52]](../../Models/TextLM/2024.07.31_LLaMA3.md)) requires the model to possess a certain level of textual intelligence, including the ability to comprehend the knowledge of human society and generating professional and intelligent responses.
@@ -118,6 +121,19 @@ At the end of each section, we include a summary and discussion to reflect on th
 - Finally, in Section 7, we conclude the survey by summarizing the major findings and discussing open issues for future research.
 
 Given the complexity of the technical points, we provide an overview of the structure of this survey in Figure \ref{fig:img4}.
+
+</details>
+<br>
+
+口语对话模型 ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md); [SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md); [Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md)) 代表了人机交互中最直接的方法之一, 从传统的声音助手([Alexa [Website]](https://www.alexa.com/); [Siri [Website]](https://www.apple.com/siri/); [Google Assistant [Website]](https://assistant.google.com/)) 进化到最新的智能对话系统 (如 [GPT-4o [Website]](https://openai.com/index/chatgpt-can-now-see-hear-and-speak/)).
+
+口语对话模型的基本定义是指一个能够根据输入语音生成智能口语回应的对话系统.
+一方面, **语音模态**在口语对话模型中既是人机交互的输入接口, 也是输出接口.
+另一方面, **对话系统** ([LLaMA3 [52]](../../Models/TextLM/2024.07.31_LLaMA3.md)) 要求模型具备一定程度的文本智能, 包括理解人类社会知识并生成专业和智能的回应.
+
+近期, 以 GPT-4o 和 [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md) 为代表的智能口语对话系统, 因其超越了传统基于文本的对话模型 ([AudioGPT [84]](../../Models/SpeechLM/2023.04.25_AudioGPT.md)) 的语音智能能力而受到广泛关注.
+
+这些对话模型不仅能够生成自然, 类似人类的语音回应 ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md); [FunAudioLLM [195]](../../Models/SpeechLM/2024.07.04_FunAudioLLM.md)) 还展示了超越文本的高级声学特征 (如音色, 情感和风格) 的理解和生成能力 ([Spoken-LLM [127]](../../Models/SpeechLM/2024.02.20_Spoken-LLM.md); [ParalinGPT [128]](../../Models/SpeechLM/2023.12.23_ParalinGPT.md); [E-chat [227]](../../Models/SpeechLM/2023.12.31_E-chat.md)).
 
 ## [2·Overall: 整体视角](Sec.02.md)
 
