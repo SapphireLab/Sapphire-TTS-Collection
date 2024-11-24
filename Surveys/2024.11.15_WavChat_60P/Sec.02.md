@@ -151,9 +151,20 @@ The system should thus inherit the generative capabilities of large-scale music 
 
 ### 2.1.4·Audio and Music Understanding: 音频和音乐理解
 
+<details>
+<summary>展开原文</summary>
+
 Complementing its music and audio generation capabilities, a spoken dialogue model should also be able to understand music and audio on the input side ([Qwen2-Audio [33]](../../Models/SpeechLM/2024.07.15_Qwen2-Audio.md); [SALMONN [198]](../../Models/SpeechLM/2023.10.20_SALMONN.md)).
 For instance, when given an audio clip, the intelligent system should identify both its content and acoustic characteristics, such as recognizing whether the sound is a bird chirping or a cat meowing, or whether the music is calm or energetic.
 Moreover, the system could extend its understanding by creating literary works—like poetry or songs—based on the given music or audio.
+
+</details>
+<br>
+
+除了音乐和音频生成能力之外, 口语对话模型应该还能够理解输入侧的音乐和音频 ([Qwen2-Audio [33]](../../Models/SpeechLM/2024.07.15_Qwen2-Audio.md); [SALMONN [198]](../../Models/SpeechLM/2023.10.20_SALMONN.md)).
+例如, 当给定一段音频时, 智能系统应该识别其内容和声学特征, 例如识别声音是鸟鸣还是猫叫, 音乐是平静还是充满活力.
+
+此外, 系统还可以通过基于给定的音乐或音频来创作文学作品 (诗歌/歌曲) 来扩展其理解能力.
 
 ### 2.1.5·Multilingual Capability: 多语言能力
 
