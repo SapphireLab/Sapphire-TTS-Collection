@@ -475,6 +475,16 @@ Similar approaches include [SyncLLM [203]](../../Models/SpeechLM/2024.09.23_Sync
 
 ## 2.4·Summary: 总结
 
+<details>
+<summary>展开原文</summary>
+
 In this section, we have provided a general overview of current end-to-end spoken dialogue systems.
 However, these systems differ significantly in their speech representations, training paradigm, model architectures and generation strategy.
 In [Section.03](Sec.03.md) and [Section.04](Sec.04.md), we will present a detailed classification followed by our discussions at the end of each section.
+
+</details>
+<br>
+
+在本节中, 我们提供了当前端到端口语对话系统的概述.
+然而, 这些系统在语音表示, 训练范式, 模型架构, 生成策略上存在显著差异.
+在[第 3 节](Sec.03.md) 和[第 4 节](Sec.04.md), 我们将进行详细分类, 并在每节的末尾进行讨论.
