@@ -147,6 +147,9 @@ Given the complexity of the technical points, we provide an overview of the stru
 
 ## 7·Conclusions: 结论
 
+<details>
+<summary>展开原文</summary>
+
 In this work, we systematically review the research related to spoken dialogue models, categorizing it according to two paradigms: cascaded spoken dialogue models and end-to-end spoken dialogue models.
 Additionally, we provide a detailed overview of the core technologies behind spoken dialogue models, including speech representation, training paradigms, streaming duplex systems, and interaction mechanisms.
 In the speech representation module, we classify and explain the representations from both the input and output perspectives, focusing on different types of semantic and acoustic representations.
@@ -157,3 +160,17 @@ We specifically address the evaluation of different levels of intelligence in sp
 It is important to note that, given that spoken dialogue models are a relatively new and emerging technology, many aspects such as semantic and acoustic representations, still lack well-established paradigms.
 Therefore, at the end of each section, we include a dedicated discussion module to explore these open issues.
 We hope that this survey will contribute to the further development of the field of spoken dialogue systems.
+
+</details>
+<br>
+
+在这项工作中, 我们系统性地回顾了与口语对话模型相关的研究, 根据两种范式进行分类: 级联口语对话模型和端到端口语对话模型.
+
+此外, 我们提供了口语对话模型背后的核心技术的详细概述, 包括语音表示, 训练范式, 流式双工系统和交互机制.
+- 在语音表示模块中, 我们从输入和输出的角度分类和解释语音表示, 着重于语义和声学表示的不同类型.
+- 在训练范式模块中, 我们深入讨论了口语对话模型对齐的五种方式, 多阶段训练策略, 模型架构和生成范式.
+- 随后, 我们深入分析了口语对话模型流式输入和输出, 以及相关的双工交互技术.
+- 最后, 我们整理了与口语对话模型相关的关键训练资源, 评估指标和基准.我们特别关注了在不同场景下对口语对话模型不同层次智能的评估.
+
+需要注意的是, 由于口语对话模型是一项相对较新且新兴的技术, 许多方面如语义和升学表示, 仍然缺乏成熟的范式.
+因此, 在每个部分的末尾, 我们专门加入了一个专门的讨论部分, 探讨这些开放性问题, 我们希望这项调查能够为口语对话系统领域的进一步发展做出贡献.
