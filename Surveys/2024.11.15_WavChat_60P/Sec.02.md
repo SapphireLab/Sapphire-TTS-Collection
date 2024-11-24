@@ -285,6 +285,9 @@ Beyond multimodal inputs, the future of dialogue systems lies in large multimoda
 
 ## 2.2·Cascaded Spoken Dialogue Systems: 级联口语对话系统
 
+<details>
+<summary>展开原文</summary>
+
 The earliest prototype of cascaded spoken dialogue systems can be traced back to [AudioGPT [84]](../../Models/SpeechLM/2023.04.25_AudioGPT.md).
 To achieve speech-to-speech dialogue functionality, the system first employed an Automatic Speech Recognition (ASR) model to convert speech into text, followed by ChatGPT for text-based dialogue, and finally, a Text-to-Speech (TTS) model to convert the generated text back into speech.
 In this primitive version, speech was used solely as an input-output interface, retaining only the most basic textual intelligence.
@@ -320,6 +323,64 @@ On the generation side, two main types of speech synthesis work are relevant to 
 Firstly, there has been a recent surge of advanced speech synthesis systems that can produce highly expressive and natural audio based on textual input, such as [VALL-E [209]](../../Models/SpeechLM/2023.01.05_VALL-E.md); [VALL-E X [250]](../../Models/SpeechLM/2023.03.07_VALL-E_X.md); [Mega-TTS [97]](../../Models/SpeechLM/2023.06.06_Mega-TTS.md); [Mega-TTS2 [96]](../../Models/SpeechLM/2023.07.14_Mega-TTS2.md); [CosyVoice [49]](../../Models/SpeechLM/2024.07.07_CosyVoice.md); [ChatTTS [Github]](https://github.com/2noise/ChatTTS); [FishSpeech [Github]](https://github.com/fishaudio/fish-speech); [ParlerTTS [140]](../../Models/SpeechLM/2024.02.02_Parler-TTS.md); [MaskGCT [216]](../../Models/SpeechLM/2024.09.01_MaskGCT.md) and [F5-TTS [30]](../../Models/Diffusion/2024.10.09_F5-TTS.md).
 In addition, there has been significant progress in the field of text-style controllable TTS, with systems like [TextrolSpeech [92]](../../Datasets/2023.08.28_TextrolSpeech.md), [PromptTTS [71]](../../Models/Prompt/2022.11.22_PromptTTS.md), [PromptTTS2 [118]](../../Models/Prompt/2023.09.05_PromptTTS2.md), [InstructTTS [231]](../../Models/Prompt/2023.01.31_InstructTTS.md), and [ControlSpeech [93]](../../Models/SpeechLM/2024.06.03_ControlSpeech.md).
 These TTS systems can generate highly natural audio based both on the content and style of the text output produced by the cascaded spoken dialogue models.
+
+</details>
+<br>
+
+级联口语对话模型的最早原型可以追溯到 [AudioGPT [84]](../../Models/SpeechLM/2023.04.25_AudioGPT.md).
+为了实现语音到语音对话功能, 该系统首先采用自动语音识别 (ASR) 模型来将语音转换为文本, 后跟 ChatGPT 进行基于文本的对话, 最后使用文本转语音 (TTS) 模型将生成的文本转换为语音.
+在这一原始版本中, 语音仅作为输入输出接口, 仅保留了最基础的文本智能.
+- 例如, HuggingFace 开源的语音到语音框架 ([Github](https://github.com/huggingface/speech-to-speech)) 中进一步在传统级联模块上叠加一个语音活动检测 (Voice Activity Detection, VAD) 模块来区分语音和静音片段, 以及不同说话人.
+
+级联口语对话模型中建立了基本的文本智能后, 研究人员开始融入副语言特征, 例如情感和风格, 以增强级联口语对话模型中的语音智能.
+- 例如, [ParalinGPT [128]](../../Models/SpeechLM/2023.12.23_ParalinGPT.md) 和 [E-chat [227]](../../Models/SpeechLM/2023.12.31_E-chat.md) 通过滑动窗口机制将对话上下文, 语音嵌入和副语言属性集成到自回归模型中, 使得模型能够结合历史文本和情感表示来生成更准确的文本响应.
+- 类似地, [Spoken-LLM [127]](../../Models/SpeechLM/2024.02.20_Spoken-LLM.md) 引入了 [Emotion2Vec [143]](../../Models/Speech_Representaion/2023.12.23_Emotion2Vec.md) 模块来为 LLaMA2-Chat 模型提供风格向量. 通过 [LoRA [79]](../../Modules/LoRA/2021.06.17_LoRA.md) 微调, LLaMA2-Chat 被训练成生成不仅基于内容的文本响应, 还能够生成具有具体的风格属性 (如 `<cheerful, fast, normal>`) 的文本响应, 以指导下游 TTS 系统来生成更具表现力的语音.
+
+除了在级联口语对话模型中理解声学信息, 还有其他一些努力试图直接输入语音表示同时保留文本作为输出模态 ([SpeechVerse [41]](../../Models/SpeechLM/2024.05.14_SpeechVerse.md); [Qwen-Audio [34]](../../Models/SpeechLM/2023.11.14_Qwen-Audio.md); [Audio Flamingo [111]](../../Models/SpeechLM/2024.02.02_Audio_Flamingo.md)).
+这迫使级联口语对话模型直接处理输入语音.
+一个常用方法是整合冻结的语音编码器 (如 [Whisper [169]](../../Models/SpeechLM/2022.12.06_Whisper.md)) 与可训练的编码器适配器, 允许语音输入被解释为特定的文本形式, 由大型语言模型进行处理.
+通过扩展基于文本的对话模型的词表, 大语言模型能够将语音作为一种独特形式的文本来处理, 从而在级联口语对话模型生成适当的文本响应.
+
+值得注意的是, 这些级联口语对话模型不局限于单独理解人类语音, 还能够理解多种音频模态, 包括音乐和音频 ([LTU-AS [67]](../../Models/SpeechLM/2023.09.25_LTU-AS.md); [SALMONN [198]](../../Models/SpeechLM/2023.10.20_SALMONN.md)).
+- [SALMONN [198]](../../Models/SpeechLM/2023.10.20_SALMONN.md) 通过冻结 [Whisper [169]](../../Models/SpeechLM/2022.12.06_Whisper.md) 和 [BEATs [28]](../../Models/SpeechRepresentation/2022.12.18_BEATs.md) 编码器并将它们通过窗口级别 Q-Former ([BLIP-2 [121]](../../Models/_Basis/2023.01.30_BLIP-2.md)) 与大型语言模型进行桥接来建模语音和音频信息.
+
+因此, 这些级联口语对话系统能够在理解方面执行广泛的任务.
+
+- 如 [Qwen2-Audio [33]](../../Models/SpeechLM/2024.07.15_Qwen2-Audio.md); [Qwen-Audio [34]](../../Models/SpeechLM/2023.11.14_Qwen-Audio.md) 的模型能够处理多种任务, 例如自动语音识别, 语音到文本翻译, 自动音频字幕, 声学场景分类, 语音情感识别, 音频问答, 歌声分类和音乐音符分析.
+
+因此, 这些级联模型通常被视为多任务语音-文本大语言模型的一部分.
+
+值得注意的是, 上述级联口语对话模型仅生成文本, 然后直接将它们输入到预训练的 TTS 模块.
+然而, 最近的级联口语对话模型, 例如 LLaMA 3.1, 开始将可训练的文本转语音模块作为大语言模型的编码器的一部分进行集成.
+尽管这些模型在集成低延迟流式功能方面取得了进展, 但它们仍然首先生成文本内容然后转化为语音.
+它们并不直接将语音相关的表示输入到 LLM 内部.
+因此, 我们将这些模型分类为级联口语对话系统.
+
+此外, 一些近期的模型 (如 [Qwen2-Audio [33]](../../Models/SpeechLM/2024.07.15_Qwen2-Audio.md)) 尝试通过融入多模态理解能力, 从而实现一定程度的多模态对话功能.
+- 模型如 [VITA [61]](../../Models/SpeechLM/2024.08.09_VITA.md) 和 [Ocean-Omni [122]](../../Models/SpeechLM/2024.10.11_Ocean-Omni.md) 将图像, 音频和视频的编码器或分词器集成到 LLM 中, 使得模型能够理解多模态输入并生成相应的文本响应.
+
+上述发展涉及到级联口语对话模型的理解方面.
+
+在生成方面, 级联口语对话系统有两种主要的语音合成工作.
+1. 近年来先进语音合成系统能够基于文本输入生成高度表现力和自然的音频.
+   - [VALL-E [209]](../../Models/SpeechLM/2023.01.05_VALL-E.md);
+   - [VALL-E X [250]](../../Models/SpeechLM/2023.03.07_VALL-E_X.md);
+   - [Mega-TTS [97]](../../Models/SpeechLM/2023.06.06_Mega-TTS.md);
+   - [Mega-TTS2 [96]](../../Models/SpeechLM/2023.07.14_Mega-TTS2.md);
+   - [CosyVoice [49]](../../Models/SpeechLM/2024.07.07_CosyVoice.md);
+   - [ChatTTS [Github]](https://github.com/2noise/ChatTTS);
+   - [FishSpeech [Github]](https://github.com/fishaudio/fish-speech);
+   - [ParlerTTS [140]](../../Models/SpeechLM/2024.02.02_Parler-TTS.md);
+   - [MaskGCT [216]](../../Models/SpeechLM/2024.09.01_MaskGCT.md)
+   - [F5-TTS [30]](../../Models/Diffusion/2024.10.09_F5-TTS.md).
+2. 文本风格可控的 TTS 系统方面也取得了显著进展.
+   - [TextrolSpeech [92]](../../Datasets/2023.08.28_TextrolSpeech.md);
+   - [PromptTTS [71]](../../Models/Prompt/2022.11.22_PromptTTS.md);
+   - [PromptTTS2 [118]](../../Models/Prompt/2023.09.05_PromptTTS2.md);
+   - [InstructTTS [231]](../../Models/Prompt/2023.01.31_InstructTTS.md);
+   - [ControlSpeech [93]](../../Models/SpeechLM/2024.06.03_ControlSpeech.md).
+
+这些文本转语音系统能够基于级联口语对话模型生成的文本内容和风格生成高度自然的音频.
 
 ## 2.3·End-to-End Spoken Dialogue Systems: 端到端口语对话模型
 
