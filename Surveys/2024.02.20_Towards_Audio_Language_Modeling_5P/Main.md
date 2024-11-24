@@ -89,7 +89,7 @@ Numerous high performance neural audio codec models and audio LMs have been deve
 <a id="Fig.01"></a>
 <center>
 
-![Timeline of Current Neural Codec Models and Codec-Based Language Models](../Images/2024.02.20_Fig.01.png)
+![Timeline of Current Neural Codec Models and Codec-Based Language Models](Images/2024.02.20_Fig.01.png)
 
 Fig.01: Timeline of Current Neural Codec Models and Codec-Based Language Models
 
@@ -149,7 +149,7 @@ The six codec models have distinct training details, resulting in a collection o
 
 <a id="Tab.01"></a>
 
-![](../Images/2024.02.20_Tab.01.png)
+![Images/2024.02.20_Tab.01.png](Images/2024.02.20_Tab.01.png)
 
 Tab.01: Codec Information Comparison.
 `A-F` represents different neural codec models, where
@@ -286,7 +286,7 @@ Please refer to [Tab.01](#Tab.01) for the corresponding model full name.
 
 <a id="Tab.02"></a>
 
-![](../Images/2024.02.20_Tab.02.png)
+![Images/2024.02.20_Tab.02.png](Images/2024.02.20_Tab.02.png)
 
 Tab.02: Comparison between codec implementation strategy.
 - `SEM` represents codec including Semantic Tokens.
@@ -393,7 +393,7 @@ The entire pipeline embodies an audio-to-audio modeling approach.
 
 <a id='Fig.02'></a>
 
-![](../Images/2024.02.20_Fig.02.png)
+![Images/2024.02.20_Fig.02.png](Images/2024.02.20_Fig.02.png)
 
 Fig.02: Codec-Based Language Modeling.
 
@@ -572,7 +572,7 @@ Finally, we show the codec models adopted by different LMs.
 
 <a id="Tab.03"></a>
 
-![](../Images/2024.02.20_Tab.03.png)
+![Images/2024.02.20_Tab.03.png](Images/2024.02.20_Tab.03.png)
 
 Tab.03: Codec-Based Language Models Comparison.
 `T` means Text,
