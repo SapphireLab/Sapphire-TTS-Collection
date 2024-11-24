@@ -1,10 +1,23 @@
 # 2·Overall: 整体视角
 
+<details>
+<summary>展开原文</summary>
+
 In this section, we will provide an overall overview of spoken dialogue models.
 we begin by defining what constitutes an intelligent spoken dialogue model by examining various dialogue scenarios.
 We then provide a comprehensive overview of spoken dialogue models, distinguishing between cascaded spoken dialogue models and end-to-end spoken dialogue models.
 
-## 2.1·Functions of Spoken Dialogue Systems
+</details>
+<br>
+
+在本节中, 我们将对口语对话模型进行整体概述.
+首先, 我们通过考察各种对话场景来定义什么构成了一个智能口语对话模型.
+然后, 我们提供了口语对话模型的全面概述, 区分级联口语对话模型和端到端口语对话模型.
+
+## 2.1·Functions of Spoken Dialogue Systems: 口语对话系统的功能
+
+<details>
+<summary>展开原文</summary>
 
 Based on the demos and inference interfaces of representative models such as GPT-4o, [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md), [Qwen2-Audio [33]](../../Models/SpeechLM/2024.07.15_Qwen2-Audio.md), and [VITA [61]](../../Models/SpeechLM/2024.08.09_VITA.md), we categorize the usage scenarios of modern intelligent spoken dialogue models into the following nine representative categories:
 1) Text Intelligence,
@@ -17,34 +30,57 @@ Based on the demos and inference interfaces of representative models such as GPT
 8) Streaming Latency, and
 9) Multimodal Capability.
 
-For the nine distinct use cases in spoken dialogue models, we provide corresponding examples for each scenario in Figure \ref{fig:main}.
+For the nine distinct use cases in spoken dialogue models, we provide corresponding examples for each scenario in Fig.04.
 It is clear from these usage scenarios that a spoken dialogue model is not simply an extension of a text-based dialogue model to the speech modality (i.e., where the speech modality serves merely as an interface for converting speech into text).
 Rather, an intelligent spoken dialogue system must be capable of comprehending and generating acoustic information embedded in speech (such as timbre, style, and emotion) and of understanding and producing a wider range of audio representations, including information related to audio events and music.
 Additionally, unlike non-streaming text-based systems, spoken dialogue models need to support real-time, interactive streaming capabilities.
 These usage scenarios not only highlight the intelligence inherent in spoken dialogue systems but also present significant challenges for building end-to-end spoken dialogue models.
 Below, we provide a detailed examination of each of the nine usage scenarios.
 
-### 2.1.1·Text Intelligence
+</details>
+<br>
 
-As illustrated in Figure \ref{fig:main} (a), a spoken dialogue system must retain the fundamental capabilities of the original text-based dialogue models, such as ChatGPT.
+基于 GPT-4o, [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md), [Qwen2-Audio [33]](../../Models/SpeechLM/2024.07.15_Qwen2-Audio.md), [VITA [61]](../../Models/SpeechLM/2024.08.09_VITA.md) 等代表性模型的演示和推理接口, 我们将现代智能口语对话模型的使用场景分为以下九个代表性类别:
+1) 文本智能;
+2) 语音智能;
+3) 音频和音乐生成;
+4) 音频和音乐理解;
+5) 多语言能力;
+6) 上下文学习;
+7) 交互能力;
+8) 流式延迟;
+9) 多模态能力.
+
+![](Images/Fig.04.png)
+
+对于口语对话模型中的九个不同用例, 我们在图 04 中为每个场景提供了相应的示例.
+从这些使用场景可以清楚地看出, 口语对话模型不仅仅是基于文本对话模型向语音模态的扩展 (即, 语音模态仅作为将语音转换为文本的接口).
+相反, 智能口语对话模型必须能够理解和生成语音中嵌入的声学信息 (如音色, 风格, 以及情感), 并且能够理解和生成更广泛的音频表示, 包括与音频时间和音乐相关的信息.
+此外, 与非流式的基于文本的系统不同, 口语对话模型需要支持实时, 交互式的流式传输能力.
+这些使用场景不仅突出了口语对话系统中固有的智能, 还展示了构建端到端口语对话模型带来的重大挑战.
+下面, 我们将对这九种使用场景进行详细考察.
+
+### 2.1.1·Text Intelligence: 文本智能
+
+As illustrated in Fig.04 (a), a spoken dialogue system must retain the fundamental capabilities of the original text-based dialogue models, such as ChatGPT.
 We define this usage scenario as textual intelligence.
 In this context, the spoken dialogue model can intelligently respond to user requests, generating appropriate responses such as travel itineraries, work plans, and scheduling.
 However, due to the limitations of voice-based interaction, the textual intelligence of current spoken dialogue systems is more focused on the daily scenarios.
 In certain contexts, such as complex mathematical theorem reasoning, the performance requirements for spoken dialogue models differ from those of text-based dialogue models ([LLaMA [200]](../../Models/TextLM/2023.02.27_LLaMA.md)).
 These advanced aspects of textual intelligence warrant further exploration in unified multimodal dialogue models.
 
-### 2.1.2·Speech Intelligence
+### 2.1.2·Speech Intelligence: 语音智能
 
 A distinguishing feature of spoken dialogue models, compared to text-based dialogue models ([LLaMA [200]](../../Models/TextLM/2023.02.27_LLaMA.md)), is their ability to understand and generate acoustic information beyond mere textual content.
 In the speech modality, not only is the textual content present, but also additional acoustic information, such as timbre (speaker identity) and style (emotion, prosody, etc.).
-As illustrated in Figure \ref{fig:main} (b), an intelligent spoken dialogue system should be capable of \textbf{understanding} the timbre and style of conversational speech and, ideally, \textbf{generating} responses with specified timbre and style in a \textbf{zero-shot} manner.
+As illustrated in Fig.04 (b), an intelligent spoken dialogue system should be capable of understanding the timbre and style of conversational speech and, ideally, generating responses with specified timbre and style in a zero-shot manner.
 
 This capability about speech intelligence involves several use cases.
 First, on the comprehension side, the spoken dialogue system should generate responses based on the speaker's vocal style.
 For example, in the [E-chat [227]](../../Models/SpeechLM/2023.12.31_E-chat.md), a classic example might be: if a user asks, "My phone won't turn on, what should I do?" in a cheerful tone, the system might respond, "It looks like you're excited about getting a new phone.
 What type of phone are you interested in?" Conversely, if the user asks the same question in a sad tone, the system might reply, "It's unfortunate your phone isn't working.
-If you're familiar with the repair policy, let's proceed with the next steps." This situation indicates that the spoken dialogue system may generate responses with different \textbf{content} based on varying acoustic information.
-Furthermore, the system should comprehend various acoustic cues, such as accents or emotional states, and adjust its responses of different \textbf{acoustic} information accordingly.
+If you're familiar with the repair policy, let's proceed with the next steps." This situation indicates that the spoken dialogue system may generate responses with different content based on varying acoustic information.
+Furthermore, the system should comprehend various acoustic cues, such as accents or emotional states, and adjust its responses of different acoustic information accordingly.
 For instance, if the speaker is an American, the system might reply with a native English accent, whereas if the speaker is a Shanghainese user, the system could respond using the corresponding dialect.
 Similarly, if the user speaks with a sad tone, the dialogue system should be able to generate a more encouraging and empathetic response.
 
@@ -53,35 +89,35 @@ For example, the system could be instructed to mimic a specific voice or respond
 Additionally, the system could use a voice prompt provided during the conversation to fully clone the timbre from the prompt and generate speech in that same voice.
 In summary, the ability to comprehend and generate acoustic information is one of the key characteristics of an intelligent spoken dialogue model.
 
-### 2.1.3·Audio and Music Generation
+### 2.1.3·Audio and Music Generation: 音频和音乐生成
 
 In the spoken dialogue models, beyond basic spoken dialogue capabilities, an intelligent spoken dialogue system may be required to generate music and audio.
 For example, a user might instruct the system to generate a one-minute piano piece or a ten-second recording of a dog barking.
 Additionally, users might provide lyrics and a musical melody, asking the spoken dialogue model to create a pop song.
 The system should thus inherit the generative capabilities of large-scale music ([MusicLM [2]](../../Models/SpeechLM/2023.01.26_MusicLM.md); [MusicGen [40]](../../Models/SpeechLM/2023.06.08_MusicGen.md); [MeLoDy [116]](../../Models/SpeechLM/2023.05.25_MeLoDy.md); [Ma et al. (Survey) [141]](../2024.08.26_Foundation_Models_for_Music__A_Survey_89P/Main.md)) and audio ([Make-An-Audio [83]](../../Models/Diffusion/2023.01.30_Make-An-Audio.md); [AudioLDM [134]](../../Models/Diffusion/2023.01.29_AudioLDM.md); [AudioLDM2 [136]](../../Models/Diffusion/2023.08.10_AudioLDM2.md)) models on the output side.
 
-### 2.1.4·Audio and Music Understanding
+### 2.1.4·Audio and Music Understanding: 音频和音乐理解
 
 Complementing its music and audio generation capabilities, a spoken dialogue model should also be able to understand music and audio on the input side ([Qwen2-Audio [33]](../../Models/SpeechLM/2024.07.15_Qwen2-Audio.md); [SALMONN [198]](../../Models/SpeechLM/2023.10.20_SALMONN.md)).
 For instance, when given an audio clip, the intelligent system should identify both its content and acoustic characteristics, such as recognizing whether the sound is a bird chirping or a cat meowing, or whether the music is calm or energetic.
 Moreover, the system could extend its understanding by creating literary works—like poetry or songs—based on the given music or audio.
 
-### 2.1.5·Multilingual Capability
+### 2.1.5·Multilingual Capability: 多语言能力
 
 Similar to text-based dialogue models, spoken dialogue systems are expected to possess multilingual capabilities.
 Specifically, these models should be able to perform multilingual content translation, such as translating a spoken segment in Japanese into French speech clips, effectively inheriting the capabilities of simultaneous interpretation.
 In addition to multilingual content translation, the system should also handle multilingual acoustic information.
 This means that the intelligent spoken dialogue model should be able to generate responses in various languages and accents, replying in the corresponding accent of the target language based on the different input speech.
 
-### 2.1.6·Context Learning
+### 2.1.6·Context Learning: 上下文学习
 
 In the spoken dialogue models, the ability to handle long-form and multi-turn conversations is a key benchmark for evaluating performance ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)).
 This requires that spoken dialogue models not only support long-duration audio inputs but also generate extended audio outputs.
 Moreover, they must be capable of engaging in multi-turn conversations based on historical context.
 An important aspect of multi-turn dialogue is the ability to revise previous responses based on new user instructions.
-As shown in Figure \ref{fig:main} (f), an intelligent spoken dialogue model should be able to continuously modify its previous replies according to the user’s evolving requests.
+As shown in Fig.04 (f), an intelligent spoken dialogue model should be able to continuously modify its previous replies according to the user’s evolving requests.
 
-### 2.1.7·Interaction Capability
+### 2.1.7·Interaction Capability: 交互能力
 
 A distinguishing feature of spoken dialogue systems compared to the text-based dialogue models is their duplex and interactive nature ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)).
 In text-based dialogue, interactions typically follow a half-duplex structure, where the response can only be provided after the question has been completed, and the user is unable to interrupt the reply in real-time.
@@ -94,7 +130,7 @@ Beyond the ability to interrupt, interactive dialogue often includes the use of 
 Including these within spoken dialogue models enhances the realism and natural flow of conversations.
 The underlying requirement for interaction capabilities is that the system should be able to listen and speak simultaneously, responding dynamically to the flow of the interaction.
 
-### 2.1.8·Streaming Latency
+### 2.1.8·Streaming Latency: 流式延迟
 
 Streaming comprehension and generation are also fundamental functionalities of spoken dialogue models ([Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md); [IntrinsicVoice [248]](../../Models/SpeechLM/2024.10.09_IntrinsicVoice.md); [LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md)).
 In the real-world scenarios, a model cannot wait until an entire minute-long audio segment has been processed before generating a response.
@@ -103,7 +139,7 @@ Additionally, the streaming requirement means that the entire system must operat
 Streaming function is often closely tied to the need for low latency.
 In practical conversational experiences, the latency of the first token generated by the spoken dialogue model (i.e., the wait time for the user) and the average latency of the generation process are critical factors that influence the overall responsiveness and usability of the spoken dialogue system.
 
-### 2.1.9·Multimodal Capability
+### 2.1.9·Multimodal Capability: 多模态能力
 
 Multimodal dialogue capability ([EMOVA [25]](../../Models/SpeechLM/2024.09.26_EMOVA.md); [VITA [61]](../../Models/SpeechLM/2024.08.09_VITA.md)) represents an advanced feature of spoken dialogue models.
 In existing systems, this typically refers to the ability to process inputs from multiple modalities, such as video, images, and text, while generating intelligent speech responses.
@@ -111,7 +147,7 @@ A spoken dialogue model equipped with this capability achieves the ability to �
 Multimodal inputs significantly enhance the potential of these systems; for instance, users can employ various gestures to improve the quality of the model’s generated responses, and the system can develop a deeper understanding of the physical world.
 Beyond multimodal inputs, the future of dialogue systems lies in large multimodal models that unify the comprehension and generation capabilities across all modalities, with spoken dialogue serving as the foundational modality.
 
-## 2.2·Cascaded Spoken Dialogue Systems
+## 2.2·Cascaded Spoken Dialogue Systems: 级联口语对话系统
 
 The earliest prototype of cascaded spoken dialogue systems can be traced back to [AudioGPT [84]](../../Models/SpeechLM/2023.04.25_AudioGPT.md).
 To achieve speech-to-speech dialogue functionality, the system first employed an Automatic Speech Recognition (ASR) model to convert speech into text, followed by ChatGPT for text-based dialogue, and finally, a Text-to-Speech (TTS) model to convert the generated text back into speech.
@@ -149,11 +185,11 @@ Firstly, there has been a recent surge of advanced speech synthesis systems that
 In addition, there has been significant progress in the field of text-style controllable TTS, with systems like [TextrolSpeech [92]](../../Datasets/2023.08.28_TextrolSpeech.md), [PromptTTS [71]](../../Models/Prompt/2022.11.22_PromptTTS.md), [PromptTTS2 [118]](../../Models/Prompt/2023.09.05_PromptTTS2.md), [InstructTTS [231]](../../Models/Prompt/2023.01.31_InstructTTS.md), and [ControlSpeech [93]](../../Models/SpeechLM/2024.06.03_ControlSpeech.md).
 These TTS systems can generate highly natural audio based both on the content and style of the text output produced by the cascaded spoken dialogue models.
 
-## 2.3·End-to-End Spoken Dialogue Systems
+## 2.3·End-to-End Spoken Dialogue Systems: 端到端口语对话模型
 
-Ideally, end-to-end spoken dialogue models should enable \textbf{only} speech input and output during both training and inference, thereby achieving multiple intelligent dialogue functions.
+Ideally, end-to-end spoken dialogue models should enable only speech input and output during both training and inference, thereby achieving multiple intelligent dialogue functions.
 However, considering that speech modal is a low-density (contains a lot of acoustic information) modality compared to text modal, and that the volume of available text data far exceeds that of available speech data, many end-to-end spoken dialogue models choose to align the speech modality with the text modality to leverage pre-trained language models (LLMs).
-Consequently, as showed in the Figure \ref{fig:img2}, as long as the large language models can directly understand and generate speech representations, we classify such systems as end-to-end spoken dialogue models.
+Consequently, as showed in the Fig.02, as long as the large language models can directly understand and generate speech representations, we classify such systems as end-to-end spoken dialogue models.
 In contrast, if the large language models can only generate text, we categorize the system as cascaded spoken dialogue systems.
 
 The earliest end-to-end spoken dialogue system can be traced back to [dGSLM [157]](../../Models/SpeechLM/2022.03.30_dGSLM.md), which was trained on thousands of hours of dual-track data ([Fisher Corpus [37]](../../Datasets/Fisher_Corpus.md)) using self-attention and cross-attention mechanisms to simulate duplex interactions.
@@ -194,8 +230,8 @@ Additionally, some end-to-end spoken dialogue models align speech and text throu
 For example, [OmniFlatten [246]](../../Models/SpeechLM/2024.10.23_OmniFlatten.md); employs modality alignment, half-duplex dialogue learning, and full-duplex dialogue learning, along with a flattening-style standardization of text and speech tokens, to achieve duplex, text-free speech dialogue during inference.
 Similar approaches include [SyncLLM [203]](../../Models/SpeechLM/2024.09.23_SyncLLM.md).
 
-## 2.4·Summary
+## 2.4·Summary: 总结
 
 In this section, we have provided a general overview of current end-to-end spoken dialogue systems.
 However, these systems differ significantly in their speech representations, training paradigm, model architectures and generation strategy.
-In Section \ref{section3} and \ref{section4}, we will present a detailed classification followed by our discussions at the end of each section.
+In [Section.03](Sec.03.md) and [Section.04](Sec.04.md), we will present a detailed classification followed by our discussions at the end of each section.
