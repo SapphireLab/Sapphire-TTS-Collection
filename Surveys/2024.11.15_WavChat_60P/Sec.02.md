@@ -62,12 +62,26 @@ Below, we provide a detailed examination of each of the nine usage scenarios.
 
 ### 2.1.1·Text Intelligence: 文本智能
 
+<details>
+<summary>展开原文</summary>
+
 As illustrated in Fig.04 (a), a spoken dialogue system must retain the fundamental capabilities of the original text-based dialogue models, such as ChatGPT.
 We define this usage scenario as textual intelligence.
 In this context, the spoken dialogue model can intelligently respond to user requests, generating appropriate responses such as travel itineraries, work plans, and scheduling.
 However, due to the limitations of voice-based interaction, the textual intelligence of current spoken dialogue systems is more focused on the daily scenarios.
 In certain contexts, such as complex mathematical theorem reasoning, the performance requirements for spoken dialogue models differ from those of text-based dialogue models ([LLaMA [200]](../../Models/TextLM/2023.02.27_LLaMA.md)).
 These advanced aspects of textual intelligence warrant further exploration in unified multimodal dialogue models.
+
+</details>
+<br>
+
+如图 04 (a) 所示, 口语对话系统必须保留原始基于文本的对话模型 (如 ChatGPT) 的基本能力.
+我们将这一使用场景定义为文本智能.
+在这种情况下, 口语对话模型可以智能地响应用户请求, 生成合适的响应, 如旅行行程, 工作计划和日程安排.
+
+然而, 由于基于声音交互的局限性, 当前的口语对话系统的文本智能更侧重于日常场景.
+在某些情况下, 如复杂的数学定理推理, 口语对话模型的性能要求与基于文本的对话模型有所不同 ([LLaMA [200]](../../Models/TextLM/2023.02.27_LLaMA.md)).
+这些文本智能的高级方面在统一的多模态对话模型中值得进一步探索.
 
 ### 2.1.2·Speech Intelligence: 语音智能
 
