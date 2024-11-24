@@ -199,6 +199,12 @@ As shown in Fig.04 (f), an intelligent spoken dialogue model should be able to c
 </details>
 <br>
 
+在口语对话模型中, 处理长篇和多轮对话的能力是评估性能的关键基准 ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)).
+这要求口语对话模型不仅要支持长时段音频输入还需要生成扩展的音频输出.
+此外, 它们必须能够基于历史上下文进行多轮对话.
+多轮对话的重要方面之一是基于新的用户指令对之前的响应进行修正的能力.
+如图 04 (f) 所示, 智能口语对话模型应该能够持续地根据用户不断变化的请求修改其之前的回复.
+
 ### 2.1.7·Interaction Capability: 交互能力
 
 A distinguishing feature of spoken dialogue systems compared to the text-based dialogue models is their duplex and interactive nature ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)).
