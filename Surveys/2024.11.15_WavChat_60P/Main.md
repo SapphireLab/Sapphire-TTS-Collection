@@ -88,10 +88,10 @@ Their realistic conversational interactivity ([VITA [61]](../../Models/SpeechLM/
 
 The history of spoken dialogue models can be traced back to early systems like [dGSLM [157]](../../Models/SpeechLM/2022.03.30_dGSLM.md) and [AudioGPT [84]](../../Models/SpeechLM/2023.04.25_AudioGPT.md), leading up to more recent advancements such as GPT-4o and [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md).
 During this period, many notable spoken dialogue models have emerged.
-As shown in Figure \ref{fig:img1}, we have organized these models in chronological order.
+As shown in Fig.01, we have organized these models in chronological order.
 Broadly, they can be categorized into two types: cascaded spoken dialogue models ([Qwen2-Audio [33]](../../Models/SpeechLM/2024.07.15_Qwen2-Audio.md); [Qwen-Audio [34]](../../Models/SpeechLM/2023.11.14_Qwen-Audio.md)) and end-to-end ([FSQ [149]](../../Modules/VQ/FSQ.md); [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md); [OmniFlatten [246]](../../Models/SpeechLM/2024.10.23_OmniFlatten.md); [IntrinsicVoice [248]](../../Models/SpeechLM/2024.10.09_IntrinsicVoice.md)) spoken dialogue models.
 Given that most current spoken dialogue models rely on alignment with the text modality, the distinction between cascaded and end-to-end models is crucial.
-As illustrated in Figure \ref{fig:img2}, we classify all spoken dialogue models based on whether **the core language model can directly understand and generate speech representations**, dividing them into cascaded and end-to-end categories.
+As illustrated in Fig.02, we classify all spoken dialogue models based on whether **the core language model can directly understand and generate speech representations**, dividing them into cascaded and end-to-end categories.
 Traditional cascaded spoken dialogue systems such as [AudioGPT [84]](../../Models/SpeechLM/2023.04.25_AudioGPT.md) are structured around text as the central intermediary, typically comprising three cascaded modules.
 First, the input audio is transcribed into text by an automatic speech recognition (ASR) module ([Whisper [169]](../../Models/SpeechLM/2022.12.06_Whisper.md)).
 The transcribed text is then fed into a large language model (LLM) such as ChatGPT to generate a textual response.
@@ -109,7 +109,7 @@ The first is the design of speech representations (i.e., tokenizers and detokeni
 The second concerns the paradigm for training, inference, and generation, specifically how to align the speech modality with the text modality while preserving or enhancing the intelligence of existing text-based dialogue models.
 This part also involves selecting different model architectures, generation strategies, and multi-stage training approaches.
 The third challenge involves the design of interactive, duplex, streaming for spoken dialogue systems.
-Lastly, the fourth challenge relates to data—specifically, how to construct training datasets for spoken dialogue systems and evaluate their performance.
+Lastly, the fourth challenge relates to data-specifically, how to construct training datasets for spoken dialogue systems and evaluate their performance.
 
 Given these considerations, in the following sections of this paper, we address these four key technologies in the order outlined above.
 - In Section 2, we provide an overview of spoken dialogue systems, including typical spoken dialogue scenarios (i.e., how to define a spoken dialogue model) and recent developments in the cascaded and end-to-end spoken dialogue models.
@@ -120,7 +120,7 @@ Given these considerations, in the following sections of this paper, we address 
 At the end of each section, we include a summary and discussion to reflect on the key insights.
 - Finally, in Section 7, we conclude the survey by summarizing the major findings and discussing open issues for future research.
 
-Given the complexity of the technical points, we provide an overview of the structure of this survey in Figure \ref{fig:img4}.
+Given the complexity of the technical points, we provide an overview of the structure of this survey in Fig.03.
 
 </details>
 <br>
@@ -134,6 +134,58 @@ Given the complexity of the technical points, we provide an overview of the stru
 近期, 以 GPT-4o 和 [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md) 为代表的智能口语对话系统, 因其超越了传统基于文本的对话模型 ([AudioGPT [84]](../../Models/SpeechLM/2023.04.25_AudioGPT.md)) 的语音智能能力而受到广泛关注.
 
 这些对话模型不仅能够生成自然, 类似人类的语音回应 ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md); [FunAudioLLM [195]](../../Models/SpeechLM/2024.07.04_FunAudioLLM.md)) 还展示了超越文本的高级声学特征 (如音色, 情感和风格) 的理解和生成能力 ([Spoken-LLM [127]](../../Models/SpeechLM/2024.02.20_Spoken-LLM.md); [ParalinGPT [128]](../../Models/SpeechLM/2023.12.23_ParalinGPT.md); [E-chat [227]](../../Models/SpeechLM/2023.12.31_E-chat.md)).
+此外, 它们在处理其他语音相关表示方面表现出色, 包括音乐和音频事件 ([Qwen2-Audio [33]](../../Models/SpeechLM/2024.07.15_Qwen2-Audio.md); [Qwen-Audio [34]](../../Models/SpeechLM/2023.11.14_Qwen-Audio.md); [LTU-AS [67]](../../Models/SpeechLM/2023.09.25_LTU-AS.md); [SALMONN [198]](../../Models/SpeechLM/2023.10.20_SALMONN.md)).
+它们在现实对话互动 ([VITA [61]](../../Models/SpeechLM/2024.08.09_VITA.md); [Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md)) 和低延迟对话体验 ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)) 方面的表现进一步使它们在传统对话模型的竞争中脱颖而出.
+
+口语对话模型的历史可以回溯到早期系统, 如 [dGSLM [157]](../../Models/SpeechLM/2022.03.30_dGSLM.md), [AudioGPT [84]](../../Models/SpeechLM/2023.04.25_AudioGPT.md), 直至最近的进展, 如 GPT-4o 和 [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md).
+在此过程中, 许多值得注意的口语对话模型相继出现.
+如图 01 所示, 我们按时间顺序组织了这些模型.
+
+![](Images/Fig.01.png)
+
+大致上, 它们可以分为两种类型:
+- 级联口语对话模型: ([Qwen2-Audio [33]](../../Models/SpeechLM/2024.07.15_Qwen2-Audio.md); [Qwen-Audio [34]](../../Models/SpeechLM/2023.11.14_Qwen-Audio.md))
+- 端到端口语对话模型: ([FSQ [149]](../../Modules/VQ/FSQ.md); [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md); [OmniFlatten [246]](../../Models/SpeechLM/2024.10.23_OmniFlatten.md); [IntrinsicVoice [248]](../../Models/SpeechLM/2024.10.09_IntrinsicVoice.md))
+
+鉴于现有大多数口语对话模型依赖和文本模态的对齐, 级联模型和端到端模型之间的区别十分关键.
+
+如图 02 所示, 我们根据**核心语言模型是否能够直接理解和生成语音表示**将所有口语对话模型划分为级联模型和端到端模型.
+
+![](Images/Fig.02.png)
+
+传统的级联口语对话系统, 如 [AudioGPT [84]](../../Models/SpeechLM/2023.04.25_AudioGPT.md), 采用以文本为中心媒介的结构, 通常由三个级联模块组成:
+- 输入音频通过自动语音识别 ASR 模块转写为文本.
+- 转写后的文本输入到大语言模型如 ChatGPT 中生成文本回应.
+- 最后, 文本回应通过文本转语音模块 ([VITS2 [109]](../../Models/E2E/2023.07.31_VITS2.md); [FastSpeech2 [176]](../../Models/TTS2_Acoustic/2020.06.08_FastSpeech2.md)) 转换回音频.
+
+尽管这种级联架构利用了大语言模型强大的上下文能力, 但它也引入了一些挑战: 高延迟, 受限互动性, 无法处理非文本信息等.
+
+为了处理这些问题, 近期研究采取了两个主要方向:
+- 一些方法 ([Qwen-Audio [34]](../../Models/SpeechLM/2023.11.14_Qwen-Audio.md); [SALMONN [198]](../../Models/SpeechLM/2023.10.20_SALMONN.md)) 专注于优化级联系统中的理解和生成组件以缓解上述局限.
+- 另一些方法 ([Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md); [Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md); [SpeechGPT-Gen [244]](../../Models/SpeechLM/2024.01.24_SpeechGPT-Gen.md); [IntrinsicVoice [248]](../../Models/SpeechLM/2024.10.09_IntrinsicVoice.md)) 试图采用端到端架构来直接解决这些问题.
+  尽管端到端口语对话模型在表示和模型架构方面存在各种差异, 但它们有一个共同特征: 它们不依赖于文本作为中介.
+  相反, 这些模型试图直接理解和生成语音表示.
+  我们将此类系统定义为端到端口语对话模型.
+
+在构建口语对话系统时, 我们根据涉及的不同级别的智能, 确定了和口语对话模型相关的四种核心技术.
+- 第一: 语音表示的设计 (即 Tokenizer 和 Detokenizer)
+- 第二: 训练, 推理, 生成范式, 特别是如何在保留或增强现有文本对话模型的智能的同时对齐语音模态和文本模态. 这一部分设计到选择不同的模型架构, 生成策略, 多阶段训练策略.
+- 第三: 交互, 双工, 流式的设计.
+- 第四: 数据特定相关的挑战, 如何构造口语对话系统的训练数据集和评估其性能.
+
+鉴于这些考虑, 在本文的后续章节中, 我们将按照顺序详细阐述这四种核心技术:
+- 第二节: 提供口语对话模型的概述, 包括电影的口语对话场景 (即如何定义一个口语对话模型) 以及级联和端到端口语对话模型的近期进展.
+- 第三节: 口语对话系统使用的语音表示.
+- 第四节: 系统地讨论训练范式, 特别强调了如何将语音模态与文本模态对齐, 以及多阶段训练策略, 模型架构, 和生成策略.
+- 第五节: 强调了口语对话系统的独特特性, 特别是双工, 流式特性, 这些特性使得它们与文本对话系统有所不同.
+- 第六节: 考察了口语对话模型的训练数据集构建和特定的评估方法.
+
+在每一节末尾, 我们进行总结和讨论, 以反思关键见解.
+最后, 我们在第七节, 总结了本文的主要发现和未来研究的开放问题.
+
+鉴于技术点的复杂性, 我们在图 03 中提供了本文的结构概览.
+
+![](Images/Fig.03.png)
 
 ## [2·Overall: 整体视角](Sec.02.md)
 
