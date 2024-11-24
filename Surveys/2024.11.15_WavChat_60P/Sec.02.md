@@ -384,6 +384,9 @@ These TTS systems can generate highly natural audio based both on the content an
 
 ## 2.3·End-to-End Spoken Dialogue Systems: 端到端口语对话模型
 
+<details>
+<summary>展开原文</summary>
+
 Ideally, end-to-end spoken dialogue models should enable only speech input and output during both training and inference, thereby achieving multiple intelligent dialogue functions.
 However, considering that speech modal is a low-density (contains a lot of acoustic information) modality compared to text modal, and that the volume of available text data far exceeds that of available speech data, many end-to-end spoken dialogue models choose to align the speech modality with the text modality to leverage pre-trained language models (LLMs).
 Consequently, as showed in the Fig.02, as long as the large language models can directly understand and generate speech representations, we classify such systems as end-to-end spoken dialogue models.
@@ -418,14 +421,57 @@ At the same time, [LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.
 Their commonality lies in the fact that, at the generation stage, the hidden states of the LLM are further fed into the corresponding decoder model.
 [LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md) integrates a pretrained speech encoder, a speech adapter, an LLM, and a streaming speech decoder.
 It eliminates the need for speech transcription, and can simultaneously generate text and speech responses directly from speech instructions with low latency.
-[Freeze-Omni [212]](../../Models/SpeechLM/2024.11.01_Freeze-Omni.md) designed 3-stage training strategies both for the modeling of speech input and output, enabling it to obtain speech-to-speech
-dialogue ability noly by using text-speech paired data.
+[Freeze-Omni [212]](../../Models/SpeechLM/2024.11.01_Freeze-Omni.md) designed 3-stage training strategies both for the modeling of speech input and output, enabling it to obtain speech-to-speech dialogue ability noly by using text-speech paired data.
 The core idea of Freeze-Omni lies in transferring the functionalities of spoken dialogue models to the encoder (ASR) and decoder (TTS), rather than assigning these tasks to the large language model.
 [IntrinsicVoice [248]](../../Models/SpeechLM/2024.10.09_IntrinsicVoice.md) facilitates the transfer of textual capabilities from pre-trained LLMs to the speech modality by reducing the modality gap between text and speech.
 By using a GroupFormer to generate HuBERT tokens from the LLM’s hidden states, IntrinsicVoice effectively reduces speech sequences to lengths comparable to text sequences, generating high-quality audio while significantly speeding up inference and mitigating long-text modeling issues.
 Additionally, some end-to-end spoken dialogue models align speech and text through multi-stage training, eliminating the need to generate text during inference.
 For example, [OmniFlatten [246]](../../Models/SpeechLM/2024.10.23_OmniFlatten.md); employs modality alignment, half-duplex dialogue learning, and full-duplex dialogue learning, along with a flattening-style standardization of text and speech tokens, to achieve duplex, text-free speech dialogue during inference.
 Similar approaches include [SyncLLM [203]](../../Models/SpeechLM/2024.09.23_SyncLLM.md).
+
+</details>
+<br>
+
+理想情况下, 端到端口语对话模型应该训练和推理时仅使用语音输入和输出, 从而实现多种智能对话功能.
+然而, 考虑到语音模态相对于文本模态是低密度模态 (包含大量声学信息), 且可用的文本数据量远远超过可用的语音数据, 许多端到端的口语对话模型选择将语音模态和文本模态对齐来利用预训练语言模型.
+因此, 如图 02 所示, 只要大语言模型能够直接理解和生成语音表示, 我们将此类系统归类为端到端口语对话模型.
+相反, 如果大语言模型只能够生成文本, 我们将该系统归类为级联口语对话系统.
+
+最早的端到端口语对话系统可以回溯到 [dGSLM [157]](../../Models/SpeechLM/2022.03.30_dGSLM.md), 该系统基于数千小时的二轨数据 ([Fisher Corpus [37]](../../Datasets/Fisher_Corpus.md)) 训练, 使用自注意力和交叉注意力机制来模拟双工交互.
+尽管 dGSLM 缺乏与 LLMs 的集成, 甚至缺乏基本的文本智能, 但它作为第一个完全端到端的口语对话系统, 不依赖文本的同时保持了出色的对话交互性, 具有重要意义.
+
+随着 [dGSLM [157]](../../Models/SpeechLM/2022.03.30_dGSLM.md) 的发布, 端到端口语对话模型的发展停滞了几个月.
+然而, 随着 ChatGPT 的出现, 这一领域迅速发展.
+- 一个代表性的方法是 [SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md), 通过使用 {输入语音 Token, 输入文本 Token, 响应文本 Token, 响应语音 Token} 的序列进行自回归语言建模.
+- 这种方式使得文本智能能够直接生成语音 Token, 启发了后续的端到端口语对话系统, 如 [Spectron [156]](../../Models/SpeechLM/2023.05.24_Spectron.md), [SpeechGPT-Gen [244]](../../Models/SpeechLM/2024.01.24_SpeechGPT-Gen.md), [GLM-4-Voice [Github]](https://github.com/THUDM/GLM-4-Voice) 和 [EMOVA [25]](../../Models/SpeechLM/2024.09.26_EMOVA.md). 这些系统仍然使用自回归框架, 先生成文本 Token 再生成语音 Token.
+
+尽管这种方法允许 LLM 直接生成语音 Token, 但它引入了延迟问题, 因为语音 Token 生成只能在文本 Token 生成完成后开始.
+这导致多轮对话和整体系统延迟问题.
+
+除了 [SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md) 的设计之外, 另一种直观的方法是直接使用 LLM 的 softmax 层之前的隐藏状态通过不同映射层来预测文本 Token 和语音 Token.
+这使得网络可以在映射层之前共享权重, 从而对齐语音和文本模态.
+- 例如, [PSLM [154]](../../Models/SpeechLM/2024.06.18_PSLM.md) 是典型的这种设计.
+- Meta 提出的另一种方法是交错方法, 如 [Spirit-LM [158]](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md), 其中语音和文本序列被拼接成单个 Token 流, 并使用小型手工制作的语音-文本并行语料库进行词级交错方法训练.
+  然而这种方法要求语音和文本的精确对齐.
+
+近期出现了几个新的端到端口语对话系统.
+- [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md) 是基于全局-局部 Transformer 的模型, 可以从多层量化器同时生成文本和语音声学 Token.
+  从基于文本的语言模型骨干开始, Moshi 从神经音频编解码器的残差量化器中生成音频 Token 并对用户的语音和系统响应进行并行流建模.
+  这一设计消除了显式切换说话人的需要并允许建模任意对话动态.
+  此外, Moshi 通过先预测时间对齐的文本 Token 作为音频 Token 的前缀来扩展先前的层次化语义转声学 Token 生成.
+- [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md) 类似地使用基于 [MusicGen [40]](../../Models/SpeechLM/2023.06.08_MusicGen.md) 的方法来同时生成文本和语音编解码器 Token.
+  它引入了两种策略: 通过填充文本 Tokens 进行无严格时间对齐的自回归生成和批量并行推理策略以提升性能.
+- [Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md) 通过整合多模态理解和双工功能进一步增强了这一方法.
+
+[LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md), [Freeze-Omni [212]](../../Models/SpeechLM/2024.11.01_Freeze-Omni.md), [IntrinsicVoice [248]](../../Models/SpeechLM/2024.10.09_IntrinsicVoice.md) 设计了 LLM 以进行实时声音交互. 它们的共同点在于在生成阶段, LLM 的隐藏状态被进一步输入到对应的解码器模型中.
+- [LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md) 继承了预训练语音编码器, 语音适配器, 大语言模型和流式语音解码器. 它消除了语音转写的需要, 并能够直接从语音指令中以低延迟直接生成文本和语音响应.
+- [Freeze-Omni [212]](../../Models/SpeechLM/2024.11.01_Freeze-Omni.md) 设计了三阶段训练策略用于语音输入和输出的建模, 使其仅通过使用文本-语音配对数据即可获得语音到语音的对话能力. 其核心思想是将口语对话模型的功能转移到编码器 (ASR) 和解码器 (TTS) 中, 而不是将其分配给大型语言模型.
+- [IntrinsicVoice [248]](../../Models/SpeechLM/2024.10.09_IntrinsicVoice.md) 通过减少文本和语音之间的模态差距, 促进了预训练 LLMs 文本能力迁移到语音模态
+  它通过使用 GroupFormer 从 LLM 的隐藏状态生成 HuBERT Token, 有效地将语音序列缩短到与文本序列相当的长度, 生成高质量音频的同时显著加快推理速度, 并缓解了长文本建模问题.
+
+此外, 一些端到端口语对话模型通过多阶段训练对齐语音和文本, 从而在推理过程中无需生成文本.
+- [OmniFlatten [246]](../../Models/SpeechLM/2024.10.23_OmniFlatten.md) 通过模态对齐, 半双工对话学习和全双工对话学习, 一起文本和语音 Token 的扁平标准化, 实现了推理过程中的双工无文本语音对话.
+- 类似的方法包括 [SyncLLM [203]](../../Models/SpeechLM/2024.09.23_SyncLLM.md).
 
 ## 2.4·Summary: 总结
 
