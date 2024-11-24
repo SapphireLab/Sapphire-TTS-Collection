@@ -262,11 +262,26 @@ In practical conversational experiences, the latency of the first token generate
 
 ### 2.1.9·Multimodal Capability: 多模态能力
 
+<details>
+<summary>展开原文</summary>
+
 Multimodal dialogue capability ([EMOVA [25]](../../Models/SpeechLM/2024.09.26_EMOVA.md); [VITA [61]](../../Models/SpeechLM/2024.08.09_VITA.md)) represents an advanced feature of spoken dialogue models.
 In existing systems, this typically refers to the ability to process inputs from multiple modalities, such as video, images, and text, while generating intelligent speech responses.
 A spoken dialogue model equipped with this capability achieves the ability to “hear, see, and speak” simultaneously.
 Multimodal inputs significantly enhance the potential of these systems; for instance, users can employ various gestures to improve the quality of the model’s generated responses, and the system can develop a deeper understanding of the physical world.
 Beyond multimodal inputs, the future of dialogue systems lies in large multimodal models that unify the comprehension and generation capabilities across all modalities, with spoken dialogue serving as the foundational modality.
+
+</details>
+<br>
+
+多模态对话能力 ([EMOVA [25]](../../Models/SpeechLM/2024.09.26_EMOVA.md); [VITA [61]](../../Models/SpeechLM/2024.08.09_VITA.md)) 是口语对话模型的一个高级特性.
+在现有系统中, 这通常指的是处理来自多个模态 (如音频, 图像, 文本) 的输入, 同时生成智能语音响应的能力.
+具备这种能力的口语对话模型可以实现 "听, 看, 说" 同时进行.
+多模态输入显著提升了这些系统的潜力.
+
+例如, 用户可以通过各种手势来提升模型生成响应的质量, 且系统可以对物理世界进行更深入的理解.
+
+除了多模态输入, 对话系统的未来在于大型多模态模型, 这些模型统一了所有模态的理解和生成能力, 而口语对话扮演着基础模态.
 
 ## 2.2·Cascaded Spoken Dialogue Systems: 级联口语对话系统
 
