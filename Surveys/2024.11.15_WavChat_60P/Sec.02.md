@@ -85,14 +85,16 @@ These advanced aspects of textual intelligence warrant further exploration in un
 
 ### 2.1.2·Speech Intelligence: 语音智能
 
+<details>
+<summary>展开原文</summary>
+
 A distinguishing feature of spoken dialogue models, compared to text-based dialogue models ([LLaMA [200]](../../Models/TextLM/2023.02.27_LLaMA.md)), is their ability to understand and generate acoustic information beyond mere textual content.
 In the speech modality, not only is the textual content present, but also additional acoustic information, such as timbre (speaker identity) and style (emotion, prosody, etc.).
 As illustrated in Fig.04 (b), an intelligent spoken dialogue system should be capable of understanding the timbre and style of conversational speech and, ideally, generating responses with specified timbre and style in a zero-shot manner.
 
 This capability about speech intelligence involves several use cases.
 First, on the comprehension side, the spoken dialogue system should generate responses based on the speaker's vocal style.
-For example, in the [E-chat [227]](../../Models/SpeechLM/2023.12.31_E-chat.md), a classic example might be: if a user asks, "My phone won't turn on, what should I do?" in a cheerful tone, the system might respond, "It looks like you're excited about getting a new phone.
-What type of phone are you interested in?" Conversely, if the user asks the same question in a sad tone, the system might reply, "It's unfortunate your phone isn't working.
+For example, in the [E-chat [227]](../../Models/SpeechLM/2023.12.31_E-chat.md), a classic example might be: if a user asks, "My phone won't turn on, what should I do?" in a cheerful tone, the system might respond, "It looks like you're excited about getting a new phone. What type of phone are you interested in?" Conversely, if the user asks the same question in a sad tone, the system might reply, "It's unfortunate your phone isn't working.
 If you're familiar with the repair policy, let's proceed with the next steps." This situation indicates that the spoken dialogue system may generate responses with different content based on varying acoustic information.
 Furthermore, the system should comprehend various acoustic cues, such as accents or emotional states, and adjust its responses of different acoustic information accordingly.
 For instance, if the speaker is an American, the system might reply with a native English accent, whereas if the speaker is a Shanghainese user, the system could respond using the corresponding dialect.
@@ -102,6 +104,32 @@ On the generation side, speech intelligence is more prominently reflected in its
 For example, the system could be instructed to mimic a specific voice or respond in a designated style (e.g., mimicking a grandmother's soft and gentle voice for a comforting interaction).
 Additionally, the system could use a voice prompt provided during the conversation to fully clone the timbre from the prompt and generate speech in that same voice.
 In summary, the ability to comprehend and generate acoustic information is one of the key characteristics of an intelligent spoken dialogue model.
+
+</details>
+<br>
+
+和基于文本的对话模型 ([LLaMA [200]](../../Models/TextLM/2023.02.27_LLaMA.md)) 相比, 口语对话模型的显著特征之一是它们能够理解和生成超越文本内容的声学信息的能力.
+在语音模态中, 不仅存在文本内容, 还有额外的声学信息 (例如音色/说话人身份和风格/情感/韵律等).
+如图 04 (b) 所示, 智能口语对话模型应该能够理解对话语音的音色和风格, 并且理想情况下, 以零样本方式生成具有指定音色和风格的响应.
+
+语音智能的能力涉及到多种用例.
+
+在**理解方面**, 口语对话系统应该基于说话人声学风格生成响应.
+例如, 在 [E-chat [227]](../../Models/SpeechLM/2023.12.31_E-chat.md) 中, 一个典型的例子可能是:
+如果用户以欢快的语气询问:"我的手机无法开机, 我该怎么办?",
+系统可能会回答: "看起来你对新手机很兴奋, 你对哪种手机感兴趣?".
+如果用户以悲伤的语气询问同样的问题, 系统可能会回答: "很遗憾你的手机无法正常工作. 如果你熟悉维修政策, 继续下一步吧."
+这种情况表明, 口语对话系统可能会根据不同的声学信息生成不同内容的响应.
+
+此外, 系统应该理解各种声学线索, 如口音或情绪状态, 并根据相应的不同声学信息调整其响应.
+例如, 如果说话人是一位美国人, 系统可能会用本地的英语口音进行回复, 而如果说话人是上海人, 系统可以用相应的方言回复.
+类似地, 如果用户以悲伤的语气说话, 对话系统应能够生成更具有鼓励性和同理心的响应.
+
+在**生成方面**, 语音智能更突出地体现在其可控性上, 例如声音克隆和风格控制.
+例如, 系统可以被指示模仿特定声音或以指定风格回应 (模仿祖母的轻声细语以进行安慰性的互动)
+此外, 系统可以在对话时使用提供的声音提示来完全克隆提示中的音色并生成相同声音的语音.
+
+总而言之, 理解和生成声学信息的能力是智能口语对话模型的关键特征之一.
 
 ### 2.1.3·Audio and Music Generation: 音频和音乐生成
 
