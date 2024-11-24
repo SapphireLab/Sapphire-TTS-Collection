@@ -168,18 +168,36 @@ Moreover, the system could extend its understanding by creating literary works�
 
 ### 2.1.5·Multilingual Capability: 多语言能力
 
+<details>
+<summary>展开原文</summary>
+
 Similar to text-based dialogue models, spoken dialogue systems are expected to possess multilingual capabilities.
 Specifically, these models should be able to perform multilingual content translation, such as translating a spoken segment in Japanese into French speech clips, effectively inheriting the capabilities of simultaneous interpretation.
 In addition to multilingual content translation, the system should also handle multilingual acoustic information.
 This means that the intelligent spoken dialogue model should be able to generate responses in various languages and accents, replying in the corresponding accent of the target language based on the different input speech.
 
+</details>
+<br>
+
+和基于文本的对话模型类似, 口语对话系统也应该具备处理多语言的能力.
+具体来说, 这些模型应该能够进行多语言的内容翻译, 例如将日语口语片段翻译成法语语音片段, 有效地继承同声传译的能力.
+
+除了多语言内容翻译, 系统还应该能够处理多语言声学信息.
+这意味着智能口语对话模型应该能够以各种语言和口音生成响应, 根据不同的输入语音以目标语言的响应口音回应.
+
 ### 2.1.6·Context Learning: 上下文学习
+
+<details>
+<summary>展开原文</summary>
 
 In the spoken dialogue models, the ability to handle long-form and multi-turn conversations is a key benchmark for evaluating performance ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)).
 This requires that spoken dialogue models not only support long-duration audio inputs but also generate extended audio outputs.
 Moreover, they must be capable of engaging in multi-turn conversations based on historical context.
 An important aspect of multi-turn dialogue is the ability to revise previous responses based on new user instructions.
 As shown in Fig.04 (f), an intelligent spoken dialogue model should be able to continuously modify its previous replies according to the user’s evolving requests.
+
+</details>
+<br>
 
 ### 2.1.7·Interaction Capability: 交互能力
 
