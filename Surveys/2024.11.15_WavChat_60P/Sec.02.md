@@ -207,6 +207,9 @@ As shown in Fig.04 (f), an intelligent spoken dialogue model should be able to c
 
 ### 2.1.7·Interaction Capability: 交互能力
 
+<details>
+<summary>展开原文</summary>
+
 A distinguishing feature of spoken dialogue systems compared to the text-based dialogue models is their duplex and interactive nature ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)).
 In text-based dialogue, interactions typically follow a half-duplex structure, where the response can only be provided after the question has been completed, and the user is unable to interrupt the reply in real-time.
 However, in the spoken dialogue systems, full-duplex interaction is common.
@@ -217,6 +220,23 @@ Additionally, to emulate more natural conversational settings, the system can al
 Beyond the ability to interrupt, interactive dialogue often includes the use of conversational fillers, such as "okay," "haha," or "oh," which signal acknowledgment or agreement.
 Including these within spoken dialogue models enhances the realism and natural flow of conversations.
 The underlying requirement for interaction capabilities is that the system should be able to listen and speak simultaneously, responding dynamically to the flow of the interaction.
+
+</details>
+<br>
+
+与基于文本的对话模型相比, 口语对话系统的一个显著特点是它们的双工和交互性 ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)).
+在基于文本的对话中, 交互通常遵循半双工结构, 即响应只能在问句完成后提供, 用户无法实时干扰回复.
+然而, 在口语对话系统中, 全双工交互是常见的.
+这意味着在生成响应之前不需要完全完成对话.
+系统和用户都可以实时打断和互动.
+例如, 如果用户不满意系统的响应, 他们可以立即打断, 使得系统暂停当前生成并响应新的输入.
+
+此外, 为了模仿更自然的对话场景, 系统还可以在适当的时候打断用户例如在澄清用户意图时.
+
+除了打断能力外, 交互对话通常还包括对话填充词 (如 "okay," "haha," 或 "oh,"), 它们表示确认或同意.
+在口语对话模型中包括这些内容可以增强对话的真实性和自然流动性.
+
+交互能力的基本要求是同时听和说, 动态地响应交互流程.
 
 ### 2.1.8·Streaming Latency: 流式延迟
 
