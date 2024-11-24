@@ -153,7 +153,7 @@ The article provides a description of the transformer, a list of popular transfo
 ["A Survey on Audio Diffusion Models: Text To Speech Synthesis and Enhancement in Generative AI (2023)"](../2023.03.23_A_Survey_on_Audio_Diffusion_Models__TTS_Synthesis_&_Enhancement_in_Generative_AI/Main.md) surveys TTS and speech enhancement, with a focus on diffusion models.
 Although the emphasis is on diffusion models, they also discuss the stages of TTS, pioneering work, and specialized models for distinct speech enhancement tasks.
 
-["A Review of Deep Learning Techniques for Speech Processing (2023)"](../2023_A_Review_of_DL_Techniques_for_Speech_Processing/Main.md)  conducted a comprehensive survey of deep learning techniques in speech processing.
+["A Review of Deep Learning Techniques for Speech Processing (2023)"](../2023.04.30_A_Review_of_DL_Techniques_for_Speech_Processing_55P/Main.md)  conducted a comprehensive survey of deep learning techniques in speech processing.
 It begins with speech features and traditional speech processing models.
 It addresses the following deep learning architectures: RNN, CNN, Transformer, Conformer, Sequence-to-Sequence models (Seq2seq), Reinforcement learning, Graph neural networks (GNN), and diffusion probabilistic networks.
 Explains supervised, unsupervised, semi-supervised, and self-directed speech representation learning.
@@ -214,7 +214,7 @@ Finally, it discusses a variety of speech processing tasks, including neural spe
 ["A Survey on Audio Diffusion Models: Text To Speech Synthesis and Enhancement in Generative AI (2023)"](../2023.03.23_A_Survey_on_Audio_Diffusion_Models__TTS_Synthesis_&_Enhancement_in_Generative_AI/Main.md) 调查了文本转语音和语音增强, 重点是扩散模型.
 虽然重点是扩散模型, 但他们也讨论了 TTS 的阶段, 开创性工作以及针对特定语音增强任务的专业模型.
 
-["A Review of Deep Learning Techniques for Speech Processing (2023)"](../2023_A_Review_of_DL_Techniques_for_Speech_Processing/Main.md) 进行了一项关于深度学习技术在语音处理中的全面调查.
+["A Review of Deep Learning Techniques for Speech Processing (2023)"](../2023.04.30_A_Review_of_DL_Techniques_for_Speech_Processing_55P/Main.md) 进行了一项关于深度学习技术在语音处理中的全面调查.
 它从语音特征和传统语音处理模型开始.
 它讨论了以下深度学习架构: RNN, CNN, Transformer, Conformer, 序列到序列模型 (Seq2seq), 强化学习, 图神经网络 (GNN) 和扩散概率网络.
 解释了监督, 无监督, 半监督和自我导向的语音表示学习.
