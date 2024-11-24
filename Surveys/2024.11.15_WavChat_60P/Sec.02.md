@@ -133,10 +133,21 @@ In summary, the ability to comprehend and generate acoustic information is one o
 
 ### 2.1.3·Audio and Music Generation: 音频和音乐生成
 
+<details>
+<summary>展开原文</summary>
+
 In the spoken dialogue models, beyond basic spoken dialogue capabilities, an intelligent spoken dialogue system may be required to generate music and audio.
 For example, a user might instruct the system to generate a one-minute piano piece or a ten-second recording of a dog barking.
 Additionally, users might provide lyrics and a musical melody, asking the spoken dialogue model to create a pop song.
 The system should thus inherit the generative capabilities of large-scale music ([MusicLM [2]](../../Models/SpeechLM/2023.01.26_MusicLM.md); [MusicGen [40]](../../Models/SpeechLM/2023.06.08_MusicGen.md); [MeLoDy [116]](../../Models/SpeechLM/2023.05.25_MeLoDy.md); [Ma et al. (Survey) [141]](../2024.08.26_Foundation_Models_for_Music__A_Survey_89P/Main.md)) and audio ([Make-An-Audio [83]](../../Models/Diffusion/2023.01.30_Make-An-Audio.md); [AudioLDM [134]](../../Models/Diffusion/2023.01.29_AudioLDM.md); [AudioLDM2 [136]](../../Models/Diffusion/2023.08.10_AudioLDM2.md)) models on the output side.
+
+</details>
+<br>
+
+在口语对话模型中, 除了基本的口语对话能力之外, 智能口语对话系统可能还被要求生成音乐和音频.
+例如, 用户可能会指示系统生成一段一分钟的钢琴段落或十秒钟的狗叫录音.
+此外, 用户可能提供歌词和音乐旋律, 要求口语对话模型创作一首流行歌曲.
+因此, 系统应在输出侧继承大规模的音乐 ([MusicLM [2]](../../Models/SpeechLM/2023.01.26_MusicLM.md); [MusicGen [40]](../../Models/SpeechLM/2023.06.08_MusicGen.md); [MeLoDy [116]](../../Models/SpeechLM/2023.05.25_MeLoDy.md); [Ma et al. (Survey) [141]](../2024.08.26_Foundation_Models_for_Music__A_Survey_89P/Main.md)) 和音频 ([Make-An-Audio [83]](../../Models/Diffusion/2023.01.30_Make-An-Audio.md); [AudioLDM [134]](../../Models/Diffusion/2023.01.29_AudioLDM.md); [AudioLDM2 [136]](../../Models/Diffusion/2023.08.10_AudioLDM2.md)) 模型的生成能力.
 
 ### 2.1.4·Audio and Music Understanding: 音频和音乐理解
 
