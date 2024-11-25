@@ -1,4 +1,7 @@
-# 3·Representations of Spoken Dialogue Models
+# 3·Representations of Spoken Dialogue Models: 口语对话模型中的表示
+
+<details>
+<summary>展开原文</summary>
 
 Representations play a critical role in spoken dialogue systems as they determine how the spoken dialogue system comprehends, processes, and generates speech signals.
 Additionally, they serve as a bridge between speech and other modalities, thereby directly influencing the system’s performance, functionality, and range of applications.
@@ -9,19 +12,44 @@ In contrast, speech signals contain both dynamic acoustic features (such as timb
 
 The unique nature of speech has led to the development of two types of representation models.
 The representations obtained by these two modeling approaches are often classified as semantic tokens and acoustic tokens.
-**One category (semantic) is prediction-based modeling**, these models are trained for representation learning by predicting future frames in an autoregressive manner ([VQ-APC [35]](../../Models/_Basis/2020.05.17_VQ-APC.md); [Shain et al. [187]](../../Models/_Full/Acquiring_Language_from_Speech_by_Learning_to_Remember_and_Predict.md)) 35 187 or by using surrounding frames to predict masked frames ([Audio ALBERT [31]](../../Models/SpeechRepresentation/2020.05.18_Audio_ALBERT.md); [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md); [Mockingjay [133]](../../Models/SpeechRepresentation/2019.10.25_Mockingjay.md)).
+**One category (semantic) is prediction-based modeling**, these models are trained for representation learning by predicting future frames in an autoregressive manner ([VQ-APC [35]](../../Models/_Basis/2020.05.17_VQ-APC.md); [Shain et al. [187]](../../Models/_Full/Acquiring_Language_from_Speech_by_Learning_to_Remember_and_Predict.md)) or by using surrounding frames to predict masked frames ([Audio ALBERT [31]](../../Models/SpeechRepresentation/2020.05.18_Audio_ALBERT.md); [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md); [Mockingjay [133]](../../Models/SpeechRepresentation/2019.10.25_Mockingjay.md)).
 This approach tends to prioritize capturing linguistic information within speech, making it particularly useful for recognition and understanding tasks.
 **The other category (acoustic) focuses on speech compression and reconstruction** ([WavTokenizer [90]](../../Models/Speech_Neural_Codec/2024.08.29_WavTokenizer.md);  [EnCodec [43]](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md); [DAC [113]](../../Models/Speech_Neural_Codec/2023.06.11_Descript-Audio-Codec.md); [SoundStream [238]](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md)).
 These models quantify speech features (which are downsampled from raw waveforms by one encoder) into a series of discrete tokens, then use one decoder to upsample these discrete tokens into the speech, calculating the reconstruction loss against the original signal.
 By this approach, we can get discrete acoustic tokens with impressive compression rates and high-fidelity acoustic information, making it more suitable for tasks such as speech synthesis and emotion analysis.
 
-In the spoken dialogue systems, as illustrated in Figure \ref{fig:img2}, different spoken dialogue models employ various approaches for representation selection.
+In the spoken dialogue systems, as illustrated in Fig.02, different spoken dialogue models employ various approaches for representation selection.
 In the following part, we will enumerate the commonly used speech representations in spoken dialogue models from both the input and output perspectives.
 At the end of this section, we will thoroughly discuss the advantages and limitations of these representations, as well as the future trends in the development of representations used in spoken dialogue models.
 
-## 3.1·Speech Representations at the Inputs
+</details>
+<br>
 
-### Semantic
+表示 (Representations) 在口语对话系统中扮演者至关重要的角色, 因为它们决定了语音对话系统如何理解, 处理和生成语音信号.
+此外, 它们作为语音和其他模态之间的桥梁, 因此直接影响系统的性能, 功能和应用范围.
+和文本表示与视觉表示相比, 语音表示具有独特的复杂性.
+- 文本表示主要依赖于定义明确的符号系统, 通过结构化元素 (如词汇和句法) 传达含义.
+- 视觉表示侧重于捕捉图像中的空间关系和视觉特征.
+- 语音信号包含动态声学特征 (如音色, 韵律和情感) 和丰富的语义内容, 要求相应的表示不仅捕获时序变化而且还能保留对底层含义的理解.
+
+语音的独特性促使了两种表示模型的发展.
+由这两种建模方法获得的表示通常被分类为语义 Token 和声学 Token.
+
+1. 语义类是基于预测的建模. 这些模型被训练以进行表示学习, 如以自回归方式预测未来帧 ([VQ-APC [35]](../../Models/_Basis/2020.05.17_VQ-APC.md); [Shain et al. [187]](../../Models/_Full/Acquiring_Language_from_Speech_by_Learning_to_Remember_and_Predict.md)) 或使用周围帧来预测被掩膜的帧 ([Audio ALBERT [31]](../../Models/SpeechRepresentation/2020.05.18_Audio_ALBERT.md); [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md); [Mockingjay [133]](../../Models/SpeechRepresentation/2019.10.25_Mockingjay.md)).
+   这种方法倾向于优先捕捉语音中的语言信息, 特别适用于识别和理解任务.
+2. 声学类专注于语音压缩和重建 ([WavTokenizer [90]](../../Models/Speech_Neural_Codec/2024.08.29_WavTokenizer.md);  [EnCodec [43]](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md); [DAC [113]](../../Models/Speech_Neural_Codec/2023.06.11_Descript-Audio-Codec.md); [SoundStream [238]](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md)).
+   这些模型将语音特征量化为一系列离散 Token (通过编码器对原始波形进行下采样), 然后使用解码器来上采样这些离散 Token 为语音, 计算和原始信号之间的重构损失.
+   通过这种方法, 我们可以获得具有惊人压缩率和高保真度声学信息的离散声学 Token, 更适合例如语音合成和情感分析等任务.
+
+![](Images/Fig.02.png)
+
+在口语对话系统中, 如图 2 所示, 不同口语对话模型对于表示选择采用不同的方法.
+在接下来的部分, 我们将枚举口语对话模型中常用的语音表示, 既包括输入端, 也包括输出端.
+在最后, 我们将详细讨论这些表示的优势和局限性, 以及在口语对话模型中使用的语音表示的未来趋势.
+
+## 3.1·Speech Representations at the Inputs: 输入端的语音表示
+
+### Semantic: 语义
 
 To enhance language models' ability to understand speech representations and align multimodal data at input, using pretrained models such as [Wav2Vec [184]](../../Models/SpeechRepresentation/2019.04.11_Wav2Vec.md), [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md), [Whisper [169]](../../Models/SpeechLM/2022.12.06_Whisper.md), and [WavLM [27]](../../Models/SpeechRepresentation/2021.10.26_WavLM.md) to extract high-level semantic features from speech has become a core strategy for many spoken dialogue systems.
 
@@ -113,7 +141,7 @@ An adapter module then maps these high-dimensional representations into the embe
 The speech encoder module consists of several downsampling convolutional layers and Transformer blocks, while the adapter includes only a few downsampling convolutional layers.
 Downsampling layers are used to reduce the frame rate of speech features, increase the LLM's processing speed during the prefill phase, and minimize latency.
 
-### Acoustic
+### Acoustic: 声学
 
 Considering that semantic features are insufficient to capture the emotion, timbre, and style of speech, some representation models, such as [Emotion2Vec [143]](../../Models/Speech_Representaion/2023.12.23_Emotion2Vec.md), attempt to extract acoustic information through self-supervised training.
 Others focus on reconstruction objectives to ensure high-fidelity speech, including models like [EnCodec [43]](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md), [SpeechTokenizer [249]](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md), Mimi ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)).
@@ -162,9 +190,9 @@ When a specific downstream task is performed, Emotion2Vec is frozen and a lightw
 Emotion2Vec introduces an utterance-level loss to control global emotion and employs a frame-level loss to build a frame-wise pretext task, enabling it to learn contextual emotions.
 [Spoken-LLM [127]](../../Models/SpeechLM/2024.02.20_Spoken-LLM.md) uses features extracted by Emotion2Vec as input for the large language model, aiming to enable the model to understand and respond to emotions.
 
-## 3.2·Speech Representations at the Outputs
+## 3.2·Speech Representations at the Outputs: 输出端的语音表示
 
-### Semantic
+### Semantic: 语义
 
 At the output stage, Most spoken dialogue systems choose to autoregressively model semantic tokens, such as $S^3$ tokens ([CosyVoice [49]](../../Models/SpeechLM/2024.07.07_CosyVoice.md)) and [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) units.
 It is worth noting that these semantic tokens lack acoustic conditioning and therefore require a vocoder ([HiFi-GAN [108]](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md); [Polyak et al. [166]](../../Models/_Full/2021.04.01_Speech_Resynthesis_from_Discrete_Disentangled_Self-Supervised_Representations.md)) or decoder, which futher takes semantic discrete units as input to synthesize speech consistent with the speakers encountered during training.
@@ -197,7 +225,7 @@ USDM uses the [Voicebox [117]](../../Models/SpeechLM/2023.06.23_VoiceBox.md) arc
 [EMOVA [25]](../../Models/SpeechLM/2024.09.26_EMOVA.md) generates a response in the form of speech units when given an image or speech input, which is then converted into an output waveform using the U2S detokenizer.
 The U2S detokenizer follows the VAE architecture: it uses a speech unit encoder to convert the predicted speech units into continuous embeddings, combines these with style embeddings predicted by the large language model to determine duration, and finally reconstructs the speech waveform through the decoder.
 
-### Acoustic
+### Acoustic: 声学
 
 Many spoken dialogue systems choose to directly generate tokens from acoustic representation models, such as [EnCodec [43]](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md), [SpeechTokenizer [249]](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md), and Mimi ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)).
 These acoustic tokens are then upsampled into the raw waveform through the frozen codec decoder directly.
@@ -245,9 +273,9 @@ Both the NAR decoder and AR decoder are built upon transformer blocks.
 The NAR decoder is used to model the semantic features from the output of LLM, and then the AR decoder generates speech tokens based on the output of the NAR decoder.
 Finally, the decoder of the codec model converts the speech tokens into a speech stream.
 
-## 3.3·Discussions about Representation used in Spoken Dialogue Systems
+## 3.3·Discussions about Representation used in Spoken Dialogue Systems: 讨论
 
-### 3.3.1·emantic Representation vs Acoustic Representation
+### 3.3.1·Semantic Representation vs Acoustic Representation: 语义表示与声学表示
 
 Current dialogue systems typically choose different approaches for the understanding (input) and generation (output) sides based on task requirements.
 For example, [Spirit-LM [158]](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md) uses semantic representations ([HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md)) consistently on both ends, while [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md) uses semantic representations ([Whisper [169]](../../Models/SpeechLM/2022.12.06_Whisper.md)) on the input side and acoustic representations ([SNAC [193]](../../Models/Speech_Neural_Codec/2024.10.18_SNAC.md)) on the output side.
@@ -277,7 +305,7 @@ With technological advancements, we look forward to more unified and refined mod
 A promising direction would be to design new training objectives for speech tokenizers, exploring both data-driven and objective-driven methods, thus avoiding the need for additional pre-trained models.
 As spoken dialogue Systems are still evolving, exploring more robust hybrid representations is indeed valuable.
 
-### 3.3.2·Continuous Representation vs Discrete Representation
+### 3.3.2·Continuous Representation vs Discrete Representation: 连续表示与离散表示
 
 There is still no consensus on whether to use continuous or discrete representations in the spoken dialogue systems.
 Considerations on the input side mainly depend on the type of representation model chosen by the system.
@@ -293,7 +321,7 @@ Another notable advantage of using discrete representations as output is the abi
 In the field of computer vision, a range of work ([Transfusion [256]](../../Models/CV/2024.08.20_Transfusion.md); [Show-o [221]](../../Models/_Basis/2024.08.22_Show-o.md)) has emerged that combines discrete and continuous representations, aiming to fully integrate these modes without information loss, and has already achieved success in certain areas.
 These approaches may provide valuable insights for the next generation of spoken dialogue systems.
 
-### 3.3.3·Single-Layer Quantizer vs Multi-Layer Quantizer
+### 3.3.3·Single-Layer Quantizer vs Multi-Layer Quantizer: 单层量化器和多层量化器
 
 As previously mentioned regarding compression rates, the number of quantizers must be carefully considered when using the speech codec.
 Currently, dialogue systems commonly use multi-layer quantizers, such as those in [EnCodec [43]](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md), [SpeechTokenizer [249]](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md), [SNAC [193]](../../Models/Speech_Neural_Codec/2024.10.18_SNAC.md) and Mimi ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)).
@@ -307,7 +335,7 @@ Models like [WavTokenizer [90]](../../Models/Speech_Neural_Codec/2024.08.29_WavT
 Notably, [WavTokenizer [90]](../../Models/Speech_Neural_Codec/2024.08.29_WavTokenizer.md) has already achieved an impressive compression rate of 40Hz.
 Integrating a single-layer quantizer with dialogue systems is promising, as it allows for rapid extraction of speech features on the input side and significantly reduces the burden of autoregressive modeling.
 
-### 3.3.4·With Text Guidance vs Without Text Guidance
+### 3.3.4·With Text Guidance vs Without Text Guidance: 文本引导与无文本引导
 
 In practice, researchers have found direct speech-to-speech generation challenging ([Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md); [Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md); [LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md)) due to complex mapping relationships, so intermediate texts are often generated to achieve higher generation quality.
 Current end-to-end dialogue systems commonly adopt one of two strategies: one ([LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md); [IntrinsicVoice [248]](../../Models/SpeechLM/2024.10.09_IntrinsicVoice.md)) generates the hidden states corresponding to the text response first, which are then post-processed to obtain speech tokens; the other ([Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md); [Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md); [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)) generates text and speech tokens in parallel.
