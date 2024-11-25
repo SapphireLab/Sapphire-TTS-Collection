@@ -319,6 +319,9 @@ The remaining quantizers are used only during the training of the encoder-decode
 
 #### SpeechTokenizer
 
+<details>
+<summary>原文</summary>
+
 [SpeechTokenizer [249]](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) unifies semantic and acoustic tokens, hierarchically decomposing different aspects of speech information across various RVQ layers.
 It is built on the framework of RVQ-GANs, following the same pattern as [SoundStream [238]](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md) and [EnCodec [43]](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md).
 Notably, SpeechTokenizer has substituted the two-layer LSTM, originally following the convolution blocks in the EnCodec encoder, with a two-layer BiLSTM to augment the semantic modeling ability.
@@ -328,6 +331,20 @@ For continuous representation distillation, SpeechTokenizer employs the 9th laye
 The training objective is to maximize the cosine similarity at the dimension level across all timesteps between the outputs of RVQ first layer and semantic teacher representations.
 For pseudo-label prediction, SpeechTokenizer adopts HuBERT units as the target label.
 In dialogue systems, SpeechGPT-Gen uses SpeechTokenizer RVQ-1 to process raw speech, primarily enhancing the large language model's ability to model the semantics of speech.
+
+</details>
+<br>
+
+[SpeechTokenizer [249]](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) 统一了语义和声学 Token, 在不同的 RVQ 层上分层次地分解语音信息地不同方面.
+它建立在 RVQ-GANs 框架之上, 遵循与 [SoundStream [238]](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md) 和 [EnCodec [43]](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) 相同的模式.
+值得注意的是, SpeechTokenizer 替换了 EnCodec 编码器中原本跟随卷积块地两层 LSTM 为两层 BiLSTM, 以增强语义建模能力.
+鉴于 HuBERT 在编码大量内容信息方面的能力 ([Mohamed et al. (Survey) [155]](../2022.05.21_Self-Supervised_Speech_Representation_Learning__A_Review/Main.md)), SpeechTokenizer 使用 HuBERT 作为语义教师.
+在训练时, 它引入了两种蒸馏方法: 连续表示蒸馏和伪标签预测.
+- 连续表示蒸馏: SpeechTokenizer 采用 HuBERT 第 9 层表示或 HuBERT 所有层的平均表示作为语义教师.
+  训练目标是在所有时间步上最大化 RVQ 第一层输出与语义教师表示之间的维度级余弦相似度.
+- 伪标签预测: SpeechTokenizer 采用 HuBERT 单元作为目标标签.
+
+- 在对话系统中, SpeechGPT-Gen 使用 SpeechTokenizer RVQ-1 处理原始语音, 主要增强了大型语言模型对语音语义建模能力.
 
 #### Mimi
 
