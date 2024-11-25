@@ -159,12 +159,25 @@ HuBERT 基于周围的上下文生成掩膜内容, 使其能够捕获语音中�
 
 #### Whisper
 
+<details>
+<summary>原文</summary>
+
 [Whisper [169]](../../Models/SpeechLM/2022.12.06_Whisper.md), based on the classic encoder-decoder architecture, has gained widespread attention in the field of speech recognition.
 The encoder transforms input speech into high-level feature representations, while the decoder generates the corresponding text output from these representations.
 Pretrained on large-scale data across various speech environments with text as the target, Whisper demonstrates strong capabilities in extracting semantic information from speech.
 [Qwen-Audio [34]](../../Models/SpeechLM/2023.11.14_Qwen-Audio.md), [Qwen2-Audio [33]](../../Models/SpeechLM/2024.07.15_Qwen2-Audio.md) use Whisper’s encoder to convert speech into continuous representations, which are then combined with text representations and fed into the large language model.
 [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md), [Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md), and [LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md) follow a similar approach, connecting a speech adapter after the Whisper encoder.
 Their shared objective is to map speech representations into the text embedding space of the large language model, enhancing the model's ability to understand speech by forcibly aligning them through vocabulary expansion.
+
+</details>
+<br>
+
+[Whisper [169]](../../Models/SpeechLM/2022.12.06_Whisper.md) 是基于经典的编码器-解码器架构的模型, 在语音识别领域获得了广泛关注.
+编码器将输入语音转换为高级特征表示, 而解码器则从这些表示生成相应的文本输出.
+在大规模的各种语音环境的数据上以文本为目标进行预训练, Whisper 展示了从语音提取语义信息的强大能力.
+- [Qwen-Audio [34]](../../Models/SpeechLM/2023.11.14_Qwen-Audio.md), [Qwen2-Audio [33]](../../Models/SpeechLM/2024.07.15_Qwen2-Audio.md) 使用 Whisper 的编码器将语音转换为连续表示, 然后与文本表示结合并输入到大型语言模型中.
+- [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md), [Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md), [LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md) 采用类似的方法, 在 Whisper 编码器之后连接了一个语音适配器.
+  它们共同的目标是将语音表示映射到大语言模型的文本嵌入空间, 通过词表扩展强制对齐从而增强模型理解语音的能力.
 
 #### WavLM
 
