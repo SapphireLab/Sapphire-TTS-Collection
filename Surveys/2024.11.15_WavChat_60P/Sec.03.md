@@ -288,6 +288,9 @@ Others focus on reconstruction objectives to ensure high-fidelity speech, includ
 
 #### EnCodec
 
+<details>
+<summary>原文</summary>
+
 [EnCodec [43]](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) is a straightforward, streaming, convolution-based encoder-decoder architecture.
 Raw speech is downsampled through a series of convolutional layers, mapping it to latent feature representations.
 Residual vector quantization ([SoundStream [238]](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md)) then discretizes the encoder’s continuous latent features.
@@ -297,6 +300,22 @@ The decoder restores the discrete features to a waveform close to the original s
 This revision increases speech quality by incorporating more quantizers while preserving most information in the shallow quantizers.
 LauraGPT ultimately selects the output from the first quantizer layer as the speech token, balancing performance with sequence length efficiency.
 The remaining quantizers are used only during the training of the encoder-decoder model.
+
+</details>
+<br>
+
+[EnCodec [43]](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) 是一种直接, 流式, 卷积式的编码器-解码器架构.
+原始语音通过一系列卷积层进行下采样, 将其映射到潜在特征表示.
+残差向量量化 ([SoundStream [238]](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md)) 随后将编码器的连续潜在特征离散化.
+量化目标是将来连续特征映射到离散 Token 的预定义集合 (称为 "码本") 进行后续压缩和传输.
+解码器通过连续的反卷积层将离散特征恢复为接近原始语音的波形.
+- [LauraGPT [50]](../../Models/SpeechLM/2023.10.07_LauraGPT.md) 采用了 EnCodec 的增强版本作为其语音编码器, 进行了特定修改:
+  (1) 在幅度谱域中添加重构损失以提高中到高频信号质量;
+  (2) 堆叠五个步长为 (8, 5, 4, 2, 2) 的卷积块以处理长序列长度的挑战, 实现每 Token 组的码率为 25Hz;
+  (3) 在 Residual Vector Quantization (RVQ) 模块中使用 32 个量化器, 其词汇大小为 1024, 并采用结构性 Dropout.
+  这种改进通过引入更多量化器来提高语音质量, 同时保留了浅层量化器中的大部分信息.
+  LauraGPT 最终从第一个量化器层的输出中选择语音 Token, 在性能与序列长度效率之间取得平衡.
+  剩余的量化器仅在编码器-解码器模型训练时使用.
 
 #### SpeechTokenizer
 
