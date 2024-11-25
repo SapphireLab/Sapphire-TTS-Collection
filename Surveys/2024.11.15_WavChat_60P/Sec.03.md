@@ -275,8 +275,16 @@ Downsampling layers are used to reduce the frame rate of speech features, increa
 
 ### Acoustic: 声学
 
+<details>
+<summary>原文</summary>
+
 Considering that semantic features are insufficient to capture the emotion, timbre, and style of speech, some representation models, such as [Emotion2Vec [143]](../../Models/Speech_Representaion/2023.12.23_Emotion2Vec.md), attempt to extract acoustic information through self-supervised training.
 Others focus on reconstruction objectives to ensure high-fidelity speech, including models like [EnCodec [43]](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md), [SpeechTokenizer [249]](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md), Mimi ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)).
+
+</details>
+<br>
+
+考虑到语义特征不足以捕获语音的情感, 音色和风格, 一些表示模型如 [Emotion2Vec [143]](../../Models/Speech_Representaion/2023.12.23_Emotion2Vec.md) 尝试通过自监督训练提取声学信息. 其他模型则着重于重建目标以确保高保真语音, 包括 [EnCodec [43]](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md), [SpeechTokenizer [249]](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md), Mimi ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)) 等.
 
 #### EnCodec
 
