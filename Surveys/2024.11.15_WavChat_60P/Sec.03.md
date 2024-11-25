@@ -348,6 +348,9 @@ In dialogue systems, SpeechGPT-Gen uses SpeechTokenizer RVQ-1 to process raw spe
 
 #### Mimi
 
+<details>
+<summary>原文</summary>
+
 Taking inspiration from previous work on SpeechTokenizer, Mimi ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)) uses distillation to transfer non-causal, high-level semantic information into the tokens produced by a causal model, allowing for streaming encoding and decoding of semantic-acoustic tokens.
 To improve the ability of Mimi to encode speech into compact representations while reconstructing high-quality speech, Transformer modules are added in the encoder and decoder.
 Mimi uses WavLM to distill RVQ-1, enriching it with semantic information.
@@ -357,6 +360,19 @@ Mimi addresses this issue by introducing a split-RVQ approach.
 Instead of using a single 8-level RVQ, it extracts semantic information into a simple VQ and applies a parallel 7-level RVQ, combining their outputs at the end.
 This removes the constraint that acoustic information must be preserved in the residuals of the semantic quantizer.
 After careful design, Mimi serves as the speech encoder in [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md), this approach enhances the model's ability to capture both semantic and acoustic details.
+
+</details>
+<br>
+
+受到 SpeechTokenizer 之前工作的启发, Mimi ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)) 使用蒸馏将非因果的, 高级语义信息迁移到由因果模型产生的 Token 中, 从而实现语义-声学 Token 的流式编码和解码.
+为了提升 Mimi 编码语音为紧凑表示并重建高质量语音的能力, 在编码器和解码器中添加了 Transformer 模块.
+Mimi 使用 WavLM 蒸馏 RVQ-1, 丰富其语义信息.
+值得注意的是, 进行蒸馏显著增强了第一个量化器的语音区分能力, 然而, 也可能导致语音质量下降.
+Mimi 假设这是由于将语义信息蒸馏到单个 RVQ 第一级: 由于高阶量化器操作的是第一级的残差, 后者需要权衡语音质量与音素区分能力.
+Mimi 解决这一问题的方法是引入分割 RVQ 方法.
+与使用单个 8 级 RVQ 不同, Mimi 提取语义信息到简单 VQ 中, 并应用并行 7 级 RVQ, 在最后将它们合并.
+这消除了对语义量化器残差中必须保留声学信息的约束.
+经过仔细设计, Mimi 作为 [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md) 的语音编码器, 这种方法增强了模型的能力捕捉到语义和声学细节.
 
 #### Emotion2Vec
 
