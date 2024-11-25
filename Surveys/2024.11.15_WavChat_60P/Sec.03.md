@@ -63,6 +63,9 @@ To enhance language models' ability to understand speech representations and ali
 
 #### Wav2Vec 系列
 
+<details>
+<summary>原文</summary>
+
 [Wav2Vec [184]](../../Models/SpeechRepresentation/2019.04.11_Wav2Vec.md) is a foundational work in the field of speech representation learning, pioneering the extraction of self-supervised speech representations from unlabeled speech data.
 This approach has driven technological advancements in tasks such as speech recognition, speaker identification, and other speech processing applications.
 Wav2Vec employs a multi-layer, one-dimensional convolutional neural network directly on raw speech waveforms to progressively extract temporal speech features.
@@ -74,6 +77,23 @@ It also employs a contrastive learning objective, requiring the model to disting
 [ParalinGPT [128]](../../Models/SpeechLM/2023.12.23_ParalinGPT.md) aims to incorporate emotional expression in conversational interactions, choosing Wav2Vec 2.0 for its proven capability to encode rich prosodic information, beneficial for speech emotion recognition ([Li et al. (Survey) [123]](../2022.10.05__Survey__Exploration_of_A_Self-Supervised_Speech_Model__A_Study_on_Emotional_Corpora/Main.md)).
 Specifically, ParalinGPT uses Wav2Vec 2.0’s intermediate layer (the 12th layer) for frame-by-frame feature extraction, as this layer has shown optimal results in linear probing tasks for emotion analysis.
 Additionally, ParalinGPT applies mean pooling and a linear feature projector to extract utterance embeddings.
+
+</details>
+<br>
+
+[Wav2Vec [184]](../../Models/SpeechRepresentation/2019.04.11_Wav2Vec.md) 是语音表示学习领域的基础工作, 开创了从无标注语音数据中提取自监督语音表示.
+这一方法推动了语音识别, 说话人识别和其他语音处理应用等任务的技术进步.
+Wav2Vec 采用多层一维卷积神经网络直接在原始语音波形上进行逐步提取时序语音特征.
+训练通过对比学习完成: 模型选择一个 "正确" 目标 (当前语音帧), 以及多个 "错误" 目标 (负样本).
+通过学习区分正样本和负样本, 模型有效地在潜在空间中学习如何表示语音特征.
+
+作为 Wav2Vec 的改进版本, [Wav2Vec 2.0 [10]](../../Models/SpeechRepresentation/2020.06.20_Wav2Vec2.0.md) 引入了 Transformer 架构和掩模建模.
+Wav2Vec 2.0 量化了由 CNN 提取的潜在语音表示, 然后使用 Transformer 来建模语义信息, 类似于 [BERT [45]](../../Models/TextLM/2018.10.11_BERT.md).
+它还采用对比学习目标, 要求模型从多个候选表示中区分出正确量化表示.
+
+[ParalinGPT [128]](../../Models/SpeechLM/2023.12.23_ParalinGPT.md) 旨在将情感表达纳入对话互动, 选择具有编码丰富韵律信息方面的能力的 Wav2Vec 2.0, 有益于语音情感识别 ([Li et al. (Survey) [123]](../2022.10.05__Survey__Exploration_of_A_Self-Supervised_Speech_Model__A_Study_on_Emotional_Corpora/Main.md)).
+具体来说, ParalinGPT 使用 Wav2Vec 2.0 中间层 (第 12 层) 进行逐帧特征提取, 因为这一层在情感分析线性探测任务中表现出了最佳结果.
+此外, ParalinGPT 应用平均池化和线性特征映射器来提取发言嵌入.
 
 #### XLS-R
 
