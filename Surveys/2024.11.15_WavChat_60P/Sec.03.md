@@ -97,10 +97,22 @@ Wav2Vec 2.0 量化了由 CNN 提取的潜在语音表示, 然后使用 Transform
 
 #### XLS-R
 
+<details>
+<summary>原文</summary>
+
 [XLS-R [9]](../../Models/SpeechRepresentation/2021.11.17_XLS-R.md) is a multilingual self-supervised speech representation model based on the Wav2Vec 2.0 architecture.
 It extends and optimizes Wav2Vec 2.0 to support a broader range of languages, particularly low-resource languages.
 During cross-lingual training, XLS-R employs multilingual data augmentation and denoising techniques, enhancing the model's adaptability when processing speech in various languages.
 [USDM [106]](../../Models/SpeechLM/2024.02.08_USDM.md) uses XLS-R to obtain continuous intermediate representations at 50Hz, followed by a quantizer ([Seamless [14]](../../Models/_Basis/2023.12.08_Seamless.md)) with $K$=10000 to generate speech tokens.
+
+</details>
+<br>
+
+[XLS-R [9]](../../Models/SpeechRepresentation/2021.11.17_XLS-R.md) 是一种基于 Wav2Vec 2.0 架构的多语言自监督语音表示模型.
+它扩展并优化了 Wav2Vec 2.0 以支持更广泛的语言范围, 特别是低资源语言.
+在跨语言训练中, XLS-R 采用多语言数据增强和降噪技术, 增强了模型在处理多种语言语音时的适应性.
+
+[USDM [106]](../../Models/SpeechLM/2024.02.08_USDM.md) 使用 XLS-R 获得 50Hz 的连续中间表示, 然后使用 $K$=10000 的量化器 ([Seamless [14]](../../Models/_Basis/2023.12.08_Seamless.md)) 生成语音 Token.
 
 #### HuBERT
 
