@@ -376,11 +376,23 @@ Mimi 解决这一问题的方法是引入分割 RVQ 方法.
 
 #### Emotion2Vec
 
+<details>
+<summary>原文</summary>
+
 [Emotion2Vec [143]](../../Models/Speech_Representaion/2023.12.23_Emotion2Vec.md) is a versatile speech emotion representation model designed to extract emotional features from speech.
 During the pre-training phase, Emotion2Vec conducts online distillation with a teacher network and a student network.
 When a specific downstream task is performed, Emotion2Vec is frozen and a lightweight downstream model is trained.
 Emotion2Vec introduces an utterance-level loss to control global emotion and employs a frame-level loss to build a frame-wise pretext task, enabling it to learn contextual emotions.
 [Spoken-LLM [127]](../../Models/SpeechLM/2024.02.20_Spoken-LLM.md) uses features extracted by Emotion2Vec as input for the large language model, aiming to enable the model to understand and respond to emotions.
+
+</details>
+<br>
+
+[Emotion2Vec [143]](../../Models/Speech_Representaion/2023.12.23_Emotion2Vec.md) 是一种多功能的语音情感表示模型, 旨在从语音中提取情感特征.
+在预训练阶段, Emotion2Vec 通过教师网络和学生网络进行在线蒸馏.
+在执行特定的下游任务时, Emotion2Vec 被冻结, 并训练了一个轻量级的下游模型.
+Emotion2Vec 引入了话语级损失, 以控制全局情感, 并采用帧级损失来构建帧间预训练任务, 使其能够学习上下文情绪.
+- [Spoken-LLM [127]](../../Models/SpeechLM/2024.02.20_Spoken-LLM.md) 使用 Emotion2Vec 提取的特征作为大型语言模型的输入, 旨在使模型理解和响应情感.
 
 ## 3.2·Speech Representations at the Outputs: 输出端的语音表示
 
