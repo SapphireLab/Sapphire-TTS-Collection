@@ -249,6 +249,9 @@ This process aligns speech with the text vocabulary, allowing for a more natural
 
 #### Others
 
+<details>
+<summary>原文</summary>
+
 Some spoken dialogue systems do not use pre-trained representation models; instead, they process input features by stacking fundamental modules.
 [VITA [61]](../../Models/SpeechLM/2024.08.09_VITA.md) initially decomposes the speech signal using mel filter banks, mimicking the nonlinear perception of sound in humans.
 It then processes the input features with a 4-layer CNN downsampling module followed by a 24-layer Transformer.
@@ -257,6 +260,18 @@ To align with the subsequent language model, VITA employs a simple 2-layer MLP a
 An adapter module then maps these high-dimensional representations into the embedding space of the main LLM, ensuring a quick, low-latency response to the input speech.
 The speech encoder module consists of several downsampling convolutional layers and Transformer blocks, while the adapter includes only a few downsampling convolutional layers.
 Downsampling layers are used to reduce the frame rate of speech features, increase the LLM's processing speed during the prefill phase, and minimize latency.
+
+</details>
+<br>
+
+一些口语对话系统并没有使用预训练的表示模型, 它们通过堆叠基础模块来处理输入特征.
+- [VITA [61]](../../Models/SpeechLM/2024.08.09_VITA.md) 首先使用梅尔滤波器组分解语音信号, 模拟人类对声音的非线性感知.
+  然后, 使用四层卷积神经网络下采样模块和 24 层 Transformer 来处理输入特征.
+  为了和后续的语言模型对齐, VITA 采用了一个简单的两层 MLP 作为适配器.
+- [Freeze-Omni [213]](../../Models/SpeechLM/2024.11.01_Freeze-Omni.md) 使用分块流式语音编码器将输入语音特征转换为高维表示.
+  然后, 适配器模块将这些高维表示映射到主 LLM 的嵌入空间, 确保对输入语音的快速, 低延迟响应.
+  语音编码器模块由数个下采样卷积层和 Transformer 块组成, 而适配器只包含几个下采样卷积层.
+  下采样层用于减少语音特征的帧率, 在预填充阶段提高 LLM 的处理速度, 并减少延迟.
 
 ### Acoustic: 声学
 
