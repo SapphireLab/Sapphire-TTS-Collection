@@ -116,6 +116,9 @@ During cross-lingual training, XLS-R employs multilingual data augmentation and 
 
 #### HuBERT
 
+<details>
+<summary>原文</summary>
+
 [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) is a commonly used unsupervised learning model that performs K-Means clustering on the MFCC ([Zheng et al. [251]](../../Models/_Full/Comparison_of_Different_Implementations_of_MFCC.md)) features of speech to assign pseudo-labels to each frame.
 It uses a convolutional encoder to generate a sequence of features at a 20ms frame rate from 16kHz sampled speech.
 Finally, it randomly masks a portion of features from consecutive frames as input to the [Transformer [201]](../../Models/_Transformer/2017.06.12_Transformer.md).
@@ -132,6 +135,27 @@ It trains a feedforward quantizer with data augmentation techniques ([Gat et al.
 In the [Align-SLM [129]](../../Models/SpeechLM/2024.11.04_Align-SLM.md), HuBERT is used and the cluster number K is set to 500.
 Notably, when continuous representations are clustered into discrete units, they primarily capture content information, which can be leveraged for modeling and understanding.
 This process first extracts 25Hz frame-level continuous representations from the 11-th layer of the HuBERT model, assigns each frame to its closest cluster index, and then de-duplicates consecutive identical indices to shorten the sequence.
+
+</details>
+<br>
+
+[HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) 是一种常用的无监督学习模型, 对语音的 MFCC ([Zheng et al. [251]](../../Models/_Full/Comparison_of_Different_Implementations_of_MFCC.md)) 特征进行 K-Means 聚类, 为每帧分配伪标签.
+它使用卷积编码器从 16kHz 采样率的语音以 20ms 的帧率生成特征序列.
+最后, 它随机掩膜连续帧的一部分特征作为 [Transformer [201]](../../Models/_Transformer/2017.06.12_Transformer.md) 的输入.
+HuBERT 基于周围的上下文生成掩膜内容, 使其能够捕获语音中的时序和语义信息并获得上下文细节的更深刻理解.
+
+口语对话系统, 例如 [E-chat [227]](../../Models/SpeechLM/2023.12.31_E-chat.md), [SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md), [PSLM [154]](../../Models/SpeechLM/2024.06.18_PSLM.md), [IntrinsicVoice [248]](../../Models/SpeechLM/2024.10.09_IntrinsicVoice.md) 广泛使用了 HuBERT 作为它们的语音编码器.
+- E-Chat 提取 HuBERT 的 24 层权重之和作为语音嵌入, 并结合一组额外的权重参数来提取情感嵌入, 从而实现情感感知的能力.
+- SpeechGPT 对 HuBERT 提取的连续特征进行 K-Means 聚类来量化, 将其转化为离散单元序列.
+  这些离散单元随后整合到大语言模型的词表中, 实现文本和语音模态之间的直接对齐.
+- 为了更有效地将集成语言模型和语音流, PSLM 在 HuBERT 提取特征后添加了额外的嵌入层.
+- IntrinsicVoice 使用 HuBERT 作为语音分词器, 将语音 Token 进行分组以减少序列长度. 然后嵌入层将这些 Token 转换为密集的嵌入, 并通过可训练的语音适配器映射到语言模型的嵌入空间中.
+- [Spirit-LM [158]](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md) 使用 HuBERT 提取语义特征, 使用500 个基本单元的 K-Means 模型作为基础单元.
+  它采用数据增强技术 ([Gat et al. [64]](../../Models/_Full/2022.09.30_Augmentation_Invariant_Discrete_Representation_for_Generative_Spoken_Language_Modeling.md)) 训练了一个前馈量化器, 以生成离散语音 Token.
+- [Align-SLM [129]](../../Models/SpeechLM/2024.11.04_Align-SLM.md) 使用 HuBERT, 聚类数 K=500.
+
+值得注意的是, 当连续表示被聚类到离散单元时, 它们主要捕获内容信息, 这可以用于建模和理解.
+这一过程首先从 HuBERT 的第 11 层提取 25Hz 帧级连续表示, 将每帧分配到最近的聚类索引, 然后消除连续相同的索引来缩短序列.
 
 #### Whisper
 
