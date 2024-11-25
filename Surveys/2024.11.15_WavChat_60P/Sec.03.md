@@ -229,11 +229,23 @@ Through supervision in multilingual ASR tasks, the $S^3$ tokenizer can convert s
 
 #### SPIRAL
 
+<details>
+<summary>原文</summary>
+
 [SPIRAL [85]](../../Models/SpeechRepresentation/2022.01.25_SPIRAL.md) aims to learn representations from speech data that are robust to noise and perturbations.
 It uses a teacher-student network, where various perturbations—such as noise addition, gain adjustment, and time-frequency warping—are applied to the speech input of the student model.
 The teacher model then guides the student model to produce consistent representations despite these perturbations.
 [EMOVA [25]](../../Models/SpeechLM/2024.09.26_EMOVA.md) utilizes the SPIRAL’s architecture as a speech encoder to process speech, and employs the [finite scalar quantization [149]](../../Modules/VQ/FSQ.md) to discretize these features.
 This process aligns speech with the text vocabulary, allowing for a more natural integration into the LLM.
+
+</details>
+<br>
+
+[SPIRAL [85]](../../Models/SpeechRepresentation/2022.01.25_SPIRAL.md) 旨在从语音数据中学习对噪声和扰动健壮的表示.
+它使用了教师-学生网络, 其中对学生模型的语音输入应用了各种扰动, 例如加噪, 增益调整, 以及时频扭曲.
+教师模型随后引导学生模型在这些扰动下生成一致的表示.
+- [EMOVA [25]](../../Models/SpeechLM/2024.09.26_EMOVA.md) 利用 SPIRAL 的架构作为语音编码器处理语音, 并采用[有限标量量化 (Finite Scalar Quantization, FSQ)[149]](../../Modules/VQ/FSQ.md) 来离散这些特征.
+这一过程将语音和文本词表对齐, 从而更自然地集成到 LLM 中.
 
 #### Others
 
