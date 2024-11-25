@@ -181,6 +181,9 @@ Their shared objective is to map speech representations into the text embedding 
 
 #### WavLM
 
+<details>
+<summary>原文</summary>
+
 [WavLM [27]](../../Models/SpeechRepresentation/2021.10.26_WavLM.md) is a pretrained model designed for comprehensive speech processing tasks, playing a critical role in advancing speech technology.
 Specifically, WavLM employs a masked speech denoising and prediction framework, where some inputs consist of simulated noise or overlapping speech with masked sections.
 The goal is to predict pseudo-labels of the original speech in the masked areas.
@@ -189,6 +192,18 @@ The masking and prediction pipeline for speech frames in WavLM is similar to tha
 However, WavLM introduces an additional gated relative position bias to enhance the model's sensitivity to temporal information in speech.
 [SpeechVerse [41]](../../Models/SpeechLM/2024.05.14_SpeechVerse.md) leverages the pretrained WavLM Large as its backbone speech encoder, encoding all intermediate layer features from WavLM to capture various forms of semantics and achieve better generalization performance.
 To address the significant length disparity between speech features and text tokens, SpeechVerse applies a learnable convolutional module for downsampling the speech features.
+
+</details>
+<br>
+
+[WavLM [27]](../../Models/SpeechRepresentation/2021.10.26_WavLM.md) 是一种为全面语音处理任务设计的预训练模型, 在推动语音技术发展中发挥了关键作用.
+具体来说, WavLM 采用了掩膜语音降噪和预测框架, 其中一些输入包含模拟噪声或带有掩码部分的叠加语音.
+目标是预测掩膜区域中的原始语音的伪标签.
+这种方法使得模型能够通过掩膜语音预测学习到与 ASR 相关的信息, 同时也通过语音降噪建模获得其他和非 ASR 任务相关的知识.
+WavLM 中语音帧的掩码和预测流程和 HuBERT 类似.
+然而, WavLM 引入额外的门控相对位置偏置来增强模型对语音中时序信息的敏感性.
+- [SpeechVerse [41]](../../Models/SpeechLM/2024.05.14_SpeechVerse.md) 利用预训练的 WavLM Large 作为其语音编码器的骨干, 将 WavLM 的所有中间层特征编码到语义表示中, 实现更好的泛化性能.
+  为了处理语音特征和文本 Token 之间的显著的长度差异, SpeechVerse 采用了一个可学习的卷积模块来对语音特征进行下采样.
 
 #### $S^3$ Tokenizer
 
