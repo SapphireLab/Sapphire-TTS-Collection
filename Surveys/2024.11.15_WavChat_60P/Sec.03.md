@@ -207,12 +207,25 @@ WavLM 中语音帧的掩码和预测流程和 HuBERT 类似.
 
 #### $S^3$ Tokenizer
 
+<details>
+<summary>原文</summary>
+
 [CosyVoice [49]](../../Models/SpeechLM/2024.07.07_CosyVoice.md) proposes using a supervised automatic speech recognition module to generate a supervised semantic speech($S^3$) tokenizer.
 Unlike a standard ASR model, the $S^3$ tokenizer splits the encoder into two parts and introduces a vector quantization layer in between.
 The first encoder converts the mel spectrogram into context-aware representations, while the second encoder transforms discrete speech units into continuous hidden states.
 Finally, a Transformer-based ASR decoder predicts the posterior probabilities of text labels.
 Through supervision in multilingual ASR tasks, the $S^3$ tokenizer can convert speech into semantically consistent tokens that facilitate both speech understanding and generation.
-[OmniFlatten [246]](../../Models/SpeechLM/2024.10.23_OmniFlatten.md); uses the $S^3$ tokenizer to extract discrete speech tokens, which are then directly fed into a text-speech pre-trained Transformer.
+[OmniFlatten [246]](../../Models/SpeechLM/2024.10.23_OmniFlatten.md) uses the $S^3$ tokenizer to extract discrete speech tokens, which are then directly fed into a text-speech pre-trained Transformer.
+
+</details>
+<br>
+
+[CosyVoice [49]](../../Models/SpeechLM/2024.07.07_CosyVoice.md) 提出使用一个监督的自动语音识别模块生成监督语义语音分词器 (Supervised Semantic Speech ($S^3$) Tokenizer).
+和标准的 ASR 模型不同, $S^3$ 分词器将编码器分为两个部分, 并在这两个部分之间引入向量量化层.
+第一个编码器将梅尔频谱转化为上下文感知的表示, 而第二个编码器将离散语音单元转换为连续隐藏状态.
+最后, 基于 Transformer 的 ASR 解码器预测文本标签的后验概率.
+通过在多语言 ASR 任务上的监督学习, $S^3$ 分词器能够将语音转换为语义上一致的 Token, 这有助于促进语音理解和生成.
+- [OmniFlatten [246]](../../Models/SpeechLM/2024.10.23_OmniFlatten.md) 使用 $S^3$ 分词器提取离散语音 Token, 并直接将其输入到文本语音预训练的 Transformer 中.
 
 #### SPIRAL
 
