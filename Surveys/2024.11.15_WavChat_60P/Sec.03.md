@@ -51,9 +51,17 @@ At the end of this section, we will thoroughly discuss the advantages and limita
 
 ### Semantic: 语义
 
+<details>
+<summary>原文</summary>
+
 To enhance language models' ability to understand speech representations and align multimodal data at input, using pretrained models such as [Wav2Vec [184]](../../Models/SpeechRepresentation/2019.04.11_Wav2Vec.md), [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md), [Whisper [169]](../../Models/SpeechLM/2022.12.06_Whisper.md), and [WavLM [27]](../../Models/SpeechRepresentation/2021.10.26_WavLM.md) to extract high-level semantic features from speech has become a core strategy for many spoken dialogue systems.
 
-#### Wav2Vec
+</details>
+<br>
+
+为了增强语言模型对理解语音表示的能力和在输入时对齐多模态数据, 使用预训练模型, 如 [Wav2Vec [184]](../../Models/SpeechRepresentation/2019.04.11_Wav2Vec.md), [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md), [Whisper [169]](../../Models/SpeechLM/2022.12.06_Whisper.md), [WavLM [27]](../../Models/SpeechRepresentation/2021.10.26_WavLM.md) 来从语音中提取高级语义特征已经成为许多口语对话系统的核心策略.
+
+#### Wav2Vec 系列
 
 [Wav2Vec [184]](../../Models/SpeechRepresentation/2019.04.11_Wav2Vec.md) is a foundational work in the field of speech representation learning, pioneering the extraction of self-supervised speech representations from unlabeled speech data.
 This approach has driven technological advancements in tasks such as speech recognition, speaker identification, and other speech processing applications.
