@@ -428,15 +428,29 @@ OT-CFM 将语音 Token 序列转换为梅尔频谱图, 然后使用 [HiFi-GAN [1
 
 #### HuBERT
 
+<details>
+<summary>原文</summary>
+
 Speech tokens extracted by the pre-trained [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) are widely used as generation targets for large language models in the spoken dialogue systems.
 [SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md) and [Spirit-LM [158]](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md) use [LLaMA [200]](../../Models/TextLM/2023.02.27_LLaMA.md) to autoregressively predict a sequence of units and are trained with a HuBERT unit-based [HiFi-GAN [108]](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md) to decode the speech signal from discrete representations.
-[PSLM [154]](../../Models/SpeechLM/2024.06.18_PSLM.md) introduces an additional speech projection layer after the Transformer layers to process the hidden states, obtaining semantic tokens via the softmax layler.
+[PSLM [154]](../../Models/SpeechLM/2024.06.18_PSLM.md) introduces an additional speech projection layer after the Transformer layers to process the hidden states, obtaining semantic tokens via the softmax layer.
 The speech decoder in [LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md) operates in a non-autoregressive manner, taking the output hidden states of the large language model as input to generate a discrete HuBERT unit sequence corresponding to the speech response.
 The discrete units can be converted into waveform with an additional unit-based vocoder ([Polyak et al. [166]](../../Models/_Full/2021.04.01_Speech_Resynthesis_from_Discrete_Disentangled_Self-Supervised_Representations.md)).
 [IntrinsicVoice [248]](../../Models/SpeechLM/2024.10.09_IntrinsicVoice.md) introduces Group-Former to enhance the large language model’s capability in sequence modeling.
-When the large language model predicts the $<speech>$ token, the global embedding is passed through a projection layer and delivered, along with a set of learnable queries, to the group model, which then predicts units.
+When the large language model predicts the `<speech>` token, the global embedding is passed through a projection layer and delivered, along with a set of learnable queries, to the group model, which then predicts units.
 IntrinsicVoice uses [HiFi-GAN [108]](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md), a non-autoregressive neural vocoder that efficiently generates high-fidelity waveforms, for speech detokenization to reduce overall latency.
 [Align-SLM [129]](../../Models/SpeechLM/2024.11.04_Align-SLM.md) also uses a [HiFi-GAN [108]](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md)-based model to convert discrete units back into waveforms, utilizing model checkpoints from the [textlesslib [102]](../../Models/Toolkits/2022.02.15_textless-lib.md) library.
+
+</details>
+<br>
+
+由预训练 [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) 提取的语音 Token 被广泛作为口语对话系统中大语言模型的生成目标.
+- [SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md) 和 [SpiRit-LM [158]](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md) 使用 [LLaMA [200]](../../Models/TextLM/2023.02.27_LLaMA.md) 自回归地预测一系列单元, 并使用基于 HuBERT 单元的 [HiFi-GAN [108]](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md) 来解码语音信号的离散表示.
+- [PSLM [154]](../../Models/SpeechLM/2024.06.18_PSLM.md) 在 Transformer 层之后引入额外的语音映射层, 以处理隐藏状态, 并通过 Softmax 层获得语义 Token.
+- [LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md) 中的语音解码器以非自回归的方式运行, 接受大语言模型的输出隐藏状态作为输入, 生成与语音响应对应的离散 HuBERT 单元序列. 离散单元可以用额外的基于单元的声码器 ([Polyak et al. [166]](../../Models/_Full/2021.04.01_Speech_Resynthesis_from_Discrete_Disentangled_Self-Supervised_Representations.md)) 转换为波形.
+- [IntrinsicVoice [248]](../../Models/SpeechLM/2024.10.09_IntrinsicVoice.md) 引入 Group-Former 以增强大语言模型在序列建模方面的能力.当大语言模型预测 `<speech>` Token 时, 全局嵌入通过一个映射层传递和分发, 并与可学习的查询集合一起传递给组模型, 以预测单元.
+  IntrinsicVoice 使用 [HiFi-GAN [108]](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md), 一种非自回归神经声码器, 有效生成高质量波形, 用于语音解码以减少整体延迟.
+- [Align-SLM [129]](../../Models/SpeechLM/2024.11.04_Align-SLM.md) 也使用基于 [HiFi-GAN [108]](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md) 的模型将离散单元转换为波形, 使用了 [textlesslib [102]](../../Models/Toolkits/2022.02.15_textless-lib.md) 库中的模型检查点.
 
 #### Others
 
