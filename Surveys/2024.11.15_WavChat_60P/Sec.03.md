@@ -478,8 +478,17 @@ The U2S detokenizer follows the VAE architecture: it uses a speech unit encoder 
 
 ### Acoustic: 声学
 
+<details>
+<summary>原文</summary>
+
 Many spoken dialogue systems choose to directly generate tokens from acoustic representation models, such as [EnCodec [43]](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md), [SpeechTokenizer [249]](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md), and Mimi ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)).
 These acoustic tokens are then upsampled into the raw waveform through the frozen codec decoder directly.
+
+</details>
+<br>
+
+许多口语对话系统选择直接从声学表示模型 (如 [EnCodec [43]](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md), [SpeechTokenizer [249]](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md), 和 Mimi ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md))) 生成 Token.
+这些声学 Token 之后通过冻结的编解码器的解码器部分直接上采样回原始波形.
 
 #### EnCodec
 
