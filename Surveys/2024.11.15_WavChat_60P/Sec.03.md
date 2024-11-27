@@ -537,11 +537,23 @@ SNAC 相对于 RVQ-GAN 引入了适当的增强, 包括残差噪声块, 深度�
 
 #### SpeechTokenizer
 
+<details>
+<summary>原文</summary>
+
 On the output side, SpeechGPT-Gen synthesizes speech tokens using [flow matching [131]](../../Models/Diffusion/2022.10.06_Flow_Matching.md).
 Flow matching effectively models the transformation from a simple prior distribution to complex data distributions, yielding promising results in speech generation.
 [SpeechGPT-Gen [244]](../../Models/SpeechLM/2024.01.24_SpeechGPT-Gen.md) applies flow matching for perceptual modeling, generating speech tokens that align with those of [SpeechTokenizer [249]](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md).
 Specifically, given speech $S$, semantic representation $V_1$, perceptual representation $V_{2:8}$ and the complete information representation $V_{1:8} = V_1 + V_{2:8}$ extracted by SpeechTokenizer, perceptual modeling refers to predicting the complete representation $V_{1:8}$ given the prompt speech a and the semantic representation $V_1$.
 SpeechGPT-Gen synthesizes response speech by concatenating the output of [SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md) with the prompt speech and using a flow matching model.
+
+</details>
+<br>
+
+在输出侧, [SpeechGPT-Gen [244]](../../Models/SpeechLM/2024.01.24_SpeechGPT-Gen.md) 使用 [flow matching [131]](../../Models/Diffusion/2022.10.06_Flow_Matching.md) 合成语音 Token.
+流匹配有效地建模了从简单先验分布到复杂数据分布的转换, 从而在语音生成中获得良好结果.
+[SpeechGPT-Gen [244]](../../Models/SpeechLM/2024.01.24_SpeechGPT-Gen.md) 应用流匹配进行感知建模, 生成与 [SpeechTokenizer [249]](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) 语音 Token 匹配的语音 Token.
+具体来说, 给定语音 $S$, 语义表示 $V_1$, 感知表示 $V_{2:8}$ 和由 SpeechTokenizer 提取的完整信息表示 $V_{1:8} = V_1 + V_{2:8}$, 感知建模是根据提示语音 $a$ 和语义表示 $V_1$ 预测完整表示 $V_{1:8}$.
+SpeechGPT-Gen 通过将 [SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md) 的输出与提示语音连接起来, 并使用流匹配模型合成响应语音.
 
 #### Mimi
 
