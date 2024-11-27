@@ -412,9 +412,19 @@ It is worth noting that these semantic tokens lack acoustic conditioning and the
 
 #### $S^3$ Tokenizer
 
-[OmniFlatten [246]](../../Models/SpeechLM/2024.10.23_OmniFlatten.md); uses the LLM to autoregressively predict $S^3$ tokens at the speech output stage.
+<details>
+<summary>原文</summary>
+
+[OmniFlatten [246]](../../Models/SpeechLM/2024.10.23_OmniFlatten.md) uses the LLM to autoregressively predict $S^3$ tokens at the speech output stage.
 When converting discrete tokens back into speech, it adopts the same optimal transport conditional flow matching model (OT-CFM) as used in [CosyVoice [49]](../../Models/SpeechLM/2024.07.07_CosyVoice.md).
 OT-CFM transforms the speech token sequence into Mel spectrogram, which is then used to generate the final speech with the [HiFi-GAN [108]](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md) vocoder.
+
+</details>
+<br>
+
+[OmniFlatten [246]](../../Models/SpeechLM/2024.10.23_OmniFlatten.md) 在语音输出阶段使用大语言模型 (LLM) 自回归地预测 $S^3$ Token.
+当将离散 Token 转换为语音时, 它采用了 [CosyVoice [49]](../../Models/SpeechLM/2024.07.07_CosyVoice.md) 使用的最优传输条件流匹配 (OT-CFM) 模型.
+OT-CFM 将语音 Token 序列转换为梅尔频谱图, 然后使用 [HiFi-GAN [108]](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md) 声码器生成最终的语音.
 
 #### HuBERT
 
