@@ -557,11 +557,23 @@ SpeechGPT-Gen 通过将 [SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_Speec
 
 #### Mimi
 
+<details>
+<summary>原文</summary>
+
 Mimi ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)) has eight codebooks at a frame rate of 12.5Hz, which requires 100 autoregressive steps to generate one second speech.
 This results in high computational costs and incompatibility with streaming inference.
 To address these issues, [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md) proposes the RQ-Transformer, comprising a temporal Transformer and a deep Transformer.
 The RQ-Transformer breaks down a flattened sequence of length $K \cdot S$ into $S$ timesteps for a large temporal Transformer which produces a context embedding used to condition a smaller depth Transformer over $K$ steps.
 This allows scaling to longer sequences by increasing $S$ or to a higher depth by increasing $K$ than modeling the flattened sequence with a single model.
+
+</details>
+<br>
+
+Mimi ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)) 有 8 个码本, 帧率为 12.5Hz, 需 100 个自回归步骤生成 1 秒语音.
+这导致了高计算成本和与流式推理不兼容.
+为了解决这些问题, [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md) 提出了 RQ-Transformer, 由一个时序 Transformer 和一个深度 Transformer 组成.
+RQ-Transformer 将长度为 $K \cdot S$ 的扁平序列分解为 $S$ 个时间步, 用于一个大的时序 Transformer, 产生一个上下文嵌入用于对 $K$ 个步骤的小深度 Transformer 进行条件化.
+这使得扩展到更长的序列成为可能, 因为可以增加 $S$ 或增加 $K$ 而不用模型扁平序列.
 
 #### TiCodec
 
