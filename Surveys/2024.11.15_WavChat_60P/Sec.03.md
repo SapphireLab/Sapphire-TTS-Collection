@@ -492,11 +492,23 @@ These acoustic tokens are then upsampled into the raw waveform through the froze
 
 #### EnCodec
 
+<details>
+<summary>原文</summary>
+
 [LauraGPT [50]](../../Models/SpeechLM/2023.10.07_LauraGPT.md) uses [Qwen-1.8B [11]](../../Models/TextLM/2023.09.28_Qwen.md) to predict speech tokens.
 When synthesizing speech, it conditions the predictor not only on the speech tokens predicted by the LLM but also on text and speech inputs.
-Such text and speech conditionings allow the model to generate high-quality speech signals by leveraging the diverse information in prompt and noisy speeches, which is lacked in the discrete tokens (output from the first quantizer of the Encodec).
+Such text and speech conditioning allow the model to generate high-quality speech signals by leveraging the diverse information in prompt and noisy speeches, which is lacked in the discrete tokens (output from the first quantizer of the Encodec).
 The predicted speech tokens and conditioning inputs are delivered together to the codec vocoder.
 An encoder-only Transformer models these inputs into dense embeddings, which are then reconstructed into speech by the codec decoder.
+
+</details>
+<br>
+
+[LauraGPT [50]](../../Models/SpeechLM/2023.10.07_LauraGPT.md) 使用 [Qwen-1.8B [11]](../../Models/TextLM/2023.09.28_Qwen.md) 来预测语音 Token.
+当合成语音时, 它除了对 LLM 预测的语音 Token 进行条件化外, 还对文本和语音输入进行条件化.
+这种文本和语音条件化使模型能够利用提示和带噪语音中的丰富信息生成高质量语音信号, 而离散 Token (Encodec 的第一量化器输出) 则缺乏这种能力.
+预测出的语音 Token 和条件化输入一起被送入编解码器的声码器.
+仅编码器架构的 Transformer 模型将这些输入编码为稠密嵌入, 然后编解码器的解码器部分将其重建为语音信号.
 
 #### SNAC
 
