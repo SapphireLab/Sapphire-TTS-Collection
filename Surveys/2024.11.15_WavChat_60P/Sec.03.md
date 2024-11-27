@@ -512,6 +512,10 @@ An encoder-only Transformer models these inputs into dense embeddings, which are
 
 #### SNAC
 
+<details>
+<summary>原文</summary>
+
+
 [SNAC [193]](../../Models/Speech_Neural_Codec/2024.10.18_SNAC.md) encodes speech into hierarchical tokens, similar to [EnCodec [43]](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) and [DAC [113]](../../Models/Speech_Neural_Codec/2023.06.11_Descript-Audio-Codec.md), by introducing quantization at different time resolutions to form a multi-scale discrete representation of speech.
 In this approach, shallow RVQ layers have a lower sampling frequency, covering a broader time span, while deeper RVQ layers sample at higher frequencies.
 SNAC introduces modest enhancements over RVQ-GAN by incorporating residual noise blocks, deep convolutions, and local window attention.
@@ -519,6 +523,17 @@ The Mini-Omni ([Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md);
 In a single step, it generates eight tokens, including text, while maintaining a one-step delay between layers.
 Furthermore, Mini-Omni and Mini-Omni 2 incorporates a batch approach that involves two samples: one requiring both text and speech responses and the other necessitating a text-only response.
 By discarding the text token from the first sample and embedding the output from the second sample into the first, it effectively transfer the model’s text-based capabilities to speech tasks, significantly enhancing reasoning abilities with minimal resource overhead.
+
+</details>
+<br>
+
+[SNAC [193]](../../Models/Speech_Neural_Codec/2024.10.18_SNAC.md) 将语音编码为分层 Token, 类似于 [EnCodec [43]](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) 和 [DAC [113]](../../Models/Speech_Neural_Codec/2023.06.11_Descript-Audio-Codec.md), 通过引入在不同时间分辨率的量化, 形成语音的多尺度离散表示.
+在这种方法中, 浅层 RVQ 层有更低的采样频率, 覆盖更宽的时间范围, 而更深的 RVQ 层在更高频率采样.
+SNAC 相对于 RVQ-GAN 引入了适当的增强, 包括残差噪声块, 深度卷积, 局部窗口注意力.
+- [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md) 和 [Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md) 系列是 [MusicGen [40]](../../Models/SpeechLM/2023.06.08_MusicGen.md) 引入的并行生成方法的延续, 利用 [SNAC [193]](../../Models/Speech_Neural_Codec/2024.10.18_SNAC.md) 作为语音编码器, 由七个互补的 Token 层组成.
+  在单步中, 它生成八个 Token, 包括文本, 而各层之间的延迟保持为一步.
+  此外, Mini-Omni 和 Mini-Omni 2 还采用批处理方法, 其中包含两个样本: 一个需要文本和语音响应, 另一个仅需要文本响应.
+  通过丢弃第一个样本的文本 Token, 将第二个样本的输出嵌入到第一个样本中, 实际上将模型的文本功能转移到语音任务中, 显著增强推理能力, 最小化资源开销.
 
 #### SpeechTokenizer
 
