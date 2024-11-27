@@ -398,8 +398,17 @@ Emotion2Vec 引入了话语级损失, 以控制全局情感, 并采用帧级损�
 
 ### Semantic: 语义
 
+<details>
+<summary>原文</summary>
+
 At the output stage, Most spoken dialogue systems choose to autoregressively model semantic tokens, such as $S^3$ tokens ([CosyVoice [49]](../../Models/SpeechLM/2024.07.07_CosyVoice.md)) and [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) units.
-It is worth noting that these semantic tokens lack acoustic conditioning and therefore require a vocoder ([HiFi-GAN [108]](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md); [Polyak et al. [166]](../../Models/_Full/2021.04.01_Speech_Resynthesis_from_Discrete_Disentangled_Self-Supervised_Representations.md)) or decoder, which futher takes semantic discrete units as input to synthesize speech consistent with the speakers encountered during training.
+It is worth noting that these semantic tokens lack acoustic conditioning and therefore require a vocoder ([HiFi-GAN [108]](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md); [Polyak et al. [166]](../../Models/_Full/2021.04.01_Speech_Resynthesis_from_Discrete_Disentangled_Self-Supervised_Representations.md)) or decoder, which further takes semantic discrete units as input to synthesize speech consistent with the speakers encountered during training.
+
+</details>
+<br>
+
+在输出阶段, 大多数口语对话系统选择自回归地建模语义 Token, 如 $S^3$ Token ([CosyVoice [49]](../../Models/SpeechLM/2024.07.07_CosyVoice.md)) 和 [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) 单元.
+值得注意的是这些语义 Token 缺乏声学条件化, 因此需要声码器 ([HiFi-GAN [108]](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md); [Polyak et al. [166]](../../Models/_Full/2021.04.01_Speech_Resynthesis_from_Discrete_Disentangled_Self-Supervised_Representations.md)) 或解码器, 进一步将语义离散单元作为输入, 以合成与训练期间遇到的发言人一致的语音.
 
 #### $S^3$ Tokenizer
 
