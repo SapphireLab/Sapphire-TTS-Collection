@@ -577,12 +577,25 @@ RQ-Transformer 将长度为 $K \cdot S$ 的扁平序列分解为 $S$ 个时间�
 
 #### TiCodec
 
+<details>
+<summary>原文</summary>
+
 [TiCodec [177]](../../Models/Speech_Neural_Codec/2023.09.15_TiCodec.md) is a decoupled codec model which can separate the time-varying and time-invariant information in speech and quantize them separately.
 Inspired by [VALL-E [209]](../../Models/SpeechLM/2023.01.05_VALL-E.md), [Freeze-Omni [213]](../../Models/SpeechLM/2024.11.01_Freeze-Omni.md) uses a token-based speech decoder which contains NAR prefill and AR generate stage to achieve speech output capabilities.
 The speech decoder mainly consists of the NAR decoder, the AR decoder, and the frozen decoder of a codec model ([TiCodec [177]](../../Models/Speech_Neural_Codec/2023.09.15_TiCodec.md)).
 Both the NAR decoder and AR decoder are built upon transformer blocks.
 The NAR decoder is used to model the semantic features from the output of LLM, and then the AR decoder generates speech tokens based on the output of the NAR decoder.
 Finally, the decoder of the codec model converts the speech tokens into a speech stream.
+
+</details>
+<br>
+
+[TiCodec [177]](../../Models/Speech_Neural_Codec/2023.09.15_TiCodec.md) 是一种解耦的编解码器模型, 可以分离语音中的时间变化和不变的信息, 并分别量化它们.
+- 受 [VALL-E [209]](../../Models/SpeechLM/2023.01.05_VALL-E.md) 的启发, [Freeze-Omni [213]](../../Models/SpeechLM/2024.11.01_Freeze-Omni.md) 使用基于 Token 的语音解码器, 其中包含 NAR 预填充和 AR 生成阶段, 实现语音输出能力.
+语音解码器主要由 NAR 解码器, AR 解码器和编解码器模型的冻结解码器组成 ([TiCodec [177]](../../Models/Speech_Neural_Codec/2023.09.15_TiCodec.md)).
+NAR 解码器和 AR 解码器都基于 Transformer 块.
+NAR 解码器用于从 LLM 的输出中建模语义特征, 然后 AR 解码器基于 NAR 解码器的输出生成语音 Token.
+最后, 编解码器模型的解码器将语音 Token 转换为语音流.
 
 ## 3.3·Discussions about Representation used in Spoken Dialogue Systems: 讨论
 
