@@ -167,7 +167,10 @@ For dialogue finetuning, it constructs templates using both speech and transcrip
 - [USDM [106]](../../Models/SpeechLM/2024.02.08_USDM.md) 继续使用语音-文本数据对 [Mistral-7B [22]](../../Models/TextLM/Mistral-7B.md) 进行预训练, 以捕捉多模态语义.
   为了对话微调, 它使用用户输入的语音和转写作为指令数据构造模板.
 
-### Parallel Generation of Text and Speech.
+### Parallel Generation of Text and Speech: 并行生成文本和语音
+
+<details>
+<summary>展开原文</summary>
 
 [PSLM [154]](../../Models/SpeechLM/2024.06.18_PSLM.md) proposes generating speech and text tokens in parallel to reduce latency; however, this approach may compromise response quality.
 Additionally, this method still relies on speech recognition for input ([Whisper [169]](../../Models/SpeechLM/2022.12.06_Whisper.md)), which introduces further delay.
@@ -178,6 +181,23 @@ On the input side, Mini-Omni feeds continuous speech embeddings from the Whisper
 However, inconsistencies between speech input and output introduce additional computational overhead, increasing latency in multi-turn dialogue scenarios.
 In contrast, Moshi allows users to input speech without relying on text, and generates both text and speech tokens in parallel on the assistant side.
 Moshi further extends its architecture to model several speech streams in parallel, allowing for conceptually and practically simple handling of full-duplex dialogues with arbitrary dynamics.
+
+</details>
+<br>
+
+- [PSLM [154]](../../Models/SpeechLM/2024.06.18_PSLM.md) 提出并行地生成语音和文本 Token 来减少延迟, 然而这种方法可能会损害响应的质量.
+  此外, 这种方法仍然依赖于输入的语音识别 ([Whisper [169]](../../Models/SpeechLM/2022.12.06_Whisper.md)), 这引入了进一步的延迟.
+- [LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md) 引入了新颖的流式语音编码器, 以同时生成文本响应的离散语音单元序列, 显著减少延迟并适应实时交互的需求.
+- [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md) 和 [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md) 采用相似方法, 引入双流架构在助手端同时生成语音 Token 和相应的文本 Token, 从而促进了预训练大语言模型的文本能力向语音模态的迁移, 使得模型能够直接通过语音进行推理.
+
+关键区别在于如何处理语音-文本对齐:
+- [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md) 使用显式的对齐信息来监督模型的学习;
+- [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md) 允许 LLM 学习隐式的对齐信息.
+
+在输入侧, Mini-Omni 将 [Whisper [169]](../../Models/SpeechLM/2022.12.06_Whisper.md) 编码器生成的连续语音嵌入输入到 LLM 中, 增强了模型理解语音指令的能力, 而无需文本输入.
+然而, 语音输入和输出之间的不一致性引入了额外的计算开销, 增加了多轮对话场景中的延迟.
+相比之下, Moshi 允许用户直接输入语音而不依赖于文本, 并在助手端并行生成文本和语音 Token.
+Moshi 进一步扩展了架构以并行建模多个语音流, 从而能够从概念上和实践上简单地处理具有任意动态的全双工对话.
 
 ### Speech-to-Speech Generation
 
