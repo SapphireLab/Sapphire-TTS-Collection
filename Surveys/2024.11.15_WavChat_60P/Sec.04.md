@@ -1,4 +1,7 @@
-# 4·Training Paradigm of Spoken Dialogue Model
+# 4·Training Paradigm of Spoken Dialogue Model: 口语对话模型的训练范式
+
+<details>
+<summary>展开原文</summary>
 
 Existing text-based large language models have demonstrated strong contextual understanding and reasoning abilities in the field of natural language processing, such as [GPT-4 [1]](../../Models/TextLM/2023.03.15_GPT-4.md), [LLaMA 3.1 [52]](../../Models/TextLM/2024.07.31_LLaMA3.md), and [Qwen-2 [228]](../../Models/TextLM/Qwen2.md).
 Due to their training on large-scale corpora, these models achieve exceptional accuracy when handling complex contexts.
@@ -8,7 +11,7 @@ However, the transition from text intelligence to speech intelligence involves t
 For instance, [LLaMA 3.1 [52]](../../Models/TextLM/2024.07.31_LLaMA3.md) uses 800 billion training tokens, and [Qwen-2 [228]](../../Models/TextLM/Qwen2.md) is trained on over 7 trillion tokens, whereas pure speech pre-training data often amounts to hundreds of thousands or millions of hours.
 For example, [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)'s pre-training speech data comprises 7 million hours, and the amount of labeled speech data is even smaller, making it difficult to support LLMs in achieving powerful speech intelligence comparable to text.
 Another challenge is that speech information density is not as compact as text.
-Text commonly uses [byte-pair encoding (BPE)[186]](../../Models/_Basis/2015.08.31_BPE.md) (~~[A New Algorithm for Data Compression [62]]~~) encoding to compress it into a tight token space, whereas the speech modality includes not only semantic information but also acoustical information, which is less dense.
+Text commonly uses [byte-pair encoding (BPE)[186]](../../Models/_Basis/2015.08.31_BPE.md) (~~[A New Algorithm for Data Compression [62]]~~) to compress it into a tight token space, whereas the speech modality includes not only semantic information but also acoustical information, which is less dense.
 This undoubtedly increases the difficulty for LLMs to learn.
 Understanding and generating the inherent knowledge of the speech modality more effectively is a significant challenge.
 
@@ -21,7 +24,41 @@ These datasets are far smaller compared to the vast amounts of pure text data av
 Thus, building a truly end-to-end conversational model that meets real-world requirements necessitates careful consideration of model architecture, training paradigms, and training data.
 Overall, we believe that several key aspects are crucial in the training paradigm of spoken dialogue models: aligning speech-text modalities to ensure consistent understanding, designing multi-stage training strategies for gradual adaptation, and optimizing training structures and inference paradigms for efficient performance.
 
-## 4.1·Architecture Paradigm about Modal Alignment of Speech and Text
+</details>
+<br>
+
+现有的基于文本的大语言模型已经在自然语言处理领域展现出了强大的上下文理解和推理能力, 如 [GPT-4 [1]](../../Models/TextLM/2023.03.15_GPT-4.md), [LLaMA 3.1 [52]](../../Models/TextLM/2024.07.31_LLaMA3.md) 和 [Qwen-2 [228]](../../Models/TextLM/Qwen2.md).
+由于它们在大规模语料库上进行训练, 这些模型在处理复杂上下文时取得了卓越的准确性.
+为了进一步扩展大语言模型的能力, 一些研究 ([EMOVA [25]](../../Models/SpeechLM/2024.09.26_EMOVA.md); [Qwen2-Audio [33]](../../Models/SpeechLM/2024.07.15_Qwen2-Audio.md); [VITA [61]](../../Models/SpeechLM/2024.08.09_VITA.md); [Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md)) 探索了让大语言模型理解其他模态的可能性, 从而构建多模态交互能力.
+
+口语对话模型, 也称为语音-文本对话模型, 允许用户通过语音以自然且直接的方式与 LLMs 进行交互.
+然而, 从文本智能到语音只能的转变, 涉及到两个内在的障碍:
+一个核心的问题是相比于预训练的基于文本的大语言模型所使用的海量数据集相比, 缺乏足够的语音数据.
+- [LLaMA 3.1 [52]](../../Models/TextLM/2024.07.31_LLaMA3.md) 使用 8000 亿个训练 Token, [Qwen-2 [228]](../../Models/TextLM/Qwen2.md) 在超过 7 万亿个 Token 上训练, 而纯语音预训练数据往往只占数十万或数百万小时.
+- [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md) 的预训练语音数据包含 7 百万小时, 而标注语音数据却很少, 使得它很难支持 LLMs 在语音智能方面取得与基于文本的模型相当的能力.
+
+另一个挑战是语音信息密度不如文本紧凑.
+文本通常使用[字节对编码 (BPE) [186]](../../Models/_Basis/2015.08.31_BPE.md) (~~[A New Algorithm for Data Compression [62]]~~) 将其压缩到紧密的 Token 空间中, 而语音模态不仅包含语义信息, 还包含声学信息, 其密度较低.
+这无疑增加了 LLMs 学习的难度.
+
+更有效地理解和生成语音模态的内在知识是一个重大挑战.
+
+因此, 现有的口语对话模型旨在通过将语音模态引入大语言模型中, 从而在这些基于文本的大语言模型基础上进行构建.
+- [SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md); [EMOVA [25]](../../Models/SpeechLM/2024.09.26_EMOVA.md); [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md); [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md) 支持 LLMs 的语音输入和输出功能, 形成了基本的语音对话能力的基础.
+- 一些最新的先进方法 ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md); [OmniFlatten [246]](../../Models/SpeechLM/2024.10.23_OmniFlatten.md);[SyncLLM [203]](../../Models/SpeechLM/2024.09.23_SyncLLM.md)) 试图从传统的基于轮次的口语对话系统转变为全双工系统, 旨在模拟人类对话的自然随意性.
+
+尽管这些进展前景广阔, 但在全双工系统中实现低延迟和自然交互的能力仍然是一个重要挑战.
+此外, 增强 LLMs 以有效地处理语音模态, 即掌握语音理解和生成, 同时保持稳健的自然语言文本处理能力, 受到标注语音数据集规模有限的阻碍.
+与大量可用的纯文本数据相比, 这些数据集的规模要小得多, 这可能会削弱模型原有的文本处理能力.
+
+因此, 构建一个真正满足现实需求的端到端对话模型, 需要在模型架构, 训练范式, 训练数据方面进行仔细的考虑.
+
+总的来说, 我们认为口语对话模型的训练范式中有几个关键方面至关重要:
+- 使语音-文本模态一致, 以确保一致理解;
+- 设计多阶段训练策略, 逐步适应;
+- 优化训练结构和推理范式, 以实现高效性能.
+
+## 4.1·Architecture Paradigm about Modal Alignment of Speech and Text: 语音和文本模态对齐的架构范式
 
 To enable large language models (LLMs) to handle both speech input and output, a significant amount of prior work ([AudioPaLM [179]](../../Models/SpeechLM/2023.06.22_AudioPaLM.md); [LLaMA3 [52]](../../Models/TextLM/2024.07.31_LLaMA3.md); [LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md); [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md); [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)) has focused on adapting text-based foundation models into robust spoken dialogue models.
 Based on different architectural paradigms, these approaches can be broadly categorized into five types, as shown in Figure ~\ref{fig:archi_img1}.
@@ -89,7 +126,7 @@ This approach aims to remove the dependency on intermediate text, thereby reduci
 It employs [LoRA [79]](../../Modules/LoRA/2021.06.17_LoRA.md) adapter fine-tuning on a pre-trained [TWIST [74]](../../Models/SpeechLM/2023.05.22_TWIST.md) to produce multiple speech continuations from a given prompt and uses semantic metrics to generate preference data for [Direct Preference Optimization (DPO) [170]](../../Modules/RLHF/DPO.md).
 Experimental results indicate that integrating the preference optimization method significantly improves the semantic comprehension of the Spoken LLM.
 
-## 4.2·Multi-Stage Training Strategy
+## 4.2·Multi-Stage Training Strategy: 多阶段训练策略
 
 This section primarily discusses the training process of the Spoken Dialogue Model, building upon previous work on spoken dialogue systems.
 Generally, this process consists of four stages: text LLM pre-training, modality adaptation and alignment post-training, followed by supervised fine-tuning, and optionally, preference optimization.
@@ -126,7 +163,7 @@ Notably, Mini-Omni divides the training of various modules into three phases: th
 The second phase focuses exclusively on enhancing the model’s text capabilities when given speech inputs, updating only the LLM parameters while freezing other modules.
 Through these two training phases, the original language LLM’s capabilities are maximally preserved, while adapting to speech modality input and output, thereby addressing the primary modality alignment tasks.
 
-### 4.2.3·upervised Fine-tuning or Dialogue Dataset Fine-tuning
+### 4.2.3·Supervised Fine-tuning or Dialogue Dataset Fine-tuning
 
 During this stage, most models use instruction-following datasets or dialogue data for supervised fine-tuning of the LLM, enhancing natural conversational abilities.
 ([SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md); [SpeechGPT-Gen [244]](../../Models/SpeechLM/2024.01.24_SpeechGPT-Gen.md)) propose a two-stage instruction-tuning process that includes cross-modal instruction fine-tuning and chain-of-modality instruction fine-tuning.
@@ -147,7 +184,7 @@ LoRA fine-tuning on a Spoken LLM generates multiple speech continuations from pr
 Semantic metrics create preference data offline, making DPO training efficient and stable, eliminating the need for an external reward model.
 Coupled with [curriculum learning [15]](../../Models/_Basis/Curriculum_Learning.md), Align-SLM progressively refines preference data selection, optimizing semantic feedback, and improving SLM performance.
 
-## 4.3·Training Frameworks and Generation Strategies
+## 4.3·Training Frameworks and Generation Strategies: 训练框架和生成策略
 
 Recent advanced methods in spoken dialogue models employ a variety of innovative techniques to achieve more natural speech output and lower latency.
 In this part, we explore various approaches that exemplify these advancements:
@@ -214,9 +251,9 @@ Other methods achieve speech-to-speech generation without relying on text stream
 [IntrinsicVoice [248]](../../Models/SpeechLM/2024.10.09_IntrinsicVoice.md) introduces a novel GroupModel that predicts a group of speech tokens in one step based on global context embeddings.
 [SyncLLM [203]](../../Models/SpeechLM/2024.09.23_SyncLLM.md) predicts interleaved chunks of token sequences at each time step, allowing the model to handle all conversational cues such as backchannels, overlaps, interruptions, etc.
 
-## 4.4·Discussions about Training Paradigm in Spoken Dialogue Models
+## 4.4·Discussions about Training Paradigm in Spoken Dialogue Models: 讨论
 
-### 4.4.1·Text and Speech Modality Alignment
+### 4.4.1·Text and Speech Modality Alignment: 文本和语音模态对齐
 
 In spoken dialogue systems, the alignment between speech and text modalities is a crucial stage.
 To preserve the textual intelligence of large language models (LLMs) as much as possible, nearly all current methodologies ([SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md); [PSLM [154]](../../Models/SpeechLM/2024.06.18_PSLM.md); [LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md); [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md); [Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md); [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md); [OmniFlatten [246]](../../Models/SpeechLM/2024.10.23_OmniFlatten.md)) incorporate a post-training phase utilizing speech-text paired data when developing spoken dialogue models.
@@ -229,7 +266,7 @@ This raises a consideration: during the training phase of spoken dialogue models
 This approach would require us to obtain a pre-aligned speech representation with the text modality.
 Perhaps we can consider further exploration and experimentation in the speech tokenizer component, such as directly mapping the semantic discrete units of speech onto the text token space to achieve enforced alignment.
 
-### 4.4.2·Different Temporal Alignment Methods in Spoken Dialogue Models
+### 4.4.2·Different Temporal Alignment Methods in Spoken Dialogue Models: 不同时序对齐方法
 
 In speech and text modalities, there is often a significant mismatch in sequence lengths.
 Even when some speech tokenizers ([WavTokenizer [90]](../../Models/Speech_Neural_Codec/2024.08.29_WavTokenizer.md); [Single-Codec [119]](../../Models/Speech_Neural_Codec/2024.06.11_Single-Codec.md)) employ extreme sequence compression methods, a length gap remains between the two.
@@ -248,7 +285,7 @@ Exploring the impact of introducing different levels of temporal alignment prior
 Understanding how these various alignment strategies affect model performance can guide the development of more efficient and accurate systems.
 For instance, sentence-level alignment might offer a broader contextual understanding, while word-level or phoneme-level alignments could provide more detailed synchronization between speech and text, potentially leading to improvements in nuanced tasks like speech synthesis and understanding.
 
-### 4.4.3·Reinforcement Learning (RL) in Spoken Dialogue Models
+### 4.4.3·Reinforcement Learning (RL) in Spoken Dialogue Models: 强化学习
 
 Reinforcement Learning (RL) has proven to be an effective learning paradigm in text and image processing ([PPO [185]](../../Models/_Basis/PPO.md); [Policy Gradient [196]](../../Models/_Basis/PG.md); [Diffusion-DPO [204]](../../Models/CV/2023.11.21_Diffusion-DPO.md)).
 Recent research has shown that [Direct Preference Optimization (DPO) [170]](../../Modules/RLHF/DPO.md) can be extended to music and speech generation ([MusicRL [36]](../../Models/SpeechLM/2024.02.06_MusicRL.md); [SpeechAlign [243]](../../Models/SpeechLM/2024.04.08_SpeechAlign.md)).
