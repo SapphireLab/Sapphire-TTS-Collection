@@ -673,6 +673,9 @@ As spoken dialogue Systems are still evolving, exploring more robust hybrid repr
 
 ### 3.3.2·Continuous Representation vs Discrete Representation: 连续表示与离散表示
 
+<details>
+<summary>原文</summary>
+
 There is still no consensus on whether to use continuous or discrete representations in the spoken dialogue systems.
 Considerations on the input side mainly depend on the type of representation model chosen by the system.
 Some systems ([Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md); [Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md); [LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md)) use models like [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) or [Whisper [169]](../../Models/SpeechLM/2022.12.06_Whisper.md) to extract continuous speech representations, which requires adding a speech adapter and an additional training phase focused on modality alignment.
@@ -683,9 +686,28 @@ For autoregressive models, using discrete inputs may appear more manageable; how
 Language models trained with next-token prediction objectives tend to favor discrete modalities.
 Using discrete features on the output side naturally supports simple codec decoders ([Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md); [Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md); [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md); [Freeze-Omni [213]](../../Models/SpeechLM/2024.11.01_Freeze-Omni.md)) for reconstructing high-fidelity speech, enhancing speech quality and acoustic control while enabling an end-to-end system.
 In contrast, continuous features may require additional text-to-speech toolkits ([VITA [61]](../../Models/SpeechLM/2024.08.09_VITA.md)) or vocoders ([LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md)), resulting in a cascaded pipeline and making it difficult to preserve detailed acoustic information.
-Another notable advantage of using discrete representations as output is the ability to quickly feed them into the input of the next dialogue round, as demonstrated in [OmniFlatten [246]](../../Models/SpeechLM/2024.10.23_OmniFlatten.md);.
+Another notable advantage of using discrete representations as output is the ability to quickly feed them into the input of the next dialogue round, as demonstrated in [OmniFlatten [246]](../../Models/SpeechLM/2024.10.23_OmniFlatten.md).
 In the field of computer vision, a range of work ([Transfusion [256]](../../Models/CV/2024.08.20_Transfusion.md); [Show-o [221]](../../Models/_Basis/2024.08.22_Show-o.md)) has emerged that combines discrete and continuous representations, aiming to fully integrate these modes without information loss, and has already achieved success in certain areas.
 These approaches may provide valuable insights for the next generation of spoken dialogue systems.
+
+</details>
+<br>
+
+现在口语对话系统仍无该选择连续表示还是离散表示的共识.
+输入侧的考虑主要依赖于系统选择的表示模型的类型.
+- 一些系统 ([Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md); [Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md); [LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md)) 使用模型 ([HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) 或 [Whisper [169]](../../Models/SpeechLM/2022.12.06_Whisper.md)) 来提取连续语音表示, 要求增加一个语音适配器和额外的专注于模态对齐的训练阶段.
+- 另一些系统 ([SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md); [EMOVA [25]](../../Models/SpeechLM/2024.09.26_EMOVA.md); [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)) 使用模型 ([EnCodec [43]](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) 或 Mimi ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md))) 来提取离散语音表示, 将语音 Token 直接添加到大语言模型的词表中, 从而将训练负担移到大语言模型本身.
+
+尽管使用了不同方法, 但关键是使得大语言模型能有效地理解语音特征.
+对于自回归模型, 使用离散输入可能更容易管理, 然而, 是否真的在性能方面优于连续输入仍有待探索.
+
+使用下一个 Token 目标进行训练的语言模型倾向于离散模态.
+- 在输出侧使用离散特征自然地支持简单的编解码器的解码器 ([Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md); [Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md); [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md); [Freeze-Omni [213]](../../Models/SpeechLM/2024.11.01_Freeze-Omni.md)) 以重构高保真度语音, 增强语音质量和声学控制的同时, 实现端到端系统.
+相比之下, 连续特征可能需要额外的文本转语音工具箱 ([VITA [61]](../../Models/SpeechLM/2024.08.09_VITA.md)) 或声码器 ([LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md)), 变成级联流程使得难以保留详细的声学信息.
+- 使用离散表示的另一个优势是能够快速地将其输入到下一轮对话轮次中, 如 [OmniFlatten [246]](../../Models/SpeechLM/2024.10.23_OmniFlatten.md).
+
+在计算机视觉领域, 涌现了一系列工作 ([Transfusion [256]](../../Models/CV/2024.08.20_Transfusion.md); [Show-o [221]](../../Models/_Basis/2024.08.22_Show-o.md)), 试图将离散和连续表示结合, 目的是在无信息损失的情况下完全整合这些模态, 并且已经在某些领取取得了成功.
+这些方法可能为下一代口语对话模型提供了有价值的见解.
 
 ### 3.3.3·Single-Layer Quantizer vs Multi-Layer Quantizer: 单层量化器和多层量化器
 
