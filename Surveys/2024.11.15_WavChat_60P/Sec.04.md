@@ -114,7 +114,10 @@ Although these approaches have explored emotional responses within spoken dialog
 
 尽管这些方法已经探索了口语对话系统的情感响应, 它们要求额外的系统来从文本合成语音并面临高延迟问题, 使得实时对话难以实现.
 
-### Chain-of-Modality (CoM) Method.
+### Chain-of-Modality (CoM) Method: 模态链方法
+
+<details>
+<summary>展开原文</summary>
 
 This method tokenizes speech into discrete tokens and extends the LLM’s vocabulary to handle both speech input and output.
 To address alignment issues between speech and text modalities, Recent works ([SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md); [SpeechGPT-Gen [244]](../../Models/SpeechLM/2024.01.24_SpeechGPT-Gen.md); [Spectron [156]](../../Models/SpeechLM/2023.05.24_Spectron.md); [EMOVA [25]](../../Models/SpeechLM/2024.09.26_EMOVA.md)) utilize a prompting approach called Chain-of-Modality (CoM), which first generates response text autoregressively before producing the corresponding speech.
@@ -129,6 +132,18 @@ Its speech response procedure is divided into three primary steps:
 3) producing style labels and response speech units from the textual responses.
 
 This process enables EMOVA to facilitate emotional speech dialogue.
+
+</details>
+<br>
+
+这种方法将语音分词为离散 Token 并扩展大语言模型的词表以处理语音输入和输出.
+为了处理语音和文本模态之间的对齐问题, 近期工作 ([SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md); [SpeechGPT-Gen [244]](../../Models/SpeechLM/2024.01.24_SpeechGPT-Gen.md); [Spectron [156]](../../Models/SpeechLM/2023.05.24_Spectron.md); [EMOVA [25]](../../Models/SpeechLM/2024.09.26_EMOVA.md)) 利用了名为模态链 (Chain-of-Modality, CoM) 的提示方法, 首先自回归地生成响应文本然后生成相应的语音.
+这种技术允许文本大语言模型的输出来引导语音生成, 从而增强响应内容的质量.
+然而, 这不适合现场交互, 因为模型必须完成整个文本响应才能开始语音生成, 这导致响应延迟增加.
+- [SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md) 和 [SpeechGPT-Gen [244]](../../Models/SpeechLM/2024.01.24_SpeechGPT-Gen.md) 采用 [SpeechTokenizer [249]](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) 模型作为语音 Token 提取器, 将语音生成分解为语义 Token 预测和音频 Token 预测.
+- [EMOVA [25]](../../Models/SpeechLM/2024.09.26_EMOVA.md) 使用 FSPIRAL ([SPIRAL [85]](../../Models/SpeechRepresentation/2022.01.25_SPIRAL.md)) 架构作为其语音编码器, 捕捉语音的音素和音调信息, 然后使用 [finite scalar quantization (FSQ) [149]](../../Modules/VQ/FSQ.md) 对其离散化.
+  其语音响应过程分为三个主要步骤: (1) 将用户指令转化为文本, (2) 根据这些指令生成文本响应, (3) 从文本响应生成样式标签和响应语音单元.
+  这种过程使得 EMOVA 能够促进情感语音对话.
 
 ### Interleaving Text and Speech Tokens
 
