@@ -74,9 +74,13 @@ Based on different architectural paradigms, these approaches can be broadly cate
 为了使得大语言模型能够处理语音输入和输出, 大量先前工作 ([AudioPaLM [179]](../../Models/SpeechLM/2023.06.22_AudioPaLM.md); [LLaMA3 [52]](../../Models/TextLM/2024.07.31_LLaMA3.md); [LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md); [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md); [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)) 都集中在将基于文本的基础模型转化为健壮的口语对话模型.
 基于不同的架构范式, 这些方法可以大致分为五类, 如图 05 所示.
 
-### Text-Output Only Method
+### Text-Output Only Method: 仅输出文本的方法
 
-These systems ([Qwen2-Audio [33]](../../Models/SpeechLM/2024.07.15_Qwen2-Audio.md); [Qwen-Audio [34]](../../Models/SpeechLM/2023.11.14_Qwen-Audio.md); [LTU-AS [67]](../../Models/SpeechLM/2023.09.25_LTU-AS.md); [E-chat [227]](../../Models/SpeechLM/2023.12.31_E-chat.md); [SALMONN [198]](../../Models/SpeechLM/2023.10.20_SALMONN.md); [WavLLM [80]](../../Models/SpeechLM/WavLLM.md); [SpeechVerse [41]](../../Models/SpeechLM/2024.05.14_SpeechVerse.md); [VITA [61]](../../Models/SpeechLM/2024.08.09_VITA.md)) maintain the text-based LLM’s foundational structure unchanged, \textbf{using an audio encoder and adaptor to map speech input into the LLM's pre-trained text latent space directly.} This method of direct embedding alignment, combined with a multi-task training strategy, equips the LLM with the ability to 'listen,' thus enabling it to understand and process speech modality inputs effectively and perform exceptionally well in various audio understanding tasks.
+<details>
+<summary>展开原文</summary>
+
+These systems ([Qwen2-Audio [33]](../../Models/SpeechLM/2024.07.15_Qwen2-Audio.md); [Qwen-Audio [34]](../../Models/SpeechLM/2023.11.14_Qwen-Audio.md); [LTU-AS [67]](../../Models/SpeechLM/2023.09.25_LTU-AS.md); [E-chat [227]](../../Models/SpeechLM/2023.12.31_E-chat.md); [SALMONN [198]](../../Models/SpeechLM/2023.10.20_SALMONN.md); [WavLLM [80]](../../Models/SpeechLM/WavLLM.md); [SpeechVerse [41]](../../Models/SpeechLM/2024.05.14_SpeechVerse.md); [VITA [61]](../../Models/SpeechLM/2024.08.09_VITA.md)) maintain the text-based LLM’s foundational structure unchanged, **using an audio encoder and adaptor to map speech input into the LLM's pre-trained text latent space directly**.
+This method of direct embedding alignment, combined with a multi-task training strategy, equips the LLM with the ability to 'listen,' thus enabling it to understand and process speech modality inputs effectively and perform exceptionally well in various audio understanding tasks.
 Nevertheless, the output remains text-based, which necessitates the use of an external text-to-speech (TTS) system ([XTTS [21]](../../Models/SpeechLM/2024.06.07_XTTS.md); [CosyVoice [49]](../../Models/SpeechLM/2024.07.07_CosyVoice.md)) to generate speech output.
 [LTU-AS [67]](../../Models/SpeechLM/2023.09.25_LTU-AS.md) uses [Whisper [169]](../../Models/SpeechLM/2022.12.06_Whisper.md) and the Time and Layer-Wise Transformer (TLTR) as its audio encoder, allowing it to recognize both speech and audio events.
 [Qwen-Audio [34]](../../Models/SpeechLM/2023.11.14_Qwen-Audio.md) scales up audio-language pre-training to cover over 30 tasks and various audio types, facilitating universal audio understanding abilities.
@@ -90,6 +94,25 @@ All the aforementioned methods frequently overlook paralinguistic information, i
 [ParalinGPT [128]](../../Models/SpeechLM/2023.12.23_ParalinGPT.md) utilizes an ASR model to obtain text and a speech encoder to extract emotion embeddings, thereby more accurately simulating both the linguistic content and paralinguistic attributes of spoken responses.
 [E-chat [227]](../../Models/SpeechLM/2023.12.31_E-chat.md) employs a [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) speech encoder to extract speech and emotion features, using a connection module to map these features to the textual space within the LLM decoder.
 Although these approaches have explored emotional responses within spoken dialogue systems, they require additional systems to synthesize speech from text and suffer from high latency, making real-time dialogue challenging to achieve.
+
+</details>
+<br>
+
+这些系统 ([Qwen2-Audio [33]](../../Models/SpeechLM/2024.07.15_Qwen2-Audio.md); [Qwen-Audio [34]](../../Models/SpeechLM/2023.11.14_Qwen-Audio.md); [LTU-AS [67]](../../Models/SpeechLM/2023.09.25_LTU-AS.md); [E-chat [227]](../../Models/SpeechLM/2023.12.31_E-chat.md); [SALMONN [198]](../../Models/SpeechLM/2023.10.20_SALMONN.md); [WavLLM [80]](../../Models/SpeechLM/WavLLM.md); [SpeechVerse [41]](../../Models/SpeechLM/2024.05.14_SpeechVerse.md); [VITA [61]](../../Models/SpeechLM/2024.08.09_VITA.md)) 保持了基于文本的大语言模型的基础架构不变, **使用音频编码器和适配器将语音输入直接映射到大语言模型预训练的文本潜在空间**.
+这种直接嵌入对齐的方法, 和多任务训练策略相结合, 使得大语言模型具备了听的能力, 从而能够有效地理解和处理语音模态输入, 并在各种音频理解任务中表现出色.
+然而, 输出仍然是基于文本的, 这需要使用外部的文本转语音系统 ([XTTS [21]](../../Models/SpeechLM/2024.06.07_XTTS.md); [CosyVoice [49]](../../Models/SpeechLM/2024.07.07_CosyVoice.md)) 来生成语音输出.
+- [LTU-AS [67]](../../Models/SpeechLM/2023.09.25_LTU-AS.md) 使用 [Whisper [169]](../../Models/SpeechLM/2022.12.06_Whisper.md) 与时间和层级 Transformer (TLTR) 作为音频编码器, 使其能够识别语音和音频事件.
+- [Qwen-Audio [34]](../../Models/SpeechLM/2023.11.14_Qwen-Audio.md) 将音频-语言预训练扩展到覆盖超过三十个任务和各种音频类型, 促进了通用音频理解能力. 它对所有的音频输入采用了统一的编码器, 弥合了音频和文本模态之间的差距, 并使用大语言模型 [Qwen-7B [11]](../../Models/TextLM/2023.09.28_Qwen.md) 为基础组件.
+- [Qwen2-Audio [33]](../../Models/SpeechLM/2024.07.15_Qwen2-Audio.md) 通过为不同数据和任务使用自然语言提示来简化预训练过程, 并使用 [DPO [170]](../../Modules/RLHF/DPO.md) 优化模型在真实性和遵循期望行为方面的表现.
+- [SALMONN [198]](../../Models/SpeechLM/2023.10.20_SALMONN.md) 采用了双听觉编码器: 来自 Whisper 模型的语音编码器和非语音的 [BEATs [28]](../../Models/SpeechRepresentation/2022.12.18_BEATs.md) 音频编码器. 这两个编码器的听觉特征互补, 使其适合用于包含语音和非语音信息的通用音频输入. 这些输入随后通过 Q-Former 风格注意力机制连接到一个经过良好训练的 LLM 以生成响应.
+- [VITA [61]](../../Models/SpeechLM/2024.08.09_VITA.md) 通过两个独立的模块实现全双工方案: 一个模块生成对用户查询的文本响应, 另一个持续监控环境输入以有选择地提供更新的交互内容, 尽管它仍然需要额外的 TTS 系统.
+
+上述提及的方法经常忽略副语言信息, 包括情感, 韵律, 和非语言元素, 这使得它们在涉及情感语音对话的场景中表现不足.
+
+- [ParalinGPT [128]](../../Models/SpeechLM/2023.12.23_ParalinGPT.md) 使用 ASR 模型获取文本, 并使用语音编码器提取情感嵌入, 从而更准确地模拟语音响应的语言内容和副语言属性.
+- [E-Chat [227]](../../Models/SpeechLM/2023.12.31_E-chat.md) 采用 [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) 语音编码器提取语音和情感特征, 使用连接模块将这些特征映射到 LLM 解码器中的文本空间.
+
+尽管这些方法已经探索了口语对话系统的情感响应, 它们要求额外的系统来从文本合成语音并面临高延迟问题, 使得实时对话难以实现.
 
 ### Chain-of-Modality (CoM) Method.
 
