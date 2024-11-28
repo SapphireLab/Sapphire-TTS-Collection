@@ -711,6 +711,9 @@ These approaches may provide valuable insights for the next generation of spoken
 
 ### 3.3.3·Single-Layer Quantizer vs Multi-Layer Quantizer: 单层量化器和多层量化器
 
+<details>
+<summary>原文</summary>
+
 As previously mentioned regarding compression rates, the number of quantizers must be carefully considered when using the speech codec.
 Currently, dialogue systems commonly use multi-layer quantizers, such as those in [EnCodec [43]](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md), [SpeechTokenizer [249]](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md), [SNAC [193]](../../Models/Speech_Neural_Codec/2024.10.18_SNAC.md) and Mimi ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)).
 This inevitably introduces generation latency, as residual vector quantization requires each quantizer’s input to depend on the output of the previous quantizer.
@@ -722,6 +725,23 @@ Recently, research on single-layer quantizers has shown promising breakthroughs.
 Models like [WavTokenizer [90]](../../Models/Speech_Neural_Codec/2024.08.29_WavTokenizer.md), [Single-Codec [119]](../../Models/Speech_Neural_Codec/2024.06.11_Single-Codec.md), and [BigCodec [224]](../../Models/Speech_Neural_Codec/2024.09.09_BigCodec.md) advocate using a single VQ to discretize speech, achieving competitive results in both reconstruction and generation tasks.
 Notably, [WavTokenizer [90]](../../Models/Speech_Neural_Codec/2024.08.29_WavTokenizer.md) has already achieved an impressive compression rate of 40Hz.
 Integrating a single-layer quantizer with dialogue systems is promising, as it allows for rapid extraction of speech features on the input side and significantly reduces the burden of autoregressive modeling.
+
+</details>
+<br>
+
+如前所述, 关于压缩率, 在使用语音编解码器时量化器的数量必须经过仔细考虑.
+目前, 对话系统通常使用多层量化器, 如 [EnCodec [43]](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md), [SpeechTokenizer [249]](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md), [SNAC [193]](../../Models/Speech_Neural_Codec/2024.10.18_SNAC.md) 和 Mimi ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)).
+这不可避免地引入了生成延迟, 因为残差向量量化要求每个量化器的输入依赖于前一个量化器的输出.
+
+[Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md) 和 [Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md) 采取了与 [MusicGen [40]](../../Models/SpeechLM/2023.06.08_MusicGen.md) 类似的策略, 引入延迟步骤以实现多个量化器之间的并行生成.
+
+[Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md) 提出将残差向量量化拆分, 使得八个向量量化器能够独立并行生成.
+这些策略在一定程度上缓解了延迟问题, 但仍未达到语义表示的效率水平.
+
+最近, 关于单层量化器的研究已经取得了令人鼓舞的成果.
+诸如 [WavTokenizer [90]](../../Models/Speech_Neural_Codec/2024.08.29_WavTokenizer.md), [Single-Codec [119]](../../Models/Speech_Neural_Codec/2024.06.11_Single-Codec.md), 和 [BigCodec [224]](../../Models/Speech_Neural_Codec/2024.09.09_BigCodec.md) 等模型主张使用单层 VQ 对语音进行离散化, 取得了在重构和生成任务中的具有竞争力的结果.
+值得注意的是, [WavTokenizer [90]](../../Models/Speech_Neural_Codec/2024.08.29_WavTokenizer.md) 已经实现了 40Hz 的压缩率.
+将单层量化器与对话系统集成是有希望的, 因为它允许在输入侧快速提取语音特征, 并且大大减少了自回归建模的负担.
 
 ### 3.3.4·With Text Guidance vs Without Text Guidance: 文本引导与无文本引导
 
