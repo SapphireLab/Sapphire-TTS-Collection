@@ -145,7 +145,10 @@ This process enables EMOVA to facilitate emotional speech dialogue.
   其语音响应过程分为三个主要步骤: (1) 将用户指令转化为文本, (2) 根据这些指令生成文本响应, (3) 从文本响应生成样式标签和响应语音单元.
   这种过程使得 EMOVA 能够促进情感语音对话.
 
-### Interleaving Text and Speech Tokens
+### Interleaving Text and Speech Tokens: 交错文本和语音 Token
+
+<details>
+<summary>展开原文</summary>
 
 Some earlier models ([AudioPaLM [179]](../../Models/SpeechLM/2023.06.22_AudioPaLM.md), [VoxtLM [145]](../../Models/SpeechLM/2023.09.14_VoxtLM.md)) employed supervised training methods, using specific input and output sequences, and trained on mixed speech-text tasks, including text-to-speech (TTS), automatic speech recognition (ASR), and speech-to-speech translation.
 [Spirit-LM [158]](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md) leverages the temporal alignment between speech and its transcription, continuing training on a pre-trained text-based LLM using alternating text and speech tokens.
@@ -153,6 +156,16 @@ This significantly improves the model’s performance in both speech understandi
 However, it employs discrete [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) units as speech representations, which results in some loss of paralinguistic information.
 [USDM [106]](../../Models/SpeechLM/2024.02.08_USDM.md) continues pretraining [Mistral-7B [22]](../../Models/TextLM/Mistral-7B.md) with interleaved speech-text data to capture multimodal semantics.
 For dialogue finetuning, it constructs templates using both speech and transcripts of user input as instruction data.
+
+</details>
+<br>
+
+一些早期的模型 ([AudioPaLM [179]](../../Models/SpeechLM/2023.06.22_AudioPaLM.md), [VoxtLM [145]](../../Models/SpeechLM/2023.09.14_VoxtLM.md)) 采用了监督训练方法, 使用具体的输入和输出序列, 并在混合语音-文本任务上进行训练, 包括文本到语音 (TTS), 自动语音识别 (ASR), 以及语音到语音的翻译.
+- [Spirit-LM [158]](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md) 利用语音和其转写之间的时序对齐, 使用交替文本和语音 Token 继续训练预训练的基于文本的大语言模型 (LLM).
+  这种方法显著提升了模型在语音理解和生成中的性能.
+  但是, 它采用离散的 [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) 单元作为语音表示, 这导致部分丢失了副语音信息.
+- [USDM [106]](../../Models/SpeechLM/2024.02.08_USDM.md) 继续使用语音-文本数据对 [Mistral-7B [22]](../../Models/TextLM/Mistral-7B.md) 进行预训练, 以捕捉多模态语义.
+  为了对话微调, 它使用用户输入的语音和转写作为指令数据构造模板.
 
 ### Parallel Generation of Text and Speech.
 
