@@ -199,7 +199,10 @@ Moshi further extends its architecture to model several speech streams in parall
 相比之下, Moshi 允许用户直接输入语音而不依赖于文本, 并在助手端并行生成文本和语音 Token.
 Moshi 进一步扩展了架构以并行建模多个语音流, 从而能够从概念上和实践上简单地处理具有任意动态的全双工对话.
 
-### Speech-to-Speech Generation
+### Speech-to-Speech Generation: 语音转语音生成
+
+<details>
+<summary>展开原文</summary>
 
 This approach aims to remove the dependency on intermediate text, thereby reducing latency and making the system closer to real-time interaction.
 [SyncLLM [203]](../../Models/SpeechLM/2024.09.23_SyncLLM.md) achieves real-time full-duplex interaction through time chunking methods, integrating time information into LLMs to enable synchronous operation with the real-world clock.
@@ -207,6 +210,14 @@ This approach aims to remove the dependency on intermediate text, thereby reduci
 [Align-SLM [129]](../../Models/SpeechLM/2024.11.04_Align-SLM.md) utilizes a pre-trained self-supervised [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) model with K-means clustering ([TWIST [74]](../../Models/SpeechLM/2023.05.22_TWIST.md)) to convert continuous speech representations into discrete units.
 It employs [LoRA [79]](../../Modules/LoRA/2021.06.17_LoRA.md) adapter fine-tuning on a pre-trained [TWIST [74]](../../Models/SpeechLM/2023.05.22_TWIST.md) to produce multiple speech continuations from a given prompt and uses semantic metrics to generate preference data for [Direct Preference Optimization (DPO) [170]](../../Modules/RLHF/DPO.md).
 Experimental results indicate that integrating the preference optimization method significantly improves the semantic comprehension of the Spoken LLM.
+
+</details>
+<br>
+
+这种方法旨在移除对中间文本的依赖, 从而减少延迟并使系统更接近实时互动.
+- [SyncLLM [203]](../../Models/SpeechLM/2024.09.23_SyncLLM.md) 通过时间分块方法实现实时全双工交互, 将时间信息集成到 LLMs 中, 以便与真实世界时钟同步运行.
+- [IntrinsicVoice [248]](../../Models/SpeechLM/2024.10.09_IntrinsicVoice.md) 使用特定模型在单步生成多个语音 Token, 有效地将语音 Token 序列长度与文本序列长度相当, 同时产生高质量的音频.
+- [Align-SLM [129]](../../Models/SpeechLM/2024.11.04_Align-SLM.md) 使用预训练的自监督 [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) 模型和 K-means 聚类 ([TWIST [74]](../../Models/SpeechLM/2023.05.22_TWIST.md)) 将连续语音表示转换为离散单元. 它采用在预训练的 [TWIST [74]](../../Models/SpeechLM/2023.05.22_TWIST.md) 上微调的 [LoRA [79]](../../Modules/LoRA/2021.06.17_LoRA.md) 适配器来从给定的提示生成多个语音延续, 并使用语义度量来生成偏好数据用于[直接偏好优化 (DPO) [170]](../../Modules/RLHF/DPO.md). 实验结果表明, 将偏好优化方法集成到 Spoken LLM 中可以显著提高语义理解能力.
 
 ## 4.2·Multi-Stage Training Strategy: 多阶段训练策略
 
