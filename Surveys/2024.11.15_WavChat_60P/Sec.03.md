@@ -601,11 +601,14 @@ NAR 解码器用于从 LLM 的输出中建模语义特征, 然后 AR 解码器�
 
 ### 3.3.1·Semantic Representation vs Acoustic Representation: 语义表示与声学表示
 
+<details>
+<summary>原文</summary>
+
 Current dialogue systems typically choose different approaches for the understanding (input) and generation (output) sides based on task requirements.
 For example, [Spirit-LM [158]](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md) uses semantic representations ([HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md)) consistently on both ends, while [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md) uses semantic representations ([Whisper [169]](../../Models/SpeechLM/2022.12.06_Whisper.md)) on the input side and acoustic representations ([SNAC [193]](../../Models/Speech_Neural_Codec/2024.10.18_SNAC.md)) on the output side.
 Each combination offers unique advantages and trade-offs, and a consensus on a unified speech representation approach has yet to be reached in practical applications.
 
-We revisited the differences between semantic and acoustic representations, as shown in Table~\ref{comparison_of_rep}.
+We revisited the differences between semantic and acoustic representations, as shown in Table.01.
 Benefiting from specific task objectives, models such as [Wav2Vec [184]](../../Models/SpeechRepresentation/2019.04.11_Wav2Vec.md), [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md), [WavLM [27]](../../Models/SpeechRepresentation/2021.10.26_WavLM.md), and [Whisper [169]](../../Models/SpeechLM/2022.12.06_Whisper.md) focus on extracting semantic information embedded within the spoken content.
 This inherent advantage allows speech to be directly mapped into the embedding space of large language models (LLMs), facilitating alignment with other modalities and fully leveraging the LLM’s strengths.
 In contrast, acoustic representations extracted by models like [EnCodec [43]](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) and [DAC [113]](../../Models/Speech_Neural_Codec/2023.06.11_Descript-Audio-Codec.md) are less conducive to LLM understanding, which is why [SpeechTokenizer [249]](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) and Mimi ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)) opt for semantic distillation.
@@ -628,6 +631,45 @@ A valuable perspective is that models like [SpeechTokenizer [249]](../../Models/
 With technological advancements, we look forward to more unified and refined modeling approaches.
 A promising direction would be to design new training objectives for speech tokenizers, exploring both data-driven and objective-driven methods, thus avoiding the need for additional pre-trained models.
 As spoken dialogue Systems are still evolving, exploring more robust hybrid representations is indeed valuable.
+
+</details>
+<br>
+
+现有的对话系统通常根据任务需求选择不同的方法进行理解 (输入) 和生成 (输出).
+- [SpiRit-LM [158]](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md) 在输入和输出端都使用语义表示 ([HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md))
+- [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md) 在输入端使用语义表示 ([Whisper [169]](../../Models/SpeechLM/2022.12.06_Whisper.md)) 而在输出端使用声学表示 ([SNAC [193]](../../Models/Speech_Neural_Codec/2024.10.18_SNAC.md))
+
+每种组合都提供了独特的优势和权衡, 而在实际应用中达成统一的语音表示方法还没有达成共识.
+
+我们回归语义表示和声学表示的区别, 如表格 01 所示
+
+![](Images/Tab.01.png)
+
+语义表示的优势:
+- 受益于具体的任务目标, 模型 (例如 [Wav2Vec [184]](../../Models/SpeechRepresentation/2019.04.11_Wav2Vec.md), [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md), [WavLM [27]](../../Models/SpeechRepresentation/2021.10.26_WavLM.md), 和 [Whisper [169]](../../Models/SpeechLM/2022.12.06_Whisper.md)) 都专注于从说话内容中提取语义信息.
+这种内在优势使得**语音可以直接映射到大语言模型的嵌入空间中, 有助于和其他模态对齐, 并充分利用大语言模型的强项**.
+与之相反, 由模型 (例如 [EnCodec [43]](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) 和 [DAC [113]](../../Models/Speech_Neural_Codec/2023.06.11_Descript-Audio-Codec.md)) 提取的声学表示不利于语言模型理解, 这也是为什么 [SpeechTokenizer [249]](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) 和 Mimi ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)) 选择使用语义蒸馏.
+- 此外, **语义表示提供更高的压缩率**.
+通过在卷积层中配置不同的下采样参数, 模型 (例如 HuBERT 和 Whisper) 能够轻松实现 25Hz 到 50Hz 的帧率.
+例如 [Spirit-LM [158]](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md) 采用 25Hz HuBERT 单元, 这意味着只需要 25 个标记来表示一秒的语音.
+与之相反, 声学特征是为了压缩和重建而设计的, 信号传输的限制使得极限压缩和高质量重建难以同时实现.
+尽管 Mimi ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)) 已经实现了 12.5Hz 的帧率, 但它使用 8 个代码库, 这意味着自回归地预测一秒的语音需要 100 步.
+- 最后, **在某些情况下, 语义表示具有独特的优势**.
+
+声学表示的优势:
+- 然而, 我们必须承认纯粹的语义表示在自然性和表现力方面存在缺陷, 特别是在涉及到情感表达或复杂语音动态的任务中, 而这些任务中的声学表示能提供更多细致的信息.
+  [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) 不能像 [EnCodec [43]](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) 或 [Emotion2Vec [143]](../../Models/Speech_Representaion/2023.12.23_Emotion2Vec.md) 那样有效地提取语调和风格特征.
+- 值得注意的是, 使用声学表示可以灵活地处理各种数据类型——语音, 音频, 音乐, 声音——这使得对话系统更加统一和多样化.
+- 当声学表示用作语言模型的输出时, 它可以无缝地连接到编解码器的解码器部分以进行语音合成.
+  与之相反, 使用语义特征的对话系统通常要求单独训练好的声码器 ([Spirit-LM [158]](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md); [USDM [106]](../../Models/SpeechLM/2024.02.08_USDM.md)) 或依赖额外的文本到转语音工具箱 ([LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md))
+  这种差距对于对话系统至关重要, 因为其导致的延迟会直接影响用户体验.
+
+鉴于语义特征和声学特征在不同任务中的独特优势, 未来研究可能会转向集成这些特征.
+一个有价值的视角是, 模型如 [SpeechTokenizer [249]](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) 和 Mimi ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)) 已经试图将语义表示从 [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) 或 [WavLM [27]](../../Models/SpeechRepresentation/2021.10.26_WavLM.md) 中蒸馏到 RVQ-1, 确保系统中语义和声学信息的平衡.
+
+随着技术进步, 我们期待着更加统一和完善的模型方法.
+一个有希望的方向是为语音分词器设计新的训练目标, 探索数据驱动和目标驱动方法, 避免使用额外的预训练模型.
+由于对话系统仍在不断发展, 探索更加健壮的混合表示是有价值的.
 
 ### 3.3.2·Continuous Representation vs Discrete Representation: 连续表示与离散表示
 
