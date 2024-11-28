@@ -60,8 +60,19 @@ Overall, we believe that several key aspects are crucial in the training paradig
 
 ## 4.1·Architecture Paradigm about Modal Alignment of Speech and Text: 语音和文本模态对齐的架构范式
 
+<details>
+<summary>展开原文</summary>
+
 To enable large language models (LLMs) to handle both speech input and output, a significant amount of prior work ([AudioPaLM [179]](../../Models/SpeechLM/2023.06.22_AudioPaLM.md); [LLaMA3 [52]](../../Models/TextLM/2024.07.31_LLaMA3.md); [LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md); [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md); [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)) has focused on adapting text-based foundation models into robust spoken dialogue models.
-Based on different architectural paradigms, these approaches can be broadly categorized into five types, as shown in Figure ~\ref{fig:archi_img1}.
+Based on different architectural paradigms, these approaches can be broadly categorized into five types, as shown in Figure.05.
+
+</details>
+<br>
+
+![](Images/Fig.05.png)
+
+为了使得大语言模型能够处理语音输入和输出, 大量先前工作 ([AudioPaLM [179]](../../Models/SpeechLM/2023.06.22_AudioPaLM.md); [LLaMA3 [52]](../../Models/TextLM/2024.07.31_LLaMA3.md); [LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md); [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md); [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)) 都集中在将基于文本的基础模型转化为健壮的口语对话模型.
+基于不同的架构范式, 这些方法可以大致分为五类, 如图 05 所示.
 
 ### Text-Output Only Method
 
