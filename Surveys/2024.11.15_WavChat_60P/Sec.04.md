@@ -246,15 +246,29 @@ The diagram of multi-stage training can be referred to in Figure.06.
 
 ![](Images/Fig.06.png)
 
-### 4.2.1·Text LLM Pre-Training
+### 4.2.1·Text LLM Pre-Training: 文本大语言模型预训练
+
+<details>
+<summary>展开原文</summary>
 
 The goal is to develop a text-intelligent LLM model capable of handling complex contexts and possessing knowledge reasoning abilities, thus preparing it for integration with speech-intelligent LLMs.
 Most spoken dialogue systems utilize pre-trained large language models as foundational models rather than pre-training with separate text data themselves.
 A series of approaches ([SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md); [SpeechGPT-Gen [244]](../../Models/SpeechLM/2024.01.24_SpeechGPT-Gen.md); [Spirit-LM [158]](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md); [EMOVA [25]](../../Models/SpeechLM/2024.09.26_EMOVA.md); [LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md); [SyncLLM [203]](../../Models/SpeechLM/2024.09.23_SyncLLM.md)) use the LLaMA model and its variants as their foundational language model.
-On the other hand, ([LauraGPT [50]](../../Models/SpeechLM/2023.10.07_LauraGPT.md); [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md); [Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md); [OmniFlatten [246]](../../Models/SpeechLM/2024.10.23_OmniFlatten.md)) employ the Qwen ([Qwen [11]](../../Models/TextLM/2023.09.28_Qwen.md) [Qwen-2 [228]](../../Models/TextLM/Qwen2.md)) family of large language models as their backbone.
+On the other hand, ([LauraGPT [50]](../../Models/SpeechLM/2023.10.07_LauraGPT.md); [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md); [Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md); [OmniFlatten [246]](../../Models/SpeechLM/2024.10.23_OmniFlatten.md)) employ the Qwen ([Qwen [11]](../../Models/TextLM/2023.09.28_Qwen.md); [Qwen-2 [228]](../../Models/TextLM/Qwen2.md)) family of large language models as their backbone.
 Meanwhile, [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md) employs an RQ-Transformer for hierarchical autoregressive modeling of speech, utilizing a unique structure that involves pre-training a text-only language model with datasets from the internet (e.g., [Wikipedia](https://dumps.wikimedia.org/) and [StackExchange](https://archive.org/details/stackexchange/)).
 The collected data was filtered using a comprehensive preprocessing pipeline to ensure quality and relevance, which included deduplication to remove redundant entries, language identification to retain text in the desired language, and quality filtering to exclude low-quality or irrelevant content based on criteria such as coherence and completeness.
 [VITA [61]](../../Models/SpeechLM/2024.08.09_VITA.md) utilizes [Mixtral 8x7B1 [95]](../../Models/TextLM/Mixtral.md), a representative LLM with a sparse mixture of experts (SMoE) architecture, and performs pure-text instruction tuning for its extended Chinese vocabulary.
+
+</details>
+<br>
+
+这一阶段的目标是开发一个能够处理复杂上下文并具备知识推理能力的文本智能 LLM 模型, 从而为与语音智能 LLM 的集成做好准备.
+
+大多数口语对话系统利用预训练的大语言模型作为基础模型, 而不是自行使用单独的文本数据进行预训练.
+- 一系列方法 ([SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md); [SpeechGPT-Gen [244]](../../Models/SpeechLM/2024.01.24_SpeechGPT-Gen.md); [Spirit-LM [158]](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md); [EMOVA [25]](../../Models/SpeechLM/2024.09.26_EMOVA.md); [LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md); [SyncLLM [203]](../../Models/SpeechLM/2024.09.23_SyncLLM.md)) 使用 LLaMA 模型及其变体作为其基础语言模型.
+- 另一方面 ([LauraGPT [50]](../../Models/SpeechLM/2023.10.07_LauraGPT.md); [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md); [Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md); [OmniFlatten [246]](../../Models/SpeechLM/2024.10.23_OmniFlatten.md)) 采用 Qwen ([Qwen [11]](../../Models/TextLM/2023.09.28_Qwen.md); [Qwen-2 [228]](../../Models/TextLM/Qwen2.md)) 系列大语言模型作为其骨干.
+- 同时, [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md) 采用 RQ-Transformer 进行语音的分层自回归建模, 利用一种独特的结构, 通过互联网数据集 (例如[维基百科](https://dumps.wikimedia.org/) 和 [StackExchange](https://archive.org/details/stackexchange/)) 预训练纯文本语言模型. 收集的数据通过全面的预处理流水线进行过滤, 以确保质量和相关性, 包括去重以删除冗余条目, 语言识别以保留所需语言的文本, 以及质量过滤以排除根据连贯性和完整性等标准判断为低质量或不相关的内容.
+- [VITA [61]](../../Models/SpeechLM/2024.08.09_VITA.md) 利用 [Mixtral 8x7B1 [95]](../../Models/TextLM/Mixtral.md), 这是一种具有稀疏混合专家 (Sparse Mixture of Experts, SMoE) 架构的代表性 LLM, 并对其扩展的中文词汇进行纯文本指令调优.
 
 ### 4.2.2·Modality Adaptation and Alignment Post-training
 
