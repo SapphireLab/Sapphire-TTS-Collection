@@ -235,8 +235,7 @@ The diagram of multi-stage training can be referred to in Figure.06.
 本节主要基于之前在口语对话系统方面的工作来讨论口语对话模型的训练过程.
 通常, 该过程包括四个阶段:
 - 文本 LLM 预训练
-- 模态适配
-- 对齐后训练
+- 模态适配和对齐后训练
 - 监督微调
 - 以及可选的偏好优化
 
@@ -270,7 +269,10 @@ The collected data was filtered using a comprehensive preprocessing pipeline to 
 - 同时, [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md) 采用 RQ-Transformer 进行语音的分层自回归建模, 利用一种独特的结构, 通过互联网数据集 (例如[维基百科](https://dumps.wikimedia.org/) 和 [StackExchange](https://archive.org/details/stackexchange/)) 预训练纯文本语言模型. 收集的数据通过全面的预处理流水线进行过滤, 以确保质量和相关性, 包括去重以删除冗余条目, 语言识别以保留所需语言的文本, 以及质量过滤以排除根据连贯性和完整性等标准判断为低质量或不相关的内容.
 - [VITA [61]](../../Models/SpeechLM/2024.08.09_VITA.md) 利用 [Mixtral 8x7B1 [95]](../../Models/TextLM/Mixtral.md), 这是一种具有稀疏混合专家 (Sparse Mixture of Experts, SMoE) 架构的代表性 LLM, 并对其扩展的中文词汇进行纯文本指令调优.
 
-### 4.2.2·Modality Adaptation and Alignment Post-training
+### 4.2.2·Modality Adaptation and Alignment Post-training: 模态适配和对齐后训练
+
+<details>
+<summary>展开原文</summary>
 
 This phase explores strategies to adapt text-based large language models (LLMs) for speech modality input, focusing on aligning text and audio modalities effectively.
 The primary goal is to enhance the models' ability to understand and generate speech by bridging the gap between these two modalities.
@@ -285,10 +287,29 @@ In the first phase, VITA focuses on training the audio encoder and connector, wh
 Although capable of processing speech input, it outputs only text.
 [Spectron [156]](../../Models/SpeechLM/2023.05.24_Spectron.md) addresses the alignment issue between text and speech representations by jointly supervising multiple objectives.
 [IntrinsicVoice [248]](../../Models/SpeechLM/2024.10.09_IntrinsicVoice.md) employs a two-stage training approach, constructing multiple cross-modal tasks from a single dataset to enable the model to better learn the semantic consistency between speech and text.
-[Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md), [EMOVA [25]](../../Models/SpeechLM/2024.09.26_EMOVA.md), and [OmniFlatten [246]](../../Models/SpeechLM/2024.10.23_OmniFlatten.md); adopt similar methodologies, commencing with supervised multi-task fine-tuning of the text LLM backbone to achieve speech-text modality alignment and develop a multimodal LLM ([Jin et al. (Survey) [99]](../2024.05.17_Efficient_Multimodal_Large_Language_Models__A_Survey/Main.md); [Li et al. (2024) [120]](../2024.08.16_A_Survey_on_Benchmarks_of_Multimodal_Large_Language_Models/Main.md)) using Automatic Speech Recognition (ASR) and Text-to-Speech (TTS) tasks.
+[Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md), [EMOVA [25]](../../Models/SpeechLM/2024.09.26_EMOVA.md), and [OmniFlatten [246]](../../Models/SpeechLM/2024.10.23_OmniFlatten.md) adopt similar methodologies, commencing with supervised multi-task fine-tuning of the text LLM backbone to achieve speech-text modality alignment and develop a multimodal LLM ([Jin et al. (Survey) [99]](../2024.05.17_Efficient_Multimodal_Large_Language_Models__A_Survey/Main.md); [Li et al. (2024) [120]](../2024.08.16_A_Survey_on_Benchmarks_of_Multimodal_Large_Language_Models/Main.md)) using Automatic Speech Recognition (ASR) and Text-to-Speech (TTS) tasks.
 Notably, Mini-Omni divides the training of various modules into three phases: the first phase utilizes data from speech recognition and synthesis to enhance the model’s abilities in these aspects, training only the ASR and TTS adapters.
 The second phase focuses exclusively on enhancing the model’s text capabilities when given speech inputs, updating only the LLM parameters while freezing other modules.
 Through these two training phases, the original language LLM’s capabilities are maximally preserved, while adapting to speech modality input and output, thereby addressing the primary modality alignment tasks.
+
+</details>
+<br>
+
+这一阶段探索将基于文本的大语言模型适配到语音模态输入的策略, 着重于有效地对齐文本和音频模态.
+主要目标是通过弥合文本和语音模态之间的差距来增强模型理解和生成的能力.
+常用方法包括多模态训练技术, 利用无标签语音数据集并采用多任务学习框架.
+这些方法通常涉及到使用与语音相关的任务微调现有的大语言模型并整合语音特定模块, 例如语音适配器和解码器, 以促进文本和语音模态之间的无缝交互.
+模态适配和对齐的不同训练任务如图 07 所示.
+
+![](Images/Fig.07.png)
+
+- [SpiRit-LM [158]](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md) 使用交错的文本和语音 Token 在文本 LLM 检查点进行持续预训练, 来提升模型在语音理解和生成的性能.
+- [LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md) 采用两阶段训练策略: 第一阶段使用语音输入和文本响应联合训练语音适配器和 LLM, 第二阶段使用相同的数据集来单独训练流式语音解码器.
+  因此这一 LLM 主要具备语音输入的理解能力, 而语音生成由单独的解码器模块处理.
+- [SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md), [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md), [VITA [61]](../../Models/SpeechLM/2024.08.09_VITA.md) 利用无标注的语音语料库通过下一个 Token 预测任务来训练模型: 第一阶段, VITA 专注于训练音频编码器和连接器, 而第二阶段通过多模态训练优化连接器和 LLM 模型. 尽管能够处理语音输入, 但只能输出文本.
+- [Spectron [156]](../../Models/SpeechLM/2023.05.24_Spectron.md) 通过联合监督多个目标来处理文本和语音表示之间的对齐问题.
+- [IntrinsicVoice [248]](../../Models/SpeechLM/2024.10.09_IntrinsicVoice.md) 采用两阶段训练方法, 从单一数据集构建多个跨模态任务来使得模型更好地学习语音和文本之间的语义一致性.
+- [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md), [EMOVA [25]](../../Models/SpeechLM/2024.09.26_EMOVA.md), [OmniFlatten [246]](../../Models/SpeechLM/2024.10.23_OmniFlatten.md) 采用类似的方法, 首先对文本 LLM 骨干进行多任务微调, 以实现语音-文本模态对齐, 并使用自动语音识别和文本转语音任务开发多模态 LLM ([Jin et al. (Survey) [99]](../2024.05.17_Efficient_Multimodal_Large_Language_Models__A_Survey/Main.md); [Li et al. (2024) [120]](../2024.08.16_A_Survey_on_Benchmarks_of_Multimodal_Large_Language_Models/Main.md)). 值得注意的是, Mini-Omni 将不同模块的训练划分为三个阶段: 第一阶段利用语音识别和合成的数据来增强模型在这些方面的能力, 仅训练 ASR 和 TTS 模块; 第二阶段仅专注于在给定语音输入时增强模型的文本能力, 冻结其他模块仅更新 LLM 参数. 通过这两个训练阶段, 原始语言 LLM 的能力被最大程度的保留, 同时适配到语音模态的输入和输出, 从而解决主要的模态对齐任务.
 
 ### 4.2.3·Supervised Fine-tuning or Dialogue Dataset Fine-tuning
 
