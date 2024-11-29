@@ -337,7 +337,10 @@ Similarly, SyncLLM employs a three-stage training procedure that predominantly u
   - OmniFlatten 利用三阶段训练过程, 首先使用交替和序列化的对话数据进行语音-文本 LLM 的微调, 逐步训练模型以实现半双工和全双工通信能力.
   - 类似地, SyncLLM 使用三阶段训练过程, 首先使用合成口语对话数据和相对较少的真实口语对话数据进行微调, 开发全双工语音智能体.
 
-### 4.2.4·Preference Optimization and Reinforcement Learning
+### 4.2.4·Preference Optimization and Reinforcement Learning: 偏好优化和强化学习
+
+<details>
+<summary>展开原文</summary>
 
 The research on leveraging preference optimization to align a spoken dialogue model with human preferences is virtually absent.
 Recently, [Seed-TTS [5]](../../Models/SpeechLM/2024.06.04_Seed-TTS.md); [SpeechAlign [243]](../../Models/SpeechLM/2024.04.08_SpeechAlign.md); [UNO [23]](../../Modules/RLHF/2024.06.02_UNO.md) adopted preference optimization for Text-to-Speech (TTS) models to align speech synthesis quality with human preferences but not for spoken dialogue models.
@@ -346,6 +349,17 @@ It transforms continuous speech into discrete units using a pre-trained Hubert m
 LoRA fine-tuning on a Spoken LLM generates multiple speech continuations from prompts.
 Semantic metrics create preference data offline, making DPO training efficient and stable, eliminating the need for an external reward model.
 Coupled with [curriculum learning [15]](../../Models/_Basis/Curriculum_Learning.md), Align-SLM progressively refines preference data selection, optimizing semantic feedback, and improving SLM performance.
+
+</details>
+<br>
+
+利用偏好优化来对齐口语对话模型和人类偏好的研究几乎空缺.
+- [Seed-TTS [5]](../../Models/SpeechLM/2024.06.04_Seed-TTS.md); [SpeechAlign [243]](../../Models/SpeechLM/2024.04.08_SpeechAlign.md); [UNO [23]](../../Modules/RLHF/2024.06.02_UNO.md) 采用偏好优化来对齐文本转语音模型的语音合成质量和人类偏好, 但不适用于口语对话模型.
+- [Align-SLM [129]](../../Models/SpeechLM/2024.11.04_Align-SLM.md) 开创性地将 [Direct Preference Optimization (DPO) [170]](../../Modules/RLHF/DPO.md) 集成到无文本口语语言模型 (SLM) 中, 增强语义理解.
+  它使用预训练的 Hubert 模型和 K-means 聚类将连续语音转换为离散单元.
+  在口语 LLM 上微调 LoRA 来从提示生成多个语音连续.
+  语义度量生成偏好数据离线, 使得 DPO 训练高效稳定, 避免了外部奖励模型.
+  与[课程学习 [15]](../../Models/_Basis/Curriculum_Learning.md) 结合, Align-SLM 逐步优化偏好数据选择, 优化语义反馈, 并提升 SLM 性能.
 
 ## 4.3·Training Frameworks and Generation Strategies: 训练框架和生成策略
 
