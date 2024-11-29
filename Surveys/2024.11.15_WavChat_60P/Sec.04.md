@@ -311,7 +311,10 @@ Through these two training phases, the original language LLM’s capabilities ar
 - [IntrinsicVoice [248]](../../Models/SpeechLM/2024.10.09_IntrinsicVoice.md) 采用两阶段训练方法, 从单一数据集构建多个跨模态任务来使得模型更好地学习语音和文本之间的语义一致性.
 - [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md), [EMOVA [25]](../../Models/SpeechLM/2024.09.26_EMOVA.md), [OmniFlatten [246]](../../Models/SpeechLM/2024.10.23_OmniFlatten.md) 采用类似的方法, 首先对文本 LLM 骨干进行多任务微调, 以实现语音-文本模态对齐, 并使用自动语音识别和文本转语音任务开发多模态 LLM ([Jin et al. (Survey) [99]](../2024.05.17_Efficient_Multimodal_Large_Language_Models__A_Survey/Main.md); [Li et al. (2024) [120]](../2024.08.16_A_Survey_on_Benchmarks_of_Multimodal_Large_Language_Models/Main.md)). 值得注意的是, Mini-Omni 将不同模块的训练划分为三个阶段: 第一阶段利用语音识别和合成的数据来增强模型在这些方面的能力, 仅训练 ASR 和 TTS 模块; 第二阶段仅专注于在给定语音输入时增强模型的文本能力, 冻结其他模块仅更新 LLM 参数. 通过这两个训练阶段, 原始语言 LLM 的能力被最大程度的保留, 同时适配到语音模态的输入和输出, 从而解决主要的模态对齐任务.
 
-### 4.2.3·Supervised Fine-tuning or Dialogue Dataset Fine-tuning
+### 4.2.3·Supervised Fine-tuning or Dialogue Dataset Fine-tuning: 监督微调或对话数据集微调
+
+<details>
+<summary>展开原文</summary>
 
 During this stage, most models use instruction-following datasets or dialogue data for supervised fine-tuning of the LLM, enhancing natural conversational abilities.
 ([SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md); [SpeechGPT-Gen [244]](../../Models/SpeechLM/2024.01.24_SpeechGPT-Gen.md)) propose a two-stage instruction-tuning process that includes cross-modal instruction fine-tuning and chain-of-modality instruction fine-tuning.
@@ -321,6 +324,18 @@ Ultimately, the model follows the A-T-T-A method to achieve end-to-end speech in
 Remarkably, Moshi constructs a more natural and realistic dialogue dataset that incorporates elements such as noise and overlap, enabling the model to learn authentic multi-stream interactions.
 OmniFlatten fine-tunes the speech-text LLM using interleaved and serialized dialogues across three stages to progressively train the model in acquiring half-duplex and full-duplex communication capabilities.
 Similarly, SyncLLM employs a three-stage training procedure that predominantly uses synthetic spoken dialogue data along with a relatively small amount of real-world spoken dialogue data to develop a full-duplex voice agent.
+
+</details>
+<br>
+
+在这一阶段, 大多数模型使用指令跟随数据集或口语数据即进行 LLM 的监督式微调, 增强自然对话能力.
+- [SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md); [SpeechGPT-Gen [244]](../../Models/SpeechLM/2024.01.24_SpeechGPT-Gen.md) 提出了一种两阶段的指令微调过程, 包括跨模态指令微调和链式模态指令微调.
+  最后模型遵循 A-T-T-A 方法实现端到端语音输入和输出.
+- [EMOVA [25]](../../Models/SpeechLM/2024.09.26_EMOVA.md) 采用类似的链式模态概念构造指令微调数据集, 赋予模型准确响应语音指令.
+- [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md), [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md), [OmniFlatten [246]](../../Models/SpeechLM/2024.10.23_OmniFlatten.md), [SyncLLM [203]](../../Models/SpeechLM/2024.09.23_SyncLLM.md) 利用口语对话数据集进行微调, 赋予模型对话互动能力.
+  - 值得注意的是, Moshi 构造了一个更自然和真实的对话数据集, 其中包含诸如噪声和重叠等元素, 使得模型能够学习真实的多流交互.
+  - OmniFlatten 利用三阶段训练过程, 首先使用交替和序列化的对话数据进行语音-文本 LLM 的微调, 逐步训练模型以实现半双工和全双工通信能力.
+  - 类似地, SyncLLM 使用三阶段训练过程, 首先使用合成口语对话数据和相对较少的真实口语对话数据进行微调, 开发全双工语音智能体.
 
 ### 4.2.4·Preference Optimization and Reinforcement Learning
 
