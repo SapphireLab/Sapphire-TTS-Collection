@@ -1,4 +1,4 @@
-# 第 1 章 语言模型基础
+# 第 1 章·语言模型基础
 
 - [原文](https://github.com/ZJU-LLMs/Foundations-of-LLMs/blob/main/%E3%80%8A%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%9F%BA%E7%A1%80%E3%80%8B%E6%95%99%E6%9D%90/%E3%80%8A%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%9F%BA%E7%A1%80%E3%80%8B%E5%88%86%E7%AB%A0%E8%8A%82%E5%86%85%E5%AE%B9/%E7%AC%AC1%E7%AB%A0%20%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E5%9F%BA%E7%A1%80.pdf)
 
@@ -97,3 +97,11 @@ $$
 $$
     P(w_{1:K}) \approx P_{N-Grams}(w_{1:K}) = \prod_{i=1}^{K} \frac{C(w_{i-N:i})}{C(w_{i-N:i-1})}
 $$
+
+## 1.2.基于 RNN 的语言模型
+
+## 1.3.基于 Transformer 的语言模型
+
+## 1.4.语言模型的采样方法
+
+## 1.5.语言模型的评测
