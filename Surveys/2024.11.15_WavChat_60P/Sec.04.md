@@ -221,10 +221,30 @@ Experimental results indicate that integrating the preference optimization metho
 
 ## 4.2·Multi-Stage Training Strategy: 多阶段训练策略
 
+<details>
+<summary>展开原文</summary>
+
 This section primarily discusses the training process of the Spoken Dialogue Model, building upon previous work on spoken dialogue systems.
 Generally, this process consists of four stages: text LLM pre-training, modality adaptation and alignment post-training, followed by supervised fine-tuning, and optionally, preference optimization.
 The primary goal in training most spoken dialogue systems is to preserve the model's original capabilities while integrating the speech modality for voice interaction into the LLM.
-The diagram of multi-stage training can be referred to in Figure ~\ref{fig:archi_img2}.
+The diagram of multi-stage training can be referred to in Figure.06.
+
+</details>
+<br>
+
+本节主要基于之前在口语对话系统方面的工作来讨论口语对话模型的训练过程.
+通常, 该过程包括四个阶段:
+- 文本 LLM 预训练
+- 模态适配
+- 对齐后训练
+- 监督微调
+- 以及可选的偏好优化
+
+训练大多数口语对话系统的主要目标是保留模型的原始能力, 同时将语音模态集成到 LLM 中, 以实现语音交互.
+
+多阶段训练的流程图可参考图 06。
+
+![](Images/Fig.06.png)
 
 ### 4.2.1·Text LLM Pre-Training
 
@@ -232,7 +252,7 @@ The goal is to develop a text-intelligent LLM model capable of handling complex 
 Most spoken dialogue systems utilize pre-trained large language models as foundational models rather than pre-training with separate text data themselves.
 A series of approaches ([SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md); [SpeechGPT-Gen [244]](../../Models/SpeechLM/2024.01.24_SpeechGPT-Gen.md); [Spirit-LM [158]](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md); [EMOVA [25]](../../Models/SpeechLM/2024.09.26_EMOVA.md); [LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md); [SyncLLM [203]](../../Models/SpeechLM/2024.09.23_SyncLLM.md)) use the LLaMA model and its variants as their foundational language model.
 On the other hand, ([LauraGPT [50]](../../Models/SpeechLM/2023.10.07_LauraGPT.md); [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md); [Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md); [OmniFlatten [246]](../../Models/SpeechLM/2024.10.23_OmniFlatten.md)) employ the Qwen ([Qwen [11]](../../Models/TextLM/2023.09.28_Qwen.md) [Qwen-2 [228]](../../Models/TextLM/Qwen2.md)) family of large language models as their backbone.
-Meanwhile, [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md) employs an RQ-Transformer for hierarchical autoregressive modeling of speech, utilizing a unique structure that involves pre-training a text-only language model with datasets from the internet (e.g., Wikipedia \footnote{\url{https://dumps.wikimedia.org/}} and StackExchange \footnote{\url{https://archive.org/details/stackexchange/}}).
+Meanwhile, [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md) employs an RQ-Transformer for hierarchical autoregressive modeling of speech, utilizing a unique structure that involves pre-training a text-only language model with datasets from the internet (e.g., [Wikipedia](https://dumps.wikimedia.org/) and [StackExchange](https://archive.org/details/stackexchange/)).
 The collected data was filtered using a comprehensive preprocessing pipeline to ensure quality and relevance, which included deduplication to remove redundant entries, language identification to retain text in the desired language, and quality filtering to exclude low-quality or irrelevant content based on criteria such as coherence and completeness.
 [VITA [61]](../../Models/SpeechLM/2024.08.09_VITA.md) utilizes [Mixtral 8x7B1 [95]](../../Models/TextLM/Mixtral.md), a representative LLM with a sparse mixture of experts (SMoE) architecture, and performs pure-text instruction tuning for its extended Chinese vocabulary.
 
@@ -242,8 +262,8 @@ This phase explores strategies to adapt text-based large language models (LLMs) 
 The primary goal is to enhance the models' ability to understand and generate speech by bridging the gap between these two modalities.
 Common approaches include multimodal training techniques, leveraging unlabeled speech corpora, and employing multi-task learning frameworks.
 These methods typically involve fine-tuning existing LLMs with speech-related tasks and integrating speech-specific modules, such as speech adaptors and decoders, to facilitate seamless interaction between text and speech modalities.
-Different training tasks for modality adaptation and alignment are shown in Figure ~\ref{fig:archi_img3}.
-[Spirit-LM [158]](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md) continuously pretrains on text LLM checkpoints using interleaved text and speech tokens to improve the model's performance in speech understanding and generation.
+Different training tasks for modality adaptation and alignment are shown in Figure.07.
+[Spirit-LM [158]](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md) continuously pretrain on text LLM checkpoints using interleaved text and speech tokens to improve the model's performance in speech understanding and generation.
 [LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md) adopts a two-stage training strategy: the first stage jointly trains a speech adaptor and LLM with speech input and text responses, while the second stage uses the same dataset to train a streaming speech decoder independently.
 Consequently, this LLM primarily possesses the capability for speech input understanding, with speech generation handled by a separate decoder module.
 [SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md), [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md), and [VITA [61]](../../Models/SpeechLM/2024.08.09_VITA.md) utilize unlabeled speech corpora to train models in a next-token prediction task.
