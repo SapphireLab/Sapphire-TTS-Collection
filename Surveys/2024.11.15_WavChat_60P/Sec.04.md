@@ -397,6 +397,9 @@ Additionally, a predefined chunk size is set to further enable vocoder streaming
 
 ### Mini-Omni
 
+<details>
+<summary>展开原文</summary>
+
 [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md) selects [SNAC [193]](../../Models/Speech_Neural_Codec/2024.10.18_SNAC.md), a music-grade encoder, to discretize one second of audio into hundreds of tokens, which significantly increases the burden on the LLM for modeling speech tokens.
 Delay Pattern language model decoding strategies are often applied in modeling multiple parallel streams of acoustic tokens in speech tasks like [MusicGen [40]](../../Models/SpeechLM/2023.06.08_MusicGen.md), [VoiceCraft [163]](../../Models/SpeechLM/2024.03.25_VoiceCraft.md), and [Parler-TTS [140]](../../Models/SpeechLM/2024.02.02_Parler-TTS.md).
 Compared with traditional sequential step decoding, this strategy can effectively reduce the time steps required for LLM decoding and generating speech tokens.
@@ -406,6 +409,19 @@ Moreover, Mini-Omni proposes a Batch Parallel Decoding method.
 Specifically, it generates two samples in parallel for a single input: the first predicts text tokens, and the second predicts both text and speech tokens simultaneously.
 The text output from the first sample is embedded into the corresponding positions of the second sample, while the second sample's text output is discarded.
 This further enhances the model’s reasoning capabilities during dialogue, maximizing the transfer of its text-based abilities.
+
+</details>
+<br>
+
+[Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md) 选择 [SNAC [193]](../../Models/Speech_Neural_Codec/2024.10.18_SNAC.md), 一个音乐级编码器, 将一秒钟的音频划分为数百个 Token, 这显著增加了 LLM 建模语音 Token 的负担.
+延迟模式语言模型解码策略通常用于建模语音任务中的多个并行流的音频 Token, 如 [MusicGen [40]](../../Models/SpeechLM/2023.06.08_MusicGen.md), [VoiceCraft [163]](../../Models/SpeechLM/2024.03.25_VoiceCraft.md), 和 [Parler-TTS [140]](../../Models/SpeechLM/2024.02.02_Parler-TTS.md).
+与传统的顺序步进解码相比, 这种策略可以有效地减少 LLM 解码和生成语音 Token 需要的时间步数.
+受此启发, Mini-Omni 创新地采用文本指导的延迟并行生成, 解决了 SNAC 码本序列过长的问题, 同时生成音频和文本 Token.
+这有效地利用并保留了语言模型的原始能力.
+此外, Mini-Omni 提出了批次并行解码方法.
+具体来说, 它为单个输入并行生成两个样本: 第一个预测文本 Token, 第二个同时预测文本和语音 Token.
+第一个样本的文本输出嵌入到第二个样本的相应位置, 而第二个样本的文本输出被丢弃.
+这进一步增强了模型在对话中的推理能力, 最大限度地迁移其基于文本的能力.
 
 ### IntrinsicVoice
 
