@@ -513,9 +513,19 @@ Later methods ([LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md)
 
 ### W/O Text-Guided Generation: 无文本引导生成
 
+<details>
+<summary>展开原文</summary>
+
 Other methods achieve speech-to-speech generation without relying on text stream generation.
 [IntrinsicVoice [248]](../../Models/SpeechLM/2024.10.09_IntrinsicVoice.md) introduces a novel GroupModel that predicts a group of speech tokens in one step based on global context embeddings.
 [SyncLLM [203]](../../Models/SpeechLM/2024.09.23_SyncLLM.md) predicts interleaved chunks of token sequences at each time step, allowing the model to handle all conversational cues such as backchannels, overlaps, interruptions, etc.
+
+</details>
+<br>
+
+其他方法实现了无需依赖文本流生成的语音到语音生成.
+- [IntrinsicVoice [248]](../../Models/SpeechLM/2024.10.09_IntrinsicVoice.md) 提出了一种全新的 GroupModel, 它以全局上下文嵌入为条件一步预测一组语音 Token.
+- [SyncLLM [203]](../../Models/SpeechLM/2024.09.23_SyncLLM.md) 在每个时间步预测交错的 Token 序列块, 允许模型处理所有会话提示, 如背景通道, 重叠, 中断等.
 
 ## 4.4·Discussions about Training Paradigm in Spoken Dialogue Models: 讨论
 
