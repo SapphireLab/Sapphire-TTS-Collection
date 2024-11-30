@@ -489,7 +489,10 @@ Interpolation reconstructs token sequences to fit expected structures, facilitat
 该模型在去重后的 HuBERT Token 序列上进行训练以增强语义保真度, 同时通过预测用户响应来管理延迟.
 插值重建 Token 序列以适应预期的结构, 从而实现无缝的语音合成.
 
-### Text-guided generation
+### Text-Guided Generation: 文本引导生成
+
+<details>
+<summary>展开原文</summary>
 
 Some end-to-end methods like ([SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md); [SpeechGPT-Gen [244]](../../Models/SpeechLM/2024.01.24_SpeechGPT-Gen.md); [Spectron [156]](../../Models/SpeechLM/2023.05.24_Spectron.md); [EMOVA [25]](../../Models/SpeechLM/2024.09.26_EMOVA.md)) use chain-of-thought reasoning, which allows guiding speech generation with the output of an underlying text LLM.
 However, this is fundamentally incompatible with live interactions, as the model needs to produce an entire answer as text before it starts speaking.
@@ -498,7 +501,17 @@ Later methods ([LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md)
 [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md) is restructured to transfer language reasoning abilities to streaming audio output through a text-audio parallel decoding approach.
 [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md) details a novel feature, the Inner Monologue, which consists of joint modeling of the textual and speech modalities on the system side to improve the quality of interactions.
 
-### W/o text-guided generation
+</details>
+<br>
+
+- 一些端到端方法, 如 ([SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md); [SpeechGPT-Gen [244]](../../Models/SpeechLM/2024.01.24_SpeechGPT-Gen.md); [Spectron [156]](../../Models/SpeechLM/2023.05.24_Spectron.md); [EMOVA [25]](../../Models/SpeechLM/2024.09.26_EMOVA.md)) 采用思维链推理, 允许使用底层的文本 LLM 的输出引导语音生成.
+然而, 这种方式和实时互动在根本上是不兼容的, 因为模型需要生成整个答案的文本, 然后才能开始说话.
+- 后续方法 ([LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md); [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md); [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)) 可以接受用户语音输入, 并同时输出语音和文本, 确保高质量的响应, 并显著降低延迟.
+- [LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md) 采用流式解码器并行生成文本和语音 Token.
+- [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md) 通过文本-语音并行解码方法, 将语言推理能力迁移到流式音频输出.
+- [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md) 详细介绍了一种新特征, 即 Inner Monologue, 它由系统侧的联合建模文本和语音模态, 改善交互质量.
+
+### W/O Text-Guided Generation: 无文本引导生成
 
 Other methods achieve speech-to-speech generation without relying on text stream generation.
 [IntrinsicVoice [248]](../../Models/SpeechLM/2024.10.09_IntrinsicVoice.md) introduces a novel GroupModel that predicts a group of speech tokens in one step based on global context embeddings.
