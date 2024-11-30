@@ -451,12 +451,25 @@ GroupFormer 的引入有效地提高了模型处理组内序列的能力, 减轻
 
 ### Moshi
 
+<details>
+<summary>展开原文</summary>
+
 [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md) introduces a mini codec model with 8 codebooks at a frame rate of 12.5 Hz for speech representation, where one second corresponds to 100 speech tokens.
 It adopts an RQ-Transformer consisting of a Temporal Transformer and a smaller Depth Transformer as the backbone network for the LLM, hierarchically modeling multi-codebook audio tokens.
 Similar architectures have appeared in prior research, such as [UniAudio [232]](../../Models/SpeechLM/2023.10.01_UniAudio.md) and [MegaByte [237]](../../Models/SpeechLM/2023.05.12_MegaByte.md).
 The Depth Transformer models sub-sequence tokens conditioned on temporal context predicted by the Temporal Transformer.
 Given the smaller size of the Depth Transformer, sub-sequence generation can almost be viewed as parallel generation.
 This allows the model to scale to longer sequences by extending the temporal modeling capacity of the Temporal Transformer or to achieve greater depth by enhancing the hierarchical modeling capabilities of the Depth Transformer, rather than modeling the flattened sequence with a single model.
+
+</details>
+<br>
+
+[Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md) 提出了一个具有 8 个码本帧率为 12.5 Hz 的小型码本模型用于语音表示, 一秒语音对应于 100 个语音 Token.
+它采用了由时序 Transformer 和更小的深度 Transformer 组成的 RQ-Transformer 作为 LLM 的骨干网络, 层次化建模多码本音频 Token.
+与以前的研究相似, 如 [UniAudio [232]](../../Models/SpeechLM/2023.10.01_UniAudio.md) 和 [MegaByte [237]](../../Models/SpeechLM/2023.05.12_MegaByte.md), 出现了类似的架构.
+深度 Transformer 以时序 Transformer 预测的时序上下文为条件建模子序列 Token.
+给定更小的深度 Transformer, 子序列生成几乎可以被视为并行生成.
+这使得模型通过增加时序 Transformer 的时序建模能力扩展到更长的序列, 也能通过增强深度 Transformer 的层次化建模能力来实现更深的深度, 而不是用单个模型来建模扁平化的序列.
 
 ### SyncLLM
 
