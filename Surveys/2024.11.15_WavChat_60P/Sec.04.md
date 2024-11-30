@@ -473,10 +473,21 @@ This allows the model to scale to longer sequences by extending the temporal mod
 
 ### SyncLLM
 
+<details>
+<summary>展开原文</summary>
+
 [SyncLLM [203]](../../Models/SpeechLM/2024.09.23_SyncLLM.md) employs an auto-regressive transformer decoder for full-duplex dialogue, integrating time synchronization to align speech units with the real-world clock.
 It predicts interleaved speech tokens for both dialogue partners, maintaining timing with speaker tags.
 The model is trained on deduplicated HuBERT token sequences to enhance semantic fidelity while managing latency by anticipating user responses.
 Interpolation reconstructs token sequences to fit expected structures, facilitating seamless speech synthesis.
+
+</details>
+<br>
+
+[SyncLLM [203]](../../Models/SpeechLM/2024.09.23_SyncLLM.md) 采用自回归 Transformer 解码器进行全双工对话, 集成了时间同步功能, 以将语音单元与现实世界时钟对齐.
+它为对话双方预测交错的语音 Token, 并通过说话者标签保持时间同步.
+该模型在去重后的 HuBERT Token 序列上进行训练以增强语义保真度, 同时通过预测用户响应来管理延迟.
+插值重建 Token 序列以适应预期的结构, 从而实现无缝的语音合成.
 
 ### Text-guided generation
 
