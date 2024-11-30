@@ -363,16 +363,37 @@ Coupled with [curriculum learning [15]](../../Models/_Basis/Curriculum_Learning.
 
 ## 4.3·Training Frameworks and Generation Strategies: 训练框架和生成策略
 
+<details>
+<summary>展开原文</summary>
+
 Recent advanced methods in spoken dialogue models employ a variety of innovative techniques to achieve more natural speech output and lower latency.
 In this part, we explore various approaches that exemplify these advancements:
 
+</details>
+<br>
+
+在口语对话模型中的近期先进方法采用了各种创新的技术来实现更自然的语音输出和更低的延迟.
+在这一部分, 我们探索了这些先进的各种方法:
+
 ### LLaMA-Omni
+
+<details>
+<summary>展开原文</summary>
 
 [LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md) adds a streaming speech decoder that operates after the LLM.
 This decoder runs in a non-autoregressive manner, taking the output hidden states from the LLM as input and generating the discrete unit sequence corresponding to the speech response.
-To model the variable-length mapping between input and output, LLama-Omni employs an upsample factor, denoted as $\lambda$, along with [Connectionist Temporal Classification (CTC) loss [69]](../../Models/ASR/CTC.md).
+To model the variable-length mapping between input and output, LLaMA-Omni employs an upsample factor, denoted as $\lambda$, along with [Connectionist Temporal Classification (CTC) loss [69]](../../Models/ASR/CTC.md).
 This ensures that the model can generate speech responses simultaneously with text responses.
 Additionally, a predefined chunk size is set to further enable vocoder streaming synthesis of speech waveforms, facilitating real-time interaction and reducing latency.
+
+</details>
+<br>
+
+[LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md) 在 LLM 后添加了一个流式语音解码器.
+该解码器以非自回归方式运行, 接受 LLM 的输出隐藏状态作为输入, 生成对应语音响应的离散单元序列.
+为了建模输入和输出之间的可变长度映射, LLaMA-Omni 采用上采样因子, 记为 $\lambda$, 并采用 [Connectionist Temporal Classification (CTC) loss [69]](../../Models/ASR/CTC.md).
+这确保模型能够同时生成文本响应和语音响应.
+此外, 设置了预定义的块大小以进一步启用声码器流式合成语音波形, 促进实时互动并降低延迟.
 
 ### Mini-Omni
 
