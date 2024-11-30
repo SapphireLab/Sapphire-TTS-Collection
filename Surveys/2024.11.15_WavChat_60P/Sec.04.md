@@ -425,6 +425,9 @@ This further enhances the model’s reasoning capabilities during dialogue, maxi
 
 ### IntrinsicVoice
 
+<details>
+<summary>展开原文</summary>
+
 [IntrinsicVoice [248]](../../Models/SpeechLM/2024.10.09_IntrinsicVoice.md) introduces a speech encoder and a streaming vocoder for the tokenization and detokenization of speech, and a GroupFormer for modeling speech and text sequences.
 This architecture integrates a large language model (LLM) with a GroupModel.
 Specifically, it uses a pre-trained [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) encoder and its corresponding K-Means quantizer ([TWIST [74]](../../Models/SpeechLM/2023.05.22_TWIST.md)) to process speech inputs into discrete units.
@@ -433,6 +436,18 @@ The grouped tokens are then passed through an embedding layer and adaptor module
 The context embeddings output by the LLM are processed through a linear layer and concatenated with a specified number of learnable queries.
 This input is fed into a smaller non-autoregressive transformer encoder model, dubbed the "GroupModel," to predict a group of speech tokens in one step.
 The introduction of GroupFormer effectively improves the model's ability to handle sequences within a group, mitigates the modality gap between speech and text, accelerates inference speed, and alleviates issues associated with long-sequence modeling.
+
+</details>
+<br>
+
+[IntrinsicVoice [248]](../../Models/SpeechLM/2024.10.09_IntrinsicVoice.md) 提出了语音编码器和流式解码器, 用于对语音进行分词和反分词, 以及用于建模语音和文本序列的 GroupFormer.
+该架构将大语言模型 (LLM) 与 GroupModel 集成在一起.
+具体来说, 它使用预训练的 [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) 编码器和其对应的 K-Means 量化器 ([TWIST [74]](../../Models/SpeechLM/2023.05.22_TWIST.md)) 对语音输入进行离散化.
+这些离散单元组织成了一个分组 Token 序列, 这通过分组划分操作完成.
+然后, 分组 Token 被输入到嵌入层和适配器模块中, 用于将这些嵌入映射到 LLM 的嵌入空间.
+LLM 的上下文嵌入输出通过线性层处理, 并与可学习的查询连接在一起.
+然后输入到较小的非自回归 Transformer 编码器模型, 称为 "GroupModel", 以一步预测一组语音 Token.
+GroupFormer 的引入有效地提高了模型处理组内序列的能力, 减轻了语音和文本模态之间的模态差距, 加速了推理速度, 并减轻了长序列建模相关的问题.
 
 ### Moshi
 
