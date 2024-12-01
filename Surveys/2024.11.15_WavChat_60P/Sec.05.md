@@ -197,13 +197,26 @@ These models have achieved true streaming capabilities and established a foundat
 
 这些模型实现了真正的流式能力, 并为多样化的双向交互奠定了基础.
 
-### 5.1.2·Streaming Cascaded Spoken Dialogue Models
+### 5.1.2·Streaming Cascaded Spoken Dialogue Models: 流式级联口语对话模型
+
+<details>
+<summary>展开原文</summary>
 
 Consistent with the above, ensuring streaming capability in a model relies on designing both input and output for streaming.
 Due to its cascaded nature, a cascaded model typically relies on external streaming ASR and TTS components, placing the streaming responsibility on these ASR and TTS modules.
 
-In~\cite{wang2024full}, comparative studies were conducted on the streaming ASR model **U2++ Conformer**~\cite{wu2021u2++}, streaming TTS model [XTTS-v2 [21]](../../Models/SpeechLM/2024.06.07_XTTS.md), non-streaming ASR **Whisper**, and non-streaming TTS **VITS** ([VITS2 [109]](../../Models/E2E/2023.07.31_VITS2.md)).
+In [Wang et al. [211]](../../Models/_Full/2024.05.29_A_Full-Duplex_Speech_Dialogue_Scheme_Based_on_Large_Language_Models.md), comparative studies were conducted on the streaming ASR model [U2++ Conformer](../../Models/ASR/2021.06.10_U2++.md), streaming TTS model [XTTS-v2 [21]](../../Models/SpeechLM/2024.06.07_XTTS.md), non-streaming ASR model **Whisper**, and non-streaming TTS model [VITS2 [109]](../../Models/E2E/2023.07.31_VITS2.md).
 The combination of streaming components achieved the lowest latency and significantly contributed to interactive interruption capabilities.
+
+</details>
+<br>
+
+和前文一致, 确保模型中的流式能力依赖于设计流式输入和输出.
+由于模型的级联性质, 级联模型通常依赖于外部的流式 ASR 和 TTS 组件, 将流式责任放在这些 ASR 和 TTS 模块上.
+
+在 [Wang et al. [211]](../../Models/_Full/2024.05.29_A_Full-Duplex_Speech_Dialogue_Scheme_Based_on_Large_Language_Models.md), 对流式 ASR 模型 [U2++ Conformer [219]](../../Models/ASR/2021.06.10_U2++.md), 流式 TTS 模型 [XTTS-v2 [21]](../../Models/SpeechLM/2024.06.07_XTTS.md), 非流式 ASR 模型 Whisper, 非流式 TTS 模型 VITS ([VITS2 [109]](../../Models/E2E/2023.07.31_VITS2.md)) 进行了比较研究.
+
+流式组件的组合实现了最低延迟, 并为交互中断能力提供了显著贡献.
 
 ## 5.2·Duplex Technology and Interaction
 
