@@ -154,6 +154,9 @@ As new inputs are processed, the model can generate outputs without waiting for 
 
 #### [Queue Management: 队列管理 [220]](../../Models/Speech_Neural_Codec/2023.05.26_AudioDec.md)
 
+<details>
+<summary>展开原文</summary>
+
 Audio streams are typically split into frames, then processed in sequence via a queue management system that ensures real-time, orderly processing.
 
 Some end-to-end models, such as [LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md), [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md) and [Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md), employ non-streaming ASR model Whisper as an audio encoder components.
@@ -172,6 +175,27 @@ The entire model, including the codec, transformer, and attention mechanism, is 
 - [OmniFlatten [246]](../../Models/SpeechLM/2024.10.23_OmniFlatten.md)
 OmniFlatten proposes chunk-based processing of text and speech along with gradual learning techniques and data handling to reduce turn-taking delays, such as response delays when users finish speaking or interrupt the system.
 These models have achieved true streaming capabilities and established a foundation for diverse, bidirectional interactions.
+
+</details>
+<br>
+
+音频流通常被分割成帧, 然后以序列形式通过队列管理系统确保实时有序的处理.
+
+一些端到端模型, 例如 [LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md), [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md) 和 [Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md), 采用非流式 ASR 模型 Whisper 作为音频编码器组件.
+这些模型在输出段上进行了改进, 以减少延迟.
+- **Mini-Omni**: Mini-Omni 使用延迟并行解码策略, 在音频 Token 生成时逐层延迟.
+这种策略允许模型同时生成文本和多个音频 Token, 加快流式音频生成速度, 并确保低延迟实时输出.
+- **Llama-Omni**: Llama-Omni 融合了非自回归流式语音解码器, 利用**连接时序分类 (CTC)** 直接生成音频 Token 序列作为响应.
+- [IntrinsicVoice [248]](../../Models/SpeechLM/2024.10.09_IntrinsicVoice.md): IntrinsicVoice 引入 GroupFormer 模块, 将语音 Token 进行分组, 减少语音序列的长度与文本序列的长度匹配.
+这种方法加快推理速度, 缓解长序列建模的挑战, 有效缩小语音和文本模态之间的差距.
+
+我们认为它们不能被认为是完全流式的, 因为它们没有在输入端设计为流式.
+
+- [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md): 相比之下, Moshi 参考 SpeechTokenizer 的架构, 重新训练一个流式编解码器, 作为音频 Tokenizer-DeTokenizer.
+  整个模型, 包括编解码器, Transformer, 和注意力机制, 都建立在因果结构之上.
+- [OmniFlatten [246]](../../Models/SpeechLM/2024.10.23_OmniFlatten.md): OmniFlatten 提出基于块的文本和语音处理, 并采用渐进学习技术和数据处理, 以减少轮次交换延迟, 例如用户完成说话或中断系统时的响应延迟.
+
+这些模型实现了真正的流式能力, 并为多样化的双向交互奠定了基础.
 
 ### 5.1.2·Streaming Cascaded Spoken Dialogue Models
 
