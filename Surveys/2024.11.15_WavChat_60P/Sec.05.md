@@ -35,7 +35,10 @@ Next, we will first discuss the streaming processing method in Section 5.1, then
 然后, 在 5.2 节介绍双工通信的关键技术;
 并在 5.3 节解释如何处理交互以提高用户体验.
 
-## 5.1·Streaming Spoken Dialogue Models
+## 5.1·Streaming Spoken Dialogue Models: 流式口语对话模型
+
+<details>
+<summary>展开原文</summary>
 
 The core of streaming speech models lies in their "real-time" and "continuous" capabilities, meaning they can process input and generate output simultaneously without waiting for complete input.
 This includes two main aspects:
@@ -47,6 +50,19 @@ Instead, it can produce output progressively as processing occurs, which improve
 
 These streaming capabilities allow the model to perform more fluidly in real-time interactions, providing a seamless communication experience for users.
 We will explore streaming techniques in both end-to-end and cascaded spoken dialogue models, discussing the implementation methods of streaming in each system and highlighting their similarities and differences.
+
+</details>
+<br>
+
+流式语音模型的核心在于其 "实时" 和 "连续" 的能力, 这意味着它们可以同时处理输入和生成输出, 而不需要等待完整的输入.
+
+这包含两个主要方面:
+- **流式理解**: 模型可以处理用户说话的音频输入, 不需要等待用户完全说完, 使其更自然地与对话流对齐.
+- **流式生成**: 这一概念指的是模型的生成输出的能力, 不需要等待所有中间隐藏状态. 它可以随着处理的进行逐步产生输出, 提高响应实现更丝滑更有效的交互.
+
+这些流式能力使得模型在实时交互中表现得更流畅, 为用户提供无缝的交流体验.
+
+我们将探索端到端和级联口语对话模型中的流式技术, 探讨流式在每种系统中的实现方法, 并强调它们的相似和不同之处.
 
 ### 5.1.1·Streaming End-to-End Spoken Dialogue Models
 
