@@ -124,6 +124,9 @@ By not requiring future input data, causal convolution significantly lowers the 
 
 #### Causal Attention: 因果注意力
 
+<details>
+<summary>展开原文</summary>
+
 Causal Attention is a specialized form of the attention mechanism designed to ensure that each position in a sequence can only attend to previous positions, thus preserving the temporal order crucial for streaming models.
 This approach ensures that the model’s current output depends only on past and present information, preventing any “leakage” of future information, which is essential for real-time processing tasks.
 In causal attention, the attention mask is typically used to achieve causality.
@@ -133,6 +136,21 @@ This masking technique ensures that the model’s predictions for each time step
 In streaming speech models, causal attention plays a significant role in enabling real-time interaction.
 Unlike standard attention, which requires access to the entire sequence, causal attention can operate incrementally.
 As new inputs are processed, the model can generate outputs without waiting for future context.
+
+</details>
+<br>
+
+因果注意力是注意力机制的一种特殊形式, 设计用于确保序列中的每个位置智能关注之前的位置, 因此保留时序对于流式模型至关重要.
+这种方法确保了模型当前输出仅依赖于过去和现在信息, 阻止未来信息的任何"泄露", 这对于实时处理任务很重要.
+
+在因果注意力中, 注意力掩码通常用于实现因果性.
+通过应用阻塞到未来时间步的连接的掩码, 模型将每个 Token 的感受野限制为仅前面的 Token.
+具体来说, 会应用下三角掩码到注意力矩阵, 将对应于未来 Token 的位置的值设置为负无穷.
+这种掩码技术确保模型对每个时间步的预测仅考虑当前和过去输入, 因此遵循严格的因果结构.
+
+在流式语音模型中, 因果注意力是实现实时交互的关键要素.
+和标准注意力要求访问整个序列不同, 因果注意力可以增量地运行.
+当新输入被处理时, 模型可以生成输出而无需等待未来上下文.
 
 #### [Queue Management: 队列管理 [220]](../../Models/Speech_Neural_Codec/2023.05.26_AudioDec.md)
 
