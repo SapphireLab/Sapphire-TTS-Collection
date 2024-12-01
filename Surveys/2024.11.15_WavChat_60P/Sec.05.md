@@ -218,9 +218,12 @@ The combination of streaming components achieved the lowest latency and signific
 
 流式组件的组合实现了最低延迟, 并为交互中断能力提供了显著贡献.
 
-## 5.2·Duplex Technology and Interaction
+## 5.2·Duplex Technology and Interaction: 双工技术和交互
 
-### 5.2.1·Duplex Technology
+### 5.2.1·Duplex Technology: 双工技术
+
+<details>
+<summary>展开原文</summary>
 
 The term Duplex originates from the field of communications, used to describe interaction modes between two parties in data transmission.
 Depending on the type of communication, duplex is divided into half-duplex and full-duplex.
@@ -229,14 +232,33 @@ With the development of audio processing and generation technology , the concept
 Here, duplex doesn’t just refer to signal transmission but emphasizes the synchronization and natural interaction in human-computer dialogue.
 Specifically, within model architecture, it means that the model must retain its ability to perceive external input even while generating a response---essentially, the ability to listen while speaking.
 
-#### Simplex
+</details>
+<br>
+
+双工 (Duplex) 一词源自通信领域, 用于描述数据传输双方之间的交互模式.
+根据通信类型, 双工可以分为半双工和全双工.
+
+随着音频处理和生成技术的发展, 双工的概念被引入语音系统, 特别是在语音语言模型的语境中.
+此时双工不只是指代信号传输, 还强调了人机对话中的同步和自然互动.
+具体来说, 在模型架构中, 它意味着模型必须保持其接收外部输入的能力甚至是在生成响应时, 也就是在说话的时候保持监听的能力.
+
+#### Simplex: 单工
+
+<details>
+<summary>展开原文</summary>
 
 In simplex communication, data flows in only one direction.
 The speaker can send data, while the listener can only receive it.
 As shown in Figure \ref{fig:simplex}, the robot continuously transmits audio, while the user has no ability to respond.
 This fixed-direction, one-way communication has the limitation of lacking interactivity.
 
-#### Half-Duplex
+</details>
+<br>
+
+#### Half-Duplex: 半双工
+
+<details>
+<summary>展开原文</summary>
 
 In half-duplex communication, data flows in both directions but not simultaneously.
 The two parties must take turns speaking and listening.
@@ -249,7 +271,13 @@ These systems typically adopt an ASR-LM-TTS cascaded structure and are often con
 Although this interaction method is simple and easy to implement, it can feel rigid and disjointed in natural conversational settings, with notable latency.
 It is designed more for command execution rather than interactive communication.
 
-#### Full-Duplex
+</details>
+<br>
+
+#### Full-Duplex: 全双工
+
+<details>
+<summary>展开原文</summary>
 
 Full-duplex communication allows both parties to send and receive data simultaneously~\cite{ma2024language}.
 Figure \ref{fig:full-duplex} shows the user and robot engaging in overlapping, real-time interaction, where backchannels and interruptions are possible.
@@ -257,7 +285,13 @@ This mode enables a natural, two-way conversation, where both the user and robot
 Full-duplex large voice models allow the system not only to listen and understand the user while they speak but also to interrupt at appropriate moments or respond with backchannel cues.
 Moreover, the system can detect the user’s intent to interrupt and pause itself accordingly, maintaining a smooth flow in the interaction.
 
-#### Summary
+</details>
+<br>
+
+#### Summary: 小结
+
+<details>
+<summary>展开原文</summary>
 
 The ultimate goal of a spoken dialogue moded is to make the user feel as though they are conversing with a real human friend.
 Clearly, full-duplex technology is essential for achieving natural voice dialogue systems, enabling the system to send and receive audio signals simultaneously, thus facilitating real-time interaction.
@@ -265,6 +299,9 @@ Unlike text-based models, it doesn’t “cover its ears” while speaking.
 Users and intelligent agents can interrupt each other while listening or express their attitude through non-verbal signals, such as interjections or laughter.
 The challenges in realizing this lie in ensuring conversational fluidity, seamless turn-taking, and precise timing of interactions.
 Developing a full-duplex system that can both generate and receive voice signals in complex interactive scenarios remains a key focus in academic and industrial research.
+
+</details>
+<br>
 
 ### 5.2.2·Interaction
 
@@ -367,7 +404,8 @@ VITA’s perception abilities are achieved through multimodal alignment and inst
 Additionally, VITA employs state tokens to distinguish user input types, such as query audio, background noise, and text input, facilitating wake-free interaction.
 VITA's enhanced listening module prevents unnecessary user feedback from interrupting system responses, improving robustness.
 
-\quad$\bullet$ \emph{CleanS2S.}\cite{CleanS2S}
+##### CleanS2S \cite{CleanS2S}
+
 This model employs a structured pipeline to enable responsive and flexible interactions in a spoken dialogue setting.
 Designed to facilitate seamless turn-taking and interruption handling, the model consists of several interconnected modules working in a coordinated sequence to optimize user experience.
 Starting with user input, the system uses a Voice Activity Detection (VAD) module to continuously monitor for incoming audio signals.
