@@ -242,6 +242,8 @@ Specifically, within model architecture, it means that the model must retain its
 此时双工不只是指代信号传输, 还强调了人机对话中的同步和自然互动.
 具体来说, 在模型架构中, 它意味着模型必须保持其接收外部输入的能力甚至是在生成响应时, 也就是在说话的时候保持监听的能力.
 
+![](Images/Fig.08.png)
+
 #### Simplex: 单工
 
 <details>
@@ -249,11 +251,17 @@ Specifically, within model architecture, it means that the model must retain its
 
 In simplex communication, data flows in only one direction.
 The speaker can send data, while the listener can only receive it.
-As shown in Figure \ref{fig:simplex}, the robot continuously transmits audio, while the user has no ability to respond.
+As shown in Figure 08(a), the robot continuously transmits audio, while the user has no ability to respond.
 This fixed-direction, one-way communication has the limitation of lacking interactivity.
 
 </details>
 <br>
+
+在单工通信中, 数据仅在一个方向流动.
+说话人可以发送数据, 但听众只能接收它.
+
+如图 08(a) 所示, 机器人连续地传输音频, 而用户却无能力作出反应.
+这种固定方向, 单向的通信有着缺乏互动性的局限性.
 
 #### Half-Duplex: 半双工
 
@@ -262,7 +270,7 @@ This fixed-direction, one-way communication has the limitation of lacking intera
 
 In half-duplex communication, data flows in both directions but not simultaneously.
 The two parties must take turns speaking and listening.
-As illustrated in Figure \ref{fig:half-duplex}, the user speaks first, followed by a response delay during which the robot "thinks" before replying.
+As illustrated in Figure 08(b), the user speaks first, followed by a response delay during which the robot "thinks" before replying.
 The robot’s response occurs only after the user has finished speaking, and vice versa.
 This turn-taking method is similar to using a walkie-talkie, where each party can only transmit after the other has finished, limiting efficiency.Half-duplex is a common mode in early voice interaction systems.
 In a typical half-duplex interaction, there are noticeable pauses in the conversation; the user and the system cannot “speak”  simultaneously, making the conversation feel less smooth, much like communication through a walkie-talkie.
@@ -274,13 +282,28 @@ It is designed more for command execution rather than interactive communication.
 </details>
 <br>
 
+在半双工通信中, 数据在两个方向流动但不能同时进行. 双方必须轮流说话和听.
+
+如图 08(b) 所示, 用户首先说话, 随后机器人会在响应延迟期间 "思考" 再回复.
+机器人的回复仅在用户完成说话后发生, 反之亦然.
+
+这种轮流的方法类似于使用步话机 (一种小型便携式无线电通信设备), 每一方只能在对方完成后才能发声, 效率受限.
+
+半双工是早期声音交互系统的常用模式.
+在典型的半双工交互中, 对话中会出现明显的停顿; 用户和系统不能同时发声, 使得对话感觉不够流畅, 就像通过步话机进行通信一样.
+例如, 语音助手 Siri 采用唤醒词或按键触发对话, 要求说话者在完成完整句子后才回复.
+这些系统通常采用 ASR-LM-TTS 级联结构, 并受到级联延迟和基于文本语言模型的轮流性质的限制.
+
+尽管这种交互方法简单且易于实现, 但在自然对话设置下, 它可能感觉僵硬和分离, 带来明显的延迟.
+它主要为命令执行而设计, 而不是交互通信.
+
 #### Full-Duplex: 全双工
 
 <details>
 <summary>展开原文</summary>
 
-Full-duplex communication allows both parties to send and receive data simultaneously~\cite{ma2024language}.
-Figure \ref{fig:full-duplex} shows the user and robot engaging in overlapping, real-time interaction, where backchannels and interruptions are possible.
+Full-duplex communication allows both parties to send and receive data simultaneously ([LSLM [142]](../../Models/SpeechLM/2024.08.05_LSLM.md)).
+Figure 08(c) shows the user and robot engaging in overlapping, real-time interaction, where backchannels and interruptions are possible.
 This mode enables a natural, two-way conversation, where both the user and robot can speak, respond, and even interrupt each other as needed, much like a phone call.In dialogue systems, full-duplex means that the system and user can speak simultaneously and interrupt each other, making it closer to natural conversation in real life.
 Full-duplex large voice models allow the system not only to listen and understand the user while they speak but also to interrupt at appropriate moments or respond with backchannel cues.
 Moreover, the system can detect the user’s intent to interrupt and pause itself accordingly, maintaining a smooth flow in the interaction.
@@ -288,12 +311,20 @@ Moreover, the system can detect the user’s intent to interrupt and pause itsel
 </details>
 <br>
 
+全双工通信允许双方同时发送和接收数据 ([LSLM [142]](../../Models/SpeechLM/2024.08.05_LSLM.md)).
+图 08(c) 展示了用户和机器人在重叠, 实时互动中进行交流, 反向通道和中断都是可以的.
+这种模式使得双方可以进行自然的双向对话, 即用户和机器人可以同时说话, 回应, 甚至可以互相打断, 就像打电话一样.
+
+在对话系统中, 全双工意味着系统和用户可以同时说话, 并可以互相打断, 这使得它更接近于现实生活中的自然对话.
+全双工的大型声音模型允许系统不仅能在说话时听取并理解用户, 还能在适当的时候打断, 并以反向通道的形式回应.
+此外, 系统还可以检测到用户的打断意图, 并相应地暂停自己, 保持对话的流畅.
+
 #### Summary: 小结
 
 <details>
 <summary>展开原文</summary>
 
-The ultimate goal of a spoken dialogue moded is to make the user feel as though they are conversing with a real human friend.
+The ultimate goal of a spoken dialogue model is to make the user feel as though they are conversing with a real human friend.
 Clearly, full-duplex technology is essential for achieving natural voice dialogue systems, enabling the system to send and receive audio signals simultaneously, thus facilitating real-time interaction.
 Unlike text-based models, it doesn’t “cover its ears” while speaking.
 Users and intelligent agents can interrupt each other while listening or express their attitude through non-verbal signals, such as interjections or laughter.
@@ -302,6 +333,14 @@ Developing a full-duplex system that can both generate and receive voice signals
 
 </details>
 <br>
+
+口语对话模型的最终目标是让用户感觉自己正在和真正的人类朋友进行对话.
+很明显, 全双工技术是实现自然语音对话系统的必要条件, 它使得系统能够同时发送和接收音频信号, 这有助于实现实时互动.
+与基于文本的模型不同, 在说话时它并不会 "掩耳盗铃".
+用户和智能体可以在听取或通过非语言信号 (如感叹或笑声) 表达它们的态度时打断对方.
+
+实现这一目标的挑战在于确保对话流畅, 无缝轮流, 以及对话的精准时机.
+开发能够在复杂的交互场景中生成和接收语音信号的全双工系统, 仍然是学术和工业研究的关键关注点.
 
 ### 5.2.2·Interaction
 
