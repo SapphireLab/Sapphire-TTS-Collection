@@ -1,13 +1,39 @@
 # 5·Streaming, Duplex, and Interaction
 
-Streaming, full-duplex technology, and interactions, are crucial elements for enhancing the interactive capabilities of spoken dialogue models because they directly impact the system's responsiveness, the fluidity of natural interaction, and its ability to handle complex interactions.Unlike text language models, spoken dialogue models require real-time processing of user input.
-\textbf{Streaming} allows the system to instantly acquire and process speech data; \textbf{full-duplex technology} enables both the system and user to speak simultaneously, enhancing the naturalness of interaction; and \textbf{handling of interactions} provides the model with the ability to recognize and adapt to various conversational contexts, making the dialogue more intelligent and realistic.
+<details>
+<summary>展开原文</summary>
+
+Streaming, full-duplex technology, and interactions, are crucial elements for enhancing the interactive capabilities of spoken dialogue models because they directly impact the system's responsiveness, the fluidity of natural interaction, and its ability to handle complex interactions.
+Unlike text language models, spoken dialogue models require real-time processing of user input.
+Streaming allows the system to instantly acquire and process speech data; full-duplex technology enables both the system and user to speak simultaneously, enhancing the naturalness of interaction; and handling of interactions provides the model with the ability to recognize and adapt to various conversational contexts, making the dialogue more intelligent and realistic.
 Building on early explorations, GPT-4o's advanced spoken dialogue capabilities have ignited a surge of research interest.
 With real-time voice processing and natural conversational interaction, these models offer users a seamless and efficient communication experience.
 However, achieving these capabilities requires deep research into model architecture, data collection, system design, and training methods.
 The model needs to be carefully designed and optimized in terms of real-time performance, stability, and response speed.
 At the same time, duplex technology is an indispensable key implementation, which ensures that the voice model has both "ears" and "mouths".
-Next, we will first discuss the streaming processing method in Section 5.1, then introduce the key technologies of duplex communication and explains how to handle interactation to improve user experience in Section 5.2.
+
+Next, we will first discuss the streaming processing method in Section 5.1, then introduce the key technologies of duplex communication and explains how to handle interaction to improve user experience in Section 5.2.
+
+</details>
+<br>
+
+流式, 完全双工技术, 和交互, 是增强口语对话模型的交互能力的关键元素, 因为它们直接影响了系统的响应能力, 自然交互的流畅度, 以及处理复杂交互的能力.
+和文本语言模型不同, 口语对话模型要求实时处理用户输入.
+- **流式**允许系统即时获取和处理语音数据;
+- **完全双工技术**使系统和用户可以同时发言, 增强了交互的自然性;
+- **交互处理**为模型提供了识别和适应各种会话上下文的能力, 使对话更智能和真实.
+
+建立在早期探索的基础之上, GPT-4o 的先进口语对话能力点燃了研究的热潮.
+
+结合实时声音处理和自然对话交互, 这些模型为用户提供了无缝且高效的沟通体验.
+然而, 实现这些能力需要深入研究模型架构, 数据收集, 系统设计和训练方法.
+这些模型需要仔细设计和优化, 以确保实时性能, 稳定性, 响应速度.
+
+同时, 双工技术是不可或缺的关键实现, 确保声音模型同时具有 "耳朵" 和 "嘴巴".
+
+下面, 我们将在 5.1 节首先讨论流式处理方法;
+然后, 在 5.2 节介绍双工通信的关键技术;
+并在 5.3 节解释如何处理交互以提高用户体验.
 
 ## 5.1·Streaming Spoken Dialogue Models
 
@@ -36,7 +62,7 @@ Unlike regular convolution, causal convolution achieves this by "shifting" the c
 In a one-dimensional time series, if the convolution kernel size is \(k\), a standard convolution would use data from \((t - k/2)\) to \((t + k/2)\) at the current time step \(t\).
 Causal convolution, however, pads the input on the left with \(k-1\) zeros so that the kernel only uses data from \(t - k + 1\) to \(t\), aligning the kernel to only consider current and past inputs.
 This padding ensures that each layer's output depends solely on current and prior information, maintaining causality.
-To further expand the model’s receptive field while preserving causality, \textbf{dilated causal convolution} can be used.
+To further expand the model’s receptive field while preserving causality, dilated causal convolution can be used.
 This technique introduces gaps within the kernel by inserting zeros between weights, effectively expanding the convolution’s range.
 This allows the model to capture longer dependencies in the data without increasing latency, which is particularly useful for streaming applications.
 In streaming spoken dialogue models, causal convolution plays a critical role in:
@@ -61,22 +87,20 @@ As new inputs are processed, the model can generate outputs without waiting for 
 
 Audio streams are typically split into frames, then processed in sequence via a queue management system that ensures real-time, orderly processing.
 
-
-Some end-to-end models, such as Llama-Omni\cite{fang2024llama}, Mini-Omni\cite{xie2024mini} and Mini-Omni2\cite{xie2024miniomni2opensourcegpt4ovision}, employ non-streaming ASR model Whisper as an audio encoder components.
+Some end-to-end models, such as [LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md), [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md) and [Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md), employ non-streaming ASR model Whisper as an audio encoder components.
 These models have made improvements on the output side to reduce latency.
 - **Mini-Omni**.
 Mini-Omni use a generation strategy delayed parallel decoding is a that layer-by-layer delays during audio token generation.
 This allows the model to generate text and multiple audio tokens simultaneously at each step, accelerating streaming audio generation and ensuring low-latency real-time output.
 - **Llama-Omni**.
 Llama-Omni incorporates a non-autoregressive streaming speech decoder that leverages connectionist temporal classification (CTC) to directly generate a sequence of discrete audio tokens as the response.
-- **Intrinsicvoice**.
-~\cite{zhang2024intrinsicvoice}
-Intrinsicvoice introduced GroupFormer module  to group speech tokens, reducing the length of speech sequences to match that of text sequences.
+- [IntrinsicVoice [248]](../../Models/SpeechLM/2024.10.09_IntrinsicVoice.md)
+IntrinsicVoice introduced GroupFormer module  to group speech tokens, reducing the length of speech sequences to match that of text sequences.
 This approach accelerates inference, alleviates the challenges of long-sequence modeling, and effectively narrows the gap between speech and text modalities.We think they cannot be considered fully streaming because they are not designed to be streaming on the input side.
-- **Moshi**~\cite{defossez2024moshi}.
+- [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)
 In contrast, Moshi references the architecture of SpeechTokenizer to train a streaming codec from scratch, serving as the audio tokenizer-detokenizer.
 The entire model, including the codec, transformer, and attention mechanism, is built on a causal structure.
-- **OmniFlatten** ~\cite{zhang2024omniflatten}.
+- [OmniFlatten [246]](../../Models/SpeechLM/2024.10.23_OmniFlatten.md)
 OmniFlatten proposes chunk-based processing of text and speech along with gradual learning techniques and data handling to reduce turn-taking delays, such as response delays when users finish speaking or interrupt the system.
 These models have achieved true streaming capabilities and established a foundation for diverse, bidirectional interactions.
 
@@ -85,7 +109,7 @@ These models have achieved true streaming capabilities and established a foundat
 Consistent with the above, ensuring streaming capability in a model relies on designing both input and output for streaming.
 Due to its cascaded nature, a cascaded model typically relies on external streaming ASR and TTS components, placing the streaming responsibility on these ASR and TTS modules.
 
-In~\cite{wang2024full}, comparative studies were conducted on the streaming ASR model \textbf{U2++ Conformer}~\cite{wu2021u2++}, streaming TTS model \textbf{XTTS-v2}~\cite{casanova2024xtts}, non-streaming ASR \textbf{Whisper}, and non-streaming TTS \textbf{VITS}~\cite{kong2023vits2}.
+In~\cite{wang2024full}, comparative studies were conducted on the streaming ASR model **U2++ Conformer**~\cite{wu2021u2++}, streaming TTS model [XTTS-v2 [21]](../../Models/SpeechLM/2024.06.07_XTTS.md), non-streaming ASR **Whisper**, and non-streaming TTS **VITS** ([VITS2 [109]](../../Models/E2E/2023.07.31_VITS2.md)).
 The combination of streaming components achieved the lowest latency and significantly contributed to interactive interruption capabilities.
 
 ## 5.2·Duplex Technology and Interaction
@@ -156,7 +180,7 @@ The distinction between detection~\cite{hara2019turn,lala2017attentive} and pred
 
 - Overlap
 This mainly involves two situations.
-When the user and agent’s voices overlap, if the user intends to take the turn from the agent, this behavior is defined as an \textit{interruption}~\cite{khouzaimi2016reinforcement,marge2022spoken}.
+When the user and agent’s voices overlap, if the user intends to take the turn from the agent, this behavior is defined as an **interruption**~\cite{khouzaimi2016reinforcement,[Marge et al. [146]](../../Models/_Full/Spoken_Language_Interaction_with_Robots__Recommendations_for_Future_Research.md)}.
 If the user has no intention of taking the turn, this behavior is considered \textit{backchannel}~\cite{hara2018prediction} or a listener response, such as "uh-huh," "right."
 
 Through these concepts, we can better understand turn-taking behavior in duplex dialogues.
@@ -190,7 +214,6 @@ For example, if the user is speaking but the system needs to alert them to an er
 To enable interactive functionality, cascaded spoken dialogue models typically require explicit modeling of dialogue turns.
 As the core, the large language model needs effective context and turn management.
 Next, we introduce several representative works on interaction in cascaded systems.
-
 
 ##### Duplex Conversation
 
@@ -270,7 +293,7 @@ The core innovation of dGSLM is the dual-tower Transformer architecture, called 
 Through this architecture, the model not only independently generates speech for each channel but also shares information between channels using cross-attention, effectively modeling silences and interaction events.
 It leverages the HuBERT encoder and HiFi-GAN decoder, combined with the dual-tower DLM, and is trained on 2,000 hours of dual-channel telephone conversation audio (Fisher dataset), where each speaker in a conversation is allocated an independent audio track.
 The dGSLM model transforms the audio on both channels into discrete tokens using HuBERT, and the DLM model autoregressively predicts the next audio token and its duration.
-Finally, the HiFi-GAN\cite{kong2020hifi} decoder reconstructs the audio for both channels.
+Finally, the [HiFi-GAN [108]](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md) decoder reconstructs the audio for both channels.
 This approach differs significantly from traditional text-dependent spoken dialogue models, with a particular emphasis on modeling turn-taking and backchanneling capabilities.
 This capability gives dGSLM a notable advantage in duplex voice interaction, better mimicking the natural dynamics of human conversation.
 Through its duplex model design, dGSLM represents an essential step forward in interactive capabilities and provides a foundation for further advancements.
@@ -340,7 +363,7 @@ This effectively implements streaming processing, ensuring low latency and high 
 
 ##### Freeze-Omni
 
-To support duplex dialogue, Freeze-Omni~\cite{xiong2024freeze} uses a chunk-level state prediction mechanism for natural turn-taking.
+To support duplex dialogue, [Freeze-Omni [213]](../../Models/SpeechLM/2024.11.01_Freeze-Omni.md) uses a chunk-level state prediction mechanism for natural turn-taking.
 When the user begins speaking, a voice activity detection module identifies the audio input, prompting the model to process the audio chunk by chunk.
 After processing each chunk, the model's classification layer predicts the conversation state to determine the next action.
 There are three possible states: State 0, where the model continues listening for more input, assuming the user hasn’t completed their turn; State 1, where the model interrupts to provide an immediate response if a quick acknowledgment or feedback is needed; and State 2, where the model has completed processing the current user input and is ready to generate and output a response, thus transitioning smoothly into the response phase without further listening.
