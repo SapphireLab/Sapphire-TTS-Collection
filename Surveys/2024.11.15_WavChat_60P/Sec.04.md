@@ -531,6 +531,9 @@ Other methods achieve speech-to-speech generation without relying on text stream
 
 ### 4.4.1·Text and Speech Modality Alignment: 文本和语音模态对齐
 
+<details>
+<summary>展开原文</summary>
+
 In spoken dialogue systems, the alignment between speech and text modalities is a crucial stage.
 To preserve the textual intelligence of large language models (LLMs) as much as possible, nearly all current methodologies ([SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md); [PSLM [154]](../../Models/SpeechLM/2024.06.18_PSLM.md); [LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md); [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md); [Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md); [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md); [OmniFlatten [246]](../../Models/SpeechLM/2024.10.23_OmniFlatten.md)) incorporate a post-training phase utilizing speech-text paired data when developing spoken dialogue models.
 This may involve either expanding the vocabulary to treat speech tokens as an extension of the original vocabulary or using speech adaptors to map speech embeddings to the original text latent space of the LLM, and designing multi-task training objectives to achieve alignment between text and speech modalities.
@@ -538,9 +541,27 @@ For example, data from speech recognition and speech synthesis can be used to tr
 Although this is an effective strategy, its implementation can still lead to a certain degree of catastrophic forgetting in LLMs due to the large volume of pre-trained text corpora and the imbalance with paired speech-text data, which can harm the model's text-based capabilities.
 Therefore, precise parameter design and customized optimization strategies are needed to mitigate this issue as much as possible, as demonstrated by approaches like [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md).
 
-This raises a consideration: during the training phase of spoken dialogue models, is it feasible to directly utilize speech data for adaptation to text-based LLMs, thereby eliminating the necessity for speech-text paired data? This is because unlabeled speech data is abundant and easily accessible, making it convenient and beneficial for training the speech intelligence of LLMs.
+This raises a consideration: during the training phase of spoken dialogue models, is it feasible to directly utilize speech data for adaptation to text-based LLMs, thereby eliminating the necessity for speech-text paired data?
+This is because unlabeled speech data is abundant and easily accessible, making it convenient and beneficial for training the speech intelligence of LLMs.
 This approach would require us to obtain a pre-aligned speech representation with the text modality.
 Perhaps we can consider further exploration and experimentation in the speech tokenizer component, such as directly mapping the semantic discrete units of speech onto the text token space to achieve enforced alignment.
+
+</details>
+<br>
+
+在口语对话系统中, 语音和文本模态之间的对齐是至关重要的阶段.
+
+为了尽可能保留大语言模型的文本智能, 几乎所有现有方法 ([SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md); [PSLM [154]](../../Models/SpeechLM/2024.06.18_PSLM.md); [LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md); [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md); [Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md); [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md); [OmniFlatten [246]](../../Models/SpeechLM/2024.10.23_OmniFlatten.md)) 在开发口语对话模型时, 都整合了利用语音-文本配对数据的后训练阶段.
+
+这可能涉及扩展词表以将语音 Token 视为原始词表的扩展, 或者使用语音适配器将语音嵌入映射到大语言模型的原始文本潜在空间, 并设计多任务训练目标以实现文本和语音模态之间的对齐.
+例如, 来自语音识别和语音合成的数据可以用于训练模型的语音识别和合成能力.
+尽管这是一种有效的策略, 但其实现仍然可能导致大语言模型某种程度的灾难性遗忘, 因为大量的预训练文本语料库和语音-文本配对数据之间的不平衡, 这会损害模型的基于文本的能力.
+因此, 尽可能缓解这一问题的精确的参数设计和定制优化策略是必要的, 如 [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md) 所示.
+
+这引起了一种考虑: 在口语对话模型的训练阶段, 是否可以直接使用语音数据对基于文本的大语言模型进行适配, 从而消除语音-文本对数据的需要?
+这是因为无标签语音数据是丰富的, 易于获得, 因此可以方便地训练大语言模型的语音智能.
+这种方法要求我们获得与文本模态预先对齐的语音表示.
+也许我们可以考虑进一步探索和实验语音分词器组件, 例如直接将语音的语义离散单元映射到文本 Token 空间, 以实现强制对齐.
 
 ### 4.4.2·Different Temporal Alignment Methods in Spoken Dialogue Models: 不同时序对齐方法
 
