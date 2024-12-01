@@ -64,19 +64,35 @@ We will explore streaming techniques in both end-to-end and cascaded spoken dial
 
 我们将探索端到端和级联口语对话模型中的流式技术, 探讨流式在每种系统中的实现方法, 并强调它们的相似和不同之处.
 
-### 5.1.1·Streaming End-to-End Spoken Dialogue Models
+### 5.1.1·Streaming End-to-End Spoken Dialogue Models: 流式端到端口语对话模型
+
+<details>
+<summary>展开原文</summary>
 
 End-to-end streaming spoken dialogue models often leverage the knowledge of pre-trained text language models alongside an audio tokenizer, employing an tokenizer-detokenizer architecture to process and output audio signals.
 Based on the concepts of streaming input and output discussed above, end-to-end models also require specific design considerations to enable streaming capabilities.
 These designs center around the model’s input and output handling and can be distilled into three core techniques: causal convolution, causal attention mechanisms, and queue management.
 
-#### Causal Convolution
+</details>
+<br>
 
-Causal Convolution~\cite{bai2018empirical} is a specialized form of convolution widely used in time-series processing, especially suitable for streaming speech models.
+端到端流式口语对话模型通常利用了预训练文本语言模型的知识和音频分词器, 采用分词器-反分词器架构处理和输出音频信号.
+基于上面讨论的流式输入和输出的概念, 端到端模型还要求具体的设计考虑, 以启用流式能力.
+这些设计以模型的输入和输出处理为中心, 可以总结为三个核心技术:
+- 因果卷积 (Causal Convolution)
+- 因果注意力机制 (Causal Attention Mechanisms)
+- 队列管理 (Queue Management)
+
+#### Causal Convolution: 因果卷积
+
+<details>
+<summary>展开原文</summary>
+
+[Causal Convolution [12]](../../Models/_Basis/2018.03.04_TCN.md) is a specialized form of convolution widely used in time-series processing, especially suitable for streaming speech models.
 The key feature of causal convolution is that the current output depends only on the current and past inputs, without being influenced by future inputs, thereby strictly respecting temporal order.
 Unlike regular convolution, causal convolution achieves this by "shifting" the convolution kernel to avoid accessing future information.
-In a one-dimensional time series, if the convolution kernel size is \(k\), a standard convolution would use data from \((t - k/2)\) to \((t + k/2)\) at the current time step \(t\).
-Causal convolution, however, pads the input on the left with \(k-1\) zeros so that the kernel only uses data from \(t - k + 1\) to \(t\), aligning the kernel to only consider current and past inputs.
+In a one-dimensional time series, if the convolution kernel size is $k$, a standard convolution would use data from $(t - k/2)$ to $(t + k/2)$ at the current time step $t$.
+Causal convolution, however, pads the input on the left with $k-1$ zeros so that the kernel only uses data from $t - k + 1$ to $t$, aligning the kernel to only consider current and past inputs.
 This padding ensures that each layer's output depends solely on current and prior information, maintaining causality.
 To further expand the model’s receptive field while preserving causality, dilated causal convolution can be used.
 This technique introduces gaps within the kernel by inserting zeros between weights, effectively expanding the convolution’s range.
@@ -87,7 +103,26 @@ Causal convolution allows the model to compute outputs without accessing future 
 - **Reducing latency**.
 By not requiring future input data, causal convolution significantly lowers the latency in speech models, making it more suitable for real-time interaction applications, such as voice assistants and live translation.
 
-#### Causal Attention.
+</details>
+<br>
+
+[因果卷积 [12]](../../Models/_Basis/2018.03.04_TCN.md)是时间序列处理中广泛使用的卷积的一种特殊形式, 特别适用流式语音模型.
+因果卷积的关键特征是当前输出仅依赖于当前和过去输入, 而不受未来输入的影响, 因此严格遵循时间顺序.
+和常规卷积不同, 因果卷积通过 "移动" 卷积核来避免访问未来信息以实现这一点.
+
+在一维时间序列中, 如果卷积核大小为 $k$, 则标准卷积将在当前时间步 $t$ 使用 $(t - k/2)$ 到 $(t + k/2)$ 之间的数据.
+因果卷积对输入左填充 $k-1$ 个零, 因此卷积核仅使用 $t - k + 1$ 到 $t$ 之间的数据, 使得卷积核仅考虑当前和过去输入.
+这种填充确保每个层的输出仅依赖于当前和先前信息, 保持因果性.
+
+为了在保持因果性的同时扩展模型的感受野, 可以使用**膨胀因果卷积 (Dilated Causal Convolution)**.
+这一技术通过在权重之间插入零来在卷积核中引入间隙, 有效扩展了卷积的范围.
+这使得模型在不增加延迟的情况下捕获更长的依赖关系, 特别适用于流式应用.
+
+在流式口语对话模型中, 因果卷积扮演着至关重要的角色:
+- **确保实时处理**: 因果卷积允许模型在不访问未来帧的情况下计算输出, 实现实时处理, 当输入接收时就能生成输出, 这对于流式至关重要.
+- **降低延迟**: 由于不需要未来输入数据, 因果卷积在语音模型中显著降低延迟, 适用于如语音助手和实时翻译等实时交互应用.
+
+#### Causal Attention: 因果注意力
 
 Causal Attention is a specialized form of the attention mechanism designed to ensure that each position in a sequence can only attend to previous positions, thus preserving the temporal order crucial for streaming models.
 This approach ensures that the model’s current output depends only on past and present information, preventing any “leakage” of future information, which is essential for real-time processing tasks.
@@ -99,7 +134,7 @@ In streaming speech models, causal attention plays a significant role in enablin
 Unlike standard attention, which requires access to the entire sequence, causal attention can operate incrementally.
 As new inputs are processed, the model can generate outputs without waiting for future context.
 
-#### Queue Management~\cite{wu2023audiodec}.
+#### [Queue Management: 队列管理 [220]](../../Models/Speech_Neural_Codec/2023.05.26_AudioDec.md)
 
 Audio streams are typically split into frames, then processed in sequence via a queue management system that ensures real-time, orderly processing.
 
