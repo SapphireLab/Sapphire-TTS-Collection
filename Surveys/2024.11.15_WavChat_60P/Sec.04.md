@@ -565,6 +565,9 @@ Perhaps we can consider further exploration and experimentation in the speech to
 
 ### 4.4.2·Different Temporal Alignment Methods in Spoken Dialogue Models: 不同时序对齐方法
 
+<details>
+<summary>展开原文</summary>
+
 In speech and text modalities, there is often a significant mismatch in sequence lengths.
 Even when some speech tokenizers ([WavTokenizer [90]](../../Models/Speech_Neural_Codec/2024.08.29_WavTokenizer.md); [Single-Codec [119]](../../Models/Speech_Neural_Codec/2024.06.11_Single-Codec.md)) employ extreme sequence compression methods, a length gap remains between the two.
 Temporal alignment information between speech and text has been explored in tasks like Automatic Speech Recognition (ASR) and Text-to-Speech (TTS) as demonstrated by models such as [Whisper [169]](../../Models/SpeechLM/2022.12.06_Whisper.md), [FastSpeech2 [176]](../../Models/TTS2_Acoustic/2020.06.08_FastSpeech2.md), and [VITS [107]](../../Models/E2E/2021.06.11_VITS.md).
@@ -581,6 +584,27 @@ The difference lies in that Mini-Omni fully allows the LLM to implicitly learn t
 Exploring the impact of introducing different levels of temporal alignment priors on the training effectiveness of spoken dialogue models, such as sentence-level, word-level, or phoneme-level, is an intriguing area of research.
 Understanding how these various alignment strategies affect model performance can guide the development of more efficient and accurate systems.
 For instance, sentence-level alignment might offer a broader contextual understanding, while word-level or phoneme-level alignments could provide more detailed synchronization between speech and text, potentially leading to improvements in nuanced tasks like speech synthesis and understanding.
+
+</details>
+<br>
+
+在语音和文本模态中, 序列长度通常存在显著的不匹配.
+即使某些语音分词器 ([WavTokenizer [90]](../../Models/Speech_Neural_Codec/2024.08.29_WavTokenizer.md); [Single-Codec [119]](../../Models/Speech_Neural_Codec/2024.06.11_Single-Codec.md)) 采用极端的序列压缩方法, 两者之间的长度差距也仍然存在.
+
+在自动语音识别 (ASR) 和文本转语音 (TTS) 等任务中, 语音和文本之间的时序对齐信息已被探索, 例如 [Whisper [169]](../../Models/SpeechLM/2022.12.06_Whisper.md), [FastSpeech2 [176]](../../Models/TTS2_Acoustic/2020.06.08_FastSpeech2.md), 和 [VITS [107]](../../Models/E2E/2021.06.11_VITS.md).
+
+近期, 一些口语对话系统利用时序对齐信息来增强模型性能, 取得了有前景的结果.
+- [SpiRit-LM [158]](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md) 使用交错的文本和语音 Token 对 LLaMA-Base 模型进行持续预训练, 显著提升了模型在语音理解和生成中的性能.
+  实验可视化表明, 在训练时使用交错 Token 序列的模型相比不使用该方法的模型, 语音特征与文本特征之间的相似性明显更高.
+  这表明, 提供给模型显式的细粒度时序对齐信息可以有效地增强模态对齐和提升语言模型的性能.
+- [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md) 通过填充文本 Token 以匹配语音 Token 的长度, 实现了文本和语音 Token 之间的隐式学习对齐信息.
+  这可以视为一种句子级时序对齐信息, 也是最近的语音合成工作 ([F5-TTS [30]](../../Models/Diffusion/2024.10.09_F5-TTS.md)) 中使用的一种方法.
+- [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md) 则使用词级语音-文本时序对齐信息和特殊标记 Token, 实现了类似的并行生成能力.
+  两者的不同之处在于, Mini-Omni 完全允许大语言模型隐式学习对齐信息, 而 Moshi 首先提供词级语音-文本对齐信息, 然后让模型学习更细粒度的对齐信息.
+
+探索不同时序对齐先验对口语对话模型的训练效果的影响, 如句子级, 词级, 或音素级, 是一项有趣的研究领域.
+理解这些不同的对齐策略对模型性能的影响, 可以指导开发更高效和准确的系统.
+例如, 句子级别对齐可能提供更广泛的上下文理解, 而词级别对齐则可以更好地捕捉到语音和文本之间更详细的同步关系, 潜在地提升语音合成和理解等精细任务的性能.
 
 ### 4.4.3·Reinforcement Learning (RL) in Spoken Dialogue Models: 强化学习
 
