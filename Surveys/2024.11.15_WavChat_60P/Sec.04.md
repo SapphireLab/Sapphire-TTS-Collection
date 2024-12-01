@@ -608,6 +608,9 @@ For instance, sentence-level alignment might offer a broader contextual understa
 
 ### 4.4.3·Reinforcement Learning (RL) in Spoken Dialogue Models: 强化学习
 
+<details>
+<summary>展开原文</summary>
+
 Reinforcement Learning (RL) has proven to be an effective learning paradigm in text and image processing ([PPO [185]](../../Models/_Basis/PPO.md); [Policy Gradient [196]](../../Models/_Basis/PG.md); [Diffusion-DPO [204]](../../Models/CV/2023.11.21_Diffusion-DPO.md)).
 Recent research has shown that [Direct Preference Optimization (DPO) [170]](../../Modules/RLHF/DPO.md) can be extended to music and speech generation ([MusicRL [36]](../../Models/SpeechLM/2024.02.06_MusicRL.md); [SpeechAlign [243]](../../Models/SpeechLM/2024.04.08_SpeechAlign.md)).
 [MusicRL [36]](../../Models/SpeechLM/2024.02.06_MusicRL.md) uses Reinforcement Learning from Human Feedback (RLHF) to improve music generation by fine-tuning a pretrained model for better text adherence and audio quality.
@@ -619,3 +622,18 @@ This enhances its ability to follow audio instructions accurately and intelligen
 However, in the dialogue system field, reinforcement learning techniques based on human feedback ([Huang et al (Survey) [82]](../2023.11.09_A_Survey_on_Hallucination_in_Large_Language_Models__Principles_Taxonomy_Challenges_and_Open_Questions/Main.md)) are rarely applied.
 Considering the diversity of inputs and outputs in large language models, exploring the incorporation of reinforcement learning strategies such as [Proximal Policy Optimization (PPO) [185]](../../Models/_Basis/PPO.md) can be beneficial.
 Additionally, considering the performance metrics for evaluating spoken dialogue systems, designing targeted reinforcement learning strategies and feedback functions to enhance different objectives is also a direction worth exploring.
+
+</details>
+<br>
+
+强化学习 (Reinforcement Learning, RL) 在文本和图像处理领域已经证明是一种有效的学习范式 ([PPO [185]](../../Models/_Basis/PPO.md); [Policy Gradient [196]](../../Models/_Basis/PG.md); [Diffusion-DPO [204]](../../Models/CV/2023.11.21_Diffusion-DPO.md)).
+近期研究表明, [Direct Preference Optimization (DPO) [170]](../../Modules/RLHF/DPO.md) 可以被扩展到音乐和语音生成 ([MusicRL [36]](../../Models/SpeechLM/2024.02.06_MusicRL.md); [SpeechAlign [243]](../../Models/SpeechLM/2024.04.08_SpeechAlign.md)).
+- [MusicRL [36]](../../Models/SpeechLM/2024.02.06_MusicRL.md) 使用来自人类反馈的强化学习 (RLHF) 来改善音乐生成, 通过微调预训练模型来提高文本一致性和音频质量.
+  通过收集广泛的人类反馈, MusicRL 创造出一个更细致和主观的音乐生成系统.
+- [Seed-TTS [5]](../../Models/SpeechLM/2024.06.04_Seed-TTS.md) 探索了 RL 方法, 比较了外部奖励模型 (REINFORCE) 和简单方法 (DPO) 的效果.
+  研究发现, 使用 REINFORCE 增强说话者相似性和情感控制能力可以提升 Seed-TTS 系统的性能.
+- [Qwen2-Audio [33]](../../Models/SpeechLM/2024.07.15_Qwen2-Audio.md) 使用 DPO 来与人类偏好相匹配, 通过优化响应基于人类标注的数据, 增强其在以音频为中心的任务中的性能.
+
+然而, 在对话系统领域, 基于人类反馈的强化学习技术 ([Huang et al (Survey) [82]](../2023.11.09_A_Survey_on_Hallucination_in_Large_Language_Models__Principles_Taxonomy_Challenges_and_Open_Questions/Main.md)) 很少被应用.
+考虑到大型语言模型的输入和输出的多样性, 探索将强化学习策略 (如 [Proximal Policy Optimization (PPO) [185]](../../Models/_Basis/PPO.md)) 纳入其中可以提供益处.
+此外, 考虑到对话系统的性能评估指标, 设计目标导向的强化学习策略和反馈函数来增强不同目标也是值得探索的方向.
