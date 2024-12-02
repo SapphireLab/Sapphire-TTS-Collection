@@ -342,31 +342,36 @@ Developing a full-duplex system that can both generate and receive voice signals
 实现这一目标的挑战在于确保对话流畅, 无缝轮流, 以及对话的精准时机.
 开发能够在复杂的交互场景中生成和接收语音信号的全双工系统, 仍然是学术和工业研究的关键关注点.
 
-### 5.2.2·Interaction
+### 5.2.2·Interaction: 交互
+
+<details>
+<summary>展开原文</summary>
 
 Now that we understand duplex technology, we can further explore duplex spoken dialogue model.
 
-We start with some concept.Turn-taking is the core concept in duplex dialogue.
+We start with some concept.
+
+Turn-taking is the core concept in duplex dialogue.
 It refers to the process in which speakers take turns speaking in an orderly manner during a conversation, forming a pattern of turn-taking.
 Over the past few decades and has been extensively studied across fields such as linguistics, phonetics, and sociology.
-Some research ~\cite{raux2009finite,sacks1974simplest}uses a non-deterministic finite-state machine with six states to describe the turn-taking behavior between the system and the user in a spoken dialogue system (SDS).
+Some research ([Raux et al [173]](../../Models/_Full/A_Finite-State_Turn-Taking_Model_for_Spoken_Dialogue_Systems.md); [Sacks et al [180]](../../Models/_Full/A_Simplest_Systematics_for_the_Organization_of_Turn-Taking_for_Conversation.md)) uses a non-deterministic finite-state machine with six states to describe the turn-taking behavior between the system and the user in a spoken dialogue system (SDS).
 It outlines all possible states of turn-taking within an SDS, defining the objective of turn-taking as minimizing mutual silence or overlap between interlocutors, thereby improving communication efficiency.
 Turn-taking encompasses three fundamental concepts:
 
-- Turn-taking cues ~\cite{duncan1972some,duncan1974signalling}.
+- Turn-taking cues ([Duncan et al [53]](../../Models/_Full/Some_Signals_and_Rules_for_Taking_Speaking_Turns_in_Conversations.md); [Duncan et al [54]](../../Models/_Full/On_Signalling_that_It's_Your_Turn_to_Speak.md)).
 These include voice, rhythm, breathing, gaze, or gestures.
 Agents can use these cues to determine whether to take a turn from the user or to relinquish the turn.
 
 - Turn-end detection or prediction
-The distinction between detection~\cite{hara2019turn,lala2017attentive} and prediction~\cite{lala2019smooth,ekstedt2020turngpt} lies in that detection determines whether the agent should take a turn at the current moment, whereas prediction decides when the turn-taking should occur in the future.
+The distinction between detection ([Hara et al [73]](../../Models/_Full/Turn-Taking_Prediction_Based_on_Detection_of_Transition_Relevance_Place.md); [Lala et al [115]](../../Models/_Full/Attentive_Listening_System_with_Backchanneling_Response_Generation_and_Flexible_Turn-Taking.md)) and prediction ([TurnGPT [55]](../../Models/_Full/TurnGPT.md); [Lala et al [114]](../../Models/_Full/Smooth_Turn-Taking_by_a_Robot_Using_an_Online_Continuous_Model_to_Generate_Turn-Taking_Cues.md)) lies in that detection determines whether the agent should take a turn at the current moment, whereas prediction decides when the turn-taking should occur in the future.
 
 - Overlap
 This mainly involves two situations.
-When the user and agent’s voices overlap, if the user intends to take the turn from the agent, this behavior is defined as an **interruption**~\cite{khouzaimi2016reinforcement,[Marge et al. [146]](../../Models/_Full/Spoken_Language_Interaction_with_Robots__Recommendations_for_Future_Research.md)}.
-If the user has no intention of taking the turn, this behavior is considered \textit{backchannel}~\cite{hara2018prediction} or a listener response, such as "uh-huh," "right."
+When the user and agent’s voices overlap, if the user intends to take the turn from the agent, this behavior is defined as an **interruption** ([Khouzaimi et al [103]](../../Models/_Full/Reinforcement_Learning_for_Turn-Taking_Management_in_Incremental_Spoken_Dialogue_Systems.md); [Marge et al. [146]](../../Models/_Full/Spoken_Language_Interaction_with_Robots__Recommendations_for_Future_Research.md)).
+If the user has no intention of taking the turn, this behavior is considered backchannel ([Hara et al [72]](../../Models/_Full/Prediction_of_Turn-Taking_Using_Multitask_Learning_with_Prediction_of_Backchannels_and_Fillers.md)) or a listener response, such as "uh-huh," "right."
 
 Through these concepts, we can better understand turn-taking behavior in duplex dialogues.
-In summary, our interactions with voice dialogue systems can be categorized as \textit{interruptions}, \textit{backchannels}, and \textit{normal turn exchanges}.
+In summary, our interactions with voice dialogue systems can be categorized as interruptions, backchannels, and normal turn exchanges.
 
 The earliest full-duplex systems used a simple Voice Activity Detection (VAD) component to model whether the user intended to interrupt.
 However, this approach is inadequate for handling backchannel interaction forms, leading to frequent interruptions and introducing considerable delays.
@@ -391,15 +396,36 @@ When the user briefly pauses, the system can interpret this as a moment of thoug
 In situations where the system detects critical information, it can choose to interrupt the user to provide immediate feedback.
 For example, if the user is speaking but the system needs to alert them to an error, it can intervene in real-time to ensure effective communication.
 
-#### Cascaded Systems
+</details>
+<br>
+
+现在我们理解了双工技术, 可以进一步探索双工口语对话模型.
+
+我们从一些概念开始.
+
+**轮次交换/轮流 (Turn-Taking)** 是双工对话中的核心概念. 它指的是说话人在对话中按照有序的方式轮流说话的过程, 形成轮次交换的模式.
+在过去几十年中, 轮次交换已经在语言学, 语音学, 社会学等领域广泛研究.
+- 一些研究 ([Raux et al [173]](../../Models/_Full/A_Finite-State_Turn-Taking_Model_for_Spoken_Dialogue_Systems.md); [Sacks et al [180]](../../Models/_Full/A_Simplest_Systematics_for_the_Organization_of_Turn-Taking_for_Conversation.md)) 使用具有六个状态的非确定性有限状态机来描述口语对话系统 (SDS) 中用户和系统之间的轮次交换行为.
+它概述了 SDS 中所有可能的轮次交换状态, 定义了轮次交换的目标, 即在交流双方之间最小化相互静默或重叠, 从而提高交流效率.
+
+轮次交换包含三个基本概念:
+- **轮次交换提示 (Turn-Taking Cues)** ([Duncan et al [53]](../../Models/_Full/Some_Signals_and_Rules_for_Taking_Speaking_Turns_in_Conversations.md); [Duncan et al [54]](../../Models/_Full/On_Signalling_that_It's_Your_Turn_to_Speak.md))
+  这些包括声音, 节奏, 呼吸, 视线或手势. 智能体可以使用这些提示来判断是否应该从用户那里获得轮次.
+- **轮次结束检测或预测 (Turn-End Detection or Prediction)**. 区别在于检测 ([Hara et al [73]](../../Models/_Full/Turn-Taking_Prediction_Based_on_Detection_of_Transition_Relevance_Place.md); [Lala et al [115]](../../Models/_Full/Attentive_Listening_System_with_Backchanneling_Response_Generation_and_Flexible_Turn-Taking.md)) 决定智能体是否应在当前时刻获得轮次, 而预测 ([TurnGPT [55]](../../Models/_Full/TurnGPT.md); [Lala et al [114]](../../Models/_Full/Smooth_Turn-Taking_by_a_Robot_Using_an_Online_Continuous_Model_to_Generate_Turn-Taking_Cues.md)) 决定轮次交换何时发生.
+- 重叠. 主要涉及两种情况. 当用户和智能体的声音重叠时, 如果用户打算从智能体获得轮次, 这种行为被定义为中断 (Interruption) ([Khouzaimi et al [103]](../../Models/_Full/Reinforcement_Learning_for_Turn-Taking_Management_in_Incremental_Spoken_Dialogue_Systems.md); [Marge et al. [146]](../../Models/_Full/Spoken_Language_Interaction_with_Robots__Recommendations_for_Future_Research.md)). 如果用户没有打算获得轮次, 这种行为被认为是反向通道 (Backchannel) ([Hara et al [72]](../../Models/_Full/Prediction_of_Turn-Taking_Using_Multitask_Learning_with_Prediction_of_Backchannels_and_Fillers.md)) 或听众反应 (Listener Response), 如 "uh-huh" 或 "right".
+
+通过这些概念, 我们可以更好地理解双工对话中的轮次交换行为.
+总而言之, 与基于文本的对话系统相比, 我们的与语音对话系统的互动可以分为中断, 反向通道和正常轮次交换.
+
+#### Cascaded Systems: 级联系统
 
 To enable interactive functionality, cascaded spoken dialogue models typically require explicit modeling of dialogue turns.
 As the core, the large language model needs effective context and turn management.
 Next, we introduce several representative works on interaction in cascaded systems.
 
-##### Duplex Conversation
+##### Duplex Conversation: 双工对话
 
-In \cite{lin2022duplex}, three core modules are proposed to achieve smooth full-duplex dialogue: user state detection, response signal selection, and interruption detection.
+In [Lin et al [130]](../../Models/_Full/Duplex_Conversation__Towards_Human-Like_Interaction_in_Spoken_Dialogue_Systems.md), three core modules are proposed to achieve smooth full-duplex dialogue: user state detection, response signal selection, and interruption detection.
 The user state detection module not only focuses on traditional turn-end detection but also identifies whether the user intends to switch turns, continue speaking, or hesitates during their speech.
 To achieve this, the system uses a multimodal model, taking audio and text as inputs, and incorporates features such as speech rhythm, pitch, and pauses for more accurate assessment of the user’s state, determining whether to respond immediately or wait longer.
 The response signal selection module inserts small backchannel cues (such as "uh-huh" or "right") at appropriate times to simulate natural human conversation.
@@ -408,9 +434,9 @@ Using multi-label classification, the system selects the optimal response for ea
 The interruption detection module flexibly responds to user interruptions.
 Unlike traditional rule-based detection methods, this system builds an end-to-end detection model with multimodal input (audio and text) that not only identifies genuine user interruptions but also avoids misinterpreting background noise or unintended voice signals as interruptions.
 
-##### Outbound Agent System
+##### Outbound Agent System: 向外智能体系统
 
-\cite{jin2021duplex} proposed a full-duplex dialogue scheme for outbound systems, focusing on the issues of conversational fluidity and timing of interaction in speech dialogue.
+[Jin et al [98]](../../Models/_Full/Duplex_Conversation_in_Outbound_Agent_System.md) proposed a full-duplex dialogue scheme for outbound systems, focusing on the issues of conversational fluidity and timing of interaction in speech dialogue.
 This scheme uses semantic analysis to determine whether the user truly intends to interrupt the system and can handle disjointed expressions when users mention named entities.
 The core of this system is a full-duplex interaction finite-state machine (FSM), which retrieves text snippets from ASR results every 300 milliseconds to decide whether to interrupt.
 Through continuous semantic analysis of user speech, the interruption model identifies meaningful user interruptions and avoids frequent interruptions caused by brief, meaningless responses (like "uh-huh").
@@ -424,9 +450,9 @@ GPT-4o represents a milestone for dialogue systems, showcasing a nearly human-li
 Its flexible interaction style and interruption mechanisms make human-computer interaction more natural and fluid.
 However, as a commercial model, its training data and implementation details remain proprietary, making replication challenging.
 
-##### Full-duplex LLM
+##### Full-duplex LLM: 全双工语言模型
 
-\cite{wang2024full} proposed a full-duplex spoken dialogue models based on LLMs, enabling simultaneous reception and transmission of voice signals through a perception module, an action module, and a neural finite-state machine (FSM).
+[Wang et al [211]](../../Models/_Full/A_Full-Duplex_Speech_Dialogue_Scheme_Based_on_Large_Language_Models.md) proposed a full-duplex spoken dialogue models based on LLMs, enabling simultaneous reception and transmission of voice signals through a perception module, an action module, and a neural finite-state machine (FSM).
 The perception module uses a streaming ASR model, capturing and processing user speech in real-time with 640-millisecond intervals per time step, converting it into token inputs for the LLM.
 The action module, utilizing a streaming TTS model, instantly converts the LLM-generated text into audio output and can pause or resume playback as needed, ensuring the system can generate audio while receiving user input.
 At the core is the neural FSM, allowing the LLM to switch between "speaking" and "listening" states.
@@ -443,7 +469,7 @@ VITA’s perception abilities are achieved through multimodal alignment and inst
 Additionally, VITA employs state tokens to distinguish user input types, such as query audio, background noise, and text input, facilitating wake-free interaction.
 VITA's enhanced listening module prevents unnecessary user feedback from interrupting system responses, improving robustness.
 
-##### CleanS2S \cite{CleanS2S}
+##### [CleanS2S [159]](../../Models/_tmp/CleanS2S.md)
 
 This model employs a structured pipeline to enable responsive and flexible interactions in a spoken dialogue setting.
 Designed to facilitate seamless turn-taking and interruption handling, the model consists of several interconnected modules working in a coordinated sequence to optimize user experience.
@@ -462,7 +488,7 @@ Each segment is prepared and sent only after a brief VAD check, ensuring that th
 This interconnected processing chain—VAD detecting input, ASR transcribing, LLM generating responses, and TTS outputting segmented audio—creates a duplex interaction framework that balances response generation and user-driven interruptions.
 By seamlessly coordinating these components, the model provides a fluid, real-time dialogue experience that adapts to user interactions dynamically.
 
-#### End-to-End Systems
+#### End-to-End Systems: 端到端系统
 
 In contrast, end-to-end spoken dialogue models do not require explicit modeling of dialogue turns; instead, they learn interaction modeling directly from training data.
 Next, we introduce several representative works on interaction in end-to-end systems.
@@ -499,7 +525,7 @@ Experimental results show that Moshi excels in speech modeling and spoken QA tas
 
 ##### Parrot
 
-Parrot~\cite{meng2024sd} model incorporates multiple features specifically designed to enhance interaction in spoken dialogue.
+[Parrot [148]](../../Models/SpeechLM/Parrot.md) model incorporates multiple features specifically designed to enhance interaction in spoken dialogue.
 It uses a dual-channel audio setup, where each channel represents a different speaker.
 This configuration allows Parrot to manage both sides of a conversation independently, facilitating real-time turn-taking.
 By distinguishing between the user’s input and the system’s response on separate channels, the model can listen and respond in parallel, creating a more natural conversational flow.
