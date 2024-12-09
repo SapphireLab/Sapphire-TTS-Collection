@@ -202,3 +202,11 @@ Although we conduct a comprehensive survey of controllable TTS in this paper, th
 3) The methodologies for feature disentanglement are crucial for controllable TTS but are not adequately discussed.
 
 ## 8·Conclusions: 结论
+
+In this survey paper, we first elaborate on the general pipeline for controllable TTS, followed by a glimpse of uncontrollable TTS methods.
+Then we comprehensively review existing controllable methods from the perspectives of model architectures and control strategies.
+Popular datasets and commonly used evaluation metrics for controllable TTS are also summarized in this paper.
+Besides, the current challenges are deeply analyzed and the promising future directions are also pointed out.
+To the best of our knowledge, this is the first comprehensive survey for controllable TTS.
+
+Writing a comprehensive survey is a challenging task and an iterative process. Hence, we will regularly update this survey to offer researchers and practitioners a continuously evolving resource for understanding controllable speech synthesis.
