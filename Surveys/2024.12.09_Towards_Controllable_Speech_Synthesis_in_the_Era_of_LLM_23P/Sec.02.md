@@ -1,8 +1,22 @@
 # 2·TTS Pipeline: 文本转语音流程
 
+<details>
+<summary>展开原文</summary>
+
 In this section, we elaborate on the general pipeline that supports controllable TTS technologies, including acoustic models, speech vocoders, and feature representations.
-Fig.\ref{fig:sec2_pipeline} depicts the general pipeline of controllable TTS, containing various model architectures and feature representations, but the control strategies will be discussed in Section~\ref{sec:ch4_controllable}.
-Readers can jump to Section~\ref{sec:ch3_uncontrollable} if familiar with TTS pipelines.
+Fig.02 depicts the general pipeline of controllable TTS, containing various model architectures and feature representations, but the control strategies will be discussed in [Section 4](Sec.04.md).
+Readers can jump to [Section 3](Sec.03.md) if familiar with TTS pipelines.
+
+</details>
+<br>
+
+在本节中, 我们详细介绍支持可控 TTS 技术的一般流程, 包括声学模型, 语音声码器和特征表示.
+
+![](Images/Fig.02.png)
+
+图 02 展示了可控 TTS 的一般流程, 包含各种模型架构和特征表示, 但控制策略将在 [第 4 节](Sec.04.md) 中讨论.
+
+如果读者熟悉 TTS 流程, 可以直接跳转到 [第 3 节](Sec.03.md).
 
 ## A·Overview: 总览
 
@@ -10,7 +24,7 @@ A TTS pipeline generally contains three key components, \ie linguistic analyzer,
 Besides, some end-to-end methods use a single model to encode the input and decode the speech waveforms without generating intermediate features like mel-spectrograms~\cite{wiki2024spectrogram}.
 \emph{Linguistic analyzer} aims to extract linguistic features, \eg phoneme duration and position, syllable stress, and utterance level, from the input text, which is a necessary step in HHM-based methods~\cite{yoshimura1999simultaneous,tokuda2000speech} and a few neural-based methods~\cite{zen2013statistical,fan2014tts}, but is time-consuming and error-prone.
 \emph{Acoustic model} is a parametric or neural model that predicts the acoustic features from the input texts.
-Modern neural-based acoustic models like Tacotron~\cite{wang2017tacotron} and later works~\cite{ren2019fastspeech,ren2020fastspeech2,jeong2021difftts} directly take character~\cite{chen2015joint} or word embeddings~\cite{almeida2019word} as the input, which is much more efficient than previous methods.
+Modern neural-based acoustic models like Tacotron~\cite{wang2017tacotron} and later works~\cite{[FastSpeech [15]](../../Models/TTS2_Acoustic/2019.05.22_FastSpeech.md),ren2020fastspeech2,jeong2021difftts} directly take character~\cite{chen2015joint} or word embeddings~\cite{almeida2019word} as the input, which is much more efficient than previous methods.
 \emph{Speech vocoder} is the last component that converts the intermediate acoustic features into a waveform that can be played back.
 This step bridges the gap between the acoustic features and the actual sounds produced, helping to generate high-quality, natural-sounding speech~\cite{van2016wavenet,kong2020hifigan}.
 Tan \etal\cite{tan2021survey} have presented a comprehensive and detailed review of acoustic models and vocoders.
@@ -41,7 +55,7 @@ Another example is MelNet~\cite{vasquez2019melnet}, which leverages autoregressi
 Unlike RNNs, which process sequential data frame by frame, CNNs process the entire sequence at once by applying filters across the input texts.
 This parallel approach enables faster training and inference, making CNN-based TTS particularly appealing for real-time and low-latency applications.
 Furthermore, by stacking multiple convolutional layers with varying kernel sizes or dilation rates, CNNs can capture both short-range and long-range dependencies, which are essential for natural-sounding speech synthesis.
-Deep Voice~\cite{arik2017deepvoice} is one of the first prominent CNN-based TTS models by Baidu, designed to generate mel-spectrograms directly from phoneme or character input.
+[Deep Voice [16]](../../Models/TTS0_System/2017.02.25_DeepVoice.md) is one of the first prominent CNN-based TTS models by Baidu, designed to generate mel-spectrograms directly from phoneme or character input.
 ParaNet~\cite{peng2020paranet} also utilizes a RNN model to achieve sequence-to-sequence mel-spectrogram generation.
 It uses a non-autoregressive architecture, which enables significantly faster inference by predicting multiple time steps simultaneously.
 
@@ -51,13 +65,13 @@ Transformer model~\cite{vaswani2017attention} uses self-attention layers to capt
 Transformer-based TTS models often employ an encoder-decoder architecture, where the encoder processes linguistic information (\eg phonemes or text) and captures contextual relationships, and the decoder generates acoustic features (like mel-spectrograms) from these encoded representations, later converted to waveforms by a vocoder.
 TransformerTTS~\cite{li2019transformertts} is one of the first TTS models that apply transformers to synthesize speech from text.
 It utilizes a standard encoder-decoder transformer architecture and relies on multi-head self-attention mechanisms to model long-term dependencies, which helps maintain consistency and natural flow in speech over long utterances.
-FastSpeech~\cite{ren2019fastspeech} is a non-autoregressive model designed to overcome the limitations of autoregressive transformers in TTS, achieving faster synthesis than previous methods.
+[FastSpeech [15]](../../Models/TTS2_Acoustic/2019.05.22_FastSpeech.md) is a non-autoregressive model designed to overcome the limitations of autoregressive transformers in TTS, achieving faster synthesis than previous methods.
 It introduces a length regulator to align text with output frames, enabling the control of phoneme duration.
 FastSpeech 2~\cite{ren2020fastspeech2} extends FastSpeech by adding pitch, duration, and energy predictors, resulting in more expressive and natural-sounding speech.
 
 ### LLM-Based Models: 基于大语言模型的模型
 
-LLMs~\cite{devlin2018bert,brown2020gpt3,touvron2023llama,jiang2023mistral}, known for their large-scale pre-training on text data, have shown remarkable capabilities in natural language understanding and generation.
+LLMs~\cite{devlin2018bert,brown2020gpt3,[LLaMA [11]](../../Models/TextLM/2023.02.27_LLaMA.md); jiang2023mistral}, known for their large-scale pre-training on text data, have shown remarkable capabilities in natural language understanding and generation.
 LLM-based TTS models generally use a text description to guide the mel-spectrogram generation, where the acoustic model processes the input text to generate acoustic tokens that capture linguistic and contextual information, such as tone, sentiment, and prosody.
 For example, PromptTTS~\cite{guo2023prompttts} uses a textual prompt encoded by BERT~\cite{devlin2018bert} to guide the acoustic model on the timbre, tone, emotion, and prosody desired in the speech output.
 PromptTTS first generates mel-spectrograms with token embeddings and then converts them to audio using a vocoder.
@@ -138,12 +152,12 @@ VITS~\cite{kim2021conditional} is another fully end-to-end TTS framework.
 It integrates a variational autoencoder (VAE) with normalizing flows~\cite{rezende2015variational} and adversarial training, enabling the model to learn latent representations that capture the intricate variations in speech, such as prosody and style.
 VITS combines non-autoregressive synthesis with stochastic latent variable modeling, achieving real-time waveform generation without compromising naturalness.
 There are more end-to-end TTS models such as Tacotron~\cite{wang2017tacotron}, ClariNet~\cite{ping2018clarinet}, and EATS~\cite{donahue2020end}, refer to another survey~\cite{tan2021survey} for more details.
-End-to-end controllable methods that emerged in recent years will be discussed in Section~\ref{sec:ch4_controllable}.
+End-to-end controllable methods that emerged in recent years will be discussed in [Section 4](Sec.04.md).
 
 ## E·Acoustic Feature Representations: 声学特征表示
 
 In TTS, the choice of acoustic feature representations impacts the model's flexibility, quality, expressiveness, and controllability.
-This subsection investigates continuous representations and discrete tokens as shown in Fig.\ref{fig:sec2_pipeline}, along with their pros and cons for TTS applications.
+This subsection investigates continuous representations and discrete tokens as shown in Fig.02, along with their pros and cons for TTS applications.
 
 ### Continuous Representations: 连续表示
 
@@ -166,7 +180,7 @@ The advantages of discrete tokens are:
 2) Discrete tokens often allow TTS systems to require fewer samples to learn and generalize, as the representations are compact and simplified.
 3) Using discrete tokens simplifies cross-modal TTS applications like voice cloning or translation-based TTS, as they map well to text-like representations such as LLM tokens.
 
-LLM-based~\cite{wang2024maskgct,zhou2024voxinstruct,ji2024controlspeech,yang2024instructtts} and zero-shot TTS methods~\cite{du2024cosyvoice,wang2024maskgct,ju2024naturalspeech3} often adopt discrete tokens as their acoustic features.
+LLM-based~\cite{wang2024maskgct,zhou2024voxinstruct,ji2024controlspeech,yang2024instructtts} and zero-shot TTS methods~\cite{[CosyVoice [17]](../../Models/SpeechLM/2024.07.07_CosyVoice.md),wang2024maskgct,ju2024naturalspeech3} often adopt discrete tokens as their acoustic features.
 However, discrete representation learning may result in information loss or lack the nuanced details that can be captured in continuous representations.
 
 Table~\ref{tab:sec5_controllable_methods_ar} and~\ref{tab:sec5_controllable_methods_nar} summarize the types of acoustic features of representative methods.
