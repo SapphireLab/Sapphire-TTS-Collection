@@ -71,7 +71,7 @@ Fig.~\ref{fig:sec1_summary} demonstrates the development of controllable TTS met
 The remainder of this section begins with a brief comparison between this survey and previous ones, followed by an overview of the history of controllable TTS technologies, ranging from early milestones to state-of-the-art advancements.
 Finally, we introduce the taxonomy and organization of this paper.
 
-### A.Comparison with Existing Surveys: 与现有综述的比较
+### A·Comparison with Existing Surveys: 与现有综述的比较
 
 Several survey papers have reviewed TTS technologies, spanning early approaches from previous decades~\cite{klatt1987review,dutoit1997high,tabet2011speech,king2014measuring} to more recent advancements~\cite{ning2019review,tan2021survey,zhang2023survey}.
 However, to the best of our knowledge, this paper is the first to focus specifically on controllable TTS.
@@ -101,7 +101,7 @@ Based on these analyses, we identify promising directions for future research on
 
 Table \ref{tab:sec1_survey_comparison} summarizes representative surveys and this paper in terms of main focus and publication year.
 
-### B.The History of Controllable TTS: 可控 TTS 的历史
+### B·The History of Controllable TTS: 可控 TTS 的历史
 
 Controllable TTS aims to control various aspects of synthesized speech, such as pitch, energy, speed/duration, prosody, timbre, emotion, gender, or high-level styles.
 This subsection briefly reviews the history of controllable TTS ranging from early approaches to the state-of-arts in recent years.
@@ -150,7 +150,7 @@ The detected emotion is encoded as an auxiliary input to the TTS model, enabling
 By leveraging LLMs' capabilities in understanding and generating rich contextual information, these systems can achieve enhanced and fine-grained control over various speech attributes such as prosody, emotion, style, and speaker characteristics~\cite{yang2024instructtts,gao2024emo,ji2024controlspeech}.
 Integrating LLMs into TTS systems represents a significant step forward, enabling more dynamic and expressive speech synthesis.
 
-### C.Organization of This Survey: 本文结构
+### C·Organization of This Survey: 本文结构
 
 This paper first presents a comprehensive and systematic review of controllable TTS technologies, with a particular focus on model architectures, control methodologies, and feature representations.
 To establish a foundational understanding, this survey begins with an introduction to the TTS pipeline in Section \ref{sec:ch2_pipeline}.
@@ -160,9 +160,9 @@ Section \ref{sec:ch5_datasets_eval} presents a comprehensive review of datasets 
 Section \ref{sec:ch6_challenges} provides an in-depth analysis of the challenges encountered in achieving controllable TTS systems and discusses future directions.
 Section \ref{sec:ch7_discussion} explores the broader impacts of controllable TTS technologies and identifies promising future research directions, followed by the conclusion in Section \ref{sec:ch8_conclusion}.
 
-## 2·TTS Pipeline: TTS 流程
+## 2·[TTS Pipeline: TTS 流程](Sec.02.md)
 
-## 3·Uncontrollable TTS: 非可控 TTS
+## 3·[Uncontrollable TTS: 非可控 TTS](Sec.03.md)
 
 ## 4·Controllable TTS: 可控 TTS
 
@@ -171,5 +171,34 @@ Section \ref{sec:ch7_discussion} explores the broader impacts of controllable TT
 ## 6·Challenges & Future Directions: 挑战与未来方向
 
 ## 7·Discussion: 讨论
+
+### A·Impacts of Controllable TTS: 可控 TTS 的影响
+
+#### Applications: 应用
+
+Controllable TTS systems allow fine-grained manipulation of speech attributes such as pitch, emotion, speaking rate, and style, enabling a wide range of applications across industries. One major application is in virtual assistants and customer support systems, where controllable TTS ensures tailored and context-aware responses. For instance, a virtual assistant can speak in a calm tone for technical support but switch to an enthusiastic tone when presenting promotional offers, enhancing user experience.
+
+In the entertainment industry, controllable TTS is invaluable for creating dynamic voiceovers, audiobooks, and gaming characters. It enables precise adjustments in tone and delivery, allowing audiobooks to reflect character emotions and gaming characters to exhibit personality traits that align with their roles. Similarly, in education, TTS systems can adapt speaking styles to suit different learners, such as adopting a slow, clear tone for language learning or an engaging, storytelling style for children’s content.
+
+Controllable TTS is also transformative in assistive technologies, where it can generate speech that reflects the user’s intended emotion or personality. This is particularly impactful for individuals with speech impairments, enabling more expressive and natural communication.
+
+In content localization, controllable TTS systems adjust speech characteristics to suit regional and cultural preferences, ensuring a natural fit for global audiences. Additionally, it finds applications in human-computer interaction research, enabling adaptive dialogue systems that modify speech dynamically based on user mood or environment. By offering this flexibility, controllable TTS systems enhance accessibility, personalization, and engagement across various domains.
+
+#### Deepfakes: 深度伪造
+
+A deepfake is a type of synthetic media in which a person in an existing image, video, or audio recording is replaced with someone else’s likeness or voice.
+This technology uses deep learning, particularly GANs~\cite{zhang2022deepfake}, to create highly realistic, but fabricated, content.
+While deepfakes are most commonly associated with video manipulation, such as face swapping~\cite{nirkin2019fsgan}, they can also apply to audio, enabling the creation of synthetic speech that mimics a specific person’s voice, which is well known as voice cloning.
+
+Voice cloning, especially few-shot~\cite{arik2018neural} and zero-shot TTS~\cite{wang2023neural,wang2024maskgct}, poses a significant threat to systems that rely on voice authentication, such as banking, customer service, and other identity verification processes. With a convincing clone of someone’s voice, attackers could potentially impersonate individuals to gain unauthorized access to sensitive information or accounts.
+
+To address these concerns, it’s essential to establish robust security protocols, consent-based regulations, and public awareness around voice cloning. Furthermore, advancements in detecting voice clones are equally important to help distinguish genuine voices from synthesized ones, protecting both individuals and organizations from potential misuse.
+
+### B·Limitation of this Survey: 本综述的局限性
+
+Although we conduct a comprehensive survey of controllable TTS in this paper, there are some limitations we want to address in the future:
+1) A unified benchmark method will be provided to evaluate controllable TTS methods.
+2) Detailed analysis and control strategies of each specific speech attribute will be provided in an updated version of this paper.
+3) The methodologies for feature disentanglement are crucial for controllable TTS but are not adequately discussed.
 
 ## 8·Conclusions: 结论
