@@ -176,13 +176,20 @@ Section \ref{sec:ch7_discussion} explores the broader impacts of controllable TT
 
 #### Applications: 应用
 
-Controllable TTS systems allow fine-grained manipulation of speech attributes such as pitch, emotion, speaking rate, and style, enabling a wide range of applications across industries. One major application is in virtual assistants and customer support systems, where controllable TTS ensures tailored and context-aware responses. For instance, a virtual assistant can speak in a calm tone for technical support but switch to an enthusiastic tone when presenting promotional offers, enhancing user experience.
+Controllable TTS systems allow fine-grained manipulation of speech attributes such as pitch, emotion, speaking rate, and style, enabling a wide range of applications across industries.
+One major application is in virtual assistants and customer support systems, where controllable TTS ensures tailored and context-aware responses.
+For instance, a virtual assistant can speak in a calm tone for technical support but switch to an enthusiastic tone when presenting promotional offers, enhancing user experience.
 
-In the entertainment industry, controllable TTS is invaluable for creating dynamic voiceovers, audiobooks, and gaming characters. It enables precise adjustments in tone and delivery, allowing audiobooks to reflect character emotions and gaming characters to exhibit personality traits that align with their roles. Similarly, in education, TTS systems can adapt speaking styles to suit different learners, such as adopting a slow, clear tone for language learning or an engaging, storytelling style for children’s content.
+In the entertainment industry, controllable TTS is invaluable for creating dynamic voiceovers, audiobooks, and gaming characters.
+It enables precise adjustments in tone and delivery, allowing audiobooks to reflect character emotions and gaming characters to exhibit personality traits that align with their roles.
+Similarly, in education, TTS systems can adapt speaking styles to suit different learners, such as adopting a slow, clear tone for language learning or an engaging, storytelling style for children’s content.
 
-Controllable TTS is also transformative in assistive technologies, where it can generate speech that reflects the user’s intended emotion or personality. This is particularly impactful for individuals with speech impairments, enabling more expressive and natural communication.
+Controllable TTS is also transformative in assistive technologies, where it can generate speech that reflects the user’s intended emotion or personality.
+This is particularly impactful for individuals with speech impairments, enabling more expressive and natural communication.
 
-In content localization, controllable TTS systems adjust speech characteristics to suit regional and cultural preferences, ensuring a natural fit for global audiences. Additionally, it finds applications in human-computer interaction research, enabling adaptive dialogue systems that modify speech dynamically based on user mood or environment. By offering this flexibility, controllable TTS systems enhance accessibility, personalization, and engagement across various domains.
+In content localization, controllable TTS systems adjust speech characteristics to suit regional and cultural preferences, ensuring a natural fit for global audiences.
+Additionally, it finds applications in human-computer interaction research, enabling adaptive dialogue systems that modify speech dynamically based on user mood or environment.
+By offering this flexibility, controllable TTS systems enhance accessibility, personalization, and engagement across various domains.
 
 #### Deepfakes: 深度伪造
 
@@ -190,9 +197,11 @@ A deepfake is a type of synthetic media in which a person in an existing image, 
 This technology uses deep learning, particularly GANs~\cite{zhang2022deepfake}, to create highly realistic, but fabricated, content.
 While deepfakes are most commonly associated with video manipulation, such as face swapping~\cite{nirkin2019fsgan}, they can also apply to audio, enabling the creation of synthetic speech that mimics a specific person’s voice, which is well known as voice cloning.
 
-Voice cloning, especially few-shot~\cite{arik2018neural} and zero-shot TTS~\cite{wang2023neural,wang2024maskgct}, poses a significant threat to systems that rely on voice authentication, such as banking, customer service, and other identity verification processes. With a convincing clone of someone’s voice, attackers could potentially impersonate individuals to gain unauthorized access to sensitive information or accounts.
+Voice cloning, especially few-shot~\cite{arik2018neural} and zero-shot TTS~\cite{wang2023neural,wang2024maskgct}, poses a significant threat to systems that rely on voice authentication, such as banking, customer service, and other identity verification processes.
+With a convincing clone of someone’s voice, attackers could potentially impersonate individuals to gain unauthorized access to sensitive information or accounts.
 
-To address these concerns, it’s essential to establish robust security protocols, consent-based regulations, and public awareness around voice cloning. Furthermore, advancements in detecting voice clones are equally important to help distinguish genuine voices from synthesized ones, protecting both individuals and organizations from potential misuse.
+To address these concerns, it’s essential to establish robust security protocols, consent-based regulations, and public awareness around voice cloning.
+Furthermore, advancements in detecting voice clones are equally important to help distinguish genuine voices from synthesized ones, protecting both individuals and organizations from potential misuse.
 
 ### B·Limitation of this Survey: 本综述的局限性
 
@@ -209,4 +218,5 @@ Popular datasets and commonly used evaluation metrics for controllable TTS are a
 Besides, the current challenges are deeply analyzed and the promising future directions are also pointed out.
 To the best of our knowledge, this is the first comprehensive survey for controllable TTS.
 
-Writing a comprehensive survey is a challenging task and an iterative process. Hence, we will regularly update this survey to offer researchers and practitioners a continuously evolving resource for understanding controllable speech synthesis.
+Writing a comprehensive survey is a challenging task and an iterative process.
+Hence, we will regularly update this survey to offer researchers and practitioners a continuously evolving resource for understanding controllable speech synthesis.
