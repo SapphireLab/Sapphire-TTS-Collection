@@ -308,6 +308,9 @@ $$
 
 ## 3.3·Diffeomorphisms and Push-Forward Maps: 微分同胚和推前映射
 
+<details>
+<summary>展开原文</summary>
+
 We denote by $C^r(\mathbb{R}^m,\mathbb{R}^n)$ the collection of functions $f:\mathbb{R}^m\to \mathbb{R}^n$ with continuous partial derivatives of order $r$:
 
 $$
@@ -332,7 +335,7 @@ $$
 \end{aligned}
 $$
 
-where the third equality is due the change of variables $x=\psi^{-1}(y)$, $\partial_y \phi(y)$ denotes the Jacobian matrix (of first order partial derivatives), \ie,
+where the third equality is due the change of variables $x=\psi^{-1}(y)$, $\partial_y \phi(y)$ denotes the Jacobian matrix (of first order partial derivatives), i.e.,
 
 $$
     [\partial_y \phi(y)]_{i,j} = \frac{\partial \phi^i}{\partial x^j}, \ i,j \in [d],
@@ -346,6 +349,47 @@ $$
 $$
 
 We will denote the push-forward operator with the symbol $\sharp$, that is
+
+$$
+    [\psi_\sharp p_X](y) := p_X(\psi^{-1}(y))|\det \partial_y \psi^{-1} (y)|.
+$$
+
+</details>
+<br>
+
+$C^r(\mathbb{R}^m, \mathbb{R}^n)$ 是由具有 $r$ 阶连续偏导函数的函数 $f:\mathbb{R}^m\to \mathbb{R}^n$ 所组成的集合. 为了保持符号简介, 定义 $C^r(\mathbb{R}^n):=C^r(\mathbb{R}^m, \mathbb{R})$, 例如 $C^1(\mathbb{R}^m)$ 表示连续可微标量函数.
+
+一个重要的函数类是 **$C^r$ 微分同胚 (Diffeomorphism)**, 它们是可逆函数 $\psi\in C^r(\R^n,\R^n)$, 且 $\psi^{-1}\in C^r(\R^n,\R^n)$. (注: 两个微分流形之间光滑且可逆的映射, 保持了流形的基础结构).
+
+然后, 给定一个随机变量 $X\sim p_X$, 考虑随机变量 $Y=\psi(X)$, 其中 $\psi:\mathbb{R}^d\to \mathbb{R}^d$ 是 $C^1$ 微分同胚.
+$Y$ 的概率密度函数 $p_Y$ 也称为 $p_X$ 的**推前 (Push-Forward)**.
+然后, $p_Y$ 可以通过变量替换的方式计算:
+
+$$
+\begin{aligned}
+\mathbb{E}[f(Y)]
+&= \mathbb{E}[f(\psi(X))]\\
+&= \int f(\psi(x)) p_X(x) \text{d} x \\
+&= \int f(y) p_X(\psi^{-1}(y)) |\det \partial_y \psi^{-1} (y)| \text{d} y,
+\end{aligned}
+$$
+
+其中第三个等式是代入了 $x=\psi^{-1}(y)$.
+这里的 $\partial_y \psi(y)$ 表示雅可比矩阵 (一阶偏导), 即:
+
+$$
+    [\partial_y \phi(y)]_{i,j} = \frac{\partial \phi^i}{\partial x^j}, \ i,j \in [d],
+$$
+
+$\det A$ 表示方阵 $A$ 的行列式.
+
+因此, 我们可以得到 $p_Y$ 的表达式:
+
+$$
+    p_Y(y) = p_X(\psi^{-1}(y))|\det \partial_y \psi^{-1} (y)|.
+$$
+
+用符号 $\sharp$ 表示推前算子, 即:
 
 $$
     [\psi_\sharp p_X](y) := p_X(\psi^{-1}(y))|\det \partial_y \psi^{-1} (y)|.
