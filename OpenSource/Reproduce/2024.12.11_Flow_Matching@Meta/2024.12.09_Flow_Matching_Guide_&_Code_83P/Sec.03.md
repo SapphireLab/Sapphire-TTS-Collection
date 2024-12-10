@@ -397,17 +397,20 @@ $$
 
 ## 3.4·Flows as Generative Models: 流作为生成模型
 
-As mentioned in [Section 2](Main.md), the goal of generative modeling is to transform samples $X_0 = x_0$ from a \highlight{source distribution} $p$ into samples $X_1=x_1$ from a \highlight{target distribution} $q$.
+<details>
+<summary>原文</summary>
+
+As mentioned in [Section 2](Main.md), the goal of generative modeling is to transform samples $X_0 = x_0$ from a source distribution $p$ into samples $X_1=x_1$ from a target distribution $q$.
 In this section, we start building the tools necessary to address this problem by means of a flow mapping $\psi_t$.
-More formally, a $C^r$ \highlight{flow} is a time-dependent mapping $\psi:[0,1]\times \mathbb{R}^d\to \mathbb{R}^d$ implementing $\psi : (t,x) \mapsto \psi_t(x)$.
+More formally, a $C^r$ flow is a time-dependent mapping $\psi:[0,1]\times \mathbb{R}^d\to \mathbb{R}^d$ implementing $\psi : (t,x) \mapsto \psi_t(x)$.
 Such flow is also a $C^r([0,1]\times\mathbb{R}^{d},\mathbb{R}^d)$ function, such that the function $\psi_t(x)$ is a $C^r$ diffeomorphism in $x$ for all $t \in [0, 1]$.
-A \highlight{flow model} is a **continuous-time Markov process** $(X_t)_{0 \leq t \leq 1}$ defined by applying a flow $\psi_t$ to the RV $X_0$:
+A flow model is a **continuous-time Markov process** $(X_t)_{0 \leq t \leq 1}$ defined by applying a flow $\psi_t$ to the RV $X_0$:
 
 $$
     X_t = \psi_t(X_0), \quad t\in [0,1], \text{ where } X_0\sim p.
 $$
 
-See \Cref{fig:flow_model} for an illustration of a flow model.
+See Figure.05 for an illustration of a flow model.
 To see why $X_t$ is Markov, note that, for any choice of $0\leq t < s \leq 1$, we have
 
 $$
@@ -419,6 +422,41 @@ $X_s=\psi_{s|t}(X_t)$ implies that states later than $X_t$ depend only on $X_t$,
 In fact, for flow models, this dependence is **deterministic**.
 
 In summary, the goal \highlight{generative flow modeling} is to find a flow $\psi_t$ such that
+
+$$
+    X_1 = \psi_1(X_0) \sim q.
+$$
+
+</details>
+<br>
+
+如[第二节](Main.md) 所述, 生成式建模的目标是将来自源分布 $p$ 的样本 $X_0=x_0$ 转换为来自目标分布 $q$ 的样本 $X_1=x_1$.
+在本节中, 我们开始构建必要的工具通过流映射 $\psi_t$ 来解决这个问题.
+
+形式上, 一个 $C^r$ 流是一个时间依赖的映射 $\psi:[0,1]\times \mathbb{R}^d\to \mathbb{R}^d$, 它实现了 $\psi : (t,x) \mapsto \psi_t(x)$.
+这样的流是 $C^r([0,1]\times\mathbb{R}^{d},\mathbb{R}^d)$ 函数, 其中函数 $\psi_t(x)$ 是 $C^r$ 微分同胚.
+
+流模型是一个**连续时间马尔可夫过程 (Continuous-Time Markov Process)** $(X_t)_{0 \leq t \leq 1}$, 它由应用流 $\psi_t$ 到随机变量 $X_0$ 来定义:
+
+$$
+    X_t = \psi_t(X_0), \quad t\in [0,1], \text{ where } X_0\sim p.
+$$
+
+![](Images/Fig.05.png)
+
+为了了解为什么 $X_t$ 是马尔可夫的, 注意到, 对于 $0\leq t < s \leq 1$ 的任意选择, 有:
+
+$$
+    X_s = \psi_s(X_0) = \psi_s(\psi_t^{-1}( \psi_t(X_0) ) ) = \psi_{s|t}(X_t),
+$$
+
+其中最后一个等式定义了 $\psi_{s|t}$ 为 $\psi_s\circ \psi_t^{-1}$, 它也是微分同胚.
+
+$X_s = \psi_{s|t}(X_t)$ 说明在 $X_t$ 之后的状态只依赖于 $X_t$, 所以 $X_t$ 是马尔可夫的.
+
+实际上, 对于流模型, 这一依赖是确定性的.
+
+总而言之, **生成式流建模 (Generative Flow Modeling)** 的目标是找到一个流 $\psi_t$ 使得:
 
 $$
     X_1 = \psi_1(X_0) \sim q.
