@@ -172,6 +172,8 @@ GM also unifies all models in previous sections into a common framework.
 
 ## 2·Quick Tour & Key Concepts: 快速教程和关键概念
 
+<a id="Sec.02"></a>
+
 <details>
 <summary>展开原文</summary>
 
