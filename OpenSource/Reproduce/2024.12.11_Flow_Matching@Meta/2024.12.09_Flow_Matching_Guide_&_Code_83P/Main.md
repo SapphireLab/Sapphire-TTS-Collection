@@ -42,7 +42,7 @@ By also providing a PyTorch package featuring relevant examples (e.g., image and
 本指南提供了流匹配的全面且独立的回顾, 涵盖了数学基础, 设计选择, 以及扩展.
 也通过提供 PyTorch 包来提供相关示例 (例如, 图像和文本生成), 这一工作旨在为对理解, 应用和进一步开发流匹配感兴趣的初学者和经验丰富的研究人员提供资源.
 
-### 1·Introduction: 引言
+## 1·Introduction: 引言
 
 <details>
 <summary>展开原文</summary>
@@ -170,6 +170,217 @@ GM also unifies all models in previous sections into a common framework.
 - [第九节: 生成器匹配](Sec.09.md)描述了生成器匹配, 一种用于任意模态的生成建模框架, 描述了训练 CTMPs 的可扩展方式. GM 还将所有先前章节中的模型统一到一个框架中.
 - [第十节: 与扩散模型和其他去噪模型的关系](Sec.10.md)讨论了去噪扩散模型作为流匹配系列模型的一个特定实例.
 
+## 2·Quick Tour & Key Concepts: 快速教程和关键概念
+
+<details>
+<summary>展开原文</summary>
+
+Given access to a training dataset of samples from some target distribution $q$ over $\mathbb{R}^d$, our goal is to build a model capable of generating new samples from $q$.
+To address this task, Flow Matching (FM) builds a probability path $(p_t)_{0\leq t\leq 1}$, from a known source distribution $p_0=p$ to the data target distribution $p_1=q$, where each $p_t$ is a distribution over $\mathbb{R}^d$.
+Specifically, FM is a simple regression objective to train the velocity field neural network describing the instantaneous velocities of samples---later used to convert the source distribution $p_0$ into the target distribution $p_1$, along the probability path $p_t$.
+After training, we generate a novel sample from the target distribution $X_1 \sim q$ by (i) drawing a novel sample from the source distribution $X_0 \sim p$, and (ii) solving the Ordinary Differential Equation (ODE) determined by the velocity field.
+
+More formally, an ODE is defined via a time-dependent vector field $u: [0,1] \times \mathbb{R}^d \to \mathbb{R}^d$ which, in our case, is the velocity field modeled in terms of a neural network.
+This velocity field determines a time-dependent flow $\psi : [0,1] \times \mathbb{R}^d \to \mathbb{R}^d$, defined as
+
+$$
+  \frac{\text{d}}{\text{d} t} \psi_t(x) = u_t(\psi_t(x)),
+$$
+
+where $\psi_t := \psi(t, x)$ and $\psi_0(x) = x$.
+
+The velocity field $u_t$ \emph{generates} the probability path $p_t$ if its flow $\psi_t$ satisfies
+
+$$
+  X_t := \psi_t(X_0) \sim p_t \text{for}\ X_0 \sim p_0.
+$$
+
+According to the equation above, the velocity field $u_t$ is the only tool necessary to sample from $p_t$ by solving the ODE above.
+As illustrated in Figure 02 (d), solving the ODE until $t=1$ provides us with samples $X_1=\psi_1(X_0)$, resembling the target distribution $q$.
+Therefore, and in sum, the goal of Flow Matching is to learn a vector field $u^\theta_t$ such that its flow $\psi_t$ generates a probability path $p_t$ with $p_0=p$ and $p_1=q$.
+
+Using the notations above, the goal of Flow Matching is to learn the parameters $\theta$ of a velocity field $u^\theta_t$ implemented in terms of a neural network.
+As anticipated in the introduction, we do this in two steps: design a probability path $p_t$ interpolating between $p$ and $q$ (see Figure.02 (b)), and train a velocity field $u^\theta_t$ generating $p_t$ by means of regression (see Figure.02 (c)).
+
+Therefore, let us proceed with the first step of the recipe: designing the probability path $p_t$.
+In this example, let the source distribution $p := p_0 = \mathcal{N}(x | 0, I)$, and construct the probability path $p_t$ as the aggregation of the conditional probability paths $p_{t|1}(x | x_1)$, each conditioned on one of the data examples $X_1=x_1$ comprising the training dataset.
+(One of such conditional paths is illustrated in Figure 03 (a).)
+The probability path $p_t$ therefore follows the expression:
+
+$$
+    p_t(x) = \int p_{t|1}(x|x_1)q(x_1)\text{d} x_1, \text{ where } p_{t|1}(x|x_1)=\mathcal{N}(x | t x_1, (1-t)^2I).
+$$
+
+This path, also known as the ***conditional optimal-transport*** or ***linear*** path, enjoys some desirable properties that we will study later in this manuscript.
+
+Using this probability path, we may define the random variable $X_t \sim p_t$ by drawing $X_0 \sim p$, drawing $X_1 \sim q$, and taking their linear combination:
+
+$$
+    X_t = t X_1 + (1-t) X_0 \sim p_t.\tag{1}
+$$
+
+We now continue with the second step in the Flow Matching recipe: regressing our velocity field $u^\theta_t$ (usually implemented in terms of a neural network) to a target velocity field $u_t$ known to generate the desired probability path $p_t$.
+
+To this end, the ***Flow Matching loss*** reads:
+
+$$
+  \mathcal{L}_{FM}(\theta) = \mathbb{E}_{t, X_t} \|u^\theta_t(X_t) - u_t(X_t)\|^2,
+  \quad\text{where}\ t \sim \mathcal{U}[0, 1]\ \text{and}\ X_t \sim p_t.\tag{2}
+$$
+
+In practice, one can rarely implement the objective above, because $u_t$ is a complicated object governing the joint transformation between two high-dimensional distributions.
+Fortunately, the objective simplifies drastically by conditioning the loss on a single target example $X_1=x_1$ picked at random from the training set.
+To see how, borrowing Equation (1) to realize the conditional random variables
+
+$$
+    X_{t|1} = tx_1 + (1-t)X_0 \quad \sim \quad  p_{t|1}(\cdot|x_1)=\mathcal{N}(\cdot\ |\ tx_1,(1-t)^2I).
+$$
+
+Using these variables, solving $\dfrac{\text{d}}{\text{d} t}X_{t|1} = u_t(X_{t|1}|x_1)$ leads to the ***conditional velocity field***
+
+$$
+   u_t(x|x_1) = \frac{x_1-x}{1-t},\tag{3}
+$$
+
+which generates the conditional probability path $p_{t|1}(\cdot|x_1)$.
+(For an illustration on these two conditional objects, see Figure 03 (c).)
+
+Equipped with the simple Equation (3) for the conditional velocity fields generating the designed conditional probability paths, we can formulate a tractable version of the Flow Matching loss in Equation (2).
+
+This is the ***conditional Flow Matching loss***:
+
+$$
+    \mathcal{L}_{CFM}(\theta) = \mathbb{E}_{t, X_t, X_1} \| u^\theta_t(X_t) - u_t(X_t|X_1) \|^2,\\
+    \text{ where } t \sim U[0,1],\, X_0 \sim p ,\,  X_1 \sim q,\tag{4}
+$$
+
+and $X_t=(1-t)X_0 + tX_1$.
+
+Remarkably, the objectives in Equation (2) and Equation (4) provide the same gradients to learn $u^\theta_t$, \ie,
+
+$$
+    \nabla_\theta \mathcal{L}_{FM}(\theta) = \nabla_\theta \mathcal{L}_{CFM}(\theta).
+$$
+
+Finally, by plugging $u_t(x|x_1)$ from Equation (3) into Equation (4), we get the simplest implementation of Flow Matching:
+
+$$
+    \mathcal{L}^{\text{{OT,Gauss}}}_{CFM}(\theta) = \mathbb{E}_{t, X_0, X_1} \| u^\theta_t(X_t) -(X_1-X_0) \|^2,
+    \text{ where } t \sim U[0,1],\, X_0 \sim \mathcal{N}(0,I),\, X_1 \sim q.
+$$
+
+A standalone implementation of this quick tour in pure PyTorch is provided in code 1.
+Later in the manuscript, we will cover more sophisticated variants and design choices, all of them implemented in the accompanying library.
+
+</details>
+<br>
+
+给定服从 $\mathbb{R}^d$ 上目标分布 $q$ 的样本组成的训练数据集, 我们的目标是构建一个能够生成服从目标分布 $q$ 的新样本.
+
+为了解决这一任务, 流匹配构建了一个概率路径 $(p_t)_{0\leq t\leq 1}$, 它从已知的源分布 $p_0=p$ 到数据目标分布 $p_1=q$, 其中每个 $p_t$ 都是 $\mathbb{R}^d$ 上的分布.
+
+具体来说, FM 是一个简单的回归目标, 用于训练一个速度场神经网络, 它描述了样本的瞬时速度. 之后用于将源分布 $p_0$ 沿着概率路径 $p_t$ 转换到目标分布 $p_1$.
+在训练之后, 我们从源分布 $X_0 \sim p$ 中抽取一个新样本, 并求解由速度场确定的常微分方程来生成一个服从目标分布 $q$ 的一个新样本 $X_1 \sim q$.
+
+更正式地说, 常微分方程通过时间依赖矢量场 $u: [0,1] \times \mathbb{R}^d \to \mathbb{R}^d$ 来定义, 在我们的例子中, 这个矢量场是由神经网络建模的速度场.
+这一速度场确定了一个时间依赖流 $\psi : [0,1] \times \mathbb{R}^d \to \mathbb{R}^d$ 定义为:
+
+$$
+  \frac{\text{d}}{\text{d} t} \psi_t(x) = u_t(\psi_t(x)),
+$$
+
+其中 $\psi_t := \psi(t, x)$ 和 $\psi_0(x) = x$.
+
+速度场 $u_t$ 可以生成概率路径 $p_t$ 当它的流 $\psi_t$ 满足:
+
+$$
+  X_t := \psi_t(X_0) \sim p_t\quad \text{for}\ X_0 \sim p_0.
+$$
+
+根据上面的方程, 速度场 $u_t$ 是通过求解上述常微分方程从 $p_t$ 中采样的唯一必要工具.
+
+如图 02 (d) 所示, 将 ODE 求解到 $t=1$ 就获得了样本 $X_1=\psi_1(X_0)$, 其服从的分布与目标分布 $q$ 相似.
+
+因此, 流匹配的目标是学习一个矢量场 $u^\theta_t$, 使得它的流 $\psi_t$ 生成一个概率路径 $p_t$ 具有 $p_0=p$ 和 $p_1=q$.
+
+使用上述概念, 流匹配的目标是学习由神经网络实现的速度场 $u^{\theta}_t$ 的参数 $\theta$.
+如引言中所述, 我们通过两个步骤来实现:
+1. 设计在源分布 $p$ 和目标分布 $q$ 之间插值的概率路径 $p_t$ (图 02 (b));
+2. 通过回归任务训练一个速度场 $u^\theta_t$ 用于生成 $p_t$ (图 02 (c)).
+
+![](Images/Fig.03.png)
+
+### 第一步: 设计概率路径 $p_t$
+
+在这个例子中, 设源分布为 $p_0=\mathcal{N}(x | 0, I)$, 并构造概率路径 $p_t$ 为条件概率路径 $p_{t|1}(x | x_1)$ 的聚合, 其中每个条件为训练数据集中的一个数据样本 $X_1=x_1$. (如图 03 (a) 所示.)
+所以概率路径 $p_t$ 的表达式为:
+
+$$
+    p_t(x) = \int p_{t|1}(x|x_1)q(x_1)\text{d} x_1, \quad\text{where}\ p_{t|1}(x|x_1)=\mathcal{N}(x | t x_1, (1-t)^2I).
+$$
+
+这一路径, 也称为***条件最优传输路径 (Conditional Optimal-Transport Path)*** 或***线性路径***, 具有一些可取的性质, 将在后续章节中讨论.
+
+使用这一概率路径, 我们可以定义随机变量 $X_t\sim p_t$, 是从源分布 $p$ 采样 $X_0$ 和目标分布 $q$ 采样 $X_1$ 并将它们线性组合得到的:
+
+$$
+    X_t = t X_1 + (1-t) X_0 \sim p_t.\tag{1}
+$$
+
+### 第二步: 速度场 $u_t$ 回归
+
+下面进行第二步: 回归速度场 $u^\theta_t$ (通常用神经网络实现) 到目标速度场 $u_t$ 以生成所需概率路径 $p_t$ 的参数 $\theta$.
+
+定义的***流匹配损失 (Flow Matching Loss)*** 为:
+
+$$
+  \mathcal{L}_{FM}(\theta) = \mathbb{E}_{t, X_t} \|u^\theta_t(X_t) - u_t(X_t)\|^2,
+  \quad\text{where}\ t \sim \mathcal{U}[0, 1]\ \text{and}\ X_t \sim p_t.\tag{2}
+$$
+
+实践中, 实现上述目标几乎不可能, 因为 $u_t$ 是一个复杂对象, 涉及两个高维分布之间的联合变换.
+幸运的是, 这个目标可以进行简化, 条件到只考虑一个目标样本 $X_1=x_1$ 的条件下.
+
+通过先前的随机变量 $X_t$ 可以实现条件随机变量:
+
+$$
+    X_{t|1} = tx_1 + (1-t)X_0 \quad \sim \quad  p_{t|1}(\cdot|x_1)=\mathcal{N}(\cdot\ |\ tx_1,(1-t)^2I).
+$$
+
+使用这些变量, 求解 $\dfrac{\text{d}}{\text{d} t}X_{t|1} = u_t(X_{t|1}|x_1)$ 可以得到***条件速度场 (Conditional Velocity Field)*** 用于生成***条件概率路径 (Conditional Probability Path)*** $p_{t|1}(\cdot|x_1)$. (见图 03 (c))
+
+$$
+   u_t(x|x_1) = \frac{x_1-x}{1-t},\tag{3}
+$$
+
+结合条件速度场 (方程 (3)) 来生成条件概率路径, 我们可以构建流匹配损失 (方程 (2)) 的可行版本, 即***条件流匹配损失 (Conditional Flow Matching Loss)***:
+
+$$
+    \mathcal{L}_{CFM}(\theta) = \mathbb{E}_{t, X_t, X_1} \| u^\theta_t(X_t) - u_t(X_t|X_1) \|^2,\\
+    \text{ where } t \sim U[0,1],\, X_0 \sim p ,\,  X_1 \sim q,\tag{4}
+$$
+
+值得注意的是, 流匹配损失和条件流匹配损失在训练 $u_t^{\theta}$ 提供的梯度是相同的, 即:
+
+$$
+    \nabla_\theta \mathcal{L}_{FM}(\theta) = \nabla_\theta \mathcal{L}_{CFM}(\theta).
+$$
+
+最后将方程 (3) 代入到条件流匹配损失中, 可以得到流匹配的最简实现:
+
+$$
+\begin{aligned}
+    \mathcal{L}^{\text{{OT,Gauss}}}_{CFM}(\theta)
+    &= \mathbb{E}_{t, X_0, X_1} \| u^\theta_t(X_t) - u_t(X_t|X_1) \|^2\\
+    &= \mathbb{E}_{t, X_0, X_1} \| u^\theta_t(X_t) - \dfrac{X_1-X_t}{1-t} \|^2\\
+    &= \mathbb{E}_{t, X_0, X_1} \| u^\theta_t(X_t) - \dfrac{X_1-[tX_1+(1-t)X_0]}{1-t} \|^2\\
+    &= \mathbb{E}_{t, X_0, X_1} \| u^\theta_t(X_t) - \dfrac{X_1-tX_1-(1-t)X_0}{1-t} \|^2\\
+    &= \mathbb{E}_{t, X_0, X_1} \| u^\theta_t(X_t) -(X_1-X_0) \|^2,
+\end{aligned}
+$$
+
+最后, 这一快速教程的 Pytorch 版的单独实现在 [Code 1](Codes/Code1.py) 中给出.
+之后的章节将会涵盖更复杂的变体和设计选择, 它们都在附带的库中实现.
 
 [^1]: [Flow Matching for Generative Modeling](../../../../Models/Diffusion/2022.10.06_Flow_Matching.md) (2022)
 [^2]: Building Normalizing Flows with Stochastic Interpolants (2022)
@@ -190,16 +401,16 @@ GM also unifies all models in previous sections into a common framework.
 [^17]: Generative Flows On Discrete State-Spaces: Enabling Multimodal Flows with Applications to Protein Co-Design (2024)
 [^18]: Discrete Flow Matching (2024)
 [^19]: Flow Matching on General Geometries (2024)
-[^20]: yim2023fast
-[^21]: bose2023se
-[^22]: holderrieth2024gm
-[^23]: sohl2015deep,
-[^24]: ho2020denoising
-[^25]: song2021sde
-[^26]: song2019generative
-[^27]: anderson1982reverse
-[^28]: kingma2021variational
-[^29]: salimans2022progressive
-[^30]: peluchetti2023non
-[^31]: shi2023diffusion,
-[^32]: liu2023i2sb
+[^20]: Fast Protein Backbone Generation with Se (3) Flow Matching (2023)
+[^21]: Se (3) - Stochastic Flow Matching for Protein Backbone Generation (2023)
+[^22]: Generator Matching: Generative Modeling with Arbitrary Markov Processes (2024)
+[^23]: Deep Unsupervised Learning Using Nonequilibrium Thermodynamics (2015)
+[^24]: [Denoising Diffusion Probabilistic Models](../../../../Models/Diffusion/2020.06.19_DDPM.md) (2020)
+[^25]: Score-Based Generative Modeling through Stochastic Differential Equations (2021)
+[^26]: Generative Modeling by Estimating Gradients of The Data Distribution (2019)
+[^27]: Reverse-Time Diffusion Equation Models (1982)
+[^28]: Variational Diffusion Models (2021)
+[^29]: Progressive Distillation for Fast Sampling of Diffusion Models (2022)
+[^30]: Non-Denoising Forward-Time Diffusions (2023)
+[^31]: Diffusion Schrödinger Bridge Matching (2023)
+[^32]: I2SB: Image-to-Image Schrödinger Bridge (2023)
