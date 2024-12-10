@@ -1,11 +1,27 @@
 # 3·Flow Models: 流模型
 
+<details>
+<summary>展开原文</summary>
+
 This section introduces ***flows***, the mathematical object powering the simplest forms of Flow Matching.
 Later parts in the manuscript will discuss Markov processes more general than flows, leading to more sophisticated generative learning paradigms introducing many more design choices to the Flow Matching framework.
 The reason we start with flows is three-fold: First, flows are arguably the simplest of all CTMPs --- being deterministic and having a compact parametrization via velocities---these models can transform any source distribution $p$ into any target distribution $q$, as long as these two have densities.
 Second, flows can be sampled rather efficiently by approximating the solution of ODEs, compared, e.g., to the harder-to-simulate SDEs for diffusion processes.
-Third, the deterministic nature of flows allows an  unbiased model likelihood estimation, while more general stochastic processes require working with lower bounds.
+Third, the deterministic nature of flows allows an unbiased model likelihood estimation, while more general stochastic processes require working with lower bounds.
 To understand flows, we must first review some background notions in probability and differential equations theory, which we do next.
+
+</details>
+<br>
+
+本节介绍***流 (Flows)***, 是流匹配中最简单的数学对象.
+后续部分将讨论比流更一般的马尔可夫过程, 引出更复杂的生成学习范式, 为流匹配框架引入许多更多的设计选择.
+
+我们从流 (Flows) 开始的原因有三点:
+1. 流 (Flows) 可以说是所有连续时间马尔可夫过程 (CTMPs) 中最简单的一种: 它是确定性的, 且通过速度具有紧凑的参数化形式. 这些模型可以将任意源分布 $p$ 转换到任意目标分布 $q$, 只要这两个分布有密度.
+2. 相比扩散过程中难以模拟的随机微分方程相比, 流 (Flows) 可以通过近似常微分方程的解来高效采样.
+3. 流 (Flows) 的确定性特性可以获得无偏的模型似然估计, 而更一般的随机过程则需要使用下界.
+
+为了理解流 (Flows), 我们首先需要回顾概率和微分方程理论中的一些背景概念.
 
 ## 3.1·Random Vectors: 随机向量
 
