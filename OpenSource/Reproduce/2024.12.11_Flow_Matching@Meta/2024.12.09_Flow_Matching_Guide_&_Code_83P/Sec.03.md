@@ -25,11 +25,14 @@ To understand flows, we must first review some background notions in probability
 
 ## 3.1·Random Vectors: 随机向量
 
+<details>
+<summary>展开原文</summary>
+
 Consider data in the $d$-dimensional Euclidean space $x=(x^1,\ldots,x^d)\in \mathbb{R}^d$ with the standard Euclidean inner product $\langle x,y\rangle=\sum_{i=1}^d x^i y^i$ and norm $\|x\|=\sqrt{\langle x,x\rangle}$.
 We will consider random variables (RVs) $X\in\R^d$ with continuous probability density function (PDF), defined as a continuous function $p_X:\mathbb{R}^d\to \mathbb{R}_{\geq 0}$ providing event $A$ with probability
 
 $$
-    \mathbb{P}(X\in A) = \int_A p_X(x) \text{d} x,
+\mathbb{P}(X\in A) = \int_A p_X(x) \text{d} x,
 $$
 
 where $\int p_X(x)\text{d} x = 1$.
@@ -41,7 +44,7 @@ We will use the notation $X \sim p$ or $X \sim p(X)$ to indicate that $X$ is dis
 One common PDF in generative modeling is the $d$-dimensional isotropic Gaussian:
 
 $$
-  \mathcal{N}(x|\mu,\sigma^2 I) = (2\pi\sigma^2)^{-\frac{d}{2}}\exp\left(-\frac{\|{x-\mu}_2\|^2}{2\sigma^2}\right),
+\mathcal{N}(x|\mu,\sigma^2 I) = (2\pi\sigma^2)^{-\frac{d}{2}}\exp\left(-\frac{\|{x-\mu}_2\|^2}{2\sigma^2}\right),
 $$
 
 where $\mu\in \mathbb{R}^d$ and $\sigma \in \mathbb{R}_{>0}$ stand for the mean and the standard deviation of the distribution, respectively.
@@ -49,16 +52,62 @@ where $\mu\in \mathbb{R}^d$ and $\sigma \in \mathbb{R}_{>0}$ stand for the mean 
 The expectation of a RV is the constant vector closest to $X$ in the least-squares sense:
 
 $$
-    \mathbb{E}[X]=\argmin_{z\in\mathbb{R}^d} \int \|x-z\|^2 p_X(x)\text{d} x = \int x p_X(x)\text{d} x. %
+\mathbb{E}[X]=\argmin_{z\in\mathbb{R}^d} \int \|x-z\|^2 p_X(x)\text{d} x = \int x p_X(x)\text{d} x.
 $$
 
 One useful tool to compute the expectation of **functions of RVs** is the **Law of the Unconscious Statistician**:
 
 $$
-    \mathbb{E} [f(X)] = \int f(x) p_X(x) \text{d} x. %
+\mathbb{E} [f(X)] = \int f(x) p_X(x) \text{d} x.
 $$
 
 When necessary, we will indicate the random variables under expectation as $\mathbb{E}_{X} f(X)$.
+
+</details>
+<br>
+
+考虑 $d$ 维欧氏空间中的数据 $x=(x^1,\ldots,x^d)\in \mathbb{R}^d$ 及标准欧氏内积 $\langle x,y\rangle=\sum_{i=1}^d x^i y^i$ 和范数 $\|x\|=\sqrt{\langle x,x\rangle}$.
+
+我们将考虑**随机变量 (Random Variables, RVs)** $X\in\R^d$ 及其连续**概率密度函数 (Probability Density Function, PDF)**, 定义为一个连续函数 $p_X:\mathbb{R}^d\to \mathbb{R}_{\geq 0}$, 它为事件 $A$ 提供概率:
+
+$$
+\mathbb{P}(X\in A) = \int_A p_X(x) \text{d} x,
+$$
+
+其中积分和为 1: $\int p_X(x)\text{d} x = 1$.
+
+按照惯例, 当在整个空间上积分时省略积分区间 ($\int \equiv \int_{\mathbb{R}^d}$).
+
+为了保持符号简洁, 我们将随机变量 $X_t$ 的概率密度函数 $p_{X_t}$ 简写为 $p_t$.
+我们将使用 $X \sim p$ 或 $X \sim p(X)$ 来表示 $X$ 服从分布 $p$.
+
+---
+
+生成式建模中常用的概率密度函数之一是 $d$ 维各向同性高斯分布:
+
+$$
+\mathcal{N}(x|\mu,\sigma^2 I) = (2\pi\sigma^2)^{-\frac{d}{2}}\exp\left(-\frac{\|{x-\mu}_2\|^2}{2\sigma^2}\right),
+$$
+
+其中 $\mu\in \mathbb{R}^d$ 和 $\sigma \in \mathbb{R}_{>0}$ 分别表示分布的均值和标准差.
+
+---
+
+随机变量的期望是在最小二乘意义下与 $X$ 最接近的常数向量:
+
+$$
+\mathbb{E}[X]=\argmin_{z\in\mathbb{R}^d} \int \|x-z\|^2 p_X(x)\text{d} x = \int x p_X(x)\text{d} x.
+$$
+
+---
+
+随机变量函数的期望可以用**无意识统计学家定律 (Law of the Unconscious Statistician)** 进行计算:
+
+$$
+\mathbb{E} [f(X)] = \int f(x) p_X(x) \text{d} x.
+$$
+
+必要时, 我们将使用 $\mathbb{E}_{X} f(X)$ 来表示期望下的随机变量.
 
 ## 3.2·Conditional Densities and Expectations: 条件密度和期望
 
@@ -98,7 +147,7 @@ $$
 For $y\in \mathbb{R}^d$ such that $p_Y(y)>0$ the conditional expectation function is therefore
 
 $$
-    \mathbb{E}[X|Y=y] := g_\star(y) = \int x p_{X|Y}(x|y) \text{d} x, %
+    \mathbb{E}[X|Y=y] := g_\star(y) = \int x p_{X|Y}(x|y) \text{d} x,
 $$
 
 where the second equality follows from taking the minimizer of the inner brackets in \cref{e:cond_E_g_star} for $Y=y$, similarly to \cref{e:E}.
@@ -106,7 +155,7 @@ where the second equality follows from taking the minimizer of the inner bracket
 Composing $g_\star$ with the random variable $Y$, we get
 
 $$
-    \mathbb{E}[X|Y] := g_\star(Y), %
+    \mathbb{E}[X|Y] := g_\star(Y),
 $$
 
 which is a random variable in $\mathbb{R}^d$.
@@ -118,7 +167,7 @@ To disambiguate these two terms, our discussions will employ the notations intro
 The **tower property** is an useful property that helps simplify derivations involving conditional expectations of two RVs $X$ and $Y$:
 
 $$
-    \mathbb{E}[\mathbb{E}[X|Y]] = \mathbb{E}[X] %
+    \mathbb{E}[\mathbb{E}[X|Y]] = \mathbb{E}[X]
 $$
 
 Because $\mathbb{E}[X|Y]$ is a RV, itself a function of the RV $Y$, the outer expectation computes the expectation of $\mathbb{E}[X|Y]$.
@@ -195,7 +244,7 @@ Such flow is also a $C^r([0,1]\times\mathbb{R}^{d},\mathbb{R}^d)$ function, such
 A \highlight{flow model} is a **continuous-time Markov process** $(X_t)_{0 \leq t \leq 1}$ defined by applying a flow $\psi_t$ to the RV $X_0$:
 
 $$
-    X_t = \psi_t(X_0), \quad t\in [0,1], \text{ where } X_0\sim p. %
+    X_t = \psi_t(X_0), \quad t\in [0,1], \text{ where } X_0\sim p.
 $$
 
 See \Cref{fig:flow_model} for an illustration of a flow model.
@@ -212,7 +261,7 @@ In fact, for flow models, this dependence is **deterministic**.
 In summary, the goal \highlight{generative flow modeling} is to find a flow $\psi_t$ such that
 
 $$
-    X_1 = \psi_1(X_0) \sim q. %
+    X_1 = \psi_1(X_0) \sim q.
 $$
 
 ### 3.4.1·Equivalence between Flows and Velocity Fields
@@ -256,7 +305,7 @@ Numerical methods for ODEs is a classical and well researched topic in numerical
 One of the simplest methods is the **Euler method**, implementing the update rule
 
 $$
-X_{t+h} = X_t + h u_t(X_t) %
+X_{t+h} = X_t + h u_t(X_t)
 $$
 
 where $h=n^{-1}>0$ is a step size hyper-parameter with $n \in \mathbb{N}$.
@@ -276,7 +325,7 @@ We call a time-dependent probability $(p_t)_{0\leq t \leq 1}$ a \highlight{proba
 For our purposes, one important probability path is the marginal PDF of a flow model $X_t = \psi_t(X_0)$ at time $t$:
 
 $$
-X_t\sim p_t. %
+X_t\sim p_t.
 $$
 
 For each time $t \in [0,1]$, these marginal PDFs are obtained via the push-forward formula in \cref{e:push-forward_p}, that is,
@@ -297,7 +346,7 @@ Note that we use the time interval $[0,1)$, open from the right, to allow dealin
 To verify that a velocity field $u_t$ generates a probability path $p_t$, one can verify if the pair $(u_t, p_t)$ satisfies a partial differential equation (PDE) known as the **Continuity Equation**:
 
 $$
-\frac{\text{d}}{\text{d} t} p_t(x)+ \text{div}(p_t u_t)(x) = 0, %
+\frac{\text{d}}{\text{d} t} p_t(x)+ \text{div}(p_t u_t)(x) = 0,
 $$
 
 where $\text{div}(v)(x) = \sum_{i=1}^d \partial_{x^i} v^i (x)$, and $v(x)=(v^1(x),\ldots,v^d(x))$.
