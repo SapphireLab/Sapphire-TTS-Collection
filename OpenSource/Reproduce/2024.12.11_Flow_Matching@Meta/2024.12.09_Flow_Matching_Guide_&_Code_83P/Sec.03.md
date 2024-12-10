@@ -478,7 +478,7 @@ $$
 
 See Figure.06 for an illustration of a flow together with its velocity field.
 
-A standard result regarding the existence and uniqueness of solutions $\psi_t(x)$ to \cref{e:flow} is (see e.g., \cite{perko2013differential,coddington1956theory}):
+A standard result regarding the existence and uniqueness of solutions $\psi_t(x)$ to \cref{e:flow} is (see e.g., [^1] [^2]):
 
 > **Theorem 1 (Flow Local Existence and Uniqueness)**
 > If $u$ is $C^r([0,1]\times\mathbb{R}^{d},\mathbb{R}^d)$, $r\geq 1$ (in particular, locally Lipschitz), then the ODE in \eqref{e:flow} has a unique solution which is a  $C^r(\Omega,\mathbb{R}^d)$ diffeomorphism $\psi_t(x)$ defined over an open set $\Omega$ which is super-set of $\set{0}\times \mathbb{R}^d$.
@@ -513,7 +513,7 @@ $$
 
 ![](Images/Fig.06.png)
 
-解 $\psi_t(x)$ 存在性和唯一性, 有以下定理 (\cite{perko2013differential,coddington1956theory}):
+解 $\psi_t(x)$ 存在性和唯一性, 有以下定理 [^1] [^2]:
 
 > **定理 1 (流局部存在和唯一性)**
 > 若 $u$ 是 $C^r([0,1]\times\mathbb{R}^{d},\mathbb{R}^d)$, $r\geq 1$ (特别地, 局部 Lipschitz), 则下述微分方程有唯一解, 它是一个 $C^r(\Omega,\mathbb{R}^d)$ 微分同胚 $\psi_t(x)$, 其定义域为开集 $\Omega$, 是 $\set{0}\times \mathbb{R}^d$ 的超集.
@@ -544,10 +544,16 @@ $$
 
 总而言之, 我们已经展示了 $C^r$ 流和 $C^r$ 速度场之间的等价性.
 
+[^1]: Differential Equations and Dynamical Systems (2023)
+[^2]: Theory of Ordinary Differential Equations (1956)
+
 ### 3.4.2·Computing Target Samples from Source Samples: 从源样本计算目标样本
 
+<details>
+<summary>展开原文</summary>
+
 Computing a target sample $X_1$---or, in general, any sample $X_t$---entails approximating the solution of the ODE in~\cref{e:flow} starting from some initial condition $X_0=x_0$.
-Numerical methods for ODEs is a classical and well researched topic in numerical analysis, and a myriad of powerful methods exist \citep{iserles2009first}.
+Numerical methods for ODEs is a classical and well researched topic in numerical analysis, and a myriad of powerful methods exist [^3].
 One of the simplest methods is the **Euler method**, implementing the update rule
 
 $$
@@ -558,12 +564,49 @@ where $h=n^{-1}>0$ is a step size hyper-parameter with $n \in \mathbb{N}$.
 
 To draw a sample $X_1$ from the target distribution, apply the Euler method starting at some $X_0 \sim p$ to produce the sequence $X_h,X_{2h},\ldots,X_1$.
 The Euler method coincides with first-order Taylor expansion of $X_t$:
-$$X_{t+h}=X_t + h \dot{X}_t + o(h)=X_t + h u_t(X_t) + o(h),$$
+
+$$
+X_{t+h}=X_t + h \dot{X}_t + o(h)=X_t + h u_t(X_t) + o(h),
+$$
+
 where $o(h)$ stands for a function growing slower than $h$, that is, $o(h)/h \to  0$ as $h\to  0$.
+
 Therefore, the Euler method accumulates $o(h)$ error per step, and can be shown to accumulate $o(1)$ error after $n=1/h$ steps.
 Therefore, the error of the Euler method vanishes as we consider smaller step sizes $h\to  0$.
 The Euler method is just one example among many ODE solvers.
-\Cref{ex:euler_method} exemplifies another alternative, the second-order **midpoint method**, which often outperforms the Euler method in practice.
+[Code 2](Codes/Code2.py) exemplifies another alternative, the second-order **midpoint method**, which often outperforms the Euler method in practice.
+
+</details>
+<br>
+
+计算目标样本 $X_1$ 或更一般地, 任意样本 $X_t$, 都需要近似常微分方程的解, 它以初始条件 $X_0=x_0$ 开始.
+用于求解 ODE 的数值方法是数值分析中经典且研究成熟的话题, 并且有无数的强力方法 [^3].
+
+最简单的一种方法是 **欧拉法 (Euler Method)**, 它实现了更新规则
+
+$$
+X_{t+h} = X_t + h u_t(X_t)
+$$
+
+其中 $h=n^{-1}>0$ 是步长超参数, 且 $n \in \mathbb{N}$.
+
+为了从目标分布中抽取样本 $X_1$, 从 $X_0 \sim p$ 开始应用欧拉法, 产生序列 $X_h,X_{2h},\ldots,X_1$.
+
+欧拉法与 $X_t$ 的一阶泰勒展开相一致:
+
+$$
+X_{t+h}=X_t + h \dot{X}_t + o(h)=X_t + h u_t(X_t) + o(h),
+$$
+
+其中 $o(h)$ 表示一个函数, 其增长速度比 $h$ 缓慢, 即 $o(h)/h \to  0$ 当 $h\to  0$.
+
+因此, 欧拉法在每一步上积累 $o(h)$ 误差, 并且在 $n=1/h$ 步后可以证明误差为 $o(1)$.
+因此, 欧拉法的误差随着步长的减小而消失.
+欧拉法只是 ODE 解算方法中的一种例子.
+
+[代码 2](Codes/Code2.py) 则举例了另一种替代方法, 二阶中点法, 它在实际中通常优于欧拉法.
+
+[^3]: A First Course in The Numerical Analysis of Differential Equations (2009)
 
 ## 3.5·Probability paths and the Continuity Equation
 
