@@ -99,6 +99,25 @@ $$
 \mathbb{E}[X]=\argmin_{z\in\mathbb{R}^d} \int \|x-z\|^2 p_X(x)\text{d} x = \int x p_X(x)\text{d} x.
 $$
 
+推导过程
+$$
+\begin{aligned}
+f(z) &= \int \| x-z\|^2 p_X(x)\text{d}x\\
+&= \int (x-z)^{\mathsf{T}}(x-z) p_X(x)\text{d}x\\
+&= \int [x^{\mathsf{T}}x-2x^{\mathsf{T}}z+z^{\mathsf{T}}z]p_X(x)\text{d}x\\
+\end{aligned}
+$$
+
+对 $z$ 求导, 令导数为零, 可得
+$$
+\dfrac{\partial f}{\partial z} = \int [-2x+2z]p_X(x)\text{d}x = 0
+$$
+
+变换后
+$$
+\int x p_X(x)\text{d}x = z \int p_X(x)\text{d}x = z
+$$
+
 ---
 
 随机变量函数的期望可以用**无意识统计学家定律 (Law of the Unconscious Statistician)** 进行计算:
@@ -110,6 +129,9 @@ $$
 必要时, 我们将使用 $\mathbb{E}_{X} f(X)$ 来表示期望下的随机变量.
 
 ## 3.2·Conditional Densities and Expectations: 条件密度和期望
+
+<details>
+<summary>展开原文</summary>
 
 Given two random variables $X,Y\in \mathbb{R}^d$, their joint PDF $p_{X,Y}(x,y)$ has marginals
 
@@ -126,6 +148,7 @@ $$
 $$
 
 and similarly for the conditional PDF $p_{Y|X}$.
+
 Bayes' rule expresses the conditional PDF $p_{Y|X}$ with $p_{X|Y}$ by
 
 $$
@@ -185,6 +208,99 @@ $$
 
 Finally, consider a helpful property involving two RVs $f(X, Y)$ and $Y$, where $X$ and $Y$ are two arbitrary RVs.
 Then, by using the Law of the Unconscious Statistician with \eqref{e:cond_E_func}, we obtain the identity
+
+$$
+    \mathbb{E}[f(X,Y)|Y=y] = \int f(x,y) p_{X|Y}(x|y) \text{d} x.
+$$
+
+</details>
+<br>
+
+给定两个随机变量 $X,Y\in \mathbb{R}^d$, 它们的联合概率密度 $p_{X,Y}(x,y)$ 具有如下的边际分布:
+
+$$
+\begin{aligned}
+    \int p_{X,Y}(x,y)\text{d} y &= p_X(x),\\
+    \int p_{X,Y}(x,y)\text{d} x &= p_Y(y).
+\end{aligned}
+$$
+
+图 04 展示了两个一维随机变量的联合概率密度函数.
+
+<!-- ![](Images/Fig.04.png) -->
+
+**条件概率密度函数 (Conditional Probability Density Function)** $p_{X|Y}(x|y)$ 描述了随机变量 $X$ 在条件 $Y=y$ 下的概率密度函数, 即:
+
+$$
+    p_{X|Y}(x|y) = \frac{p_{X,Y}(x,y)}{p_Y(y)},
+$$
+
+类似地, 条件概率密度函数 $p_{Y|X}$ 也存在.
+
+---
+
+**贝叶斯法则 (Bayes' rule)** 表达了条件概率密度函数 $p_{Y|X}$ 与 $p_{X|Y}$ 的关系, 即:
+
+$$
+p_{Y|X}(y|x) = \frac{p_{X|Y}(x|y)p_Y(y)}{p_X(x)},\quad p_X(x)>0.
+$$
+
+---
+
+**条件期望 (Conditional Expectation)** $\mathbb{E}[X | Y]$ 是最小二乘意义下近似 $X$ 的最佳逼近函数 $g_{\star}(Y)$, 即:
+
+$$
+\begin{aligned}
+    g_\star &:= \argmin_{g:\mathbb{R}^d\to \mathbb{R}^d}\mathbb{E}[\|X-g(Y)\|^2]\\
+    &= \argmin_{g:\mathbb{R}^d\to \mathbb{R}^d}\int \|x-g(y)\|^2 p_{X,Y}(x,y)\text{d} x \text{d} y \\
+    &= \argmin_{g:\mathbb{R}^d\to \mathbb{R}^d} \int \left [\int \|x-g(y)\|^2p_{X|Y}(x|y)\text{d} x\right ] p_Y(y)\text{d} y.
+\end{aligned}
+$$
+
+对于 $y\in \mathbb{R}^d$ 且 $p_Y(y)>0$ 的情况, **条件期望函数**为:
+
+$$
+    \mathbb{E}[X|Y=y] := g_\star(y) = \int x p_{X|Y}(x|y) \text{d} x,
+$$
+
+其中第二个等号是对 $Y=y$ 时取最小值得到的, 类似前文的期望定义.
+
+将 $g_\star$ 和随机变量 $Y$ 组合, 得到 $\mathbb{R}^d$ 的随机变量:
+
+$$
+    \mathbb{E}[X|Y] := g_\star(Y),
+$$
+
+尽管容易混淆, 但 $\mathbb{E}[X|Y]$ 和 $\mathbb{E}[X|Y=y]$ 都被称为**条件期望 (Conditional Expectation)**, 但它们是不同的对象.
+特别地, $\mathbb{E}[X|Y=y]$ 是 $\mathbb{R}^d\to \mathbb{R}^d$ 的函数, 而 $\mathbb{E}[X|Y]$ 是取值于 $\mathbb{R}^d$ 的随机变量.
+
+为了区分这两个术语, 我们将采用这里引入的符号.
+
+---
+
+**Tower 性质** 是一个有用的性质, 有助于简化涉及两个随机变量 $X$ 和 $Y$ 的条件期望的推导:
+
+$$
+    \mathbb{E}[\mathbb{E}[X|Y]] = \mathbb{E}[X]
+$$
+
+因为 $\mathbb{E}[X|Y]$ 是随机变量, 因此外层期望计算了 $\mathbb{E}[X|Y]$ 的期望.
+
+Tower 性质可以通过上述定义进行验证:
+
+$$
+\begin{aligned}
+    \mathbb{E}[\mathbb{E}[X|Y]]
+    &= \int \left (\int x p_{X|Y}(x|y) \text{d} x\right ) p_Y(y) \text{d} y \\
+    &= \int \int x p_{X,Y}(x,y) \text{d} x\text{d} y \\
+    &= \int x p_X(x)\text{d} x \\
+    &= \mathbb{E} [X].
+\end{aligned}
+$$
+
+---
+
+最后考虑一个涉及两个随机变量 $f(X, Y)$ 和 $Y$ 的有用性质, 其中 $X$ 和 $Y$ 是任意两个随机变量. 通过使用无意识统计学家法则和条件期望函数, 得到恒等式:
 
 $$
     \mathbb{E}[f(X,Y)|Y=y] = \int f(x,y) p_{X|Y}(x|y) \text{d} x.
