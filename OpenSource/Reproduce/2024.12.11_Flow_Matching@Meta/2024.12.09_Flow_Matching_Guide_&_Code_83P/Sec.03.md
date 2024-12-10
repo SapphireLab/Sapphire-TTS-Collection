@@ -462,9 +462,12 @@ $$
     X_1 = \psi_1(X_0) \sim q.
 $$
 
-### 3.4.1·Equivalence between Flows and Velocity Fields
+### 3.4.1·Equivalence between Flows and Velocity Fields: 流和速度场的等价性
 
-A $C^r$ flow $\psi$ can be defined in terms of a $C^r([0,1]\times \mathbb{R}^d,\mathbb{R}^d)$ **velocity field** $u:[0,1]\times \mathbb{R}^d \to  \mathbb{R}^d$ implementing $u : (t, x) \mapsto u_t(x)$ via the following ODE:
+<details>
+<summary>原文</summary>
+
+A $C^r$ flow $\psi$ can be defined in terms of a $C^r([0,1]\times \mathbb{R}^d,\mathbb{R}^d)$ **velocity field** $u:[0,1]\times \mathbb{R}^d \to \mathbb{R}^d$ implementing $u : (t, x) \mapsto u_t(x)$ via the following ODE:
 
 $$
 \begin{aligned}
@@ -473,7 +476,7 @@ $$
 \end{aligned}
 $$
 
-See \cref{fig:flow} for an illustration of a flow together with its velocity field.
+See Figure.06 for an illustration of a flow together with its velocity field.
 
 A standard result regarding the existence and uniqueness of solutions $\psi_t(x)$ to \cref{e:flow} is (see e.g., \cite{perko2013differential,coddington1956theory}):
 
@@ -495,6 +498,51 @@ $$
 
 where $\dot{\psi}_t:= \frac{\text{d}}{\text{d} t} \psi_t$.
 In conclusion, we have shown the equivalence between $C^r$ flows $\psi_t$ and $C^r$ velocity fields $u_t$.
+
+</details>
+<br>
+
+一个 $C^r$ 流 $\psi$ 可以用 $C^r([0,1]\times \mathbb{R}^d,\mathbb{R}^d)$ **速度场 (Velocity Field)** $u:[0,1]\times \mathbb{R}^d \to \mathbb{R}^d$ 来定义, 通过以下微分方程来实现 $u : (t, x) \mapsto u_t(x)$.
+
+$$
+\begin{aligned}
+    \frac{\text{d}}{\text{d} t}\psi_{t}(x) &= u_t(\psi_{t}(x)) & \text{(流方程)}\\
+    \psi_{0}(x)             &= x                & \text{(流初始条件)}
+\end{aligned}
+$$
+
+![](Images/Fig.06.png)
+
+解 $\psi_t(x)$ 存在性和唯一性, 有以下定理 (\cite{perko2013differential,coddington1956theory}):
+
+> **定理 1 (流局部存在和唯一性)**
+> 若 $u$ 是 $C^r([0,1]\times\mathbb{R}^{d},\mathbb{R}^d)$, $r\geq 1$ (特别地, 局部 Lipschitz), 则下述微分方程有唯一解, 它是一个 $C^r(\Omega,\mathbb{R}^d)$ 微分同胚 $\psi_t(x)$, 其定义域为开集 $\Omega$, 是 $\set{0}\times \mathbb{R}^d$ 的超集.
+> $$
+\begin{aligned}
+    \frac{\text{d}}{\text{d} t}\psi_{t}(x) &= u_t(\psi_{t}(x)) & \text{(flow ODE)}\\
+    \psi_{0}(x)             &= x                & \text{(flow initial conditions)}
+\end{aligned}
+> $$
+
+这一定理仅保证了流的局部存在性和唯一性, 即对每个点 $x\in \mathbb{R}^d$, 流 $\psi_t(x)$ 在有限时间 $t\in[0,t_x)$ 内沿着 $\psi_t(x)$ 移动.
+
+为了保证对于直到 $t=1$ 的解对所有的 $x\in\mathbb{R}^d$ 都有解, 除了局部 Lipschitz 性, 还需要额外的假设.
+例如, 可以考虑全局 Lipschitz 性, 它在 $C^1$ 情况下由有界一阶导数保证.
+然而, 我们后续将依赖另一种条件: 可积性, 来保证流的几乎处处存在, 直到时间 $t=1$.
+
+至此, 我们已经展示了一个速度场唯一地定义了一个流.
+
+反过来, 给定一个 $C^1$ 流 $\psi_t$, 我们可以通过考虑方程 $\frac{\text{d}}{\text{d} t} \psi_t(x') = u_t(\psi_t(x'))$, 并使用 $\psi_t$ 是每个 $t \in [0, 1]$ 的可逆微分同胚的事实, 来提取任意 $x \in \mathbb{R}^d$ 的定义速度场 $u_t(x)$.
+
+因此, 唯一速度场 $u_t$ 确定了流 $\psi_t$ 是
+
+$$
+u_t(x) = \dot{\psi}_t( \psi^{-1}_t(x)),
+$$
+
+其中 $\dot{\psi}_t:= \frac{\text{d}}{\text{d} t} \psi_t$.
+
+总而言之, 我们已经展示了 $C^r$ 流和 $C^r$ 速度场之间的等价性.
 
 ### 3.4.2·Computing Target Samples from Source Samples: 从源样本计算目标样本
 
