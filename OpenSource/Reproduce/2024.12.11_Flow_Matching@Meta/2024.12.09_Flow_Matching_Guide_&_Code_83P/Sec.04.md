@@ -81,3 +81,36 @@ A popular example of a conditional probability path satisfying the conditions in
 $$
 \mathcal{N}(\cdot | t x_1, (1-t)^2I)\to \delta_{x_1}(\cdot) \text{ as } t \to 1.
 $$
+
+## 4.3·Deriving Generating Velocity Fields: 推导生成速度场
+
+Equipped with a marginal probability path $p_t$, we now build a velocity field $u_t$ generating $p_t$.
+The generating velocity field $u_t$ is an average of multiple \highlight{conditional velocity fields} $u_t(x|x_1)$, illustrated in \cref{fig:u_t}, and satisfying:
+
+$$
+u_{t}(\cdot|x_1) \text{ generates } p_{t|1}(\cdot|x_1).
+$$
+
+Then, the \highlight{marginal velocity field} $u_t(x)$, generating the marginal path $p_t(x)$,  illustrated in \cref{fig:marginal_u_t}, is given by averaging the conditional velocity fields $u_t(x|x_1)$ across target examples:
+
+$$
+u_t(x) = \int u_t(x|x_1)p_{1|t}(x_1|x) \text{d} x_1.
+$$
+
+To express the equation above using known terms,  recall Bayes' rule
+
+$$
+p_{1|t}(x_1|x) = \frac{p_{t|1}(x|x_1)q(x_1)}{p_t(x)},
+$$
+
+defined for all $x$ with $p_t(x)>0$.
+\Cref{e:u_t} can be interpreted as the weighted average of the conditional velocities $u_t(x|x_1)$, with weights $p_{1|t}(x_1|x)$ representing the posterior probability of target samples $x_1$ given the current sample $x$.
+Another interpretation of \eqref{e:u_t} can be given with conditional expectations (see \cref{sec:conditional_densities_and_expectations}).
+Namely, if $X_t$ is \emph{any} RV such that $X_t\sim p_{t|1}(\cdot|X_1)$, or equivalently, the joint distribution of $(X_t,X_1)$ has density $p_{t,1}(x,x_1)=p_{t|1}(x|x_1)q(x_1)$ then using \eqref{e:f_x_y_cond_y} to write \eqref{e:u_t} as a conditional expectation, we obtain
+
+$$
+u_t(x) = \mathbb{E}[u_t(X_t|X_1)|X_t=x],
+$$
+
+which yields the useful interpretation of $u_t(x)$ as the least-squares approximation to $u_t(X_t|X_1)$ given $X_t=x$, see \cref{sec:conditional_densities_and_expectations}.
+Note, that the $X_t$ in \eqref{e:u_t_cond_E} is in general a different RV that $X_t$ defined by the final flow model \eqref{e:flow_model}, although they share the same marginal probability $p_t(x)$.
