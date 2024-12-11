@@ -91,9 +91,11 @@ Additionally, these surveys do not cover the advancements in recent years, such 
 [^13]: GPU Computing (2008)
 
 This paper provides a comprehensive and in-depth survey of existing and emerging TTS technologies, with a particular focus on controllable TTS methods.
-Fig.~\ref{fig:sec1_summary} demonstrates the development of controllable TTS methods in recent years, showing their backbones, feature representations, and control abilities.
+Fig.01 demonstrates the development of controllable TTS methods in recent years, showing their backbones, feature representations, and control abilities.
 The remainder of this section begins with a brief comparison between this survey and previous ones, followed by an overview of the history of controllable TTS technologies, ranging from early milestones to state-of-the-art advancements.
 Finally, we introduce the taxonomy and organization of this paper.
+
+![](Images/Fig.01.png)
 
 ### A·Comparison with Existing Surveys: 与现有综述的比较
 
@@ -149,7 +151,7 @@ In addition, they required less storage compared to concatenative TTS and allowe
 
 Neural-based TTS technologies emerged with the advent of deep learning, significantly advancing the field by enabling more flexible, natural, and expressive speech synthesis.
 Unlike traditional methods, neural-based TTS leverages DNNs to model complex relationships between input text and speech, facilitating nuanced control over various speech characteristics.
-Early neural TTS systems, such as WaveNet [73]~\cite{van2016wavenet} and Tacotron [74] ~\cite{wang2017tacotron} laid the groundwork for controllability.
+Early neural TTS systems, such as [WaveNet [73]](../../Models/TTS3_Vocoder/2016.09.12_WaveNet.md) and [Tacotron [74]](../../Models/TTS2_Acoustic/2017.03.29_Tacotron.md) laid the groundwork for controllability.
 1) Controlling prosody features like rhythm and intonation is vital for generating expressive and contextually appropriate speech.
 Neural-based TTS models achieve prosody control through explicit conditioning or learned latent representations~\cite{shen2018tacotron2,[FastSpeech [15]](../../Models/TTS2_Acoustic/2019.05.22_FastSpeech.md),ren2020fastspeech2,lancucki2021fastpitch,wang2024maskgct} [75] [76] [77] [78].
 1) Speaker control has also gained significant improvement in neural-based TTS through speaker embeddings or adaptation techniques [79] [80] [81] [82]~\cite{fan2015multi,huang2022meta,chen2020multispeech,casanova2022yourtts}.
@@ -176,6 +178,9 @@ Integrating LLMs into TTS systems represents a significant step forward, enablin
 
 ### C·Organization of This Survey: 本文结构
 
+<details>
+<summary>展开原文</summary>
+
 This paper first presents a comprehensive and systematic review of controllable TTS technologies, with a particular focus on model architectures, control methodologies, and feature representations.
 To establish a foundational understanding, this survey begins with an introduction to the TTS pipeline in [Section 2](Sec.02.md).
 While our focus remains on controllable TTS, [Section 3](Sec.03.md) examines seminal works in uncontrollable TTS that have significantly influenced the field's development.
@@ -183,6 +188,18 @@ While our focus remains on controllable TTS, [Section 3](Sec.03.md) examines sem
 [Section 5](Sec.05.md) presents a comprehensive review of datasets and evaluation metrics.
 [Section 6](Sec.06.md) provides an in-depth analysis of the challenges encountered in achieving controllable TTS systems and discusses future directions.
 [Section 7](#Sec.07) explores the broader impacts of controllable TTS technologies and identifies promising future research directions, followed by the conclusion in [Section 8](#Sec.08).
+
+</details>
+<br>
+
+本文首次展示了一份全面且系统化的可控 TTS 技术综述, 着重分析模型架构, 控制策略, 和特征表示.
+- [第二节](Sec.02.md) 介绍 TTS 流程, 以建立起基础的理解.
+- [第三节](Sec.03.md) 仔细研究了不可控 TTS, 其对整个研究领域的发展有极大影响.
+- [第四节](Sec.04.md) 详细调查了可控 TTS 方法, 分析了其模型架构和控制策略.
+- [第五节](Sec.05.md) 展示了数据集和评价指标的全面综述.
+- [第六节](Sec.06.md) 深入分析了实现可控 TTS 系统的挑战, 并提出了未来研究方向.
+- [第七节](#Sec.07) 探讨了可控 TTS 技术的广泛影响, 并提出了有前途的研究方向.
+- [第八节](#Sec.08) 总结了本文.
 
 ## 2·[TTS Pipeline: TTS 流程](Sec.02.md)
 
