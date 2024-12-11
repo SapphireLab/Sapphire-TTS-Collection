@@ -192,9 +192,19 @@ To address this gap, we present the first comprehensive survey of TTS methods th
 
 #### Close to Current Demand: 接近当前需求
 
-With the rapid development of hardware (\ie GPUs) and artificial intelligence techniques (\ie transformers, LLMs, diffusion models) in the last few years, the demand for controllable TTS is becoming increasingly urgent due to its broad applications in industries such as filmmaking, gaming, robots, and personal assistants.
+<details>
+<summary>展开原文</summary>
+
+With the rapid development of hardware (i.e., GPUs) and artificial intelligence techniques (i.e., transformers, LLMs, diffusion models) in the last few years, the demand for controllable TTS is becoming increasingly urgent due to its broad applications in industries such as filmmaking, gaming, robots, and personal assistants.
 Despite this growing need, existing surveys pay little attention to control methods in TTS technologies.
 To bridge this gap, we propose a systematic analysis of current controllable TTS methods and the associated challenges, offering a comprehensive understanding of the research state in this field.
+
+</details>
+<br>
+
+近年来随着硬件 (如 GPU) 和人工智能技术 (如 Transformer, 大语言模型, 扩散模型) 的快速发展, 可控 TTS 的需求日益迫切, 因为其在影视制作, 游戏, 机器人以及个人助手等领域的应用越来越广泛.
+尽管这种需求不断增长, 但现有的综述对 TTS 技术中的控制方法关注甚少.
+为了填补这一空白, 本文提出对当前可控 TTS 方法及其相关挑战进行系统性分析, 旨在为该领域的研究现状提供全面深入的理解.
 
 #### New Insights & Directions: 新见解与方向
 
@@ -236,7 +246,7 @@ Neural-based TTS models achieve prosody control through explicit conditioning or
 2) Besides, emotionally controllable TTS [83]~\cite{lei2022msemotts,[Emo-DPO [31]](../../Modules/RLHF/2024.09.16_Emo-DPO.md); [I2I [20]](../../Models/Style/2019.11.05_I2I.md); [iEmoTTS [22]](../../Models/Style/2022.06.29_iEmoTTS.md); [T5-TTS [32]](../../Models/SpeechLM/2024.06.25_T5-TTS.md)} has become a hot topic due to the strong modeling capability of DNNs, enabling the synthesis of speech with specific emotional tones such as happiness, sadness, anger, or neutrality.
 These systems go beyond producing intelligible and natural-sounding speech, focusing on generating expressive output that aligns with the intended emotional context.
 1) Neural-based TTS can also manipulate timbre (vocal quality)~\cite{wang2024maskgct,elias2021paralleltacotron,wang2023neural,[NaturalSpeech [14]](../../Models/E2E/2022.05.09_NaturalSpeech.md),shen2023naturalspeech2,ju2024naturalspeech3} [84] [85] [86] [87] and style (speech mannerisms)~\cite{li2022styletts,li2024styletts2,huang2022generspeech} [88] [89] [90], allowing for creative and personalized applications.
-These techniques lead to one of the most popular research topics, \ie zero-shot TTS (particularly voice cloning)~\cite{casanova2022yourtts,wang2024maskgct,jiang2023megavoic,cooper2020zero} [91] [92].
+These techniques lead to one of the most popular research topics, i.e., zero-shot TTS (particularly voice cloning)~\cite{casanova2022yourtts,wang2024maskgct,jiang2023megavoic,cooper2020zero} [91] [92].
 1) Fine-grained content and linguistic control also become more powerful~\cite{peng2024voicecraft,tan2021editspeech,tae2021editts,seshadri2021emphasis} [93] [94] [95] [96].
 These methods can emphasize or de-emphasize specific words or adjust the pronunciation of phonemes through speech editing or generation techniques.
 
