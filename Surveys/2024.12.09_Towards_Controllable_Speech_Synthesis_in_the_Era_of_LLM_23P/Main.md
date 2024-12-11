@@ -208,12 +208,35 @@ To bridge this gap, we propose a systematic analysis of current controllable TTS
 
 #### New Insights & Directions: 新见解与方向
 
+<details>
+<summary>展开原文</summary>
+
 This survey offers new insights through a comprehensive analysis of model architectures and control methods in controllable TTS systems.
 Additionally, it provides an in-depth discussion of the challenges associated with various controllable TTS tasks.
-Furthermore, we address the question: ``Where are we on the path to fully controllable TTS technologies?'', by examining the relationship and gap between current TTS methods and industrial requirements.
+Furthermore, we address the question: "Where are we on the path to fully controllable TTS technologies?", by examining the relationship and gap between current TTS methods and industrial requirements.
 Based on these analyses, we identify promising directions for future research on TTS technologies.
 
-Table \ref{tab:sec1_survey_comparison} summarizes representative surveys and this paper in terms of main focus and publication year.
+Table.01 summarizes representative surveys and this paper in terms of main focus and publication year.
+
+</details>
+<br>
+
+本综述
+- 通过对可控 TTS 系统中模型架构和控制方法的全面分析, 提供了新的见解.
+- 此外, 本文深入探讨了与各种可控 TTS 任务相关的挑战.
+- 更进一步, 我们通过审视当前 TTS 方法与工业需求之间的关系与差距, 回答了这样一个问题：**"我们在实现完全可控TTS技术的道路上处于什么位置?"**
+- 基于这些分析，我们为TTS技术的未来研究指明了有前景的方向.
+
+表 01 总结了代表性综述及本文的主要关注点和发表年份。
+
+| 综述 | 主要关注点 | 发表年份 |
+|---|---|:-:|
+|[Klatt et al. (1987) [36]](../../Surveys/1987.05.01_Review_of_Text-To-Speech_Conversion_for_English.md)| 基于规则和拼接的 TTS | 1987 |
+|[Tabet et al. (2011) [49]](../2011.06.27_Speech_Synthesis_Techniques_A_Survey/Main.md)| 基于规则, 拼接, 参数的 TTS | 2011 |
+|[King et al. (2014) [40]](../../Surveys/2014.06.30_Measuring_a_Decade_of_Progress_in_Text-To-Speech.md)|参数 TTS 与性能度量 | 2014 |
+|[Tan et al. (2021) [42]](../2021.06.29_A_Survey_on_Neural_Speech_Synthesis_63P/Main.md)|神经网络, 高效, 表达性 TTS | 2021 |
+|[Zhang et al. (2023) [50]](../2023.03.23_A_Survey_on_Audio_Diffusion_Models__TTS_Synthesis_&_Enhancement_in_Generative_AI/Main.md)|扩散模型 TTS, 语音增强|2023|
+|本文|可控 TTS, 评估 | 2024 |
 
 ### B·The History of Controllable TTS: 可控 TTS 的历史
 
