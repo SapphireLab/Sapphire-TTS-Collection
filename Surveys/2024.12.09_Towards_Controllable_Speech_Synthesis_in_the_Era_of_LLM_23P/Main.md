@@ -240,8 +240,17 @@ Table.01 summarizes representative surveys and this paper in terms of main focus
 
 ### B·The History of Controllable TTS: 可控 TTS 的历史
 
+<details>
+<summary>展开原文</summary>
+
 Controllable TTS aims to control various aspects of synthesized speech, such as pitch, energy, speed/duration, prosody, timbre, emotion, gender, or high-level styles.
 This subsection briefly reviews the history of controllable TTS ranging from early approaches to the state-of-arts in recent years.
+
+</details>
+<br>
+
+可控性 TTS 的目标是控制合成语音的各个方面, 如音高, 能量, 速度/时长, 韵律, 音色, 情感, 性别, 或高级风格.
+本小节简要回顾了可控 TTS 的历史, 从早期方法到近年来工业界的最新技术.
 
 #### Early Approaches: 早期方法
 
