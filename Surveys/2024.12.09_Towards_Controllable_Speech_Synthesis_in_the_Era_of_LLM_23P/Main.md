@@ -168,12 +168,27 @@ The key differences between this survey and prior work are summarized as follows
 
 #### Different Scope: 不同范围
 
+<details>
+<summary>展开原文</summary>
+
 [Survey by Klatt et al. (1987) [36]](../../Surveys/1987.05.01_Review_of_Text-To-Speech_Conversion_for_English.md) provided the first comprehensive survey on formant, concatenative, and articulatory TTS methods, with a strong emphasis on text analysis.
 In the early 2010s, [Survey by Tabet et al. (2011) [49]](../2011.06.27_Speech_Synthesis_Techniques_A_Survey/Main.md) and [Survey by King et al. (2014) [40]](../../Surveys/2014.06.30_Measuring_a_Decade_of_Progress_in_Text-To-Speech.md) explored rule-based, concatenative, and HMM-based techniques.
 Later, the advent of deep learning catalyzed the emergence of numerous neural-based TTS methods.
 Therefore, [Survey by Ning et al. (2019) [43]](../2019.08.01_A_Review_of_DL_Based_Speech_Synthesis_16P/Main.md) and [Survey by Tan et al. (2021) [42]](../2021.06.29_A_Survey_on_Neural_Speech_Synthesis_63P/Main.md) have conducted extensive surveys on neural-based acoustic models and vocoders, while [Survey by Zhang et al. (2023) [50]](../2023.03.23_A_Survey_on_Audio_Diffusion_Models__TTS_Synthesis_&_Enhancement_in_Generative_AI/Main.md) presented the first review of diffusion model-based TTS techniques.
 However, these studies offer limited discussion on the controllability of TTS systems.
 To address this gap, we present the first comprehensive survey of TTS methods through the lens of controllability, providing an in-depth analysis of model architectures and strategies for controlling synthesized speech.
+
+</details>
+<br>
+
+- [Klatt 等人 (1987) [36]](../../Surveys/1987.05.01_Review_of_Text-To-Speech_Conversion_for_English.md) 的综述首次全面探讨了共振峰, 拼接式, 发音式 TTS 方法, 并特别强调了文本分析的重要性.
+- 到了 2010 年代初期, [Tabet 等人 (2011) [49]](../2011.06.27_Speech_Synthesis_Techniques_A_Survey/Main.md) 和 [King 等人 (2014) [40]](../../Surveys/2014.06.30_Measuring_a_Decade_of_Progress_in_Text-To-Speech.md) 的综述进一步研究了基于规则, 拼接式以及隐马尔可夫模型 (HMM) 的 TTS 技术.
+- 随后, 深度学习的兴起催生了众多基于神经网络的 TTS 方法.
+- 因此 [Ning 等人 (2019) [43]](../2019.08.01_A_Review_of_DL_Based_Speech_Synthesis_16P/Main.md) 和 [Tan 等人 (2021) [42]](../2021.06.29_A_Survey_on_Neural_Speech_Synthesis_63P/Main.md) 的综述对基于神经网络的声学模型和声码器进行了广泛探讨, 而 [Zhang 等人 (2023) [50]](../2023.03.23_A_Survey_on_Audio_Diffusion_Models__TTS_Synthesis_&_Enhancement_in_Generative_AI/Main.md) 的综述则首次对基于扩散模型的 TTS 技术进行了回顾.
+
+然而, 这些研究对 TTS 系统可控性的讨论较为有限.
+
+为了填补这一空白, 本文首次从可控性的角度对 TTS 方法进行了全面综述, 深入分析了模型架构以及控制合成语音的策略.
 
 #### Close to Current Demand: 接近当前需求
 
