@@ -44,3 +44,40 @@ $$
 where, if no coupling is known, the source-target samples are following the independent coupling $\pi_{0,1} (X_0,X_1) = p(X_0)q(X_1)$.
 One common example of independent source-target distributions is to consider the generation of images $X_1$ from random Gaussian noise vectors $X_0\sim \mathcal{N}(0,I)$.
 As an example of a dependent coupling, consider the case of producing high-resolution images $X_1$ from their low resolution versions $X_0$, or producing colorized videos $X_1$ from their gray-scale counterparts $X_0$.
+
+## 4.2·Building Probability Paths: 构建概率路径
+
+Flow Matching drastically simplifies the problem of designing a probability path $p_t$---together with its corresponding velocity field $u_t$---by adopting a conditional strategy.
+As a first example, consider conditioning the design of $p_t$ on a single target example $X_1=x_1$, yielding the **conditional probability path** $p_{t|1}(x|x_1)$ illustrated in [Figure.03 (a)](Images/Fig.03.png).
+Then, we may construct the overall, **marginal probability path** $p_t$ by aggregating such conditional probability paths $p_{t|1}$:
+
+$$
+p_t(x) = \int p_{t|1}(x|x_1)q(x_1) \text{d} x_1,
+$$
+
+as illustrated in [Figure.03 (b)](Images/Fig.03.png).
+
+To solve the Flow Matching Problem, we would like $p_t$ to satisfy the following boundary conditions:
+
+$$
+p_0=p, \quad p_1=q,
+$$
+
+that is, the marginal probability path $p_t$ interpolates from the source distribution $p$ at time $t=0$ to the target distribution $q$ at time $t=1$.
+These boundary conditions can be enforced by requiring the conditional probability paths to satisfy
+
+$$
+p_{0|1}(x|x_1) = \pi_{0|1}(x|x_1), p_{1|1}(x|x_1)=\delta_{x_1}(x),
+$$
+
+where the conditional coupling $\pi_{0|1}(x_0|x_1)=\pi_{0,1}(x_0,x_1)/q(x_1)$ and $\delta_{x_1}$ is the delta measure centered at $x_1$.
+
+For the independent coupling $\pi_{0,1}(x_0,x_1)=p(x_0)q(x_1)$, the first constraint above reduces to $p_{0|1}(x|x_1)=p(x)$.
+Because the delta measure does not have a density, the second constraint should be read as $\int p_{t|1}(x|y)f(y)\text{d} y \to f(x)$ as $t \to 1$ for continuous functions $f$.
+Note that the boundary conditions \eqref{e:p_q_interp} can be verified plugging \eqref{e:p_t_cond_boundary} into \eqref{e:p_t}.
+
+A popular example of a conditional probability path satisfying the conditions in \eqref{e:p_t_cond_boundary} was given in \eqref{e:condot_path}:
+
+$$
+\mathcal{N}(\cdot | t x_1, (1-t)^2I)\to \delta_{x_1}(\cdot) \text{ as } t \to 1.
+$$
