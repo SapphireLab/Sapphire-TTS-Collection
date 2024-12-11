@@ -141,9 +141,30 @@ Finally, we introduce the taxonomy and organization of this paper.
 
 ### A·Comparison with Existing Surveys: 与现有综述的比较
 
+<details>
+<summary>展开原文</summary>
+
 Several survey papers have reviewed TTS technologies, spanning early approaches from previous decades ([Survey by Klatt et al. (1987) [36]](../../Surveys/1987.05.01_Review_of_Text-To-Speech_Conversion_for_English.md); [Survey by Dutoit et al. (1997) [37]](../../Surveys/1997.00.00_High-Quality_Text-To-Speech_Synthesis__An_Overview.md); [Survey by King et al. (2014) [40]](../../Surveys/2014.06.30_Measuring_a_Decade_of_Progress_in_Text-To-Speech.md); [Survey by Tabet et al. (2011) [49]](../2011.06.27_Speech_Synthesis_Techniques_A_Survey/Main.md)) to more recent advancements ([Survey by Ning et al. (2019) [43]](../2019.08.01_A_Review_of_DL_Based_Speech_Synthesis_16P/Main.md); [Survey by Tan et al. (2021) [42]](../2021.06.29_A_Survey_on_Neural_Speech_Synthesis_63P/Main.md); [Survey by Zhang et al. (2023) [50]](../2023.03.23_A_Survey_on_Audio_Diffusion_Models__TTS_Synthesis_&_Enhancement_in_Generative_AI/Main.md)).
 However, to the best of our knowledge, this paper is the first to focus specifically on controllable TTS.
 The key differences between this survey and prior work are summarized as follows:
+
+</details>
+<br>
+
+多篇综述论文已经回顾了 TTS 技术的发展历程, 涵盖了从几十年前的早期方法到近年来的最新进展.
+- 早期方法:
+  - [Survey by Klatt et al. (1987) [36]](../../Surveys/1987.05.01_Review_of_Text-To-Speech_Conversion_for_English.md);
+  - [Survey by Dutoit et al. (1997) [37]](../../Surveys/1997.00.00_High-Quality_Text-To-Speech_Synthesis__An_Overview.md);
+  - [Survey by King et al. (2014) [40]](../../Surveys/2014.06.30_Measuring_a_Decade_of_Progress_in_Text-To-Speech.md);
+  - [Survey by Tabet et al. (2011) [49]](../2011.06.27_Speech_Synthesis_Techniques_A_Survey/Main.md)
+- 近期进展:
+  - [Survey by Ning et al. (2019) [43]](../2019.08.01_A_Review_of_DL_Based_Speech_Synthesis_16P/Main.md);
+  - [Survey by Tan et al. (2021) [42]](../2021.06.29_A_Survey_on_Neural_Speech_Synthesis_63P/Main.md);
+  - [Survey by Zhang et al. (2023) [50]](../2023.03.23_A_Survey_on_Audio_Diffusion_Models__TTS_Synthesis_&_Enhancement_in_Generative_AI/Main.md)
+
+然而据我们所知, 本文是首篇专门聚焦于可控 TTS 的论文.
+
+本综述与之前工作的主要区别总结如下:
 
 #### Different Scope: 不同范围
 
