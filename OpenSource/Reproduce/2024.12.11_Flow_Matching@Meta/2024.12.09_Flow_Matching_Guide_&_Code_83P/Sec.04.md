@@ -29,3 +29,18 @@ Let us start our exposition of Flow Matching by describing how to build $p_t$ an
 [^1]: lipman2022flow,
 [^2]: liu2022flow,
 [^3]: albergo2022building
+
+## 4.1·Data: 数据
+
+To reiterate, let source samples be a RV $X_0 \sim p$ and target samples a RV $X_1 \sim q$.
+Commonly, source samples follow a known distribution that is easy to sample, and target samples are given to us in terms of a dataset of finite size.
+Depending on the application, target samples may constitute images, videos, audio segments, or other types of high-dimensional, richly structured data.
+Source and target samples can be independent, or originate from a general joint distribution known as the **coupling**
+
+$$
+(X_0,X_1) \sim \pi_{0,1} (X_0,X_1),
+$$
+
+where, if no coupling is known, the source-target samples are following the independent coupling $\pi_{0,1} (X_0,X_1) = p(X_0)q(X_1)$.
+One common example of independent source-target distributions is to consider the generation of images $X_1$ from random Gaussian noise vectors $X_0\sim \mathcal{N}(0,I)$.
+As an example of a dependent coupling, consider the case of producing high-resolution images $X_1$ from their low resolution versions $X_0$, or producing colorized videos $X_1$ from their gray-scale counterparts $X_0$.
