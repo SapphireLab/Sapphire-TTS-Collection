@@ -112,7 +112,7 @@ This process is represented by $\hat{\textbf{a}} = f_D(\textbf{s}; \theta_{f_D})
 
 Neural audio codecs are very suitable for and are primarily employed as acoustic generation speech tokenizers.
 These codecs utilize the advanced modeling capabilities of deep neural networks to compress audio signals into a compact representation, typically in the form of quantized tokens.
-For example, both [SoundStream (2021)](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md) and [EnCodec (2022)](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) use convolution blocks as the encoder and use Residual Vector Quantization (RVQ) ([SoundStream (2021)](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md)) as the quantizer.
+For example, both [SoundStream (2021)](../../Models/SpeechCodec/2021.07.07_SoundStream.md) and [EnCodec (2022)](../../Models/SpeechCodec/2022.10.24_EnCodec.md) use convolution blocks as the encoder and use Residual Vector Quantization (RVQ) ([SoundStream (2021)](../../Models/SpeechCodec/2021.07.07_SoundStream.md)) as the quantizer.
 This mechanism allows for codecs to efficiently transmit or store audio with minimal loss in quality.
 Since the output of codecs is in discrete format, they can also be leveraged by SpeechLM to autoregressively generate speech.
 
@@ -130,7 +130,7 @@ Since the output of codecs is in discrete format, they can also be leveraged by 
 
 神经音频编解码器非常适合且主要作为声学生成语音分词器.
 这些编解码器利用深度神经网络的先进建模能力来压缩音频信号为紧凑表示, 通常以量化 Token 的形式出现.
-例如 [SoundStream (2021)](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md) 和 [EnCodec (2022)](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) 使用卷积块作为编码器, 使用**残差向量量化 (Residual Vector Quantization, RVQ)** 作为量化器.
+例如 [SoundStream (2021)](../../Models/SpeechCodec/2021.07.07_SoundStream.md) 和 [EnCodec (2022)](../../Models/SpeechCodec/2022.10.24_EnCodec.md) 使用卷积块作为编码器, 使用**残差向量量化 (Residual Vector Quantization, RVQ)** 作为量化器.
 
 这一机制使得编解码器能够以最小的质量损失高效地传输和存储音频.
 因为这些编解码器的输出是离散形式, 它们可以被语音语言模型用于自回归生成语音.
@@ -143,7 +143,7 @@ Since the output of codecs is in discrete format, they can also be leveraged by 
 Speech tokenizers with a mixed objective aim to balance both semantic understanding and acoustic generation.
 Currently, the development of these tokenizers is in its early stages.
 Most existing mixed speech tokenizers primarily adopt the architecture of acoustic generation speech tokenizers and focus on distilling information from semantic tokenizers into the acoustic tokenizer.
-[SpeechTokenizer (2023)](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) utilizes the RVQ-GAN ([EnCodec (2022)](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md); [SoundStream (2021)](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md)) architecture, distilling semantic information from [HuBERT (2021)](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) to the first layer of RVQ.
+[SpeechTokenizer (2023)](../../Models/SpeechCodec/2023.08.31_SpeechTokenizer.md) utilizes the RVQ-GAN ([EnCodec (2022)](../../Models/SpeechCodec/2022.10.24_EnCodec.md); [SoundStream (2021)](../../Models/SpeechCodec/2021.07.07_SoundStream.md)) architecture, distilling semantic information from [HuBERT (2021)](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) to the first layer of RVQ.
 Building on SpeechTokenizer, Mimi ([Moshi (2024)](../../Models/SpeechLM/2024.09.17_Moshi.md)) employs a single vector quantizer (VQ) to extract information from [WavLM (2021)](../../Models/SpeechRepresentation/2021.10.26_WavLM.md) and incorporates another RVQ module to learn the acoustic information.
 
 </details>
@@ -152,7 +152,7 @@ Building on SpeechTokenizer, Mimi ([Moshi (2024)](../../Models/SpeechLM/2024.09.
 混合目标的语音分词器旨在平衡语义理解和声学生成.
 目前, 这些分词器的发展处于初期阶段.
 大多数现有的混合语音分词器主要采用声学生成语音分词器的架构, 着重于将语义分词器中的信息蒸馏到声学分词器中.
-- [SpeechTokenizer (2023)](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) 使用 RVQ-GAN ([EnCodec (2022)](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md); [SoundStream (2021)](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md)) 架构, 将 [HuBERT (2021)](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) 的语义信息蒸馏到 RVQ 的第一层.
+- [SpeechTokenizer (2023)](../../Models/SpeechCodec/2023.08.31_SpeechTokenizer.md) 使用 RVQ-GAN ([EnCodec (2022)](../../Models/SpeechCodec/2022.10.24_EnCodec.md); [SoundStream (2021)](../../Models/SpeechCodec/2021.07.07_SoundStream.md)) 架构, 将 [HuBERT (2021)](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) 的语义信息蒸馏到 RVQ 的第一层.
 - [Mimi (2024)](../../Models/SpeechLM/2024.09.17_Moshi.md) 基于 SpeechTokenizer 使用单个向量量化器 (VQ) 从 [WavLM (2021)](../../Models/SpeechRepresentation/2021.10.26_WavLM.md) 中提取信息, 并集成另一个 RVQ 模块来学习声学信息.
 
 ## 3.2.Language Model: 语言模型
@@ -241,10 +241,10 @@ The pipeline of the SpeechLM vocoder can vary depending on the underlying vocode
 There are two main pipelines: **Direct synthesis** and **input-enhanced synthesis**.
 
 **Direct synthesis** is the pipeline where the vocoder directly converts speech tokens generated by the language model into audio waveforms.
-For example, [Polyak et al. (2021)](../../Models/TTS3_Vocoder/2021.04.01_Speech_Resynthesis_from_Discrete_Disentangled_Self-Supervised_Representations.md) adapts the [HiFi-GAN (2020)](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md) architecture and takes discrete tokens as inputs.
+For example, [Polyak et al. (2021)](../../Models/SpeechCodec/2021.04.01_Speech_Resynthesis_from_Discrete_Disentangled_Self-Supervised_Representations.md) adapts the [HiFi-GAN (2020)](../../Models/Vocoder/2020.10.12_HiFi-GAN.md) architecture and takes discrete tokens as inputs.
 
 In contrast, **input-enhanced synthesis** employs an additional module to transform the tokens into a continuous latent representation before they are fed into the vocoder ([Seed-TTS (2024)](../../Models/SpeechLM/2024.06.04_Seed-TTS.md); [TorToise-TTS (2023)](../../Models/Diffusion/2023.05.12_TorToise-TTS.md)).
-The main reason for using this pipeline is that vocoders typically require intermediate audio representations, such as mel-spectrograms ([MelGAN (2019)](../../Models/TTS3_Vocoder/2019.10.08_MelGAN.md); [HiFi-GAN (2020)](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md); [BigVGAN (2022)](../../Models/TTS3_Vocoder/2022.06.09_BigVGAN.md)), as input.
+The main reason for using this pipeline is that vocoders typically require intermediate audio representations, such as mel-spectrograms ([MelGAN (2019)](../../Models/Vocoder/2019.10.08_MelGAN.md); [HiFi-GAN (2020)](../../Models/Vocoder/2020.10.12_HiFi-GAN.md); [BigVGAN (2022)](../../Models/Vocoder/2022.06.09_BigVGAN.md)), as input.
 When comparing the two pipelines, direct synthesis is generally simpler and faster than Input-Enhanced Synthesis.
 However, the choice of pipeline depends on the type of tokens used as input.
 Tokens from acoustic generation tokenizers contain sufficient acoustic information, making them suitable for direct synthesis.
@@ -271,9 +271,9 @@ $$
 主要有两种流程: **直接合成** 和 **输入增强合成**.
 
 - **直接合成** 是指声码器直接将由语言模型生成的语音 Token 转换为音频波形的流程.
-如 [Polyak et al. (2021)](../../Models/TTS3_Vocoder/2021.04.01_Speech_Resynthesis_from_Discrete_Disentangled_Self-Supervised_Representations.md) 采用 [HiFi-GAN (2020)](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md) 架构并采用离散 Token 作为输入.
+如 [Polyak et al. (2021)](../../Models/SpeechCodec/2021.04.01_Speech_Resynthesis_from_Discrete_Disentangled_Self-Supervised_Representations.md) 采用 [HiFi-GAN (2020)](../../Models/Vocoder/2020.10.12_HiFi-GAN.md) 架构并采用离散 Token 作为输入.
 - **输入增强合成** 是指采用额外模块将 Token 转换为连续潜在表示, 再将其输入声码器 ([Seed-TTS (2024)](../../Models/SpeechLM/2024.06.04_Seed-TTS.md); [TorToise-TTS (2023)](../../Models/Diffusion/2023.05.12_TorToise-TTS.md)) 的流程.
-  使用这一流程的主要原因是声码器通常需要中间音频表示作为输入, 如梅尔频谱 ([MelGAN (2019)](../../Models/TTS3_Vocoder/2019.10.08_MelGAN.md); [HiFi-GAN (2020)](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md); [BigVGAN (2022)](../../Models/TTS3_Vocoder/2022.06.09_BigVGAN.md)).
+  使用这一流程的主要原因是声码器通常需要中间音频表示作为输入, 如梅尔频谱 ([MelGAN (2019)](../../Models/Vocoder/2019.10.08_MelGAN.md); [HiFi-GAN (2020)](../../Models/Vocoder/2020.10.12_HiFi-GAN.md); [BigVGAN (2022)](../../Models/Vocoder/2022.06.09_BigVGAN.md)).
 
 在比较这两种流程时, 直接合成通常比输入增强合成更简单和更快.
 然而, 流程的选择依赖于输入的 Token 类型.
@@ -286,7 +286,7 @@ $$
 <details>
 <summary>展开原文</summary>
 
-Generative Adversarial Network (GAN) is the most adopted architecture of the vocoders ([MelGAN (2019)](../../Models/TTS3_Vocoder/2019.10.08_MelGAN.md); [HiFi-GAN (2020)](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md);[Polyak et al. (2021)](../../Models/TTS3_Vocoder/2021.04.01_Speech_Resynthesis_from_Discrete_Disentangled_Self-Supervised_Representations.md); [Fre-GAN (2021)](../../Models/TTS3_Vocoder/2021.06.04_Fre-GAN.md); [BigVGAN (2022)](../../Models/TTS3_Vocoder/2022.06.09_BigVGAN.md)).
+Generative Adversarial Network (GAN) is the most adopted architecture of the vocoders ([MelGAN (2019)](../../Models/Vocoder/2019.10.08_MelGAN.md); [HiFi-GAN (2020)](../../Models/Vocoder/2020.10.12_HiFi-GAN.md);[Polyak et al. (2021)](../../Models/SpeechCodec/2021.04.01_Speech_Resynthesis_from_Discrete_Disentangled_Self-Supervised_Representations.md); [Fre-GAN (2021)](../../Models/Vocoder/2021.06.04_Fre-GAN.md); [BigVGAN (2022)](../../Models/Vocoder/2022.06.09_BigVGAN.md)).
 It is well known for its fast and high-fidelity generation in speech synthesis tasks.
 The architecture of GAN includes a generator and a discriminator.
 Specifically, the generator creates realistic audio waveforms from random noise or input features, while the discriminator evaluates the authenticity of the generated audio against real audio samples.
@@ -327,16 +327,16 @@ $$
 where $D^i(\cdot)$ and $N_i$ denote the features and the number of features in the $i$-th layer of the discriminator, respectively.
 
 For architectural choices, GAN-based vocoders focus on injecting inductive biases to generate audio waveforms.
-[MelGAN (2019)](../../Models/TTS3_Vocoder/2019.10.08_MelGAN.md) adds residual blocks with dilations in the generator to model the long-range correlation among the audio time steps and proposes a multi-scale architecture for the discriminator to model the different frequency ranges of the audio.
-Based on the idea of the multi-scale discriminator, [HiFi-GAN (2020)](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md) proposes a multi-period discriminator to model the diverse periodic patterns within the audio waveforms.
-To preserve high-frequency content, [Fre-GAN (2021)](../../Models/TTS3_Vocoder/2021.06.04_Fre-GAN.md) employs the Discrete Wavelet Transform (DWT) to downsample and learn spectral distributions across multiple frequency bands.
+[MelGAN (2019)](../../Models/Vocoder/2019.10.08_MelGAN.md) adds residual blocks with dilations in the generator to model the long-range correlation among the audio time steps and proposes a multi-scale architecture for the discriminator to model the different frequency ranges of the audio.
+Based on the idea of the multi-scale discriminator, [HiFi-GAN (2020)](../../Models/Vocoder/2020.10.12_HiFi-GAN.md) proposes a multi-period discriminator to model the diverse periodic patterns within the audio waveforms.
+To preserve high-frequency content, [Fre-GAN (2021)](../../Models/Vocoder/2021.06.04_Fre-GAN.md) employs the Discrete Wavelet Transform (DWT) to downsample and learn spectral distributions across multiple frequency bands.
 Unlike traditional approaches like Average Pooling (AP), DWT efficiently decomposes the signal into low-frequency and high-frequency sub-bands.
-[BigVGAN (2022)](../../Models/TTS3_Vocoder/2022.06.09_BigVGAN.md) introduces a periodic activation function called snake function along with an anti-aliased representation to reduce the high-frequency artifacts in the synthesized audio.
+[BigVGAN (2022)](../../Models/Vocoder/2022.06.09_BigVGAN.md) introduces a periodic activation function called snake function along with an anti-aliased representation to reduce the high-frequency artifacts in the synthesized audio.
 
 </details>
 <br>
 
-生成对抗网络 (Generative Adversarial Network, GAN) 是声码器最常采用的架构 ([MelGAN (2019)](../../Models/TTS3_Vocoder/2019.10.08_MelGAN.md); [HiFi-GAN (2020)](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md);[Polyak et al. (2021)](../../Models/TTS3_Vocoder/2021.04.01_Speech_Resynthesis_from_Discrete_Disentangled_Self-Supervised_Representations.md); [Fre-GAN (2021)](../../Models/TTS3_Vocoder/2021.06.04_Fre-GAN.md); [BigVGAN (2022)](../../Models/TTS3_Vocoder/2022.06.09_BigVGAN.md)).
+生成对抗网络 (Generative Adversarial Network, GAN) 是声码器最常采用的架构 ([MelGAN (2019)](../../Models/Vocoder/2019.10.08_MelGAN.md); [HiFi-GAN (2020)](../../Models/Vocoder/2020.10.12_HiFi-GAN.md);[Polyak et al. (2021)](../../Models/SpeechCodec/2021.04.01_Speech_Resynthesis_from_Discrete_Disentangled_Self-Supervised_Representations.md); [Fre-GAN (2021)](../../Models/Vocoder/2021.06.04_Fre-GAN.md); [BigVGAN (2022)](../../Models/Vocoder/2022.06.09_BigVGAN.md)).
 它在语音合成任务中以快速和高保真生成而闻名.
 GAN 架构包括生成器和判别器.
 具体来说, 生成器从随机噪声或输入特征创建真实的音频波形, 而判别器评估生成的音频和真实样本的真实性.
@@ -368,11 +368,11 @@ $$
 其中 $D^i(\cdot)$ 和 $N_i$ 表示第 $i$ 层判别器的特征和特征数.
 
 在架构选择方面, 基于 GAN 的声码器专注于注入归纳偏置以生成音频波形.
-- [MelGAN (2019)](../../Models/TTS3_Vocoder/2019.10.08_MelGAN.md) 在生成器中加入了带有膨胀卷积的残差块, 以模拟音频时间步间的长期相关性, 并提出了多尺度架构的判别器, 以模拟不同频率范围的音频.
-- [HiFi-GAN (2020)](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md) 基于多尺度判别器提出了多周期判别器, 以模拟音频波形中的多种周期模式.
-- [Fre-GAN (2021)](../../Models/TTS3_Vocoder/2021.06.04_Fre-GAN.md) 为了保持高频内容, 采用离散小波变换 (Discrete Wavelet Transform, DWT) 来下采样和学习多频带的频谱分布.
+- [MelGAN (2019)](../../Models/Vocoder/2019.10.08_MelGAN.md) 在生成器中加入了带有膨胀卷积的残差块, 以模拟音频时间步间的长期相关性, 并提出了多尺度架构的判别器, 以模拟不同频率范围的音频.
+- [HiFi-GAN (2020)](../../Models/Vocoder/2020.10.12_HiFi-GAN.md) 基于多尺度判别器提出了多周期判别器, 以模拟音频波形中的多种周期模式.
+- [Fre-GAN (2021)](../../Models/Vocoder/2021.06.04_Fre-GAN.md) 为了保持高频内容, 采用离散小波变换 (Discrete Wavelet Transform, DWT) 来下采样和学习多频带的频谱分布.
   和传统的方法如平均池化不同, 离散小波变换将信号分解为低频和高频子带.
-- [BigVGAN (2022)](../../Models/TTS3_Vocoder/2022.06.09_BigVGAN.md) 引入了名为蛇形函数的周期激活函数和抗锯齿表示, 以减少生成音频中的高频伪影.
+- [BigVGAN (2022)](../../Models/Vocoder/2022.06.09_BigVGAN.md) 引入了名为蛇形函数的周期激活函数和抗锯齿表示, 以减少生成音频中的高频伪影.
 
 ### 3.3.2.GAN-based Neural Audio Codec: 基于生成对抗网络的神经音频编解码器
 
@@ -381,9 +381,9 @@ $$
 
 Given that many neural audio codecs employ a GAN architecture, they can be effectively discussed within the context of GAN-based vocoders.
 Similar to its role as a tokenizer, although the primary objective of neural audio codecs is for audio compression, the encoded compact token sequences capture the essential information buried in the audio waveforms and therefore can be leveraged as a vocoder in SpeechLMs.
-[EnCodec (2022)](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) uses a GAN architecture and proposes a novel generator including an encoder, a quantizer, and a decoder.
+[EnCodec (2022)](../../Models/SpeechCodec/2022.10.24_EnCodec.md) uses a GAN architecture and proposes a novel generator including an encoder, a quantizer, and a decoder.
 The compressed audio representations are outputted by the quantizer by using Residual Vector Quantization (RVQ).
-[Polyak et al. (2021)](../../Models/TTS3_Vocoder/2021.04.01_Speech_Resynthesis_from_Discrete_Disentangled_Self-Supervised_Representations.md) utilizes [HiFi-GAN (2020)](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md) as the vocoder backbone and proposes to disentangle the input features of a vocoder into distinct properties, which include semantic tokens, pitch tokens, and speaker embeddings.
+[Polyak et al. (2021)](../../Models/SpeechCodec/2021.04.01_Speech_Resynthesis_from_Discrete_Disentangled_Self-Supervised_Representations.md) utilizes [HiFi-GAN (2020)](../../Models/Vocoder/2020.10.12_HiFi-GAN.md) as the vocoder backbone and proposes to disentangle the input features of a vocoder into distinct properties, which include semantic tokens, pitch tokens, and speaker embeddings.
 Such a design choice enables the codec to better perform on pitch and speaker-related tasks such as voice conversion and $F_0$ manipulation.
 
 </details>
@@ -391,9 +391,9 @@ Such a design choice enables the codec to better perform on pitch and speaker-re
 
 许多神经音频编解码器采用 GAN 架构, 它们可以在基于 GAN 的声码器的背景下进行讨论.
 类似于其作为分词器的角色, 虽然神经音频编解码器的主要目的是音频压缩, 编码后的紧凑 Token 序列捕获了音频波形中被埋藏的基本信息, 因此可以作为语音语言模型中的声码器.
-- [EnCodec (2022)](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) 使用 GAN 架构, 提出了一种新的生成器, 包括编码器, 量化器, 和解码器.
+- [EnCodec (2022)](../../Models/SpeechCodec/2022.10.24_EnCodec.md) 使用 GAN 架构, 提出了一种新的生成器, 包括编码器, 量化器, 和解码器.
   压缩的音频表示通过使用残差向量量化由量化器输出.
-- [Polyak et al. (2021)](../../Models/TTS3_Vocoder/2021.04.01_Speech_Resynthesis_from_Discrete_Disentangled_Self-Supervised_Representations.md) 利用 [HiFi-GAN (2020)](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md) 作为声码器的骨干, 提出了将声码器的输入特征解耦为不同性质, 其中包括语义 Token, 音高 Token, 和说话人嵌入.
+- [Polyak et al. (2021)](../../Models/SpeechCodec/2021.04.01_Speech_Resynthesis_from_Discrete_Disentangled_Self-Supervised_Representations.md) 利用 [HiFi-GAN (2020)](../../Models/Vocoder/2020.10.12_HiFi-GAN.md) 作为声码器的骨干, 提出了将声码器的输入特征解耦为不同性质, 其中包括语义 Token, 音高 Token, 和说话人嵌入.
   这种设计选择使得编解码器在音高和说话人相关的任务 (如声音转换和 $F_0$ 操控方面) 表现得更好.
 
 ### 3.3.3.Other Types of Vocoder: 其他类型的声码器
@@ -415,13 +415,13 @@ This section briefly outlines other potential vocoder types that are seldom expl
 <details>
 <summary>展开原文</summary>
 
-Pure signal processing vocoders are traditional methods that rely on deterministic algorithms rather than deep learning models to synthesize speech ([Griffin-Lim (1984)](../../Models/TTS3_Vocoder/1984.04.00_Griffin-Lim.md); [WORLD (2016)](../../Models/TTS3_Vocoder/2016.07.01_WORLD.md)).
+Pure signal processing vocoders are traditional methods that rely on deterministic algorithms rather than deep learning models to synthesize speech ([Griffin-Lim (1984)](../../Models/Vocoder/1984.04.00_Griffin-Lim.md); [WORLD (2016)](../../Models/Vocoder/2015.11.11_WORLD.md)).
 However, this kind of vocoders introduces noticeable artifacts in the synthesized audio and is thus rarely used.
 
 </details>
 <br>
 
-纯信号处理声码器是依赖于确定性算法而不是深度学习模型的用于合成语音的传统方法 ([Griffin-Lim (1984)](../../Models/TTS3_Vocoder/1984.04.00_Griffin-Lim.md); [WORLD (2016)](../../Models/TTS3_Vocoder/2016.07.01_WORLD.md)).
+纯信号处理声码器是依赖于确定性算法而不是深度学习模型的用于合成语音的传统方法 ([Griffin-Lim (1984)](../../Models/Vocoder/1984.04.00_Griffin-Lim.md); [WORLD (2016)](../../Models/Vocoder/2015.11.11_WORLD.md)).
 然而, 这类声码器会在合成的音频中引入显著的伪影, 因此很少被使用.
 
 #### Autoregressive Vocoder: 自回归声码器
@@ -429,14 +429,14 @@ However, this kind of vocoders introduces noticeable artifacts in the synthesize
 <details>
 <summary>展开原文</summary>
 
-Autoregressive vocoders generate audio waveforms one sample at a time, with each sample conditioned on the previously generated samples ([WaveNet (2016)](../../Models/TTS3_Vocoder/2016.09.12_WaveNet.md)).
+Autoregressive vocoders generate audio waveforms one sample at a time, with each sample conditioned on the previously generated samples ([WaveNet (2016)](../../Models/Vocoder/2016.09.12_WaveNet.md)).
 This approach allows for high-quality audio synthesis due to its sequential nature and the ability to capture intricate temporal dependencies within the audio signal.
 However, the sequential generation process can be computationally expensive and time-consuming, making autoregressive models less efficient compared to parallelized methods like GAN-based vocoders.
 
 </details>
 <br>
 
-自回归声码器一次生成一个音频波形样本, 每个样本都以之前生成的样本为条件 ([WaveNet (2016)](../../Models/TTS3_Vocoder/2016.09.12_WaveNet.md)).
+自回归声码器一次生成一个音频波形样本, 每个样本都以之前生成的样本为条件 ([WaveNet (2016)](../../Models/Vocoder/2016.09.12_WaveNet.md)).
 这种方法允许高质量的音频合成, 因为它是顺序生成的, 并且能够捕获音频信号中的复杂时序依赖关系.
 然而, 顺序生成过程可能是计算密集型的, 耗时耗力, 因此与 GAN-based 声码器相比, 自回归模型的效率较低.
 
@@ -446,15 +446,15 @@ However, the sequential generation process can be computationally expensive and 
 <summary>展开原文</summary>
 
 Flow-based vocoder aims to establish a series of invertible transformations that map a simple distribution, such as a Gaussian, to the complex distribution of audio samples.
-This mechanism allows for efficient sampling and density evaluation, enabling the model to synthesize audio in parallel rather than sequentially, which significantly enhances both speed and quality ([WaveGlow (2018)](../../Models/TTS3_Vocoder/2018.10.31_WaveGlow.md)).
-Compared to GAN-based vocoders, Flow-based vocoders typically need more parameters and memory to train the model, which hinders them from being effectively utilized ([MelGAN (2019)](../../Models/TTS3_Vocoder/2019.10.08_MelGAN.md)).
+This mechanism allows for efficient sampling and density evaluation, enabling the model to synthesize audio in parallel rather than sequentially, which significantly enhances both speed and quality ([WaveGlow (2018)](../../Models/Vocoder/2018.10.31_WaveGlow.md)).
+Compared to GAN-based vocoders, Flow-based vocoders typically need more parameters and memory to train the model, which hinders them from being effectively utilized ([MelGAN (2019)](../../Models/Vocoder/2019.10.08_MelGAN.md)).
 
 </details>
 <br>
 
 基于流模型的声码器旨在建立一系列可逆变换, 将简单分布 (如高斯分布) 映射到音频样本的复杂分布.
-这种机制允许高效的采样和密度评估, 使模型能够并行合成音频, 而不是顺序合成, 这有助于提高速度和质量 ([WaveGlow (2018)](../../Models/TTS3_Vocoder/2018.10.31_WaveGlow.md)).
-和基于 GAN 的声码器相比, 流模型声码器通常需要更多的参数和内存来训练模型, 这使得它们难以有效地被利用 ([MelGAN (2019)](../../Models/TTS3_Vocoder/2019.10.08_MelGAN.md)).
+这种机制允许高效的采样和密度评估, 使模型能够并行合成音频, 而不是顺序合成, 这有助于提高速度和质量 ([WaveGlow (2018)](../../Models/Vocoder/2018.10.31_WaveGlow.md)).
+和基于 GAN 的声码器相比, 流模型声码器通常需要更多的参数和内存来训练模型, 这使得它们难以有效地被利用 ([MelGAN (2019)](../../Models/Vocoder/2019.10.08_MelGAN.md)).
 
 #### VAE-based Vocoders: VAE 声码器
 
@@ -476,14 +476,14 @@ However, VAE is seldom explored as the underlying architecture of vocoders.
 <summary>展开原文</summary>
 
 Diffusion models have emerged in recent years as a powerful class of generative models that can be used for high-fidelity speech synthesis.
-They work by gradually adding noise to the input data (e.g., audio waveforms) to create a sequence of increasingly noisy representations, then learning to reverse this process to generate new samples ([DiffWave (2020)](../../Models/TTS3_Vocoder/2020.09.21_DiffWave.md); [WaveGrad (2020)](../../Models/TTS3_Vocoder/2020.09.02_WaveGrad.md); [PriorGrad (2021)](../../Models/TTS3_Vocoder/2021.06.11_PriorGrad.md)).
-For instance, [DiffWave (2020)](../../Models/TTS3_Vocoder/2020.09.21_DiffWave.md) uses Denoising Diffusion Probabilistic Models (DDPM) to synthesize audio.
+They work by gradually adding noise to the input data (e.g., audio waveforms) to create a sequence of increasingly noisy representations, then learning to reverse this process to generate new samples ([DiffWave (2020)](../../Models/Vocoder/2020.09.21_DiffWave.md); [WaveGrad (2020)](../../Models/Vocoder/2020.09.02_WaveGrad.md); [PriorGrad (2021)](../../Models/Vocoder/2021.06.11_PriorGrad.md
+For instance, [DiffWave (2020)](../../Models/Vocoder/2020.09.21_DiffWave.md) uses Denoising Diffusion Probabilistic Models (DDPM) to synthesize audio.
 Additionally, [CosyVoice (2024)](../../Models/SpeechLM/2024.07.07_CosyVoice.md) introduces a Conditional Flow-Matching (CFM) model that serves as a vocoder in TTS systems.
 
 </details>
 <br>
 
 扩散模型是近年来出现的一种强大的生成模型, 它可以用于高保真语音合成.
-它们通过逐渐添加噪声到输入数据 (如音频波形) 来创建一系列噪声增加表示, 然后学习将这个过程反向进行, 来生成新的样本 ([DiffWave (2020)](../../Models/TTS3_Vocoder/2020.09.21_DiffWave.md); [WaveGrad (2020)](../../Models/TTS3_Vocoder/2020.09.02_WaveGrad.md); [PriorGrad (2021)](../../Models/TTS3_Vocoder/2021.06.11_PriorGrad.md)).
-例如: [DiffWave (2020)](../../Models/TTS3_Vocoder/2020.09.21_DiffWave.md) 使用 Denoising Diffusion Probabilistic Models (DDPM) 来合成音频.
+它们通过逐渐添加噪声到输入数据 (如音频波形) 来创建一系列噪声增加表示, 然后学习将这个过程反向进行, 来生成新的样本 ([DiffWave (2020)](../../Models/Vocoder/2020.09.21_DiffWave.md); [WaveGrad (2020)](../../Models/Vocoder/2020.09.02_WaveGrad.md); [PriorGrad (2021)](../../Models/Vocoder/2021.06.11_PriorGrad.md
+例如: [DiffWave (2020)](../../Models/Vocoder/2020.09.21_DiffWave.md) 使用 Denoising Diffusion Probabilistic Models (DDPM) 来合成音频.
 此外, [CosyVoice (2024)](../../Models/SpeechLM/2024.07.07_CosyVoice.md) 引入了一个条件流匹配 (CFM) 模型, 作为 TTS 系统中的声码器.
