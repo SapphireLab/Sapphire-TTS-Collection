@@ -79,7 +79,7 @@ Based on different architectural paradigms, these approaches can be broadly cate
 <details>
 <summary>展开原文</summary>
 
-These systems ([Qwen2-Audio [33]](../../Models/SpeechLM/2024.07.15_Qwen2-Audio.md); [Qwen-Audio [34]](../../Models/SpeechLM/2023.11.14_Qwen-Audio.md); [LTU-AS [67]](../../Models/SpeechLM/2023.09.25_LTU-AS.md); [E-chat [227]](../../Models/SpeechLM/2023.12.31_E-chat.md); [SALMONN [198]](../../Models/SpeechLM/2023.10.20_SALMONN.md); [WavLLM [80]](../../Models/SpeechLM/WavLLM.md); [SpeechVerse [41]](../../Models/SpeechLM/2024.05.14_SpeechVerse.md); [VITA [61]](../../Models/SpeechLM/2024.08.09_VITA.md)) maintain the text-based LLM’s foundational structure unchanged, **using an audio encoder and adaptor to map speech input into the LLM's pre-trained text latent space directly**.
+These systems ([Qwen2-Audio [33]](../../Models/SpeechLM/2024.07.15_Qwen2-Audio.md); [Qwen-Audio [34]](../../Models/SpeechLM/2023.11.14_Qwen-Audio.md); [LTU-AS [67]](../../Models/SpeechLM/2023.09.25_LTU-AS.md); [E-chat [227]](../../Models/SpeechLM/2023.12.31_E-chat.md); [SALMONN [198]](../../Models/SpeechLM/2023.10.20_SALMONN.md); [WavLLM [80]](../../Models/SpeechLM/2024.03.31_WavLLM.md); [SpeechVerse [41]](../../Models/SpeechLM/2024.05.14_SpeechVerse.md); [VITA [61]](../../Models/SpeechLM/2024.08.09_VITA.md)) maintain the text-based LLM’s foundational structure unchanged, **using an audio encoder and adaptor to map speech input into the LLM's pre-trained text latent space directly**.
 This method of direct embedding alignment, combined with a multi-task training strategy, equips the LLM with the ability to 'listen,' thus enabling it to understand and process speech modality inputs effectively and perform exceptionally well in various audio understanding tasks.
 Nevertheless, the output remains text-based, which necessitates the use of an external text-to-speech (TTS) system ([XTTS [21]](../../Models/SpeechLM/2024.06.07_XTTS.md); [CosyVoice [49]](../../Models/SpeechLM/2024.07.07_CosyVoice.md)) to generate speech output.
 [LTU-AS [67]](../../Models/SpeechLM/2023.09.25_LTU-AS.md) uses [Whisper [169]](../../Models/SpeechLM/2022.12.06_Whisper.md) and the Time and Layer-Wise Transformer (TLTR) as its audio encoder, allowing it to recognize both speech and audio events.
@@ -98,7 +98,7 @@ Although these approaches have explored emotional responses within spoken dialog
 </details>
 <br>
 
-这些系统 ([Qwen2-Audio [33]](../../Models/SpeechLM/2024.07.15_Qwen2-Audio.md); [Qwen-Audio [34]](../../Models/SpeechLM/2023.11.14_Qwen-Audio.md); [LTU-AS [67]](../../Models/SpeechLM/2023.09.25_LTU-AS.md); [E-chat [227]](../../Models/SpeechLM/2023.12.31_E-chat.md); [SALMONN [198]](../../Models/SpeechLM/2023.10.20_SALMONN.md); [WavLLM [80]](../../Models/SpeechLM/WavLLM.md); [SpeechVerse [41]](../../Models/SpeechLM/2024.05.14_SpeechVerse.md); [VITA [61]](../../Models/SpeechLM/2024.08.09_VITA.md)) 保持了基于文本的大语言模型的基础架构不变, **使用音频编码器和适配器将语音输入直接映射到大语言模型预训练的文本潜在空间**.
+这些系统 ([Qwen2-Audio [33]](../../Models/SpeechLM/2024.07.15_Qwen2-Audio.md); [Qwen-Audio [34]](../../Models/SpeechLM/2023.11.14_Qwen-Audio.md); [LTU-AS [67]](../../Models/SpeechLM/2023.09.25_LTU-AS.md); [E-chat [227]](../../Models/SpeechLM/2023.12.31_E-chat.md); [SALMONN [198]](../../Models/SpeechLM/2023.10.20_SALMONN.md); [WavLLM [80]](../../Models/SpeechLM/2024.03.31_WavLLM.md); [SpeechVerse [41]](../../Models/SpeechLM/2024.05.14_SpeechVerse.md); [VITA [61]](../../Models/SpeechLM/2024.08.09_VITA.md)) 保持了基于文本的大语言模型的基础架构不变, **使用音频编码器和适配器将语音输入直接映射到大语言模型预训练的文本潜在空间**.
 这种直接嵌入对齐的方法, 和多任务训练策略相结合, 使得大语言模型具备了听的能力, 从而能够有效地理解和处理语音模态输入, 并在各种音频理解任务中表现出色.
 然而, 输出仍然是基于文本的, 这需要使用外部的文本转语音系统 ([XTTS [21]](../../Models/SpeechLM/2024.06.07_XTTS.md); [CosyVoice [49]](../../Models/SpeechLM/2024.07.07_CosyVoice.md)) 来生成语音输出.
 - [LTU-AS [67]](../../Models/SpeechLM/2023.09.25_LTU-AS.md) 使用 [Whisper [169]](../../Models/SpeechLM/2022.12.06_Whisper.md) 与时间和层级 Transformer (TLTR) 作为音频编码器, 使其能够识别语音和音频事件.
@@ -123,7 +123,7 @@ This method tokenizes speech into discrete tokens and extends the LLM’s vocabu
 To address alignment issues between speech and text modalities, Recent works ([SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md); [SpeechGPT-Gen [244]](../../Models/SpeechLM/2024.01.24_SpeechGPT-Gen.md); [Spectron [156]](../../Models/SpeechLM/2023.05.24_Spectron.md); [EMOVA [25]](../../Models/SpeechLM/2024.09.26_EMOVA.md)) utilize a prompting approach called Chain-of-Modality (CoM), which first generates response text autoregressively before producing the corresponding speech.
 This technique allows the text LLM's output to guide speech generation, thereby enhancing the quality of the response content.
 However, it is not suitable for live interactions, as the model must complete the entire text response before beginning speech generation, leading to increased response latency.
-[SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md) and [SpeechGPT-Gen [244]](../../Models/SpeechLM/2024.01.24_SpeechGPT-Gen.md) employ the [SpeechTokenizer [249]](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) model as a speech token extractor, breaking down speech generation into the prediction of semantic tokens followed by acoustic tokens.
+[SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md) and [SpeechGPT-Gen [244]](../../Models/SpeechLM/2024.01.24_SpeechGPT-Gen.md) employ the [SpeechTokenizer [249]](../../Models/SpeechCodec/2023.08.31_SpeechTokenizer.md) model as a speech token extractor, breaking down speech generation into the prediction of semantic tokens followed by acoustic tokens.
 [Spectron [156]](../../Models/SpeechLM/2023.05.24_Spectron.md) performs speech continuation by predicting spectrograms frame-by-frame, optimizing the LLM with a combination of cross-entropy loss for text and reconstruction loss for speech frames.
 [EMOVA [25]](../../Models/SpeechLM/2024.09.26_EMOVA.md), on the other hand, utilizes the FSPIRAL ([SPIRAL [85]](../../Models/SpeechRepresentation/2022.01.25_SPIRAL.md)) architecture for its speech encoder to capture phonetic and tonal information, which is then discretized using [finite scalar quantization (FSQ) [149]](../../Modules/VQ/FSQ.md).
 Its speech response procedure is divided into three primary steps:
@@ -140,7 +140,7 @@ This process enables EMOVA to facilitate emotional speech dialogue.
 为了处理语音和文本模态之间的对齐问题, 近期工作 ([SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md); [SpeechGPT-Gen [244]](../../Models/SpeechLM/2024.01.24_SpeechGPT-Gen.md); [Spectron [156]](../../Models/SpeechLM/2023.05.24_Spectron.md); [EMOVA [25]](../../Models/SpeechLM/2024.09.26_EMOVA.md)) 利用了名为模态链 (Chain-of-Modality, CoM) 的提示方法, 首先自回归地生成响应文本然后生成相应的语音.
 这种技术允许文本大语言模型的输出来引导语音生成, 从而增强响应内容的质量.
 然而, 这不适合现场交互, 因为模型必须完成整个文本响应才能开始语音生成, 这导致响应延迟增加.
-- [SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md) 和 [SpeechGPT-Gen [244]](../../Models/SpeechLM/2024.01.24_SpeechGPT-Gen.md) 采用 [SpeechTokenizer [249]](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) 模型作为语音 Token 提取器, 将语音生成分解为语义 Token 预测和音频 Token 预测.
+- [SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md) 和 [SpeechGPT-Gen [244]](../../Models/SpeechLM/2024.01.24_SpeechGPT-Gen.md) 采用 [SpeechTokenizer [249]](../../Models/SpeechCodec/2023.08.31_SpeechTokenizer.md) 模型作为语音 Token 提取器, 将语音生成分解为语义 Token 预测和音频 Token 预测.
 - [EMOVA [25]](../../Models/SpeechLM/2024.09.26_EMOVA.md) 使用 FSPIRAL ([SPIRAL [85]](../../Models/SpeechRepresentation/2022.01.25_SPIRAL.md)) 架构作为其语音编码器, 捕捉语音的音素和音调信息, 然后使用 [finite scalar quantization (FSQ) [149]](../../Modules/VQ/FSQ.md) 对其离散化.
   其语音响应过程分为三个主要步骤: (1) 将用户指令转化为文本, (2) 根据这些指令生成文本响应, (3) 从文本响应生成样式标签和响应语音单元.
   这种过程使得 EMOVA 能够促进情感语音对话.
@@ -400,7 +400,7 @@ Additionally, a predefined chunk size is set to further enable vocoder streaming
 <details>
 <summary>展开原文</summary>
 
-[Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md) selects [SNAC [193]](../../Models/Speech_Neural_Codec/2024.10.18_SNAC.md), a music-grade encoder, to discretize one second of audio into hundreds of tokens, which significantly increases the burden on the LLM for modeling speech tokens.
+[Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md) selects [SNAC [193]](../../Models/SpeechCodec/2024.10.18_SNAC.md), a music-grade encoder, to discretize one second of audio into hundreds of tokens, which significantly increases the burden on the LLM for modeling speech tokens.
 Delay Pattern language model decoding strategies are often applied in modeling multiple parallel streams of acoustic tokens in speech tasks like [MusicGen [40]](../../Models/SpeechLM/2023.06.08_MusicGen.md), [VoiceCraft [163]](../../Models/SpeechLM/2024.03.25_VoiceCraft.md), and [Parler-TTS [140]](../../Models/SpeechLM/2024.02.02_Parler-TTS.md).
 Compared with traditional sequential step decoding, this strategy can effectively reduce the time steps required for LLM decoding and generating speech tokens.
 Inspired by this, Mini-Omni innovatively applies text-instructed delayed parallel generation to address the issue of long SNAC codebook sequences, simultaneously producing audio and text tokens.
@@ -413,7 +413,7 @@ This further enhances the model’s reasoning capabilities during dialogue, maxi
 </details>
 <br>
 
-[Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md) 选择 [SNAC [193]](../../Models/Speech_Neural_Codec/2024.10.18_SNAC.md), 一个音乐级编码器, 将一秒钟的音频划分为数百个 Token, 这显著增加了 LLM 建模语音 Token 的负担.
+[Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md) 选择 [SNAC [193]](../../Models/SpeechCodec/2024.10.18_SNAC.md), 一个音乐级编码器, 将一秒钟的音频划分为数百个 Token, 这显著增加了 LLM 建模语音 Token 的负担.
 延迟模式语言模型解码策略通常用于建模语音任务中的多个并行流的音频 Token, 如 [MusicGen [40]](../../Models/SpeechLM/2023.06.08_MusicGen.md), [VoiceCraft [163]](../../Models/SpeechLM/2024.03.25_VoiceCraft.md), 和 [Parler-TTS [140]](../../Models/SpeechLM/2024.02.02_Parler-TTS.md).
 与传统的顺序步进解码相比, 这种策略可以有效地减少 LLM 解码和生成语音 Token 需要的时间步数.
 受此启发, Mini-Omni 创新地采用文本指导的延迟并行生成, 解决了 SNAC 码本序列过长的问题, 同时生成音频和文本 Token.
@@ -569,8 +569,8 @@ Perhaps we can consider further exploration and experimentation in the speech to
 <summary>展开原文</summary>
 
 In speech and text modalities, there is often a significant mismatch in sequence lengths.
-Even when some speech tokenizers ([WavTokenizer [90]](../../Models/Speech_Neural_Codec/2024.08.29_WavTokenizer.md); [Single-Codec [119]](../../Models/Speech_Neural_Codec/2024.06.11_Single-Codec.md)) employ extreme sequence compression methods, a length gap remains between the two.
-Temporal alignment information between speech and text has been explored in tasks like Automatic Speech Recognition (ASR) and Text-to-Speech (TTS) as demonstrated by models such as [Whisper [169]](../../Models/SpeechLM/2022.12.06_Whisper.md), [FastSpeech2 [176]](../../Models/TTS2_Acoustic/2020.06.08_FastSpeech2.md), and [VITS [107]](../../Models/E2E/2021.06.11_VITS.md).
+Even when some speech tokenizers ([WavTokenizer [90]](../../Models/SpeechCodec/2024.08.29_WavTokenizer.md); [Single-Codec [119]](../../Models/SpeechCodec/2024.06.11_Single-Codec.md)) employ extreme sequence compression methods, a length gap remains between the two.
+Temporal alignment information between speech and text has been explored in tasks like Automatic Speech Recognition (ASR) and Text-to-Speech (TTS) as demonstrated by models such as [Whisper [169]](../../Models/SpeechLM/2022.12.06_Whisper.md), [FastSpeech2 [176]](../../Models/Acoustic/2020.06.08_FastSpeech2.md), and [VITS [107]](../../Models/E2E/2021.06.11_VITS.md).
 Recently, some spoken dialogue systems have utilized temporal alignment information to enhance model performance, yielding promising results.
 For instance, [Spirit-LM [158]](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md) uses interleaving text and speech tokens for continual pre-training on the LLaMA base model, significantly boosting the model’s performance in speech understanding and generation.
 Experimental visualizations demonstrate that the similarity between text and speech features is notably higher in models trained with interleaved token sequences compared to those trained without this approach.
@@ -589,9 +589,9 @@ For instance, sentence-level alignment might offer a broader contextual understa
 <br>
 
 在语音和文本模态中, 序列长度通常存在显著的不匹配.
-即使某些语音分词器 ([WavTokenizer [90]](../../Models/Speech_Neural_Codec/2024.08.29_WavTokenizer.md); [Single-Codec [119]](../../Models/Speech_Neural_Codec/2024.06.11_Single-Codec.md)) 采用极端的序列压缩方法, 两者之间的长度差距也仍然存在.
+即使某些语音分词器 ([WavTokenizer [90]](../../Models/SpeechCodec/2024.08.29_WavTokenizer.md); [Single-Codec [119]](../../Models/SpeechCodec/2024.06.11_Single-Codec.md)) 采用极端的序列压缩方法, 两者之间的长度差距也仍然存在.
 
-在自动语音识别 (ASR) 和文本转语音 (TTS) 等任务中, 语音和文本之间的时序对齐信息已被探索, 例如 [Whisper [169]](../../Models/SpeechLM/2022.12.06_Whisper.md), [FastSpeech2 [176]](../../Models/TTS2_Acoustic/2020.06.08_FastSpeech2.md), 和 [VITS [107]](../../Models/E2E/2021.06.11_VITS.md).
+在自动语音识别 (ASR) 和文本转语音 (TTS) 等任务中, 语音和文本之间的时序对齐信息已被探索, 例如 [Whisper [169]](../../Models/SpeechLM/2022.12.06_Whisper.md), [FastSpeech2 [176]](../../Models/Acoustic/2020.06.08_FastSpeech2.md), 和 [VITS [107]](../../Models/E2E/2021.06.11_VITS.md).
 
 近期, 一些口语对话系统利用时序对齐信息来增强模型性能, 取得了有前景的结果.
 - [SpiRit-LM [158]](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md) 使用交错的文本和语音 Token 对 LLaMA-Base 模型进行持续预训练, 显著提升了模型在语音理解和生成中的性能.
