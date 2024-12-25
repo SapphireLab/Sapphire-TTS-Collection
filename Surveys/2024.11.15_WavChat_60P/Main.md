@@ -29,6 +29,7 @@
   - [Publication]
   - [Github](https://github.com/jishengpeng/WavChat)
   - [Demo]
+  - [WeChat](https://mp.weixin.qq.com/s/9DisPbvZBr8NGY2SPytT9Q)
 - 文件:
   - [ArXiv](2411.13577v1__Survey__WavChat__A_Survey_of_Spoken_Dialogue_Models.pdf)
   - [Publication] #TODO
@@ -95,7 +96,7 @@ As illustrated in Fig.02, we classify all spoken dialogue models based on whethe
 Traditional cascaded spoken dialogue systems such as [AudioGPT [84]](../../Models/SpeechLM/2023.04.25_AudioGPT.md) are structured around text as the central intermediary, typically comprising three cascaded modules.
 First, the input audio is transcribed into text by an automatic speech recognition (ASR) module ([Whisper [169]](../../Models/SpeechLM/2022.12.06_Whisper.md)).
 The transcribed text is then fed into a large language model (LLM) such as ChatGPT to generate a textual response.
-Finally, this textual response is converted back into audio through a text-to-speech (TTS) module ([VITS2 [109]](../../Models/E2E/2023.07.31_VITS2.md); [FastSpeech2 [176]](../../Models/TTS2_Acoustic/2020.06.08_FastSpeech2.md)).
+Finally, this textual response is converted back into audio through a text-to-speech (TTS) module ([VITS2 [109]](../../Models/E2E/2023.07.31_VITS2.md); [FastSpeech2 [176]](../../Models/Acoustic/2020.06.08_FastSpeech2.md)).
 While this cascaded architecture leverages the strong in-context capabilities of large language models, it introduces several challenges, including high latency, limited interactivity, and the inability to process non-textual information.
 To address these issues, recent research has taken two primary directions.
 Some approaches ([Qwen-Audio [34]](../../Models/SpeechLM/2023.11.14_Qwen-Audio.md); [SALMONN [198]](../../Models/SpeechLM/2023.10.20_SALMONN.md)) focus on optimizing the understanding and generation components within the cascaded system to mitigate the aforementioned limitations.
@@ -156,7 +157,7 @@ Given the complexity of the technical points, we provide an overview of the stru
 传统的级联口语对话系统, 如 [AudioGPT [84]](../../Models/SpeechLM/2023.04.25_AudioGPT.md), 采用以文本为中心媒介的结构, 通常由三个级联模块组成:
 - 输入音频通过自动语音识别 ASR 模块转写为文本.
 - 转写后的文本输入到大语言模型如 ChatGPT 中生成文本回应.
-- 最后, 文本回应通过文本转语音模块 ([VITS2 [109]](../../Models/E2E/2023.07.31_VITS2.md); [FastSpeech2 [176]](../../Models/TTS2_Acoustic/2020.06.08_FastSpeech2.md)) 转换回音频.
+- 最后, 文本回应通过文本转语音模块 ([VITS2 [109]](../../Models/E2E/2023.07.31_VITS2.md); [FastSpeech2 [176]](../../Models/Acoustic/2020.06.08_FastSpeech2.md)) 转换回音频.
 
 尽管这种级联架构利用了大语言模型强大的上下文能力, 但它也引入了一些挑战: 高延迟, 受限互动性, 无法处理非文本信息等.
 
