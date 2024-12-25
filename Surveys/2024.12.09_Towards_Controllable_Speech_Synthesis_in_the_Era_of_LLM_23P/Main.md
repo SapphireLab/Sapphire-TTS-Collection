@@ -70,7 +70,7 @@ Meanwhile, the ability to achieve fine-grained control over synthesized speech a
 [^9]: Towards Expressive Speech Synthesis in English on A Robotic Platform (2006)
 [^10]: Website - Introducing ChatGPT - OpenAI https://openai.com/index/chatgpt/
 
-Deep learning [^12] has made great progress in the past decade due to exponentially growing computational resources like GPUs [^13], leading to the explosion of numerous great works on TTS ([NaturalSpeech [14]](../../Models/E2E/2022.05.09_NaturalSpeech.md); [FastSpeech [15]](../../Models/TTS2_Acoustic/2019.05.22_FastSpeech.md); [Deep Voice [16]](../../Models/TTS0_System/2017.02.25_DeepVoice.md); [CosyVoice [17]](../../Models/SpeechLM/2024.07.07_CosyVoice.md)).
+Deep learning [^12] has made great progress in the past decade due to exponentially growing computational resources like GPUs [^13], leading to the explosion of numerous great works on TTS ([NaturalSpeech [14]](../../Models/E2E/2022.05.09_NaturalSpeech.md); [FastSpeech [15]](../../Models/Acoustic/2019.05.22_FastSpeech.md); [Deep Voice [16]](../../Models/TTS0_System/2017.02.25_DeepVoice.md); [CosyVoice [17]](../../Models/SpeechLM/2024.07.07_CosyVoice.md)).
 These methods can synthesize human speech with better quality ([NaturalSpeech [14]](../../Models/E2E/2022.05.09_NaturalSpeech.md)) and can achieve fine-grained control of the generated voice ([Zhang et al. [18]](../../Models/_Full/2018.12.11_Learning_Latent_Representations_for_Style_Control_and_Transfer_in_End-to-End_Speech_Synthesis.md); [GST [19]](../../Models/Style/2018.03.23_GST.md); [I2I [20]](../../Models/Style/2019.11.05_I2I.md); [Li et al. [21]](../../Models/Style/2020.11.17_Controllable_Emotion_Transfer_for_End-to-End_Speech_Synthesis.md); [iEmoTTS [22]](../../Models/Style/2022.06.29_iEmoTTS.md)).
 Besides, some recent works synthesize speech given multi-modal input, such as face images ([FR-PSS [23]](../../Models/_Basis/2022.04.01_FR-PSS.md); [Face2Speech [24]](../../Models/_Basis/2020.10.25_Face2Speech.md)), cartoons [^7], and videos ([DiffV2S [25]](../../Models/CV/2023.08.15_DiffV2S.md)).
 Moreover, with the fast development of open-source LLMs ([LLaMA [11]](../../Models/TextLM/2023.02.27_LLaMA.md); [Mistral [26]](../../Models/TextLM/Mistral-7B.md); [Qwen [27]](../../Models/TextLM/2023.09.28_Qwen.md); [DeepSeek [28]](../../Models/TextLM/DeepSeek.md); [ChatGLM [29]](../../Models/TextLM/ChatGLM.md)), some researchers propose to synthesize fine-grained controllable speech with natural language description ([LLM+VALL-E [30]](../../Models/SpeechLM/2023.12.30_LLM&VALL-E.md); [Emo-DPO [31]](../../Modules/RLHF/2024.09.16_Emo-DPO.md); [T5-TTS [32]](../../Models/SpeechLM/2024.06.25_T5-TTS.md)), coining a new way to generate custom speech voices.
@@ -95,7 +95,7 @@ Finally, we introduce the taxonomy and organization of this paper.
 近期, 随着大语言模型驱动的聊天机器人 (如 ChatGPT [^10] 和 [LLaMA [11]](../../Models/TextLM/2023.02.27_LLaMA.md)) 的兴起, TTS 获得了广泛关注, 因为它在人机交互中的自然性和便利性.
 同时, 对合成语音的属性进行细粒度的控制, 如情感, 韵律, 音色, 以及时长, 已经成为学术界和工业界热门研究话题, 其潜在的多样化应用吸引了广泛的注意力.
 
-深度学习 [^12] 在过去十年内由于指数增长的计算资源 (如 GPU [^13]) 取得了巨大的进步, 也促使了 TTS 领域的众多优秀工作的出现 ([NaturalSpeech [14]](../../Models/E2E/2022.05.09_NaturalSpeech.md); [FastSpeech [15]](../../Models/TTS2_Acoustic/2019.05.22_FastSpeech.md); [Deep Voice [16]](../../Models/TTS0_System/2017.02.25_DeepVoice.md); [CosyVoice [17]](../../Models/SpeechLM/2024.07.07_CosyVoice.md)).
+深度学习 [^12] 在过去十年内由于指数增长的计算资源 (如 GPU [^13]) 取得了巨大的进步, 也促使了 TTS 领域的众多优秀工作的出现 ([NaturalSpeech [14]](../../Models/E2E/2022.05.09_NaturalSpeech.md); [FastSpeech [15]](../../Models/Acoustic/2019.05.22_FastSpeech.md); [Deep Voice [16]](../../Models/TTS0_System/2017.02.25_DeepVoice.md); [CosyVoice [17]](../../Models/SpeechLM/2024.07.07_CosyVoice.md)).
 
 这些方法可以合成更高质量的人类语音 ([NaturalSpeech [14]](../../Models/E2E/2022.05.09_NaturalSpeech.md)) 并且可以实现对生成声音的细粒度控制 ([Zhang et al. [18]](../../Models/_Full/2018.12.11_Learning_Latent_Representations_for_Style_Control_and_Transfer_in_End-to-End_Speech_Synthesis.md); [GST [19]](../../Models/Style/2018.03.23_GST.md); [I2I [20]](../../Models/Style/2019.11.05_I2I.md); [Li et al. [21]](../../Models/Style/2020.11.17_Controllable_Emotion_Transfer_for_End-to-End_Speech_Synthesis.md); [iEmoTTS [22]](../../Models/Style/2022.06.29_iEmoTTS.md)).
 
@@ -254,26 +254,45 @@ This subsection briefly reviews the history of controllable TTS ranging from ear
 
 #### Early Approaches: 早期方法
 
+<details>
+<summary>展开原文</summary>
+
 Before the prevalence of deep neural networks (DNNs), controllable TTS technologies were built primarily on rule-based, concatenative, and statistical methods.
 These approaches enable some degree of customization and control, though they were constrained by the limitations of the underlying models and available computational resources.
-1) Rule-based TTS systems [51] [52] [53] [54] ~\cite{rabiner1968digital,allen1987mitalk,purcell2006adaptive,Klatt1980971}, such as formant synthesis, were among the earliest methods for speech generation.
+1) Rule-based TTS systems ([Rbiner et al. [51]](../../Models/Rule/1967.11.01_Digital‐Formant_Synthesizer_for_Speech‐Synthesis_Studies.md); [Allen et al. [52]](../../Models/Rule/1987.04.01_From_Text_to_Speech__The_MITalk_System.md); [Purcell et al. [53]](../../Models/Rule/2006.02.10_Adaptive_Control_of_Vowel_Formant_Frequency__Evidence_from_Real-Time_Formant_Manipulation.md); [Klatt et al. [54]](../../Models/Rule/1980.03.01_Software_for_a_Cascade_or_Parallel_Formant_Synthesizer.md)), such as formant synthesis, were among the earliest methods for speech generation.
 These systems use manually crafted rules to simulate the speech generation process by controlling acoustic parameters such as pitch, duration, and formant frequencies, allowing explicit manipulation of prosody and phonetic details through rule adjustments.
-2) Concatenative TTS [55] [56] [57] [58] ~\cite{wouters2001control,bulut2002expressive,bulyko2001joint,Stylianou200121}, which dominated the field in the late 1990s and early 2000s, synthesize speech by concatenating pre-recorded speech segments, such as phonemes or diphones, stored in a large database~\cite{Hunt1996373} [59].
+1) Concatenative TTS [55] [56] [57] [58] ~\cite{wouters2001control,bulut2002expressive,bulyko2001joint,Stylianou200121}, which dominated the field in the late 1990s and early 2000s, synthesize speech by concatenating pre-recorded speech segments, such as phonemes or diphones, stored in a large database~\cite{Hunt1996373} [59].
 These methods can modify the prosody by manipulating the pitch, duration, and amplitude of speech segments during concatenation.
 They also allow limited voice customization by selecting speech units from different speakers.
-3) Parametric methods, particularly HMM-based TTS [60] [61] [62] [63] [64] [65]~\cite{nose2007style,ling2009integrating,nose2009hmm,yoshimura1998duration,yoshimura1999simultaneous,tokuda2000speech}, gained prominence in the late 2000s.
+1) Parametric methods, particularly HMM-based TTS [60] [61] [62] [63] [64] [65]~\cite{nose2007style,ling2009integrating,nose2009hmm,yoshimura1998duration,yoshimura1999simultaneous,tokuda2000speech}, gained prominence in the late 2000s.
 These systems model the relationships between linguistic features and acoustic parameters, providing more flexibility in controlling prosody, pitch, speaking rate, and timbre by adjusting statistical parameters.
 Some HMM-based systems also supported speaker adaptation [66] [67]~\cite{yamagishi2009robust,yamagishi2009analysis} and voice conversion [68] [69]~\cite{masuko1997voice,wu2006voice}, enabling voice cloning to some extent.
 Besides, emotion can also be limitedly controlled by some of these methods~\cite{yamagishi2003modeling,yamagishi2005acoustic,nose2007style,lorenzo2015emotion} [70] [71] [72].
 In addition, they required less storage compared to concatenative TTS and allowed smoother transitions between speech units.
 
+</details>
+<br>
+
+在深度神经网络盛行之前, 可控 TTS 技术主要建立在基于规则, 拼接, 统计方法之上.
+这些方法实现了一定程度上的定制和控制, 但它们受到底层模型和可用计算资源的局限性约束.
+1. 基于规则的 TTS 系统 (例如共振峰合成, 几乎是最早的语音生成方法)
+  - 这些系统使用手工制作的规则来模拟语音生成过程, 通过控制声学参数 (如音高, 时长, 共振峰频率), 允许通过规则调整来实现对韵律和音素细节的显式操作.
+2. 拼接式 TTS (1990 年代末到 2000 年代初占据主导地位, 通过预录制的语音片段进行拼接, 如音素或双音节, 存储在大型数据库中)
+   - 这些方法可以在拼接时通过操作语音片段的音高, 时长, 幅度来修改韵律.
+   - 它们还允许通过选择不同发音人的语音单元来实现有限的语音自定义.
+3. 参数方法, 特别是基于 HMM 的 TTS (2000 年代末突出)
+   - 这些系统建模语言特征和声学参数之间的关系, 通过调整统计参数提供了在控制韵律, 音高, 说话速率, 音色方面更大的灵活性.
+   - 一些基于 HMM 的系统也支持说话人适应和声音转换, 在一定程度上实现了语音克隆.
+   - 除此之外, 其中一些方法还可以有限地控制情感.
+   - 另外, 它们比起拼接式 TTS 所需存储更少, 且能在语音单元之间实现更平滑的过渡.
+
 #### Neural-Based Synthesis: 基于神经网络合成
 
 Neural-based TTS technologies emerged with the advent of deep learning, significantly advancing the field by enabling more flexible, natural, and expressive speech synthesis.
 Unlike traditional methods, neural-based TTS leverages DNNs to model complex relationships between input text and speech, facilitating nuanced control over various speech characteristics.
-Early neural TTS systems, such as [WaveNet [73]](../../Models/TTS3_Vocoder/2016.09.12_WaveNet.md) and [Tacotron [74]](../../Models/TTS2_Acoustic/2017.03.29_Tacotron.md) laid the groundwork for controllability.
+Early neural TTS systems, such as [WaveNet [73]](../../Models/Vocoder/2016.09.12_WaveNet.md) and [Tacotron [74]](../../Models/Acoustic/2017.03.29_Tacotron.md) laid the groundwork for controllability.
 1) Controlling prosody features like rhythm and intonation is vital for generating expressive and contextually appropriate speech.
-Neural-based TTS models achieve prosody control through explicit conditioning or learned latent representations~\cite{shen2018tacotron2,[FastSpeech [15]](../../Models/TTS2_Acoustic/2019.05.22_FastSpeech.md),ren2020fastspeech2,lancucki2021fastpitch,wang2024maskgct} [75] [76] [77] [78].
+Neural-based TTS models achieve prosody control through explicit conditioning or learned latent representations~\cite{shen2018tacotron2,[FastSpeech [15]](../../Models/Acoustic/2019.05.22_FastSpeech.md),ren2020fastspeech2,lancucki2021fastpitch,wang2024maskgct} [75] [76] [77] [78].
 1) Speaker control has also gained significant improvement in neural-based TTS through speaker embeddings or adaptation techniques [79] [80] [81] [82]~\cite{fan2015multi,huang2022meta,chen2020multispeech,casanova2022yourtts}.
 2) Besides, emotionally controllable TTS [83]~\cite{lei2022msemotts,[Emo-DPO [31]](../../Modules/RLHF/2024.09.16_Emo-DPO.md); [I2I [20]](../../Models/Style/2019.11.05_I2I.md); [iEmoTTS [22]](../../Models/Style/2022.06.29_iEmoTTS.md); [T5-TTS [32]](../../Models/SpeechLM/2024.06.25_T5-TTS.md)} has become a hot topic due to the strong modeling capability of DNNs, enabling the synthesis of speech with specific emotional tones such as happiness, sadness, anger, or neutrality.
 These systems go beyond producing intelligible and natural-sounding speech, focusing on generating expressive output that aligns with the intended emotional context.
