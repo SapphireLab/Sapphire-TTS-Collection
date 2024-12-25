@@ -152,7 +152,7 @@ As new inputs are processed, the model can generate outputs without waiting for 
 和标准注意力要求访问整个序列不同, 因果注意力可以增量地运行.
 当新输入被处理时, 模型可以生成输出而无需等待未来上下文.
 
-#### [Queue Management: 队列管理 [220]](../../Models/Speech_Neural_Codec/2023.05.26_AudioDec.md)
+#### [Queue Management: 队列管理 [220]](../../Models/SpeechCodec/2023.05.26_AudioDec.md)
 
 <details>
 <summary>展开原文</summary>
@@ -502,7 +502,7 @@ The core innovation of dGSLM is the dual-tower Transformer architecture, called 
 Through this architecture, the model not only independently generates speech for each channel but also shares information between channels using cross-attention, effectively modeling silences and interaction events.
 It leverages the HuBERT encoder and HiFi-GAN decoder, combined with the dual-tower DLM, and is trained on 2,000 hours of dual-channel telephone conversation audio (Fisher dataset), where each speaker in a conversation is allocated an independent audio track.
 The dGSLM model transforms the audio on both channels into discrete tokens using HuBERT, and the DLM model autoregressively predicts the next audio token and its duration.
-Finally, the [HiFi-GAN [108]](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md) decoder reconstructs the audio for both channels.
+Finally, the [HiFi-GAN [108]](../../Models/Vocoder/2020.10.12_HiFi-GAN.md) decoder reconstructs the audio for both channels.
 This approach differs significantly from traditional text-dependent spoken dialogue models, with a particular emphasis on modeling turn-taking and backchanneling capabilities.
 This capability gives dGSLM a notable advantage in duplex voice interaction, better mimicking the natural dynamics of human conversation.
 Through its duplex model design, dGSLM represents an essential step forward in interactive capabilities and provides a foundation for further advancements.
