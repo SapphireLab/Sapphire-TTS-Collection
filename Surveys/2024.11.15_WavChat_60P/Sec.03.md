@@ -14,7 +14,7 @@ The unique nature of speech has led to the development of two types of represent
 The representations obtained by these two modeling approaches are often classified as semantic tokens and acoustic tokens.
 **One category (semantic) is prediction-based modeling**, these models are trained for representation learning by predicting future frames in an autoregressive manner ([VQ-APC [35]](../../Models/_Basis/2020.05.17_VQ-APC.md); [Shain et al. [187]](../../Models/_Full/Acquiring_Language_from_Speech_by_Learning_to_Remember_and_Predict.md)) or by using surrounding frames to predict masked frames ([Audio ALBERT [31]](../../Models/SpeechRepresentation/2020.05.18_Audio_ALBERT.md); [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md); [Mockingjay [133]](../../Models/SpeechRepresentation/2019.10.25_Mockingjay.md)).
 This approach tends to prioritize capturing linguistic information within speech, making it particularly useful for recognition and understanding tasks.
-**The other category (acoustic) focuses on speech compression and reconstruction** ([WavTokenizer [90]](../../Models/Speech_Neural_Codec/2024.08.29_WavTokenizer.md);  [EnCodec [43]](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md); [DAC [113]](../../Models/Speech_Neural_Codec/2023.06.11_Descript-Audio-Codec.md); [SoundStream [238]](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md)).
+**The other category (acoustic) focuses on speech compression and reconstruction** ([WavTokenizer [90]](../../Models/SpeechCodec/2024.08.29_WavTokenizer.md);  [EnCodec [43]](../../Models/SpeechCodec/2022.10.24_EnCodec.md); [DAC [113]](../../Models/SpeechCodec/2023.06.11_Descript-Audio-Codec.md); [SoundStream [238]](../../Models/SpeechCodec/2021.07.07_SoundStream.md)).
 These models quantify speech features (which are downsampled from raw waveforms by one encoder) into a series of discrete tokens, then use one decoder to upsample these discrete tokens into the speech, calculating the reconstruction loss against the original signal.
 By this approach, we can get discrete acoustic tokens with impressive compression rates and high-fidelity acoustic information, making it more suitable for tasks such as speech synthesis and emotion analysis.
 
@@ -37,7 +37,7 @@ At the end of this section, we will thoroughly discuss the advantages and limita
 
 1. 语义类是基于预测的建模. 这些模型被训练以进行表示学习, 如以自回归方式预测未来帧 ([VQ-APC [35]](../../Models/_Basis/2020.05.17_VQ-APC.md); [Shain et al. [187]](../../Models/_Full/Acquiring_Language_from_Speech_by_Learning_to_Remember_and_Predict.md)) 或使用周围帧来预测被掩膜的帧 ([Audio ALBERT [31]](../../Models/SpeechRepresentation/2020.05.18_Audio_ALBERT.md); [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md); [Mockingjay [133]](../../Models/SpeechRepresentation/2019.10.25_Mockingjay.md)).
    这种方法倾向于优先捕捉语音中的语言信息, 特别适用于识别和理解任务.
-2. 声学类专注于语音压缩和重建 ([WavTokenizer [90]](../../Models/Speech_Neural_Codec/2024.08.29_WavTokenizer.md);  [EnCodec [43]](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md); [DAC [113]](../../Models/Speech_Neural_Codec/2023.06.11_Descript-Audio-Codec.md); [SoundStream [238]](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md)).
+2. 声学类专注于语音压缩和重建 ([WavTokenizer [90]](../../Models/SpeechCodec/2024.08.29_WavTokenizer.md);  [EnCodec [43]](../../Models/SpeechCodec/2022.10.24_EnCodec.md); [DAC [113]](../../Models/SpeechCodec/2023.06.11_Descript-Audio-Codec.md); [SoundStream [238]](../../Models/SpeechCodec/2021.07.07_SoundStream.md)).
    这些模型将语音特征量化为一系列离散 Token (通过编码器对原始波形进行下采样), 然后使用解码器来上采样这些离散 Token 为语音, 计算和原始信号之间的重构损失.
    通过这种方法, 我们可以获得具有惊人压缩率和高保真度声学信息的离散声学 Token, 更适合例如语音合成和情感分析等任务.
 
@@ -278,22 +278,22 @@ Downsampling layers are used to reduce the frame rate of speech features, increa
 <details>
 <summary>展开原文</summary>
 
-Considering that semantic features are insufficient to capture the emotion, timbre, and style of speech, some representation models, such as [Emotion2Vec [143]](../../Models/Speech_Representaion/2023.12.23_Emotion2Vec.md), attempt to extract acoustic information through self-supervised training.
-Others focus on reconstruction objectives to ensure high-fidelity speech, including models like [EnCodec [43]](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md), [SpeechTokenizer [249]](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md), Mimi ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)).
+Considering that semantic features are insufficient to capture the emotion, timbre, and style of speech, some representation models, such as [Emotion2Vec [143]](../../Models/SpeechRepresentation/2023.12.23_Emotion2Vec.md), attempt to extract acoustic information through self-supervised training.
+Others focus on reconstruction objectives to ensure high-fidelity speech, including models like [EnCodec [43]](../../Models/SpeechCodec/2022.10.24_EnCodec.md), [SpeechTokenizer [249]](../../Models/SpeechCodec/2023.08.31_SpeechTokenizer.md), Mimi ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)).
 
 </details>
 <br>
 
-考虑到语义特征不足以捕获语音的情感, 音色和风格, 一些表示模型如 [Emotion2Vec [143]](../../Models/Speech_Representaion/2023.12.23_Emotion2Vec.md) 尝试通过自监督训练提取声学信息. 其他模型则着重于重建目标以确保高保真语音, 包括 [EnCodec [43]](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md), [SpeechTokenizer [249]](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md), Mimi ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)) 等.
+考虑到语义特征不足以捕获语音的情感, 音色和风格, 一些表示模型如 [Emotion2Vec [143]](../../Models/SpeechRepresentation/2023.12.23_Emotion2Vec.md) 尝试通过自监督训练提取声学信息. 其他模型则着重于重建目标以确保高保真语音, 包括 [EnCodec [43]](../../Models/SpeechCodec/2022.10.24_EnCodec.md), [SpeechTokenizer [249]](../../Models/SpeechCodec/2023.08.31_SpeechTokenizer.md), Mimi ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)) 等.
 
 #### EnCodec
 
 <details>
 <summary>展开原文</summary>
 
-[EnCodec [43]](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) is a straightforward, streaming, convolution-based encoder-decoder architecture.
+[EnCodec [43]](../../Models/SpeechCodec/2022.10.24_EnCodec.md) is a straightforward, streaming, convolution-based encoder-decoder architecture.
 Raw speech is downsampled through a series of convolutional layers, mapping it to latent feature representations.
-Residual vector quantization ([SoundStream [238]](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md)) then discretizes the encoder’s continuous latent features.
+Residual vector quantization ([SoundStream [238]](../../Models/SpeechCodec/2021.07.07_SoundStream.md)) then discretizes the encoder’s continuous latent features.
 The quantization objective is to map continuous features to a predefined set of discrete tokens (known as a "codebook") for subsequent compression and transmission.
 The decoder restores the discrete features to a waveform close to the original speech through a series of de-convolution layers.
 [LauraGPT [50]](../../Models/SpeechLM/2023.10.07_LauraGPT.md) employs an enhanced version of EnCodec as its speech encoder with specific modifications: (1) adding a reconstruction loss in the magnitude spectral domain to improve mid-to-high frequency signal quality; (2) stacking five strided convolutional blocks with strides of (8, 5, 4, 2, 2) to address the challenges of long sequence lengths, resulting in a token rate of 25Hz per token group; and (3) using 32 quantizers with structured dropout in the Residual Vector Quantization (RVQ) module, each with a vocabulary size of 1024.
@@ -304,9 +304,9 @@ The remaining quantizers are used only during the training of the encoder-decode
 </details>
 <br>
 
-[EnCodec [43]](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) 是一种直接, 流式, 卷积式的编码器-解码器架构.
+[EnCodec [43]](../../Models/SpeechCodec/2022.10.24_EnCodec.md) 是一种直接, 流式, 卷积式的编码器-解码器架构.
 原始语音通过一系列卷积层进行下采样, 将其映射到潜在特征表示.
-残差向量量化 ([SoundStream [238]](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md)) 随后将编码器的连续潜在特征离散化.
+残差向量量化 ([SoundStream [238]](../../Models/SpeechCodec/2021.07.07_SoundStream.md)) 随后将编码器的连续潜在特征离散化.
 量化目标是将来连续特征映射到离散 Token 的预定义集合 (称为 "码本") 进行后续压缩和传输.
 解码器通过连续的反卷积层将离散特征恢复为接近原始语音的波形.
 - [LauraGPT [50]](../../Models/SpeechLM/2023.10.07_LauraGPT.md) 采用了 EnCodec 的增强版本作为其语音编码器, 进行了特定修改:
@@ -322,8 +322,8 @@ The remaining quantizers are used only during the training of the encoder-decode
 <details>
 <summary>展开原文</summary>
 
-[SpeechTokenizer [249]](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) unifies semantic and acoustic tokens, hierarchically decomposing different aspects of speech information across various RVQ layers.
-It is built on the framework of RVQ-GANs, following the same pattern as [SoundStream [238]](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md) and [EnCodec [43]](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md).
+[SpeechTokenizer [249]](../../Models/SpeechCodec/2023.08.31_SpeechTokenizer.md) unifies semantic and acoustic tokens, hierarchically decomposing different aspects of speech information across various RVQ layers.
+It is built on the framework of RVQ-GANs, following the same pattern as [SoundStream [238]](../../Models/SpeechCodec/2021.07.07_SoundStream.md) and [EnCodec [43]](../../Models/SpeechCodec/2022.10.24_EnCodec.md).
 Notably, SpeechTokenizer has substituted the two-layer LSTM, originally following the convolution blocks in the EnCodec encoder, with a two-layer BiLSTM to augment the semantic modeling ability.
 SpeechTokenizer uses HuBERT as a semantic teacher, given HuBERT’s proven capacity to encode substantial content information ([Mohamed et al. (Survey) [155]](../2022.05.21_Self-Supervised_Speech_Representation_Learning__A_Review/Main.md)).
 During training, it introduces two types of distillation: continuous representation distillation and pseudo-label prediction.
@@ -335,8 +335,8 @@ In dialogue systems, SpeechGPT-Gen uses SpeechTokenizer RVQ-1 to process raw spe
 </details>
 <br>
 
-[SpeechTokenizer [249]](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) 统一了语义和声学 Token, 在不同的 RVQ 层上分层次地分解语音信息地不同方面.
-它建立在 RVQ-GANs 框架之上, 遵循与 [SoundStream [238]](../../Models/Speech_Neural_Codec/2021.07.07_SoundStream.md) 和 [EnCodec [43]](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) 相同的模式.
+[SpeechTokenizer [249]](../../Models/SpeechCodec/2023.08.31_SpeechTokenizer.md) 统一了语义和声学 Token, 在不同的 RVQ 层上分层次地分解语音信息地不同方面.
+它建立在 RVQ-GANs 框架之上, 遵循与 [SoundStream [238]](../../Models/SpeechCodec/2021.07.07_SoundStream.md) 和 [EnCodec [43]](../../Models/SpeechCodec/2022.10.24_EnCodec.md) 相同的模式.
 值得注意的是, SpeechTokenizer 替换了 EnCodec 编码器中原本跟随卷积块地两层 LSTM 为两层 BiLSTM, 以增强语义建模能力.
 鉴于 HuBERT 在编码大量内容信息方面的能力 ([Mohamed et al. (Survey) [155]](../2022.05.21_Self-Supervised_Speech_Representation_Learning__A_Review/Main.md)), SpeechTokenizer 使用 HuBERT 作为语义教师.
 在训练时, 它引入了两种蒸馏方法: 连续表示蒸馏和伪标签预测.
@@ -379,7 +379,7 @@ Mimi 解决这一问题的方法是引入分割 RVQ 方法.
 <details>
 <summary>展开原文</summary>
 
-[Emotion2Vec [143]](../../Models/Speech_Representaion/2023.12.23_Emotion2Vec.md) is a versatile speech emotion representation model designed to extract emotional features from speech.
+[Emotion2Vec [143]](../../Models/SpeechRepresentation/2023.12.23_Emotion2Vec.md) is a versatile speech emotion representation model designed to extract emotional features from speech.
 During the pre-training phase, Emotion2Vec conducts online distillation with a teacher network and a student network.
 When a specific downstream task is performed, Emotion2Vec is frozen and a lightweight downstream model is trained.
 Emotion2Vec introduces an utterance-level loss to control global emotion and employs a frame-level loss to build a frame-wise pretext task, enabling it to learn contextual emotions.
@@ -388,7 +388,7 @@ Emotion2Vec introduces an utterance-level loss to control global emotion and emp
 </details>
 <br>
 
-[Emotion2Vec [143]](../../Models/Speech_Representaion/2023.12.23_Emotion2Vec.md) 是一种多功能的语音情感表示模型, 旨在从语音中提取情感特征.
+[Emotion2Vec [143]](../../Models/SpeechRepresentation/2023.12.23_Emotion2Vec.md) 是一种多功能的语音情感表示模型, 旨在从语音中提取情感特征.
 在预训练阶段, Emotion2Vec 通过教师网络和学生网络进行在线蒸馏.
 在执行特定的下游任务时, Emotion2Vec 被冻结, 并训练了一个轻量级的下游模型.
 Emotion2Vec 引入了话语级损失, 以控制全局情感, 并采用帧级损失来构建帧间预训练任务, 使其能够学习上下文情绪.
@@ -402,13 +402,13 @@ Emotion2Vec 引入了话语级损失, 以控制全局情感, 并采用帧级损�
 <summary>展开原文</summary>
 
 At the output stage, Most spoken dialogue systems choose to autoregressively model semantic tokens, such as $S^3$ tokens ([CosyVoice [49]](../../Models/SpeechLM/2024.07.07_CosyVoice.md)) and [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) units.
-It is worth noting that these semantic tokens lack acoustic conditioning and therefore require a vocoder ([HiFi-GAN [108]](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md); [Polyak et al. [166]](../../Models/_Full/2021.04.01_Speech_Resynthesis_from_Discrete_Disentangled_Self-Supervised_Representations.md)) or decoder, which further takes semantic discrete units as input to synthesize speech consistent with the speakers encountered during training.
+It is worth noting that these semantic tokens lack acoustic conditioning and therefore require a vocoder ([HiFi-GAN [108]](../../Models/Vocoder/2020.10.12_HiFi-GAN.md); [Polyak et al. [166]](../../Models/SpeechCodec/2021.04.01_Speech_Resynthesis_from_Discrete_Disentangled_Self-Supervised_Representations.md)) or decoder, which further takes semantic discrete units as input to synthesize speech consistent with the speakers encountered during training.
 
 </details>
 <br>
 
 在输出阶段, 大多数口语对话系统选择自回归地建模语义 Token, 如 $S^3$ Token ([CosyVoice [49]](../../Models/SpeechLM/2024.07.07_CosyVoice.md)) 和 [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) 单元.
-值得注意的是这些语义 Token 缺乏声学条件化, 因此需要声码器 ([HiFi-GAN [108]](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md); [Polyak et al. [166]](../../Models/_Full/2021.04.01_Speech_Resynthesis_from_Discrete_Disentangled_Self-Supervised_Representations.md)) 或解码器, 进一步将语义离散单元作为输入, 以合成与训练期间遇到的发言人一致的语音.
+值得注意的是这些语义 Token 缺乏声学条件化, 因此需要声码器 ([HiFi-GAN [108]](../../Models/Vocoder/2020.10.12_HiFi-GAN.md); [Polyak et al. [166]](../../Models/SpeechCodec/2021.04.01_Speech_Resynthesis_from_Discrete_Disentangled_Self-Supervised_Representations.md)) 或解码器, 进一步将语义离散单元作为输入, 以合成与训练期间遇到的发言人一致的语音.
 
 #### $S^3$ Tokenizer
 
@@ -417,14 +417,14 @@ It is worth noting that these semantic tokens lack acoustic conditioning and the
 
 [OmniFlatten [246]](../../Models/SpeechLM/2024.10.23_OmniFlatten.md) uses the LLM to autoregressively predict $S^3$ tokens at the speech output stage.
 When converting discrete tokens back into speech, it adopts the same optimal transport conditional flow matching model (OT-CFM) as used in [CosyVoice [49]](../../Models/SpeechLM/2024.07.07_CosyVoice.md).
-OT-CFM transforms the speech token sequence into Mel spectrogram, which is then used to generate the final speech with the [HiFi-GAN [108]](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md) vocoder.
+OT-CFM transforms the speech token sequence into Mel spectrogram, which is then used to generate the final speech with the [HiFi-GAN [108]](../../Models/Vocoder/2020.10.12_HiFi-GAN.md) vocoder.
 
 </details>
 <br>
 
 [OmniFlatten [246]](../../Models/SpeechLM/2024.10.23_OmniFlatten.md) 在语音输出阶段使用大语言模型 (LLM) 自回归地预测 $S^3$ Token.
 当将离散 Token 转换为语音时, 它采用了 [CosyVoice [49]](../../Models/SpeechLM/2024.07.07_CosyVoice.md) 使用的最优传输条件流匹配 (OT-CFM) 模型.
-OT-CFM 将语音 Token 序列转换为梅尔频谱图, 然后使用 [HiFi-GAN [108]](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md) 声码器生成最终的语音.
+OT-CFM 将语音 Token 序列转换为梅尔频谱图, 然后使用 [HiFi-GAN [108]](../../Models/Vocoder/2020.10.12_HiFi-GAN.md) 声码器生成最终的语音.
 
 #### HuBERT
 
@@ -432,25 +432,25 @@ OT-CFM 将语音 Token 序列转换为梅尔频谱图, 然后使用 [HiFi-GAN [1
 <summary>展开原文</summary>
 
 Speech tokens extracted by the pre-trained [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) are widely used as generation targets for large language models in the spoken dialogue systems.
-[SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md) and [Spirit-LM [158]](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md) use [LLaMA [200]](../../Models/TextLM/2023.02.27_LLaMA.md) to autoregressively predict a sequence of units and are trained with a HuBERT unit-based [HiFi-GAN [108]](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md) to decode the speech signal from discrete representations.
+[SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md) and [Spirit-LM [158]](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md) use [LLaMA [200]](../../Models/TextLM/2023.02.27_LLaMA.md) to autoregressively predict a sequence of units and are trained with a HuBERT unit-based [HiFi-GAN [108]](../../Models/Vocoder/2020.10.12_HiFi-GAN.md) to decode the speech signal from discrete representations.
 [PSLM [154]](../../Models/SpeechLM/2024.06.18_PSLM.md) introduces an additional speech projection layer after the Transformer layers to process the hidden states, obtaining semantic tokens via the softmax layer.
 The speech decoder in [LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md) operates in a non-autoregressive manner, taking the output hidden states of the large language model as input to generate a discrete HuBERT unit sequence corresponding to the speech response.
-The discrete units can be converted into waveform with an additional unit-based vocoder ([Polyak et al. [166]](../../Models/_Full/2021.04.01_Speech_Resynthesis_from_Discrete_Disentangled_Self-Supervised_Representations.md)).
+The discrete units can be converted into waveform with an additional unit-based vocoder ([Polyak et al. [166]](../../Models/SpeechCodec/2021.04.01_Speech_Resynthesis_from_Discrete_Disentangled_Self-Supervised_Representations.md)).
 [IntrinsicVoice [248]](../../Models/SpeechLM/2024.10.09_IntrinsicVoice.md) introduces Group-Former to enhance the large language model’s capability in sequence modeling.
 When the large language model predicts the `<speech>` token, the global embedding is passed through a projection layer and delivered, along with a set of learnable queries, to the group model, which then predicts units.
-IntrinsicVoice uses [HiFi-GAN [108]](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md), a non-autoregressive neural vocoder that efficiently generates high-fidelity waveforms, for speech detokenization to reduce overall latency.
-[Align-SLM [129]](../../Models/SpeechLM/2024.11.04_Align-SLM.md) also uses a [HiFi-GAN [108]](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md)-based model to convert discrete units back into waveforms, utilizing model checkpoints from the [textlesslib [102]](../../Models/Toolkits/2022.02.15_textless-lib.md) library.
+IntrinsicVoice uses [HiFi-GAN [108]](../../Models/Vocoder/2020.10.12_HiFi-GAN.md), a non-autoregressive neural vocoder that efficiently generates high-fidelity waveforms, for speech detokenization to reduce overall latency.
+[Align-SLM [129]](../../Models/SpeechLM/2024.11.04_Align-SLM.md) also uses a [HiFi-GAN [108]](../../Models/Vocoder/2020.10.12_HiFi-GAN.md)-based model to convert discrete units back into waveforms, utilizing model checkpoints from the [textlesslib [102]](../../Models/Toolkits/2022.02.15_textless-lib.md) library.
 
 </details>
 <br>
 
 由预训练 [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) 提取的语音 Token 被广泛作为口语对话系统中大语言模型的生成目标.
-- [SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md) 和 [SpiRit-LM [158]](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md) 使用 [LLaMA [200]](../../Models/TextLM/2023.02.27_LLaMA.md) 自回归地预测一系列单元, 并使用基于 HuBERT 单元的 [HiFi-GAN [108]](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md) 来解码语音信号的离散表示.
+- [SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md) 和 [SpiRit-LM [158]](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md) 使用 [LLaMA [200]](../../Models/TextLM/2023.02.27_LLaMA.md) 自回归地预测一系列单元, 并使用基于 HuBERT 单元的 [HiFi-GAN [108]](../../Models/Vocoder/2020.10.12_HiFi-GAN.md) 来解码语音信号的离散表示.
 - [PSLM [154]](../../Models/SpeechLM/2024.06.18_PSLM.md) 在 Transformer 层之后引入额外的语音映射层, 以处理隐藏状态, 并通过 Softmax 层获得语义 Token.
-- [LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md) 中的语音解码器以非自回归的方式运行, 接受大语言模型的输出隐藏状态作为输入, 生成与语音响应对应的离散 HuBERT 单元序列. 离散单元可以用额外的基于单元的声码器 ([Polyak et al. [166]](../../Models/_Full/2021.04.01_Speech_Resynthesis_from_Discrete_Disentangled_Self-Supervised_Representations.md)) 转换为波形.
+- [LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md) 中的语音解码器以非自回归的方式运行, 接受大语言模型的输出隐藏状态作为输入, 生成与语音响应对应的离散 HuBERT 单元序列. 离散单元可以用额外的基于单元的声码器 ([Polyak et al. [166]](../../Models/SpeechCodec/2021.04.01_Speech_Resynthesis_from_Discrete_Disentangled_Self-Supervised_Representations.md)) 转换为波形.
 - [IntrinsicVoice [248]](../../Models/SpeechLM/2024.10.09_IntrinsicVoice.md) 引入 Group-Former 以增强大语言模型在序列建模方面的能力.当大语言模型预测 `<speech>` Token 时, 全局嵌入通过一个映射层传递和分发, 并与可学习的查询集合一起传递给组模型, 以预测单元.
-  IntrinsicVoice 使用 [HiFi-GAN [108]](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md), 一种非自回归神经声码器, 有效生成高质量波形, 用于语音解码以减少整体延迟.
-- [Align-SLM [129]](../../Models/SpeechLM/2024.11.04_Align-SLM.md) 也使用基于 [HiFi-GAN [108]](../../Models/TTS3_Vocoder/2020.10.12_HiFi-GAN.md) 的模型将离散单元转换为波形, 使用了 [textlesslib [102]](../../Models/Toolkits/2022.02.15_textless-lib.md) 库中的模型检查点.
+  IntrinsicVoice 使用 [HiFi-GAN [108]](../../Models/Vocoder/2020.10.12_HiFi-GAN.md), 一种非自回归神经声码器, 有效生成高质量波形, 用于语音解码以减少整体延迟.
+- [Align-SLM [129]](../../Models/SpeechLM/2024.11.04_Align-SLM.md) 也使用基于 [HiFi-GAN [108]](../../Models/Vocoder/2020.10.12_HiFi-GAN.md) 的模型将离散单元转换为波形, 使用了 [textlesslib [102]](../../Models/Toolkits/2022.02.15_textless-lib.md) 库中的模型检查点.
 
 #### Others
 
@@ -481,13 +481,13 @@ The U2S detokenizer follows the VAE architecture: it uses a speech unit encoder 
 <details>
 <summary>展开原文</summary>
 
-Many spoken dialogue systems choose to directly generate tokens from acoustic representation models, such as [EnCodec [43]](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md), [SpeechTokenizer [249]](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md), and Mimi ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)).
+Many spoken dialogue systems choose to directly generate tokens from acoustic representation models, such as [EnCodec [43]](../../Models/SpeechCodec/2022.10.24_EnCodec.md), [SpeechTokenizer [249]](../../Models/SpeechCodec/2023.08.31_SpeechTokenizer.md), and Mimi ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)).
 These acoustic tokens are then upsampled into the raw waveform through the frozen codec decoder directly.
 
 </details>
 <br>
 
-许多口语对话系统选择直接从声学表示模型 (如 [EnCodec [43]](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md), [SpeechTokenizer [249]](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md), 和 Mimi ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md))) 生成 Token.
+许多口语对话系统选择直接从声学表示模型 (如 [EnCodec [43]](../../Models/SpeechCodec/2022.10.24_EnCodec.md), [SpeechTokenizer [249]](../../Models/SpeechCodec/2023.08.31_SpeechTokenizer.md), 和 Mimi ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md))) 生成 Token.
 这些声学 Token 之后通过冻结的编解码器的解码器部分直接上采样回原始波形.
 
 #### EnCodec
@@ -516,10 +516,10 @@ An encoder-only Transformer models these inputs into dense embeddings, which are
 <summary>展开原文</summary>
 
 
-[SNAC [193]](../../Models/Speech_Neural_Codec/2024.10.18_SNAC.md) encodes speech into hierarchical tokens, similar to [EnCodec [43]](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) and [DAC [113]](../../Models/Speech_Neural_Codec/2023.06.11_Descript-Audio-Codec.md), by introducing quantization at different time resolutions to form a multi-scale discrete representation of speech.
+[SNAC [193]](../../Models/SpeechCodec/2024.10.18_SNAC.md) encodes speech into hierarchical tokens, similar to [EnCodec [43]](../../Models/SpeechCodec/2022.10.24_EnCodec.md) and [DAC [113]](../../Models/SpeechCodec/2023.06.11_Descript-Audio-Codec.md), by introducing quantization at different time resolutions to form a multi-scale discrete representation of speech.
 In this approach, shallow RVQ layers have a lower sampling frequency, covering a broader time span, while deeper RVQ layers sample at higher frequencies.
 SNAC introduces modest enhancements over RVQ-GAN by incorporating residual noise blocks, deep convolutions, and local window attention.
-The Mini-Omni ([Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md); [Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md)) series continues the parallel generation method introduced by [MusicGen [40]](../../Models/SpeechLM/2023.06.08_MusicGen.md), utilizing [SNAC [193]](../../Models/Speech_Neural_Codec/2024.10.18_SNAC.md) as the speech encoder, which comprises seven complementary token layers.
+The Mini-Omni ([Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md); [Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md)) series continues the parallel generation method introduced by [MusicGen [40]](../../Models/SpeechLM/2023.06.08_MusicGen.md), utilizing [SNAC [193]](../../Models/SpeechCodec/2024.10.18_SNAC.md) as the speech encoder, which comprises seven complementary token layers.
 In a single step, it generates eight tokens, including text, while maintaining a one-step delay between layers.
 Furthermore, Mini-Omni and Mini-Omni 2 incorporates a batch approach that involves two samples: one requiring both text and speech responses and the other necessitating a text-only response.
 By discarding the text token from the first sample and embedding the output from the second sample into the first, it effectively transfer the model’s text-based capabilities to speech tasks, significantly enhancing reasoning abilities with minimal resource overhead.
@@ -527,10 +527,10 @@ By discarding the text token from the first sample and embedding the output from
 </details>
 <br>
 
-[SNAC [193]](../../Models/Speech_Neural_Codec/2024.10.18_SNAC.md) 将语音编码为分层 Token, 类似于 [EnCodec [43]](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) 和 [DAC [113]](../../Models/Speech_Neural_Codec/2023.06.11_Descript-Audio-Codec.md), 通过引入在不同时间分辨率的量化, 形成语音的多尺度离散表示.
+[SNAC [193]](../../Models/SpeechCodec/2024.10.18_SNAC.md) 将语音编码为分层 Token, 类似于 [EnCodec [43]](../../Models/SpeechCodec/2022.10.24_EnCodec.md) 和 [DAC [113]](../../Models/SpeechCodec/2023.06.11_Descript-Audio-Codec.md), 通过引入在不同时间分辨率的量化, 形成语音的多尺度离散表示.
 在这种方法中, 浅层 RVQ 层有更低的采样频率, 覆盖更宽的时间范围, 而更深的 RVQ 层在更高频率采样.
 SNAC 相对于 RVQ-GAN 引入了适当的增强, 包括残差噪声块, 深度卷积, 局部窗口注意力.
-- [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md) 和 [Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md) 系列是 [MusicGen [40]](../../Models/SpeechLM/2023.06.08_MusicGen.md) 引入的并行生成方法的延续, 利用 [SNAC [193]](../../Models/Speech_Neural_Codec/2024.10.18_SNAC.md) 作为语音编码器, 由七个互补的 Token 层组成.
+- [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md) 和 [Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md) 系列是 [MusicGen [40]](../../Models/SpeechLM/2023.06.08_MusicGen.md) 引入的并行生成方法的延续, 利用 [SNAC [193]](../../Models/SpeechCodec/2024.10.18_SNAC.md) 作为语音编码器, 由七个互补的 Token 层组成.
   在单步中, 它生成八个 Token, 包括文本, 而各层之间的延迟保持为一步.
   此外, Mini-Omni 和 Mini-Omni 2 还采用批处理方法, 其中包含两个样本: 一个需要文本和语音响应, 另一个仅需要文本响应.
   通过丢弃第一个样本的文本 Token, 将第二个样本的输出嵌入到第一个样本中, 实际上将模型的文本功能转移到语音任务中, 显著增强推理能力, 最小化资源开销.
@@ -542,7 +542,7 @@ SNAC 相对于 RVQ-GAN 引入了适当的增强, 包括残差噪声块, 深度�
 
 On the output side, SpeechGPT-Gen synthesizes speech tokens using [flow matching [131]](../../Models/Diffusion/2022.10.06_Flow_Matching.md).
 Flow matching effectively models the transformation from a simple prior distribution to complex data distributions, yielding promising results in speech generation.
-[SpeechGPT-Gen [244]](../../Models/SpeechLM/2024.01.24_SpeechGPT-Gen.md) applies flow matching for perceptual modeling, generating speech tokens that align with those of [SpeechTokenizer [249]](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md).
+[SpeechGPT-Gen [244]](../../Models/SpeechLM/2024.01.24_SpeechGPT-Gen.md) applies flow matching for perceptual modeling, generating speech tokens that align with those of [SpeechTokenizer [249]](../../Models/SpeechCodec/2023.08.31_SpeechTokenizer.md).
 Specifically, given speech $S$, semantic representation $V_1$, perceptual representation $V_{2:8}$ and the complete information representation $V_{1:8} = V_1 + V_{2:8}$ extracted by SpeechTokenizer, perceptual modeling refers to predicting the complete representation $V_{1:8}$ given the prompt speech a and the semantic representation $V_1$.
 SpeechGPT-Gen synthesizes response speech by concatenating the output of [SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md) with the prompt speech and using a flow matching model.
 
@@ -551,7 +551,7 @@ SpeechGPT-Gen synthesizes response speech by concatenating the output of [Speech
 
 在输出侧, [SpeechGPT-Gen [244]](../../Models/SpeechLM/2024.01.24_SpeechGPT-Gen.md) 使用 [flow matching [131]](../../Models/Diffusion/2022.10.06_Flow_Matching.md) 合成语音 Token.
 流匹配有效地建模了从简单先验分布到复杂数据分布的转换, 从而在语音生成中获得良好结果.
-[SpeechGPT-Gen [244]](../../Models/SpeechLM/2024.01.24_SpeechGPT-Gen.md) 应用流匹配进行感知建模, 生成与 [SpeechTokenizer [249]](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) 语音 Token 匹配的语音 Token.
+[SpeechGPT-Gen [244]](../../Models/SpeechLM/2024.01.24_SpeechGPT-Gen.md) 应用流匹配进行感知建模, 生成与 [SpeechTokenizer [249]](../../Models/SpeechCodec/2023.08.31_SpeechTokenizer.md) 语音 Token 匹配的语音 Token.
 具体来说, 给定语音 $S$, 语义表示 $V_1$, 感知表示 $V_{2:8}$ 和由 SpeechTokenizer 提取的完整信息表示 $V_{1:8} = V_1 + V_{2:8}$, 感知建模是根据提示语音 $a$ 和语义表示 $V_1$ 预测完整表示 $V_{1:8}$.
 SpeechGPT-Gen 通过将 [SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md) 的输出与提示语音连接起来, 并使用流匹配模型合成响应语音.
 
@@ -580,9 +580,9 @@ RQ-Transformer 将长度为 $K \cdot S$ 的扁平序列分解为 $S$ 个时间�
 <details>
 <summary>展开原文</summary>
 
-[TiCodec [177]](../../Models/Speech_Neural_Codec/2023.09.15_TiCodec.md) is a decoupled codec model which can separate the time-varying and time-invariant information in speech and quantize them separately.
+[TiCodec [177]](../../Models/SpeechCodec/2023.09.15_TiCodec.md) is a decoupled codec model which can separate the time-varying and time-invariant information in speech and quantize them separately.
 Inspired by [VALL-E [209]](../../Models/SpeechLM/2023.01.05_VALL-E.md), [Freeze-Omni [213]](../../Models/SpeechLM/2024.11.01_Freeze-Omni.md) uses a token-based speech decoder which contains NAR prefill and AR generate stage to achieve speech output capabilities.
-The speech decoder mainly consists of the NAR decoder, the AR decoder, and the frozen decoder of a codec model ([TiCodec [177]](../../Models/Speech_Neural_Codec/2023.09.15_TiCodec.md)).
+The speech decoder mainly consists of the NAR decoder, the AR decoder, and the frozen decoder of a codec model ([TiCodec [177]](../../Models/SpeechCodec/2023.09.15_TiCodec.md)).
 Both the NAR decoder and AR decoder are built upon transformer blocks.
 The NAR decoder is used to model the semantic features from the output of LLM, and then the AR decoder generates speech tokens based on the output of the NAR decoder.
 Finally, the decoder of the codec model converts the speech tokens into a speech stream.
@@ -590,9 +590,9 @@ Finally, the decoder of the codec model converts the speech tokens into a speech
 </details>
 <br>
 
-[TiCodec [177]](../../Models/Speech_Neural_Codec/2023.09.15_TiCodec.md) 是一种解耦的编解码器模型, 可以分离语音中的时间变化和不变的信息, 并分别量化它们.
+[TiCodec [177]](../../Models/SpeechCodec/2023.09.15_TiCodec.md) 是一种解耦的编解码器模型, 可以分离语音中的时间变化和不变的信息, 并分别量化它们.
 - 受 [VALL-E [209]](../../Models/SpeechLM/2023.01.05_VALL-E.md) 的启发, [Freeze-Omni [213]](../../Models/SpeechLM/2024.11.01_Freeze-Omni.md) 使用基于 Token 的语音解码器, 其中包含 NAR 预填充和 AR 生成阶段, 实现语音输出能力.
-语音解码器主要由 NAR 解码器, AR 解码器和编解码器模型的冻结解码器组成 ([TiCodec [177]](../../Models/Speech_Neural_Codec/2023.09.15_TiCodec.md)).
+语音解码器主要由 NAR 解码器, AR 解码器和编解码器模型的冻结解码器组成 ([TiCodec [177]](../../Models/SpeechCodec/2023.09.15_TiCodec.md)).
 NAR 解码器和 AR 解码器都基于 Transformer 块.
 NAR 解码器用于从 LLM 的输出中建模语义特征, 然后 AR 解码器基于 NAR 解码器的输出生成语音 Token.
 最后, 编解码器模型的解码器将语音 Token 转换为语音流.
@@ -605,13 +605,13 @@ NAR 解码器用于从 LLM 的输出中建模语义特征, 然后 AR 解码器�
 <summary>展开原文</summary>
 
 Current dialogue systems typically choose different approaches for the understanding (input) and generation (output) sides based on task requirements.
-For example, [Spirit-LM [158]](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md) uses semantic representations ([HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md)) consistently on both ends, while [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md) uses semantic representations ([Whisper [169]](../../Models/SpeechLM/2022.12.06_Whisper.md)) on the input side and acoustic representations ([SNAC [193]](../../Models/Speech_Neural_Codec/2024.10.18_SNAC.md)) on the output side.
+For example, [Spirit-LM [158]](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md) uses semantic representations ([HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md)) consistently on both ends, while [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md) uses semantic representations ([Whisper [169]](../../Models/SpeechLM/2022.12.06_Whisper.md)) on the input side and acoustic representations ([SNAC [193]](../../Models/SpeechCodec/2024.10.18_SNAC.md)) on the output side.
 Each combination offers unique advantages and trade-offs, and a consensus on a unified speech representation approach has yet to be reached in practical applications.
 
 We revisited the differences between semantic and acoustic representations, as shown in Table.01.
 Benefiting from specific task objectives, models such as [Wav2Vec [184]](../../Models/SpeechRepresentation/2019.04.11_Wav2Vec.md), [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md), [WavLM [27]](../../Models/SpeechRepresentation/2021.10.26_WavLM.md), and [Whisper [169]](../../Models/SpeechLM/2022.12.06_Whisper.md) focus on extracting semantic information embedded within the spoken content.
 This inherent advantage allows speech to be directly mapped into the embedding space of large language models (LLMs), facilitating alignment with other modalities and fully leveraging the LLM’s strengths.
-In contrast, acoustic representations extracted by models like [EnCodec [43]](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) and [DAC [113]](../../Models/Speech_Neural_Codec/2023.06.11_Descript-Audio-Codec.md) are less conducive to LLM understanding, which is why [SpeechTokenizer [249]](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) and Mimi ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)) opt for semantic distillation.
+In contrast, acoustic representations extracted by models like [EnCodec [43]](../../Models/SpeechCodec/2022.10.24_EnCodec.md) and [DAC [113]](../../Models/SpeechCodec/2023.06.11_Descript-Audio-Codec.md) are less conducive to LLM understanding, which is why [SpeechTokenizer [249]](../../Models/SpeechCodec/2023.08.31_SpeechTokenizer.md) and Mimi ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)) opt for semantic distillation.
 In addition, semantic representations offer higher compression rates.
 By configuring various downsampling parameters in convolutional layers, models like HuBERT and Whisper easily achieve frame rates of 25Hz to 50Hz.
 [Spirit-LM [158]](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md), for instance, uses 25Hz HuBERT units, meaning that only 25 tokens are needed to represent one second of speech.
@@ -620,14 +620,14 @@ Although Mimi ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)) has achi
 Finally, in certain scenarios, semantic representations hold distinct advantages.
 
 However, we must acknowledge that purely semantic representations fall short in naturalness and expressiveness, especially in tasks involving emotional expression or complex speech dynamics, where acoustic representations provide more nuanced information.
-For instance, [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) cannot extract prosodic and stylistic features as effectively as [EnCodec [43]](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) or [Emotion2Vec [143]](../../Models/Speech_Representaion/2023.12.23_Emotion2Vec.md).
+For instance, [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) cannot extract prosodic and stylistic features as effectively as [EnCodec [43]](../../Models/SpeechCodec/2022.10.24_EnCodec.md) or [Emotion2Vec [143]](../../Models/SpeechRepresentation/2023.12.23_Emotion2Vec.md).
 Notably, using acoustic representations allows for flexible handling of various data types—speech, audio, music, and sound—making dialogue systems more unified and versatile.
 Moreover, when acoustic representations are used as the output of a language model, they can seamlessly connect to the codec decoder for speech synthesis.
 In contrast, dialogue systems using semantic features often require separately trained vocoders ([Spirit-LM [158]](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md); [USDM [106]](../../Models/SpeechLM/2024.02.08_USDM.md)) or rely on additional text-to-speech toolkits ([LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md)).
 This gap is crucial for dialogue systems, as the resulting latency directly impacts the user experience.
 
 Given the unique advantages of semantic and acoustic features across different tasks, future research may shift toward integrating these features.
-A valuable perspective is that models like [SpeechTokenizer [249]](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) and Mimi ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)) have already attempted to distill semantic representations from [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) or [WavLM [27]](../../Models/SpeechRepresentation/2021.10.26_WavLM.md) into RVQ-1, ensuring a balanced representation of both semantic and acoustic information in the system.
+A valuable perspective is that models like [SpeechTokenizer [249]](../../Models/SpeechCodec/2023.08.31_SpeechTokenizer.md) and Mimi ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)) have already attempted to distill semantic representations from [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) or [WavLM [27]](../../Models/SpeechRepresentation/2021.10.26_WavLM.md) into RVQ-1, ensuring a balanced representation of both semantic and acoustic information in the system.
 With technological advancements, we look forward to more unified and refined modeling approaches.
 A promising direction would be to design new training objectives for speech tokenizers, exploring both data-driven and objective-driven methods, thus avoiding the need for additional pre-trained models.
 As spoken dialogue Systems are still evolving, exploring more robust hybrid representations is indeed valuable.
@@ -637,7 +637,7 @@ As spoken dialogue Systems are still evolving, exploring more robust hybrid repr
 
 现有的对话系统通常根据任务需求选择不同的方法进行理解 (输入) 和生成 (输出).
 - [SpiRit-LM [158]](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md) 在输入和输出端都使用语义表示 ([HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md))
-- [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md) 在输入端使用语义表示 ([Whisper [169]](../../Models/SpeechLM/2022.12.06_Whisper.md)) 而在输出端使用声学表示 ([SNAC [193]](../../Models/Speech_Neural_Codec/2024.10.18_SNAC.md))
+- [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md) 在输入端使用语义表示 ([Whisper [169]](../../Models/SpeechLM/2022.12.06_Whisper.md)) 而在输出端使用声学表示 ([SNAC [193]](../../Models/SpeechCodec/2024.10.18_SNAC.md))
 
 每种组合都提供了独特的优势和权衡, 而在实际应用中达成统一的语音表示方法还没有达成共识.
 
@@ -648,7 +648,7 @@ As spoken dialogue Systems are still evolving, exploring more robust hybrid repr
 语义表示的优势:
 - 受益于具体的任务目标, 模型 (例如 [Wav2Vec [184]](../../Models/SpeechRepresentation/2019.04.11_Wav2Vec.md), [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md), [WavLM [27]](../../Models/SpeechRepresentation/2021.10.26_WavLM.md), 和 [Whisper [169]](../../Models/SpeechLM/2022.12.06_Whisper.md)) 都专注于从说话内容中提取语义信息.
 这种内在优势使得**语音可以直接映射到大语言模型的嵌入空间中, 有助于和其他模态对齐, 并充分利用大语言模型的强项**.
-与之相反, 由模型 (例如 [EnCodec [43]](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) 和 [DAC [113]](../../Models/Speech_Neural_Codec/2023.06.11_Descript-Audio-Codec.md)) 提取的声学表示不利于语言模型理解, 这也是为什么 [SpeechTokenizer [249]](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) 和 Mimi ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)) 选择使用语义蒸馏.
+与之相反, 由模型 (例如 [EnCodec [43]](../../Models/SpeechCodec/2022.10.24_EnCodec.md) 和 [DAC [113]](../../Models/SpeechCodec/2023.06.11_Descript-Audio-Codec.md)) 提取的声学表示不利于语言模型理解, 这也是为什么 [SpeechTokenizer [249]](../../Models/SpeechCodec/2023.08.31_SpeechTokenizer.md) 和 Mimi ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)) 选择使用语义蒸馏.
 - 此外, **语义表示提供更高的压缩率**.
 通过在卷积层中配置不同的下采样参数, 模型 (例如 HuBERT 和 Whisper) 能够轻松实现 25Hz 到 50Hz 的帧率.
 例如 [Spirit-LM [158]](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md) 采用 25Hz HuBERT 单元, 这意味着只需要 25 个标记来表示一秒的语音.
@@ -658,14 +658,14 @@ As spoken dialogue Systems are still evolving, exploring more robust hybrid repr
 
 声学表示的优势:
 - 然而, 我们必须承认纯粹的语义表示在自然性和表现力方面存在缺陷, 特别是在涉及到情感表达或复杂语音动态的任务中, 而这些任务中的声学表示能提供更多细致的信息.
-  [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) 不能像 [EnCodec [43]](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) 或 [Emotion2Vec [143]](../../Models/Speech_Representaion/2023.12.23_Emotion2Vec.md) 那样有效地提取语调和风格特征.
+  [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) 不能像 [EnCodec [43]](../../Models/SpeechCodec/2022.10.24_EnCodec.md) 或 [Emotion2Vec [143]](../../Models/SpeechRepresentation/2023.12.23_Emotion2Vec.md) 那样有效地提取语调和风格特征.
 - 值得注意的是, 使用声学表示可以灵活地处理各种数据类型——语音, 音频, 音乐, 声音——这使得对话系统更加统一和多样化.
 - 当声学表示用作语言模型的输出时, 它可以无缝地连接到编解码器的解码器部分以进行语音合成.
   与之相反, 使用语义特征的对话系统通常要求单独训练好的声码器 ([Spirit-LM [158]](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md); [USDM [106]](../../Models/SpeechLM/2024.02.08_USDM.md)) 或依赖额外的文本到转语音工具箱 ([LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md))
   这种差距对于对话系统至关重要, 因为其导致的延迟会直接影响用户体验.
 
 鉴于语义特征和声学特征在不同任务中的独特优势, 未来研究可能会转向集成这些特征.
-一个有价值的视角是, 模型如 [SpeechTokenizer [249]](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md) 和 Mimi ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)) 已经试图将语义表示从 [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) 或 [WavLM [27]](../../Models/SpeechRepresentation/2021.10.26_WavLM.md) 中蒸馏到 RVQ-1, 确保系统中语义和声学信息的平衡.
+一个有价值的视角是, 模型如 [SpeechTokenizer [249]](../../Models/SpeechCodec/2023.08.31_SpeechTokenizer.md) 和 Mimi ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)) 已经试图将语义表示从 [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) 或 [WavLM [27]](../../Models/SpeechRepresentation/2021.10.26_WavLM.md) 中蒸馏到 RVQ-1, 确保系统中语义和声学信息的平衡.
 
 随着技术进步, 我们期待着更加统一和完善的模型方法.
 一个有希望的方向是为语音分词器设计新的训练目标, 探索数据驱动和目标驱动方法, 避免使用额外的预训练模型.
@@ -679,7 +679,7 @@ As spoken dialogue Systems are still evolving, exploring more robust hybrid repr
 There is still no consensus on whether to use continuous or discrete representations in the spoken dialogue systems.
 Considerations on the input side mainly depend on the type of representation model chosen by the system.
 Some systems ([Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md); [Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md); [LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md)) use models like [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) or [Whisper [169]](../../Models/SpeechLM/2022.12.06_Whisper.md) to extract continuous speech representations, which requires adding a speech adapter and an additional training phase focused on modality alignment.
-Another systems ([SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md); [EMOVA [25]](../../Models/SpeechLM/2024.09.26_EMOVA.md); [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)) use models like [EnCodec [43]](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) or Mimi ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)) to extract discrete speech representations, adding speech tokens directly to the LLM’s vocabulary, thereby shifting the training burden onto the LLM itself.
+Another systems ([SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md); [EMOVA [25]](../../Models/SpeechLM/2024.09.26_EMOVA.md); [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)) use models like [EnCodec [43]](../../Models/SpeechCodec/2022.10.24_EnCodec.md) or Mimi ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)) to extract discrete speech representations, adding speech tokens directly to the LLM’s vocabulary, thereby shifting the training burden onto the LLM itself.
 Despite the different approaches, the key is to enable large language models to effectively understand speech features.
 For autoregressive models, using discrete inputs may appear more manageable; however, whether this truly outperforms continuous inputs in terms of performance remains to be explored.
 
@@ -696,7 +696,7 @@ These approaches may provide valuable insights for the next generation of spoken
 现在口语对话系统仍无该选择连续表示还是离散表示的共识.
 输入侧的考虑主要依赖于系统选择的表示模型的类型.
 - 一些系统 ([Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md); [Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md); [LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md)) 使用模型 ([HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) 或 [Whisper [169]](../../Models/SpeechLM/2022.12.06_Whisper.md)) 来提取连续语音表示, 要求增加一个语音适配器和额外的专注于模态对齐的训练阶段.
-- 另一些系统 ([SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md); [EMOVA [25]](../../Models/SpeechLM/2024.09.26_EMOVA.md); [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)) 使用模型 ([EnCodec [43]](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md) 或 Mimi ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md))) 来提取离散语音表示, 将语音 Token 直接添加到大语言模型的词表中, 从而将训练负担移到大语言模型本身.
+- 另一些系统 ([SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md); [EMOVA [25]](../../Models/SpeechLM/2024.09.26_EMOVA.md); [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)) 使用模型 ([EnCodec [43]](../../Models/SpeechCodec/2022.10.24_EnCodec.md) 或 Mimi ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md))) 来提取离散语音表示, 将语音 Token 直接添加到大语言模型的词表中, 从而将训练负担移到大语言模型本身.
 
 尽管使用了不同方法, 但关键是使得大语言模型能有效地理解语音特征.
 对于自回归模型, 使用离散输入可能更容易管理, 然而, 是否真的在性能方面优于连续输入仍有待探索.
@@ -715,22 +715,22 @@ These approaches may provide valuable insights for the next generation of spoken
 <summary>展开原文</summary>
 
 As previously mentioned regarding compression rates, the number of quantizers must be carefully considered when using the speech codec.
-Currently, dialogue systems commonly use multi-layer quantizers, such as those in [EnCodec [43]](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md), [SpeechTokenizer [249]](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md), [SNAC [193]](../../Models/Speech_Neural_Codec/2024.10.18_SNAC.md) and Mimi ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)).
+Currently, dialogue systems commonly use multi-layer quantizers, such as those in [EnCodec [43]](../../Models/SpeechCodec/2022.10.24_EnCodec.md), [SpeechTokenizer [249]](../../Models/SpeechCodec/2023.08.31_SpeechTokenizer.md), [SNAC [193]](../../Models/SpeechCodec/2024.10.18_SNAC.md) and Mimi ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)).
 This inevitably introduces generation latency, as residual vector quantization requires each quantizer’s input to depend on the output of the previous quantizer.
 [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md) and [Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md) adopt an approach similar to [MusicGen [40]](../../Models/SpeechLM/2023.06.08_MusicGen.md), introducing delayed steps to enable parallel generation across multiple quantizers.
 [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md) proposes splitting the RVQ, allowing the eight VQs to generate independently in parallel.
 These strategies help mitigate latency issues to some extent but still fall short of the efficiency achieved with semantic representations.
 
 Recently, research on single-layer quantizers has shown promising breakthroughs.
-Models like [WavTokenizer [90]](../../Models/Speech_Neural_Codec/2024.08.29_WavTokenizer.md), [Single-Codec [119]](../../Models/Speech_Neural_Codec/2024.06.11_Single-Codec.md), and [BigCodec [224]](../../Models/Speech_Neural_Codec/2024.09.09_BigCodec.md) advocate using a single VQ to discretize speech, achieving competitive results in both reconstruction and generation tasks.
-Notably, [WavTokenizer [90]](../../Models/Speech_Neural_Codec/2024.08.29_WavTokenizer.md) has already achieved an impressive compression rate of 40Hz.
+Models like [WavTokenizer [90]](../../Models/SpeechCodec/2024.08.29_WavTokenizer.md), [Single-Codec [119]](../../Models/SpeechCodec/2024.06.11_Single-Codec.md), and [BigCodec [224]](../../Models/SpeechCodec/2024.09.09_BigCodec.md) advocate using a single VQ to discretize speech, achieving competitive results in both reconstruction and generation tasks.
+Notably, [WavTokenizer [90]](../../Models/SpeechCodec/2024.08.29_WavTokenizer.md) has already achieved an impressive compression rate of 40Hz.
 Integrating a single-layer quantizer with dialogue systems is promising, as it allows for rapid extraction of speech features on the input side and significantly reduces the burden of autoregressive modeling.
 
 </details>
 <br>
 
 如前所述, 关于压缩率, 在使用语音编解码器时量化器的数量必须经过仔细考虑.
-目前, 对话系统通常使用多层量化器, 如 [EnCodec [43]](../../Models/Speech_Neural_Codec/2022.10.24_EnCodec.md), [SpeechTokenizer [249]](../../Models/Speech_Neural_Codec/2023.08.31_SpeechTokenizer.md), [SNAC [193]](../../Models/Speech_Neural_Codec/2024.10.18_SNAC.md) 和 Mimi ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)).
+目前, 对话系统通常使用多层量化器, 如 [EnCodec [43]](../../Models/SpeechCodec/2022.10.24_EnCodec.md), [SpeechTokenizer [249]](../../Models/SpeechCodec/2023.08.31_SpeechTokenizer.md), [SNAC [193]](../../Models/SpeechCodec/2024.10.18_SNAC.md) 和 Mimi ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)).
 这不可避免地引入了生成延迟, 因为残差向量量化要求每个量化器的输入依赖于前一个量化器的输出.
 
 [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md) 和 [Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md) 采取了与 [MusicGen [40]](../../Models/SpeechLM/2023.06.08_MusicGen.md) 类似的策略, 引入延迟步骤以实现多个量化器之间的并行生成.
@@ -739,8 +739,8 @@ Integrating a single-layer quantizer with dialogue systems is promising, as it a
 这些策略在一定程度上缓解了延迟问题, 但仍未达到语义表示的效率水平.
 
 最近, 关于单层量化器的研究已经取得了令人鼓舞的成果.
-诸如 [WavTokenizer [90]](../../Models/Speech_Neural_Codec/2024.08.29_WavTokenizer.md), [Single-Codec [119]](../../Models/Speech_Neural_Codec/2024.06.11_Single-Codec.md), 和 [BigCodec [224]](../../Models/Speech_Neural_Codec/2024.09.09_BigCodec.md) 等模型主张使用单层 VQ 对语音进行离散化, 取得了在重构和生成任务中的具有竞争力的结果.
-值得注意的是, [WavTokenizer [90]](../../Models/Speech_Neural_Codec/2024.08.29_WavTokenizer.md) 已经实现了 40Hz 的压缩率.
+诸如 [WavTokenizer [90]](../../Models/SpeechCodec/2024.08.29_WavTokenizer.md), [Single-Codec [119]](../../Models/SpeechCodec/2024.06.11_Single-Codec.md), 和 [BigCodec [224]](../../Models/SpeechCodec/2024.09.09_BigCodec.md) 等模型主张使用单层 VQ 对语音进行离散化, 取得了在重构和生成任务中的具有竞争力的结果.
+值得注意的是, [WavTokenizer [90]](../../Models/SpeechCodec/2024.08.29_WavTokenizer.md) 已经实现了 40Hz 的压缩率.
 将单层量化器与对话系统集成是有希望的, 因为它允许在输入侧快速提取语音特征, 并且大大减少了自回归建模的负担.
 
 ### 3.3.4·With Text Guidance vs Without Text Guidance: 文本引导与无文本引导
