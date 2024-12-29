@@ -165,3 +165,96 @@ Once again, we have the equivalence:
 \end{myframe}
 
 The above theorem can be proved using \cref{prop:bregman_gradient} with $X=X_t$, $Y=u_t(X_t|X_1)$, $g^\theta(x)=u_t^\theta(x)$, and integrating w.r.t.~$t\in[0,1]$.
+
+## 5.6·Conditional flows through premetrics
+
+
+Having established how to learn a flow model with the RCFM loss, we are left with specifying the conditional probability path and its generating velocity field.
+Similar  to \cref{s:conditional_flows}, we begin by stating the requirements for the corresponding conditional flow $\psi:[0,1)\times \gM \times \gM \too \gM$, such that $p_{t|1}(\cdot|x_1)$ satisfies the boundary conditions \eqref{e:riemannian_p_t_cond_boundary}.
+The \highlight{conditional flow model} is
+\begin{equation}
+    X_{t|1} = \psi_t(X_0|x_1), \quad \text{ where } X_0\sim \pi_{0|1}(\cdot|x_1), %
+\end{equation}
+where the \highlight{conditional flow} is
+\begin{equation}\label{e:riemannian_psi}
+    \psi_t(x|x_1) = \begin{cases}
+        x & t=0 \\
+        x_1 & t=1
+    \end{cases}, \ \text{ is smooth in } t,x \text{ and diffeomorphism in $x$ on } \gM. %
+\end{equation}
+
+
+Our analysis in Euclidean space focused on affine conditional flows, as these served as a rich class of easily computable (simulation-free) conditional flows.
+Unfortunately,  combinations $\alpha_t x_1 + \sigma_t x_0$ for $\alpha_t+\sigma_t\ne1$ are not naturally defined on manifolds. The manifold analog for the case $\alpha_t+\sigma_t=1$ would be using  geodesic interpolation.
+Indeed, \citet{chen2024flow} proposed building conditional flows by moving along geodesic curves, in particular, generalizing the conditional OT paths moving along straight lines in Euclidean space (see \cref{thm:cond_ot}). Geodesics represent the shortest paths between two points on a manifold, reducing to straight lines in Euclidean spaces.
+For manifolds, we define the \highlight{geodesic conditional flow} as
+\begin{equation}\label{e:exp_log}
+    \psi_t (x_0|x_1)= \exp_{x_0} (\kappa(t) \log_{x_0}(x_1)), \quad t\in[0,1],%
+\end{equation}
+where $\kappa(t):[0,1]\too[0,1]$ is a monotonically increasing scheduler satisfying $\kappa(0)=0$ and $\kappa(1)=1$, making sure all $x_0$ are pushed to $x_1$ at $t=1$. The exponential map, evaluated at $x\in\gM$, $\exp_x:T_x\gM\too \gM$, $v\mapsto \exp_x(v)$, returns the endpoint at time $t=1$ of the unique geodesic starting at $x$ with initial speed $v$. The logarithmic map $\log_{x}:\gM\too  T_xM$, $y\mapsto \log_x(y)$, is the inverse of the exponential map. In Euclidean space, the exponential map is simply vector addition, and the logarithmic map is vector subtraction.
+Now, if we plug these in \eqref{e:exp_log}, we get $\psi_t (x_0|x_1)= x_0 + \kappa(t)(x_1-x_0)$, and by choosing $\kappa(t)=t$ we recover the conditional OT flow.
+
+For simple manifolds with closed-form exponential and logarithmic maps, this construction allows a simulation-free recipe for training flows on manifolds, an arguably clear advantage compared to diffusion models approaches built on manifolds \citep{de2022riemannian,huang2022rimannian,lou2023scaling}.
+In particular, manifold diffusion models require in-training simulation to sample from $p_t$, and have to resort to approximations of the score function on the manifold.
+
+Nevertheless, while building geodesic conditional flows is a natural construction, geodesics may be hard to compute for general manifolds that do not have closed-form exponential and logarithmic maps {and/or introduce undesired bias such as concentrating probability at boundary points.}
+To overcome the difficulty in computing geodesics and/or inject a desired implicit bias, one may seek an alternative notion of smooth distance function, $\dist(\cdot,\cdot):\gM\times\gM\too\Real_{\geq 0}$, and require that the conditional flow satisfies
+\begin{equation}\label{e:dist_cond_flow}
+    \dist(\psi_t(x_0|x_1),x_1) = \bar{\kappa}(t)\dist(x_0,x_1),
+\end{equation}
+where $\bar{\kappa}(t)=1-\kappa(t)$. This will assure that the conditional flow concentrates all the probability at $x_1$ at time $t=1$ if the following conditions hold:
+\begin{enumerate}
+    \item \emph{Non-negative}: $\dist(x,y)\geq 0$ for all $x,y\in \gM$.
+    \item \emph{Positive}: $\dist(x,y)=0$ if and only if $x=y$.
+    \item \emph{Non-degenerate}: $\nabla \dist(x,y)\neq 0$ if and only if $x\neq y$.
+\end{enumerate}
+
+\citet{chen2024flow} showed that the minimal norm conditional velocity field corresponding to a flow that satisfies \eqref{e:dist_cond_flow} has the form:
+\begin{equation}\label{e:riemannian_cond_ut}
+    u_t(x|x_1) = \frac{d \log \bar{\kappa}(t)}{\dd t}\dist(x,x_1)\frac{\nabla \dist(x,x_1)}{\norm{\nabla \dist(x,x_1)}^2_g},
+\end{equation}
+\begin{wrapfigure}[13]{r}{0.4\textwidth}
+  \begin{center} \vspace{-10pt}   \includegraphics[width=0.38\textwidth]{assets/rfm.pdf}
+  \end{center}
+  \caption{Conditional flows on the manifold $\gM$.}\label{fig:rfm}
+\end{wrapfigure}
+where the non-degeneracy requirement of the premetric ensures that the velocity field has no discontinuities, since $u_t(x|x_1)\propto 1/{\norm{\nabla \dist(x,x_1)}_g}$. In particular, note that the geodesic conditional flow in \eqref{e:exp_log} satisfies \eqref{e:dist_cond_flow} for the choice $\dist=\dist_g$, where $\dist_g$ is the geodesic distance. An example of a choice of alternative premetrics is using spectral distances on general geometries \citep{chen2024flow}, where the conditional velocity offers a way to sample from $p_t(x|x_1)$ by simulation. Importantly, although conditional flows with premetrics require in-training simulation---like diffusion models on manifolds---the velocity field can still be accurately recovered compared to approximations of the score function.
+
+Another issue, is that both conditional flows defined via geodesic interpolation and premetric can suffer from singularities, \eg, for compact manifolds. For example on the 2-sphere the geodesic function $\dist(x,x_1)$ is not differentiable at the antipodal point $x=-x_1$. Furthermore, any smooth function such as $x\mapsto \dist(x,x_1)$ will showcase at-least two critical points (maximum and minimum) where the velocity in \eqref{e:riemannian_cond_ut} is not-defined. However, the set of such  problematic points is generally very small (in fact of zero volume usually). Therefore, this issue does not cause problems in practice, at-least in use cases we are aware of.
+
+
+In any case, to deal with this issue, we can include an augmented scheduler in the geodesic conditional flow. That is, use  $\bar{\kappa}(t,x,x_1)$, that depends also on $x,x_1$ to make \eqref{e:exp_log} globally smooth. To deal with the zero gradient issue of the premetric conditional flow we can relax the non-degeneracy requirement as follows:
+\begin{itemize}
+    \item[3.]  \emph{Non-degenerate (relaxed)}: The volume of the set $\gA_y = \set{x\in \gM \, \vert \,  \nabla \dist(x,y)=0 \text{ and } x\ne y } $ is $0$ for all $y\in \gM$.
+\end{itemize}
+
+
+```
+Training with geodesic flows on a Sphere using the CFM objective
+
+import torch
+from flow_matching.path import GeodesicProbPath, PathSample
+from flow_matching.path.scheduler import CondOTScheduler
+from flow_matching.utils.manifolds import Sphere
+
+model = ...  # Define a trainable velocity model
+optimizer = torch.optim.Adam(model.parameters())
+loss_fn = torch.nn.MSELoss()  # Any Bregman divergence
+
+manifold = Sphere()
+scheduler = CondOTScheduler()
+path = GeodesicProbPath(scheduler=scheduler, manifold=manifold)
+
+for x_0, x_1 in dataloader:  # Samples from $\pi_{0,1}$ of shape [batch_size, *data_dim]
+    t = torch.rand(batch_size)  # Randomize time $t \sim U[0,1]$
+    sample: PathSample = path.sample(t=t, x_0=x_0, x_1=x_1)  # Sample the conditional path
+
+    model_output = model(sample.x_t, sample.t)
+    projected_model_output = manifold.proju(sample.x_t, model_output)  # Project to tangent space
+
+    loss = loss_fn(projected_model_output, sample.dx_t)  # CFM loss
+
+    optimizer.zero_grad()
+    loss.backward()
+    optimizer.step()
+```
