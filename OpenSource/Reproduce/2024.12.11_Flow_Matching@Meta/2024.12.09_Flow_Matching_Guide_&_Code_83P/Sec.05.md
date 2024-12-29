@@ -147,3 +147,21 @@ $$
 $$
 
 The proof of \cref{thm:rfm_main} is repeating the arguments of \cref{thm:fm_main} and is given in \cref{a:manifold_marginalization_trick}.
+
+## 5.5·Riemannian Flow Matching Loss
+
+The \highlight{Riemannian Conditional Flow Matching (RCFM) loss} reads
+\begin{equation}\label{e:rcfm_loss}
+    \gL_{\RCFM}(\theta) = \E_{t,X_1,X_t\sim p_{t|1}(\cdot|X_1)}D_{X_t}\parr{u_t(X_t|X_1),u_t^\theta(X_t)}.%
+\end{equation}
+Once again, we have the equivalence:
+\begin{myframe}
+\begin{theorem}\label{thm:rcfm}
+    The gradients of the Riemannian Flow Matching loss and the Riemannian Conditional Flow Matching loss coincide:
+    \begin{equation}
+        \nabla_\theta \gL_{\RFM}(\theta) = \nabla_\theta \gL_{\RCFM}(\theta).
+    \end{equation}
+\end{theorem}
+\end{myframe}
+
+The above theorem can be proved using \cref{prop:bregman_gradient} with $X=X_t$, $Y=u_t(X_t|X_1)$, $g^\theta(x)=u_t^\theta(x)$, and integrating w.r.t.~$t\in[0,1]$.
