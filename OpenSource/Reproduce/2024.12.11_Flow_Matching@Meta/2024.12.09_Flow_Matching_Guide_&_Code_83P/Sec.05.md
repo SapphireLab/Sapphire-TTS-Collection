@@ -103,3 +103,47 @@ $$
 $$
 
 where $\pi_{0|1}$ is the conditional coupling, $\pi_{0|1}(x_0|x_1)=\pi_{0,1}(x_0,x_1)/q(x_1)$.
+
+## 5.4·The Marginalization Trick for manifolds
+
+The Marginalization Trick for the marginal velocity field (\cref{thm:fm_main}) readily applies to the Riemannian case.
+Consider the \highlight{conditional velocity field} $u_t(x|x_1)\in\gU$ such that
+$$
+    u_{t}(\cdot|x_1) \text{ generates } p_{t|1}(\cdot|x_1).
+$$
+
+Then, the \highlight{marginal velocity} field $u_t(x)$ is given by the following averaging of the conditional velocities,
+$$
+    u_t(x) = \int_\gM u_t(x|x_1)p_{1|t}(x_1|x) \dd \vol_{x_1}, %
+$$
+where, by Bayes' Rule for PDFs, we obtain
+$$
+p_{1|t}(x_1|x) = \frac{p_{t|1}(x|x_1)q(x_1)}{p_t(x)},
+$$
+which is defined for all $x\in\gM$ for which $p_t(x)>0$.
+
+The Marginalization Trick (\cref{thm:fm_main}) for the Riemannian case requires adjusting \cref{as:p_t} as follows:
+
+### Assumption 2 [Riemannian p_t]
+
+$p_{t|1}(x|x_1)$ is $C^\infty([0,1)\times \gM)$ and $u_t(x|x_1)$ is $C^\infty([0,1)\times \gM,\gM)$ as function of $(t,x)$. Furthermore, we assume either $q$ has bounded support, \ie, $q(x_1)=0$ outside some bounded set or $\gM$ is compact; and $p_t(x)>0$ for all $x\in\gM$ and $t\in[0,1)$.
+
+---
+
+We are now ready to state the \highlight{Manifold  Marginalization Trick} theorem:
+
+### Theorem [Manifold Marginalization Trick]
+
+Under Assumption \ref{as:riemannian_p_t}, if $u_t(x|x_1)$ is conditionally integrable and generates the conditional probability path $p_t(\cdot|x_1)$ then the marginal velocity field $u_t(\cdot)$ generates the marginal probability path $p_t(\cdot)$.
+
+---
+
+By \highlight{conditionally integrable}, we mean a conditioned version of the integrability condition from the Mass Conservation Theorem \eqref{e:manifold_integrable}:
+
+$$
+\begin{aligned}
+\int^1_0\int_\gM\int_\gM \norm{u_t(x|x_1)}_g p_{t|1}(x|x_1) q(x_1) \dd \vol_{x_1} \dd \vol_{x} \dd t &< \infty
+\end{aligned}
+$$
+
+The proof of \cref{thm:rfm_main} is repeating the arguments of \cref{thm:fm_main} and is given in \cref{a:manifold_marginalization_trick}.
