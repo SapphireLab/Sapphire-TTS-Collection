@@ -80,3 +80,26 @@ $$
 
 In the equation above, the expectation is now an integral over the manifold, that is $E[f(X)]=\int_\gM f(x)p_X(x)\dd \vol_x$, for a smooth function $f:\gM\too\gM$ and a random variable $X\sim p_X$.
 The Bregman divergences, $D_x$, $x\in\gM$, are potentially defined with the Riemannian inner product and a strictly convex function assigned to each tangent space $\Phi_x:T_x\gM\too T_x\gM$, that is, $D_{x}(u,v) \defe \Phi_x(u) - \brac{ \Phi_x(v) + \langle u-v, \nabla_v \Phi_x(v) \rangle_g}$. For example, choosing the Riemannian metric $\Phi_x=\norm{\cdot}_g^2$ then  $D_x(u,v)=\norm{u-v}^2_g$  for $u,v\in T_x\gM$.
+
+## 5.3·Probability paths on manifolds
+
+\highlight{Marginal probability paths} are built as in the Euclidean case \eqref{e:p_t}:
+
+$$
+    p_t(x) = \int_\gM p_t(x|x_1)q(x_1) \dd \vol_{x_1},%
+$$
+
+where $p_{t|1}(x|x_1)$ is the \highlight{conditional probability path} defined on the manifold.
+We also require the boundary constraints
+
+$$
+    p_0=p, \quad p_1=q. %
+$$
+
+For instance, these constraints can be implemented by requiring the conditional path $p_{t|1}(x|x_1)$ to satisfy
+
+$$
+    p_{0|1}(x|x_1) = \pi_{0|1}(x|x_1), \text{ and  } p_{1|1}(x|x_1)=\delta_{x_1}(x),
+$$
+
+where $\pi_{0|1}$ is the conditional coupling, $\pi_{0|1}(x_0|x_1)=\pi_{0,1}(x_0,x_1)/q(x_1)$.
