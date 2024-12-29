@@ -71,3 +71,55 @@ One possible remedy to assure that any choice of $h>0$ results in a valid PMF, a
        \frac{u_t(y,X_t)}{\abs{u_t(X_t,X_t)}}\parr{1-\exp\brac{hu_t(X_t,X_t)}} & y\ne X_t
     \end{cases}.%
 \end{align}
+
+## 6.3·Probability paths and Kolmogorov Equation
+
+Similarly to Continuity Equation in the continuous case, the marginal probabilities $p_t$ of the CTMC model $(X_t)_{0\leq t \leq 1}$  are characterized by the \highlight{Kolmogorov Equation}
+\begin{equation}\label{e:kolmogorov}
+    \frac{\dd}{\dd t}p_t(y) = \sum_{x} u_t(y,x) p_t(x). %
+\end{equation}
+The following classical theorem (see also Theorems 5.1 and 5.2 in \cite{coddington1956theory}) describes the existence of unique solutions for this linear homogeneous system of ODEs.
+\begin{myframe}\begin{theorem}[Linear ODE existence and uniqueness]\label{thm:linear_system_ode_existence_and_uniqueness}
+      If $u_t(y,x)$ are in $C([0,1))$ (continuous with respect to time), then there exists a unique solution $p_t(x)$ to the Kolmogorov Equation \eqref{e:kolmogorov}, for $t\in [0,1)$ and satisfying $p_0(x)=p(x)$.
+    \end{theorem}
+\end{myframe}
+For the CTMC, the solution is guaranteed to exist for all times $t\in[0,1)$ and no extra conditions are required (unlike the non-linear case in \cref{thm:ode_existence_and_uniqueness}).
+The Kolmogorov Equation has an intimate connection with the Continuity Equation \eqref{e:continuity}.
+Rearranging the right-hand side of \eqref{e:kolmogorov} by means of the rate conditions yields
+\begin{align*}
+    \sum_x u_t(y,x)p_t(x) &\overset{\eqref{e:rate_conds}}{=}
+    \overbrace{\sum_{x \ne y} u_t(y,x) p_t(x)}^{\text{{incoming flux}}} - \overbrace{\sum_{x \ne y} u_t(x,y) p_t(y)}^{\text{{outgoing flux}}} \\
+    &\,\,\,= -\sum_{x\ne y} \brac{j_t(x,y) - j_t(y,x)},
+\end{align*}
+where $j_t(y,x)\defe u_t(y,x)p_t(x)$ is the \emph{probability flux} describing the probability of moving from state $x$ to state $y$ per unit of time.
+The excess of outgoing flux is defined as the \highlight{divergence}, giving the Kolmogorov Equation the same structure as the one described in \cref{ss:continuity_equation} for the Continuity Equation \citep{gat2024discrete}.
+
+The following result is the main tool to build probability paths and velocities in the CTMC framework:
+\begin{myframe}
+    \begin{theorem}[Discrete Mass Conservation]\label{thm:discrete_mass_conservation}
+    Let $u_t(y,x)$ be in $C([0,1))$ and $p_t(x)$ a PMF in $C^1([0,1))$ in time $t$. Then, the following are equivalent:
+    \begin{enumerate}
+        \item $p_t,u_t$ satisfy the Kolmogorov Equation \eqref{e:kolmogorov} for $t\in[0,1)$, and $u_t$ satisfies the rate conditions \eqref{e:rate_conds}.
+        \item $u_t$ generates $p_t$ in the sense of \ref{def:generates_ctmc} for $t\in[0,1)$.
+    \end{enumerate}
+    \end{theorem}
+\end{myframe}
+The proof of \cref{thm:discrete_mass_conservation} is given in \cref{a:discrete_mass_conservation}.
+
+
+### 6.3.1·Probability preserving velocities
+
+As a consequence of the Discrete Mass Conservation (\cref{thm:discrete_mass_conservation}), if velocity $u_t(y,x)$ generates the probability path $p_t(x)$, then
+\begin{equation}
+    \tilde{u}_t(y,x) =  u_t(y,x)+v_t(y,x) \text{ generates } p_t(x),
+\end{equation}
+as long as $v_t(y,x)$ satisfies the rate conditions \eqref{e:rate_conds} and solves the \highlight{divergence-free velocity} equation
+\begin{equation}\label{e:discrete_div_free}
+    \sum_x v_t(y,x) p_t(x) = 0. %
+\end{equation}
+In fact, $\tilde{u}_t(y,x)$ solves the Kolmogorov Equation:
+\begin{equation*}
+    \sum_x \tilde{u}_t(y,x) p_t(x) = \sum_x u_t(y,x) p_t(x) = \dot{p}_t(y),
+\end{equation*}
+showing that one may add divergence-free velocities during sampling without changing the marginal probability.
+This will be a useful fact when sampling from discrete Flow Matching models, described next.
