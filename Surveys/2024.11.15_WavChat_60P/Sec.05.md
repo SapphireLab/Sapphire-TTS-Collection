@@ -399,7 +399,7 @@ For example, if the user is speaking but the system needs to alert them to an er
 </details>
 <br>
 
-现在我们理解了双工技术, 可以进一步探索双工口语对话模型.
+现在我们理解了双工技术, 可以进一步探索双工模式口语对话模型.
 
 我们从一些概念开始.
 
@@ -411,19 +411,36 @@ For example, if the user is speaking but the system needs to alert them to an er
 轮次交换包含三个基本概念:
 - **轮次交换提示 (Turn-Taking Cues)** ([Duncan et al [53]](../../Models/_Full/Some_Signals_and_Rules_for_Taking_Speaking_Turns_in_Conversations.md); [Duncan et al [54]](../../Models/_Full/On_Signalling_that_It's_Your_Turn_to_Speak.md))
   这些包括声音, 节奏, 呼吸, 视线或手势. 智能体可以使用这些提示来判断是否应该从用户那里获得轮次.
-- **轮次结束检测或预测 (Turn-End Detection or Prediction)**. 区别在于检测 ([Hara et al [73]](../../Models/_Full/Turn-Taking_Prediction_Based_on_Detection_of_Transition_Relevance_Place.md); [Lala et al [115]](../../Models/_Full/Attentive_Listening_System_with_Backchanneling_Response_Generation_and_Flexible_Turn-Taking.md)) 决定智能体是否应在当前时刻获得轮次, 而预测 ([TurnGPT [55]](../../Models/_Full/TurnGPT.md); [Lala et al [114]](../../Models/_Full/Smooth_Turn-Taking_by_a_Robot_Using_an_Online_Continuous_Model_to_Generate_Turn-Taking_Cues.md)) 决定轮次交换何时发生.
-- 重叠. 主要涉及两种情况. 当用户和智能体的声音重叠时, 如果用户打算从智能体获得轮次, 这种行为被定义为中断 (Interruption) ([Khouzaimi et al [103]](../../Models/_Full/Reinforcement_Learning_for_Turn-Taking_Management_in_Incremental_Spoken_Dialogue_Systems.md); [Marge et al. [146]](../../Models/_Full/Spoken_Language_Interaction_with_Robots__Recommendations_for_Future_Research.md)). 如果用户没有打算获得轮次, 这种行为被认为是反向通道 (Backchannel) ([Hara et al [72]](../../Models/_Full/Prediction_of_Turn-Taking_Using_Multitask_Learning_with_Prediction_of_Backchannels_and_Fillers.md)) 或听众反应 (Listener Response), 如 "uh-huh" 或 "right".
+- **轮次结束检测或预测 (Turn-End Detection or Prediction)**.
+  - **检测** ([Hara et al [73]](../../Models/_Full/Turn-Taking_Prediction_Based_on_Detection_of_Transition_Relevance_Place.md); [Lala et al [115]](../../Models/_Full/Attentive_Listening_System_with_Backchanneling_Response_Generation_and_Flexible_Turn-Taking.md)) 决定智能体是否应在当前时刻获得轮次,
+  - **预测** ([TurnGPT [55]](../../Models/_Full/TurnGPT.md); [Lala et al [114]](../../Models/_Full/Smooth_Turn-Taking_by_a_Robot_Using_an_Online_Continuous_Model_to_Generate_Turn-Taking_Cues.md)) 决定轮次交换何时发生.
+- **重叠**. 主要涉及两种情况. 当用户和智能体的声音重叠时,
+  - **中断 (Interruption)**: 用户打算从智能体获得轮次 ([Khouzaimi et al [103]](../../Models/_Full/Reinforcement_Learning_for_Turn-Taking_Management_in_Incremental_Spoken_Dialogue_Systems.md); [Marge et al. [146]](../../Models/_Full/Spoken_Language_Interaction_with_Robots__Recommendations_for_Future_Research.md)).
+  - **反向通道 (Backchannel)/听众反应 (Listener Response)**: 用户没有打算获得轮次, 如 "uh-huh" 或 "right". ([Hara et al [72]](../../Models/_Full/Prediction_of_Turn-Taking_Using_Multitask_Learning_with_Prediction_of_Backchannels_and_Fillers.md))
 
 通过这些概念, 我们可以更好地理解双工对话中的轮次交换行为.
 总而言之, 与基于文本的对话系统相比, 我们的与语音对话系统的互动可以分为中断, 反向通道和正常轮次交换.
 
 #### Cascaded Systems: 级联系统
 
+<details>
+<summary>展开原文</summary>
+
 To enable interactive functionality, cascaded spoken dialogue models typically require explicit modeling of dialogue turns.
 As the core, the large language model needs effective context and turn management.
 Next, we introduce several representative works on interaction in cascaded systems.
 
+</details>
+<br>
+
+为了实现交互功能, 级联口语对话模型通常要求显式建模对话轮次.
+作为核心, 大语音模型需要有效的内容和轮次管理.
+接下来, 我们介绍级联系统中的几个代表性工作.
+
 ##### Duplex Conversation: 双工对话
+
+<details>
+<summary>展开原文</summary>
 
 In [Lin et al [130]](../../Models/_Full/Duplex_Conversation__Towards_Human-Like_Interaction_in_Spoken_Dialogue_Systems.md), three core modules are proposed to achieve smooth full-duplex dialogue: user state detection, response signal selection, and interruption detection.
 The user state detection module not only focuses on traditional turn-end detection but also identifies whether the user intends to switch turns, continue speaking, or hesitates during their speech.
@@ -433,6 +450,14 @@ By analyzing a large volume of real dialogues, this module extracts and trains s
 Using multi-label classification, the system selects the optimal response for each dialogue context, significantly reducing user waiting time and enhancing conversation flow.
 The interruption detection module flexibly responds to user interruptions.
 Unlike traditional rule-based detection methods, this system builds an end-to-end detection model with multimodal input (audio and text) that not only identifies genuine user interruptions but also avoids misinterpreting background noise or unintended voice signals as interruptions.
+
+</details>
+<br>
+
+[Lin et al [130]](../../Models/_Full/Duplex_Conversation__Towards_Human-Like_Interaction_in_Spoken_Dialogue_Systems.md) 提出了三个核心模块, 以实现平滑的全双工对话: 用户状态检测, 响应信号选择, 和中断检测.
+- 用户状态检测模块: 不仅关注传统的轮次结束检测, 还可以识别用户是否打算切换轮次, 继续说话或是在说话时犹豫. 为了实现这一点, 系统使用多模态模型, 接收音频和文本作为输入, 并整合诸如语音节奏, 音高和停顿等特征以更精确地评估用户状态, 确定是否立即响应或等待更长时间.
+- 响应信号选择模块: 在合适的时机插入小的反向通道提示 (如 "嗯" 或 "对") 以模拟自然人类对话. 通过分析大量真实对话, 该模块提取并训练适合各种对话场景的响应信号. 使用多标签分类, 系统为每个对话上下文选择最优的响应, 显著减少用户等待时间并增强了对话流动.
+- 终端检测模块: 灵活响应用户中断. 和传统的基于规则的检测方法不同, 该系统构建了具有多模态输入 (音频和文本) 的端到端检测模型, 既可以识别真正的用户中断, 也避免误解背景噪声或意外语音信号为中断.
 
 ##### Outbound Agent System: 向外智能体系统
 
