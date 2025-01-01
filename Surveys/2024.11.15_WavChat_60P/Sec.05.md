@@ -32,8 +32,7 @@ Next, we will first discuss the streaming processing method in Section 5.1, then
 同时, 双工技术是不可或缺的关键实现, 确保声音模型同时具有 "耳朵" 和 "嘴巴".
 
 下面, 我们将在 5.1 节首先讨论流式处理方法;
-然后, 在 5.2 节介绍双工通信的关键技术;
-并在 5.3 节解释如何处理交互以提高用户体验.
+然后, 在 5.2 节介绍双工通信的关键技术, 并解释如何处理交互以提高用户体验.
 
 ## 5.1·Streaming Spoken Dialogue Models: 流式口语对话模型
 
