@@ -806,11 +806,27 @@ This effectively implements streaming processing, ensuring low latency and high 
 
 ##### Freeze-Omni
 
+<details>
+<summary>展开原文</summary>
+
 To support duplex dialogue, [Freeze-Omni [213]](../../Models/SpeechLM/2024.11.01_Freeze-Omni.md) uses a chunk-level state prediction mechanism for natural turn-taking.
 When the user begins speaking, a voice activity detection module identifies the audio input, prompting the model to process the audio chunk by chunk.
 After processing each chunk, the model's classification layer predicts the conversation state to determine the next action.
 There are three possible states: State 0, where the model continues listening for more input, assuming the user hasn’t completed their turn; State 1, where the model interrupts to provide an immediate response if a quick acknowledgment or feedback is needed; and State 2, where the model has completed processing the current user input and is ready to generate and output a response, thus transitioning smoothly into the response phase without further listening.
 This chunk-wise state prediction enables the model to decide effectively when to respond and when to continue listening, enhancing its ability to handle natural conversational cues and support interactive dialogue.
+
+</details>
+<br>
+
+为了支持双工对话, [Freeze-Omni [213]](../../Models/SpeechLM/2024.11.01_Freeze-Omni.md) 使用块级状态预测机制来实现自然轮次切换.
+当用户开始说话时, 语音活动检测模块识别音频输入, 提示模型按块处理音频.
+在处理每个块后, 模型的分类层预测对话状态, 以确定下一步动作.
+在三个可能的状态:
+- 状态 0: 模型继续监听更多输入, 假设用户还未完成他们的轮次;
+- 状态 1: 模型中断以提供即时响应, 如果需要快速确认或反馈;
+- 状态 2: 模型完成处理当前用户输入, 准备生成并输出响应, 因此无需再继续监听, 转变到响应阶段.
+
+这种块级状态预测使得模型能有效地决定何时响应, 何时继续监听, 增强其处理自然对话线索和支持交互式对话的能力.
 
 ### 5.2.3·Discussions about streaming and interaction
 
