@@ -778,6 +778,9 @@ SyncLLM 将对话音频流分割成固定大小的块, 每块对应特定的时�
 
 ##### OmniFlatten
 
+<details>
+<summary>展开原文</summary>
+
 Similar to SyncLLM, the OmniFlatten model achieves full-duplex and interruption functionality primarily through multi-stream data processing and progressive training.
 To enable full-duplex dialogue, the model adopts a multi-stream architecture that interleaves the user’s speech stream with the assistant’s speech and text streams into a single sequence for training, simplifying multimodal modeling and enhancing real-time capability.
 The model first aligns the text language model with modality through multitask supervised fine-tuning, enabling it to understand and generate both speech and text, ensuring basic capability for handling speech and text simultaneously.
@@ -785,6 +788,21 @@ Through a progressive training process, OmniFlatten attains full-duplex capabili
 These steps reduce reliance on text and decrease latency, allowing the system to generate voice responses while receiving user speech input.
 By using a block-by-block generation strategy, OmniFlatten divides the input and output speech sequences into fixed-size blocks, processing each segment in turn.
 This effectively implements streaming processing, ensuring low latency and high responsiveness in full-duplex dialogue, thereby providing a more natural response to user interruptions.
+
+</details>
+<br>
+
+类似于 SyncLLM, OmniFlatten 模型通过多流数据处理和渐进训练实现全双工和中断功能.
+为了实现全双工对话, 模型采用多流架构, 将用户语音流, 助手语音和文本流交错到单个序列中用于训练, 简化多模态建模并增强实时能力.
+模型首先通过多任务监督微调来对齐文本语言模型和模态, 使其能够理解和生成语音和文本, 确保基础能力能够同时处理语音和文本.
+通过渐进训练过程, OmniFlatten 在三个阶段实现全双工能力:
+- 初始训练实现半双工对话,
+- 移除用户文本流, 用多流数据支持实时预测,
+- 移除助手文本流, 实现纯语音流生成.
+
+这些步骤减少了对文本的依赖并降低延迟, 允许系统生成语音响应的同时接收用户语音输入.
+通过使用逐块生成策略, OmniFlatten 将输入和输出语音序列划分为固定大小的块, 逐个处理每个片段.
+这有效地实现了流式处理, 确保全双工对话中的低延迟和高响应, 从而为用户中断提供更自然的响应.
 
 ##### Freeze-Omni
 
