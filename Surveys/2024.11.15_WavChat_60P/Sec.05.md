@@ -685,6 +685,9 @@ Moshi 在无监督音频数据上预训练以处理语音场景, 然后在 Fishe
 
 ##### Parrot
 
+<details>
+<summary>展开原文</summary>
+
 [Parrot [148]](../../Models/SpeechLM/Parrot.md) model incorporates multiple features specifically designed to enhance interaction in spoken dialogue.
 It uses a dual-channel audio setup, where each channel represents a different speaker.
 This configuration allows Parrot to manage both sides of a conversation independently, facilitating real-time turn-taking.
@@ -694,7 +697,23 @@ This approach helps the model manage conversational dynamics such as overlapping
 During inference, Parrot supports streaming input, enabling continuous processing of user audio on one channel while generating responses on the other.
 This streaming capability allows the model to respond to live spoken input in real-time, handling turn-taking, pauses, and interruptions dynamically.
 Unlike cascaded systems that rely on intermediate text conversions, Parrot processes audio directly, reducing latency and allowing immediate responses to spoken input.
-These interaction-focused design choices make Parrot highly responsive, enabling it to manage turn-taking naturally, respond to interruptions, and handle overlapping speech,
+These interaction-focused design choices make Parrot highly responsive, enabling it to manage turn-taking naturally, respond to interruptions, and handle overlapping speech.
+
+</details>
+<br>
+
+[Parrot [148]](../../Models/SpeechLM/Parrot.md) 模型整合了特别设计的多个特性以增强口语对话中的交互性.
+它使用了双通道音频设置, 每个通道表示不同的说话人.
+这种配置允许 Parrot 单独管理对话双方, 实现实时轮次交换.
+通过区分单独通道上用户输入和系统响应, 模型可以并行地听取和响应, 创造更自然的对话流.
+为了有效地处理同时的发言人输入, Parrot 采用了 "下一个 Token 对预测" 机制, 允许它在协调序列中预测两个通道的 Token.
+这种方法帮助模型管理对话动态, 如重叠语音和平滑的轮次切换, 基于用户输入调整响应时间.
+在推理时, Parrot 支持流式输入, 确保用户音频在一个通道上的连续处理, 而另一个通道生成响应.
+这种流式能力使得模型能够实时响应实况口语输入, 动态地处理轮次交换, 暂停和中断.
+和级联系统依赖中间文本对话不同, Parrot 直接处理音频, 减少延迟并能对口语输入立即响应.
+这些着重于交互的设计选择使得 Parrot 具有高度响应性, 能够自然地管理轮次交换, 应对中断, 并处理重叠语音.
+
+#TODO: 信息量不大的段落.
 
 ##### Mini-Omni2
 
