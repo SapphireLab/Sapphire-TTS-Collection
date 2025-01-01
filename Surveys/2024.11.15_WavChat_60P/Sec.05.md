@@ -526,6 +526,9 @@ Experimental results show that Wang et al.'s full-duplex streaming system reduce
 
 ##### VITA
 
+<details>
+<summary>展开原文</summary>
+
 VITA is an open-source multimodal large language model which aimed at enhancing multimodal interaction experiences.
 VITA can process multiple modalities, such as video, image, text, and audio, and achieves fluid human-computer interaction through a new duplex architecture involving two simultaneously operating models: one for generating responses to user queries, and another for continuously monitoring environmental inputs.
 When a new user query is detected, the generation model pauses, and the monitoring model processes the new query and generates an updated response.
@@ -534,7 +537,25 @@ VITA’s perception abilities are achieved through multimodal alignment and inst
 Additionally, VITA employs state tokens to distinguish user input types, such as query audio, background noise, and text input, facilitating wake-free interaction.
 VITA's enhanced listening module prevents unnecessary user feedback from interrupting system responses, improving robustness.
 
+</details>
+<br>
+
+VITA 是一个开源的多模态大语言模型, 旨在增强多模态交互体验.
+VITA 可以处理多模态输入, 如视频, 图像, 文本, 音频, 并通过涉及两个同时运作的模型的新式双工架构实现流畅的人机交互.
+- 一个用于根据用户查询生成响应;
+- 另一个用于持续监测环境输入.
+
+当检测到新的用户查询, 生成模型暂停, 监测模型将处理新查询并生成更新的响应.
+这一设置使得 VITA 可以支持音频中断, 允许用户在系统生成期间提出新的问题, 系统立即暂停当前响应来处理新的输入.
+
+VITA 的感知能力是通过多模态对齐和指令微调实现的, 使得它能够在不同的输入间自动切换.
+此外, VITA 采用状态 Token 来区分用户输入类型, 例如查询音频, 背景噪声, 文本输入等, 有助于无唤醒交互.
+VITA 增强的听取模块防止不必要的用户反馈中断用户响应, 提升鲁棒性.
+
 ##### [CleanS2S [159]](../../Models/_tmp/CleanS2S.md)
+
+<details>
+<summary>展开原文</summary>
 
 This model employs a structured pipeline to enable responsive and flexible interactions in a spoken dialogue setting.
 Designed to facilitate seamless turn-taking and interruption handling, the model consists of several interconnected modules working in a coordinated sequence to optimize user experience.
@@ -552,6 +573,26 @@ This segmentation allows the system to stop audio output instantly if an interru
 Each segment is prepared and sent only after a brief VAD check, ensuring that the system is ready to pause and handle new input at any time.
 This interconnected processing chain—VAD detecting input, ASR transcribing, LLM generating responses, and TTS outputting segmented audio—creates a duplex interaction framework that balances response generation and user-driven interruptions.
 By seamlessly coordinating these components, the model provides a fluid, real-time dialogue experience that adapts to user interactions dynamically.
+
+</details>
+<br>
+
+该模型采用结构化流水线实现在口语对话设置下具有响应性和灵活性的交互.
+为了促进无缝轮次切换和中断处理, 模型由数个互连模块组成, 以协调的顺序工作以优化用户体验.
+
+- 从用户输入开始, 系统使用语音活动检测 (VAD) 模块来连续检测传入的音频信号.
+一旦用户开始说话, VAD 就会捕获输入并立刻启动处理, 将音频数据发送到自动语音识别 (ASR) 模块进行处理.
+快速检测和响应设置使得系统能够无延迟地响应用户输入.
+- 当 ASR 将音频转写为文本, 转录结果传给 LLM, 基于用户查询生成相关响应.
+- 同时, 模型被设计为可感知中断. 在响应生成过程中, 若 VAD 检测到新的用户输入 (表示中断或跟随查询), 系统可以迅速调整其处理流程. 在这种情况下, LLM 暂时停止当前任务, 允许 ASR 转录新的输入, 然后 LLM 使用它来生成更新的响应.
+  中断能力是通过模型的分层处理设计实现的, 允许自适应轮次交换, 使得交互感觉自然而流畅.
+- 然后 TTS 模块将生成的文本响应转换为音频, 并通过 WebSocket 传输给用户.
+  为了进一步支持中断处理, TTS 将长响应分解为较小的音频片段, 并逐步发送.
+  这种分段方式允许系统在中断发生时立即停止音频输出, 无延迟地切换到新的输入.
+  每个音频分段准备好后, 仅在短暂地 VAD 检查后发送, 确保用户随时中断并处理新的输入.
+
+这种互连处理链: VAD 检测输入 + ASR 转写 + LLM 生成响应 + TTS 输出分段音频, 构成了一个双工交互框架, 能够平衡响应生成和用户驱动的中断.
+通过无缝地协调这些组件, 模型提供了流畅实时的对话体验, 能够根据用户交互动态调整.
 
 #### End-to-End Systems: 端到端系统
 
