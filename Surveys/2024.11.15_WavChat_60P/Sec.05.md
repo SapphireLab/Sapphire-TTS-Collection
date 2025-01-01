@@ -167,7 +167,7 @@ This allows the model to generate text and multiple audio tokens simultaneously 
 - **Llama-Omni**.
 Llama-Omni incorporates a non-autoregressive streaming speech decoder that leverages connectionist temporal classification (CTC) to directly generate a sequence of discrete audio tokens as the response.
 - [IntrinsicVoice [248]](../../Models/SpeechLM/2024.10.09_IntrinsicVoice.md)
-IntrinsicVoice introduced GroupFormer module  to group speech tokens, reducing the length of speech sequences to match that of text sequences.
+IntrinsicVoice introduced GroupFormer module to group speech tokens, reducing the length of speech sequences to match that of text sequences.
 This approach accelerates inference, alleviates the challenges of long-sequence modeling, and effectively narrows the gap between speech and text modalities.We think they cannot be considered fully streaming because they are not designed to be streaming on the input side.
 - [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)
 In contrast, Moshi references the architecture of SpeechTokenizer to train a streaming codec from scratch, serving as the audio tokenizer-detokenizer.
@@ -273,7 +273,7 @@ The two parties must take turns speaking and listening.
 As illustrated in Figure 08(b), the user speaks first, followed by a response delay during which the robot "thinks" before replying.
 The robot’s response occurs only after the user has finished speaking, and vice versa.
 This turn-taking method is similar to using a walkie-talkie, where each party can only transmit after the other has finished, limiting efficiency.Half-duplex is a common mode in early voice interaction systems.
-In a typical half-duplex interaction, there are noticeable pauses in the conversation; the user and the system cannot “speak”  simultaneously, making the conversation feel less smooth, much like communication through a walkie-talkie.
+In a typical half-duplex interaction, there are noticeable pauses in the conversation; the user and the system cannot “speak” simultaneously, making the conversation feel less smooth, much like communication through a walkie-talkie.
 For example, voice assistants like Siri use wake words or button presses to trigger the dialogue and require the speaker to finish a complete sentence before responding.
 These systems typically adopt an ASR-LM-TTS cascaded structure and are often constrained by cascade delays and the turn-based nature of text language models.
 Although this interaction method is simple and easy to implement, it can feel rigid and disjointed in natural conversational settings, with notable latency.
@@ -459,7 +459,10 @@ Unlike traditional rule-based detection methods, this system builds an end-to-en
 - 响应信号选择模块: 在合适的时机插入小的反向通道提示 (如 "嗯" 或 "对") 以模拟自然人类对话. 通过分析大量真实对话, 该模块提取并训练适合各种对话场景的响应信号. 使用多标签分类, 系统为每个对话上下文选择最优的响应, 显著减少用户等待时间并增强了对话流动.
 - 终端检测模块: 灵活响应用户中断. 和传统的基于规则的检测方法不同, 该系统构建了具有多模态输入 (音频和文本) 的端到端检测模型, 既可以识别真正的用户中断, 也避免误解背景噪声或意外语音信号为中断.
 
-##### Outbound Agent System: 向外智能体系统
+##### Outbound Agent System: 外呼智能体系统
+
+<details>
+<summary>展开原文</summary>
 
 [Jin et al [98]](../../Models/_Full/Duplex_Conversation_in_Outbound_Agent_System.md) proposed a full-duplex dialogue scheme for outbound systems, focusing on the issues of conversational fluidity and timing of interaction in speech dialogue.
 This scheme uses semantic analysis to determine whether the user truly intends to interrupt the system and can handle disjointed expressions when users mention named entities.
@@ -469,13 +472,41 @@ The model employs a pre-trained BERT-based text classifier and utilizes streamin
 Additionally, the system includes a Discontinuous Expression module to handle user pauses when mentioning named entities.
 Specifically, when users hesitate over entities (such as numbers, locations, or company names), VAD may erroneously detect turn-end.
 
-The advent of Large Language Models  has significantly advanced generative AI development.
+</details>
+<br>
+
+[Jin et al [98]](../../Models/_Full/Duplex_Conversation_in_Outbound_Agent_System.md) 提出了用于外呼系统的全双工对话方案, 着重于语音对话中的对话流畅性和交互时机.
+该方案使用语义分析来确定用户是否真的打算中断系统, 并在用户提到命名实体是可以处理杂乱的表达.
+该系统的核心是全双工交互有限状态机, 每隔三百毫秒从 ASR 结果中检索文本片段以决定是否中断.
+通过对用户语音的连续语义分析, 中断模型可以识别有意义的用户中断并避免由简短无意义响应 (如 "嗯") 引起的频繁中断.
+该模型采用基于预训练 BERT 的文本分类器, 并使用流式输入, 确保系统可以实时接收和分析用户语音.
+此外, 该系统还包含了不连续表达模块, 用于处理当提到命名实体时的用户停顿.
+具体来说, 当用户在提到实体时犹豫 (如数字, 位置或公司名称), VAD 可能错误地检测到轮次结束.
+
+##### Transition: 过渡段落
+
+<details>
+<summary>展开原文</summary>
+
+The advent of Large Language Models has significantly advanced generative AI development.
 Models like ChatGPT demonstrate strong capabilities in semantic understanding and logical reasoning, offering a simplified method to integrate various dialogue components into a unified framework, which may simplify SDS construction.
 GPT-4o represents a milestone for dialogue systems, showcasing a nearly human-like conversational voice model.
 Its flexible interaction style and interruption mechanisms make human-computer interaction more natural and fluid.
 However, as a commercial model, its training data and implementation details remain proprietary, making replication challenging.
 
-##### Full-duplex LLM: 全双工语言模型
+</details>
+<br>
+
+大语言模型的出现显著推动了生成式人工智能的发展.
+模型如 ChatGPT 展示了在语义理解和逻辑推理方面的强大能力, 提供了一种简化的方法将各种对话组件集成到统一框架中, 这可能简化 SDS 构建.
+GPT-4o 代表对话系统的里程碑, 展示了一种与人类十分相似的对话语音模型.
+其灵活的交互方式和中断机制使人机交互更加自然和流畅.
+然而, 作为商业模型, 其训练数据和实现细节仍然是专有, 使得复制具有挑战性.
+
+##### Full-Duplex LLM: 全双工大语言模型
+
+<details>
+<summary>展开原文</summary>
 
 [Wang et al [211]](../../Models/_Full/A_Full-Duplex_Speech_Dialogue_Scheme_Based_on_Large_Language_Models.md) proposed a full-duplex spoken dialogue models based on LLMs, enabling simultaneous reception and transmission of voice signals through a perception module, an action module, and a neural finite-state machine (FSM).
 The perception module uses a streaming ASR model, capturing and processing user speech in real-time with 640-millisecond intervals per time step, converting it into token inputs for the LLM.
@@ -483,6 +514,15 @@ The action module, utilizing a streaming TTS model, instantly converts the LLM-g
 At the core is the neural FSM, allowing the LLM to switch between "speaking" and "listening" states.
 Controlled by FSM signals, the system can dynamically decide to continue speaking, listen, or interrupt based on the dialogue context.
 Experimental results show that Wang et al.'s full-duplex streaming system reduces response latency by threefold, achieves a response time within 500 milliseconds in over 50\% of dialogues, and handles user interruptions at a rate of 96.7\%, with an interruption accuracy of 54.7\%.
+
+</details>
+<br>
+
+[Wang et al [211]](../../Models/_Full/A_Full-Duplex_Speech_Dialogue_Scheme_Based_on_Large_Language_Models.md) 提出了一个基于大语言模型的全双工口语对话模型, 通过感知模块, 动作模块和神经有限状态机 (FSM) 实现了同时接收和传输语音信号.
+- 感知模块: 使用流式 ASR 模型, 实时捕获和处理用户语音, 每隔 640 毫秒的时间步长转化为 LLM 的 Token 输入.
+- 动作模块: 使用流式 TTS 模型, 即时将 LLM 生成的文本转换为音频输出, 并根据需要暂停或恢复播放, 确保系统在生成音频时可以接收用户输入.
+- 神经有限状态机: 作为核心, 使得 LLM 可以在说话和听取状态之间切换. 由 FSM 信号控制, 系统可以根据对话内容动态地决定是否继续说话, 听取或中断.
+- 实验结果表明该全双工流式系统通过三方面减少响应延迟, 能在 50% 以上的对话中实现响应时间在 500 毫秒内, 并以 96.7% 的比率处理用户中断, 而中断准确率为 54.7%.
 
 ##### VITA
 
