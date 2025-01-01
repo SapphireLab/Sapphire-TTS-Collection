@@ -754,6 +754,9 @@ Mini-Omni2 将视觉和音频编码器和语言模型组合并确保图像音频
 
 ##### SyncLLM
 
+<details>
+<summary>展开原文</summary>
+
 SyncLLM achieves full-duplex dialogue and interruption capabilities through multi-stream interleaving and chunk processing.
 SyncLLM divides the conversation's audio stream into fixed-sized chunks, each corresponding to a specific time interval.
 The model alternates between generating user and system speech segments within each time step (chunk), ensuring real-time system responses while processing user speech input.
@@ -761,6 +764,17 @@ To maintain temporal synchronization with the user, SyncLLM predicts the user’
 This mechanism enables the system to keep pace with the conversation even with network latency.
 The chunk method allows SyncLLM to handle both user and system audio streams simultaneously, supporting complex dialogue features like speech overlap, interruption, and real-time feedback.
 Additionally, by using de-duplicated speech token sequences and periodic synchronization markers, the model efficiently performs chunk-level real-time inference, making conversation more fluid and natural.
+
+</details>
+<br>
+
+SyncLLM 通过多流交错和分块处理来实现全双工对话和中断能力.
+SyncLLM 将对话音频流分割成固定大小的块, 每块对应特定的时间间隔.
+模型在每个时间步 (块) 内交替生成用户和系统语音段, 确保实时系统响应的同时处理用户语音输入.
+为了保持和用户的时序同步, SyncLLM 在每个时间步时在生成每个系统块之前预测用户语音, 并作为内容用于推理系统的下一个响应.
+这种机制使得系统能够在网络延迟下保持对话的节奏.
+分块方法允许 SyncLLM 同时处理用户和系统音频流, 支持复杂对话特性如语音重叠, 中断, 实时反馈.
+此外, 通过使用去重的语音 Token 序列和周期同步标记, 模型有效地执行块级实时推理, 使对话更加流畅自然.
 
 ##### OmniFlatten
 
