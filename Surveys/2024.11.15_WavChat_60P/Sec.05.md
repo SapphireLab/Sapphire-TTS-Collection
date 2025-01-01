@@ -645,6 +645,9 @@ dGSLM 将通道上的音频使用 HuBERT 转换为离散 Token, 然后 DLM 自�
 
 ##### Moshi
 
+<details>
+<summary>展开原文</summary>
+
 As a novel full-duplex architecture, Moshi incorporates a rich array of design concepts.
 Unlike dGSLM, Moshi does not abandon the language model’s ability in text dialogue.
 Moshi’s architecture is based on the Helium language model and Mimi neural audio codec, both trained from scratch.
@@ -658,6 +661,27 @@ The Mimi encoder and decoder combine convolutional and Transformer layers, with 
 Moshi is pre-trained on unsupervised audio data to handle speech scenarios and then fine-tuned on the Fisher dataset to address overlapping speech and interruptions.
 Finally, the system is further optimized on a custom instruction-tuning dataset, ensuring robust performance across various interactive scenarios.
 Experimental results show that Moshi excels in speech modeling and spoken QA tasks, especially in latency, achieving a theoretical latency of 160 milliseconds and 200 milliseconds in practice, significantly lower than the typical 230 milliseconds in natural conversation, enhancing real-time interaction and conversation flow.
+
+</details>
+<br>
+
+作为新式全双工架构, Moshi 整合了丰富的设计概念.
+和 dGSLM 不同, Moshi 并未放弃语言模型在文本对话方面的能力.
+Moshi 的架构基于 Helium 语言模型和 Mimi 神经音频编解码器, 两者都从零开始训练.
+Helium 作为预训练的大型文本语言模型, 提供了强力的推理能力, 而 Mimi 处理音频信号的编码和解码.
+
+为了实现实时交互, Moshi 被设计为多流架构, 同时处理用户和 Moshi 音频流, 而不显式建模说话人轮次.
+Moshi 在 Moshi 音频流上还引入了 "Inner Monologue (内心独白)" 方法, 一种在训练和推理时联合建模文本和音频 Token 的过程.
+该方法允许模型充分利用文本知识, 同时保持语音到语音的系统特性, 显著增强生成质量.
+
+Mimi 是一个神经音频编解码器, 通过残差向量量化和知识蒸馏融合了语义和声学信息, 有效地捕获高质量的用户输入音频和 Moshi 的输出声音.
+为了联合建模 Moshi 和用户音频流以及 Moshi 文本 Token, 采用了具备流式推理能力的 Depth Transformer.
+Mimi 编码器和解码器将卷积和 Transformer 层组合, 采用因果卷积, 实现流式操作.
+
+Moshi 在无监督音频数据上预训练以处理语音场景, 然后在 Fisher 数据集上微调以处理重叠语音和中断.
+最后, 系统进一步在定制的指令微调数据集上优化, 确保在各种交互场景下保持鲁棒性能.
+
+实验结果表明 Moshi 在语音建模和口语 QA 任务表现卓越, 特别是在延迟上, 理论延迟为 160 毫秒, 实际延迟为 200 毫秒, 显著低于自然对话的通常延迟 230 毫秒, 增强了实时交互和对话流动.
 
 ##### Parrot
 
