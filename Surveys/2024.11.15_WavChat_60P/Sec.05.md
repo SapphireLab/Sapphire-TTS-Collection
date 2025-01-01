@@ -828,7 +828,10 @@ This chunk-wise state prediction enables the model to decide effectively when to
 
 这种块级状态预测使得模型能有效地决定何时响应, 何时继续监听, 增强其处理自然对话线索和支持交互式对话的能力.
 
-### 5.2.3·Discussions about streaming and interaction
+### 5.2.3·Discussions about Streaming and Interaction: 流式和交互的讨论
+
+<details>
+<summary>展开原文</summary>
 
 Significant progress has been made in dialogues models, particularly in real-time interaction and semantic understanding, with notable achievements in streaming processing and full-duplex interaction.
 Current systems exhibit strong technical capabilities in reducing response latency, enhancing interruption handling, and improving the naturalness of conversation.
@@ -836,3 +839,13 @@ However, existing spoken dialogues models still lack a unified system that can h
 Future research could explore new frameworks to better manage both user interruptions and the system’s ability to interrupt users, making interactions more natural.
 Additionally, standardized benchmarks for evaluating interaction capabilities remain underdeveloped.
 A unified evaluation benchmark would provide a consistent method for assessing and comparing the performance of different models, thereby advancing the development of more intelligent and responsive interaction systems.
+
+</details>
+<br>
+
+对话模型取得了显著的进步, 尤其是在实时交互和语义理解, 在流式处理和全双工交互方面取得了重要成果.
+现有的系统在减少响应延迟, 增强中断处理和提升对话自然度方面表现出强大的技术能力.
+然而, 现有的口语对话模型仍然缺乏统一系统以无缝处理所有形式的交互.
+未来研究可以探索新的框架来更好地管理用户中断和系统终端用户的能力, 使交互更自然.
+此外, 评估交互能力的标准化基准仍未开发.
+统一的评估基准可以为不同模型提供一致的方法以评估和比较性能, 从而促进更智能和响应的交互系统的发展.
