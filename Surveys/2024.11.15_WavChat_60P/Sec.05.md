@@ -596,10 +596,22 @@ By seamlessly coordinating these components, the model provides a fluid, real-ti
 
 #### End-to-End Systems: 端到端系统
 
+<details>
+<summary>展开原文</summary>
+
 In contrast, end-to-end spoken dialogue models do not require explicit modeling of dialogue turns; instead, they learn interaction modeling directly from training data.
 Next, we introduce several representative works on interaction in end-to-end systems.
 
+</details>
+<br>
+
+与级联系统不同, 端到端口语对话模型不需要显式建模对话轮次, 它们直接从训练数据学习交互建模.
+接下来, 我们介绍数个端到端系统在交互方面的代表性工作.
+
 ##### dGSLM
+
+<details>
+<summary>展开原文</summary>
 
 In end-to-end systems, the introduction of the dGSLM model marks a significant milestone in full-duplex technology development.
 Within the dGSLM framework, duplex technology is effectively implemented.
@@ -612,6 +624,24 @@ Finally, the [HiFi-GAN [108]](../../Models/Vocoder/2020.10.12_HiFi-GAN.md) decod
 This approach differs significantly from traditional text-dependent spoken dialogue models, with a particular emphasis on modeling turn-taking and backchanneling capabilities.
 This capability gives dGSLM a notable advantage in duplex voice interaction, better mimicking the natural dynamics of human conversation.
 Through its duplex model design, dGSLM represents an essential step forward in interactive capabilities and provides a foundation for further advancements.
+
+</details>
+<br>
+
+在端到端系统中, dGSLM 模型的出现是全双工技术发展的一个重要里程碑.
+在 dGSLM 框架中, 全双工技术被有效实现.
+
+模型展示了如何通过生成式口语对话建模而无需文本来直接从原始音频数据捕获对话中的复杂互动.
+dGSLM 的核心创新是双塔 Transformer 架构, 称为**对话 Transformer 语言模型 (DLM)**, 使用交叉注意力机制来使得系统同时处理两个并行的音频通道.
+通过这一架构, 模型不仅为每个通道独立生成语音还使用交叉注意力来共享通道间的信息, 有效地建模静默和交互事件.
+
+它使用了 HuBERT 编码器和 HiFi-GAN 解码器, 和双塔 DLM 组合, 然后在两千小时的双通道电话对话音频 (Fisher 数据集) 上训练, 对话中的每个说话人被分配到单独的音轨上.
+dGSLM 将通道上的音频使用 HuBERT 转换为离散 Token, 然后 DLM 自回归地预测下一个音频 Token 和时长.
+最后, [HiFi-GAN [108]](../../Models/Vocoder/2020.10.12_HiFi-GAN.md) 解码器重构了两个通道上的音频.
+
+这种方法与传统的依赖文本的口语对话模型有很大不同, 特别强调了建模对话轮次和反向通道能力.
+这种能力给 dGSLM 在双工声音交互方面带来了显著优势, 能够更好地模拟人类对话的自然动态.
+通过其双工模型设计, dGSLM 代表向交互能力迈出了重要的一步, 为进一步发展奠定了基础.
 
 ##### Moshi
 
