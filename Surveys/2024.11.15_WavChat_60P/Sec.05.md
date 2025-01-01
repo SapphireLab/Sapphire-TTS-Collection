@@ -717,6 +717,9 @@ These interaction-focused design choices make Parrot highly responsive, enabling
 
 ##### Mini-Omni2
 
+<details>
+<summary>展开原文</summary>
+
 Mini-Omni2 is an open-source multimodal large language model aimed at simulating the multimodal capabilities of GPT-4o in vision, hearing, and text, supporting real-time full-duplex interaction.
 Mini-Omni2 combines visual and audio encoders with a language model to enable simultaneous input and output of images, audio, and text.
 The model incorporates an interrupt mechanism based on instruction design for more flexible user interactions.
@@ -726,8 +729,28 @@ For training Mini-Omni2’s interruption functionality, the researchers used noi
 The dataset also includes background noises, such as environmental sounds, music, and other dialogues, enhancing the model’s robustness in complex environments.
 During training, Mini-Omni2 controls output flow through irq and n-irq state markers, generating these markers in real-time to determine whether to continue output.
 In this way, the model can immediately halt generation based on user instructions and switch to "listening" mode in real-time dialogue.
-The training data consists of long audio streams from which the model extracts and encodes user commands like "Stop Omni." Researchers inserted interrupt commands at various time points, marking data after the insertion point as irq (interrupt) and data before as n-irq (non-interrupt).
+The training data consists of long audio streams from which the model extracts and encodes user commands like "Stop Omni."
+Researchers inserted interrupt commands at various time points, marking data after the insertion point as irq (interrupt) and data before as n-irq (non-interrupt).
 This labeling method ensures that the model learns to accurately identify interrupt commands in complex audio inputs and respond appropriately.
+
+</details>
+<br>
+
+Mini-Omni2 是一个开源的多模态大语言模型, 旨在模拟 GPT-4o 在视觉听觉和文本上的多模态能力并支持实时全双工交互.
+
+Mini-Omni2 将视觉和音频编码器和语言模型组合并确保图像音频文本的同时输入和输出.
+模型整合了基于指令设计的中断机制, 以便更灵活的用户交互.
+该系统使用延迟并行生成算法, 允许模型同时生成文本和音频响应, 极大提升了对话实时能力和响应速度.
+为了实现全双工交互, Mini-Omni2 引入基于有限指令方法的中断机制, 在特别构建的数据集上训练, 该数据集包含特定的 irq (中断) 和 n-irq (非中断) 状态标记, 以优化模型.
+
+为了训练 Mini-Omni2 的中断功能, 研究人员使用了合成的带有特定命令短语 (如 "停止 Omni") 的噪声语音数据, 在各种声音和音调的场景中模拟用户可能发出中断命令的场景.
+数据集还包括背景噪声, 如环境音, 音乐和其他对话, 增强模型在复杂环境中的鲁棒性.
+
+在训练时, Mini-Omni2 通过 irq 和 n-irq 状态标记控制输出流, 以实时生成这些标记以决定是否继续输出.
+通过这种方式, 模型可以在实时对话中基于用户指令立即中断生成并切换到 "监听" 模式.
+训练数据由长音频流组成, 模型从中提取并编码用户命令, 如 "停止 Omni".
+研究人员在不同时间点插入中断命令, 将插入点后数据标记为 irq (中断), 插入点前数据标记为 n-irq (非中断).
+这种标记方法确保模型学习在复杂音频输入中准确识别中断命令并相应地作出响应.
 
 ##### SyncLLM
 
