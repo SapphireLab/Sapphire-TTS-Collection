@@ -290,14 +290,42 @@ After adjusting the instruction and response text, a TTS system converts the tex
 
 ## 6.2·Evaluation: 评估
 
+<details>
+<summary>展开原文</summary>
+
 Fair and comprehensive evaluation of spoken dialogue models presents a multifaceted challenge.
 On the one hand, the field of spoken dialogue still lacks publicly available test sets, comprehensive evaluation metrics, and established benchmarks.
 On the other hand, assessing the performance of spoken dialogue systems requires consideration from multiple perspectives.
 Basic aspects include the quality of generated speech, robustness, dialogue naturalness and accuracy, as well as response speed and generation time.
 Beyond these, more advanced evaluations are needed to assess multi-turn dialogue capabilities (such as long-form speech editing), interaction abilities, and the system's proficiency in audio and music understanding and generation.
-Given these requirements, and in line with the comprehensive expectations for spoken dialogue systems outlined in Section \ref{section21}, we will evaluate these systems from two angles: common evaluations and advanced evaluations.
+Given these requirements, and in line with the comprehensive expectations for spoken dialogue systems outlined in [Section 2.1](Sec.02.md), we will evaluate these systems from two angles: common evaluations and advanced evaluations.
 Specifically, we will assess eleven key factors: speech generation quality, text intelligence, speech intelligence, audio and music generation, audio and music understanding, multilingual capability, context learning, interaction capability, streaming latency, multimodal capability, and the safety of dialogue systems.
 Finally, we will list the current benchmarks and summarize the common conclusions derived from them.
+
+</details>
+<br>
+
+口语对话模型的公平且全面的评估面临多方面挑战.
+- 一方面, 口语对话领域仍然缺乏公开可用的测试集, 全面评估指标, 和固定基准.
+- 另一方面, 评估口语对话系统的性能需要考虑多个视角.
+  - 基本方面: 生成语音的质量, 鲁棒性, 对话自然性和准确性, 响应速度和生成时间.
+  - 高级方面: 多轮对话能力 (例如长语音编辑), 交互能力, 音频和音乐理解和生成能力.
+
+鉴于这些要求, 以及 [第 2 节](Sec.02.md) 中对口语对话系统的全面期望, 我们将从两个角度评估这些系统: 常规评估和高级评估.
+具体来说, 我们将评估十一个关键要素:
+- 语音生成质量;
+- 文本智能;
+- 语音智能;
+- 音频和音乐生成;
+- 音频和音乐理解;
+- 多语言能力;
+- 上下文学习能力;
+- 交互能力;
+- 流式延迟;
+- 多模态能力;
+- 对话系统的安全性.
+
+最后, 我们将列出当前的基准, 并总结从中得出的常见结论.
 
 ### 6.2.1·Common Evaluation: 常规评估
 
@@ -312,11 +340,11 @@ The details are outlined as follows:
 
 ##### ACC-Metrics: 准确率度量
 
-A common approach to evaluating text intelligence is to use benchmarks typically [197] [125] [239] [38] [181] [26] [255] [153] [215] [58] ~\cite{talmor2018commonsenseqa, liang2022holistic, zellers2019hellaswag, clark2018think, sakaguchi2021winogrande, chen2021evaluating, zhong2023agieval, mishra2021cross, wang2022super, feng2022mmdialog} employed for large language models, such as the classic [MMLU [75]](../../Evaluations/2020.09.07_MMLU.md) and GSM-8K [39] \cite{cobbe2021training}.
+A common approach to evaluating text intelligence is to use benchmarks typically [197] [125] [239] [38] [181] [26] [255] [153] [215] [58] ~\cite{talmor2018commonsenseqa, liang2022holistic, zellers2019hellaswag, clark2018think, sakaguchi2021winogrande, chen2021evaluating, zhong2023agieval, mishra2021cross, wang2022super, feng2022mmdialog} employed for large language models, such as the classic [MMLU [75]](../../Evaluations/2020.09.07_MMLU.md) and [GSM-8K [39]](../../Evaluations/GSM-8K.md).
 These benchmarks often include complex multiple-choice questions, which assess the model's reasoning abilities through Acc-Metrics.
 Acc-Metrics refers to metrics that measure recognition accuracy, such as accuracy, F-score, and Mean Average Precision (mAP).
 It is noteworthy that these benchmarks often evaluate the text-based intelligence of spoken dialogue models from various perspectives.
-For example, [MMLU [75]](../../Evaluations/2020.09.07_MMLU.md) and GSM-8K \cite{cobbe2021training} are more focused on LLM's core knowledge, Flan \cite{longpre2023flan, wei2021finetuned} and Self-instruct \cite{wang2022self} are more focused on LLM's instruction following capability, CoQA \cite{reddy2019coqa} [175] and OpenAssistant  [112] \cite{kopf2024openassistant} are more focused on LLM's conversational capability.
+For example, [MMLU [75]](../../Evaluations/2020.09.07_MMLU.md) and [GSM-8K [39]](../../Evaluations/GSM-8K.md) are more focused on LLM's core knowledge, Flan \cite{longpre2023flan, wei2021finetuned} and Self-instruct \cite{wang2022self} are more focused on LLM's instruction following capability, CoQA \cite{reddy2019coqa} [175] and OpenAssistant  [112] \cite{kopf2024openassistant} are more focused on LLM's conversational capability.
 These benchmarks often contain questions and corresponding answers.
 Most of these questions are close-ended questions with short answers, so that they can have good generalization ability, any model that can generate text answers can be evaluated with these benchmarks and accuracy and F-Score can be easily adopted as the evaluation metrics.
 
@@ -350,7 +378,7 @@ The RTF value is obtained by dividing the total duration of the speech segment g
 #### Speech Intelligence: 语音智能
 
 Evaluating the speech intelligence of spoken dialogue systems is one of the key aspects.
-The definition of speech intelligence in spoken dialogue systems is discussed in detail in Section \ref{section212}.
+The definition of speech intelligence in spoken dialogue systems is discussed in detail in Section [Section 2.1.2](Sec.02.md).
 Given that speech intelligence encompasses a wide range of application scenarios, we address the evaluation separately for the understanding and generation components during the assessment.
 
 ##### Understanding: 理解
