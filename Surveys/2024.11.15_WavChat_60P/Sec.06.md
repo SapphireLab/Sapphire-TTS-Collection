@@ -186,7 +186,10 @@ In Moshi, to prevent catastrophic forgetting, half of the training time is alloc
 值得注意的是, 在一些工作中, 确保文本 Token 和音频 Token 之间的词级对齐至关重要 (如 Spirit-LM, Moshi, 和 OmniFlatten), 这可以通过类似 Whisper-timestamped 包或其他对齐工具实现.
 在 Moshi 中为了防止灾难性以往, 训练时间的一半用于文本数据, 强调了在训练中平衡文本和音频数据的重要性.
 
-### 6.1.3·Training resources about Post-Train for Dual-Stream Dialogue Processing: 双流对话处理后训练资源
+### 6.1.3·Training Resources about Post-Train for Dual-Stream Dialogue Processing: 双流对话处理后训练资源
+
+<details>
+<summary>展开原文</summary>
 
 To ensure that the model possesses the ability to “listen while speaking”.
 Most research such as [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md) and [OmniFlatten [246]](../../Models/SpeechLM/2024.10.23_OmniFlatten.md) has implemented a dual audio-stream model: one audio stream generates model output, while the other captures user audio.
@@ -205,6 +208,29 @@ After each user turn, the assistant responds immediately; upon completion of the
 To better simulate real scenarios, further data augmentation can be applied.
 For example, random gain adjustments can be applied to the user audio stream, and background noise randomly selected from datasets like [MUSAN [194]](../../Datasets/2015.10.28_MUSAN.md) and [DNS [174]](../../Datasets/DNS.md) can be added to the user audio channel (OmniFlatten).
 To simulate echo effects from a user’s microphone, portions of the audio stream can be scaled down and added to the user’s audio stream with random delays between 100 to 500 milliseconds, along with reverberation-like enhancements, helping the model adapt to real-world environments.
+
+</details>
+<br>
+
+为了确保模型具有 "说话时听取" 的能力, 大多数研究都实现了双音频流模型: 一个音频流生成模型输出, 另一个捕获用户音频.
+这一训练阶段的目标是使模型的双流处理能力无需复杂的人机交互建模.
+因此, 文本对话数据可以转化为语音并处理为双轨音频格式.
+然而, 文本对话数据通常包含不适合通过 TTS 转换为语音的内容 (如代码, 公式, 链接) 或长正式对话段落, 不能与口语语言对齐, 因为真正的对话往往更简洁.
+因此, 当从文本对话数据合成语音时, 预处理文本数据是必要的.
+
+首先收集高质量的开源文本对话数据, 包括 [Alpaca [144]](../../Datasets/Alpaca.md), Moss, BelleCN, [ultraChat [46]](../../Datasets/ultraChat.md), 和 [Open-Orca [124]](../../Datasets/Open-Orca.md).
+为了确保适合进行语音合成, 启发式规则被应用于过滤掉具有高比例非文本元素的样本 (如代码, 数学表达式), 长度超过 200 个单词的样本, 以及包含罕见符号的样本.
+
+经过过滤的文本, 使用 TTS 模型 ([CosyVoice [49]](../../Models/SpeechLM/2024.07.07_CosyVoice.md)) 合成每一轮对话的语音.
+为了保持一致的语音效果, 模型音频流保持统一的声音, 而用户音频流采用不同声音采样, 以增强模型的鲁棒性.
+合成的对话音频使用仿真策略排列, 以实现自然的时机变化, 如轮次交换, 适当的中断, 以及停顿以保持流畅性和自然度.
+
+最终的对话音频以双通道格式组织: 对话开始时, 用户发出一句话, 随后交替出现用户和助手的轮次.
+在每个用户轮次之后, 助手立即回应; 助手完成一轮之后, 引入随机暂停长度, 模拟交替对话的自然节奏.
+
+为了更好地模拟真实场景, 可以进行进一步的数据增强.
+例如随机增益调整可以用于用户音频流, 背景噪声可以随机从数据集选择 (如 [MUSAN [194]](../../Datasets/2015.10.28_MUSAN.md) 和 [DNS [174]](../../Datasets/DNS.md)), 并添加到用户音频通道 (OmniFlatten).
+为了模拟来自用户麦克风的回声效果, 音频流的一部分可以缩小, 并与用户音频流相加, 随机延迟在 100 到 500 毫秒之间, 并添加类似于混响的增强, 使模型适应真实环境.
 
 ### 6.1.4·Training resources about Enhancing Conversational Abilities and Instruction Tuning: 增强对话能力和指令微调资源
 
