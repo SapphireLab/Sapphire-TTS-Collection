@@ -6,12 +6,80 @@ Training a spoken dialogue system is a complex, multi-stage process, with each s
 This section provides an in-depth analysis of the training resources about the spoken dialogue models, showcasing the data collection and processing methods at each stage and illustrating how these elements contribute to the system's intelligence.
 It further reveals how key steps, from foundational architecture to fine-tuning, shape the intelligent development of dialogue systems.
 
-To address the limitations of existing training spoken dialogue data and leverage the knowledge and reasoning capabilities of mature text-based models, many approaches involve \textit{Continue Training} on pre-trained text language models.
+To address the limitations of existing training spoken dialogue data and leverage the knowledge and reasoning capabilities of mature text-based models, many approaches involve **Continue Training** on pre-trained text language models.
 This training paradigm encompasses nearly all data types required to build a spoken dialogue system.
-The following sections focus on analyzing data acquisition and processing methods under this training flow, covering the following core stages: \textit{Text Language Model Pre-training}, \textit{Post-Train for Audio Modal Adaption}, \textit{Post-Train for Dual-Stream Audio Processing}, \textit{Enhancing Conversational Abilities and Instruction Tuning}.
-We have listed commonly used datasets for training in Table \ref{traindataset}.
+The following sections focus on analyzing data acquisition and processing methods under this training flow, covering the following core stages: **Text Language Model Pre-training**, **Post-Train for Audio Modal Adaption**, **Post-Train for Dual-Stream Audio Processing**, **Enhancing Conversational Abilities and Instruction Tuning**.
+We have listed commonly used datasets for training in Table.02.
 However, current spoken dialogue models lack exploration in music and sound.
-To support future development in spoken dialogue systems, we provide a list of common music and sound datasets in the appendix \ref{music datasets} as a reference.
+
+To support future development in spoken dialogue systems, we provide a list of common music and sound datasets in the appendix A as a reference.
+Appendix A: This section lists commonly used music and sound datasets.
+These datasets cover different modalities, including environmental sounds, music, and emotional sounds, and provide some help for the development of future voice dialogue systems.
+The table 4 shows the basic information of each dataset, including the dataset name, number of samples, dataset link, and modality type.
+
+<details>
+<summary>Table.02: Datasets Used in the Various Training Stages</summary>
+
+|Stage                  |Task          |Dataset          |Size                       |URL                                                         |Modality     |
+|---                    |---           |---              |---                        |---                                                         |---          |
+|Modal Alignment        |Mandarin ASR  |AISHELL-1        |170 hrs                    |https://www.openslr.org/33/                                 |Text + Speech|
+|Modal Alignment        |Mandarin ASR  |AISHELL-2        |1k hrs                     |https://github.com/kaldi-asr/kaldi/tree/master/egs/aishell2 |Text + Speech|
+|Modal Alignment        |Mandarin TTS  |AISHELL-3        |85 hrs/88/035 utt.218 spk. |https://www.aishelltech.com/aishell_3                       |Text + Speech|
+|Modal Alignment        |TTS           |LibriTTS         |585 hrs                    |https://www.openslr.org/60/                                 |Text + Speech|
+|Modal Alignment        |ASR           |TED-LIUM         |452 hrs                    |https://lium.univ-lemans.fr/ted-lium3/                      |Text + Speech|
+|Modal Alignment        |ASR           |VoxPopuli        |1.8k hrs                   |https://github.com/facebookresearch/voxpopuli               |Text + Speech|
+|Modal Alignment        |ASR           |Librispeech      |1000 hrs                   |https://www.openslr.org/12                                  |Text + Speech|
+|Modal Alignment        |ASR           |MLS              |44.5k hrs                  |https://www.openslr.org/                                    |Text + Speech|
+|Modal Alignment        |TTS           |Wenetspeech      |22.4k hrs                  |https://wenet.org.cn/WenetSpeech/                           |Text + Speech|
+|Modal Alignment        |ASR           |Gigaspeech       |40k hrs                    |https://github.com/SpeechColab/GigaSpeech                   |Text + Speech|
+|Modal Alignment        |ASR           |VCTK             |300 hrs                    |https://paperswithcode.com/dataset/voice-bank-demand        |Text + Speech|
+|Modal Alignment        |TTS           |LJSpeech         |24 hrs                     |https://keithito.com/LJ-Speech-Dataset/                     |Text + Speech|
+|Modal Alignment        |ASR           |Common Voice     |2500 hrs                   |https://commonvoice.mozilla.org/zh-CN                       |Text + Speech|
+|Modal Alignment        |Audio Caption |Wavcaps          |400k clips                 |https://github.com/XinhaoMei/WavCaps                        |Text + Speech|
+|Modal Alignment        |ASR           |LibriLight       |60k hrs                    |https://github.com/facebookresearch/libri-light             |Text + Speech|
+|Modal Alignment        |ASR           |PeopleSpeech     |30k hrs                    |https://huggingface.co/datasets/MLCommons/peoples_speech    |Text + Speech|
+|Modal Alignment        |Mandarin ASR  |KeSpeech         |1542 hrs                   |https://github.com/KeSpeech/KeSpeech                        |Text + Speech|
+|Modal Alignment        |TTS           |Emilia           |101k hrs                   |https://huggingface.co/datasets/amphion/Emilia-Dataset      |Text + Speech|
+|Dual-Stream Processing |Instruction   |Alpaca           |52000 items                |https://huggingface.co/datasets/tatsu-lab/alpaca            |Text + TTS   |
+|Dual-Stream Processing |Instruction   |Moss             |-                          |https://huggingface.co/fnlp/moss-moon-003-sft               |Text + TTS   |
+|Dual-Stream Processing |Instruction   |BelleCN          |-                          |https://github.com/LianjiaTech/BELLE/tree/main              |Text + TTS   |
+|Dual-Stream Processing |Dialogue      |UltraChat        |1.5 million                |https://github.com/thunlp/UltraChat                         |Text + TTS   |
+|Dual-Stream Processing |Instruction   |Open-Orca        |-                          |https://huggingface.co/datasets/Open-Orca/OpenOrca          |Text + TTS   |
+|Dual-Stream Processing |Noise         |DNS              |2425 hrs                   |https://github.com/microsoft/DNS-Challenge                  |Noise data   |
+|Dual-Stream Processing |Noise         |MUSAN            |-                          |https://www.openslr.org/17/                                 |Noise data   |
+|Conversation Fine-Tune |Dialogue      |Fisher           |964 hrs                    |https://catalog.ldc.upenn.edu/LDC2004T19                    |Text + Speech|
+|Conversation Fine-Tune |Dialogue      |GPT-Talker       |-                          |https://github.com/AI-S2-Lab/GPT-Talker                     |Text + Speech|
+|Conversation Fine-Tune |Instruction   |INSTRUCTS2S-200K |200k items                 |https://github.com/ictnlp/LLaMA-Omni                        |Text + TTS   |
+|Conversation Fine-Tune |Instruction   |Open Hermes      |900k items                 |https://ollama.com/library/openhermes                       |Text + TTS   |
+
+</details>
+<br>
+
+<details>
+<summary>Table.04: Music and Non-Speech Sound Datasets</summary>
+
+|Dataset                  |Size                            |URL                                                        |Modality                   |
+|---                      |---                             |---                                                        |---                        |
+|ESC-50                   |2000 clips (5s each)            |https://github.com/karoldvl/ESC-50                         |Sound                      |
+|UrbanSound8K             |8732 clips (<=4s each)          |https://urbansounddataset.weebly.com/urbansound8k.html     |Sound                      |
+|AudioSet                 |2000k+ clips (10s each)         |https://research.google.com/audioset/                      |Sound                      |
+|TUT Acoustic Scenes 2017 |52630 segments                  |https://zenodo.org/record/400515                           |Sound                      |
+|Warblr                   |10000 clips                     |https://warblr.net/                                        |Sound                      |
+|FSD50K                   |51197 clips (total 108.3 hours) |https://zenodo.org/record/4060432                          |Sound                      |
+|DCASE Challenge          |varies annually                 |http://dcase.community/                                    |Sound                      |
+|IRMAS                    |6705 audio files (3s each)      |https://www.upf.edu/web/mtg/irmas                          |Music                      |
+|FMA                      |106574 tracks                   |https://github.com/mdeff/fma                               |Music                      |
+|NSynth                   |305979 notes                    |https://magenta.tensorflow.org/datasets/nsynth             |Music                      |
+|EMOMusic                 |744 songs                       |https://cvml.unige.ch/databases/emoMusic/                  |Music                      |
+|MedleyDB                 |122 multitrack recordings       |https://medleydb.weebly.com/                               |Music                      |
+|MagnaTagATune            |25863 clips (30s each)          |https://mirg.city.ac.uk/codeapps/the-magnatagatune-dataset |Music                      |
+|MUSDB                    |150 songs                       |https://paperswithcode.com/dataset/musdb18                 |Music                      |
+|M4Singer                 |700 songs                       |https://github.com/M4Singer/M4Singer                       |Music                      |
+|Jamendo                  |600k songs                      |https://www.jamendo.com/?language=en                       |Music                      |
+<!-- |% VIVAE                  |1085 clips                      |https://zenodo.org/records                                 |emotion vocalizations      | -->
+
+</details>
+<br>
 
 ### 6.1.1·Training Resources about Text LLM Pre-training: 文本大语言模型预训练资源
 
@@ -31,7 +99,7 @@ The audio decoder supports the generation of natural and fluent speech output, w
 The primary goal at this stage is to align information from different modalities into a unified space or representation, allowing the model to correlate and comprehend such information.
 Consequently, the model is often trained on cross-modal tasks such as TTS , ASR , and audio captioning.
 The datasets used include numerous paired audio and text samples to ensure effective conversion between modalities.
-Commonly used TTS and ASR datasets include Aishell-3 [190]~\cite{shi2020aishell}, LibriTTS [240] ~\cite{zen2019libritts}, TED-LIUM [178] ~\cite{rousseau2012ted}, VoxPopuli [207] ~\cite{wang2021voxpopuli}, Librispeech [160]~\cite{panayotov2015librispeech}, MLS [168] ~\cite{pratap2020mls}, Wenetspeech [241]~\cite{zhang2022wenetspeech}, Gigaspeech [24]~\cite{chen2021gigaspeech}, VCTK [202] ~\cite{veaux2013voice}, LJSpeech [88] ~\cite{ljspeech17}, Common Voice [8] ~\cite{ardila2019common}, and others.
+Commonly used TTS and ASR datasets include [AISHELL-3 [190]](../../Datasets/2020.10.22_AISHELL-3.md), [LibriTTS [240]](../../Datasets/2019.04.05_LibriTTS.md), [TED-LIUM [178]](../../Datasets/TED-LIUM.md), [VoxPopuli [207]](../../Datasets/2021.01.02_VoxPopuli.md), [LibriSpeech [160]](../../Datasets/2015.04.19_LibriSpeech.md), [MLS [168]](../../Datasets/2020.12.07_MLS.md), [Wenetspeech [241]](../../Datasets/2021.10.07_WenetSpeech.md), [Gigaspeech [24]](../../Datasets/2021.06.13_GigaSpeech.md), [VCTK [202]](../../Datasets/2012.08.00_VCTK.md), [LJSpeech [88]](../../Datasets/2017.07.05_LJSpeech.md)[Common Voice [8]](../../Datasets/CommonVoice.md), and others.
 For audio captioning, Wavcaps [147] ~\cite{mei2024wavcaps} are frequently used.
 Some speech datasets require ASR model transcription to generate corresponding text.
 
@@ -264,7 +332,7 @@ We list the common benchmarks for evaluating voice dialogue systems in the table
 
 #### VoiceBench
 
-VoiceBench's~\cite{chen2024voicebench} Key evaluation dimensions include general knowledge, instruction-following ability, and safety compliance.
+[VoiceBench](../../Evaluations/VoiceBench.md)'s~\cite{chen2024voicebench} Key evaluation dimensions include general knowledge, instruction-following ability, and safety compliance.
 The benchmark incorporates both synthetic and real spoken instructions to simulate diverse speaker styles, environmental conditions, and content variations.
 It challenges systems with tasks involving accent adaptability, handling noisy environments, and robustness against content irregularities such as grammatical errors, disfluencies, and mispronunciations.
 Additionally, it explores the systems' resilience under varying speaker characteristics (age, pitch, and speaking speed) and environmental challenges like reverberation, background noise, and far-field effects.
