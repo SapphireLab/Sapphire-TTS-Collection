@@ -126,6 +126,9 @@ Although we does not delve into this stage in detail, it provides a solid founda
 
 ### 6.1.2·Training Resources about Post-Train for Audio Modal Alignment: 音频模态对齐后训练资源
 
+<details>
+<summary>展开原文</summary>
+
 After establishing a text-based foundational model, the system possesses essential knowledge and reasoning abilities.
 In this stage, we introduce the audio modality, enabling the text language model to understand and generate speech while minimizing any potential loss of textual knowledge.
 This process is known as **modal adaption** or **modal alignment**.
@@ -139,9 +142,49 @@ Commonly used TTS and ASR datasets include [AISHELL-3 [190]](../../Datasets/2020
 For audio captioning, [Wavcaps [147]](../../Datasets/WavCaps.md) are frequently used.
 Some speech datasets require ASR model transcription to generate corresponding text.
 
-In this phase, the emphasis is placed on capturing and generating audio features and aligning them with text in vector space, rather than focusing on dialogue functionality.Therefore, the data typically consists of single-channel audio, which can be used after resampling.
+In this phase, the emphasis is placed on capturing and generating audio features and aligning them with text in vector space, rather than focusing on dialogue functionality.
+Therefore, the data typically consists of single-channel audio, which can be used after resampling.
 Notably, in some works, it is essential to ensure word-level alignment between text tokens and audio tokens (e.g., Spirit-LM, Moshi, and OmniFlatten), achievable through tools like the Whisper-timestamped package or other alignment tool.
 In Moshi, to prevent catastrophic forgetting, half of the training time is allocated to text data, highlighting the importance of balancing text and audio data during training.
+
+</details>
+<br>
+
+在建立了基于文本的基座模型后, 系统拥有了必要的知识和推理能力.
+然后在这一阶段引入音频模态, 使得文本语言模型能够理解和生成语音, 同时最小化任何文本知识的潜在损失.
+这一过程被称为**模态适应**或**模态对齐**.
+
+这种多模态结构整合了带有码本的音频编码器, 帮助模型识别语音中的语言, 情感, 音调信息.
+音频解码器支持自然且流畅的语音输出的生成, 同时音频信号嵌入和特殊 Token 类型加入到文本语言模型的词表中.
+例如:
+- 同步语言模型 SyncLLM 中用于区分发言人的 Token.
+- OmniFlatten 中用于区分任务的 Token.
+- VITA 中的状态 Token.
+
+这一阶段的主要目标是将来源于不同模态的信息对齐到统一的空间或表示, 使得模型能够关联和理解这些信息.
+因此, 模型通常在跨模态任务上训练, 如 TTS, ASR, 音频描述等.
+使用的数据集包括大量成对的音频和文本样本, 以确保有效的模态转换.
+
+常用的 TTS 和 ASR 数据集包括:
+- [AISHELL-3 [190]](../../Datasets/2020.10.22_AISHELL-3.md)
+- [LibriTTS [240]](../../Datasets/2019.04.05_LibriTTS.md)
+- [TED-LIUM [178]](../../Datasets/TED-LIUM.md)
+- [VoxPopuli [207]](../../Datasets/2021.01.02_VoxPopuli.md)
+- [LibriSpeech [160]](../../Datasets/2015.04.19_LibriSpeech.md)
+- [MLS [168]](../../Datasets/2020.12.07_MLS.md)
+- [Wenetspeech [241]](../../Datasets/2021.10.07_WenetSpeech.md)
+- [Gigaspeech [24]](../../Datasets/2021.06.13_GigaSpeech.md)
+- [VCTK [202]](../../Datasets/2012.08.00_VCTK.md)
+- [LJSpeech [88]](../../Datasets/2017.07.05_LJSpeech.md)
+- [Common Voice [8]](../../Datasets/CommonVoice.md)
+
+对于音频描述, [Wavcaps [147]](../../Datasets/WavCaps.md) 经常被使用.
+一些语音数据集需要 ASR 模型的转录才能生成相应的文本.
+
+在这一阶段, 重点放在了捕获和生成音频特征, 并将它们与文本在向量空间中对齐, 而不是关注对话功能.
+因此, 数据通常由单通道音频组成, 可以在重采样后使用.
+值得注意的是, 在一些工作中, 确保文本 Token 和音频 Token 之间的词级对齐至关重要 (如 Spirit-LM, Moshi, 和 OmniFlatten), 这可以通过类似 Whisper-timestamped 包或其他对齐工具实现.
+在 Moshi 中为了防止灾难性以往, 训练时间的一半用于文本数据, 强调了在训练中平衡文本和音频数据的重要性.
 
 ### 6.1.3·Training resources about Post-Train for Dual-Stream Dialogue Processing: 双流对话处理后训练资源
 
