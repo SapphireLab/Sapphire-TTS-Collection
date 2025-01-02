@@ -108,10 +108,21 @@ The table 4 shows the basic information of each dataset, including the dataset n
 
 ### 6.1.1·Training Resources about Text LLM Pre-training: 文本大语言模型预训练资源
 
+<details>
+<summary>展开原文</summary>
+
 Text Language Model pre-training serves as the foundational stage for spoken dialogue models.
 Through unsupervised learning on large-scale text data, the model acquires knowledge of vocabulary, grammar, and contextual relationships, gaining essential knowledge and reasoning capabilities.
 Most spoken dialogue systems are built upon pre-existing open-source text language models (such as [LLaMA [200]](../../Models/TextLM/2023.02.27_LLaMA.md), [PaLM2 [6]](../../Models/TextLM/2023.05.17_PaLM2.md), etc).
 Although we does not delve into this stage in detail, it provides a solid foundation for the model’s natural language understanding and generation capabilities.
+
+</details>
+<br>
+
+文本语言模型预训练是口语对话模型的基础阶段.
+通过在大规模文本数据上进行无监督训练, 模型获得词汇语法上下文关联等知识, 增进了必要的知识和推理能力.
+大多数口语对话系统都是建立在开源文本语言模型基础之上的 (如[LLaMA [200]](../../Models/TextLM/2023.02.27_LLaMA.md), [PaLM2 [6]](../../Models/TextLM/2023.05.17_PaLM2.md) 等).
+虽然我们并未详细探讨这一阶段, 但它为模型的自然语言理解和生成能力提供了坚实的基础.
 
 ### 6.1.2·Training Resources about Post-Train for Audio Modal Alignment: 音频模态对齐后训练资源
 
