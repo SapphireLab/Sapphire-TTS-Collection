@@ -362,15 +362,35 @@ The best choice will ultimately depend on the specific use case, available resou
 
 ## D·Fully End-to-end TTS models: 完全端到端 TTS 模型
 
-Fully end-to-end TTS methods ([FastSpeech2s [76]](../../Models/Acoustic/2020.06.08_FastSpeech2.md); [VITS [159]](../../Models/E2E/2021.06.11_VITS.md); [Char2Wav [160]](../../Models/E2E/2017.02.18_Char2Wav.md); [ClariNet [161]](../../Models/E2E/2018.07.19_ClariNet.md); [EATS [162]](../../Models/E2E/2020.06.05_EATS.md)) directly generate speech waveforms from textual input, simplifying the ``acoustic model → vocoder'' pipeline and achieving efficient speech generation.
+<details>
+<summary>展开原文</summary>
+
+Fully end-to-end TTS methods ([FastSpeech2s [76]](../../Models/Acoustic/2020.06.08_FastSpeech2.md); [VITS [159]](../../Models/E2E/2021.06.11_VITS.md); [Char2Wav [160]](../../Models/E2E/2017.02.18_Char2Wav.md); [ClariNet [161]](../../Models/E2E/2018.07.19_ClariNet.md); [EATS [162]](../../Models/E2E/2020.06.05_EATS.md)) directly generate speech waveforms from textual input, simplifying the "acoustic model → vocoder" pipeline and achieving efficient speech generation.
 [Char2Wav [160]](../../Models/E2E/2017.02.18_Char2Wav.md) is an early neural text-to-speech (TTS) system that directly synthesizes speech waveforms from character-level text input.
 It integrates two components and jointly trains them: a recurrent sequence-to-sequence model with attention, which predicts acoustic features (e.g., mel-spectrograms) from text, and a [SampleRNN-based neural vocoder [136]](../../Models/Vocoder/2016.12.22_SampleRNN.md) that generates waveforms from these features.
-Similarly, [FastSpeech2s [76]](../../Models/Acoustic/2020.06.08_FastSpeech2.md) directly synthesizes speech waveforms from texts by extending [FastSpeech2 [76]](../../Models/Acoustic/2020.06.08_FastSpeech2.md) with a waveform decoder, achieving high-quality and low-latency synthesis. ~
+Similarly, [FastSpeech2s [76]](../../Models/Acoustic/2020.06.08_FastSpeech2.md) directly synthesizes speech waveforms from texts by extending [FastSpeech2 [76]](../../Models/Acoustic/2020.06.08_FastSpeech2.md) with a waveform decoder, achieving high-quality and low-latency synthesis.
 [VITS [159]](../../Models/E2E/2021.06.11_VITS.md) is another fully end-to-end TTS framework.
-It integrates a variational autoencoder (VAE) with normalizing flows~\cite{rezende2015variational} and adversarial training, enabling the model to learn latent representations that capture the intricate variations in speech, such as prosody and style.
+It integrates a [variational autoencoder (VAE) with normalizing flows [163]](../../Models/_Full/2015.05.21_Variational_Inference_with_Normalizing_Flows.md) and adversarial training, enabling the model to learn latent representations that capture the intricate variations in speech, such as prosody and style.
 VITS combines non-autoregressive synthesis with stochastic latent variable modeling, achieving real-time waveform generation without compromising naturalness.
 There are more end-to-end TTS models such as [Tacotron [74]](../../Models/Acoustic/2017.03.29_Tacotron.md), [ClariNet [161]](../../Models/E2E/2018.07.19_ClariNet.md), and [EATS [162]](../../Models/E2E/2020.06.05_EATS.md), refer to another survey ([Survey by Tan et al. (2021) [42]](../2021.06.29_A_Survey_on_Neural_Speech_Synthesis_63P/Main.md)) for more details.
 End-to-end controllable methods that emerged in recent years will be discussed in [Section 4](Sec.04.md).
+
+</details>
+<br>
+
+完全端到端的 TTS 方法 ([FastSpeech2s [76]](../../Models/Acoustic/2020.06.08_FastSpeech2.md); [VITS [159]](../../Models/E2E/2021.06.11_VITS.md); [Char2Wav [160]](../../Models/E2E/2017.02.18_Char2Wav.md); [ClariNet [161]](../../Models/E2E/2018.07.19_ClariNet.md); [EATS [162]](../../Models/E2E/2020.06.05_EATS.md)) 从文本输入直接生成语音波形, 简化了 "声学模型 → 声码器" 流程, 并实现了高效的语音生成.
+- [Char2Wav [160]](../../Models/E2E/2017.02.18_Char2Wav.md) 是早期的神经文本转语音系统, 直接从字符级文本输入合成语音波形.
+它集成了两个组件并进行联合训练: 带注意力的循环序列到序列模型, 从文本预测声学特征 (如梅尔频谱图), 以及基于 [SampleRNN [136]](../../Models/Vocoder/2016.12.22_SampleRNN.md) 的神经声码器, 从这些特征生成波形.
+- [FastSpeech2s [76]](../../Models/Acoustic/2020.06.08_FastSpeech2.md) 类似地直接从文本生成语音波形, 通过向 [FastSpeech2 [76]](../../Models/Acoustic/2020.06.08_FastSpeech2.md) 添加一个波形解码器来实现, 达到高质量和低延迟的语音合成.
+- [VITS [159]](../../Models/E2E/2021.06.11_VITS.md) 是另一种完全端到端 TTS 框架.
+它集成了[带标准化流的变分自编码器 [163]](../../Models/_Full/2015.05.21_Variational_Inference_with_Normalizing_Flows.md) 和对抗训练, 使得模型学习到能够捕获语音中复杂变化 (如声调和风格) 的潜在表示.
+VITS 将非自回归合成和随机潜在变量建模相结合, 实现了实时波形生成而不损失自然度.
+
+还有其他一些端到端模型例如 [Tacotron [74]](../../Models/Acoustic/2017.03.29_Tacotron.md), [ClariNet [161]](../../Models/E2E/2018.07.19_ClariNet.md), [EATS [162]](../../Models/E2E/2020.06.05_EATS.md).
+
+参考综述论文 ([Survey by Tan et al. (2021) [42]](../2021.06.29_A_Survey_on_Neural_Speech_Synthesis_63P/Main.md)) 获取更多细节.
+
+近年来出现的端到端的可控方法将在[第 4 节](Sec.04.md)中讨论.
 
 ## E·Acoustic Feature Representations: 声学特征表示
 
