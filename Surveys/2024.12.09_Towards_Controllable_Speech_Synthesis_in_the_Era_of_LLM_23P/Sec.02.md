@@ -394,10 +394,22 @@ VITS 将非自回归合成和随机潜在变量建模相结合, 实现了实时�
 
 ## E·Acoustic Feature Representations: 声学特征表示
 
+<details>
+<summary>展开原文</summary>
+
 In TTS, the choice of acoustic feature representations impacts the model's flexibility, quality, expressiveness, and controllability.
 This subsection investigates continuous representations and discrete tokens as shown in Fig.02, along with their pros and cons for TTS applications.
 
+</details>
+<br>
+
+在 TTS 中, 声学特征表示的选择影响着模型的灵活性, 质量, 表现力, 以及可控性.
+本小节研究了图 02 中所示的连续表示和离散 Token, 以及它们在 TTS 应用中的优缺点.
+
 ### Continuous Representations: 连续表示
+
+<details>
+<summary>展开原文</summary>
 
 Continuous representations (e.g., mel-spectrograms) of intermediate acoustic features use a continuous feature space to represent speech signals.
 These representations often involve acoustic features that capture frequency, pitch, and other characteristics without discretizing the signal.
@@ -409,17 +421,52 @@ The advantages of continuous features are:
 GAN-based ([HiFi-GAN [116]](../../Models/Vocoder/2020.10.12_HiFi-GAN.md); [Parallel WaveGAN [144]](../../Models/Vocoder/2019.10.25_Parallel_WaveGAN.md); [MelGAN [145]](../../Models/Vocoder/2019.10.08_MelGAN.md)) and diffusion-based methods ([FastDiff [147]](../../Models/Vocoder/2022.04.21_FastDiff.md); [DiffWave [148]](../../Models/Vocoder/2020.09.21_DiffWave.md)) often utilize continuous feature representations, i.e., mel-spectrograms.
 However, continuous representations are typically more computationally demanding and require larger models and memory, especially in high-resolution audio synthesis.
 
+</details>
+<br>
+
+中间声学特征的连续表示 (如梅尔频谱图) 使用连续特征空间来表示语音信号.
+这些表示往往涉及到捕捉频率, 音高和其他特性的声学特征而不离散化信号.
+
+连续特征的优点有:
+1) 连续表示保留细粒度细节, 允许更富有表现力和听感自然的语音合成.
+2) 因为连续表示固有地捕捉音调音高和重音的变化, 它们很适合用于韵律控制和情感 TTS.
+3) 连续表示对信息损失更鲁棒, 可以避免量化失真, 能获得更光滑, 更少失真的音频.
+
+基于 GAN ([HiFi-GAN [116]](../../Models/Vocoder/2020.10.12_HiFi-GAN.md); [Parallel WaveGAN [144]](../../Models/Vocoder/2019.10.25_Parallel_WaveGAN.md); [MelGAN [145]](../../Models/Vocoder/2019.10.08_MelGAN.md)) 和基于扩散 ([FastDiff [147]](../../Models/Vocoder/2022.04.21_FastDiff.md); [DiffWave [148]](../../Models/Vocoder/2020.09.21_DiffWave.md)) 的模型通常使用连续特征表示, 即梅尔频谱图.
+然而, 连续表示通常需要更多的计算需求和更大的模型和内存, 尤其是在高分辨率语音合成中.
+
 ### Discrete Tokens: 离散 Tokens
 
+<details>
+<summary>展开原文</summary>
+
 In discrete token-based TTS, the intermediate acoustic features (e.g., quantized units or phoneme-like tokens) are discrete values, similar to words or phonemes in languages.
-These are often produced using quantization techniques or learned embeddings, such as HuBERT~\cite{hsu2021hubert} and SoundStream~\cite{zeghidour2021soundstream}.
+These are often produced using quantization techniques or learned embeddings, such as [HuBERT [166]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) and [SoundStream [168]](../../Models/SpeechCodec/2021.07.07_SoundStream.md).
 The advantages of discrete tokens are:
 1) Discrete tokens can encode phonemes or sub-word units, making them concise and less computationally demanding to handle.
 2) Discrete tokens often allow TTS systems to require fewer samples to learn and generalize, as the representations are compact and simplified.
 3) Using discrete tokens simplifies cross-modal TTS applications like voice cloning or translation-based TTS, as they map well to text-like representations such as LLM tokens.
 
-LLM-based~\cite{wang2024maskgct,zhou2024voxinstruct,ji2024controlspeech,[InstructTTS [105]](../../Models/Acoustic/2023.01.31_InstructTTS.md)} and zero-shot TTS methods~\cite{[CosyVoice [17]](../../Models/SpeechLM/2024.07.07_CosyVoice.md); [MaskGCT]wang2024maskgct,ju2024naturalspeech3} often adopt discrete tokens as their acoustic features.
+LLM-based ([MaskGCT [78]](../../Models/SpeechLM/2024.09.01_MaskGCT.md); [VoxInstruct [103]](../../Models/SpeechLM/2024.08.28_VoxInstruct.md); [InstructTTS [105]](../../Models/Acoustic/2023.01.31_InstructTTS.md); [ControlSpeech [106]](../../Models/SpeechLM/2024.06.03_ControlSpeech.md)) and zero-shot TTS methods ([CosyVoice [17]](../../Models/SpeechLM/2024.07.07_CosyVoice.md); [MaskGCT [78]](../../Models/SpeechLM/2024.09.01_MaskGCT.md); [NaturalSpeech3 [87]](../../Models/Diffusion/2024.03.05_NaturalSpeech3.md)) often adopt discrete tokens as their acoustic features.
 However, discrete representation learning may result in information loss or lack the nuanced details that can be captured in continuous representations.
 
-Table~\ref{tab:sec5_controllable_methods_ar} and~\ref{tab:sec5_controllable_methods_nar} summarize the types of acoustic features of representative methods.
-Table \ref{tab:sec2_quantization} summarizes popular open-source speech quantization methods.
+Table.04 and Table.03 summarize the types of acoustic features of representative methods.
+Table.02 summarizes popular open-source speech quantization methods.
+
+</details>
+<br>
+
+在基于离散 Token 的 TTS 中, 中间声学特征 (如量化单元或类似音素的 Token) 是离散值, 类似于语言中的词或音素.
+它们通常使用量化技术或学习到的嵌入来产生, 如 [HuBERT [166]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) 和 [SoundStream [168]](../../Models/SpeechCodec/2021.07.07_SoundStream.md).
+离散 Token 的优点有:
+1) 离散 Token 可以编码音素或子词单元, 使得它们更简洁, 并降低处理的计算需求.
+2) 离散 Token 往往允许 TTS 系统学习和泛化所需的样本更少, 因为表示是紧凑和简化的.
+3) 使用离散 Token 简化了跨模态 TTS 应用, 如声音克隆或基于翻译的 TTS, 因为它们可以很好地映射到类似于文本的表示 (如 LLM Token).
+
+基于 LLM 的方法 ([MaskGCT [78]](../../Models/SpeechLM/2024.09.01_MaskGCT.md); [VoxInstruct [103]](../../Models/SpeechLM/2024.08.28_VoxInstruct.md); [InstructTTS [105]](../../Models/Acoustic/2023.01.31_InstructTTS.md); [ControlSpeech [106]](../../Models/SpeechLM/2024.06.03_ControlSpeech.md)) 和零样本 TTS 方法 ([CosyVoice [17]](../../Models/SpeechLM/2024.07.07_CosyVoice.md); [MaskGCT [78]](../../Models/SpeechLM/2024.09.01_MaskGCT.md); [NaturalSpeech3 [87]](../../Models/Diffusion/2024.03.05_NaturalSpeech3.md)) 都使用离散 Token 来作为声学特征.
+
+然而, 离散表示学习可能会导致信息损失或缺乏连续表示中可以捕获的细节.
+
+表 4 和表 3 总结了代表性方法的声学特征类型.
+
+表 2 总结了流行的开源语音量化方法. #TODO CSV
