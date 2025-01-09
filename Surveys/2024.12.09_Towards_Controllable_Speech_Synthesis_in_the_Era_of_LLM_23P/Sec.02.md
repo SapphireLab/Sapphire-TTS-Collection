@@ -215,18 +215,42 @@ For real-time applications, CNN-based or lightweight transformer-based models ar
 
 ## C·Speech Vocoders: 语音声码器
 
+<details>
+<summary>展开原文</summary>
+
 Vocoders are essential for converting acoustic features such as mel-spectrograms into intelligible audio waveforms and are vital in determining the naturalness and quality of synthesized speech.
 We broadly categorize existing vocoders according to their model architectures, i.e., RNN-, CNN-, GAN-, and diffusion-based vocoders.
 
+</details>
+<br>
+
+声码器是将声学特征 (如梅尔频谱图) 转换为可理解的音频波形的必要组件, 它们在确定合成语音的自然度和质量方面扮演着重要角色.
+我们将现有的声码器根据其模型架构大致分为以下几类: 基于 RNN, CNN, GAN, 和扩散模型的声码器.
+
 ### RNN-Based Vocoders: 基于 RNN 的声码器
 
-Unlike traditional vocoders ([134]; [WORLD [135]](../../Models/Vocoder/2015.11.11_WORLD.md)) ~\cite{hideki2006straight} that depend on manually designed signal processing pipelines, RNN-based vocoders ([SampleRNN [136]](../../Models/Vocoder/2016.12.22_SampleRNN.md); [WaveRNN [137]](../../Models/Vocoder/2018.02.23_WaveRNN.md); [LPCNet [138]](../../Models/Vocoder/2018.10.28_LPCNet.md); [Multi-Band WaveRNN [139]](../../Models/Vocoder/2019.09.04_Multi-Band_WaveRNN.md)) leverage the temporal modeling capabilities of RNNs to directly learn the complex patterns in speech signals, enabling the synthesis of natural-sounding waveforms with improved prosody and temporal coherence.
+<details>
+<summary>展开原文</summary>
+
+Unlike traditional vocoders ([STRAIGHT [134]](../../Models/Vocoder/2006_STRAIGHT.md); [WORLD [135]](../../Models/Vocoder/2015.11.11_WORLD.md)) that depend on manually designed signal processing pipelines, RNN-based vocoders ([SampleRNN [136]](../../Models/Vocoder/2016.12.22_SampleRNN.md); [WaveRNN [137]](../../Models/Vocoder/2018.02.23_WaveRNN.md); [LPCNet [138]](../../Models/Vocoder/2018.10.28_LPCNet.md); [Multi-Band WaveRNN [139]](../../Models/Vocoder/2019.09.04_Multi-Band_WaveRNN.md)) leverage the temporal modeling capabilities of RNNs to directly learn the complex patterns in speech signals, enabling the synthesis of natural-sounding waveforms with improved prosody and temporal coherence.
 For instance, [WaveRNN [137]](../../Models/Vocoder/2018.02.23_WaveRNN.md) generates speech waveforms sample-by-sample using a single-layer recurrent neural network, typically with Gated Recurrent Units (GRU).
 It improves upon earlier neural vocoders like [WaveNet [73]](../../Models/Vocoder/2016.09.12_WaveNet.md) by significantly reducing the computational requirements without sacrificing audio quality.
 [MB-WaveRNN [139]](../../Models/Vocoder/2019.09.04_Multi-Band_WaveRNN.md) extends WaveRNN by incorporating a multi-band decomposition strategy, where the speech waveform is divided into multiple sub-bands, with each sub-band synthesized at a lower sampling rate.
 These sub-bands are then combined to reconstruct the full-band waveform, thereby accelerating the synthesis process while preserving audio quality.
 
+</details>
+<br>
+
+和传统声码器 ([STRAIGHT [134]](../../Models/Vocoder/2006_STRAIGHT.md); [WORLD [135]](../../Models/Vocoder/2015.11.11_WORLD.md)) 依赖于手动设计的信号处理流程不同, 基于 RNN 的声码器 ([SampleRNN [136]](../../Models/Vocoder/2016.12.22_SampleRNN.md); [WaveRNN [137]](../../Models/Vocoder/2018.02.23_WaveRNN.md); [LPCNet [138]](../../Models/Vocoder/2018.10.28_LPCNet.md); [Multi-Band WaveRNN [139]](../../Models/Vocoder/2019.09.04_Multi-Band_WaveRNN.md)) 利用 RNN 的时序建模能力来直接学习语音信号中的复杂模式, 能够合成具有改善韵律和时序连贯性的自然听感波形.
+- [WaveRNN [137]](../../Models/Vocoder/2018.02.23_WaveRNN.md) 使用单层循环神经网络, 通常带有门控循环单元 (GRU) 来逐个样本地生成语音波形.
+它在更早的神经声码器如 [WaveNet [73]](../../Models/Vocoder/2016.09.12_WaveNet.md) 之上, 显著降低了计算需求, 但不牺牲了音频质量.
+- [MB-WaveRNN [139]](../../Models/Vocoder/2019.09.04_Multi-Band_WaveRNN.md) 扩展了 WaveRNN, 采用多带分解策略, 将语音波形分解为多个子带, 其中每个子带以较低的采样率合成.
+这些子带随后被合并以重构完整带宽波形, 加快合成过程, 同时保持音频质量.
+
 ### CNN-Based Vocoders: 基于 CNN 的声码器
+
+<details>
+<summary>展开原文</summary>
 
 By leveraging the parallel nature of convolutional operations, CNN-based vocoders ([WaveNet [73]](../../Models/Vocoder/2016.09.12_WaveNet.md); [Parallel WaveNet [140]](../../Models/Vocoder/2017.11.28_Parallel_WaveNet.md); [FFTNet [141]](../../Models/Vocoder/2018.04.15_FFTNet.md)) can generate high-quality speech more efficiently, making them ideal for real-time applications.
 A key strength of CNN-based vocoders is their ability to balance synthesis quality and efficiency.
@@ -237,7 +261,22 @@ It employs stacks of dilated causal convolutions, enabling long-range dependence
 It introduces a non-autoregressive mechanism based on a teacher-student framework, where the original WaveNet (teacher) distills knowledge into a student model.
 The student generates samples in parallel, enabling real-time synthesis without waveform quality degradation.
 
+</details>
+<br>
+
+通过利用卷积操作的并行性, 基于 CNN 的声码器 ([WaveNet [73]](../../Models/Vocoder/2016.09.12_WaveNet.md); [Parallel WaveNet [140]](../../Models/Vocoder/2017.11.28_Parallel_WaveNet.md); [FFTNet [141]](../../Models/Vocoder/2018.04.15_FFTNet.md)) 能够更高效地生成高质量语音, 适用于实时应用.
+基于 CNN 的声码器的关键长处是它们能够平衡合成质量和效率.
+然而, 它们往往需要大量训练数据和仔细的超参数调整才能达到最佳性能.
+- [WaveNet [73]](../../Models/Vocoder/2016.09.12_WaveNet.md) 是一种概率自回归模型, 基于所有先前样本和辅助输入作为条件逐个样本点生成波形, 如语言特征和梅尔频谱图.
+它采用了膨胀因果卷积堆叠, 能够不依赖于循环连接进行语音信号的长范围依赖性的建模.
+- [Parallel WaveNet [140]](../../Models/Vocoder/2017.11.28_Parallel_WaveNet.md) 解决了 WaveNet 的推理速度限制且保持了相当的合成质量.
+它基于教师-学生框架引入了非自回归机制, 其中原始 WaveNet 作为教师模型蒸馏知识到学生模型中.
+学生模型并行地生成样本点, 实现实时合成而无波形质量退化.
+
 ### GAN-Based Vocoders: 基于 GAN 的声码器
+
+<details>
+<summary>展开原文</summary>
 
 GANs have been widely adopted in vocoders for high-quality speech generation ([WaveGAN [142]](../../Models/Vocoder/2018.02.12_WaveGAN.md); [GAN-TTS [143]](../../Models/Vocoder/2019.09.25_GAN-TTS.md); [HiFi-GAN [116]](../../Models/Vocoder/2020.10.12_HiFi-GAN.md); [Parallel WaveGAN [144]](../../Models/Vocoder/2019.10.25_Parallel_WaveGAN.md); [MelGAN [145]](../../Models/Vocoder/2019.10.08_MelGAN.md)), leveraging adversarial losses to improve realism.
 GAN-based vocoders typically consist of a generator that produces waveforms conditioned on acoustic features, such as mel-spectrograms, and a discriminator that distinguishes between real and synthesized waveforms.
@@ -247,19 +286,48 @@ A key advantage of GAN-based vocoders is their parallel inference capability, en
 However, training GANs can be challenging due to instability and mode collapse.
 Despite these challenges, GAN-based vocoders continue to advance the state-of-the-art in neural vocoding, offering a compelling combination of speed and audio quality.
 
+</details>
+<br>
+
+GAN 被广泛应用于声码器进行高质量语音生成 ([WaveGAN [142]](../../Models/Vocoder/2018.02.12_WaveGAN.md); [GAN-TTS [143]](../../Models/Vocoder/2019.09.25_GAN-TTS.md); [HiFi-GAN [116]](../../Models/Vocoder/2020.10.12_HiFi-GAN.md); [Parallel WaveGAN [144]](../../Models/Vocoder/2019.10.25_Parallel_WaveGAN.md); [MelGAN [145]](../../Models/Vocoder/2019.10.08_MelGAN.md))，利用对抗损失提高真实感.
+基于 GAN 的声码器通常由一个以声学特征 (如梅尔频谱图) 为条件来生成波形的生成器, 和一个区分真实波形和合成波形的判别器组成.
+模型如 [Parallel WaveGAN [144]](../../Models/Vocoder/2019.10.25_Parallel_WaveGAN.md) 和 [HiFi-GAN [116]](../../Models/Vocoder/2020.10.12_HiFi-GAN.md) 已经证明了 GAN 在声码中的有效性, 通过引入特别设计的损失函数 (如多尺度和多分辨率频谱图损失) 来确保时域和频域的自然性.
+这些模型能够有效地处理语音信号内在的复杂非线性关联, 以实现高质量合成.
+基于 GAN 的声码器的关键优势是它们的并行推理能力, 能够比自回归模型更低的计算成本来实现实时合成.
+然而, 训练 GAN 仍然面临着不稳定和模式崩溃的挑战.
+尽管如此, 基于 GAN 的声码器仍然在神经声码领域取得了领先地位, 提供了速度和音频质量之间的强有力组合.
+
 ### Diffusion-Based Vocoders: 基于扩散的声码器
+
+<details>
+<summary>展开原文</summary>
 
 Inspired by [diffusion probabilistic models [146]](../../Models/Diffusion/2020.06.19_DDPM.md) that have shown success in visual generation tasks, diffusion-based vocoders ([FastDiff [147]](../../Models/Vocoder/2022.04.21_FastDiff.md); [DiffWave [148]](../../Models/Vocoder/2020.09.21_DiffWave.md); [WaveGrad [149]](../../Models/Vocoder/2020.09.02_WaveGrad.md); [PriorGrad [150]](../../Models/Vocoder/2021.06.11_PriorGrad.md)) present a novel approach to natural-sounding speech synthesis.
 The core mechanism of diffusion-based vocoders involves two stages: a forward process and a reverse process.
 In the forward process, clean speech waveforms are progressively corrupted by adding noise in a controlled manner, creating a sequence of intermediate noisy representations.
 During training, the model learns to reverse this process, progressively denoising the corrupted signal to reconstruct the original waveform.
 Diffusion-based vocoders, such as [WaveGrad [149]](../../Models/Vocoder/2020.09.02_WaveGrad.md) and [DiffWave [148]](../../Models/Vocoder/2020.09.21_DiffWave.md), have demonstrated remarkable performance in generating high-fidelity waveforms while maintaining temporal coherence and natural prosody.
-They offer advantages over previous vocoders, including robustness to over-smoothing~\cite{ren2022revisiting} and the ability to model complex data distributions.
+They offer advantages over previous vocoders, including robustness to over-smoothing ([Revisiting Over-Smoothness in Text to Speech [151]](../../Models/_Full/2022.02.26_Revisiting_Over-Smoothness_in_Text_to_Speech.md)) and the ability to model complex data distributions.
 However, their iterative sampling process can be computationally intensive, posing challenges for real-time applications.
+
+</details>
+<br>
+
+受到[扩散概率模型 [146]](../../Models/Diffusion/2020.06.19_DDPM.md) 在视觉生成任务中的成功的启发, 基于扩散的声码器 ([FastDiff [147]](../../Models/Vocoder/2022.04.21_FastDiff.md); [DiffWave [148]](../../Models/Vocoder/2020.09.21_DiffWave.md); [WaveGrad [149]](../../Models/Vocoder/2020.09.02_WaveGrad.md); [PriorGrad [150]](../../Models/Vocoder/2021.06.11_PriorGrad.md)) 展示了一种全新的自然语音合成方法.
+基于扩散的声码器的核心机制由两阶段组成: 前向过程和逆向过程.
+在前向过程中, 干净的语音波形被有控制地添加噪声进行逐步损坏, 形成一系列地中间噪声表示.
+在训练时, 模型学习逆向这一过程, 逐步去噪破坏信号来重构原始波形.
+
+基于扩散的声码器, 例如 [WaveGrad [149]](../../Models/Vocoder/2020.09.02_WaveGrad.md) 和 [DiffWave [148]](../../Models/Vocoder/2020.09.21_DiffWave.md), 在生成高保真波形的同时保持时域一致性和自然语调, 展示了卓越的性能.
+与之前的声码器相比, 它们提供了一些优势, 包括对过度平滑 ([Revisiting Over-Smoothness in Text to Speech [151]](../../Models/_Full/2022.02.26_Revisiting_Over-Smoothness_in_Text_to_Speech.md)) 的鲁棒性和建模复杂数据分布的能力.
+然而, 它们迭代式的采样过程可能计算代价高昂, 对于实时应用来说是个挑战.
 
 ### Other Vocoders: 其他声码器
 
-There are also many other types of vocoders such as flow-based ([VoiceFlow](../../Models/Diffusion/2023.09.10_VoiceFlow.md); )~\cite{kim2024pflow,guo2024voiceflow,lee2024periodwave,ping2020waveflow,kim2018flowavenet} and VAE-based vocoders~\cite{peng2020non,guo2023msmc,[VITS [159]](../../Models/E2E/2021.06.11_VITS.md)}.
+<details>
+<summary>展开原文</summary>
+
+There are also many other types of vocoders such as flow-based ([P-Flow [152]](../../Models/Flow/P-Flow.md); [VoiceFlow [153]](../../Models/Diffusion/2023.09.10_VoiceFlow.md); [PeriodWave [154]](../../Models/Vocoder/2024.08.14_PeriodWave.md); [WaveFlow [155]](../../Models/Vocoder/2019.12.03_WaveFlow.md); [FloWaveNet [156]](../../Models/Vocoder/2018.11.06_FloWaveNet.md)) and VAE-based vocoders ([ParaNet [157]](../../Models/Acoustic/2019.05.21_ParaNet.md); [MSMC-TTS [158]](../../Models/_tmp/2023.05.02_MSMC-TTS.md); [VITS [159]](../../Models/E2E/2021.06.11_VITS.md)).
 These methods provide unique strengths for speech synthesis such as efficiency and greater flexibility in modeling complex speech variations.
 Readers can refer to the survey paper from [Tan et al. (2021) [42]](../2021.06.29_A_Survey_on_Neural_Speech_Synthesis_63P/Main.md) for more details.
 
@@ -267,6 +335,30 @@ The choice of vocoder depends on various factors.
 While high-quality models like GAN-based and diffusion-based vocoders excel in naturalness, they may not be suitable for real-time scenarios.
 On the other hand, models like [Parallel WaveNet [140]](../../Models/Vocoder/2017.11.28_Parallel_WaveNet.md) balance quality and efficiency for practical use cases.
 The best choice will ultimately depend on the specific use case, available resources, and the importance of factors such as model size, training data, and inference speed.
+
+</details>
+<br>
+
+还有许多其他类型的声码器, 如
+- 基于流:
+  - [P-Flow [152]](../../Models/Flow/P-Flow.md);
+  - [VoiceFlow [153]](../../Models/Diffusion/2023.09.10_VoiceFlow.md); ?
+  - [PeriodWave [154]](../../Models/Vocoder/2024.08.14_PeriodWave.md);
+  - [WaveFlow [155]](../../Models/Vocoder/2019.12.03_WaveFlow.md);
+  - [FloWaveNet [156]](../../Models/Vocoder/2018.11.06_FloWaveNet.md)
+- 基于 VAE:
+  - [ParaNet [157]](../../Models/Acoustic/2019.05.21_ParaNet.md);
+  - [MSMC-TTS [158]](../../Models/_tmp/2023.05.02_MSMC-TTS.md);
+  - [VITS [159]](../../Models/E2E/2021.06.11_VITS.md) ?
+
+这些方法为语音合成提供了独特的优势, 如效率和更强的建模复杂语音变化的灵活性.
+
+读者可以参考 [Tan et al. (2021) [42]](../2021.06.29_A_Survey_on_Neural_Speech_Synthesis_63P/Main.md) 的综述论文获取更多细节.
+
+声码器的选择依赖于各种因素.
+虽然基于 GAN 和基于扩散的声码器在自然度方面都取得了卓越的成果, 但它们可能不适用于实时场景.
+另一方面, 像 [Parallel WaveNet [140]](../../Models/Vocoder/2017.11.28_Parallel_WaveNet.md) 这样的模型在实际用例中平衡质量和效率.
+最好的选择将取决于具体的用例, 可用资源, 以及模型大小, 训练数据, 和推理速度等因素的重要性.
 
 ## D·Fully End-to-end TTS models: 完全端到端 TTS 模型
 
