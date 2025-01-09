@@ -25,7 +25,7 @@ Readers can jump to [Section 3](Sec.03.md) if familiar with TTS pipelines.
 
 A TTS pipeline generally contains three key components, i.e., linguistic analyzer, acoustic model, speech vocoder, and with a conditional input, e.g., prompts, for controllable speech synthesis.
 Besides, some end-to-end methods use a single model to encode the input and decode the speech waveforms without generating intermediate features like mel-spectrograms ([Spectrogram [110] [URL]](https://en.wikipedia.org/wiki/Spectrogram)).
-- **Linguistic analyzer** aims to extract linguistic features, e.g., phoneme duration and position, syllable stress, and utterance level, from the input text, which is a necessary step in HMM-based methods ([Yoshimura et al.(1999) [64]](../../Models/HMM/Simultaneous_Modeling_of_Spectrum_Pitch_&_Duration_in_HMM-Based_Speech_Synthesis.md); [Tokuda et al. (2000) [65]](../../Models/HMM/Speech_Parameter_Generation_Algorithms_for_HMM-Based_Speech_Synthesis.md)) and a few neural-based methods ([Statistical Parametric Speech Synthesis Using DNNs [111]](../../Models/SPSS/2013.05.26_Statistical_Parametric_Speech_Synthesis_Using_DNNs.md); [DBLSTM-RNN [112]](../../Models/SPSS/DBLSTM-RNN.md)), but is time-consuming and error-prone.
+- **Linguistic analyzer** aims to extract linguistic features, e.g., phoneme duration and position, syllable stress, and utterance level, from the input text, which is a necessary step in HMM-based methods ([Yoshimura et al.(1999) [64]](../../Models/_Early/Simultaneous_Modeling_of_Spectrum_Pitch_&_Duration_in_HMM-Based_Speech_Synthesis.md); [Tokuda et al. (2000) [65]](../../Models/_Early/Speech_Parameter_Generation_Algorithms_for_HMM-Based_Speech_Synthesis.md)) and a few neural-based methods ([Statistical Parametric Speech Synthesis Using DNNs [111]](../../Models/_Early/2013.05.26_Statistical_Parametric_Speech_Synthesis_Using_DNNs.md); [DBLSTM-RNN [112]](../../Models/_Early/DBLSTM-RNN.md)), but is time-consuming and error-prone.
 - **Acoustic model** is a parametric or neural model that predicts the acoustic features from the input texts.
 Modern neural-based acoustic models like [Tacotron [74]](../../Models/Acoustic/2017.03.29_Tacotron.md) and later works ([FastSpeech [15]](../../Models/Acoustic/2019.05.22_FastSpeech.md); [FastSpeech2 [76]](../../Models/Acoustic/2020.06.08_FastSpeech2.md); [Diff-TTS [113]](../../Models/Acoustic/2021.04.03_Diff-TTS.md)) directly take character ([CWE[114]](../../Models/SpeechRepresentation/CWE.md)) or word embeddings ([Survey by Almeida et al. (2019) [115]](../2019.01.25__Survey__Word_Embeddings.md)) as the input, which is much more efficient than previous methods.
 - **Speech vocoder** is the last component that converts the intermediate acoustic features into a waveform that can be played back.
@@ -38,7 +38,7 @@ Therefore, the following subsections will briefly introduce some representative 
 
 文本转语音流程通常包含三个关键组件, 即语言分析器, 声学模型, 语音声码器, 以及条件化输入 (如用于可控语音合成的提示).
 除此之外, 一些端到端的模型使用单个模型来编码输入并解码出语音波形, 而无需生成中间特征 (如梅尔频谱图 [Spectrogram [110] [URL]](https://en.wikipedia.org/wiki/Spectrogram)).
-- **语言分析器 (Linguistic Analyzer)** 的目的是从输入文本中提取语言学特征 (如音素时长和位置, 音节重音, 句子级别等), 这是基于 HMM 的方法 ([Yoshimura et al.(1999) [64]](../../Models/HMM/Simultaneous_Modeling_of_Spectrum_Pitch_&_Duration_in_HMM-Based_Speech_Synthesis.md); [Tokuda et al. (2000) [65]](../../Models/HMM/Speech_Parameter_Generation_Algorithms_for_HMM-Based_Speech_Synthesis.md)) 和一些神经网络方法 ([Statistical Parametric Speech Synthesis Using DNNs [111]](../../Models/SPSS/2013.05.26_Statistical_Parametric_Speech_Synthesis_Using_DNNs.md); [DBLSTM-RNN [112]](../../Models/SPSS/DBLSTM-RNN.md)) 的必要步骤, 但耗时且容易出错.
+- **语言分析器 (Linguistic Analyzer)** 的目的是从输入文本中提取语言学特征 (如音素时长和位置, 音节重音, 句子级别等), 这是基于 HMM 的方法 ([Yoshimura et al.(1999) [64]](../../Models/_Early/Simultaneous_Modeling_of_Spectrum_Pitch_&_Duration_in_HMM-Based_Speech_Synthesis.md); [Tokuda et al. (2000) [65]](../../Models/_Early/Speech_Parameter_Generation_Algorithms_for_HMM-Based_Speech_Synthesis.md)) 和一些神经网络方法 ([Statistical Parametric Speech Synthesis Using DNNs [111]](../../Models/_Early/2013.05.26_Statistical_Parametric_Speech_Synthesis_Using_DNNs.md); [DBLSTM-RNN [112]](../../Models/_Early/DBLSTM-RNN.md)) 的必要步骤, 但耗时且容易出错.
 - **声学模型 (Acoustic Model)** 是参数化或神经模型, 从输入文本预测声学特征.
 现代基于神经网络的声学模型如 [Tacotron [74]](../../Models/Acoustic/2017.03.29_Tacotron.md) 及后续工作 ([FastSpeech [15]](../../Models/Acoustic/2019.05.22_FastSpeech.md); [FastSpeech2 [76]](../../Models/Acoustic/2020.06.08_FastSpeech2.md); [Diff-TTS [113]](../../Models/Acoustic/2021.04.03_Diff-TTS.md)) 直接采用字符 ([CWE[114]](../../Models/SpeechRepresentation/CWE.md)) 或词嵌入 ([Survey by Almeida et al. (2019) [115]](../2019.01.25__Survey__Word_Embeddings.md)) 作为输入, 这比以前的方法要更高效.
 - **语音声码器 (Speech Vocoder)** 是将中间声学特征转换为可以播放的波形的最后一个组件.
@@ -49,17 +49,50 @@ Therefore, the following subsections will briefly introduce some representative 
 
 ## B·Acoustic Models: 声学模型
 
+<details>
+<summary>展开原文</summary>
+
 Acoustic modeling is a crucial step in TTS because it ensures the generated acoustic features capture the subtleties of human speech.
 By accurately modeling acoustic features, modern TTS systems can help generate high-quality and expressive audio that sounds close to human speech.
 
+</details>
+<br>
+
+声学建模是 TTS 中的关键一步, 因为它确保生成的声学特征能够捕获人类语音的微妙之处.
+通过精确建模声学特征, 现代 TTS 系统能够生成高质量且富有表现力的音频, 听起来和人类语音接近.
+
 ### Parametric Models: 参数模型
 
+<details>
+<summary>展开原文</summary>
+
 Early acoustic models rely on parametric approaches, where predefined rules and mathematical functions are utilized to model speech generation.
-These models often utilize HMMs to capture acoustic features from linguistic input and generate acoustic features by parameterizing the vocal tract and its physiological properties such as pitch and prosody~\cite{Tokuda20001315,Zen2007294,nose2013intuitive,nishigaki2015prosody,lorenzo2015emotion,yamagishi2005acoustic}. [71] [72] [117] [118] [119] [120]
+These models often utilize HMMs to capture acoustic features from linguistic input and generate acoustic features by parameterizing the vocal tract and its physiological properties such as pitch and prosody ([Tokuda et al. (2000) [65] [117]](../../Models/_Early/Speech_Parameter_Generation_Algorithms_for_HMM-Based_Speech_Synthesis.md); [Yamagishi et al. (2005) [71]](../../Models/_Early/Acoustic_Modeling_of_Speaking_Styles_and_Emotional_Expressions_in_HMM-Based_Speech_Synthesis.md); [Lorenzo et al. (2015) [72]](../../Models/_Early/Emotion_Transplantation_through_Adaptation_in_HMM-Based_Speech_Synthesis.md); [Zen et al. (2007) [118]](../../Models/_Early/The_HMM-based_Speech_Synthesis_System_(HTS)_Version_2.0.md); [Nose et al. (2012) [119]](../../Models/_Early/An_Intuitive_Style_Control_Technique_in_HMM-Based_Expressive_Speech_Synthesis_Using_Subjective_Style_Intensity_and_Multiple-Regression_Global_Variance_Model.md); [Nishigaki et al. (2015) [120]](../../Models/_Early/Prosody-Controllable_HMM-Based_Speech_Synthesis_Using_Speech_Input.md)).
 These methods have relatively low computational costs and can produce a range of voices by adjusting model parameters.
-However, the speech quality of these methods is robotic and lacks natural intonation, and the expressiveness is also limited~\cite{nishigaki2015prosody,lorenzo2015emotion} [72] [120].
+However, the speech quality of these methods is robotic and lacks natural intonation, and the expressiveness is also limited ([Lorenzo et al. (2015) [72]](../../Models/_Early/Emotion_Transplantation_through_Adaptation_in_HMM-Based_Speech_Synthesis.md); [Nishigaki et al. (2015) [120]](../../Models/_Early/Prosody-Controllable_HMM-Based_Speech_Synthesis_Using_Speech_Input.md)).
+
+</details>
+<br>
+
+早期声学模型依赖参数化方法, 使用预定义规则和数学函数来建模语音生成.
+这些模型通常使用隐马尔可夫模型来从语言输入中捕获声学特征, 并通过参数化声带及其生理特性 (如音高和语调) 来生成声学特征.
+- [Tokuda et al. (2000) [65] [117]](../../Models/_Early/Speech_Parameter_Generation_Algorithms_for_HMM-Based_Speech_Synthesis.md);
+- [Yamagishi et al. (2005) [71]](../../Models/_Early/Acoustic_Modeling_of_Speaking_Styles_and_Emotional_Expressions_in_HMM-Based_Speech_Synthesis.md);
+- [Lorenzo et al. (2015) [72]](../../Models/_Early/Emotion_Transplantation_through_Adaptation_in_HMM-Based_Speech_Synthesis.md);
+- [Zen et al. (2007) [118]](../../Models/_Early/The_HMM-based_Speech_Synthesis_System_(HTS)_Version_2.0.md);
+- [Nose et al. (2012) [119]](../../Models/_Early/An_Intuitive_Style_Control_Technique_in_HMM-Based_Expressive_Speech_Synthesis_Using_Subjective_Style_Intensity_and_Multiple-Regression_Global_Variance_Model.md);
+- [Nishigaki et al. (2015) [120]](../../Models/_Early/Prosody-Controllable_HMM-Based_Speech_Synthesis_Using_Speech_Input.md).
+
+这些方法拥有相当低的计算成本, 别难过且可以通过调整模型参数来产生广泛的声音.
+然而, 这些方法的语音质量是机械的, 缺乏自然的语调, 表达力也有限.
+
+- [Lorenzo et al. (2015) [72]](../../Models/_Early/Emotion_Transplantation_through_Adaptation_in_HMM-Based_Speech_Synthesis.md);
+- [Nishigaki et al. (2015) [120]](../../Models/_Early/Prosody-Controllable_HMM-Based_Speech_Synthesis_Using_Speech_Input.md).
 
 ### RNN-Based Models: 基于 RNN 的模型
+
+<details>
+<summary>展开原文</summary>
 
 Recurrent Neural Networks (RNNs) proved particularly effective in early neural-based TTS due to their ability to model sequential data and long-range dependencies, which helps in capturing the sequential nature of speech, such as the duration and natural flow of phonemes.
 Typically, these models have an encoder-decoder architecture, where an encoder encodes input linguistic features, such as phonemes or text, into a fixed-dimensional representation, and the decoder sequentially decodes this representation into acoustic features (e.g., mel-spectrogram frames) that capture the frequency and amplitude of sound over time.
@@ -67,7 +100,20 @@ Typically, these models have an encoder-decoder architecture, where an encoder e
 It takes raw characters as input and produces mel-spectrogram frames, which are subsequently converted to waveforms.
 Another example is [MelNet [121]](../../Models/Acoustic/2019.06.04_MelNet.md), which leverages autoregressive modeling to generate high-quality mel-spectrograms, demonstrating versatility in generating both speech and music, achieving high fidelity and coherence across temporal scales.
 
+</details>
+<br>
+
+循环神经网络在早期基于神经网络的 TTS 中特别有效, 这是因为它们建模序列数据和长期依赖的能力, 有助于捕获语音的序列性质, 例如时长和音素的自然流动.
+通常这些模型具有编码器-解码器架构, 编码器将输入语言特征 (如音素或文本) 编码为固定维度的表示, 解码器顺序地将这一表示解码为声学特征 (如梅尔频谱帧), 这些特征捕获声音在时间上的频率和幅度.
+
+- [Tacotron2 [75]](../../Models/Acoustic/2017.12.16_Tacotron2.md) 是一项开创性的 TTS 模型, 它使用带有注意力机制的 RNNs, 这有助于对齐文本序列和生成的声学特征.
+它将原始字符作为输入并生成梅尔频谱帧, 随后将其转换为波形.
+- [MelNet [121]](../../Models/Acoustic/2019.06.04_MelNet.md) 利用自回归建模来生成高质量梅尔频谱, 展示了生成语音和音乐的多样性, 达到高保真度和时间尺度上的连贯性.
+
 ### CNN-Based Models: 基于 CNN 的模型
+
+<details>
+<summary>展开原文</summary>
 
 Unlike RNNs, which process sequential data frame by frame, CNNs process the entire sequence at once by applying filters across the input texts.
 This parallel approach enables faster training and inference, making CNN-based TTS particularly appealing for real-time and low-latency applications.
@@ -76,7 +122,20 @@ Furthermore, by stacking multiple convolutional layers with varying kernel sizes
 [ParaNet [123]](../../Models/Acoustic/2019.05.21_ParaNet.md) also utilizes a RNN model to achieve sequence-to-sequence mel-spectrogram generation.
 It uses a non-autoregressive architecture, which enables significantly faster inference by predicting multiple time steps simultaneously.
 
+</details>
+<br>
+
+和 RNN 逐帧处理序列数据不同, CNN 通过对输入文本应用滤波器来一次性处理整个序列.
+这种并行方法的训练和推理速度更快, 使得基于 CNN 的 TTS 特别适合实时和低延迟应用.
+此外, 通过堆叠多个具有不同卷积核大小或膨胀率的卷积层, CNN 可以捕获短期和长期依赖, 对于自然听感语音合成至关重要.
+- [Deep Voice [16] [122]](../../Models/TTS0_System/2017.02.25_DeepVoice.md) 是百度提出的首个卓越的基于 CNN 的 TTS 模型, 它直接从音素或字符输入生成梅尔频谱图.
+- [ParaNet [123]](../../Models/Acoustic/2019.05.21_ParaNet.md) 也使用 CNN 模型来实现序列到序列的梅尔频谱图生成.
+它使用非自回归架构, 这使得多步预测可以显著加快推理速度.
+
 ### Transformer-Based Models: 基于 Transformer 的模型
+
+<details>
+<summary>展开原文</summary>
 
 [Transformer model [124]](../../Models/_Transformer/2017.06.12_Transformer.md) uses self-attention layers to capture relationships within the input sequence, making them well-suited for tasks requiring an understanding of global contexts, such as prosody and rhythm in TTS.
 Transformer-based TTS models often employ an encoder-decoder architecture, where the encoder processes linguistic information (e.g., phonemes or text) and captures contextual relationships, and the decoder generates acoustic features (like mel-spectrograms) from these encoded representations, later converted to waveforms by a vocoder.
@@ -86,23 +145,73 @@ It utilizes a standard encoder-decoder transformer architecture and relies on mu
 It introduces a length regulator to align text with output frames, enabling the control of phoneme duration.
 [FastSpeech2 [76]](../../Models/Acoustic/2020.06.08_FastSpeech2.md) extends FastSpeech by adding pitch, duration, and energy predictors, resulting in more expressive and natural-sounding speech.
 
+</details>
+<br>
+
+[Transformer [124]](../../Models/_Transformer/2017.06.12_Transformer.md) 模型使用自注意力层来捕获输入序列内的联系, 适合需要理解全局上下文的任务, 例如 TTS 中的韵律和节奏.
+基于 Transformer 的 TTS 模型通常采用编码器-解码器架构, 编码器处理语言信息 (如音素或文本) 并捕获上下文关系, 解码器生成声学特征 (如梅尔频谱图), 随后由声码器转换为波形.
+- [TransformerTTS [125]](../../Models/Acoustic/2018.09.19_TransformerTTS.md) 是首先使用 Transformer 从文本合成语音的 TTS 模型之一, 它采用标准的编码器-解码器 Transformer 架构, 并依赖多头自注意力机制来建模长期依赖, 这有助于保持语音的一致性和自然流动.
+- [FastSpeech [15]](../../Models/Acoustic/2019.05.22_FastSpeech.md) 是一种非自回归模型, 旨在克服自回归 Transformer 在 TTS 中的限制, 实现更快的语音合成.
+它引入长度调节器来对齐文本和输出帧, 使得音素时长的控制成为可能.
+- [FastSpeech2 [76]](../../Models/Acoustic/2020.06.08_FastSpeech2.md) 扩展了 FastSpeech, 增加了音高, 时长, 能量预测器, 产生更富有表现力和听感自然的语音.
+
 ### LLM-Based Models: 基于大语言模型的模型
+
+<details>
+<summary>展开原文</summary>
 
 LLMs ([BERT [126]](../../Models/TextLM/2018.10.11_BERT.md); [GPT-3 [97]](../../Models/TextLM/2020.05.28_GPT-3.md); [LLaMA [11]](../../Models/TextLM/2023.02.27_LLaMA.md); [Mistral [26]](../../Models/TextLM/2023.10.10_Mistral-7B.md)), known for their large-scale pre-training on text data, have shown remarkable capabilities in natural language understanding and generation.
 LLM-based TTS models generally use a text description to guide the mel-spectrogram generation, where the acoustic model processes the input text to generate acoustic tokens that capture linguistic and contextual information, such as tone, sentiment, and prosody.
-For example, PromptTTS~\cite{guo2023prompttts} [101] uses a textual prompt encoded by [BERT [126]](../../Models/TextLM/2018.10.11_BERT.md) to guide the acoustic model on the timbre, tone, emotion, and prosody desired in the speech output.
+For example, [PromptTTS [101]](../../Models/Acoustic/2022.11.22_PromptTTS.md) uses a textual prompt encoded by [BERT [126]](../../Models/TextLM/2018.10.11_BERT.md) to guide the acoustic model on the timbre, tone, emotion, and prosody desired in the speech output.
 PromptTTS first generates mel-spectrograms with token embeddings and then converts them to audio using a vocoder.
-InstructTTS [105]~\cite{yang2024instructtts} generates expressive and controllable speech using natural language style prompts.
+[InstructTTS [105]](../../Models/Acoustic/2023.01.31_InstructTTS.md) generates expressive and controllable speech using natural language style prompts.
 It leverages discrete latent representations of speech and integrates natural language descriptions to guide the synthesis process, which bridges the gap between TTS systems and natural language interfaces, enabling fine-grained style control through intuitive prompts.
+
+</details>
+<br>
+
+大语言模型 ([BERT [126]](../../Models/TextLM/2018.10.11_BERT.md); [GPT-3 [97]](../../Models/TextLM/2020.05.28_GPT-3.md); [LLaMA [11]](../../Models/TextLM/2023.02.27_LLaMA.md); [Mistral [26]](../../Models/TextLM/2023.10.10_Mistral-7B.md)) 以它们在文本数据上的大规模预训练而著称, 在自然语言理解和生成方面展现出了惊人的能力.
+基于大语言模型的 TTS 模型通常使用文本描述来引导梅尔频谱生成, 其中声学模型处理输入文本来生成声学 Token 以捕获语言和上下文信息, 例如声调, 感情, 以及韵律.
+- [PromptTTS [101]](../../Models/Acoustic/2022.11.22_PromptTTS.md) 使用 [BERT [126]](../../Models/TextLM/2018.10.11_BERT.md) 编码的文本提示来引导声学模型生成具有特定音色, 声调, 情感, 以及韵律的语音输出.
+PromptTTS 首先使用 Token 嵌入生成梅尔频谱, 随后使用声码器将其转换为音频.
+- [InstructTTS [105]](../../Models/Acoustic/2023.01.31_InstructTTS.md) 使用自然语言风格提示来生成具有丰富表现力和可控性的语音.
+它利用语音的离散潜在表示, 并集成自然语言描述以引导合成过程, 这将 TTS 系统与自然语言接口之间的差距缩小, 使得通过直观的提示实现细粒度的风格控制成为可能.
 
 ### Other Acoustic Models: 其他声学模型
 
-In TTS, GANs [127] [128] [129] ~\cite{lee2021multi,ma2018neural,guo2019new}, VAEs~\cite{hsu2018hierarchical,[Zhang et al. [18]](../../Models/_Full/2018.12.11_Learning_Latent_Representations_for_Style_Control_and_Transfer_in_End-to-End_Speech_Synthesis.md)} [130], and diffusion models ([Diff-TTS [113]](../../Models/Acoustic/2021.04.03_Diff-TTS.md); [131])~\cite{popov2021gradtts} can also be used as acoustic models.
-Flow-based methods~\cite{miao2020flow,kim2020glow} [132] [133] are also popular in waveform generation.
+<details>
+<summary>展开原文</summary>
+
+In TTS, GANs ([Multi-SpectroGAN [127]](../../Models/Acoustic/2020.12.14_Multi-SpectroGAN.md); [Ma et al. (2018) [128]](../../Models/Acoustic/TTS-GAN.md); [Guo et al. (2019) [129]](../../Models/Acoustic/2019.04.09_A_New_GAN-Based_End-to-End_TTS_Training_Algorithm.md)), VAEs ([Zhang et al. [18]](../../Models/Acoustic/2018.12.11_Learning_Latent_Representations_for_Style_Control_and_Transfer_in_End-to-End_Speech_Synthesis.md); [GMVAE-Tacotron [130]](../../Models/Acoustic/2018.10.16_GMVAE-Tacotron.md)), and diffusion models ([Diff-TTS [113]](../../Models/Acoustic/2021.04.03_Diff-TTS.md); [Grad-TTS [131]](../../Models/Acoustic/2021.05.13_Grad-TTS.md)) can also be used as acoustic models.
+Flow-based methods ([Flow-TTS [132]](../../Models/Acoustic/2020.04.09_Flow-TTS.md); [Glow-TTS [133]](../../Models/Acoustic/2020.05.22_Glow-TTS.md)) are also popular in waveform generation.
 Refer to the survey paper from [Survey by Tan et al. (2021) [42]](../2021.06.29_A_Survey_on_Neural_Speech_Synthesis_63P/Main.md) for more details.
 
 The choice of an acoustic model depends on the specific requirements and is a trade-off between synthesis quality, computational efficiency, and flexibility.
 For real-time applications, CNN-based or lightweight transformer-based models are preferable, while for high-fidelity, expressive speech synthesis, transformer-based and LLM-based models are better suited.
+
+</details>
+<br>
+
+在 TTS 中, 还有一些其他声学模型:
+- 基于 GAN:
+  - [Multi-SpectroGAN [127]](../../Models/Acoustic/2020.12.14_Multi-SpectroGAN.md);
+  - [Ma et al. (2018) [128]](../../Models/Acoustic/TTS-GAN.md);
+  - [Guo et al. (2019) [129]](../../Models/Acoustic/2019.04.09_A_New_GAN-Based_End-to-End_TTS_Training_Algorithm.md);
+- 基于 VAE:
+  - [Zhang et al. [18]](../../Models/Acoustic/2018.12.11_Learning_Latent_Representations_for_Style_Control_and_Transfer_in_End-to-End_Speech_Synthesis.md);
+  - [GMVAE-Tacotron [130]](../../Models/Acoustic/2018.10.16_GMVAE-Tacotron.md);
+- 基于扩散:
+  - [Diff-TTS [113]](../../Models/Acoustic/2021.04.03_Diff-TTS.md);
+  - [Grad-TTS [131]](../../Models/Acoustic/2021.05.13_Grad-TTS.md);
+- 基于流:
+  - [Flow-TTS [132]](../../Models/Acoustic/2020.04.09_Flow-TTS.md);
+  - [Glow-TTS [133]](../../Models/Acoustic/2020.05.22_Glow-TTS.md);
+
+可以从 [Survey by Tan et al. (2021) [42]](../2021.06.29_A_Survey_on_Neural_Speech_Synthesis_63P/Main.md) 获得更多细节.
+
+声学模型的选择取决于具体需求, 是合成质量, 计算效率和灵活性之间的权衡.
+- 对于实时应用, 基于 CNN 或轻量 Transformer 的模型更适合;
+- 对于高保真, 表达性语音合成, 基于 Transformer 和 LLM 的模型更适合.
 
 ## C·Speech Vocoders: 语音声码器
 
@@ -197,7 +306,7 @@ The advantages of discrete tokens are:
 2) Discrete tokens often allow TTS systems to require fewer samples to learn and generalize, as the representations are compact and simplified.
 3) Using discrete tokens simplifies cross-modal TTS applications like voice cloning or translation-based TTS, as they map well to text-like representations such as LLM tokens.
 
-LLM-based~\cite{wang2024maskgct,zhou2024voxinstruct,ji2024controlspeech,yang2024instructtts} and zero-shot TTS methods~\cite{[CosyVoice [17]](../../Models/SpeechLM/2024.07.07_CosyVoice.md); [MaskGCT]wang2024maskgct,ju2024naturalspeech3} often adopt discrete tokens as their acoustic features.
+LLM-based~\cite{wang2024maskgct,zhou2024voxinstruct,ji2024controlspeech,[InstructTTS [105]](../../Models/Acoustic/2023.01.31_InstructTTS.md)} and zero-shot TTS methods~\cite{[CosyVoice [17]](../../Models/SpeechLM/2024.07.07_CosyVoice.md); [MaskGCT]wang2024maskgct,ju2024naturalspeech3} often adopt discrete tokens as their acoustic features.
 However, discrete representation learning may result in information loss or lack the nuanced details that can be captured in continuous representations.
 
 Table~\ref{tab:sec5_controllable_methods_ar} and~\ref{tab:sec5_controllable_methods_nar} summarize the types of acoustic features of representative methods.
