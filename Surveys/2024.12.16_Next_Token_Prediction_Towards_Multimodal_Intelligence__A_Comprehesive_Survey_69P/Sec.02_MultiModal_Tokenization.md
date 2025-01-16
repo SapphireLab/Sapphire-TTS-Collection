@@ -427,3 +427,68 @@ DreamLLM~\citep{dreamllm} uses a linear layer, whereas Emu~\citep{sun2023emu1} a
 ## 2.5·Continuous Tokenization for Different Modalities: 不同模态的连续分词
 
 <a id="Section.2.5"></a>
+
+While the aforementioned workflow and categorization outline a general approach to continuous multimodal tokenization, research indicates that employing modality-specific encoders, tailored to each modality, can significantly enhance performance~\citep{navit, fixres, anymal}.
+Given the unique characteristics of different modalities, these approaches introduce specific inductive biases into the tokenization process.
+
+### 2.5.1·Images: 图像
+
+
+For images, specific research directions include but are not limited to: \textbf{image augmentation}, \textbf{resolution and aspect ratio} and \textbf{heterogeneous images}.
+
+(1) Image Augmentation: This involves enhancing image representation using elements like depth, edge, and segmentation~\citep{prismer, sam, samclip}.
+Prismer~\citep{prismer}, for instance, introduces features beyond traditional RGB patches, such as depth and normal patchification.
+These features are compressed with a shared experts resampler before being integrated by a unified image encoder.
+SAM-CLIP~\citep{samclip} leverages SAM~\citep{sam} and the CLIP text encoder for distillation training, boosting the semantic and spatial comprehension of the image encoder.
+
+(2) Resolution and Aspect Ratio: This strategy includes support for high-resolution images, multi-resolution capabilities, and arbitrary aspect ratios~\citep{msvit, navit, fuyu, llava-uhd, ureader}.
+For example, Fuyu~\citep{fuyu} uses raw pixels as image encoding inputs for the LLM backbone via linear projection, employing a special image newline token for delineating raster-ordered patches.
+This enables support for various resolutions and aspect ratios.
+MS-ViT~\citep{msvit} suggests varying patchification based on image region complexity, introducing a gate mechanism to mark tokens needing finer patchification, which then undergoes encoding after position encoding interpolation.
+
+(3) Heterogeneous Images: This includes encoding methods for specific image types like vector images, diagrams, charts, and PDFs~\citep{layoutlm, textmonkey, ureader}.
+Document images, for example, require detailed observation, as seen in TextMonkey~\citep{textmonkey}, which splits large document images into smaller sub-images.
+Each sub-image is encoded individually, and trainable shifted attention layers are added post-frozen ViT layers for interactive representation across sub-images.
+These are then compressed and fed into the LLM backbone via an image and token resampler.
+
+### 2.5.2·Audio: 音频
+
+Recently, MELLE~\citep{meng2024autoregressive} indicates that predicting continuous tokens in an NTP manner can generate audio with high quality and naturalness comparable to ground truth.
+Traditionally, audio frames are converted from the temporal domain to the frequency domain using the Short-Time Fourier Transform (STFT)~\cite{griffin1984signal} or the Fast Fourier Transform (FFT)~\cite{duhamel1990fast}.
+The magnitude of the Fourier-transformed frames is modeled as spectrogram, which is a 2D image showing how the frequency content of the signal evolves over time.
+
+Spectrograms or other transformations of raw audio signals are additionally going through the feature selection pipeline before converting into discrete tokens.
+Mel-Frequency Cepstral Coefficients (MFCCs)~\cite{furui1986speaker} extracts coefficients that represent the short-term power spectrum of sound and is one of the most common features used in speech recognition.
+Mel-spectrogram~\cite{furui1986speaker} converts the spectrogram to the mel scale, which is more perceptually relevant to human hearing.
+These continuous features are commonly used in audio generation tasks.
+
+Pre-trained foundation models, typically learned in a self-supervised manner on large-scale corpora, have emerged as powerful speech and audio representation extractors~\citep{latif2023sparks}.
+To obtain general speech features, wav2vec 2.0~\citep{baevski2020wav2vec} masks speech input in the latent space and addresses a contrastive task defined over quantized latent representations that are learned simultaneously.
+data2vec~\citep{baevski2022data2vec} biases the query-key attention scores with a penalty proportional to their distance.
+HuBERT~\cite{hsu2021hubert} employs an offline clustering step to provide aligned target labels for a BERT-like prediction loss, which is applied solely on the masked regions.
+WavLM~\cite{chen2022wavlm} introduces denoising in pretraining, jointly with regular masked speech prediction, as HuBERT.
+Whisper~\citep{radford2023robust}  is a speech recognition model characterized by an attention-based encoder-decoder architecture, trained on web-scale labeled speech data.
+It is increasingly being employed as a foundational speech model, extending its applications beyond speech recognition tasks~\citep{hu2024wavllm,tang2023salmonn,meng24c_interspeech,meng2024llm}.
+
+For continuous tokenization of audio, AST~\citep{ast} uses a convolution-free pure-transformer architecture to extract features for audio classification, drawing insights from ViT~\citep{vit}.
+Inspired by CLIP~\citep{radford2021clip}, CLAP~\citep{clap} introduces a contrastive language-audio pre-training task to learn text-enhanced audio representations using supervised audio and text pairs.
+Fine-tuned based on a pre-trained CLIP model, Wav2CLIP~\citep{wu2022wav2clip} and AudioCLIP~\citep{guzhov2022audioclip} incorporate an additional audio encoder using supervised pairs of audio and class labels.
+Audio-MAE~\citep{huang2022masked} adopts a Transformer-based encoder-decoder framework to learn audio representations.
+Similar to MAE, it uses a reconstruction pre-training task where the decoder is tasked with reconstructing masked patches from the encoded information of the unmasked patches.
+BEATs~\citep{chen2022beats} introduces a self-distilled tokenizer that converts continuous audio signals into discrete labels, facilitating classic mask and discrete label prediction pre-training.
+
+### 2.5.3·Video: 视频
+
+Video can be viewed as a sequence of images (frames) over time, making the modeling of temporal relationships between these frames a central focus.
+There are two common approaches to this modeling: post-temporal fusion and full-temporal fusion.
+
+In the case of \textbf{post-temporal fusion}, models such as CLIP4Clip~\citep{luo2022clip4clip} and CLIPBERT~\citep{lei2021less} first independently encode each frame using an image encoder.
+They then employ lightweight pooling, convolution, and attention mechanisms to temporally fuse the features from all frames.
+The advantage of this approach lies in its ability to leverage pre-trained image encoders, thereby reducing the computational overhead associated with adapting to video data.
+However, a significant drawback is its limited capacity to adequately model features in the temporal dimension.
+
+On the other hand, \textbf{full spatial-temporal fusion} models, like Temporal 3D ConvNets~\citep{diba2017temporal}, VideoMAE~\citep{tong2022videomae}, and ViViT~\citep{arnab2021vivit}, utilize 3D convolutions or 3D attention structures, allowing for comprehensive interaction among inputs in the spatio-temporal dimension.
+This enables better modeling of dynamic changes in temporal order, effectively capturing the motion of objects and backgrounds.
+However, this approach requires substantial 3D computation, prompting common strategies such as decoupling temporal and spatial self-attention~\citep{bertasius2021space, ren2023testa} and implementing sparse 3D attention~\citep{lin2022swinbert} to enhance computational efficiency.
+
+Recent advancements, such as TimeChat~\citep{ren2024timechat} and NumPro~\citep{wu2024number}, have explored the integration of timestamp information into continuous video tokens, facilitating explicit time-vision associations for improved temporal grounding and reasoning.
