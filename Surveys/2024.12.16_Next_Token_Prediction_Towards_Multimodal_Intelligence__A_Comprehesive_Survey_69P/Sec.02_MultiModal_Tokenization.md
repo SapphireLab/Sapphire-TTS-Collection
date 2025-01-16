@@ -1,11 +1,30 @@
 # Sec.02·MultiModal Tokenization: 多模态分词
 
+<details>
+<summary>展开原文</summary>
+
 Tokenization is the first and a fundamental step for multimodal sequential modeling under the next token prediction framework.
 It decomposes information from various sources, such as images, videos, and audio clips, into a sequence of minimal, manageable units known as tokens for the NTP model to learn.
 Table.02 provides an overview of the tokenizers used across various modalities in recent research.
 
 Despite being derived from various modalities, these tokenization methods can all be categorized into two prototypes: **discrete tokenization**  and **continuous tokenization**.
 In this section, we will initially introduce the general definition and basics techniques of training multimodal tokenizers ([Section.2.1](#Section.2.1)), then the fundamentals and applications of discrete tokens ([Section.2.2](#Section.2.2), [Section.2.3](#Section.2.3)) and continuous tokens ([Section.2.4](#Section.2.4), [Section.2.5](#Section.2.5)) in NTP framework.
+
+</details>
+<br>
+
+在 **Next Token Prediction (NTP)** 框架下, Tokenization 是多模态序列建模的第一且基础的步骤.
+它将不同来源的信息 (如图像, 视频, 音频片段) 分解为最小的可管理的单元即 Token 组成的序列, 以供 NTP 模型学习.
+表格 02 总结了近期研究中不同模态所使用的 Tokenizers.
+
+尽管来源于各种模态, 这些 Tokenization 方法可以分为两种原型: **离散 Tokenization** 和**连续 Tokenization**.
+
+在本节中:
+- [2.1 节](#Section.2.1)首先介绍一般定义和训练多模态 Tokenizers 的基础技术;
+- [2.2 节](#Section.2.2)介绍离散 Tokens 的基本原理;
+- [2.3 节](#Section.2.3)介绍离散 Tokens 的应用;
+- [2.4 节](#Section.2.4)介绍连续 Tokens 的基本原理;
+- [2.5 节](#Section.2.5)介绍连续 Tokens 的应用.
 
 ## 2.1·Tokenization of Different Modalities: 不同模态的分词
 
