@@ -30,15 +30,30 @@ In this section, we will initially introduce the general definition and basics t
 
 <a id="Section.2.1"></a>
 
+<details>
+<summary>展开原文</summary>
+
 We first define the tokenization process as a function $f$ that maps a sample $x$ from the raw multimodal space $X$ to a representation $z$ in the tokenizer's output representation space $Z_f$.
 
 $$
-f(x) = z,
+f(x) = z,\tag{1}
 $$
 
 where $x\in X$ and $z\in Z_f$.
 
+</details>
+<br>
+
+我们首先定义 Tokenization 过程为一个函数 $f$, 它将来自原始多模态空间 $X$ 的样本 $x$ 映射到 Tokenizer 的输出表示空间 $Z_f$ 中的表示 $z$.
+
+$$
+f(x) = z,\ x\in X,\ z\in Z_f.\tag{1}
+$$
+
 ### 2.1.1·Tokenizer Type: 分词器类型
+
+<details>
+<summary>展开原文</summary>
 
 As illustrated in Fig.04, tokenizers for multimodal information can be categorized into two types: discrete and continuous.
 This classification is based on how tokens are derived from the original data.
@@ -49,8 +64,8 @@ In contrast, continuous tokenization does not involve quantization, resulting in
 
 **Discrete**
 
-In Equation~\ref{eq:tokenization}, a discrete token implies that the representation space $Z_f$ comprises a finite number of discrete symbols.
-The output space is called the codebook $C = \{c_1, c_2, ..., c_N\}$, where $c_i \in \mathbb{R}^0$, and each representation $z$ is composed of codes from this codebook, i.e., $z = \{z_1, z_2, ..., z_n\}$ with $z_i \in C$.
+In Equation.1, a discrete token implies that the representation space $Z_f$ comprises a finite number of discrete symbols.
+The output space is called the codebook $C = \{c_1, c_2, \cdots, c_N\}$, where $c_i \in \mathbb{R}^0$, and each representation $z$ is composed of codes from this codebook, i.e., $z = \{z_1, z_2, \cdots, z_n\}$ with $z_i \in C$.
 Language tokens are inherently discrete because they originate from a finite vocabulary.
 Each word or subword unit is mapped to a unique token from this predefined set.
 In contrast, modalities such as audio and images exist in continuous, high-dimensional spaces.
@@ -59,18 +74,57 @@ To process these modalities within the same framework (i.e., NTP) as for discret
 Quantization is a process that maps values from a continuous space to a discrete space, typically resulting in a much smaller representation space.
 It is a default operation when a discrete representation is desired for tokenizing multimodal information.
 Quantization is often combined with auto-encoder techniques to reduce the size of the latent space.
-Typical examples include VQ-series tokenizers such as VQVAE~\cite{vq} and VQGAN~\cite{Esser2020TamingTF}, which inherently feature discrete representations.
-Details of the quantization process are introduced in Section~\ref{sec:discrete tokens}.
+Typical examples include VQ-series tokenizers such as [VQ-VAE](../../Modules/VQ/2017.11.02_VQ-VAE.md) and [VQGAN](../../Modules/VQ/2020.12.17_VQGAN.md), which inherently feature discrete representations.
+Details of the quantization process are introduced in [Section.2.2](#Section.2.2).
 
 **Continuous**
 
 In contrast to discrete tokenization, continuous tokenization represents data using a continuous space where tokens are derived directly from the data's inherent properties without enforcing quantization into a predefined codebook.
-In this approach, the representation space \( Z_f \) is not limited to a finite set of predetermined codes; rather, it preserves the continuous nature of the data.
-Each token \( z \) is sampled from a continuous distribution, allowing for a more nuanced and flexible representation that can capture the subtleties of the input data.
+In this approach, the representation space $Z_f$ is not limited to a finite set of predetermined codes; rather, it preserves the continuous nature of the data.
+Each token $z$ is sampled from a continuous distribution, allowing for a more nuanced and flexible representation that can capture the subtleties of the input data.
 Continuous tokenization is particularly advantageous for modalities that naturally exist in a continuous form and require a rich representational capacity to capture their complex patterns.
 For instance, in audio and visual data, continuous representations can effectively retain fine-grained temporal and spatial information that might be lost during discrete tokenization.
 
-### 2.1.2·Features of Tokenizers
+</details>
+<br>
+
+如图 04 所示, 多模态信息的 Tokenizer 可以分为两种类型: 离散和连续.
+这一分类是基于 Token 如何从原始数据中产生.
+两种 Tokenization 方法都将原始信息编码到潜在表示空间中, 但它们的方式不同.
+
+离散 Tokenization 在潜在空间上进行量化, 利用固定大小的离散空间 (类似语言模型的词表).
+连续 Tokenization 则与之相反, 不涉及到量化, 使得表示空间更大.
+
+**离散 (Discrete)**
+
+在 Tokenization 函数 $f$ 中, 一个离散 Token 意味着表示空间 $Z_f$ 由有限数量的离散符号组成.
+输出空间称为**码本 Codebook** $C=\{c_1,c_2,\cdots,c_N\}$, 其中 $c_i\in \mathbb{R}^0$.
+每个表示 $z$ 由该码本中的编码组成, 即 $z=\{z_1,z_2,\cdots,z_n\}, z_i\in C$.
+
+语言 Token 天然地离散, 因为它们来自有限的词表.
+每个单词或子词单元被映射到这一预定义集中的唯一 Token.
+与此不同, 例如音频和图像等模态则存在于连续高维空间中.
+为了在相同框架 (即 NTP) 中如离散语言 Token 一样处理这些模态, 它们需要被转换为离散表示.
+
+量化 (Quantization) 是指将连续空间中的值映射到离散空间的过程, 通常会使得表示空间更小.
+当需要对多模态信息进行 Tokenization 以获得离散表示时, 量化是默认操作.
+量化通常和自编码器技术结合使用, 以减小潜在空间的大小.
+
+经典示例包括 VQ 系列 Tokenizers (如 [VQ-VAE](../../Modules/VQ/2017.11.02_VQ-VAE.md), [VQGAN](../../Modules/VQ/2020.12.17_VQGAN.md)) 固有地具有离散表示.
+量化过程的细节在 [2.2 节](#Section.2.2)中介绍.
+
+**连续 (Continuous)**
+
+和离散 Tokenization 不同, 连续 Tokenization 表示数据使用连续空间, 而 Token 则直接从数据本身的性质中产生而不强行量化到预定义的码本.
+在这一方法中, 表示空间 $Z_f$ 不受限于预定义编码的有限集合, 而是保留了数据的连续本质.
+每个 Token $z$ 都从连续分布中采样, 允许更具细微差别和灵活的表示, 能够捕捉输入数据的微妙之处.
+连续 Tokenization 对于自然以连续形式存在并且需要丰富的表示能力来捕捉其复杂模式的模态特别有利.
+例如, 在音频和视觉数据中, 连续表示可以有效地保留细粒度的时空信息, 而在离散 Tokenization 中则可能被削弱.
+
+### 2.1.2·Features of Tokenizers: 分词器特征
+
+<details>
+<summary>展开原文</summary>
 
 Before diving into different tokenization techniques, we summarize the basic two features (Representation and Reconstruction) that an ideal multimodal tokenizer should possess to achieve better understanding and generation capabilities in the NTP framework.
 
@@ -78,16 +132,41 @@ Before diving into different tokenization techniques, we summarize the basic two
 
 Effective representation encodes semantically relevant information into the latent space $Z$ while removing redundant information.
 This is crucial for various downstream tasks that learn a conditional probability $P(Y|X)$ over the label space $Y$, conditioned on the multimodal input space $X$, by replacing it with $P(Y|Z)$.
-Prominent tokenizers known for better representation include language-guided contrastive learning methods such as CLIP~\cite{radford2021clip} and fully self-supervised methods like DINO~\cite{caron2021emerging}.
+Prominent tokenizers known for better representation include language-guided contrastive learning methods such as [CLIP](../../Models/_Basis/2021.02.26_CLIP.md) and fully self-supervised methods like [DINO](../../Models/_Basis/DINO.md).
 
 **Reconstruction Ability**
 
 For generating multimodal information, it is expected that the tokenization function $f$ is invertible or nearly invertible, meaning there is a detokenization function $g$ that can recover the original input from the representation space, satisfying $g(f(x)) = x$ or $g(f(x)) \approx x$.
-Notable works that excel in reconstruction include Auto-Encoder (AE) series models such as Variational Auto-Encoder~\cite{kingma2022autoencoding} (VAE) and VQVAE~\cite{vq}.
+Notable works that excel in reconstruction include Auto-Encoder (AE) series models such as [Variational Auto-Encoder (VAE)](../../Models/_Basis/VAE.md) and [VQ-VAE](../../Modules/VQ/2017.11.02_VQ-VAE.md).
 
 It is important to note that these abilities are not mutually exclusive; their balance depends on the training techniques used.
 
-### 2.1.3·Training Methods for Tokenizers
+</details>
+<br>
+
+在深入讨论不同 Tokenization 技术之前, 我们总结了基础的两个特征 (表示和重构), 一个理想的多模态 Tokenizer 应该具有在 NTP 框架中获得更好的理解和生成能力.
+
+**表示能力 (Representation Ability)**
+
+有效的表示将语义相关的信息编码到潜在空间 $Z$ 中并移除冗余信息.
+这对于各种下游任务来说很重要, 它们通过将潜在空间 $Y$ 上以多模态输入空间 $X$ 为条件的条件概率 $P(Y|X)$ 替换为 $P(Y|Z)$ 来学习.
+
+以更好的表示能力著称的卓越 Tokenizer 包括:
+- 语言引导的对比学习方法 (如 [CLIP](../../Models/_Basis/2021.02.26_CLIP.md));
+- 完全自监督方法 (如 [DINO](../../Models/_Basis/DINO.md)).
+
+**重构能力 (Reconstruction Ability)**
+
+为了生成多模态信息, 我们希望 Tokenization 函数 $f$ 是可逆或几乎可逆的, 意味着有一个 Detokenization 函数 $g$ 可以从表示空间中恢复原始输入, 即 $g(f(x)) = x$ 或 $g(f(x)) \approx x$.
+
+在重构方面值得注意的工作包括自编码器系列 (如[变分自编码器 (VAE)](../../Models/_Basis/VAE.md) 和 [VQ-VAE](../../Modules/VQ/2017.11.02_VQ-VAE.md)).
+
+重要的是需要注意这些能力并不互斥, 它们的平衡取决于所使用的训练技术.
+
+### 2.1.3·Training Methods for Tokenizers: 训练方法
+
+<details>
+<summary>展开原文</summary>
 
 The training methodologies for tokenizers can be categorized into four groups, based on their respective training objectives: Auto-Encoding, Denoising Auto-Encoding, Supervised Training, and Contrastive Learning, as depicted in Figure.05.
 Herein, we provide a summary of the core concepts associated with various tokenizers.
@@ -97,17 +176,17 @@ Herein, we provide a summary of the core concepts associated with various tokeni
 Auto-Encoder (AE) is a type of artificial neural network designed to learn efficient data representations.
 It consists of two main components: an encoder, which maps input data to a latent space with reduced dimensions, and a decoder, which reconstructs the input data from this latent representation.
 The training goal for an Auto-Encoder is to minimize the reconstruction error, ensuring the decoded output closely resembles the original input.
-Variants like Variational Auto-Encoders~\cite{kingma2022autoencoding} (VAEs) use probabilistic approaches to generate more robust and informative embeddings.
+Variants like [Variational Auto-Encoders (VAEs)](../../Models/_Basis/VAE.md) use probabilistic approaches to generate more robust and informative embeddings.
 In multimodal generation models, tokenizers trained with auto-encoder methodologies are used to restore the multimodal input from the latent representation.
-A special case is diffusion models~\cite{dieleman2022diffusion}, which can also be viewed as an Auto-Encoder, enabling generation in a non-autoregressive manner~\cite{li2024autoregressive-without}.
-Discrete tokens are typically generated by quantizing~\citep{rolfe2017discrete} the continuous data representation within the latent space of auto-encoders.
+A special case is [diffusion models [URL]](https://sander.ai/2022/01/31/diffusion.html), which can also be viewed as an Auto-Encoder, enabling generation in a non-autoregressive manner ([MAR](../../Models/CV/2024.06.17_MAR.md)).
+Discrete tokens are typically generated by quantizing ([Discrete VAE](../../Models/_Basis/2016.09.07_Discrete_VAE.md)) the continuous data representation within the latent space of auto-encoders.
 
 **Denoising Auto-Encoding**
 
 A Denoising Auto-Encoder (DAE) builds on the basic auto-encoder concept by introducing noise into the input data and training the model to reconstruct the original, noise-free version.
 This approach encourages the model to learn robust features capable of handling data corruption, thereby improving its generalization capabilities.
-In transformer-based models, a common technique known as Masked Language Modeling~\citep{devlin2019bert} involves masking parts of the input tokens and training the model to predict them, which can be viewed as a special type of denoising auto-encoder.
-This method has become mainstream across various modalities, popularized in language by BERT~\citep{devlin2019bert}, in vision by BEiT~\citep{beit} and MAE~\citep{he2021maskedautoencodersscalablevision}, and in audio by HuBERT~\citep{hsu2021hubert}.
+In transformer-based models, a common technique known as Masked Language Modeling ([BERT](../../Models/TextLM/2018.10.11_BERT.md)) involves masking parts of the input tokens and training the model to predict them, which can be viewed as a special type of denoising auto-encoder.
+This method has become mainstream across various modalities, popularized in language by [BERT](../../Models/TextLM/2018.10.11_BERT.md), in vision by [BEiT](../../Models/CV/BEiT.md) and [MAE](../../Models/CV/MAE.md), and in audio by [HuBERT](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md).
 
 **Supervised Pretraining**
 
@@ -116,17 +195,74 @@ These models are initially trained on large-scale datasets to capture specific f
 In the vision modality, supervised tasks include semantic segmentation, object detection, and depth estimation.
 Models trained for these tasks, such as SAM~\citep{sam,samclip}, ViTDet~\citep{vitdet}, and MiDaS~\citep{midas}, are later used in LMMs as tokenizers, like in DeepSeek-VL~\citep{DeepSeek-VL} and Cambrain-1~\citep{Cambrian-1}, to extract diverse visual features from input data.
 In the audio modality, Whisper~\citep{radford2023robust} is trained with 680,000 hours of labeled audio data in a weakly supervised manner.
-Thanks to its robust and powerful speech feature extraction capabilities, Whisper is widely used in Speech LLMs~\cite{tang2023salmonn, chu2023qwen, hu2024wavllm} for extracting speech embeddings.
+Thanks to its robust and powerful speech feature extraction capabilities, Whisper is widely used in Speech LLMs ([SALMONN](../../Models/SpokenDialogue/2023.10.20_SALMONN.md); [Qwen-Audio](../../Models/SpokenDialogue/2023.11.14_Qwen-Audio.md); [WavLLM](../../Models/SpeechLM/2024.03.31_WavLLM.md)) for extracting speech embeddings.
 
 **Contrastive Learning**
 
 Contrastive Learning is a self-supervised learning method that focuses on learning representations by distinguishing between positive and negative pairs.
 The core idea is to bring similar (positive) examples closer together in the representation space while pushing dissimilar (negative) examples further apart.
 The items in each pair can belong to the same or different modalities.
-For example, DINO~\citep{caron2021emerging} uses image-image pairs to enhance vision representation, while CLIP~\citep{radford2021clip} employs text-image pairs to improve language alignment within vision representation.
+For example, [DINO](../../Models/_Basis/DINO.md) uses image-image pairs to enhance vision representation, while [CLIP](../../Models/_Basis/2021.02.26_CLIP.md) employs text-image pairs to improve language alignment within vision representation.
 
-Currently, LMMs that only feature multimodal understanding capabilities, such as InstructBLIP~\cite{dai2023instructblip} and LLaVA~\cite{liu2023llava}, opt for tokenizers with superior representation abilities like CLIP~\citep{radford2021clip}, as they do not require reconstruction of the multimodal information.
+Currently, LMMs that only feature multimodal understanding capabilities, such as InstructBLIP~\cite{dai2023instructblip} and LLaVA~\cite{liu2023llava}, opt for tokenizers with superior representation abilities like [CLIP](../../Models/_Basis/2021.02.26_CLIP.md), as they do not require reconstruction of the multimodal information.
 Conversely, LMMs supporting multimodal generation capabilities tend to choose VQVAE as the tokenizer, exemplified by models like Unified-IO~\cite{lu2022unifiedio}, Chameleon~\cite{chameleonteam2024chameleon}, Emu3~\citep{Emu3}, among others~\citep{wang2024mio, seedllama, wang2022ofa}.
+
+</details>
+<br>
+
+如图 05 所示, Tokenizer 的训练方法可以基于对应的训练目标分为四组:
+- 自编码 (Auto-Encoding)
+- 去噪自编码 (Denoising Auto-Encoding)
+- 监督预训练 (Supervised Pretraining)
+- 对比学习 (Contrastive Learning)
+
+此处我们提供了和各种 Tokenizer 相关的核心概念的总结.
+
+#### 自编码 (Auto-Encoding)
+
+自编码器 (Auto-Encoder, AE) 是一种人工神经网络的类型, 旨在学习有效的数据表示.
+它由两个主要组件组成: 编码器将输入数据映射到具有缩减维度的潜在空间, 解码器从此潜在表示中重构输入数据.
+**自编码器的训练目标是最小化重构误差, 确保解码输出与原始输入尽可能相似**.
+
+如[变分自编码器 (Variational Auto-Encoders, VAEs)](../../Models/_Basis/VAE.md) 等变体, 使用概率方法生成更健壮和更具信息的嵌入.
+
+**在多模态生成模型中, 使用自编码方法训练的 Tokenizer 被用于从潜在表示中恢复多模态输入.**
+
+一个特殊的例子是[扩散模型, 也可以视为自编码器](https://sander.ai/2022/01/31/diffusion.html), 允许以非自回归的方式生成 ([MAR](../../Models/CV/2024.06.17_MAR.md)).
+离散 Token 通常由量化自编码器的潜在空间内的连续数据表示来生成 ([Discrete VAE](../../Models/_Basis/2016.09.07_Discrete_VAE.md)).
+
+#### 去噪自编码 (Denoising Auto-Encoding)
+
+**去噪自编码器 (Denoising Auto-Encoder, DAE)** 构建于基本的自编码器概念之上, 引入噪声到输入数据中, 并训练模型以重构原始, 无噪声版本.
+这种方法鼓励模型学习健壮的特征, 能够处理数据损坏, 从而提高泛化能力.
+
+在基于 Transformer 的模型中, 一种常见的技术称为**掩码语言建模 (Masked Language Modeling, MLM)** ([BERT](../../Models/TextLM/2018.10.11_BERT.md)), 它通过掩盖部分输入 Token 并训练模型来预测它们, 这可以视为一种特殊的去噪自编码器.
+这一方法成为各个模态中的主流:
+- 语言领域的 [BERT](../../Models/TextLM/2018.10.11_BERT.md);
+- 视觉领域的 [BEiT](../../Models/CV/BEiT.md) 和 [MAE](../../Models/CV/MAE.md);
+- 音频领域的 [HuBERT](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md).
+
+#### 监督预训练 (Supervised Pretraining)
+
+一些 Tokenizer 在具体任务上使用监督学习进行预训练, 旨在通过带标注数据集获得特定任务的表示.
+这些模型一开始在大规模数据集上训练以捕获输入数据的具体特征.
+
+- 在视觉模态中, 监督任务包括语义分割, 目标检测, 深度估计.
+针对这些任务训练的模型, 如 SAM~\citep{sam,samclip}, ViTDet~\citep{vitdet}, 和 MiDaS~\citep{midas}, 随后作为 LMMs 中的 Tokenizer 使用 (如 DeepSeek-VL~\citep{DeepSeek-VL}, Cambrain-1~\citep{Cambrian-1}), 来从输入数据中提取多样化的视觉特征.
+
+- 在音频模态中, Whisper 以弱监督的方式在 680K 小时的标注音频数据上训练. 由于其健壮且强大的语音特征提取能力, Whisper 被广泛用于语音 LLMs (如 [SALMONN](../../Models/SpokenDialogue/2023.10.20_SALMONN.md); [Qwen-Audio](../../Models/SpokenDialogue/2023.11.14_Qwen-Audio.md); [WavLLM](../../Models/SpeechLM/2024.03.31_WavLLM.md)) 提取语音嵌入.
+
+#### 对比学习 (Contrastive Learning)
+
+**对比学习 (Contrastive Learning, CL)** 是一种自监督学习方法, 着重于通过区分正例和负例来学习表示.
+核心思想是将相似的示例 (正例) 在表示空间中靠近, 而将不相似的示例 (负例) 推远.
+每对中的项可以属于同一或不同模态.
+- [DINO](../../Models/_Basis/DINO.md) 使用图像-图像对来增强视觉表示;
+- [CLIP](../../Models/_Basis/2021.02.26_CLIP.md) 使用文本-图像对来增强视觉表示中的语言对齐.
+
+目前, 仅具备多模态理解能力的 LMM (如 InstructBLIP~\cite{dai2023instructblip}; LLaVA~\cite{liu2023llava}) 选择使用具有更强表示能力的 Tokenizer (如 [CLIP](../../Models/_Basis/2021.02.26_CLIP.md)), 因为它们不需要重建多模态信息.
+
+相反, 支持多模态生成能力的 LMM 则倾向于选择 VQ-VAE 作为 Tokenizer, 例如 Unified-IO~\cite{lu2022unifiedio}, Chameleon~\cite{chameleonteam2024chameleon}, Emu3~\citep{Emu3} 和 ~\citep{wang2024mio, seedllama, wang2022ofa}.
 
 ## 2.2·Discrete Tokenization Basics: 离散分词基础
 
@@ -184,7 +320,7 @@ In the realm of vision, perceptual loss~\citep{johnson2016perceptuallossesrealti
 VQGAN~\citep{cao2023efficientvqgan} incorporates a discriminator network to enhance image fidelity by adding an adversarial training objective.
 The role of the discriminator is to discern between the reconstructed and original images, while the VQ-VAE is optimized to deceive the discriminator, thereby improving the quality of the reconstructed images.
 In the audio modality, it is essential to decouple the audio into its acoustic and semantic components to achieve both powerful audio reconstruction quality and LLM modeling.
-SpeechTokenizer~\citep{zhang2023speechtokenizer} and Mimi~\citep{defossez2024moshi} introduce the loss of semantic distillation at the first layer of Residual VQ, using self-supervised models, such as HuBERT~\citep{hsu2021hubert} and WavLM~\citep{chen2022wavlm}.
+SpeechTokenizer~\citep{zhang2023speechtokenizer} and Mimi~\citep{defossez2024moshi} introduce the loss of semantic distillation at the first layer of Residual VQ, using self-supervised models, such as [HuBERT](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) and WavLM~\citep{chen2022wavlm}.
 
 **Residual Vector Quantization**
 
@@ -266,12 +402,12 @@ This 2D layout differs fundamentally from the straightforward, one-dimensional s
 Given these differences, bridging the gap between text and image modalities in the training of LLMs based on discrete image tokens requires a robust image tokenizer, which must balance the fusion of sufficient alignment with LLM's language ability (referred to as "representation"), the retention of rich original image information (referred to as "reconstruction"), and the efficient use of tokens given the growing inference cost of transformer decoder (referred to as "token efficiency").
 These factors possess a trade-off~\citep{seedllama,seed-tokenizer, magvit2, sun2023generative}, making it crucial for the construction of an image tokenizer to maintain equilibrium among these factors.
 
-In terms of better representation, models like ViT~\citep{vit} are commonly employed, often aligned with a text encoder through contrastive loss~\citep{radford2021clip, peng2022beit}, or aligned with text modalities through generative loss~\citep{coca}.
+In terms of better representation, models like ViT~\citep{vit} are commonly employed, often aligned with a text encoder through contrastive loss~\citep{[CLIP](../../Models/_Basis/2021.02.26_CLIP.md), peng2022beit}, or aligned with text modalities through generative loss~\citep{coca}.
 Additionally, modules like Q-Former~\citep{li2023blip2} can also be used for image feature transformation~\citep{li2023blip2, seedllama}.
 Consequently, the resultant image features integrate higher-level semantics and gradually compress high-dimensional images into lower-dimensional representations aligned with text.
 While the initial arrangement of image patches follows a raster order, preserving intrinsic sequential relationships, this configuration lacks causal semantics, posing challenges for language modeling.
 
-Regarding reconstruction ability, an image decoder is often layered atop the image encoder to reconstruct the original image from its representation, incorporating reconstruction loss into the training process~\citep{amused, seedllama, lavit, Esser2020TamingTF}.
+Regarding reconstruction ability, an image decoder is often layered atop the image encoder to reconstruct the original image from its representation, incorporating reconstruction loss into the training process~\citep{amused, seedllama, lavit, [VQGAN](../../Modules/VQ/2020.12.17_VQGAN.md)}.
 Training labels typically use the original images, but with advancements in diffusion models, more research is incorporating latents for diffusion models as reconstruction labels~\citep{lavit, seedllama}.
 
 For token efficiency, modules like selectors or mergers for image tokens are utilized to truncate their length (i.e., the number of tokens per image).
@@ -292,19 +428,19 @@ As a traditional companding algorithm, $\mu$-law/A-law algorithm is commonly emp
 While this algorithm projects each audio frame to an 8-bit value, it does not reduce the sampling rate, thereby preserving overlong sequences.
 Self-supervised learned models have shown exceptional performance in various speech-related tasks, sparking interest in clustering their speech representations for speech quantization.
 The vq-wav2vec~\citep{baevski2019vq} uses either a Gumbel-Softmax or online k-means clustering to quantize the SSL-learned dense representation.
-HuBERT~\citep{hsu2021hubert} is trained with a masked prediction task, whose targets are obtained through k-means clustering of learned features from earlier iterations.
+[HuBERT](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) is trained with a masked prediction task, whose targets are obtained through k-means clustering of learned features from earlier iterations.
 Utilizing quantized tokens learned with Self-Supervised Learning (SSL), GSLM~\cite{lakhotia2021gslm} and VQTTS~\citep{du2022vqtts} demonstrate faster speed in speech generation tasks compared with WaveNet.
 Because SSL tokens are extracted with highly abstracted semantics while discarding low-level acoustic information, the reconstruction quality is relatively low, and speaker identity is lost~\citep{borsos2023audiolm}.
 Neural codec models typically apply a VQ-VAE on the raw audios with residual vector quantization, exemplified by SoundStream~\citep{zeghidour2021soundstream} and EnCodec~\citep{encodec}.
 They are originally designed for audio compression, have the capability to encode waveforms into discrete codes and faithfully reconstruct them back into high-quality waveforms.
 Recently, they are widely used in audio generation models such as AudioLM~\citep{borsos2023audiolm}, VALL-E~\citep{wang2023neural} and their variants~\citep{han2024valler,song2024ellav, wang2023viola}, and reach new state-of-the-art performance on various tasks.
 Compared with traditional $\mu$-law/A-law algorithms, codec models can efficiently reduce the length of token sequences.
-It can also maintain multi-scale acoustic information indicating speaker identity compared with highly-abstracted SSL-learned discrete tokens such as HuBERT~\citep{hsu2021hubert} tokens.
+It can also maintain multi-scale acoustic information indicating speaker identity compared with highly-abstracted SSL-learned discrete tokens such as [HuBERT](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) tokens.
 Additionally, the codec models are typically off-the-shelf and lightweight.
 
 Latest works have attempted to impose additional supervision on the discrete codes extracted by codec models.
 The objective is to enhance their ability to extract and encode higher-level semantic information, thereby improving language modeling.
-SpeechTokenizer~\citep{zhang2023speechtokenizer} is an RVQ-based codec model, where its first-layer codebook incorporates semantic information through the semantic distillation process, using HuBERT~\citep{hsu2021hubert} representations as the semantic teacher.
+SpeechTokenizer~\citep{zhang2023speechtokenizer} is an RVQ-based codec model, where its first-layer codebook incorporates semantic information through the semantic distillation process, using [HuBERT](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) representations as the semantic teacher.
 Mimi, used by Moshi~\citep{défossez2024moshispeechtextfoundationmodel}, further improves upon this by replacing the semantic teacher from HuBERT with WavLM~\citep{chen2022wavlm}.
 Additionally, it isolates the first-layer codebook from the RVQ process to achieve better semantic and acoustic disentanglement.
 To enhance the compression rate, WavTokenizer~\citep{ji2024wavtokenizer} is capable of quantizing one-second audio into 75 or 40 tokens with a single quantizer.
@@ -359,16 +495,16 @@ To effectively integrate raw non-textual modality data into Large Language Model
 **Encoding**
 
 The encoding of non-textual modality data aims to capture meaningful features and important nuances that are essential for the understanding of the data.
-This can be achieved through different types of encoders such as Transformer-based encoders~\citep{li2023blip2, liu2023llava, liu2023llava15,zhu2023minigpt4, radford2021clip} or CNN-based encoders~\citep{davinci, zhang2023universal, jiang2023vima, alayrac2022flamingo}.
+This can be achieved through different types of encoders such as Transformer-based encoders~\citep{li2023blip2, liu2023llava, liu2023llava15,zhu2023minigpt4, [CLIP](../../Models/_Basis/2021.02.26_CLIP.md)} or CNN-based encoders~\citep{davinci, zhang2023universal, jiang2023vima, alayrac2022flamingo}.
 There's also an option to go encoder-free~\citep{kim2021vilt, fuyu}, which allows for raw data to be fed directly into the model.
 
 Transformer-based encoders are widely used for their robust representation capabilities and generalizability~\citep{vaswani2017attention, vit}.
 For a non-textual modality sample, the input is initially divided into patches and transformed into a 1D sequence, with each patch represented as a soft token.
 This sequence is then processed through the Transformer's encoder layers, employing self-attention mechanisms to capture relationships between patches.
 Consequently, the model produces a rich representation of the input.
-Typically, there are two types of encoders: (1) unimodal encoders, designed to process information from a single modality~\citep{vit, sam, arnab2021vivit, usm, mert, prismer, beit, liu2021swinTransformer}; and (2) multi-modal encoders, capable of integrating information from multiple modalities~\citep{radford2021clip, imagebind, eva-clip, clap, anymal, imu2clip, coca}.
+Typically, there are two types of encoders: (1) unimodal encoders, designed to process information from a single modality~\citep{vit, sam, arnab2021vivit, usm, mert, prismer, [BEiT](../../Models/CV/BEiT.md), liu2021swinTransformer}; and (2) multi-modal encoders, capable of integrating information from multiple modalities~\citep{[CLIP](../../Models/_Basis/2021.02.26_CLIP.md), imagebind, eva-clip, clap, anymal, imu2clip, coca}.
 For instance, PaLM-E~\citep{driess2023palme}, Unified-IO-2~\citep{lu2023unifiedio}, and PaLI~\citep{pali} use ViT~\citep{vit} encoders trained solely on visual data.
-Conversely, LLaVA~\citep{liu2023llava}, Emu~\citep{sun2023emu1, sun2023generative}, and Qwen-VL~\citep{QwenVL} utilize CLIP~\citep{radford2021clip} or EVA-CLIP~\citep{eva-clip} encoders with contrastive loss to align textual and non-textual representations.
+Conversely, LLaVA~\citep{liu2023llava}, Emu~\citep{sun2023emu1, sun2023generative}, and Qwen-VL~\citep{QwenVL} utilize [CLIP](../../Models/_Basis/2021.02.26_CLIP.md) or EVA-CLIP~\citep{eva-clip} encoders with contrastive loss to align textual and non-textual representations.
 NExT-GPT~\citep{nextgpt}, CoDi-2~\citep{tang2023codi2}, and BuboGPT~\citep{zhao2023bubogpt} employ ImageBind~\citep{imagebind} as their non-textual encoder, aligning various modalities like audio, text, and heat maps with image representations.
 
 In comparison, CNN-based encoders are less frequently used but remain vital due to their flexibility in image resolution generalization~\citep{magvit, magvit2} and ability to capture local features~\citep{jiang2023vima}.
@@ -383,7 +519,7 @@ Moreover, ImageGPT~\citep{imagegpt} trains a decoder-only generative model on ra
 
 After encoding non-textual modality data, we obtain a meaningful representation.
 However, this representation often lacks alignment with the textual embedding space of large language models, leading to a failure in properly understanding these inputs.
-Although multi-modal encoders like CLIP~\citep{radford2021clip} have made strides in narrowing the gap, they still encounter two significant challenges: (1) the presence of redundant continuous tokens~\citep{alayrac2022flamingo, perceiver, li2023blip2}; and (2) a lack of contextual semantics, such as causal semantics, because they are typically trained only with image-caption paired data rather than image-text interleaved data or image-prompt instructional data~\citep{seed-tokenizer, gemini1, laurencon2023obelics, zhu2023multimodal}.
+Although multi-modal encoders like [CLIP](../../Models/_Basis/2021.02.26_CLIP.md) have made strides in narrowing the gap, they still encounter two significant challenges: (1) the presence of redundant continuous tokens~\citep{alayrac2022flamingo, perceiver, li2023blip2}; and (2) a lack of contextual semantics, such as causal semantics, because they are typically trained only with image-caption paired data rather than image-text interleaved data or image-prompt instructional data~\citep{seed-tokenizer, gemini1, laurencon2023obelics, zhu2023multimodal}.
 Therefore, it is crucial to establish a connection between the representation space of non-textual modality data and the LLM textual embedding space.
 There are typically two approaches to construct such a bridge: (1) Slot-based Resampler~\citep{alayrac2022flamingo, li2023blip2}; and (2) Projection~\citep{fuyu, liu2023llava, liu2023llava15,QwenVL}.
 
@@ -484,13 +620,13 @@ These continuous features are commonly used in audio generation tasks.
 Pre-trained foundation models, typically learned in a self-supervised manner on large-scale corpora, have emerged as powerful speech and audio representation extractors~\citep{latif2023sparks}.
 To obtain general speech features, wav2vec 2.0~\citep{baevski2020wav2vec} masks speech input in the latent space and addresses a contrastive task defined over quantized latent representations that are learned simultaneously.
 data2vec~\citep{baevski2022data2vec} biases the query-key attention scores with a penalty proportional to their distance.
-HuBERT~\cite{hsu2021hubert} employs an offline clustering step to provide aligned target labels for a BERT-like prediction loss, which is applied solely on the masked regions.
+[HuBERT](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) employs an offline clustering step to provide aligned target labels for a BERT-like prediction loss, which is applied solely on the masked regions.
 WavLM~\cite{chen2022wavlm} introduces denoising in pretraining, jointly with regular masked speech prediction, as HuBERT.
 Whisper~\citep{radford2023robust}  is a speech recognition model characterized by an attention-based encoder-decoder architecture, trained on web-scale labeled speech data.
-It is increasingly being employed as a foundational speech model, extending its applications beyond speech recognition tasks~\citep{hu2024wavllm,tang2023salmonn,meng24c_interspeech,meng2024llm}.
+It is increasingly being employed as a foundational speech model, extending its applications beyond speech recognition tasks~\citep{[WavLLM](../../Models/SpeechLM/2024.03.31_WavLLM.md); [SALMONN](../../Models/SpokenDialogue/2023.10.20_SALMONN.md),meng24c_interspeech,meng2024llm}.
 
 For continuous tokenization of audio, AST~\citep{ast} uses a convolution-free pure-transformer architecture to extract features for audio classification, drawing insights from ViT~\citep{vit}.
-Inspired by CLIP~\citep{radford2021clip}, CLAP~\citep{clap} introduces a contrastive language-audio pre-training task to learn text-enhanced audio representations using supervised audio and text pairs.
+Inspired by [CLIP](../../Models/_Basis/2021.02.26_CLIP.md), CLAP~\citep{clap} introduces a contrastive language-audio pre-training task to learn text-enhanced audio representations using supervised audio and text pairs.
 Fine-tuned based on a pre-trained CLIP model, Wav2CLIP~\citep{wu2022wav2clip} and AudioCLIP~\citep{guzhov2022audioclip} incorporate an additional audio encoder using supervised pairs of audio and class labels.
 Audio-MAE~\citep{huang2022masked} adopts a Transformer-based encoder-decoder framework to learn audio representations.
 Similar to MAE, it uses a reconstruction pre-training task where the decoder is tasked with reconstructing masked patches from the encoded information of the unmasked patches.
