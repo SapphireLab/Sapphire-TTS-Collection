@@ -234,11 +234,14 @@ This section will explain the unique features of different modalities and showca
 Images can be tokenized into discrete symbols with the previously introduced VQVAE structure.
 Compared to text tokens, images diverge in three fundamental aspects that significantly impact how they should be tokenized:
 
-1. Rich Information Granularity: Unlike text, which primarily encapsulates high-level semantic meaning, images are contain with a myriad of perceptual details.
+1.
+Rich Information Granularity: Unlike text, which primarily encapsulates high-level semantic meaning, images are contain with a myriad of perceptual details.
 These encompass low-level visual elements such as colors, shapes, and textures, alongside more abstract concepts like objects and actions.
-2. Dense Information: Images inhabit a densely packed representational realm, where each pixel, across multiple dimensions including height, width, and color channels (RGB being a common example), carries information.
+2.
+Dense Information: Images inhabit a densely packed representational realm, where each pixel, across multiple dimensions including height, width, and color channels (RGB being a common example), carries information.
 This stands in stark contrast to the discreteness of text in nature, characterized by sequentially arranged words.
-3. Two-Dimensional Spatial Structure: Images are inherently structured in two dimensions, spread across a grid defined by height and width.
+3.
+Two-Dimensional Spatial Structure: Images are inherently structured in two dimensions, spread across a grid defined by height and width.
 This 2D layout differs fundamentally from the straightforward, one-dimensional sequence that characterizes textual data, introducing unique complexities in their processing and analysis.
 
 Given these differences, bridging the gap between text and image modalities in the training of LLMs based on discrete image tokens requires a robust image tokenizer, which must balance the fusion of sufficient alignment with LLM's language ability (referred to as "representation"), the retention of rich original image information (referred to as "reconstruction"), and the efficient use of tokens given the growing inference cost of transformer decoder (referred to as "token efficiency").
@@ -321,6 +324,105 @@ These models have demonstrated their efficacy as powerful tools for sequence des
 ## 2.4·Continuous Tokenization Basics: 连续分词基础
 
 <a id="Section.2.4"></a>
+
+Continuous tokens represent non-textual modalities in a continuous feature space, offering less information loss~\citep{dnd-transformer} and improved data representation compared to discrete tokens~\citep{xie2024showosingletransformerunify}.
+However, their dense feature encapsulation makes direct mapping to a fixed vocabulary challenging, unlike discrete tokens.
+It poses a challenge for LLMs aiming to comprehend and generate such information in a NTP manner.
+
+To handle continuous multimodal token inputs for LLM to understand, transformations or adapters are necessary to balance data representation and text alignment.
+For multimodal generation, modifying the output head to align with non-textual modality specific decoders' input feature space is also crucial.
+The following subsections introduce the basic designs and change for LLMs to accommodate continuous multimodal token from multimodal understanding (\S\ref{sec: Tokenize Continuous Input}) and generation (\S\ref{sec: De-tokenize Continuous Output}) perspectives.
+
+### 2.4.1·Tokenize Continuous Input for Understanding
+
+To effectively integrate raw non-textual modality data into Large Language Models (LLMs), two key steps are typically undertaken: (1) encoding the data into a more suitable representation space, and (2) aligning it with the LLM’s feature space.
+
+**Encoding**
+
+The encoding of non-textual modality data aims to capture meaningful features and important nuances that are essential for the understanding of the data.
+This can be achieved through different types of encoders such as Transformer-based encoders~\citep{li2023blip2, liu2023llava, liu2023llava15,zhu2023minigpt4, radford2021clip} or CNN-based encoders~\citep{davinci, zhang2023universal, jiang2023vima, alayrac2022flamingo}.
+There's also an option to go encoder-free~\citep{kim2021vilt, fuyu}, which allows for raw data to be fed directly into the model.
+
+Transformer-based encoders are widely used for their robust representation capabilities and generalizability~\citep{vaswani2017attention, vit}.
+For a non-textual modality sample, the input is initially divided into patches and transformed into a 1D sequence, with each patch represented as a soft token.
+This sequence is then processed through the Transformer's encoder layers, employing self-attention mechanisms to capture relationships between patches.
+Consequently, the model produces a rich representation of the input.
+Typically, there are two types of encoders: (1) unimodal encoders, designed to process information from a single modality~\citep{vit, sam, arnab2021vivit, usm, mert, prismer, beit, liu2021swinTransformer}; and (2) multi-modal encoders, capable of integrating information from multiple modalities~\citep{radford2021clip, imagebind, eva-clip, clap, anymal, imu2clip, coca}.
+For instance, PaLM-E~\citep{driess2023palme}, Unified-IO-2~\citep{lu2023unifiedio}, and PaLI~\citep{pali} use ViT~\citep{vit} encoders trained solely on visual data.
+Conversely, LLaVA~\citep{liu2023llava}, Emu~\citep{sun2023emu1, sun2023generative}, and Qwen-VL~\citep{QwenVL} utilize CLIP~\citep{radford2021clip} or EVA-CLIP~\citep{eva-clip} encoders with contrastive loss to align textual and non-textual representations.
+NExT-GPT~\citep{nextgpt}, CoDi-2~\citep{tang2023codi2}, and BuboGPT~\citep{zhao2023bubogpt} employ ImageBind~\citep{imagebind} as their non-textual encoder, aligning various modalities like audio, text, and heat maps with image representations.
+
+In comparison, CNN-based encoders are less frequently used but remain vital due to their flexibility in image resolution generalization~\citep{magvit, magvit2} and ability to capture local features~\citep{jiang2023vima}.
+For example, DaVinCi~\citep{davinci} uses ResNet~\citep{resnet} as the visual encoder.
+Flamingo~\citep{alayrac2022flamingo} utilizes NFNet~\citep{nfnet}, a normalizer-free ResNet, for image encoding.
+
+Beyond encoders, Fuyu-8B~\citep{fuyu} directly processes raw image patches after a single linear projection to accommodate images of varying resolutions and aspect ratios, similar to ViLT~\citep{kim2021vilt}.
+However, Fuyu-8B adds the flexibility of an any-resolution setting using a decoder-only model, benefiting from architectural simplicity but showing reduced downstream performance compared to encoder-based models.
+Moreover, ImageGPT~\citep{imagegpt} trains a decoder-only generative model on raw image pixel sequences, which, despite its effectiveness in image generation and understanding, requires significant computational resources and is limited to low-resolution images.
+
+**Input Alignment**
+
+After encoding non-textual modality data, we obtain a meaningful representation.
+However, this representation often lacks alignment with the textual embedding space of large language models, leading to a failure in properly understanding these inputs.
+Although multi-modal encoders like CLIP~\citep{radford2021clip} have made strides in narrowing the gap, they still encounter two significant challenges: (1) the presence of redundant continuous tokens~\citep{alayrac2022flamingo, perceiver, li2023blip2}; and (2) a lack of contextual semantics, such as causal semantics, because they are typically trained only with image-caption paired data rather than image-text interleaved data or image-prompt instructional data~\citep{seed-tokenizer, gemini1, laurencon2023obelics, zhu2023multimodal}.
+Therefore, it is crucial to establish a connection between the representation space of non-textual modality data and the LLM textual embedding space.
+There are typically two approaches to construct such a bridge: (1) Slot-based Resampler~\citep{alayrac2022flamingo, li2023blip2}; and (2) Projection~\citep{fuyu, liu2023llava, liu2023llava15,QwenVL}.
+
+The Slot-based Resampler compresses redundant non-textual modality tokens from the encoding stage into fewer learned query vectors, known as slots.
+This is typically accomplished using multiple Transformer blocks with a cross-attention mechanism.
+For instance, BLIP-2~\citep{li2023blip2} employs a Q-Former and linear projection to bridge the image encoder with the LLM backbone.
+The Q-Former blocks consist of a self-attention layer on the learned queries, a cross-attention layer between the encoded image representation and the learned queries, and a feed-forward layer.
+Initially, it is trained for image-text matching, image-text contrastive learning, and image-grounded text generation, followed by training for next token prediction with the frozen LLM backbone.
+Another model using this approach is Flamingo~\citep{alayrac2022flamingo}, which utilizes a Perceiver Resampler~\citep{perceiver} to compress byte arrays into latent vectors in a modality-agnostic manner.
+Specifically, Perceiver~\citep{perceiver} employs multiple cascaded attention mechanisms: the latents act as queries and initially cross-attend to keys and values calculated from the byte array (e.g., an image), followed by processing with a self-attention block, iterating several times.
+PerceiverIO~\citep{perceiverio} enhances this with an additional cross-attention block between an output query array and the slots (i.e., the latents).
+The Hierarchical Perceiver~\citep{hip} decomposes the input array into multiple groups, compresses each group, and merges the resulting latents to obtain the output array.
+
+Compared to a slot-based resampler, projection is much simpler in architecture, involving only a single linear projection~\citep{fuyu, liu2023llava} or an Multi-layer Perceptron (MLP) ~\citep{liu2023llava15}.
+For instance, LLaVA~\citep{liu2023llava} employs a linear projection to convert encoded image representations into the language embedding space.
+Similarly, Fuyu-8B~\citep{fuyu} projects raw image patches onto the embedding space.
+LLaVA-1.5~\citep{liu2023llava15} enhances LLaVA by substituting the linear projection with an MLP.
+
+There are also other approaches to connect the non-textual modality encoder with the LLM backbone.
+For example, Emu~\citep{sun2023emu1} leverages a Causal Transformer (i.e., C-Former) to convert the image tokens autoregressively; Emu2~\citep{sun2023generative} replaces the C-Former with mean pooling followed by a linear projection.
+
+### 2.4.2·De-tokenize Continuous Output for Generation
+
+
+The backbone of large language models is inherently designed for language generation.
+Typically, their output layers function as classification heads that predict distributions over a language vocabulary.
+For discrete non-textual modalities, the discrete token vocabularies can be integrated into the LLM’s original text vocabulary since token generation is still managed by the classification heads.
+However, this approach does not work for continuous non-textual modalities.
+To enable the generation of continuous token outputs from LLM backbones, it is essential to modify their output layers (i.e., language modeling heads) to produce representations suited for non-textual modality data.
+These representations are then transformed to align with the input features of specific non-textual modality data decoders, such as a diffusion model~\citep{Rombach_Blattmann_Lorenz_Esser_Ommer_2022}.
+Recent work includes MAR~\citep{MAR} and Transfusion~\citep{Transfusion}.
+We will further elaborate on the decoding of continuous output in ~\S\ref{par:soft-token-output-decoding} and the transformations to the output feature in ~\S\ref{par:soft-token-output-transformation}.
+
+**Decoding**
+
+
+Unlike pure text generation, multimodal generation requires the model to decide when to switch modalities during decoding, due to their intrinsic differences.
+We refer to this objective as **positioning**.
+There are typically two methods to achieve this: (1) using placeholders~\citep{zheng2023minigpt5, nextgpt, koh2023GILL}; and (2) employing a non-textual modality begin-of-sentence (BOS) token~\citep{sun2023emu1, sun2023generative, dreamllm}.
+
+Firstly, special tokens can be introduced as placeholders for non-textual modality data.
+For instance, Mini-GPT5~\citep{zheng2023minigpt5} and GILL~\citep{koh2023GILL} utilize a sequence of image placeholder tokens ranging from [IMG1] to [IMGr], which can be interleaved with textual tokens, and these tokens are added to the model's vocabulary.
+Likewise, NExT-GPT~\citep{nextgpt} uses 5 image placeholder tokens, along with 9 audio and 25 video placeholder tokens.
+Secondly, the use of a single BOS token (sometimes accompanied by an EOS token) can simplify the process by signaling the position of non-textual modality data.
+For example, DreamLLM~\citep{dreamllm} employs a special <dream> token to mark the start of modality switching, allowing a single model run to process a sequence of queries.
+Emu~\citep{sun2023emu1} and Emu2~\citep{sun2023generative} use both image BOS and EOS tokens to encase encoded image features.
+
+In addition to focusing on positioning, models must also learn to generate accurate features for non-textual modalities.
+Typically, the output layers of large language models (LLMs) feature classification heads for discrete token decoding, an objective we refer to as **output representation**.
+To enable continuous token outputs, modifications to these output layers are required.
+Generally, there are three approaches: (1) adapting the original language modeling head to be regressive~\citep{sun2023emu1, sun2023generative}; (2) introducing a new head for dense outputs~\citep{dreamllm}; and (3) utilizing the final hidden states before the language model head~\citep{zheng2023minigpt5, koh2023GILL}.
+
+**Output Alignment**
+
+Typically, generated continuous tokens cannot be directly used for multimodal generation because they don't align with the input features of multimodal decoders like LDM~\citep{Rombach_Blattmann_Lorenz_Esser_Ommer_2022} and AudioLDM~\citep{audioldm}.
+To address this, additional modules are introduced to convert these tokens into representations suitable for multimodal decoders, ultimately generating the final non-textual modality data.
+For instance, NExT-GPT~\citep{nextgpt} employs a Transformer-based output projection, while Mini-GPT5~\citep{zheng2023minigpt5} and GILL~\citep{koh2023GILL} utilize a Q-Former-like architecture~\citep{li2023blip2} consisting of a Transformer encoder and decoder to transform continuous tokens into conditional latent features for the Stable Diffusion Model.
+DreamLLM~\citep{dreamllm} uses a linear layer, whereas Emu~\citep{sun2023emu1} and Emu2~\citep{sun2023generative} directly utilize the generated continuous tokens as latents for multimodal decoders.
 
 ## 2.5·Continuous Tokenization for Different Modalities: 不同模态的连续分词
 
