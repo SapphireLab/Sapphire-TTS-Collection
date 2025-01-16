@@ -113,6 +113,108 @@ Conversely, LMMs supporting multimodal generation capabilities tend to choose VQ
 
 <a id="Section.2.2"></a>
 
+Unlike the language modality, which inherently comprises discrete symbols (e.g., tokens or words), most other modalities naturally exist in a continuous space.
+To bridge the gap, the core technique is \textbf{Vector Quantization (VQ)}, which aims to map the original continuous information into a compressed, finite representation space, i.e.
+discrete tokens.
+The discrete tokens can have 2-dimensional or 3-dimensional structures for images and videos.
+These tokens are initially linearized based on a specific order, such as left to right and top to bottom, transforming them into a 1-dimensional sequence.
+This linearization allows for effective modeling usingthe next token prediction objective.
+
+
+In this section, we will first elaborate on modern vector quantization techniques widely used as multimodal tokenizers, such as VQVAE (\S~\ref{sec:vq}) and its variants.
+Following that, we will introduce the specific optimizations of discrete tokenization in different modalities (\S~\ref{sec:vq app}).
+
+### 2.2.1·Vector Quantization Methods: 向量量化方法
+
+The origins of VQ method trace back to the 1950s at Bell Laboratories, where researchers endeavored to optimize signal transmission through the development of suitable discretization procedures~\cite{Pags2015IntroductionTV}.
+In essence, quantization is the process of mapping an infinite set of continuous values to a smaller, discrete set of finite values.
+The primary objective of vector quantization is to reconstruct all the information in the original data as accurately as possible with a finite set of vectors, which is also called the \emph{codebook}.
+
+**Vanilla VQ**
+
+The original VQVAE proposed by \citet{Oord2017NeuralDR} is a milestone of many successive vector quantization methods.
+As shown in Figure~\ref{fig:vqvae}, a VQVAE consists of three main components: the encoder, the quantizer, and the decoder.
+The encoder comprises the input data to a compact latent space, the quantizer select the nearest code vectors from the finite codebook to approximate the continuous latents, the decoder reconstruct the input data using the discrete codes.
+When training the VQVAE, three main loss components are crucial: reconstruction loss, codebook loss, and commitment loss~\citep{Oord2017NeuralDR}.
+The reconstruction loss, often implemented as mean squared error or binary cross-entropy, ensures accurate data reconstruction by minimizing differences between input and output.
+Codebook loss, or vector quantization loss, enables effective encoding by aligning encoder outputs with nearest codebook entries, ensuring discrete latent variables.
+Meanwhile, commitment loss acts as a regularizer, encouraging encoder outputs to stay close to codebook entries to maintain stable learning, preventing erratic mapping.
+As gradient can not pass the quantization operator (finding the nearest code), the straight-through estimator~\cite{bengio2013estimatingpropagatinggradientsstochastic} is adopted to let the gradient flow normally.
+
+
+Recent advancements in vector quantization methods have focused on achieving better image reconstruction and enhancing generative capabilities.
+To improve reconstruction quality, both architectural innovations and codebook designs have been proposed.
+Transformer-based frameworks, such as ViT-VQGAN~\citep{yu2022vectorquantized}, Swin-MAE~\citep{xu2023swin}, Swin-Unet~\citep{cao2021swinunet}, and Efficient-VQGAN~\citep{cao2023efficientvqgan}, replace traditional CNN encoders and decoders with more robust modules like ViT~\citep{vit} and Swin-Transformer~\citep{liu2021swinTransformer,liu2022swinV2}, leading to better feature representations and reconstruction fidelity.
+Additionally, several methods such as LFQ~\citep{magvit2} and FSQ~\citep{FSQ} are proposed to address the significant challenge of codebook collapse during \textbf{codebook learning}, where a large portion of code embeddings are not used when enlarging the codebook size, causing a redundancy in the codebook and limiting the
+expressive power of the generative model~\citep{baykal2024edvaemitigatingcodebookcollapse}.
+For improved generative performance and efficiency, several approaches have been introduced.
+\citet{tian2024VAR} propose Visual Autoregressive modeling, which facilitates image generation through "next-scale prediction", moving away from the traditional raster-scan "next-token prediction" used in standard VQVAE-based models.
+RQ-Transformer~\citep{lee2022RQVAE} employs residual quantization (RQ) to precisely approximate feature maps and reduce spatial resolution.
+RQ helps the RQ-Transformer to significantly reduce computational costs and effectively learn long-range interactions in inputs.
+RAR~\citep{RAR} introduces a randomness annealing strategy with a permuted objective, enhancing the model's ability to learn bidirectional contexts while retaining the autoregressive framework.
+TiTok~\citep{yu2024imageworth32tokens} tokenizes images into 1D latent sequences, providing a more compact latent representation that is substantially more efficient and effective than conventional techniques.
+It greatly reduces the number of tokens required to encode an image compared to previous methods~\citep{cao2023efficientvqgan,yu2022vectorquantized}.
+
+
+\paragraph{VQ with Auxiliary Losses}
+The primary goal of the vanilla VQVAE is to accurately reconstruct input data by minimizing the mean squared error loss.
+However, this auto-encoding objective doesn't always align with human perception of the quality of reconstructed data.
+For example, in the visual modality, the vanilla MSE loss often results in images with blurred details, particularly in human faces~\citep{larsen2016autoencodingpixelsusinglearned}.
+To address this issue, several approaches introduce higher-level training objectives aimed at improving the overall quality of the output data.
+In the realm of vision, perceptual loss~\citep{johnson2016perceptuallossesrealtimestyle} is widely used to enhance the quality of reconstructed images by leveraging a pre-trained CNN.
+VQGAN~\citep{cao2023efficientvqgan} incorporates a discriminator network to enhance image fidelity by adding an adversarial training objective.
+The role of the discriminator is to discern between the reconstructed and original images, while the VQ-VAE is optimized to deceive the discriminator, thereby improving the quality of the reconstructed images.
+In the audio modality, it is essential to decouple the audio into its acoustic and semantic components to achieve both powerful audio reconstruction quality and LLM modeling.
+SpeechTokenizer~\citep{zhang2023speechtokenizer} and Mimi~\citep{defossez2024moshi} introduce the loss of semantic distillation at the first layer of Residual VQ, using self-supervised models, such as HuBERT~\citep{hsu2021hubert} and WavLM~\citep{chen2022wavlm}.
+
+**Residual Vector Quantization**
+
+Residual vector quantization (RVQ) has been used for image~\citep{Lee_Kim_Kim_Cho_Han_2022} and audio~\citep{Zeghidour_Luebs_Omran_Skoglund_Tagliasacchi_2022} generation, where quantized codes are refined by storing additional quantized residuals.
+\citet{lee2022RQVAE} propose the RQVAE that also introduces a residual quantization to recursively quantize the feature map in a coarse-to-fine manner, employing a fixed-size codebook to maintain both precision and code diversity.
+
+**Product Quantization**
+
+\citet{PO-VAE} propose product quantization (PQ), to factor the codebook into a product of smaller codebooks, allowing for high-quality quantizers without the requirement of intractably large codebooks.
+
+**Multi-scale Quantization**
+
+~\citet{tian2024VAR} introduce the Visual Autoregressive modeling (VAR), which develops a multi-scale quantization autoencoder that encodes images into $K$ multi-scale discrete token maps using a shared codebook.
+It aids the model in generating images through "next-scale prediction," instead of the raster-scan "next-token prediction" typically used in standard VQVAE-based models.
+The multi-scale quantization enables the model to learn visual distributions and demonstrates strong generalization capabilities.
+
+**Finite Scalar Quantization**
+
+To generate concise and expressive tokens using a larger token vocabulary and avoid codebook collapse, \citet{FSQ} propose finite scalar quantization (FSQ).
+FSQ projects the VAE representation down to a few dimensions that can be quantized into fixed values, creating an implicit codebook.
+
+**Look-up Free Quantization**
+
+LFQ~\citep{yu2023language} reduces the embedding dimension of the codebook to zero, effectively replacing the codebook with an integer set.
+It allows VQVAE to improve the quality of image reconstruction and generation by vastly increasing the vocabulary size by magnitudes.
+For example, the rFID on Imagenet decreases from 2.5 to 1.4 when the LFQ vocabulary size increases from $2^10$ to $2^16$ on ImageNet dataset.
+
+**Embedding-Free Quantization**
+
+Maskbit~\cite{maskbit} explores an embedding-free tokenization approach that utilizes binary quantization.
+It projects latent embeddings into K dimensions and then quantizes them based on their sign values to produce bit token representations.
+The generated bit tokens exhibit highly structured semantic representations, which are crucial for generation tasks.
+
+**Group Vector Quantization**
+
+Unlike RVQ which models the information residually, Group Vector Quantization models the information across different dimensions.
+In the audio domain, HiFi-Codec~\citep{yang2023hifi} proposes a group-residual vector
+quantization technique to reduce the number of codebooks, while FACodec~\cite{ju2024naturalspeech} disentangles speech into prosody information, content information, and acoustic details using three-factorized vector quantizers.
+
+### 2.2.2·Evaluation of VQ Tokenizers
+
+When evaluating VQVAEs, two critical metrics are commonly considered: \textbf{reconstruction ability} and \textbf{generation ability}.
+
+Reconstruction ability refers to how well the VQVAE can reproduce the original input data after encoding and decoding. This metric evaluates the fidelity of the model in terms of how accurately it can reconstruct the input data from its latent representations. L2 distance, Peak Signal-Noise Ratio (PSNR), and reconstruction Fréchet Inception Distance (rFID) are often applied to assess the reconstruction ability.
+
+Generation ability assesses the model’s capacity to generate new, plausible samples from the learned distribution in the codebook space. This metric evaluates the creativity and diversity of the VQVAE in producing new data that is consistent with the training data distribution. To quantitatively evaluate generation ability, metrics such as the Inception Score (IS) and generation Fréchet Inception Distance (gFID)~\citep{heusel2018ganstrainedtimescaleupdate} are often used.
+
+rFIDs are often computed between ImageNet validation images and their reconstructed images. gFIDs are usually computed against the training set with ADM's evaluation suite~\cite{dhariwal2021diffusionmodelsbeatgans}.
+
 ## 2.3·Discrete Tokenization for Different Modalities: 不同模态的离散分词
 
 <a id="Section.2.3"></a>
