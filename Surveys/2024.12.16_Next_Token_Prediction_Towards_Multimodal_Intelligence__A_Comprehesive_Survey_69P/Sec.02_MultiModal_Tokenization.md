@@ -114,7 +114,7 @@ Conversely, LMMs supporting multimodal generation capabilities tend to choose VQ
 <a id="Section.2.2"></a>
 
 Unlike the language modality, which inherently comprises discrete symbols (e.g., tokens or words), most other modalities naturally exist in a continuous space.
-To bridge the gap, the core technique is \textbf{Vector Quantization (VQ)}, which aims to map the original continuous information into a compressed, finite representation space, i.e.
+To bridge the gap, the core technique is **Vector Quantization (VQ)**, which aims to map the original continuous information into a compressed, finite representation space, i.e.
 discrete tokens.
 The discrete tokens can have 2-dimensional or 3-dimensional structures for images and videos.
 These tokens are initially linearized based on a specific order, such as left to right and top to bottom, transforming them into a 1-dimensional sequence.
@@ -145,7 +145,7 @@ As gradient can not pass the quantization operator (finding the nearest code), t
 Recent advancements in vector quantization methods have focused on achieving better image reconstruction and enhancing generative capabilities.
 To improve reconstruction quality, both architectural innovations and codebook designs have been proposed.
 Transformer-based frameworks, such as ViT-VQGAN~\citep{yu2022vectorquantized}, Swin-MAE~\citep{xu2023swin}, Swin-Unet~\citep{cao2021swinunet}, and Efficient-VQGAN~\citep{cao2023efficientvqgan}, replace traditional CNN encoders and decoders with more robust modules like ViT~\citep{vit} and Swin-Transformer~\citep{liu2021swinTransformer,liu2022swinV2}, leading to better feature representations and reconstruction fidelity.
-Additionally, several methods such as LFQ~\citep{magvit2} and FSQ~\citep{FSQ} are proposed to address the significant challenge of codebook collapse during \textbf{codebook learning}, where a large portion of code embeddings are not used when enlarging the codebook size, causing a redundancy in the codebook and limiting the
+Additionally, several methods such as LFQ~\citep{magvit2} and FSQ~\citep{FSQ} are proposed to address the significant challenge of codebook collapse during **codebook learning**, where a large portion of code embeddings are not used when enlarging the codebook size, causing a redundancy in the codebook and limiting the
 expressive power of the generative model~\citep{baykal2024edvaemitigatingcodebookcollapse}.
 For improved generative performance and efficiency, several approaches have been introduced.
 \citet{tian2024VAR} propose Visual Autoregressive modeling, which facilitates image generation through "next-scale prediction", moving away from the traditional raster-scan "next-token prediction" used in standard VQVAE-based models.
@@ -207,17 +207,116 @@ quantization technique to reduce the number of codebooks, while FACodec~\cite{ju
 
 ### 2.2.2·Evaluation of VQ Tokenizers
 
-When evaluating VQVAEs, two critical metrics are commonly considered: \textbf{reconstruction ability} and \textbf{generation ability}.
+When evaluating VQVAEs, two critical metrics are commonly considered: **reconstruction ability** and **generation ability**.
 
-Reconstruction ability refers to how well the VQVAE can reproduce the original input data after encoding and decoding. This metric evaluates the fidelity of the model in terms of how accurately it can reconstruct the input data from its latent representations. L2 distance, Peak Signal-Noise Ratio (PSNR), and reconstruction Fréchet Inception Distance (rFID) are often applied to assess the reconstruction ability.
+Reconstruction ability refers to how well the VQVAE can reproduce the original input data after encoding and decoding.
+This metric evaluates the fidelity of the model in terms of how accurately it can reconstruct the input data from its latent representations.
+L2 distance, Peak Signal-Noise Ratio (PSNR), and reconstruction Fréchet Inception Distance (rFID) are often applied to assess the reconstruction ability.
 
-Generation ability assesses the model’s capacity to generate new, plausible samples from the learned distribution in the codebook space. This metric evaluates the creativity and diversity of the VQVAE in producing new data that is consistent with the training data distribution. To quantitatively evaluate generation ability, metrics such as the Inception Score (IS) and generation Fréchet Inception Distance (gFID)~\citep{heusel2018ganstrainedtimescaleupdate} are often used.
+Generation ability assesses the model’s capacity to generate new, plausible samples from the learned distribution in the codebook space.
+This metric evaluates the creativity and diversity of the VQVAE in producing new data that is consistent with the training data distribution.
+To quantitatively evaluate generation ability, metrics such as the Inception Score (IS) and generation Fréchet Inception Distance (gFID)~\citep{heusel2018ganstrainedtimescaleupdate} are often used.
 
-rFIDs are often computed between ImageNet validation images and their reconstructed images. gFIDs are usually computed against the training set with ADM's evaluation suite~\cite{dhariwal2021diffusionmodelsbeatgans}.
+rFIDs are often computed between ImageNet validation images and their reconstructed images.
+gFIDs are usually computed against the training set with ADM's evaluation suite~\cite{dhariwal2021diffusionmodelsbeatgans}.
 
 ## 2.3·Discrete Tokenization for Different Modalities: 不同模态的离散分词
 
 <a id="Section.2.3"></a>
+
+Generic quantization methods provide basic ways to convert continuous data into discrete tokens.
+However, there isn't a single quantizer that works well for all modalities because each modality has unique characteristics.
+Therefore, it is important to create specific tokenizers for each modality.
+This section will explain the unique features of different modalities and showcase some examples of tokenizers for images, audio, and video, among others.
+
+### 2.3.1·Image: 图像
+
+Images can be tokenized into discrete symbols with the previously introduced VQVAE structure.
+Compared to text tokens, images diverge in three fundamental aspects that significantly impact how they should be tokenized:
+
+1. Rich Information Granularity: Unlike text, which primarily encapsulates high-level semantic meaning, images are contain with a myriad of perceptual details.
+These encompass low-level visual elements such as colors, shapes, and textures, alongside more abstract concepts like objects and actions.
+2. Dense Information: Images inhabit a densely packed representational realm, where each pixel, across multiple dimensions including height, width, and color channels (RGB being a common example), carries information.
+This stands in stark contrast to the discreteness of text in nature, characterized by sequentially arranged words.
+3. Two-Dimensional Spatial Structure: Images are inherently structured in two dimensions, spread across a grid defined by height and width.
+This 2D layout differs fundamentally from the straightforward, one-dimensional sequence that characterizes textual data, introducing unique complexities in their processing and analysis.
+
+Given these differences, bridging the gap between text and image modalities in the training of LLMs based on discrete image tokens requires a robust image tokenizer, which must balance the fusion of sufficient alignment with LLM's language ability (referred to as "representation"), the retention of rich original image information (referred to as "reconstruction"), and the efficient use of tokens given the growing inference cost of transformer decoder (referred to as "token efficiency").
+These factors possess a trade-off~\citep{seedllama,seed-tokenizer, magvit2, sun2023generative}, making it crucial for the construction of an image tokenizer to maintain equilibrium among these factors.
+
+In terms of better representation, models like ViT~\citep{vit} are commonly employed, often aligned with a text encoder through contrastive loss~\citep{radford2021clip, peng2022beit}, or aligned with text modalities through generative loss~\citep{coca}.
+Additionally, modules like Q-Former~\citep{li2023blip2} can also be used for image feature transformation~\citep{li2023blip2, seedllama}.
+Consequently, the resultant image features integrate higher-level semantics and gradually compress high-dimensional images into lower-dimensional representations aligned with text.
+While the initial arrangement of image patches follows a raster order, preserving intrinsic sequential relationships, this configuration lacks causal semantics, posing challenges for language modeling.
+
+Regarding reconstruction ability, an image decoder is often layered atop the image encoder to reconstruct the original image from its representation, incorporating reconstruction loss into the training process~\citep{amused, seedllama, lavit, Esser2020TamingTF}.
+Training labels typically use the original images, but with advancements in diffusion models, more research is incorporating latents for diffusion models as reconstruction labels~\citep{lavit, seedllama}.
+
+For token efficiency, modules like selectors or mergers for image tokens are utilized to truncate their length (i.e., the number of tokens per image).
+For instance, SEED-LLaMA~\citep{seedllama} compresses longer image features encoded by ViT into 32 continuous tokens using a Causal Q-Former and then discretizes them through quantization.
+LaViT~\citep{lavit} first predicts whether each patch token should be selected using a shared MLP, and then compresses the image length by employing selected patches as queries and unselected patches as keys and values in cross-attention blocks~\citep{seedllama}.
+
+Beyond these aspects, some studies also focus on the unique properties of specific image types or tasks.
+For example, VQ-IMG aims to enhance the modeling capabilities of image tokenizers for faces~\citep{make-a-scene}, while LVM integrates tasks like segmentation and object detection during the training of models based on VQGAN to enrich the representation of image tokens~\citep{bai2023sequential}.
+StrokeNVWA introduces a VQ-Stroke method to discretize vector graphic images into stroke tokens~\citep{strokenvwa}.
+
+### 2.3.2·Audio: 音频
+
+Raw audios are typically stored as 16-bit integer values with a sampling rate that exceeds tens of thousands values per second, which leads to extremely long sequences and renders next token prediction training more difficult.
+Versatile quantization methodologies have been investigated for audio tokenization.
+Initially aimed at audio compression, these methodologies have more recently been developed to create compact semantic and acoustic representations in the context of NTP language modeling.
+
+As a traditional companding algorithm, $\mu$-law/A-law algorithm is commonly employed in speech generative models such as WaveNet~\citep{van2016wavenet}.
+While this algorithm projects each audio frame to an 8-bit value, it does not reduce the sampling rate, thereby preserving overlong sequences.
+Self-supervised learned models have shown exceptional performance in various speech-related tasks, sparking interest in clustering their speech representations for speech quantization.
+The vq-wav2vec~\citep{baevski2019vq} uses either a Gumbel-Softmax or online k-means clustering to quantize the SSL-learned dense representation.
+HuBERT~\citep{hsu2021hubert} is trained with a masked prediction task, whose targets are obtained through k-means clustering of learned features from earlier iterations.
+Utilizing quantized tokens learned with Self-Supervised Learning (SSL), GSLM~\cite{lakhotia2021gslm} and VQTTS~\citep{du2022vqtts} demonstrate faster speed in speech generation tasks compared with WaveNet.
+Because SSL tokens are extracted with highly abstracted semantics while discarding low-level acoustic information, the reconstruction quality is relatively low, and speaker identity is lost~\citep{borsos2023audiolm}.
+Neural codec models typically apply a VQ-VAE on the raw audios with residual vector quantization, exemplified by SoundStream~\citep{zeghidour2021soundstream} and EnCodec~\citep{encodec}.
+They are originally designed for audio compression, have the capability to encode waveforms into discrete codes and faithfully reconstruct them back into high-quality waveforms.
+Recently, they are widely used in audio generation models such as AudioLM~\citep{borsos2023audiolm}, VALL-E~\citep{wang2023neural} and their variants~\citep{han2024valler,song2024ellav, wang2023viola}, and reach new state-of-the-art performance on various tasks.
+Compared with traditional $\mu$-law/A-law algorithms, codec models can efficiently reduce the length of token sequences.
+It can also maintain multi-scale acoustic information indicating speaker identity compared with highly-abstracted SSL-learned discrete tokens such as HuBERT~\citep{hsu2021hubert} tokens.
+Additionally, the codec models are typically off-the-shelf and lightweight.
+
+Latest works have attempted to impose additional supervision on the discrete codes extracted by codec models.
+The objective is to enhance their ability to extract and encode higher-level semantic information, thereby improving language modeling.
+SpeechTokenizer~\citep{zhang2023speechtokenizer} is an RVQ-based codec model, where its first-layer codebook incorporates semantic information through the semantic distillation process, using HuBERT~\citep{hsu2021hubert} representations as the semantic teacher.
+Mimi, used by Moshi~\citep{défossez2024moshispeechtextfoundationmodel}, further improves upon this by replacing the semantic teacher from HuBERT with WavLM~\citep{chen2022wavlm}.
+Additionally, it isolates the first-layer codebook from the RVQ process to achieve better semantic and acoustic disentanglement.
+To enhance the compression rate, WavTokenizer~\citep{ji2024wavtokenizer} is capable of quantizing one-second audio into 75 or 40 tokens with a single quantizer.
+
+### 2.3.3·Video: 视频
+
+
+Compared to images, videos introduce an additional temporal dimension that must be considered during the tokenization process.
+A straightforward strategy is to utilize an image-based VQVAE model to tokenize the video frame-by-frame.
+This approach is employed by several multimodal foundation models, such as LVM~\cite{bai2023sequential}, LWM~\cite{liu2023world}, and Unified-IO series~\cite{lu2022unifiedio,lu2023unifiedio2}.
+However, a significant drawback of frame-by-frame tokenization is its inability to compress video data over time, resulting in a high degree of token redundancy across frames—particularly in long-form videos—thereby imposing substantial computational demands~\citep{song2024moviechatdensetokensparse}.
+Furthermore, using an image-based tokenizer fails to model temporal relationships between frames, leading to issues of temporal inconsistency.
+
+To address token redundancy and enhance temporal modeling, several studies have proposed training a 3D tokenizer that compresses videos across spatial and temporal dimensions.
+For example, VideoGPT~\citep{yan2021videogpt} applies a 3D-CNN architecture in the encoder and decoder of the video tokenizer.
+C-ViViT~\cite{villegas2022phenaki} uses a transformer architecture to split videos into 3D cubes, which are then discretized into token IDs.
+
+There are two additional desirable features for a video tokenizer:
+**(1) Joint Image-Video Tokenization**.
+The MAGVIT series~\cite{magvit2} enables tokenizing images and videos with a shared vocabulary.
+To achieve this, the number of frames in an input video, $T$, must satisfy $T=1+n \times F_T$, meaning the video comprises an initial frame followed by $n$ clips, each containing $F_T$ frames.
+When $n=0$, the video contains only the initial frame, thus simplifying the video to an image.
+Accordingly, both the initial frame and each subsequent clip are discretized into a $(1, H', W')$ token map, where $H'$ and $W'$ are the height and weight of the token map.
+**(2) Temporal Causality**.
+Compared to vanilla 3D architectures, using causal 3D architecture can ensure the tokenization and detokenization of each clip depend only on the preceding clips, facilitating autoregressive modeling along the temporal dimension.
+
+### 2.3.4·More Modalities: 更多模态
+
+Modeling various information as discrete tokens has gone far beyond the traditional text, image, video and audio modalities.
+In the computer vision field, we can unify the output spaces of tasks like object detection, semantic segmentation, and depth mapping into images.
+These can then be tokenized into discrete image tokens, allowing us to train a single NTP model to handle all these tasks \cite{wang2022ofa,wang2023images,bai2023sequential}.
+In **robotics and embodied AI** domain, the robots actions in response to the environments can be coded into various discrete tokens and learn the policy in NTP manner as shown in recent studies such as VIMA~\cite{jiang2023vima}, RT2~\cite{brohan2023rt2} and Locomotion NTP~\cite{humanoid}.
+In **AI4Science**, by factorizing various proteins into DNA token sequences, protein language models are capable of learning from a wide array of sequences that span the evolutionary tree.
+These models have demonstrated their efficacy as powerful tools for sequence design and protein engineering, as highlighted in studies ~\cite{madani2023large,ruffolo2024designing}.
 
 ## 2.4·Continuous Tokenization Basics: 连续分词基础
 
