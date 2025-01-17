@@ -204,8 +204,8 @@ The core idea is to bring similar (positive) examples closer together in the rep
 The items in each pair can belong to the same or different modalities.
 For example, [DINO](../../Models/_Basis/DINO.md) uses image-image pairs to enhance vision representation, while [CLIP](../../Models/_Basis/2021.02.26_CLIP.md) employs text-image pairs to improve language alignment within vision representation.
 
-Currently, LMMs that only feature multimodal understanding capabilities, such as InstructBLIP~\cite{dai2023instructblip} and LLaVA~\cite{liu2023llava}, opt for tokenizers with superior representation abilities like [CLIP](../../Models/_Basis/2021.02.26_CLIP.md), as they do not require reconstruction of the multimodal information.
-Conversely, LMMs supporting multimodal generation capabilities tend to choose VQVAE as the tokenizer, exemplified by models like Unified-IO~\cite{lu2022unifiedio}, Chameleon~\cite{chameleonteam2024chameleon}, Emu3~\citep{Emu3}, among others~\citep{wang2024mio, seedllama, wang2022ofa}.
+Currently, LMMs that only feature multimodal understanding capabilities, such as InstructBLIP~\cite{dai2023instructblip} [74] and LLaVA~\cite{liu2023llava} [255], opt for tokenizers with superior representation abilities like [CLIP](../../Models/_Basis/2021.02.26_CLIP.md), as they do not require reconstruction of the multimodal information.
+Conversely, LMMs supporting multimodal generation capabilities tend to choose VQ-VAE as the tokenizer, exemplified by models like Unified-IO~\cite{lu2022unifiedio} [272], Chameleon~\cite{chameleonteam2024chameleon} [375], Emu3~\citep{Emu3} [407], among others~\citep{wang2024mio, seedllama, wang2022ofa} [128] [402] [411].
 
 </details>
 <br>
@@ -248,7 +248,7 @@ Conversely, LMMs supporting multimodal generation capabilities tend to choose VQ
 这些模型一开始在大规模数据集上训练以捕获输入数据的具体特征.
 
 - 在视觉模态中, 监督任务包括语义分割, 目标检测, 深度估计.
-针对这些任务训练的模型, 如 SAM~\citep{sam,samclip}, ViTDet~\citep{vitdet}, 和 MiDaS~\citep{midas}, 随后作为 LMMs 中的 Tokenizer 使用 (如 DeepSeek-VL~\citep{DeepSeek-VL}, Cambrain-1~\citep{Cambrian-1}), 来从输入数据中提取多样化的视觉特征.
+针对这些任务训练的模型, 如 SAM~\citep{sam,samclip}[197] [398], ViTDet~\citep{vitdet} [241], 和 MiDaS [334]~\citep{midas}, 随后作为 LMMs 中的 Tokenizer 使用 (如 DeepSeek-VL [269]~\citep{DeepSeek-VL}, Cambrain-1 [382] ~\citep{Cambrian-1}), 来从输入数据中提取多样化的视觉特征.
 
 - 在音频模态中, Whisper 以弱监督的方式在 680K 小时的标注音频数据上训练. 由于其健壮且强大的语音特征提取能力, Whisper 被广泛用于语音 LLMs (如 [SALMONN](../../Models/SpokenDialogue/2023.10.20_SALMONN.md); [Qwen-Audio](../../Models/SpokenDialogue/2023.11.14_Qwen-Audio.md); [WavLLM](../../Models/SpeechLM/2024.03.31_WavLLM.md)) 提取语音嵌入.
 
@@ -268,18 +268,35 @@ Conversely, LMMs supporting multimodal generation capabilities tend to choose VQ
 
 <a id="Section.2.2"></a>
 
+<details>
+<summary>展开原文</summary>
+
 Unlike the language modality, which inherently comprises discrete symbols (e.g., tokens or words), most other modalities naturally exist in a continuous space.
 To bridge the gap, the core technique is **Vector Quantization (VQ)**, which aims to map the original continuous information into a compressed, finite representation space, i.e.
 discrete tokens.
 The discrete tokens can have 2-dimensional or 3-dimensional structures for images and videos.
 These tokens are initially linearized based on a specific order, such as left to right and top to bottom, transforming them into a 1-dimensional sequence.
-This linearization allows for effective modeling usingthe next token prediction objective.
+This linearization allows for effective modeling using the next token prediction objective.
 
+In this section, we will first elaborate on modern vector quantization techniques widely used as multimodal tokenizers, such as VQ-VAE (Section.2.2.1) and its variants.
+Following that, we will introduce the specific optimizations of discrete tokenization in different modalities (Section.2.3).
 
-In this section, we will first elaborate on modern vector quantization techniques widely used as multimodal tokenizers, such as VQVAE (\S~\ref{sec:vq}) and its variants.
-Following that, we will introduce the specific optimizations of discrete tokenization in different modalities (\S~\ref{sec:vq app}).
+</details>
+<br>
+
+不同于语言模态, 其本质由离散符号 (如 Token 或词) 组成, 大多数其他模态自然存在于连续空间中.
+为了弥合这种差距, 核心技术是 **向量量化 (Vector Quantization, VQ)**, 其目标是将原始连续信息映射到压缩的有限的表示空间中, 即离散 Token.
+对于图像和视频, 离散 Token 可以是二维或三维的结构.
+这些 Token 最初基于特定顺序 (如左至右和上至下) 线性化, 转换为一维序列.
+这种线性化允许使用 NTP 任务进行有效建模.
+
+在本节中, 我们首先详细介绍被广泛作为多模态 Tokenizer 的现代向量量化技术, 如 VQ-VAE (Section.2.2.1) 和其变体.
+随后, 我们在 Section.2.3 中介绍离散 Tokenization 在不同模态中的特定优化.
 
 ### 2.2.1·Vector Quantization Methods: 向量量化方法
+
+<details>
+<summary>展开原文</summary>
 
 The origins of VQ method trace back to the 1950s at Bell Laboratories, where researchers endeavored to optimize signal transmission through the development of suitable discretization procedures~\cite{Pags2015IntroductionTV}.
 In essence, quantization is the process of mapping an infinite set of continuous values to a smaller, discrete set of finite values.
@@ -287,32 +304,30 @@ The primary objective of vector quantization is to reconstruct all the informati
 
 **Vanilla VQ**
 
-The original VQVAE proposed by \citet{Oord2017NeuralDR} is a milestone of many successive vector quantization methods.
-As shown in Figure~\ref{fig:vqvae}, a VQVAE consists of three main components: the encoder, the quantizer, and the decoder.
+The original VQ-VAE proposed by \citet{Oord2017NeuralDR} is a milestone of many successive vector quantization methods.
+As shown in Figure~\ref{fig:vqvae}, a VQ-VAE consists of three main components: the encoder, the quantizer, and the decoder.
 The encoder comprises the input data to a compact latent space, the quantizer select the nearest code vectors from the finite codebook to approximate the continuous latents, the decoder reconstruct the input data using the discrete codes.
-When training the VQVAE, three main loss components are crucial: reconstruction loss, codebook loss, and commitment loss~\citep{Oord2017NeuralDR}.
+When training the VQ-VAE, three main loss components are crucial: reconstruction loss, codebook loss, and commitment loss~\citep{Oord2017NeuralDR}.
 The reconstruction loss, often implemented as mean squared error or binary cross-entropy, ensures accurate data reconstruction by minimizing differences between input and output.
 Codebook loss, or vector quantization loss, enables effective encoding by aligning encoder outputs with nearest codebook entries, ensuring discrete latent variables.
 Meanwhile, commitment loss acts as a regularizer, encouraging encoder outputs to stay close to codebook entries to maintain stable learning, preventing erratic mapping.
 As gradient can not pass the quantization operator (finding the nearest code), the straight-through estimator~\cite{bengio2013estimatingpropagatinggradientsstochastic} is adopted to let the gradient flow normally.
 
-
 Recent advancements in vector quantization methods have focused on achieving better image reconstruction and enhancing generative capabilities.
 To improve reconstruction quality, both architectural innovations and codebook designs have been proposed.
 Transformer-based frameworks, such as ViT-VQGAN~\citep{yu2022vectorquantized}, Swin-MAE~\citep{xu2023swin}, Swin-Unet~\citep{cao2021swinunet}, and Efficient-VQGAN~\citep{cao2023efficientvqgan}, replace traditional CNN encoders and decoders with more robust modules like ViT~\citep{vit} and Swin-Transformer~\citep{liu2021swinTransformer,liu2022swinV2}, leading to better feature representations and reconstruction fidelity.
-Additionally, several methods such as LFQ~\citep{magvit2} and FSQ~\citep{FSQ} are proposed to address the significant challenge of codebook collapse during **codebook learning**, where a large portion of code embeddings are not used when enlarging the codebook size, causing a redundancy in the codebook and limiting the
-expressive power of the generative model~\citep{baykal2024edvaemitigatingcodebookcollapse}.
+Additionally, several methods such as LFQ~\citep{magvit2} and FSQ~\citep{FSQ} are proposed to address the significant challenge of codebook collapse during **codebook learning**, where a large portion of code embeddings are not used when enlarging the codebook size, causing a redundancy in the codebook and limiting the expressive power of the generative model~\citep{baykal2024edvaemitigatingcodebookcollapse}.
 For improved generative performance and efficiency, several approaches have been introduced.
-\citet{tian2024VAR} propose Visual Autoregressive modeling, which facilitates image generation through "next-scale prediction", moving away from the traditional raster-scan "next-token prediction" used in standard VQVAE-based models.
+\citet{tian2024VAR} propose Visual Autoregressive modeling, which facilitates image generation through "next-scale prediction", moving away from the traditional raster-scan "next-token prediction" used in standard VQ-VAE-based models.
 RQ-Transformer~\citep{lee2022RQVAE} employs residual quantization (RQ) to precisely approximate feature maps and reduce spatial resolution.
 RQ helps the RQ-Transformer to significantly reduce computational costs and effectively learn long-range interactions in inputs.
 RAR~\citep{RAR} introduces a randomness annealing strategy with a permuted objective, enhancing the model's ability to learn bidirectional contexts while retaining the autoregressive framework.
 TiTok~\citep{yu2024imageworth32tokens} tokenizes images into 1D latent sequences, providing a more compact latent representation that is substantially more efficient and effective than conventional techniques.
 It greatly reduces the number of tokens required to encode an image compared to previous methods~\citep{cao2023efficientvqgan,yu2022vectorquantized}.
 
+**VQ with Auxiliary Losses**
 
-\paragraph{VQ with Auxiliary Losses}
-The primary goal of the vanilla VQVAE is to accurately reconstruct input data by minimizing the mean squared error loss.
+The primary goal of the vanilla VQ-VAE is to accurately reconstruct input data by minimizing the mean squared error loss.
 However, this auto-encoding objective doesn't always align with human perception of the quality of reconstructed data.
 For example, in the visual modality, the vanilla MSE loss often results in images with blurred details, particularly in human faces~\citep{larsen2016autoencodingpixelsusinglearned}.
 To address this issue, several approaches introduce higher-level training objectives aimed at improving the overall quality of the output data.
@@ -320,7 +335,7 @@ In the realm of vision, perceptual loss~\citep{johnson2016perceptuallossesrealti
 VQGAN~\citep{cao2023efficientvqgan} incorporates a discriminator network to enhance image fidelity by adding an adversarial training objective.
 The role of the discriminator is to discern between the reconstructed and original images, while the VQ-VAE is optimized to deceive the discriminator, thereby improving the quality of the reconstructed images.
 In the audio modality, it is essential to decouple the audio into its acoustic and semantic components to achieve both powerful audio reconstruction quality and LLM modeling.
-SpeechTokenizer~\citep{zhang2023speechtokenizer} and Mimi~\citep{defossez2024moshi} introduce the loss of semantic distillation at the first layer of Residual VQ, using self-supervised models, such as [HuBERT](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) and WavLM~\citep{chen2022wavlm}.
+[SpeechTokenizer](../../Models/SpeechCodec/2023.08.31_SpeechTokenizer.md) and [Mimi](../../Models/SpokenDialogue/2024.09.17_Moshi.md) introduce the loss of semantic distillation at the first layer of Residual VQ, using self-supervised models, such as [HuBERT](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) and [WavLM](../../Models/SpeechRepresentation/2021.10.26_WavLM.md).
 
 **Residual Vector Quantization**
 
@@ -334,7 +349,7 @@ Residual vector quantization (RVQ) has been used for image~\citep{Lee_Kim_Kim_Ch
 **Multi-scale Quantization**
 
 ~\citet{tian2024VAR} introduce the Visual Autoregressive modeling (VAR), which develops a multi-scale quantization autoencoder that encodes images into $K$ multi-scale discrete token maps using a shared codebook.
-It aids the model in generating images through "next-scale prediction," instead of the raster-scan "next-token prediction" typically used in standard VQVAE-based models.
+It aids the model in generating images through "next-scale prediction," instead of the raster-scan "next-token prediction" typically used in standard VQ-VAE-based models.
 The multi-scale quantization enables the model to learn visual distributions and demonstrates strong generalization capabilities.
 
 **Finite Scalar Quantization**
@@ -345,7 +360,7 @@ FSQ projects the VAE representation down to a few dimensions that can be quantiz
 **Look-up Free Quantization**
 
 LFQ~\citep{yu2023language} reduces the embedding dimension of the codebook to zero, effectively replacing the codebook with an integer set.
-It allows VQVAE to improve the quality of image reconstruction and generation by vastly increasing the vocabulary size by magnitudes.
+It allows VQ-VAE to improve the quality of image reconstruction and generation by vastly increasing the vocabulary size by magnitudes.
 For example, the rFID on Imagenet decreases from 2.5 to 1.4 when the LFQ vocabulary size increases from $2^10$ to $2^16$ on ImageNet dataset.
 
 **Embedding-Free Quantization**
@@ -357,19 +372,109 @@ The generated bit tokens exhibit highly structured semantic representations, whi
 **Group Vector Quantization**
 
 Unlike RVQ which models the information residually, Group Vector Quantization models the information across different dimensions.
-In the audio domain, HiFi-Codec~\citep{yang2023hifi} proposes a group-residual vector
-quantization technique to reduce the number of codebooks, while FACodec~\cite{ju2024naturalspeech} disentangles speech into prosody information, content information, and acoustic details using three-factorized vector quantizers.
+In the audio domain, [HiFi-Codec](../../Models/SpeechCodec/2023.05.04_HiFi-Codec.md) proposes a group-residual vector quantization technique to reduce the number of codebooks, while [FACodec](../../Models/SpeechCodec/2024.03.05_FACodec.md) disentangles speech into prosody information, content information, and acoustic details using three-factorized vector quantizers.
+
+</details>
+<br>
+
+向量量化方法的起源可以追溯到 1950 年代的贝尔实验室, 研究人员试图通过开发合适的离散过程来优化信号传输.
+简单来说, 量化是将连续值的无限集映射到较小的有限值的离散集的过程.
+向量量化的主要目标是用向量的有限集合 (也称为码本) 尽可能精确地重构原始数据中的所有信息.
+
+**原始向量量化**
+
+原始 VQ-VAE 由 \citet{Oord2017NeuralDR} 提出, 是许多后续向量量化方法的里程碑.
+如图 \ref{fig:vqvae} 所示, VQ-VAE 由三个主要组件组成: 编码器, 量化器, 和解码器.
+- 编码器: 将输入数据压缩到紧凑的潜在空间;
+- 量化器: 从有限码本中选择最接近的编码向量来近似连续的潜在变量;
+- 解码器: 使用离散编码重构输入数据.
+
+当训练 VQ-VAE 时, 三个主要的损失项是至关重要的:
+- **重构损失 (Reconstruction Loss)**: 通常采用均方误差或二元交叉熵, 通过最小化输入和输出之间的差异来确保精确的数据重构;
+- **码本损失/向量量化损失 (Codebook Loss/Vector Quantization Loss)**: 通过对齐编码器输出和最近的码本元素来实现有效编码, 实现离散潜在变量;
+- **承诺损失 (Commitment Loss)**: 作为正则化, 鼓励编码器输出与码本元素保持接近, 以维持稳定学习, 避免不稳定的映射.
+
+因为梯度无法通过量化操作 (寻找最近编码), 所以采用了直通估计 (Straight-Through Estimator)~\cite{bengio2013estimatingpropagatinggradientsstochastic}, 让梯度正常流动.
+
+在向量量化方法的近期进展聚焦于获得更好的图像重构和增强生成能力.
+
+为了提升重构质量, 架构创新和码本设计都有所发展.
+基于 Transformer 的框架 (如 ViT-VQGAN, Swin-MAE, Swin-Unet, Efficient-VQGAN) 将传统的 CNN 编码器和解码器替换为更健壮的模块 (如 ViT, Swin-Transformer), 带来更好的特征表示和重构质量.
+
+此外, 诸如 LFQ 和 FSQ 等方法被提出用于处理在**码本学习 (Codebook Learning)**时码本坍缩的显著挑战, 即在扩大码本尺寸时大部分编码嵌入未被使用, 导致码本冗余, 限制了生成模型的表达能力.
+
+为了提升生成性能和效率, 提出了数种方法:
+- \citet{tian2024VAR} 提出了视觉自回归建模 (Visual Autoregressive modeling), 它通过 Next-Scale Prediction 促进图像生成, 而不是标准 VQ-VAE 基线模型中使用的传统光栅扫描 Next-Token Prediction.
+- RQ-Transformer 采用残差量化来精确地近似特征图并减少空间分辨率.
+RQ 帮助 RQ-Transformer 显著降低计算成本并有效学习输入中的长距离交互.
+- RAR 引入了 Permuted 目标和随机退火策略, 增强模型能力来学习双向上下文, 同时保留自回归框架.
+- TiTok 将图像离散化为一维隐变量序列, 提供了更紧凑的潜在表示, 比传统技术更效率且有效.
+  与之前的方法相比, 它极大减少了编码一个图像所需的 Token 数量.
+
+**带辅助损失的向量量化**
+
+原始 VQ-VAE 的主要目标是通过最小化均方误差损失来精确地重构输入数据.
+然而这一自编码目标并不总和人类对重构数据质量的感知对齐.
+(例如, 在视觉模态中, 原始的 MSE 损失往往导致图像的细节模糊, 尤其是在人脸上.)
+
+为了解决这一问题, 一些方法引入了高级别的训练目标, 旨在提升输出数据的整体质量.
+在视觉领域中,
+- 通过使用预训练 CNN, 感知损失 (Perceptual Loss) 被广泛使用以增强重构图像的质量.
+- VQGAN 引入了判别器网络和添加对抗训练目标来增强图像质量.
+  判别器的作用时区分重构图像和原始图像, 而 VQ-VAE 被优化以欺骗判别器, 进而提升重构图像的质量.
+
+在音频模态中, 有必要将音频解耦为声学和语义组分, 以实现强大的音频重构质量和 LLM 建模.
+- [SpeechTokenizer](../../Models/SpeechCodec/2023.08.31_SpeechTokenizer.md) 和 [Mimi](../../Models/SpokenDialogue/2024.09.17_Moshi.md) 在残差向量量化的第一层引入了语义蒸馏的损失, 使用了自监督模型 (如 [HuBERT](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) 和 [WavLM](../../Models/SpeechRepresentation/2021.10.26_WavLM.md)).
+
+**残差向量量化 (Residual Vector Quantization, RVQ)**
+
+残差向量量化被用于图像和音频生成中, 其中量化编码通过存储额外的量化残差以细化.
+RQVAE 也引入了残差量化来递归地以从粗到细的方式量化特征图, 采用了固定尺寸的码本来维持精度和编码多样性.
+
+**点积量化 (Product Quantization, PQ)**
+
+PO-VAE 提出了点积量化 (PQ), 将码本分解为较小码本的点积, 允许高质量的量化器而无需大型码本.
+
+**多尺度量化 (Multi-Scale Quantization, MSQ)**
+
+VAR 引入了视觉自回归建模, 开发了多尺度量化自编码器, 使用共享码本将图像编码为 $K$ 个多尺度离散 Token 图.
+它帮助模型通过 "Next-Scale Prediction" 生成图像, 而不是标准 VQ-VAE 类模型中所使用的传统光栅扫描 "Next-Token Prediction".
+多尺度量化使得模型学习视觉分布并展示了强大的泛化能力.
+
+**有限标量量化 (Finite Scalar Quantization, FSQ)**
+
+为了生成简洁且表达能力强的 Token, 使用更大的 Token 词表并避免码本坍缩, FSQ 提出了有限标量量化.
+FSQ 将 VAE 表示映射到低维, 然后量化到固定值, 创建了隐式码本.
+
+**Look-Up Free Quantization (LFQ)**
+
+LFQ 将码本的嵌入维度减少到 0, 使用整数集替换码本.
+它允许 VQ-VAE 提升图像重构和生成质量, 通过极大地增加词表的尺寸 (数量级).
+例如当 LFQ 词表尺寸从 $2^10$ 增加到 $2^16$ 时, rFID 在 ImageNet 上的值从 2.5 降低到 1.4.
+
+**Embedding-Free Quantization (EFQ)**
+
+Maskbit 探索了无嵌入的 Tokenization 方法, 使用了二元量化.
+他将隐变量嵌入映射到 K 维, 然后基于它们的符号值量化以生成比特 Token 表示.
+生成的比特 Token 展现了高度结构化的语义表示, 对于生成任务很重要.
+
+**Group Vector Quantization (GVQ)**
+
+和 RVQ 以残差化地建模信息不同, GVQ 采用跨不同维度的方式来建模信息.
+在音频领域,
+- [HiFi-Codec](../../Models/SpeechCodec/2023.05.04_HiFi-Codec.md) 提出了分组残差向量量化技术来减少码本数量;
+- [FACodec](../../Models/SpeechCodec/2024.03.05_FACodec.md) 使用三个因子向量量化器将语音分解为韵律信息, 内容信息和声学信息.
 
 ### 2.2.2·Evaluation of VQ Tokenizers
 
-When evaluating VQVAEs, two critical metrics are commonly considered: **reconstruction ability** and **generation ability**.
+When evaluating VQ-VAEs, two critical metrics are commonly considered: **reconstruction ability** and **generation ability**.
 
-Reconstruction ability refers to how well the VQVAE can reproduce the original input data after encoding and decoding.
+Reconstruction ability refers to how well the VQ-VAE can reproduce the original input data after encoding and decoding.
 This metric evaluates the fidelity of the model in terms of how accurately it can reconstruct the input data from its latent representations.
 L2 distance, Peak Signal-Noise Ratio (PSNR), and reconstruction Fréchet Inception Distance (rFID) are often applied to assess the reconstruction ability.
 
 Generation ability assesses the model’s capacity to generate new, plausible samples from the learned distribution in the codebook space.
-This metric evaluates the creativity and diversity of the VQVAE in producing new data that is consistent with the training data distribution.
+This metric evaluates the creativity and diversity of the VQ-VAE in producing new data that is consistent with the training data distribution.
 To quantitatively evaluate generation ability, metrics such as the Inception Score (IS) and generation Fréchet Inception Distance (gFID)~\citep{heusel2018ganstrainedtimescaleupdate} are often used.
 
 rFIDs are often computed between ImageNet validation images and their reconstructed images.
@@ -386,7 +491,7 @@ This section will explain the unique features of different modalities and showca
 
 ### 2.3.1·Image: 图像
 
-Images can be tokenized into discrete symbols with the previously introduced VQVAE structure.
+Images can be tokenized into discrete symbols with the previously introduced VQ-VAE structure.
 Compared to text tokens, images diverge in three fundamental aspects that significantly impact how they should be tokenized:
 
 1.
@@ -440,16 +545,15 @@ Additionally, the codec models are typically off-the-shelf and lightweight.
 
 Latest works have attempted to impose additional supervision on the discrete codes extracted by codec models.
 The objective is to enhance their ability to extract and encode higher-level semantic information, thereby improving language modeling.
-SpeechTokenizer~\citep{zhang2023speechtokenizer} is an RVQ-based codec model, where its first-layer codebook incorporates semantic information through the semantic distillation process, using [HuBERT](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) representations as the semantic teacher.
-Mimi, used by Moshi~\citep{défossez2024moshispeechtextfoundationmodel}, further improves upon this by replacing the semantic teacher from HuBERT with WavLM~\citep{chen2022wavlm}.
+[SpeechTokenizer](../../Models/SpeechCodec/2023.08.31_SpeechTokenizer.md) is an RVQ-based codec model, where its first-layer codebook incorporates semantic information through the semantic distillation process, using [HuBERT](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) representations as the semantic teacher.
+Mimi, used by Moshi~\citep{défossez2024moshispeechtextfoundationmodel}, further improves upon this by replacing the semantic teacher from HuBERT with [WavLM](../../Models/SpeechRepresentation/2021.10.26_WavLM.md).
 Additionally, it isolates the first-layer codebook from the RVQ process to achieve better semantic and acoustic disentanglement.
 To enhance the compression rate, WavTokenizer~\citep{ji2024wavtokenizer} is capable of quantizing one-second audio into 75 or 40 tokens with a single quantizer.
 
 ### 2.3.3·Video: 视频
 
-
 Compared to images, videos introduce an additional temporal dimension that must be considered during the tokenization process.
-A straightforward strategy is to utilize an image-based VQVAE model to tokenize the video frame-by-frame.
+A straightforward strategy is to utilize an image-based VQ-VAE model to tokenize the video frame-by-frame.
 This approach is employed by several multimodal foundation models, such as LVM~\cite{bai2023sequential}, LWM~\cite{liu2023world}, and Unified-IO series~\cite{lu2022unifiedio,lu2023unifiedio2}.
 However, a significant drawback of frame-by-frame tokenization is its inability to compress video data over time, resulting in a high degree of token redundancy across frames—particularly in long-form videos—thereby imposing substantial computational demands~\citep{song2024moviechatdensetokensparse}.
 Furthermore, using an image-based tokenizer fails to model temporal relationships between frames, leading to issues of temporal inconsistency.
@@ -621,7 +725,7 @@ Pre-trained foundation models, typically learned in a self-supervised manner on 
 To obtain general speech features, wav2vec 2.0~\citep{baevski2020wav2vec} masks speech input in the latent space and addresses a contrastive task defined over quantized latent representations that are learned simultaneously.
 data2vec~\citep{baevski2022data2vec} biases the query-key attention scores with a penalty proportional to their distance.
 [HuBERT](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) employs an offline clustering step to provide aligned target labels for a BERT-like prediction loss, which is applied solely on the masked regions.
-WavLM~\cite{chen2022wavlm} introduces denoising in pretraining, jointly with regular masked speech prediction, as HuBERT.
+[WavLM](../../Models/SpeechRepresentation/2021.10.26_WavLM.md) introduces denoising in pretraining, jointly with regular masked speech prediction, as HuBERT.
 Whisper~\citep{radford2023robust}  is a speech recognition model characterized by an attention-based encoder-decoder architecture, trained on web-scale labeled speech data.
 It is increasingly being employed as a foundational speech model, extending its applications beyond speech recognition tasks~\citep{[WavLLM](../../Models/SpeechLM/2024.03.31_WavLLM.md); [SALMONN](../../Models/SpokenDialogue/2023.10.20_SALMONN.md),meng24c_interspeech,meng2024llm}.
 
