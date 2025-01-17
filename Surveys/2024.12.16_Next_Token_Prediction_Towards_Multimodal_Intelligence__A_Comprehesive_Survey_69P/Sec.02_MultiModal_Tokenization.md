@@ -467,6 +467,9 @@ Maskbit 探索了无嵌入的 Tokenization 方法, 使用了二元量化.
 
 ### 2.2.2·Evaluation of VQ Tokenizers
 
+<details>
+<summary>展开原文</summary>
+
 When evaluating VQ-VAEs, two critical metrics are commonly considered: **reconstruction ability** and **generation ability**.
 
 Reconstruction ability refers to how well the VQ-VAE can reproduce the original input data after encoding and decoding.
@@ -479,6 +482,22 @@ To quantitatively evaluate generation ability, metrics such as the Inception Sco
 
 rFIDs are often computed between ImageNet validation images and their reconstructed images.
 gFIDs are usually computed against the training set with ADM's evaluation suite~\cite{dhariwal2021diffusionmodelsbeatgans}.
+
+</details>
+<br>
+
+在评估 VQ-VAE 时, 两个关键指标是常见的: **重构能力**和**生成能力**.
+
+重构能力指的是 VQ-VAE 在编码和解码后能够多好地复现原始输入.
+这一指标通过模型从潜在表示重构输入数据能有多精确的方面来评估模型的精确性.
+L2 距离, PSNR 和 rFID 都是常用的评估重构能力的指标.
+
+生成能力评估模型存在码本空间中的学习到的分布中生成新的合理的样本的能力.
+这一指标评估 VQ-VAE 在生成新数据时的创造性和多样性, 这些数据与训练数据分布一致.
+为了量化评估生成能力, 诸如 IS 和 gFID 等指标被广泛使用.
+
+rFID 通常通过 ImageNet 验证集图像和它们的重构图像计算.
+gFID 通常通过 ADM 评估套件~\cite{dhariwal2021diffusionmodelsbeatgans} 计算, 它与训练集进行比较.
 
 ## 2.3·Discrete Tokenization for Different Modalities: 不同模态的离散分词
 
@@ -647,7 +666,6 @@ For example, Emu~\citep{sun2023emu1} leverages a Causal Transformer (i.e., C-For
 
 ### 2.4.2·De-tokenize Continuous Output for Generation
 
-
 The backbone of large language models is inherently designed for language generation.
 Typically, their output layers function as classification heads that predict distributions over a language vocabulary.
 For discrete non-textual modalities, the discrete token vocabularies can be integrated into the LLM’s original text vocabulary since token generation is still managed by the classification heads.
@@ -658,7 +676,6 @@ Recent work includes MAR~\citep{MAR} and Transfusion~\citep{Transfusion}.
 We will further elaborate on the decoding of continuous output in ~\S\ref{par:soft-token-output-decoding} and the transformations to the output feature in ~\S\ref{par:soft-token-output-transformation}.
 
 **Decoding**
-
 
 Unlike pure text generation, multimodal generation requires the model to decide when to switch modalities during decoding, due to their intrinsic differences.
 We refer to this objective as **positioning**.
@@ -691,7 +708,6 @@ While the aforementioned workflow and categorization outline a general approach 
 Given the unique characteristics of different modalities, these approaches introduce specific inductive biases into the tokenization process.
 
 ### 2.5.1·Images: 图像
-
 
 For images, specific research directions include but are not limited to: \textbf{image augmentation}, \textbf{resolution and aspect ratio} and \textbf{heterogeneous images}.
 
