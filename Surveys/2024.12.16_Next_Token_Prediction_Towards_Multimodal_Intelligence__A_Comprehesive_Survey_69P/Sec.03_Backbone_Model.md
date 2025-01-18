@@ -75,3 +75,31 @@ For a detailed discussion on decoder design, please refer to Section~\ref{sec: D
 To enable both multimodal understanding and generation abilities of LLM in compositional manner, an external encoder and decoder can be attached to the backbone model simultaneously.
 A classic structure is exemplified by Emu1 and Emu2~\citep{sun2023emu1,sun2024emu}, which adopts EVA-CLIP~\citep{eva-clip} as the encoder and SDXL as the image decoder.
 For the audio domain, LLaMA-Omni~\citep{fang2024llama} utilizes Whisper-large-v3~\citep{radford2023robust} as the encoder and a Transformer based decoder.
+
+## Unified Model
+
+As shown in Fig.~\ref{fig:two type of MMNTP models}, the Unified Model leverages a light-weight encoder and decoder to process and generate multimodal information.
+The backbone model takes up most of the roles in understanding and generation tasks.
+This section will introduce two main structures of the unified model.
+
+### Quantization-based Autoregression
+
+The quantization-based method is widely applied in building a unified model for multimodal understanding and generation due to its simplicity and similarity to the causal language modeling task.
+Typically, the encoder and decoder are derived from VQVAEs, trained to reconstruct the input from a discrete representation space.
+Focusing on generation, research explores generating images~\citep{DALLE,llamagen,VAR,dnd-transformer} and audio~\citep{kreuk2022audiogen, yang2023uniaudio, copet2024simple,lajszczak2024base} with higher quality in an autoregressive manner and integrating advanced techniques for optimizing LLMs.
+Another line of work focuses on both understanding and generating multimodal information using quantization-based methods.
+Notable examples include Unified-IO~\cite{lu2022unifiedio}, Chameleon~\cite{chameleonteam2024chameleon}, Emu-3~\cite{wang2024emu3nexttokenpredictionneed} and Moshi~\cite{defossez2024moshi}, which employ a unified NTP training objective for multimodal understanding and generation tasks.
+
+### Autoregressive Diffusion
+
+The quantization-based method often faces criticism regarding generation quality.
+It typically produces images in a raster-scan order, which contradicts the intrinsic nature of 2D images.
+Additionally, the quantization process can lead to information loss.
+Several works aim to integrate the diffusion process into the NTP to enhance generation quality.
+Unlike compositional methods, the diffusion model is trained from scratch alongside the entire transformer model.
+Distinctive works such as Transfusion~\citep{Transfusion}, MAR~\citep{MAR}, CosyVoice~\citep{du2024cosyvoice} and Fluid~\citep{FLUID} demonstrate that diffusion models can be jointly trained with language modeling tasks, offering superior image generation quality compared to quantization-based methods.
+
+The debate between quantization-based and diffusion-based autoregressive  methods for image generation is on-going, highlighting the need for further research.
+For instance, while many diffusion-based AR methods~\citep{MAR,Transfusion} claim better generation quality compared to quantization method, Emu3~\citep{wang2024emu3nexttokenpredictionneed} significantly outperforms diffusion baselines like SDXL using a quantization-based AR approach.
+DnD-Transformer~\citep{dnd-transformer} showcased that quantization-based AR generation has superior performance in generating rich-text images than diffusion models.
+In summary, it is not concluded yet which modeling method has superior performance than another currently.
