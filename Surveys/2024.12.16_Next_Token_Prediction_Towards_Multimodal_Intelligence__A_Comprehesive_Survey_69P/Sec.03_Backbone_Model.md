@@ -50,3 +50,28 @@ Leveraging the in-context learning capabilities and the scalability potential of
 Recently, the exploration of full-duplex real-time spoken dialogue \cite{defossez2024moshi, gpt4o} has been progressing at a rapid pace, which requires strong audio understanding and streaming speech generation capabilities.
 In Moshi~\cite{defossez2024moshi}, to address these requirements, multiple audio streams, encompassing both user inputs and model outputs, are modeled concurrently, and a novel streaming audio tokenizer is introduced.
 For these tasks, the parameters of the Transformer decoder can be effectively initialized using those derived from an LLM.
+
+## Compositional Model
+
+As shown in Fig.~\ref{fig:two type of MMNTP models}, the Compositional Model utilizes advanced external models to serve as the encoder and decoder for processing multimodal information.
+The section introduces the two components individually.
+
+### Connecting External Encoders for Understanding
+
+A common architectural approach to enabling multimodal information understanding ability in LLM is using a robust external encoder to encode raw multimodal data to better representations.
+Pioneering work includes MiniGPT4~\citep{zhu2023minigpt4} and LLaVA~\citep{liu2023llava}, which combine a vision encoder, an alignment layer and an LLM for general-purpose visual and language understanding.
+The LLaVA-style structure~\citep{liu2023llava}, which uses CLIP~\citep{radford2021clip} as the encoder and an MLP as the alignment layer, has been utilized in numerous subsequent models.
+Recent studies reveal that scaling up the visual encoder~\citep{chen2023internvl,QwenVL} and allowing for more flexible input image resolutions~\citep{llava-uhd,QwenVL} can significantly improve the model's visual perception abilities.
+Similar architectural approaches are employed within the audio domain to equip LLMs with the ability to perceive and process speech signals, as exemplified by models such as SALMONN~\citep{tang2023salmonn}, Qwen-Audio~\citep{chu2023qwen}, and WavLLM~\citep{hu2024wavllm}.
+For a detailed discussion on encoder design, please refer to Section~\ref{sec: Tokenize Continuous Input}.
+
+### Connecting External Decoders for Generation
+
+To enable the LLM to generate multimodal outputs, including images, a straightforward approach is to connect it to a powerful image generation model such as a latent diffusion model~\citep{ldm}.
+In this context, it is crucial to ensure that the LLM generates continuous features beyond just language tokens, aligning the output with the input space of the diffusion models.
+Typical work includes Emu~\cite{sun2023emu1}, which adds a regression head on top of the LLM's output hidden state to predict the visual embedding for the diffusion model.
+For a detailed discussion on decoder design, please refer to Section~\ref{sec: De-tokenize Continuous Output}.
+
+To enable both multimodal understanding and generation abilities of LLM in compositional manner, an external encoder and decoder can be attached to the backbone model simultaneously.
+A classic structure is exemplified by Emu1 and Emu2~\citep{sun2023emu1,sun2024emu}, which adopts EVA-CLIP~\citep{eva-clip} as the encoder and SDXL as the image decoder.
+For the audio domain, LLaMA-Omni~\citep{fang2024llama} utilizes Whisper-large-v3~\citep{radford2023robust} as the encoder and a Transformer based decoder.
