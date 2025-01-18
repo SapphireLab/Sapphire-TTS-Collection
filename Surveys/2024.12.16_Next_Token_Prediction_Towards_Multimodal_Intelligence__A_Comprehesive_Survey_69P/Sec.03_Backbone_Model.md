@@ -103,3 +103,27 @@ The debate between quantization-based and diffusion-based autoregressive  method
 For instance, while many diffusion-based AR methods~\citep{MAR,Transfusion} claim better generation quality compared to quantization method, Emu3~\citep{wang2024emu3nexttokenpredictionneed} significantly outperforms diffusion baselines like SDXL using a quantization-based AR approach.
 DnD-Transformer~\citep{dnd-transformer} showcased that quantization-based AR generation has superior performance in generating rich-text images than diffusion models.
 In summary, it is not concluded yet which modeling method has superior performance than another currently.
+
+## Comparison Between Compositional and Unified Models
+
+This subsection delves into a detailed comparison between compositional and unified models, evaluating their respective strengths and weaknesses in terms of general multimodal intelligence, training and deployment efficiency, and their potential to scale with increasing computational resources.
+
+### General Multimodal Intelligence
+
+Unified models handle multimodal understanding and reasoning within a single backbone model, whereas compositional models assign different tasks to specialized external models.
+Although NTP has transformed language intelligence, its impact on multimodal intelligence remains uncertain.
+Given this context, unified models are closer to a multimodal foundation model~\citep{li2023multimodalfoundationmodelsspecialists, Emu3} due to its end-to-end nature and it may hold more potential than their compositional counterparts, as they rely on a single NTP training objective, making them easier to scale compared to multi-module systems.
+We will discuss the scaling behavior of MMNTP models in Section~\ref{sec:challange_scaling_law}.
+
+### Training Efficiency
+
+Compositional models benefit from leveraging highly specialized external encoders and decoders, often resulting in reduced training time for new tasks since these components are pretrained separately.
+This modular approach allows for targeted updates, reusing existing powerful models without the need for extensive retraining of the entire system.
+In contrast, unified models leave most of the understanding and generation responsibility to one backbone model, leading to sub-optimal performance given the same amount of computation~\citep{Show-o}.
+This integrated training can be more resource-intensive, but it potentially facilitates a more coherent feature space across modalities within the LLM backbone, potentially enhancing overall performance on diverse multimodal tasks.
+
+### Deployment Efficiency
+
+The unified model, particularly when using quantization-based methods, demonstrates significantly superior deployment efficiency compared to the compositional approach.
+A single unified transformer decoder backbone can effectively leverage the advanced techniques developed by the LLM community for accelerating both training and inference, such as Flash-Attention~\citep{flash-attention} and vLLM~\citep{vllm}.
+This capability is frequently cited as a key advantage of unified models, as highlighted by works like~\citep{Emu3,llamagen}.
