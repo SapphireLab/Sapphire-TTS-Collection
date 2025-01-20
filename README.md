@@ -24,6 +24,7 @@
 - [Awesome Large Speech Model](https://github.com/huangcanan/Awesome-Large-Speech-Model) by Huang Can'an ![Star](https://img.shields.io/github/stars/huangcanan/Awesome-Large-Speech-Model?style=social)
 - [VoiceBench](https://github.com/MatthewCYM/VoiceBench) by 新加坡国立大学 ![Star](https://img.shields.io/github/stars/MatthewCYM/VoiceBench)
 - [Awesome Controllable Speech Synthesis](https://github.com/imxtx/awesome-controllabe-speech-synthesis) by 香港科技大学 (广州) ![Star](https://img.shields.io/github/stars/imxtx/awesome-controllabe-speech-synthesis?style=social)
+- [Awesome-Multimodal-Next-Token-Prediction](https://github.com/LMM101/Awesome-Multimodal-Next-Token-Prediction) by Liang Chen (Leader) ![Star](https://img.shields.io/github/stars/LMM101/Awesome-Multimodal-Next-Token-Prediction)
 
 ## 开源项目·Text-to-Speech
 
