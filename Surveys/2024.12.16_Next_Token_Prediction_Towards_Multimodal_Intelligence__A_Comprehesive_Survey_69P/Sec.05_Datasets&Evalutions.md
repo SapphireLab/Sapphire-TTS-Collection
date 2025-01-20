@@ -140,8 +140,8 @@ Additionally, some instruction-based image editing datasets focus on image gener
 |BuboGPT~\citep{zhao2023bubogpt} | Image+Audio+Text | 170K | Existing datasets + GPT | July-2023 |
 |MGVLID~\citep{zhao2023chatspot} | Image+Text | 108K |  Existing datasets + GPT | July-2023 |
 |HalDetect~\citep{gunjal2023detecting} | Image+Text | 16K | COCO+Human | Aug-2023 |
-|StableLLaVA~\citep{li2023stablellava} | Image+Text | 126K | SD+GPT | Aug-2023 \\
-Sparkles~\citep{huang2023sparkles} | Image+Text | 6.5K | Existing datasets + GPT | Aug-2023 |
+|StableLLaVA~\citep{li2023stablellava} | Image+Text | 126K | SD+GPT | Aug-2023 |
+|Sparkles~\citep{huang2023sparkles} | Image+Text | 6.5K | Existing datasets + GPT | Aug-2023 |
 |LVIS-INSTRUCT4V~\citep{wang2023see} | Image+Text | 220K | Existing dataset+GPT | Nov-2023 |
 |M3DBench~\citep{li2023m3dbench} | Image+Text | 320K | Existing datasets + GPT | Dec-2023 |
 |MMEvol~\citep{luo2024mmevol} | Image+Text | 480K | Existing datasets + GPT | Sept-2024 |
@@ -149,4 +149,67 @@ Sparkles~\citep{huang2023sparkles} | Image+Text | 6.5K | Existing datasets + GPT
 |HIVE~\citep{zhang2023hive} | Image Editing | 1.1M | Existing datasets + SD + GPT | Mar-2023 |
 |MagicBrush~\citep{zhang2024magicbrush} | Image Editing | 10K | Existing datasets + SD + Human | Nov-2023 |
 |HQ-Edit~\citep{hui2024hq} | Image Editing |  200K | SD+GPT | Apr-2024 |
-|UltraEdit~\citep{ultraEdit} | Image Editing |  4.1M | Existing datasets +SD+GPT | June-2024 \\
+|UltraEdit~\citep{ultraEdit} | Image Editing |  4.1M | Existing datasets +SD+GPT | June-2024 |
+
+## Evaluation
+
+The evaluation MMNTP models is crucial to understand their capabilities, limitations, and potentials across different dimensions.  This section delves into the different facets of evaluating such models, outlining both established holistic benchmarks and emerging evaluation practices.
+
+### Holistic Evaluation
+
+In the assessment of multi-modal large language models, holistic benchmarks serve as foundational tools for evaluating the integration and interplay between different modalities such as image, text, and video.
+
+Within the domain of image-language, benchmarks like MME \citep{fu2023mme} offer a comprehensive evaluation of models' perception and cognition abilities across a diverse set of tasks, emphasizing the importance of intuitive and quantifiable analysis without the need for extensive prompt engineering.
+MMBench \citep{liu2023mmbench} extends this by incorporating a vast dataset and a unique evaluation strategy, CircularEval, to robustly test models across a wide array of capabilities, including object localization and social reasoning, through single-choice questions derived from a broad spectrum of ability dimensions.
+SEED-Bench \citep{li2023seedbench} and its successor SEED-Bench-2 \citep{li2023seedbench2} further contribute by providing a detailed assessment framework that covers generative comprehension capabilities across various dimensions, utilizing a mix of automatic filtering and manual verification to ensure the relevance and quality of questions.
+MLLM-Bench \citep{ge2023mllmbench} aims to reflect user experiences more accurately by focusing on diverse scenarios ranging from perception to creative output, highlighting the gaps in performance between existing models and suggesting directions for future development.
+MMMU \citep{yue2023mmmu} uniquely challenges models on college-level subject knowledge across a wide range of disciplines, requiring advanced perception and reasoning over complex multi-modal questions.
+CMMMU \citep{zhang2024cmmmu} is designed to assess the proficiency of multimodal models in Chinese, featuring 12,000 questions across six disciplines and 30 subjects. It challenges models with complex reasoning tasks and a variety of image types.
+
+In the video-language category, benchmarks like MVBench \citep{li2024mvbench} specifically target the temporal understanding capabilities of models by focusing on dynamic, video-based reasoning tasks that extend beyond static image understanding.
+This involves evaluating models on their ability to interpret action sequences, object interactions, and scene transitions within video content.
+VBench \citep{huang2023vbench} offers a nuanced approach to assessing video generation quality by breaking down the evaluation into specific dimensions and providing detailed feedback on models' performance across various content types, thereby enhancing our understanding of video generative models.
+
+|Holistic Evaluation Benchmark     | Modalities | Samples | Span / Feature | Release Date |
+|---|---|---|---|---|
+| MME \citep{fu2023mme}  | text, image   | 2,374   | 14 Subtasks | 2023-06-23|
+|MMBench \citep{liu2023mmbench}    | text, image   | 4,377   | 20 Dimensions     | 2023-07-12|
+|SEED-Bench \citep{li2023seedbench}| text, image   | 19,242  | 12 Dimensions     | 2023-07-30|
+|MLLM-Bench \citep{ge2023mllmbench}| text, image   | 420     | 6 Dimensions| 2023-11-23|
+|MMMU \citep{yue2023mmmu}    | text, image   | 11,550  | 183 Subfields     | 2023-11-27|
+|MVBench \citep{li2024mvbench}     | text, video   | 4,000   | 20 Subtasks | 2023-11-28|
+|SEED-Bench-2 \citep{li2023seedbench2}   | text, image, video  | 24,000  | 27 Dimensions     | 2023-11-28|
+|VBench \citep{huang2023vbench}    | text, video   | 1,600   | 16 Dimensions     | 2023-11-29|
+|CMMMU \citep{zhang2024cmmmu}| text, image   | 12,000  | 30 Subjects | 2024-01-22|
+
+### Emerging Evaluation Benchmarks
+
+Emerging benchmarks delve into more specialized and advanced aspects of multi-modal understanding, pushing the boundaries of model assessment.
+SparklesEval \citep{huang2023sparkles} focuses on conversational competence in multi-modal contexts, emphasizing the ability of models to maintain coherent conversations involving multiple images and dialogue turns.
+MathVista \citep{lu2024mathvista} challenges models on their mathematical reasoning abilities within visual contexts, incorporating a wide range of tasks that require a blend of visual understanding and compositional reasoning.
+HallusionBench \citep{guan2024hallusionbench} is designed to test models on their ability to handle nuanced visual interpretations, particularly in the context of image-context reasoning, while Bingo \citep{cui2023holistic} addresses the critical issue of hallucinations in models, focusing on understanding and quantifying biases and interference effects.
+MMC-Benchmark \citep{liu2023mmc} stands out for its focus on chart understanding, offering a unique set of tasks that evaluate models' abilities to extract and reason with information from visual charts, marking a significant challenge for even advanced models.
+BenchLMM \citep{cai2023benchlmm} assesses performance across different visual styles, crucial for understanding and improving visual reasoning capabilities in diverse real-world scenarios. Lastly, TVGE \citep{wu2024better} introduces a novel metric, the Text-to-Video Score (T2VScore), for evaluating text-to-video generation models, providing a comprehensive tool for assessing alignment with textual descriptions and overall video quality.
+MMCBench \citep{zhang2024benchmarking} is designed to evaluate LMMs robustness and self-consistency across text, image, and speech modalities, focusing on four generation tasks: text-to-image, image-to-text, text-to-speech, and speech-to-text.
+The purpose of VQAv2-IDK \citep{cha2024visually} is to challenge and evaluate models on their ability to recognize and admit uncertainty or lack of information in visual question answering tasks, rather than generating incorrect or arbitrary responses.
+Math-Vision \citep{wang2024measuring} benchmark is a comprehensive dataset of 3,040 mathematical problems with visual contexts, spanning 16 subjects and 5 difficulty levels, aimed at evaluating the reasoning capabilities of LLMs in mathematical scenarios.
+TempCompass \cite{liu2024tempcompass} benchmark assesses Video LLMs' understanding of temporal dynamics in videos through diverse tasks and formats, highlighting significant gaps in models' ability to perceive time, using an LLM-based automatic evaluation method.
+MathVerse \cite{zhang2024mathverse} benchmark offers varying degrees of textual and image information content in multi-modality math problems, contributing to 2,612 test samples in total to investigate the ability of VLMs to gain information from pictures.
+
+These holistic and emerging benchmarks provide a comprehensive framework for evaluating the current capabilities and identifying the limitations of multi-modal large language models, guiding the path towards more sophisticated, versatile, and capable multi-modal AI systems.
+
+|Emerging Benchmarks|Modalities | Samples | Span / Feature | Release Date |
+|--- |---|---|---|---|
+|SparklesEval \citep{huang2023sparkles}  | text, image   | 1,967   | Multi-modal Dialogue    | 2023-08-31|
+|MathVista \citep{lu2024mathvista} | text, image   | 6,141   | Math Reasoning    | 2023-10-03|
+|HallusionBench \citep{guan2024hallusionbench} | text, image   | 1,129   | Hallucination     | 2023-10-23|
+|Bingo \citep{cui2023holistic}     | text, image   | 370     | Hallucination     | 2023-11-06|
+|MMC-Benchmark \citep{liu2023mmc}  | text, image   | 2,126   | Chart Reasoning   | 2023-11-15|
+|BenchLMM \citep{cai2023benchlmm}  | text, image   | 1,967   | Style Robustness  | 2023-12-05|
+|TVGE \citep{wu2024better}   | text, video   | 2,543   | New Metric  | 2024-01-15|
+|MMCBench \citep{zhang2024benchmarking}  | text, image, speech | 4,000   | Self-consistency|2024-01-22|
+|VQAv2-IDK \citep{cha2024visually} | text, image   | 6,624   | Hallucination     | 2024-02-15|
+PCA-Bench \citep{chen2024pcabench,chen2023endtoend}  | text, image| 1200   | Embodied-AI  | 2024-02-21|
+|MATH-Vision \citep{wang2024measuring}   | text, image   | 3,040   | Math Reasoning    | 2024-02-22|
+|TempCompass \cite{liu2024tempcompass}   | text, video   | 7,540   | Video Understanding     | 2024-03-01|
+|MMEvalPro \cite{huang2024mmevalprocalibratingmultimodalbenchmarks} | text, image | 2,138 | Reasoning, Calibration | 2024-06-29|
