@@ -24,8 +24,8 @@ Based on what kind of target token $y_i$ to predict, the NTP training objectives
 $$
 y_i \in \left\{
     \begin{array}{lr}
-    V_D, &\text{Discrete Token Prediction}  \\
-    V_S, &\text{Continuous Token Prediction}
+    V_D, |\text{Discrete Token Prediction}  |
+|    V_S, |\text{Continuous Token Prediction}
     \end{array}
 \right.
 $$
@@ -176,8 +176,8 @@ $$
 Similar to the alignment training in understanding tasks, the objective is to maximize the expected reward while minimizing the KL divergence between the learned distribution $p_\theta$ and a reference distribution $p_\text{ref}$:
 $$
 \begin{aligned}
-& \max _{p_\theta} \mathbb{E}_{\boldsymbol{c} \sim \mathcal{D}_c, \boldsymbol{x}_{0: T} \sim p_\theta\left(\boldsymbol{x}_{0: T} \mid \boldsymbol{c}\right)}\left[r\left(\boldsymbol{c}, \boldsymbol{x}_0\right)\right] \\
-&-\beta \mathbb{D}_{\mathrm{KL}}\left[p_\theta\left(\boldsymbol{x}_{0: T} \mid \boldsymbol{c}\right) \| p_{\mathrm{ref}}\left(\boldsymbol{x}_{0: T} \mid \boldsymbol{c}\right)\right]
+|\max _{p_\theta} \mathbb{E}_{\boldsymbol{c} \sim \mathcal{D}_c, \boldsymbol{x}_{0: T} \sim p_\theta\left(\boldsymbol{x}_{0: T} \mid \boldsymbol{c}\right)}\left[r\left(\boldsymbol{c}, \boldsymbol{x}_0\right)\right] |
+||-\beta \mathbb{D}_{\mathrm{KL}}\left[p_\theta\left(\boldsymbol{x}_{0: T} \mid \boldsymbol{c}\right) \| p_{\mathrm{ref}}\left(\boldsymbol{x}_{0: T} \mid \boldsymbol{c}\right)\right]
 \end{aligned}
 $$
 Current methods for aligning image generative models mainly adopt DPO to bypass the cumbersome reward modeling process.
@@ -186,10 +186,10 @@ The final DPO-Diffusion loss function encourages the model to improve the denois
 
 $$
 \begin{aligned}
-L_{\text {DPO-Diffusion }}(\theta) &= -\mathbb{E}_{\left(\boldsymbol{x}_0^w, \boldsymbol{x}_0^l\right) \sim \mathcal{D}, t \sim \mathcal{U}(0, T),
+L_{\text {DPO-Diffusion }}(\theta) |= -\mathbb{E}_{\left(\boldsymbol{x}_0^w, \boldsymbol{x}_0^l\right) \sim \mathcal{D}, t \sim \mathcal{U}(0, T),
 \boldsymbol{x}_{t-1, t}^w \sim p_\theta\left(\boldsymbol{x}_{t-1, t}^w \mid \boldsymbol{x}_0^w\right),
-\boldsymbol{x}_{t-1, t}^l \sim p_\theta\left(\boldsymbol{x}_{t-1, t}^l \mid \boldsymbol{x}_0^l\right)} \\
-& \log \sigma\left(\beta T \log \frac{p_\theta\left(\boldsymbol{x}_{t-1}^w \mid \boldsymbol{x}_t^w\right)}{p_{\mathrm{ref}}\left(\boldsymbol{x}_{t-1}^w \mid \boldsymbol{x}_t^w\right)}-\beta T \log \frac{p_\theta\left(\boldsymbol{x}_{t-1}^l \mid \boldsymbol{x}_t^l\right)}{p_{\mathrm{ref}}\left(\boldsymbol{x}_{t-1}^l \mid \boldsymbol{x}_t^l\right)}\right),
+\boldsymbol{x}_{t-1, t}^l \sim p_\theta\left(\boldsymbol{x}_{t-1, t}^l \mid \boldsymbol{x}_0^l\right)} |
+||\log \sigma\left(\beta T \log \frac{p_\theta\left(\boldsymbol{x}_{t-1}^w \mid \boldsymbol{x}_t^w\right)}{p_{\mathrm{ref}}\left(\boldsymbol{x}_{t-1}^w \mid \boldsymbol{x}_t^w\right)}-\beta T \log \frac{p_\theta\left(\boldsymbol{x}_{t-1}^l \mid \boldsymbol{x}_t^l\right)}{p_{\mathrm{ref}}\left(\boldsymbol{x}_{t-1}^l \mid \boldsymbol{x}_t^l\right)}\right),
 \end{aligned}
 $$
 where condition $\mathbf{c}$ is omitted for brevity.
@@ -199,3 +199,79 @@ Dreamlike, a fine-tuned version of Stable Diffusion 1.5.
 D3PO~\citep{yang2023d3po} instead treats diffusion generation as the multi-step decision problem. Under mild assumptions, the model is trained by the preference objective at the image segment level.
 The human annotators are asked about the final image quality and D3PO assumes that any state-action
 pair of the preferred image is better than that of the rejected image.
+
+## Inference: Enhancing Multimodal Task Performance via Prompt Engineering
+
+After the pretraining and finetuning stages, MMNTP models can also benefit from prompt engineering techniques, much like LLMs. Stemming from research in prompt engineering \citep{vatsal2024surveypromptengineeringmethods}, In-Context Learning (ICL) \citep{icl_survey} and Chain-of-Thought reasoning (CoT) \citep{wei2022chain} are key methods that significantly enhance the performance of LLMs on complex tasks, such as mathematical reasoning \citep{cobbe2021trainingverifierssolvemath}.
+
+Although prompt engineering techniques have had huge success in LLMs~\citep{vatsal2024surveypromptengineeringmethods}, their application in multimodal remains largely underexplored so far. Table~\ref{table:multimodal_ICL_summary} lists the related work on multimodal ICL and CoT research.
+
+### Multimodal In-Context Learning
+
+| MultiModal ICL Method |Year |Modality |Backbone Model |Task |
+| --- | --- | ---| --- | --- |
+|Frozen~\cite{tsimpoukelli2021multimodal}  |2021 |Image |GPT2 Architecture~\citep{gpt2} | Understanding  |
+|Flamingo~\cite{alayrac2022flamingo}  |2022 |Image  |GPT2 Architecture~\citep{gpt2} | Understanding  |
+|MMICL~\citep{zhao2023mmicl} |2023 |Image  |InstructBLIP~\citep{dai2023instructblip} |Understanding|
+|EILeV~\cite{yu2023efficient} |2023 |Image  |- | Understanding |
+|Open-Flamingo~\cite{awadalla2023openflamingo}  |2023 |Image  |Flamingo Architecture~\cite{alayrac2022flamingo} | Understanding |
+|LCL~\cite{tai2023linkcontext} |2023 | Image |Otter~\citep{li2023mimicit}, OpenFlamingo~\cite{awadalla2023openflamingo} | Understanding |
+|Med-Flamingo~\cite{moor2023medflamingo}  |2023 |Image  |Open-Flamingo~\cite{awadalla2023openflamingo} | Understanding |
+|MIMIC-IT~\cite{li2023mimicit}  |2023 |Image |OpenFlamingo~\cite{awadalla2023openflamingo} | Understanding |
+|LVM~\cite{bai2023sequential} |2023 |Image |LLaMA Architecture~\cite{touvron2023llama} |Understanding\|Generation  |
+|LWM~\cite{liu2023world}  |2023 |Image, Video |LLaMA Architecture~\cite{touvron2023llama} |Understanding \|Generation |
+|~\citet{yang2024exploring} |2024 |Image  |Open-Flamingo~\cite{awadalla2023openflamingo}  | Understanding |
+|VisualICL~\cite{zhou2024visual} |2024 |Image  |LLaVA~\citep{liu2023llava} |Understanding |
+|Many-Shots ICL~\citep{jiang2024manyshotincontextlearningmultimodal} |2024 |Image |GPT4-o~\citep{gpt4o}, Gemini1.5~\citep{team2024gemini} |Understanding |
+|CoBSAT~\cite{zeng2024mllms}  |2024 |Image |Emu~\citep{sun2023emu1} |Generation |
+|Video ICL~\citep{zhang2024videoincontextlearning} |2024 |Video |LLaMA Architecture~\citep{touvron2023llama} |Generation |
+|Emu~\cite{sun2024emu}  |2024 | Image, Video |LLaMA~\cite{touvron2023llama} |Understanding \|Generation |
+|Emu2~\cite{sun2024generative} |2024 |Image, Video | LLaMA-33B~\cite{touvron2023llama} |Understanding \|Generation  |
+|Yang et al.~\citep{sheng2024unified} |2024 |Image |GPT2 Architecture~\citep{gpt2} |Understanding \|Generation  |
+|VALL-E~\cite{wang2023neural} |2023 |Audio |-|Generation |
+|MELLE~\cite{meng2024autoregressive} |2024 |Audio |-|Generation|
+|Seed-TTS~\cite{anastassiou2024seed} |2024 |Audio |-|Generation|
+|Audio Flamingo~\cite{kong2024audio} |2024 |Audio |OPT-IML-MAX-1.3B~\cite{iyer2022opt}|Understanding|
+|Moshi~\cite{defossez2024moshi} |2024 |Audio |Helium~\cite{defossez2024moshi}|Understanding \|Generation |
+
+Multimodal In-Context Learning (ICL) is an emerging paradigm in which models leverage a few demonstration examples incorporating visual, textual, and other optional modalities to perform multimodal tasks. In this learning paradigm, the input processed by the Large Multimodal Model is divided into two components: the query \( x_q \) and the context \( C \). The LMM needs to generate a sequence of tokens as outputs \(y_q\) based on these two parts:
+$$
+y_q = LMM(x_q, C)
+$$
+The context \( C \) consists of a set of input-output ICL examples:
+$$
+C = \{(x_i, y_i)\}_{i=1}^n
+$$
+Adopting the notation from Todd et al. \cite{todd2024function}, we represent the generic template for organizing the context \( C \) as follows:
+$$
+ Q:\{x_1\}\textbackslash n \textbf{ }A:\{y_1\} \textbackslash n \textbackslash n \textbf{ }\dots Q:\{x_n\} \textbackslash n \textbf{ }A:\{ y_n\},
+$$
+where \( Q \) and \( A \) symbolize the question and answer template structures respectively, and \( x_i \) and \( y_i \) denote the question and answer of the \( i \)-th demonstration respectively.
+
+Multimodal ICL introduces unique challenges compared to unimodal ICL, particularly in integrating and aligning diverse modalities such as text, images, and videos~\citep{shukor2023beyond}~\citep{zhao2023mmicl}\citep{baldassini2024makes}. In multimodal ICL, both the query \( x_q \) and context \( x_i \) may vary in modality, conveying complementary yet distinct information that can lead to imbalanced or inefficient learning. A primary challenge, as noted in recent studies \citep{awadalla2023openflamingo} \citep{baldassini2024makes}, is that performance in many multimodal ICL systems remains largely text-driven, with other modalities—such as images or videos—contributing minimally to overall task performance.
+
+To address this challenge, several approaches~\citep{awadalla2023openflamingo,yu2023efficient,yu2023efficient,zhao2023mmicl} focus on enhancing the model's ability to generalize across diverse multimodal tasks. EILEV~\citep{yu2023efficient} proposes new training methods for video understanding. MMICL~\citep{zhao2023mmicl} and CoBSAT~\citep{zeng2024mllms} use specialized datasets and prompt engineering to enhance multimodal reasoning. Recent work further extends these efforts by exploring large-scale models for more effective in-context learning with interleaved multimodal inputs, ~\citep{EMU2,liu2023world,EMU2,laurenccon2024obelics}.
+
+### Multimodal Chain-of-Thought Prompting
+
+| MultiModal CoT Method |Year |Modality |Backbone Model |Task |
+| --- | --- | ---| --- | --- |
+| MM-CoT~\citep{zhang2023multimodal}  | 2023 | Image | T5-770M~\citep{raffel2020exploring} |  Understanding  |
+|DDCoT~\citep{zheng2023ddcot}  | 2023 | Image | ChatGPT~\citep{ouyang2022training}/GPT-3~\citep{gpt3} |  Understanding  |
+|VCDM~\citep{harvey2023visual}  | 2023 | Image |  Stable Diffusion~\citep{diffusion_dpo1} |   Generation   |
+|V*~\citep{wu2024v}  | 2024 | Image | Vicuna-7B~\citep{vicuna2023} |  Understanding  |
+|CogCoM~\citep{qi2024cogcom}  | 2024 | Image | Vicuna-7B~\citep{vicuna2023} |  Understanding  |
+|VisualCoT~\citep{shao2024visual}  | 2024 | Image | Vicuna-7B/13B~\citep{vicuna2023} |  Understanding  |
+|CCoT~\citep{Mitra_2024_CVPR}  | 2024 | Image | - |  Understanding  |
+|VideoCoT~\citep{wang2024videocot}  | 2024 | Video | - |  Understanding  |
+|VoT~\citep{fei2024videoofthought}  | 2024 | Video | Vicuna-7B~\citep{vicuna2023} |  Understanding  |
+|WavLLM~\citep{hu2024wavllm}  | 2024 | Audio | LLaMA Architecture~\citep{touvron2023llama2} | Understanding|
+|SpeechVerse~\citep{das2024speechverse}  | 2024 | Audio |  Flan-T5-XL~\citep{JMLR:v25:23-0870} | Understanding|
+|CoT-ST~\citep{du2024cot}  | 2024 | Audio | - |  Understanding|
+|AST-CoT~\citep{hu2024chain11}  | 2024 | Audio | T5~\citep{raffel2020exploring} |  Understanding|
+
+Multimodal Chain-of-Thought (CoT) is a method that enables models to perform complex reasoning and decision-making in a multimodal setting through step-by-step derivation and coherent thinking. Pioneered by~\citet{zhang2023multimodal}, MM-CoT introduces Chain-of-Thought prompting into visual domains, raising the challenge of labor-intensive annotation, as multimodal data often demands expensive and complex human-labeled information. MM-CoT employs ScienceQA~\citep{lu2022scienceqa}, a dataset focused on scientific questions involving multiple modalities with annotated rationales, while VoT~\citep{fei2024videoofthought} tackles the annotation challenge in video tasks by combining machine and human expertise through active learning.
+
+Another challenge lies in mitigating language hallucinations~\citep{alayrac2022flamingo,ji2023survey,maynez2020faithfulness,rawte2023survey,zhang2023sirenssongaiocean,chen2024pcabench,zhao2024lookingtextreducinglanguage}, which are exacerbated due to the lack of necessary and fine-grained visual context when multimodal information is provided simultaneously. To better inject visual information, V*~\citep{wu2024v} addresses this by dynamically focusing on key visual regions, ensuring that visual details are accurately attended to, particularly in high-resolution images. CCoT~\citep{Mitra_2024_CVPR} generates scene graphs instead of simple captions, explicitly reasoning over visual features to avoid misinterpretation. Moreover, DDCoT ~\citep{zheng2023ddcot} introduces a new CoT prompting method that divides the roles of reasoning and visual recognition between language and visual models, thereby enhancing reasoning clarity and reducing hallucinations.
+
+Subsequent work~\citep{wang2024videocot}~\citep{fei2024videoofthought}~\citep{du2024cot}~\citep{raffel2020exploring} has extended the method beyond images to include video and audio. For instance, the CoT-ST~\citep{du2024cot}framework adapts chain-of-thought reasoning for speech translation, breaking the process into distinct steps to improve accuracy and fluency. Video-CoT~\citep{wang2024videocot}  focus on complex video reasoning, aiming to achieve human-level video comprehension.
