@@ -114,3 +114,39 @@ StableLLaVA~\citep{li2023stablellava} combined the generative prowess of ChatGPT
 **Multimodal Generation**
 
 Additionally, some instruction-based image editing datasets focus on image generation. A typical dataset is InstructPix2Pix~\citep{brooks2023instructpix2pix}, which initially uses GPT-3~\citep{gpt3} to generate the text for edits, and then utilizes Stable Diffusion~\citep{Rombach_Blattmann_Lorenz_Esser_Ommer_2022} along with Prompt2Prompt~\citep{Hertz2022PrompttoPromptIE} technology to generate the corresponding edited images to construct the dataset. Furthermore, HIVE~\citep{zhang2023hive} introduces a larger number of training triplets and incorporates human ranking results, providing stronger supervision signals for more effective model training. Building on these advancements, MagicBrush~\citep{zhang2024magicbrush} introduces the first large-scale, manually annotated dataset specifically designed for instruction-guided real image editing. Expanding further, HQ-Edit~\citep{hui2024hq} provides a high-quality instruction-based image editing dataset consisting of approximately 200,000 edits. Unlike previous methods that relied on attribute guidance or human feedback to build datasets, HQ-Edit employs a scalable data collection pipeline that leverages advanced foundation models, specifically GPT-4V and DALL-E 3.
+
+| Datasets | Tags | Doc/Img/Vid/Aud | Source | Time |
+| --- | --- | --- | --- | --- |
+|MultiInstruct~\citep{xu2022multiinstruct} | Image+Text | 235K| Existing datasets + Human | Dec-2022 |
+|LLaVA~\citep{liu2023llava} | Image+Text | 158K | COCO + GPT | April-2023 |
+|Mini-GPT4~\citep{zhu2023minigpt4} | Image+Text | 3.5K | CC3M + GPT | April-2023 |
+|LMeye~\citep{li2023lmeye} | Image+Text | 7.3M | Existing datasets + GPT | May-2023 |
+|X-LLM~\citep{chen2023x} | Image+Video+Audio+Text | 10K | Existing datasets + GPT | May-2023 |
+|Video-Chat~\citep{li2023videochat} | Video+Audio+Text | 11K |  WebVid-10M + GPT | May-2023 |
+|PMC-VQA~\citep{zhang2023pmc} | Image+Text | 227K | PMC-OA + GPT | May-2023 |
+|DetGPT~\citep{pi2023detgpt} | Image+Text | 30K | COCO+GPT | May-2023 |
+|GPT4Tools~\citep{yang2024gpt4tools} | Image+Text | 71K | Visual ChatGPT | May-2023 |
+|LLaVA-Med~\citep{li2024llava} | Image+Text | 60K | PubMed +GPT | June-2023 |
+|M$^3$IT~\citep{li2023m3it} | Image+Text | 2.4M | Existing datasets + GPT | June-2023 |
+|MIMIC-IT~\citep{li2023mimicit} | Image+Video+Text | 2.8M | Existing datasets + GPT | June-2023 |
+|Video-ChatGPT~\citep{maaz2023video} | Video+Text | 100K | ActivityNet-200+Human | June-2023 |
+|LAMM~\citep{yin2024lamm} | Image+Text | 196K | Existing datasets + GPT | June-2023 |
+|LLaVAR~\citep{zhang2023llavar} | Image+Text | 422K | LAION-5B + GPT | June-2023 |
+|Macaw-LLM~\citep{lyu2023macaw} | Image+Video+Audio+Text | 119K | Existing datasets + GPT | June-2023 |
+|GAVIE~\citep{liu2023mitigating} | Image+Text | 400K | Existing datasets + GPT | June-2023 |
+|MotionGPT~\citep{jiang2024motiongpt} | Motion+Text | 50K | Existing datasets+Human | July-2023 |
+|PF-1M~\citep{chen2023visual} |  Image+Text | 1M | Existing datasets+GPT | July-2023 |
+|SVIT~\citep{zhao2023svit} | Image+Text | 4.2M |  Existing datasets + GPT | July-2023 |
+|BuboGPT~\citep{zhao2023bubogpt} | Image+Audio+Text | 170K | Existing datasets + GPT | July-2023 |
+|MGVLID~\citep{zhao2023chatspot} | Image+Text | 108K |  Existing datasets + GPT | July-2023 |
+|HalDetect~\citep{gunjal2023detecting} | Image+Text | 16K | COCO+Human | Aug-2023 |
+|StableLLaVA~\citep{li2023stablellava} | Image+Text | 126K | SD+GPT | Aug-2023 \\
+Sparkles~\citep{huang2023sparkles} | Image+Text | 6.5K | Existing datasets + GPT | Aug-2023 |
+|LVIS-INSTRUCT4V~\citep{wang2023see} | Image+Text | 220K | Existing dataset+GPT | Nov-2023 |
+|M3DBench~\citep{li2023m3dbench} | Image+Text | 320K | Existing datasets + GPT | Dec-2023 |
+|MMEvol~\citep{luo2024mmevol} | Image+Text | 480K | Existing datasets + GPT | Sept-2024 |
+|InstructPix2Pix~\citep{brooks2023instructpix2pix} | Image Editing | 313K | SD+GPT | Jan-2023 |
+|HIVE~\citep{zhang2023hive} | Image Editing | 1.1M | Existing datasets + SD + GPT | Mar-2023 |
+|MagicBrush~\citep{zhang2024magicbrush} | Image Editing | 10K | Existing datasets + SD + Human | Nov-2023 |
+|HQ-Edit~\citep{hui2024hq} | Image Editing |  200K | SD+GPT | Apr-2024 |
+|UltraEdit~\citep{ultraEdit} | Image Editing |  4.1M | Existing datasets +SD+GPT | June-2024 \\
