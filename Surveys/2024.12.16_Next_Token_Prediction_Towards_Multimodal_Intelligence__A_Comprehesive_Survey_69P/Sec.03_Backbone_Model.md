@@ -1,4 +1,4 @@
-# Backbone Model for Multimodal Next Token Prediction
+# 3·Backbone Model for Multimodal Next Token Prediction
 
 After multimodal information is tokenized into sequential tokens, we need a model capable of handling multimodal information.
 In the literature, two classic MMNTP model structures are depicted in Fig.~\ref{fig:two type of MMNTP models}: 1) the Compositional Model and 2) the Unified Model.

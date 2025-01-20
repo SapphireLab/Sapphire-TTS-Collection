@@ -1,4 +1,4 @@
-# Sec.02·MultiModal Tokenization: 多模态分词
+# 2·MultiModal Tokenization: 多模态分词
 
 <details>
 <summary>展开原文</summary>
