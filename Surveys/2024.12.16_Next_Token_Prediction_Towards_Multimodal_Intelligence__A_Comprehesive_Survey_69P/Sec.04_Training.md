@@ -89,3 +89,113 @@ In CSM, the $y_i$ is instead a contiguous modality vector that can be further de
 Besides, the objective can also be implemented in a span corruption style for a better reconstruction of specific modalities~\citep{lu2022unifiedio}.
 
 Given that a primary objective in the alignment stage is to harmonize the semantics of concepts expressed across different modalities, comprehensive coverage of the training corpus becomes imperative. Consequently, the alignment training is often performed on web-scale datasets. For example, the visual-text alignment is usually conducted on up to millions and even billions of pairs on Laion400M~\citep{laion400m} and Laion5B~\citep{laion5b}.
+
+## Finetuning: Instruction and Preference
+
+After modality alignment training, LMMs acquire a foundational understanding of the semantics associated with various modalities in a unified semantic space.
+To further enhance LMMs' ability to comprehend and perform complex user queries, such as image understanding and generation, researchers employ \emph{instruction tuning} on meticulously curated datasets. Subsequently, \emph{preference alignment training} is utilized to refine model behaviors with implicit human preferences and address potential issues that may have emerged during earlier training phases.
+In the following discussion, we will discuss recent advancements in instruction tuning (\S\ref{subsec:sft_understanding} and \S\ref{subsec:sft_generation}) and alignment training (\S\ref{subsec:alignment_understanding} and \S\ref{subsec:alignment_gen}), as well as explore promising avenues for future research in these domains.
+
+
+### Instruction Tuning in Understanding
+
+\label{subsec:sft_understanding}
+
+After the modality alignment training, different modality inputs now can be represented in a unified embedding space for the backbone LLM to perform complex tasks. Instruction tuning~(\emph{alias} supervised fine-tuning) plays a crucial role in activating this potential of multi-modal language models.
+Specifically, the instruction tuning aims to improve the model's ability to satisfy user queries.
+Again, take the vision language models as an example.
+The visual instruction tuning involves training the model on a
+dataset that usually consists of a multi-modal triplet $(I, Q, A)$ of an image $I$, a
+user query $Q$, and a desired response $A$. This still can be achieved by the previous training object:
+
+$$
+    L(\theta) = f\left( A, p_{\theta}\left(x_i \mid x_{1\sim i-1}, I\right)\right).
+$$
+
+Different from the previous alignment training, the instruction tuning stage involves a more challenging objective to reason over the modalities, motivating the model to explore the inner interaction between different modalities to increase the likelihood of the preferred answers.
+It has been shown that the quality of the instruction tuning is the key to the ability~\citep{liu2023llava15}. Pilot studies explore various methods for constructing high-quality instruction tuning datasets such as
+adapting publicly available multi-modal benchmarks~\citep{li2023m3it,visionFlan2023,xu2022multiinstruct}, synthesizing datasets using self-instruction with ChatGPT/GPT-4~\citep{liu2023llava,chen2023sharegpt4v,zhao2023svit,zhao2023chatbridge}. Furthermore, mixing the multi-modal instruction dataset with
+text-only query-response pairs is also shown to be effective for improving the instruction following ability~\citep{xu2022multiinstruct,liu2023llava}.
+For
+A curated list of these instruction tuning dataset can also be found in later section.
+
+### Instruction Tuning in Generation
+
+Similar to the practice in understanding, the key to improving the generation ability after alignment is collecting high-quality and diverse task datasets, where the reconstruction targets vary according to the task requirements.
+
+However, most training objectives still fall into the token modeling paradigm with different tokenization schemas. The desired output such as textual sentences, images/videos and audios, is represented in a sequence of $N$ tokens $S = (s_0, \ldots, s_N)$, given the conditioned user queries $Q$ specifying the requirements on the target outputs. During the instruction tuning stage, the following objective is optimized:
+
+$$
+    L(\theta) = f\left( y_i, p_{\theta}\left(s_i \mid s_{1\sim i-1}, Q\right)\right),
+$$
+
+where $y_i$ would be the corresponding discrete token or contiguous vector processed as in the alignment training objective.
+To provide wide coverage of the generation ability, previous work~\citep{lu2022unifiedio} ensembles a massive multi-tasking dataset and the sampling ratio during training would be balanced to better expose the model to underrepresented tasks. AnyGPT~\citep{Zhan2024AnyGPT}
+utilizes commercial image-generation and music-generation systems to construct a large-scale high-quality text-to-multimodal instruction tuning datasets.
+
+### Preference Alignment Training in Understanding
+
+Despite the progress made by previous training stages, misalignment issues that pose a potential risk of generating misleading content without anchoring to the provided visual context~\citep{li2023hallucinate,2023llavarlhf}, or biased responses against minority groups~\citep{gpt4v}, still exist.
+To further align with human preference for LMMs, pilot studies draw insights from LLMs and
+apply alignment techniques such as Reinforcement Learning with Human Feedback (RLHF)~\citep{RLHF} and Direct Preference Optimization (DPO)~\citep{DPO} for LMMs.
+
+LLaVA-RLHF~\citep{2023llavarlhf} first explores the RLHF for VLM, by training a factuality-oriented reward model on a synthesized dataset to guide the VLM to produce outputs that anchor with the visual context better.
+Formally, let $x$ be a prompt containing both images and text inputs, and $y_i$ denotes the corresponding response generated by model $\pi_i$. The RLHF process can be formulated as:
+
+\begin{equation*}
+    \max _{\pi_\theta} \mathbb{E}_{x \sim \mathcal{D}, y \sim \pi_\theta(y \mid x)}\left[r(x, y)\right]-\beta \mathbb{D}_{\mathrm{KL}}\left[\pi_\theta(y \mid x) \| \pi_{\mathrm{ref}}(y \mid x)\right],
+\end{equation*}
+where $r$ is the reward model and the KL term penalizes deviations of the current model $\pi_{\theta}$ from the initial model $\pi_{\mathrm{ref}}$. $\beta$ is a hyper-parameter. The RLHF process aims to finetune the model to achieve higher rewards from the reward model, all while preserving the majority of its original knowledge.
+
+
+As training the reward model can be difficult due to the stability issue, there has been a DPO method to tackle these challenges.
+The key insight behind DPO is that the optimal policy $\pi^*$ has a closed-form solution with regard to a reward function $r$ and initial policy $\pi_{\mathrm{ref}}$:
+\begin{equation*}
+    r(x, y)=\beta \frac{\pi^*(y \mid x)}{\pi_{\mathrm{ref}}(y \mid x)}+\beta \log Z(x),
+\end{equation*}
+where $Z$ is the partition function.
+
+Under the  Bradley-Terry (BT) preference model~\citep{Bradley1952RankAO}, the objective becomes:
+$$
+\label{eq:dpo}
+    \max _{\pi_\theta} \mathbb{E}_{\left(x, y_w, y_l\right) \sim \mathcal{D}} \log \sigma\left(\beta \log \frac{\pi_{\theta}\left(y_w \mid x\right)}{\pi_{\mathrm{ref}}\left(y_w \mid x\right)}-\beta \log \frac{\pi_{\theta}\left(y_l \mid x\right)}{\pi_{\mathrm{ref}}\left(y_l \mid x\right)}\right),
+$$
+where $\sigma$ denotes the sigmoid function.
+RLHF-V\citep{Yu2023RLHFVTT}  collects human preference in the form of segment-level corrections on hallucinations, and performs dense direct preference optimization
+over the human feedback.
+\citet{2023vlfeedback} build VLFeedback by annotating the preference with GPT-4V models and applies DPO on Qwen-VL-Chat showing clear advantages.
+
+### Preference Alignment Training in Generation
+
+Due to the computation cost and the difficulty of collecting large-scale comparison datasets (i.e., creating slightly different images), there are few explorations on preference alignment in generative unified multimodal models.
+There are pilot studies investigating preference alignment for diffusion models, where the expected reward of a generated sequence $\boldsymbol{x}_{1:T}$ given a condition $\boldsymbol{c}$ and initial latent $\boldsymbol{x}_0$ is:
+$$
+r\left(\boldsymbol{c}, \boldsymbol{x}_0\right)=\mathbb{E}_{p_\theta\left(\boldsymbol{x}_{1: T} \mid \boldsymbol{x}_0, \boldsymbol{c}\right)}\left[R\left(\boldsymbol{c}, \boldsymbol{x}_{0: T}\right)\right]
+$$
+
+Similar to the alignment training in understanding tasks, the objective is to maximize the expected reward while minimizing the KL divergence between the learned distribution $p_\theta$ and a reference distribution $p_\text{ref}$:
+$$
+\begin{aligned}
+& \max _{p_\theta} \mathbb{E}_{\boldsymbol{c} \sim \mathcal{D}_c, \boldsymbol{x}_{0: T} \sim p_\theta\left(\boldsymbol{x}_{0: T} \mid \boldsymbol{c}\right)}\left[r\left(\boldsymbol{c}, \boldsymbol{x}_0\right)\right] \\
+&-\beta \mathbb{D}_{\mathrm{KL}}\left[p_\theta\left(\boldsymbol{x}_{0: T} \mid \boldsymbol{c}\right) \| p_{\mathrm{ref}}\left(\boldsymbol{x}_{0: T} \mid \boldsymbol{c}\right)\right]
+\end{aligned}
+$$
+Current methods for aligning image generative models mainly adopt DPO to bypass the cumbersome reward modeling process.
+\citet{diffusion_dpo1} re-formulate DPO to account for the intractable likelihood in diffusion models, where the evidence lower bound (ELBO) is employed to derive a differentiable objective function for optimization.
+The final DPO-Diffusion loss function encourages the model to improve the denoising process for preferred images more than for non-preferred images.
+
+$$
+\begin{aligned}
+L_{\text {DPO-Diffusion }}(\theta) &= -\mathbb{E}_{\left(\boldsymbol{x}_0^w, \boldsymbol{x}_0^l\right) \sim \mathcal{D}, t \sim \mathcal{U}(0, T),
+\boldsymbol{x}_{t-1, t}^w \sim p_\theta\left(\boldsymbol{x}_{t-1, t}^w \mid \boldsymbol{x}_0^w\right),
+\boldsymbol{x}_{t-1, t}^l \sim p_\theta\left(\boldsymbol{x}_{t-1, t}^l \mid \boldsymbol{x}_0^l\right)} \\
+& \log \sigma\left(\beta T \log \frac{p_\theta\left(\boldsymbol{x}_{t-1}^w \mid \boldsymbol{x}_t^w\right)}{p_{\mathrm{ref}}\left(\boldsymbol{x}_{t-1}^w \mid \boldsymbol{x}_t^w\right)}-\beta T \log \frac{p_\theta\left(\boldsymbol{x}_{t-1}^l \mid \boldsymbol{x}_t^l\right)}{p_{\mathrm{ref}}\left(\boldsymbol{x}_{t-1}^l \mid \boldsymbol{x}_t^l\right)}\right),
+\end{aligned}
+$$
+where condition $\mathbf{c}$ is omitted for brevity.
+The models are trained  on the Pick-a-Pic~\citep{kirstain2024pick} dataset, which contains pairwise preferences for images generated by SDXL-beta and
+Dreamlike, a fine-tuned version of Stable Diffusion 1.5.
+
+D3PO~\citep{yang2023d3po} instead treats diffusion generation as the multi-step decision problem. Under mild assumptions, the model is trained by the preference objective at the image segment level.
+The human annotators are asked about the final image quality and D3PO assumes that any state-action
+pair of the preferred image is better than that of the rejected image.
