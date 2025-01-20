@@ -1,4 +1,4 @@
-# 5·Datasets & Evaluation
+# 5·Datasets | Evaluation
 
 In this section, we delve into several crucial aspects of training and evaluating MMNTP models. The subdivision begins with an exploration of the training datasets (Section~\ref{sec: training_dataset}), categorized into pre-training and fine-tuning datasets. The pre-training datasets are further divided based on modality into text-only, image-based, video-based, and audio-based data, which are essential for modality alignment and the establishment of a unified multimodal representation. Following this, fine-tuning datasets are described, focusing on their specific applications in multimodal understanding and multimodal generation tasks.
 
@@ -38,6 +38,66 @@ Million Song Dataset (MSD)~\cite{bertin2011million} is one of the largest public
 FMA (Free Music Archive) Dataset~\cite{defferrard2016fma} is a well-curated collection of over 100,000 tracks from various artists and genres available under Creative Commons licenses.
 Other widely-used music pretraining datasets include disco10m~\cite{lanzendorfer2024disco}, mtg-jamendo~\cite{bogdanov2019mtg}, and Lp-musiccaps~\cite{doh2023lp}.
 General audio pretraining datasets, including wavcaps~\cite{mei2023wavcaps}, audioset~\cite{gemmeke2017audio}, vggsound~\cite{chen2020vggsound}, and clotho~\citep{drossos2020clotho}, mainly focus on boosting the performance of localizing audio-visual correspondence and audio-text intermodal translation tasks (not speech-to-text).
+
+| Datasets | Tags | Doc/Img/Vid/Aud | Source | Time |
+| --- | --- | --- | --- | --- |
+|C4~\cite{habernal2016c4corpus} | Text-Only | 8.2M/-/-/- | CommonCrawl | Apr-2019  |
+|mC4~\cite{xue2021mt5}| Text-Only | 2.1M/-/-/- | CommonCrawl | Oct-2020 |
+|Pile~\cite{gao2020pile} | Text-Only  | 211M/-/-/- | Other | Dec-2020 |
+|Wikipedia~\cite{guo2020wiki} |  Text-Only  | 13.4M/-/-/- | Wikipedia | Mar-2023  |
+|RedPajama~\cite{together2023redpajama} | Text-Only | 100B/-/-/- | CommonCrawl  | Oct-2023 |
+|Dolma~\citep{soldaini2024dolmaopencorpustrillion} |  Text-Only | 4.4B/-/-/- | Common Crawl, GitHub, Reddit, ...  | Jan-2024 |
+|FineWeb~\cite{penedo2024finewebdatasetsdecantingweb} | Text-Only | 22.7B/-/-/- | CommonCrawl | May-2024 |
+SBU~\cite{ordonez2011im2text}  | Image-Based   | 1M/1M/-/-  | Flickr | Dec-2011  |
+|YFCC~\cite{thomee2016yfcc100m}  | Image-Based   |  100M/99.2M/0.8M/-  | Flickr | Jan-2016  |
+|MS-COCO~\cite{lin2014mscoco}   | Image-Based   | 1M/200K/-/-  | HumanCurated | Jul-2018 |
+|VG~\cite{krishna2017visual_genome}  | Image-Based | 5.4M/108K/-/- | HumanCurated | Feb-2016 |
+|CC3M~\cite{sharma2018conceptual}  | Image-Based   | 3.3M/3.3M/-/- | Web Crawl | Jul-2018 |
+|CC12M~\cite{changpinyo2021conceptual} | Image-Based | 12M/12M/-/-  | Web Crawl | Feb-2021 |
+|WIT~\cite{srinivasan2021wit}  | Image-Based  |  37.6M/11.5M/-/- | Wikipedia | Jul-2021 |
+|RedCaps~\cite{desai2021redcaps}  | Image-Based  | 12M/12M/-/- | Reddit links | Nov-2021 |
+|FILIP300M~\cite{yao2021filip} |	Image-Based | 300M/300M/-/-	| Web Crawl | Nov-2021 |
+|LAION-400M~\cite{laion400m}  | Image-Based  | 400M/400M/-/- |  CommonCrawl  | Nov-2021 |
+|Shutterstock~\cite{nguyen2022quality}  | Image-Based  | 15M/15M/-/-| Shutterstock  | Aug-2022|
+|Coyo-700M~\cite{kakaobrain2022coyo-700m}  | Image-Based  | 747M/747M/-/- | CommonCrawl  | Aug-2022 |
+|Laion-5B~\cite{laion5b}  | Image-Based   | 5B/5B/-/-  | CommonCrawl | Oct-2022 |
+|DataComp~\cite{gadre2023datacomp}  | Image-Based   | 1.4B/1.4B/-/- | Web Crawl | Apr-2023 |
+|SA-1B~\cite{wang2023all}  | Image-Based   | 1.1B/11M/-/-  | Photo Company | Aug-2023  |
+|Capsfusion~\cite{yu2023capsfusion}  | Image-Based | 120M/120M/-/- | Other | Oct-2023 |
+|ShareGPT4V~\cite{chen2023sharegpt4v}  | Image-Based  | 1.2M/1.2M/-/- | Other | Nov-2023 |
+|M3W~\cite{alayrac2022flamingo}  | Image-Based (Interleaved)   | -/185M/-/- | Web Crawl | Apr-2022|
+|MMC4~\cite{zhu2023multimodal}  | Image-Based (Interleaved)  | 103M/585M/-/- | Other | Apr-2023 |
+|Obelisc~\cite{laurenccon2023obelisc}  | Image-Based  (Interleaved)  | 141M/353M/-/- | Web Crawl| Jun-2023 |
+|GRIT-20M~\cite{peng2023kosmos} |  Image-Based (Grounded)  | 20M/20/-/- | Other | Jun-2023 |
+|CapsFusion-grounded~\cite{sun2023generative} | Image-Based  (Grounded)  | 100M/100M/-/- | Other | Dec-2023 |
+|MSR-VTT~\cite{xu2016msr}  |  Video-Based  | 200K/-/10K/-  | HumanCurated | Jun-2016 |
+|HowTo100M~\cite{miech2019howto100m} |  Video-Based  |  136M/-/1.2M/-  | Youtube | Jun-2019 |
+|ACAV~\cite{lee2021acav100m}  |  Video-Based  | -/-/100M/100M | Web Crawl | Jan-2021  |
+|WebVid~\cite{webvid}  |  Video-Based  |  10M/-/10M/-  | Stock Footage | Jan-2021 |
+|Ego4D~\cite{grauman2022ego4d}  |  Video-Based  | -/-/-/-  | HumanCurated | Oct-2021  |
+|HD-VILA~\cite{xue2022advancing}  |  Video-Based  |  100M/-/3.3M/-  | YouTube | Nov-2021 |
+|YT-Temporal~\cite{zellers2022merlot}  |  Video-Based  | 1B/-/20M/-  | YouTube | Jan-2022 |
+|VideoCC3M~\cite{nagrani2022learning} | Video-Based  | 10.3M/-/6.3M/- | Other | Apr-2022 |
+|Youku-mPLUG~\cite{xu2023youku} |  Video-Based |  10M/-/10M/-  | Youku | Jun-2023  |
+|InternVid~\cite{wang2023internvid}  |  Video-Based  |  234M/-/7.1M/-  | YouTube  | Jul-2023 |
+|Million Song Dataset~\cite{bertin2011million} | Audio-Based | -/-/-/1M | The Echo Nest | Feb 2011|
+|MTT~\cite{law2009evaluation} | Audio-Based | -/-/-/25.8k | Web Crawl | June 2013|
+|LibriSpeech~\cite{panayotov2015librispeech} | Audio-Based | 155.8k/-/-/1k hours | Audio Books | Jun 2015|
+|FMA~\cite{defferrard2016fma} | Audio-Based | -/-/-/106k | Free Music Archive | Dec 2016|
+|Audio Set~\cite{gemmeke2017audio}  | Audio-Based | 2.1M/-/-/2.1M | YouTube  | Mar-2017|
+|LibriTTS~\cite{zen2019libritts} | Audio-Based | 2.4k/-/-/0.58k hours | Audio Books | Apr 2019|
+|MTG-Jamendo~\cite{bogdanov2019mtg} | Audio-Based | -/-/-/55k | Jamendo | Jun 2019|
+|Clotho~\cite{drossos2020clotho} | Audio-Based | 25k/-/-/5k | FreeSound Platform | Oct 2019|
+|Librilight~\cite{kahn2020libri} | Audio-Based | -/-/-/60k hours | Audio Books | Dec 2019|
+|VGGSound~\cite{chen2020vggsound} | Video-Based | 309/-/200k/200k | Web Crawl | Apr 2020|
+|Gigaspeech~\cite{chen2021gigaspeech} | Audio-Based | -/-/-/40k hours | Audio Books | Jun 2021|
+|LAION-Audio-630k~\cite{wu2023large} | Audio-Based | 630k/-/-/630k | Web Crawl | Nov 2021|
+|wenetspeech~\cite{zhang2022wenetspeech} | Audio-Based | -/-/-/22.4k hours | Youtube | Feb 2022|
+|WavCaps~\cite{mei2023wavcaps} | Audio-Based | 400k/-/-/400k | Other | Mar-2023|
+|LP-MusicCaps~\cite{doh2023lp} | Audio-Based | 2.2M/-/-/0.5M | Web Crawl | Jul 2023|
+|LibriHeavy~\cite{kang2024libriheavy} | Audio-Based | 9M/-/-/50k hours | Audio Books | Sep 2023|
+|disco-10m~\cite{lanzendorfer2024disco} | Audio-Based | -/-/-/15.2M | Youtube | 2023|
+|yodas~\cite{li2023yodas} | Audio-Based | -/-/-/500k hours | Youtube | Dec 2023|
 
 ### Fine-tuning Datasets
 
