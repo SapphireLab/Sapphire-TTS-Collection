@@ -50,3 +50,42 @@ A variant of standard next token prediction is to predict multiple tokens at one
 In addition to discrete multimodal tokens, the multimodal information can also be represented as continuous vectors, referred to as Continuous-tokens. The Continuous-tokens can be viewed as conditions for external model such as stable diffusion model for better generation quality. The continuous tokens are usually predicted auto-regressively with MSE loss~\cite{sun2023emu1,sun2023generative,zheng2023minigpt5,koh2023GILL,tang2023codi2}. For example, Emu-1 and Emu-2~\citep{sun2023emu1,sun2023generative} leverage a large language model to generate continuous tokens, which are used as condition for a pretrained diffusion model to generate images. The language model and diffusion model are trained simultaneously during the text-to-image instruction tuning stage. This method utilizes the powerful image generation ability of open-source diffusion model and unlocks the multimodal generation ability of large language model with modest additional cost.
 
 Beyond utilizing continuous tokens as conditions for external models, some researches explored using continuous tokens to directly generate images, replacing discrete tokens with continuous tokens throughout the NTP training paradigm.  \citet{AIM} reveals that when trained with L2 loss, a patch-based image Transformer exhibits scaling properties akin to those of LLMs. \citep{li2024denoising} represents image with continuous tokens and involves diffusion loss during training the causal transformer model. However, these models are trained solely on single modality such as image. Whether different training objectives for different modalities can coexist harmoniously in one NTP model remains under-explored.
+
+## Pretraining: Modality Alignment
+
+Large Language Models have demonstrated their effectiveness and scalability in the pure language domain. In a similar vein, pioneering research is exploring the use of the abundant supply of multimodal data in training large multimodal models in NTP framework. The major focus of pretraining in LMM is to align the representation space of different modality with language space, which could be categorized into alignment in understanding (Section~\ref{sec: alignment understand}) and generation (Section~\ref{sec: alignment generation}) task.
+
+### Modality Alignment in Understanding
+
+Modality alignment is a critical process that endeavors to represent inputs from diverse modalities within a shared space for subsequent processing.
+Given the inherent differences in the nature of various modalities, dedicated encoders tailored to each modality transform raw inputs into a vector representation, which is then aligned in the shared space.
+For instance, the alignment training of vision-language models typically occurs on a large-scale corpus $\mathcal{C} = \{(C, I)\}$ comprising image-text pairs with the image denoted as $I$ and its corresponding caption as $C$.
+The modality alignment objective typically adheres to a conditional language modeling format, expressed as:
+
+$$
+    L(\theta_\mathcal{M}) = f\left( y_i, p_{\theta}\left(x_i \mid x_{1\sim i-1}, I\right)\right),
+$$
+
+where the parameter of the modality encoder module $\theta_\mathcal{M}$—such as a CLIP vision encoder responsible for mapping multi-modal inputs into vectors in the shared space—is exclusively trained to enhance stability.
+
+It is noteworthy that the modality condition $I$ for images can be seamlessly adapted to other modalities, such as videos and audios, with corresponding training corpora like WebVid~\citep{webvid} for video-text alignment and Clotho~\citep{drossos2020clotho} for audio-text alignment, CroCo~\citep{croco} for 3D views and embodiment Habitat~\citep{habitat}.
+Besides, it is also possible that the text and the image are interleaved with each other, and the objective can be adjusted accordingly~\citep{awadalla2023openflamingo,laurencon2023obelics}.
+We provide a comprehensive list of modality alignment training in the later section~(\S~\ref{subsec:pretrain_dataset}).
+
+### Modality Alignment in Generation
+
+\label{sec: alignment generation}
+
+The alignment objective can be easily adapted to the generative scenarios by replacing the one-hot word index $y_i$ with corresponding modality tokens, which might be learned via a pre-defined codebook or optimized via regression.
+Take the traditional text-to-image task as an example, given a description-image pair  $(C, I)$,
+the alignment objective becomes:
+
+$$
+    L(\theta_\mathcal{M}) = f\left( y_i, p_{\theta}\left(t_i \mid t_{1\sim i-1}, C\right)\right).
+$$
+
+In DTM, the $y_i$ could be a targeted discrete visual token learned via an off-shelf model such as VQGAN, and the image content would be reconstructed by mapping the token back to the image space via the codebook.
+In CSM, the $y_i$ is instead a contiguous modality vector that can be further decoded by a decoder to produce the image pixels~\citep{sun2024emu}.
+Besides, the objective can also be implemented in a span corruption style for a better reconstruction of specific modalities~\citep{lu2022unifiedio}.
+
+Given that a primary objective in the alignment stage is to harmonize the semantics of concepts expressed across different modalities, comprehensive coverage of the training corpus becomes imperative. Consequently, the alignment training is often performed on web-scale datasets. For example, the visual-text alignment is usually conducted on up to millions and even billions of pairs on Laion400M~\citep{laion400m} and Laion5B~\citep{laion5b}.
