@@ -1,9 +1,6 @@
 # 细水长 Flow 系列
 
-## NICE · 流模型的基本概念与实现
-
-时间: 2018-08-11
-链接: [原文](https://spaces.ac.cn/archives/5776)
+## 2018.08.11 [NICE · 流模型的基本概念与实现](https://spaces.ac.cn/archives/5776)
 
 动机: 机器之心的报道 [下一个 GAN? OpenAI 提出可逆生成模型 Glow](https://www.jiqizhixin.com/articles/2018-07-10-6)
 
@@ -85,7 +82,7 @@ $$
 
 $$
 \begin{aligned}
-    \log q(x) 
+    \log q(x)
     &= \log \dfrac{1}{(2\pi)^{D/2}} \exp(-\dfrac{\|f(x)\|^2}{2})\left|\text{det}[\dfrac{\partial f}{\partial x}]\right|\\
     &= \log\dfrac{1}{(2\pi)^{D/2}} + \log \exp(-\dfrac{\|f(x)\|^2}{2}) + \log \left|\text{det}[\dfrac{\partial f}{\partial x}]\right|\\
     &= -\dfrac{D}{2}\log 2\pi - \dfrac{1}{2}\|f(x)\|^2 + \log \left|\text{det}[\dfrac{\partial f}{\partial x}]\right|
@@ -200,7 +197,7 @@ $$
 
 $$
 \begin{aligned}
-    \log q(x) 
+    \log q(x)
     &\sim - \dfrac{1}{2}\|s\otimes f(x)\|^2 + \log \left|\text{diag}(s)\right|\\
     &= -\dfrac{1}{2}\|s\otimes f(x)\|^2 + \sum_{i} \log s_i\\
 \end{aligned}\tag{15}
@@ -373,7 +370,7 @@ class Scale(Layer):
     def __init__(self, **kwargs):
         super(Scale, self).__init__(**kwargs)
     def build(self, input_shape):
-        self.kernel = self.add_weight(name='kernel', 
+        self.kernel = self.add_weight(name='kernel',
                                       shape=(1, input_shape[1]),
                                       initializer='glorot_normal',
                                       trainable=True)
@@ -529,10 +526,7 @@ NICE 模型的整体还是比较简单粗暴的, 首先加性耦合本身比较�
 
 RealNVP 和 Glow 就是它的两个改进版本.
 
-## RealNVP 与 Glow · 流模型的传承与升华
-
-时间: 2018-08-26
-链接: [原文](https://spaces.ac.cn/archives/5807)
+## 2018.08.26 [RealNVP 与 Glow · 流模型的传承与升华](https://spaces.ac.cn/archives/5807)
 
 Flow 模型是想办法得到一个编码器将 $x$ 编码为 $z$, 并使得 $z$ 服从标准正态分布. 而编码器是可逆的, 从而能够直接获得相应的解码器, 完成生成模型的构建.
 为了完成这个构思, 不仅模型需要可逆还需要使得相应的雅可比行列式容易计算.
@@ -609,7 +603,7 @@ RealNVP 给出了在 Flow 模型中合理使用卷积层的方案, 从而能够�
 所以 RealNVP 约定分割和打乱操作都只对通道轴进行.
 即沿着通道将输入分割为 $x_1$, $x_2$ 后, $x_1$ 还是具有局部相关性的, 还有沿着通道按着同一方式打乱后, 空间相关性依然得到保留, 因此在模型 $s$, $t$ 中就可以使用卷积了.
 
-![](Images/2018.08.26.Fig.03.png) 
+![](Images/2018.08.26.Fig.03.png)
 
 ![](Images/2018.08.26.Fig.04.png)
 
@@ -1011,7 +1005,12 @@ encoder.fit_generator(data_generator(),
 
 </details>
 
-
 #### 总结
 
 总体来看诸如 Glow 的 Flow 模型整体确实很优美, 但运算量还是偏大了, 训练时间过长, 不像一般的 GAN 那么友好.
+
+## 2018.09.21 [f-VAEs: Glow 与 VAEs 的联姻](https://spaces.ac.cn/archives/5977)
+
+## 2019.03.21 [可逆 ResNet: 极致的暴力美学](https://spaces.ac.cn/archives/6482)
+
+## 2025.01.17 [TarFlow: 流模型满血归来?](https://spaces.ac.cn/archives/10667)
