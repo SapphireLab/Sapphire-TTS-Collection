@@ -166,7 +166,26 @@ Failing to capture domain-specific nuances can make speech sound unnatural or in
 [^274]: Low-Resource Languages: A Review of Past Work and Future Challenges
 [^275]: A Brief Review of Domain Adaptation
 
+TTS 系统的泛化能力对于在各种条件下生成自然高质量的语音十分重要, 如未见过的说话人, 语言, 或话题.
+然而由于多种因素现代 TTS 方法在实现鲁棒泛化方面仍然面临重大挑战.
+
+零样本可控 TTS ([MaskGCT [78]](../../Models/SpeechLM/2024.09.01_MaskGCT.md); [^92]) 的目标是用最少的参考音频为未见过的说话人合成具有多种语音定制 (如情感) 的语音, 从而为个性化语音生成提供灵活性.
+然而, 它面临重大挑战, 包括从有限数据中捕捉独特的说话人特征, 准确再现韵律和风格, 并从其他音频属性 (如情感或噪声) 中分离说话人身份.
+
+多语言泛化 ([XTTS [250]](../../Models/SpeechLM/2024.06.07_XTTS.md); [SANE-TTS [273]](../../Models/E2E/2022.06.24_SANE-TTS.md)) 是 TTS 的一种能力, 它能够跨越多种语言, 包括在训练过程中未见过的语言, 生成自然且有意义的语音.
+这一能力对于跨语言交流, 多语言虚拟助手, 以及低资源语言的语音合成等应用至关重要 [^274].
+多语言泛化仍然面临诸多挑战, 如语言多样性和差异, 以及缺乏足够的数据.
+跨语言说话人泛化也是另一个障碍, 因为跨语言保持说话人身份会导致伪影.
+
+TTS 的领域自适应 [^275] 指的是调整预训练 TTS 模型来生成特定领域或上下文的语音, 例如医学术语和对话语音.
+一个挑战是许多专业领域缺乏足够的高质量标注数据以进行微调.
+此外, 调整韵律, 语调和说话风格以匹配领域特定要求 (如卡通对话) 也很复杂.
+如果不捕捉领域特定细微差别, 则语音可能变得不自然或与目标上下文不一致.
+
 ### Efficiency: 效率
+
+<details>
+<summary>展开原文</summary>
 
 Efficiency in controllable TTS systems is a critical requirement for practical applications, as these models aim to offer fine-grained control over various speech attributes such as prosody, emotion, style, and speaker identity.
 However, achieving such control often comes at the cost of increased computational complexity, larger model sizes, and longer inference times, creating significant challenges.
@@ -180,6 +199,22 @@ Another major obstacle lies in the trade-off between model complexity and perfor
 State-of-the-art controllable TTS systems often rely on large neural networks such as LLMs with billions of parameters, which provide superior naturalness and expressiveness but demand significant computational resources.
 Simplifying these architectures can lead to quality degradation, including artifacts, unnatural prosody, or limited expressiveness.
 Therefore, designing light-weight controllable TTS models is significantly tricky.
+
+</details>
+<br>
+
+可控 TTS 系统的效率对于实际应用是关键要求, 这些模型旨在提供对话式语音的细粒度控制, 如韵律, 情感, 风格, 以及说话人身份.
+然而, 实现这种控制往往会导致计算复杂度增加, 模型大小增加, 以及推理时间增加, 这会带来巨大的挑战.
+
+高延迟是主要问题, 如现有的可控 TTS 模型通常需要自回归过程来合成语音.
+这些模型的推理时间范围从几秒到几十秒不等.
+这对于实时应用 (如直播或交互式系统) 变得更是问题.
+此外, 平衡粒度和效率的挑战也随之而来, 因为更细致的控制需要更高分辨率的数据和更精确的模型, 这会导致资源需求增加和训练推理效率低下.
+
+另一个主要障碍是模型复杂度和性能之间的权衡.
+SoTA 可控 TTS 系统通常依赖于大的神经网络, 如 LLMs, 它们提供卓越的自然度和表现力, 但却需要大量的计算资源.
+简化这些架构可能会导致质量下降, 包括伪影, 不自然的韵律或表达力受限.
+因此, 设计轻量可控 TTS 模型是十分复杂的.
 
 ## B·Future Directions: 未来方向
 
