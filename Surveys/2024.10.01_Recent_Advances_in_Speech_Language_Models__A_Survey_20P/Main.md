@@ -58,16 +58,16 @@ Additionally, we systematically survey the various capabilities of SpeechLMs, ca
 Large Language Models (LLMs) have demonstrated remarkable capabilities in generating text and performing a wide array of natural language processing tasks ([GPT-4 (2023)](../../Models/TextLM/2023.03.15_GPT-4.md); [LLaMA3 (2024)](../../Models/TextLM/2024.07.31_LLaMA3.md); [OPT (2022)](../../Models/TextLM/2022.05.02_OPT.md)), serving as powerful foundation models for AI-driven language understanding and generation.
 Their success has also spurred numerous applications in various other domains, yet the reliance solely on text-based modalities presents a significant limitation.
 This leads to the development of speech-based generative models, which allow to interact with humans more naturally and intuitively.
-The inclusion of speech not only facilitates real-time voice interactions but also enriches communication by combining both text and speech information ([dGSLM (2022)](../../Models/SpeechLM/2022.03.30_dGSLM.md); [SpiRit-LM (2024)](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md)).
+The inclusion of speech not only facilitates real-time voice interactions but also enriches communication by combining both text and speech information ([dGSLM (2022)](../../Models/SpokenDialogue/2022.03.30_dGSLM.md); [SpiRit-LM (2024)](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md)).
 
 Given the extensive mutual information between text and speech, it is natural to modify existing LLMs to enable speech interaction capabilities.
-A straightforward approach is to adopt an "Automatic Speech Recognition (ASR) + LLM + Text-to-Speech (TTS)" framework (Fig.01 (a)) ([AudioGPT (2023)](../../Models/SpeechLM/2023.04.25_AudioGPT.md)).
+A straightforward approach is to adopt an "Automatic Speech Recognition (ASR) + LLM + Text-to-Speech (TTS)" framework (Fig.01 (a)) ([AudioGPT (2023)](../../Models/SpokenDialogue/2023.04.25_AudioGPT.md)).
 In this setup, the user's spoken input is first processed by the ASR module, which converts it into text.
 The LLM then generates a text response based on this transcription.
 Finally, the TTS module transforms the text response back into speech, which is played back to the user.
 However, this naive solution mainly suffers from the following two problems.
 (1) **Information loss.** Speech signals not only contain semantic information (i.e., the meaning of the speech) but also paralinguistic information (e.g., pitch, timbre, tonality, etc.).
-Putting a text-only LLM in the middle will cause the complete loss of paralinguistic information in the input speech ([SpeechGPT (2023)](../../Models/SpeechLM/2023.05.18_SpeechGPT.md)).
+Putting a text-only LLM in the middle will cause the complete loss of paralinguistic information in the input speech ([SpeechGPT (2023)](../../Models/SpokenDialogue/2023.05.18_SpeechGPT.md)).
 (2) **Cumulative error.** A staged approach like this can easily lead to cumulative errors throughout the pipeline, particularly in the ASR-LLM stage ([AudioChatLLaMA (2023)](../../Models/SpeechLM/2023.11.12_AudioChatLLaMA.md)).
 Specifically, transcription errors that occur when converting speech to text in the ASR module can negatively impact the language generation performance of the LLM.
 
@@ -84,16 +84,16 @@ By working directly with the encoded speech tokens, SpeechLMs effectively mitiga
 大语言模型 (Large Language Models, LLMs) 在生成文本和执行各种自然语言处理任务方面展现出了惊人的能力  ([GPT-4 (2023)](../../Models/TextLM/2023.03.15_GPT-4.md); [LLaMA3 (2024)](../../Models/TextLM/2024.07.31_LLaMA3.md); [OPT (2022)](../../Models/TextLM/2022.05.02_OPT.md)), 正在作为 AI 驱动语言理解和生成的强大基础模型.
 其成功也促进了其他领域的许多应用, 然而, 仅依靠文本输入的限制会导致语音交互的局限性.
 这也导致了基于语音的生成模型的发展, 以允许人类更自然和直观地与之交互.
-语音的引入不仅可以促进实时语音交互, 而且还可以增强交流, 因为它可以结合文本和语音信息 ([dGSLM (2022)](../../Models/SpeechLM/2022.03.30_dGSLM.md); [SpiRit-LM (2024)](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md)).
+语音的引入不仅可以促进实时语音交互, 而且还可以增强交流, 因为它可以结合文本和语音信息 ([dGSLM (2022)](../../Models/SpokenDialogue/2022.03.30_dGSLM.md); [SpiRit-LM (2024)](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md)).
 
 给定文本和语音之间的广泛互信息, 可以自然地修改现有的 LLMs 以实现语音交互能力.
-一种直接的方法是采用 "自动语音识别 (ASR) + LLM + 文本转语音 (TTS)" 框架 (Fig.01 (a)) ([AudioGPT (2023)](../../Models/SpeechLM/2023.04.25_AudioGPT.md)).
+一种直接的方法是采用 "自动语音识别 (ASR) + LLM + 文本转语音 (TTS)" 框架 (Fig.01 (a)) ([AudioGPT (2023)](../../Models/SpokenDialogue/2023.04.25_AudioGPT.md)).
 在这种设置中, 用户的说话输入首先被 ASR 模块处理, 它将其转换为文本.
 然后, LLM 根据此转录文本生成文本响应.
 最后, TTS 模块将文本响应转换回语音, 并播放给用户.
 然而, 这种简单的解决方案主要存在以下两个问题.
 (1) **信息损失.** 语音信号不仅包含语义信息 (即语音的含义), 还包含其他副语言信息 (如音高, 音色, 音调等).
-将文本 LLM 放在中间将导致输入语音丢失全部的副语言信息 ([SpeechGPT (2023)](../../Models/SpeechLM/2023.05.18_SpeechGPT.md)).
+将文本 LLM 放在中间将导致输入语音丢失全部的副语言信息 ([SpeechGPT (2023)](../../Models/SpokenDialogue/2023.05.18_SpeechGPT.md)).
 (2) **累积错误.** 这种分阶段的方法容易导致流水线中的累积错误, 特别是在 ASR-LLM 阶段 ([AudioChatLLaMA (2023)](../../Models/SpeechLM/2023.11.12_AudioChatLLaMA.md)).
 具体来说, ASR 模块将语音转换为文本时发生的错误会对 LLM 的语言生成性能产生负面影响.
 
@@ -277,25 +277,25 @@ Overall, this area of real-time speech generation remains under-explored and req
 
 Safety is a highly significant subject in the field of Machine Learning, particularly when it comes to large-scale generative AI models.
 While there has been extensive research on safety concerns in TextLMs, the safety issues in SpeechLMs have not been thoroughly investigated.
-The safety challenges in SpeechLMs present both similarities and unique aspects compared to TextLMs, as highlighted in OpenAI's recent report on the safety issues of [GPT-4o (2024)](../../Models/TextLM/2024.09.06_GPT-4o.md)'s voice model.
+The safety challenges in SpeechLMs present both similarities and unique aspects compared to TextLMs, as highlighted in OpenAI's recent report on the safety issues of [GPT-4o (2024)](../../Models/SpokenDialogue/2024.09.06_GPT-4o.md)'s voice model.
 Therefore, it is crucial for future research to explore safety vulnerabilities in SpeechLMs and develop safer SpeechLMs.
 
 Primary concerns for the safety issues in SpeechLMs include but are not limited to toxicity and privacy.
 
 Toxicity refers to the harmful nature of the content generated by SpeechLMs.
 For instance, these models might produce semantically dangerous content, such as instructions for making explosives.
-Additionally, they could generate acoustically inappropriate content, like erotic speech ([GPT-4o (2024)](../../Models/TextLM/2024.09.06_GPT-4o.md)), which presents a unique challenge.
+Additionally, they could generate acoustically inappropriate content, like erotic speech ([GPT-4o (2024)](../../Models/SpokenDialogue/2024.09.06_GPT-4o.md)), which presents a unique challenge.
 
 Privacy involves the risk of revealing personal information from the speech input after it has been processed by a SpeechLM.
 For example, the model might infer the speaker's identity based on the semantic content or acoustic features of the input.
-Even more concerning is the potential for the model to make biased inferences about the speaker, such as their ethnicity or religious beliefs, based on insufficient (e.g., acoustic) information ([GPT-4o (2024)](../../Models/TextLM/2024.09.06_GPT-4o.md)).
+Even more concerning is the potential for the model to make biased inferences about the speaker, such as their ethnicity or religious beliefs, based on insufficient (e.g., acoustic) information ([GPT-4o (2024)](../../Models/SpokenDialogue/2024.09.06_GPT-4o.md)).
 
 </details>
 <br>
 
 安全性是机器学习领域中一个非常重要的话题, 尤其是大规模生成式 AI 模型方面.
 尽管在文本语言模型的安全性问题已经有大量研究, 但语音语言模型的安全性问题尚未得到充分探讨.
-正如 OpenAI 最近关于 [GPT-4o (2024)](../../Models/TextLM/2024.09.06_GPT-4o.md) 声音模型安全性问题的报告所揭示的, 语音语言模型的安全性挑战与文本语言模型的安全性挑战有相似之处, 但也有独特之处.
+正如 OpenAI 最近关于 [GPT-4o (2024)](../../Models/SpokenDialogue/2024.09.06_GPT-4o.md) 声音模型安全性问题的报告所揭示的, 语音语言模型的安全性挑战与文本语言模型的安全性挑战有相似之处, 但也有独特之处.
 因此, 未来研究应着力探索语音语言模型的安全性漏洞, 并开发更安全的语音语言模型.
 
 语音语言模型的主要安全性问题包括但不限于毒性和隐私.

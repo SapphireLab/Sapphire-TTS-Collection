@@ -77,7 +77,7 @@ Moreover, with the fast development of open-source LLMs ([LLaMA [11]](../../Mode
 Meanwhile, powering LLMs with speech synthesis has also been a hot topic in the last few years ([LLaMA-Omni [33]](../../Models/SpokenDialogue/2024.09.10_LLaMA-Omni.md); [SpeechGPT [34]](../../Models/SpokenDialogue/2023.05.18_SpeechGPT.md); [IntrinsicVoice [35]](../../Models/SpokenDialogue/2024.10.09_IntrinsicVoice.md)).
 In recent years, a wide range of TTS methods has emerged, making it essential for researchers to gain a comprehensive understanding of current research trends, particularly in controllable TTS, to identify promising future directions in this rapidly evolving field.
 Consequently, there is a pressing need for an up-to-date survey of TTS techniques.
-While several existing surveys address parametric-based approaches ([Survey by Klatt et al. (1987) [36]](../../Surveys/1987.05.01_Review_of_Text-To-Speech_Conversion_for_English.md); [Survey by Dutoit et al. (1997) [37]](../../Surveys/1997.00.00_High-Quality_Text-To-Speech_Synthesis__An_Overview.md); [Survey by Breen et al. (1992) [38]](../../Surveys/1992.00.00_Speech_Synthesis_Models__A_Review.md); [Survey by Olive (1985) [39]](../../Surveys/1982.11.05_Text_to_Speech__An_Overview.md); [Survey by King et al. (2014) [40]](../../Surveys/2014.06.30_Measuring_a_Decade_of_Progress_in_Text-To-Speech.md); [Survey by Zen et al. (2009) [41]](../../Surveys/2009.01.14_Statistical_Parametric_Speech_Synthesis.md)) and deep learning-based TTS ([Survey by Tan et al. (2021) [42]](../2021.06.29_A_Survey_on_Neural_Speech_Synthesis_63P/Main.md); [Survey by Ning et al. (2019) [43]](../2019.08.01_A_Review_of_DL_Based_Speech_Synthesis_16P/Main.md); [Survey by Kaur et al. (2023) [44]](../2022.11.13_Conventional_and_Contemporary_Approaches_Used_in_Text_to_Speech_Synthesis__A_Review_44P/Main.md); [Survey by Mattheyses et al. (2014) [45]](../2014.02.21_Audiovisual_Speech_Synthesis__An_Overview_of_the_SoTA/Main.md); [Survey by Triantafyllopoulos et al. (2023) [46]](../2023.03.10_An_Overview_of_Affective_Speech_Synthesis_and_Conversion_in_the_Deep_Learning_Era/Main.md); [Survey by Mu et al. (2021) [47]](../2021.04.20_Review_of_End-to-End_Speech_Synthesis_Technology_Based_on_Deep_Learning_40P/Main.md); [Survey by Mehrish et al. (2023) [48]](../2023.04.30_A_Review_of_DL_Techniques_for_Speech_Processing_55P/Main.md)), they largely overlook the controllability of TTS.
+While several existing surveys address parametric-based approaches ([Survey by Klatt et al. (1987) [36]](../../Surveys/1987.05.01_Review_of_Text-To-Speech_Conversion_for_English.md); [Survey by Dutoit et al. (1997) [37]](../../Surveys/1997.00.00_High-Quality_Text-To-Speech_Synthesis__An_Overview.md); [Survey by Breen et al. (1992) [38]](../../Surveys/1992.00.00_Speech_Synthesis_Models__A_Review.md); [Survey by Olive (1985) [39]](../../Surveys/1982.11.05_Text_to_Speech__An_Overview.md); [Survey by King et al. (2014) [40]](../../Surveys/2014.06.30_Measuring_a_Decade_of_Progress_in_Text-To-Speech.md); [Survey by Zen et al. (2009) [41]](../../Surveys/2009.01.14_Statistical_Parametric_Speech_Synthesis.md)) and deep learning-based TTS ([Survey by Tan et al. (2021) [42]](../2021.06.29_A_Survey_on_Neural_Speech_Synthesis_63P/Main.md); [Survey by Ning et al. (2019) [43]](../2019.08.01_A_Review_of_DL_Based_Speech_Synthesis_16P.md); [Survey by Kaur et al. (2023) [44]](../2022.11.13_Conventional_and_Contemporary_Approaches_Used_in_Text_to_Speech_Synthesis__A_Review_44P/Main.md); [Survey by Mattheyses et al. (2014) [45]](../2014.02.21_Audiovisual_Speech_Synthesis__An_Overview_of_the_SoTA.md); [Survey by Triantafyllopoulos et al. (2023) [46]](../2023.03.10_An_Overview_of_Affective_Speech_Synthesis_and_Conversion_in_the_Deep_Learning_Era/Main.md); [Survey by Mu et al. (2021) [47]](../2021.04.20_Review_of_End-to-End_Speech_Synthesis_Technology_Based_on_Deep_Learning_40P.md); [Survey by Mehrish et al. (2023) [48]](../2023.04.30_A_Review_of_DL_Techniques_for_Speech_Processing_55P/Main.md)), they largely overlook the controllability of TTS.
 Additionally, these surveys do not cover the advancements in recent years, such as natural language description-based TTS methods.
 
 [^12]: Deep Learning (2015)
@@ -119,11 +119,11 @@ Finally, we introduce the taxonomy and organization of this paper.
   - [Survey by Zen et al. (2009) [41]](../../Surveys/2009.01.14_Statistical_Parametric_Speech_Synthesis.md),
 - 基于深度学习的 TTS
   - [Survey by Tan et al. (2021) [42]](../2021.06.29_A_Survey_on_Neural_Speech_Synthesis_63P/Main.md);
-  - [Survey by Ning et al. (2019) [43]](../2019.08.01_A_Review_of_DL_Based_Speech_Synthesis_16P/Main.md);
+  - [Survey by Ning et al. (2019) [43]](../2019.08.01_A_Review_of_DL_Based_Speech_Synthesis_16P.md);
   - [Survey by Kaur et al. (2023) [44]](../2022.11.13_Conventional_and_Contemporary_Approaches_Used_in_Text_to_Speech_Synthesis__A_Review_44P/Main.md);
-  - [Survey by Mattheyses et al. (2014) [45]](../2014.02.21_Audiovisual_Speech_Synthesis__An_Overview_of_the_SoTA/Main.md);
+  - [Survey by Mattheyses et al. (2014) [45]](../2014.02.21_Audiovisual_Speech_Synthesis__An_Overview_of_the_SoTA.md);
   - [Survey by Triantafyllopoulos et al. (2023) [46]](../2023.03.10_An_Overview_of_Affective_Speech_Synthesis_and_Conversion_in_the_Deep_Learning_Era/Main.md);
-  - [Survey by Mu et al. (2021) [47]](../2021.04.20_Review_of_End-to-End_Speech_Synthesis_Technology_Based_on_Deep_Learning_40P/Main.md);
+  - [Survey by Mu et al. (2021) [47]](../2021.04.20_Review_of_End-to-End_Speech_Synthesis_Technology_Based_on_Deep_Learning_40P.md);
   - [Survey by Mehrish et al. (2023) [48]](../2023.04.30_A_Review_of_DL_Techniques_for_Speech_Processing_55P/Main.md).
 
 但它们大多忽略了 TTS 的可控性.
@@ -144,7 +144,7 @@ Finally, we introduce the taxonomy and organization of this paper.
 <details>
 <summary>展开原文</summary>
 
-Several survey papers have reviewed TTS technologies, spanning early approaches from previous decades ([Survey by Klatt et al. (1987) [36]](../../Surveys/1987.05.01_Review_of_Text-To-Speech_Conversion_for_English.md); [Survey by Dutoit et al. (1997) [37]](../../Surveys/1997.00.00_High-Quality_Text-To-Speech_Synthesis__An_Overview.md); [Survey by King et al. (2014) [40]](../../Surveys/2014.06.30_Measuring_a_Decade_of_Progress_in_Text-To-Speech.md); [Survey by Tabet et al. (2011) [49]](../2011.06.27_Speech_Synthesis_Techniques_A_Survey/Main.md)) to more recent advancements ([Survey by Ning et al. (2019) [43]](../2019.08.01_A_Review_of_DL_Based_Speech_Synthesis_16P/Main.md); [Survey by Tan et al. (2021) [42]](../2021.06.29_A_Survey_on_Neural_Speech_Synthesis_63P/Main.md); [Survey by Zhang et al. (2023) [50]](../2023.03.23_A_Survey_on_Audio_Diffusion_Models__TTS_Synthesis_&_Enhancement_in_Generative_AI/Main.md)).
+Several survey papers have reviewed TTS technologies, spanning early approaches from previous decades ([Survey by Klatt et al. (1987) [36]](../../Surveys/1987.05.01_Review_of_Text-To-Speech_Conversion_for_English.md); [Survey by Dutoit et al. (1997) [37]](../../Surveys/1997.00.00_High-Quality_Text-To-Speech_Synthesis__An_Overview.md); [Survey by King et al. (2014) [40]](../../Surveys/2014.06.30_Measuring_a_Decade_of_Progress_in_Text-To-Speech.md); [Survey by Tabet et al. (2011) [49]](../2011.06.27_Speech_Synthesis_Techniques_A_Survey.md)) to more recent advancements ([Survey by Ning et al. (2019) [43]](../2019.08.01_A_Review_of_DL_Based_Speech_Synthesis_16P.md); [Survey by Tan et al. (2021) [42]](../2021.06.29_A_Survey_on_Neural_Speech_Synthesis_63P/Main.md); [Survey by Zhang et al. (2023) [50]](../2023.03.23_A_Survey_on_Audio_Diffusion_Models__TTS_Synthesis_&_Enhancement_in_Generative_AI/Main.md)).
 However, to the best of our knowledge, this paper is the first to focus specifically on controllable TTS.
 The key differences between this survey and prior work are summarized as follows:
 
@@ -156,9 +156,9 @@ The key differences between this survey and prior work are summarized as follows
   - [Survey by Klatt et al. (1987) [36]](../../Surveys/1987.05.01_Review_of_Text-To-Speech_Conversion_for_English.md);
   - [Survey by Dutoit et al. (1997) [37]](../../Surveys/1997.00.00_High-Quality_Text-To-Speech_Synthesis__An_Overview.md);
   - [Survey by King et al. (2014) [40]](../../Surveys/2014.06.30_Measuring_a_Decade_of_Progress_in_Text-To-Speech.md);
-  - [Survey by Tabet et al. (2011) [49]](../2011.06.27_Speech_Synthesis_Techniques_A_Survey/Main.md)
+  - [Survey by Tabet et al. (2011) [49]](../2011.06.27_Speech_Synthesis_Techniques_A_Survey.md)
 - 近期进展:
-  - [Survey by Ning et al. (2019) [43]](../2019.08.01_A_Review_of_DL_Based_Speech_Synthesis_16P/Main.md);
+  - [Survey by Ning et al. (2019) [43]](../2019.08.01_A_Review_of_DL_Based_Speech_Synthesis_16P.md);
   - [Survey by Tan et al. (2021) [42]](../2021.06.29_A_Survey_on_Neural_Speech_Synthesis_63P/Main.md);
   - [Survey by Zhang et al. (2023) [50]](../2023.03.23_A_Survey_on_Audio_Diffusion_Models__TTS_Synthesis_&_Enhancement_in_Generative_AI/Main.md)
 
@@ -172,9 +172,9 @@ The key differences between this survey and prior work are summarized as follows
 <summary>展开原文</summary>
 
 [Survey by Klatt et al. (1987) [36]](../../Surveys/1987.05.01_Review_of_Text-To-Speech_Conversion_for_English.md) provided the first comprehensive survey on formant, concatenative, and articulatory TTS methods, with a strong emphasis on text analysis.
-In the early 2010s, [Survey by Tabet et al. (2011) [49]](../2011.06.27_Speech_Synthesis_Techniques_A_Survey/Main.md) and [Survey by King et al. (2014) [40]](../../Surveys/2014.06.30_Measuring_a_Decade_of_Progress_in_Text-To-Speech.md) explored rule-based, concatenative, and HMM-based techniques.
+In the early 2010s, [Survey by Tabet et al. (2011) [49]](../2011.06.27_Speech_Synthesis_Techniques_A_Survey.md) and [Survey by King et al. (2014) [40]](../../Surveys/2014.06.30_Measuring_a_Decade_of_Progress_in_Text-To-Speech.md) explored rule-based, concatenative, and HMM-based techniques.
 Later, the advent of deep learning catalyzed the emergence of numerous neural-based TTS methods.
-Therefore, [Survey by Ning et al. (2019) [43]](../2019.08.01_A_Review_of_DL_Based_Speech_Synthesis_16P/Main.md) and [Survey by Tan et al. (2021) [42]](../2021.06.29_A_Survey_on_Neural_Speech_Synthesis_63P/Main.md) have conducted extensive surveys on neural-based acoustic models and vocoders, while [Survey by Zhang et al. (2023) [50]](../2023.03.23_A_Survey_on_Audio_Diffusion_Models__TTS_Synthesis_&_Enhancement_in_Generative_AI/Main.md) presented the first review of diffusion model-based TTS techniques.
+Therefore, [Survey by Ning et al. (2019) [43]](../2019.08.01_A_Review_of_DL_Based_Speech_Synthesis_16P.md) and [Survey by Tan et al. (2021) [42]](../2021.06.29_A_Survey_on_Neural_Speech_Synthesis_63P/Main.md) have conducted extensive surveys on neural-based acoustic models and vocoders, while [Survey by Zhang et al. (2023) [50]](../2023.03.23_A_Survey_on_Audio_Diffusion_Models__TTS_Synthesis_&_Enhancement_in_Generative_AI/Main.md) presented the first review of diffusion model-based TTS techniques.
 However, these studies offer limited discussion on the controllability of TTS systems.
 To address this gap, we present the first comprehensive survey of TTS methods through the lens of controllability, providing an in-depth analysis of model architectures and strategies for controlling synthesized speech.
 
@@ -182,9 +182,9 @@ To address this gap, we present the first comprehensive survey of TTS methods th
 <br>
 
 - [Klatt 等人 (1987) [36]](../../Surveys/1987.05.01_Review_of_Text-To-Speech_Conversion_for_English.md) 的综述首次全面探讨了共振峰, 拼接式, 发音式 TTS 方法, 并特别强调了文本分析的重要性.
-- 到了 2010 年代初期, [Tabet 等人 (2011) [49]](../2011.06.27_Speech_Synthesis_Techniques_A_Survey/Main.md) 和 [King 等人 (2014) [40]](../../Surveys/2014.06.30_Measuring_a_Decade_of_Progress_in_Text-To-Speech.md) 的综述进一步研究了基于规则, 拼接式以及隐马尔可夫模型 (HMM) 的 TTS 技术.
+- 到了 2010 年代初期, [Tabet 等人 (2011) [49]](../2011.06.27_Speech_Synthesis_Techniques_A_Survey.md) 和 [King 等人 (2014) [40]](../../Surveys/2014.06.30_Measuring_a_Decade_of_Progress_in_Text-To-Speech.md) 的综述进一步研究了基于规则, 拼接式以及隐马尔可夫模型 (HMM) 的 TTS 技术.
 - 随后, 深度学习的兴起催生了众多基于神经网络的 TTS 方法.
-- 因此 [Ning 等人 (2019) [43]](../2019.08.01_A_Review_of_DL_Based_Speech_Synthesis_16P/Main.md) 和 [Tan 等人 (2021) [42]](../2021.06.29_A_Survey_on_Neural_Speech_Synthesis_63P/Main.md) 的综述对基于神经网络的声学模型和声码器进行了广泛探讨, 而 [Zhang 等人 (2023) [50]](../2023.03.23_A_Survey_on_Audio_Diffusion_Models__TTS_Synthesis_&_Enhancement_in_Generative_AI/Main.md) 的综述则首次对基于扩散模型的 TTS 技术进行了回顾.
+- 因此 [Ning 等人 (2019) [43]](../2019.08.01_A_Review_of_DL_Based_Speech_Synthesis_16P.md) 和 [Tan 等人 (2021) [42]](../2021.06.29_A_Survey_on_Neural_Speech_Synthesis_63P/Main.md) 的综述对基于神经网络的声学模型和声码器进行了广泛探讨, 而 [Zhang 等人 (2023) [50]](../2023.03.23_A_Survey_on_Audio_Diffusion_Models__TTS_Synthesis_&_Enhancement_in_Generative_AI/Main.md) 的综述则首次对基于扩散模型的 TTS 技术进行了回顾.
 
 然而, 这些研究对 TTS 系统可控性的讨论较为有限.
 
@@ -232,7 +232,7 @@ Table.01 summarizes representative surveys and this paper in terms of main focus
 | 综述 | 主要关注点 | 发表年份 |
 |---|---|:-:|
 |[Klatt et al. (1987) [36]](../../Surveys/1987.05.01_Review_of_Text-To-Speech_Conversion_for_English.md)| 基于规则和拼接的 TTS | 1987 |
-|[Tabet et al. (2011) [49]](../2011.06.27_Speech_Synthesis_Techniques_A_Survey/Main.md)| 基于规则, 拼接, 参数的 TTS | 2011 |
+|[Tabet et al. (2011) [49]](../2011.06.27_Speech_Synthesis_Techniques_A_Survey.md)| 基于规则, 拼接, 参数的 TTS | 2011 |
 |[King et al. (2014) [40]](../../Surveys/2014.06.30_Measuring_a_Decade_of_Progress_in_Text-To-Speech.md)|参数 TTS 与性能度量 | 2014 |
 |[Tan et al. (2021) [42]](../2021.06.29_A_Survey_on_Neural_Speech_Synthesis_63P/Main.md)|神经网络, 高效, 表达性 TTS | 2021 |
 |[Zhang et al. (2023) [50]](../2023.03.23_A_Survey_on_Audio_Diffusion_Models__TTS_Synthesis_&_Enhancement_in_Generative_AI/Main.md)|扩散模型 TTS, 语音增强|2023|

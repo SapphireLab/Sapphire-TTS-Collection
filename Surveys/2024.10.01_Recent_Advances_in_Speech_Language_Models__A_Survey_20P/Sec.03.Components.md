@@ -144,7 +144,7 @@ Speech tokenizers with a mixed objective aim to balance both semantic understand
 Currently, the development of these tokenizers is in its early stages.
 Most existing mixed speech tokenizers primarily adopt the architecture of acoustic generation speech tokenizers and focus on distilling information from semantic tokenizers into the acoustic tokenizer.
 [SpeechTokenizer (2023)](../../Models/SpeechCodec/2023.08.31_SpeechTokenizer.md) utilizes the RVQ-GAN ([EnCodec (2022)](../../Models/SpeechCodec/2022.10.24_EnCodec.md); [SoundStream (2021)](../../Models/SpeechCodec/2021.07.07_SoundStream.md)) architecture, distilling semantic information from [HuBERT (2021)](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) to the first layer of RVQ.
-Building on SpeechTokenizer, Mimi ([Moshi (2024)](../../Models/SpeechLM/2024.09.17_Moshi.md)) employs a single vector quantizer (VQ) to extract information from [WavLM (2021)](../../Models/SpeechRepresentation/2021.10.26_WavLM.md) and incorporates another RVQ module to learn the acoustic information.
+Building on SpeechTokenizer, Mimi ([Moshi (2024)](../../Models/SpokenDialogue/2024.09.17_Moshi.md)) employs a single vector quantizer (VQ) to extract information from [WavLM (2021)](../../Models/SpeechRepresentation/2021.10.26_WavLM.md) and incorporates another RVQ module to learn the acoustic information.
 
 </details>
 <br>
@@ -153,7 +153,7 @@ Building on SpeechTokenizer, Mimi ([Moshi (2024)](../../Models/SpeechLM/2024.09.
 目前, 这些分词器的发展处于初期阶段.
 大多数现有的混合语音分词器主要采用声学生成语音分词器的架构, 着重于将语义分词器中的信息蒸馏到声学分词器中.
 - [SpeechTokenizer (2023)](../../Models/SpeechCodec/2023.08.31_SpeechTokenizer.md) 使用 RVQ-GAN ([EnCodec (2022)](../../Models/SpeechCodec/2022.10.24_EnCodec.md); [SoundStream (2021)](../../Models/SpeechCodec/2021.07.07_SoundStream.md)) 架构, 将 [HuBERT (2021)](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) 的语义信息蒸馏到 RVQ 的第一层.
-- [Mimi (2024)](../../Models/SpeechLM/2024.09.17_Moshi.md) 基于 SpeechTokenizer 使用单个向量量化器 (VQ) 从 [WavLM (2021)](../../Models/SpeechRepresentation/2021.10.26_WavLM.md) 中提取信息, 并集成另一个 RVQ 模块来学习声学信息.
+- [Mimi (2024)](../../Models/SpokenDialogue/2024.09.17_Moshi.md) 基于 SpeechTokenizer 使用单个向量量化器 (VQ) 从 [WavLM (2021)](../../Models/SpeechRepresentation/2021.10.26_WavLM.md) 中提取信息, 并集成另一个 RVQ 模块来学习声学信息.
 
 ## 3.2.Language Model: 语言模型
 
@@ -178,7 +178,7 @@ $$
 \textbf{s}^{\text{out}} \sim \text{LM}(\textbf{s}^{\text{in}}, (E_s, \textbf{De}, E'_s)).
 $$
 
-Because the language model architecture of SpeechLMs is borrowed from TextLMs, it is natural that the resulting model can jointly model both text and speech modalities ([SpiRit-LM (2024)](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md); [SpeechGPT (2023)](../../Models/SpeechLM/2023.05.18_SpeechGPT.md)).
+Because the language model architecture of SpeechLMs is borrowed from TextLMs, it is natural that the resulting model can jointly model both text and speech modalities ([SpiRit-LM (2024)](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md); [SpeechGPT (2023)](../../Models/SpokenDialogue/2023.05.18_SpeechGPT.md)).
 To achieve this, a naive and most adopted approach is to expand the vocabulary of the original TextLM to incorporate both text and speech tokens.
 Specifically, the speech embedding matrix is usually appended to the end of the text embedding matrix, resulting in a larger embedding matrix $E_m \in \mathbb{R}^{(|V_t|+|V_s|) \times h}$.
 Let $\textbf{m}$ be a token sequence containing both speech and text tokens, the resulting language model becomes
@@ -211,7 +211,7 @@ $$
 \textbf{s}^{\text{out}} \sim \text{LM}(\textbf{s}^{\text{in}}, (E_s, \textbf{De}, E'_s)).
 $$
 
-由于语音语言模型的语言模型架构是借鉴自文本语言模型的, 因此改造后的模型可以同时对文本和语音模态进行建模 ([SpiRit-LM (2024)](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md); [SpeechGPT (2023)](../../Models/SpeechLM/2023.05.18_SpeechGPT.md)).
+由于语音语言模型的语言模型架构是借鉴自文本语言模型的, 因此改造后的模型可以同时对文本和语音模态进行建模 ([SpiRit-LM (2024)](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md); [SpeechGPT (2023)](../../Models/SpokenDialogue/2023.05.18_SpeechGPT.md)).
 为了实现这一目标, 最简单的和最流行的方法是将原始文本语言模型的词表扩展为包含文本和语音 Token 的词表.
 具体来说, 语音嵌入矩阵通常被追加到文本嵌入矩阵的末尾, 得到一个更大的嵌入矩阵 $E_m \in \mathbb{R}^{(|V_t|+|V_s|) \times h}$.
 令 $\textbf{m}$ 为包含语音和文本 Token 的 Token 序列, 则语言模型变为

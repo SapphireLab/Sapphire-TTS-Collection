@@ -330,12 +330,12 @@ Addressing this issue will make a big step towards fully controllable zero-shot 
 <summary>展开原文</summary>
 
 Synthesizing speech with natural language description usually involves training large language encoders and bridge nets between the two modalities which can bring about much more computation overhead compared to previous TTS methods.
-The inference time is also relatively slow, e.g., existing methods usually take tens of seconds to synthesize a short speech audio clip of less than 10 seconds ([CosyVoice [17]](../../Models/SpeechLM/2024.07.07_CosyVoice.md), [Prompttts++ [104]](../../Models/Acoustic/PromptTTS++.md)).
+The inference time is also relatively slow, e.g., existing methods usually take tens of seconds to synthesize a short speech audio clip of less than 10 seconds ([CosyVoice [17]](../../Models/SpeechLM/2024.07.07_CosyVoice.md), [Prompttts++ [104]](../../Models/Acoustic/2023.09.15_PromptTTS++.md)).
 Therefore, efficient text and speech modeling and interaction is critical for natural language description-based TTS systems.
 
 </details>
 <br>
 
 使用自然语言描述来合成语音通常涉及训练大型语言编码器和两个模态之间的桥接网络, 这会带来比以前 TTS 方法更多的计算开销.
-推理时间也相对较慢, 例如, 现有的方法通常需要几十秒才能合成 10 秒以下的短语音音频片段 ([CosyVoice [17]](../../Models/SpeechLM/2024.07.07_CosyVoice.md), [Prompttts++ [104]](../../Models/Acoustic/PromptTTS++.md)).
+推理时间也相对较慢, 例如, 现有的方法通常需要几十秒才能合成 10 秒以下的短语音音频片段 ([CosyVoice [17]](../../Models/SpeechLM/2024.07.07_CosyVoice.md), [Prompttts++ [104]](../../Models/Acoustic/2023.09.15_PromptTTS++.md)).
 因此, 基于自然语言描述 TTS 系统的高效文本和语音建模和交互至关重要.
