@@ -32,16 +32,16 @@ We summarize the NAR-based and AR-based controllable TTS methods in Table.03 and
 
 | NAR Method | Zero-Shot TTS | Pitch | Energy | Speed | Prosody | Timbre | Emotion | Environment | Description | Acoustic Model | Vocoder | Acoustic Feature | Release Time |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-|FastSpeech\cite{ren2019fastspeech} |  |  |  | √ | √ |  |  |  |  | Transformer | WaveGlow | MelS | 2019.05 |
+|[FastSpeech](../../Models/Acoustic/2019.05.22_FastSpeech.md)|  |  |  | √ | √ |  |  |  |  | Transformer | WaveGlow | MelS | 2019.05 |
 |DWAPI~\cite{vekkot2020emotional} |  | √ |  |  | √ |  | √ |  |  | DNN | Straight | MelS + F0 + Intensity | 2020.04 |
-|FastSpeech 2\cite{ren2020fastspeech} |  | √ | √ | √ | √ |  |  |  |  | Transformer | Parallel WaveGAN | MelS | 2020.06 |
-|FastPitch\cite{lancucki2021fastpitch} |  | √ |  |  | √ |  |  |  |  | Transformer | WaveGlow | MelS | 2020.06 |
+|[FastSpeech2](../../Models/Acoustic/2020.06.08_FastSpeech2.md)|  | √ | √ | √ | √ |  |  |  |  | Transformer | Parallel WaveGAN | MelS | 2020.06 |
+|[FastPitch](../../Models/Acoustic/2020.06.11_FastPitch.md)|  | √ |  |  | √ |  |  |  |  | Transformer | WaveGlow | MelS | 2020.06 |
 |Parallel Tacotron\cite{elias2021parallel} |  |  |  |  | √ |  |  |  |  | Transformer + CNN | WaveRNN | MelS | 2020.10 |
 |StyleTagging-TTS~\cite{kim2021expressive} | √ |  |  |  |  | √ | √ |  |  | Transformer + CNN | HiFi-GAN | MelS | 2021.04 |
 |SC-GlowTTS~\cite{casanova2021sc} | √ |  |  |  |  | √ |  |  |  | Transformer + Conv | HiFi-GAN | MelS | 2021.06 |
 |Meta-StyleSpeech~\cite{min2021meta} | √ |  |  |  |  | √ |  |  |  | Transformer | MelGAN | MelS | 2021.06 |
 |DelightfulTTS\cite{liu2021delightfultts} |  | √ |  | √ | √ |  |  |  |  | Transformer + CNN | HiFiNet | MelS | 2021.11 |
-|YourTTS~\cite{casanova2022yourtts} | √ |  |  |  |  | √ |  |  |  | Transformer | HiFi-GAN | LinS | 2021.12 |
+|[YourTTS](../../Models/E2E/2021.12.04_YourTTS.md)| √ |  |  |  |  | √ |  |  |  | Transformer | HiFi-GAN | LinS | 2021.12 |
 |DiffGAN-TTS\cite{liu2022diffgan} |  | √ |  | √ | √ |  |  |  |  | Diffusion + GAN | HiFi-GAN | MelS | 2022.01 |
 |StyleTTS~\cite{li2022styletts} | √ |  |  |  |  | √ |  |  |  | CNN + RNN + GAN | HiFi-GAN | MelS | 2022.05 |
 |GenerSpeech~\cite{huang2022generspeech} | √ |  |  |  |  | √ |  |  |  | Transformer + Flow-based | HiFi-GAN | MelS | 2022.05 |
@@ -102,7 +102,7 @@ This model provides precise control over prosodic features through duration pred
 [FastSpeech2](../../Models/Acoustic/2020.06.08_FastSpeech2.md) builds on this by integrating pitch and energy control, eliminating the need for the complex teacher-student distillation process, thus enhancing training efficiency and improving voice quality.
 [Parallel Tacotron]\cite{elias2021paralleltacotron} further advances TTS by employing a variational autoencoder-based residual encoder, capturing intricate prosodic nuances.
 This approach, combined with iterative spectrogram loss, significantly enhances the naturalness and quality of synthesized speech.
-Additionally, FastPitch\cite{lancucki2021fastpitch} incorporates direct pitch prediction into its architecture, enabling fully parallelized synthesis and precise pitch manipulation.
+Additionally, [FastPitch](../../Models/Acoustic/2020.06.11_FastPitch.md) incorporates direct pitch prediction into its architecture, enabling fully parallelized synthesis and precise pitch manipulation.
 This capability enhances expressiveness and retains the efficiency benefits established by FastSpeech.
 These innovations significantly contribute to the development of more interactive and natural AI-driven communication systems, underscoring the potential of integrating AI with human-centric disciplines to craft a future where technology and humanity coexist harmoniously.
 
@@ -143,7 +143,7 @@ HierSpeech++~\cite{lee2023hierspeech++} proposes a hierarchical variational infe
 FlashSpeech~\cite{ye2024flashspeech} is built on a latent consistency model and applies a novel adversarial consistency training approach that can train from scratch without the need for a pre-trained diffusion model as the teacher, achieving speech generation in one or two steps.
 
 Recently, E2 TTS~\cite{eskimez2024e2} converts text input into a character sequence with filler tokens and trains a mel spectrogram generator based on audio infilling task, achieving human-level naturalness.
-Inspired by E2 TTS, F5-TTS~\cite{chen2024f5} refines the text representation with ConvNext v2~\cite{woo2023convnext}, facilitating easier alignment with speech.
+Inspired by E2 TTS, [F5-TTS [194]](../../Models/Diffusion/2024.10.09_F5-TTS.md) refines the text representation with ConvNext v2~\cite{woo2023convnext}, facilitating easier alignment with speech.
 E1 TTS~\cite{liu2024e1} further distills a diffusion-based TTS model into a one-step generator with distribution matching distillation~\cite{luo2024diff,yin2024improved}, reducing the number of network evaluations in sampling from diffusion models.
 SimpleSpeech 2~\cite{yang2024simplespeech2} introduces a flow-based scalar transformer diffusion model.
 The work also provides a theoretical analysis, showing that the inclusion of a small number of noisy labels in a large-scale dataset is equivalent to introducing classifier-free guidance during model optimization.
@@ -271,7 +271,7 @@ MegaTTS 2~\cite{jiang2024mega} introduces an acoustic autoencoder that separatel
 
 Recent studies explore controlling speech style using natural language descriptions that include attributes such as pitch, gender, and emotion, making the process more user-friendly and interpretable.
 In this paradigm, several speech datasets with natural language descriptions~\cite{[PromptTTS [101]](../../Models/Acoustic/2022.11.22_PromptTTS.md),ji2024textrolspeech,[ControlSpeech [106]](../../Models/SpeechLM/2024.06.03_ControlSpeech.md)} and associated prompt generation pipelines~\cite{ji2024textrolspeech,leng2023prompttts2,lyth2024natural} have been proposed.
-Detailed information about these datasets will be discussed in [Section 5](Sec.05.md).
+Detailed information about these datasets will be discussed in [Section 5](Sec.05_Datasets&Evaluation.md).
 [PromptTTS [101]](../../Models/Acoustic/2022.11.22_PromptTTS.md) uses manually annotated text prompts to describe five speech attributes, including gender, pitch, speaking speed, volume, and emotion.
 [InstructTTS [105]](../../Models/Acoustic/2023.01.31_InstructTTS.md) introduces a three-stage training procedure to capture semantic information from natural language style prompts and adds further annotation to the NLSpeech dataset’s speech styles.
 PromptStyle~\cite{liu2023promptstyle} constructs a shared space for stylistic and semantic representations through a two-stage training process.

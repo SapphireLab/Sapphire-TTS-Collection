@@ -321,34 +321,34 @@ Integrating LLMs into TTS systems represents a significant step forward, enablin
 <summary>展开原文</summary>
 
 This paper first presents a comprehensive and systematic review of controllable TTS technologies, with a particular focus on model architectures, control methodologies, and feature representations.
-To establish a foundational understanding, this survey begins with an introduction to the TTS pipeline in [Section 2](Sec.02.md).
-While our focus remains on controllable TTS, [Section 3](Sec.03.md) examines seminal works in uncontrollable TTS that have significantly influenced the field's development.
-[Section 4](Sec.04.md) provides a thorough investigation into controllable TTS methods, analyzing both their model architectures and control strategies.
-[Section 5](Sec.05.md) presents a comprehensive review of datasets and evaluation metrics.
-[Section 6](Sec.06.md) provides an in-depth analysis of the challenges encountered in achieving controllable TTS systems and discusses future directions.
+To establish a foundational understanding, this survey begins with an introduction to the TTS pipeline in [Section 2](Sec.02_Pipeline.md).
+While our focus remains on controllable TTS, [Section 3](Sec.03_UnControllableTTS.md) examines seminal works in uncontrollable TTS that have significantly influenced the field's development.
+[Section 4](Sec.04_ControllableTTS.md) provides a thorough investigation into controllable TTS methods, analyzing both their model architectures and control strategies.
+[Section 5](Sec.05_Datasets&Evaluation.md) presents a comprehensive review of datasets and evaluation metrics.
+[Section 6](Sec.06_Challenges.md) provides an in-depth analysis of the challenges encountered in achieving controllable TTS systems and discusses future directions.
 [Section 7](#Sec.07) explores the broader impacts of controllable TTS technologies and identifies promising future research directions, followed by the conclusion in [Section 8](#Sec.08).
 
 </details>
 <br>
 
 本文首次展示了一份全面且系统化的可控 TTS 技术综述, 着重分析模型架构, 控制策略, 和特征表示.
-- [第二节](Sec.02.md) 介绍 TTS 流程, 以建立起基础的理解.
-- [第三节](Sec.03.md) 仔细研究了不可控 TTS, 其对整个研究领域的发展有极大影响.
-- [第四节](Sec.04.md) 详细调查了可控 TTS 方法, 分析了其模型架构和控制策略.
-- [第五节](Sec.05.md) 展示了数据集和评价指标的全面综述.
-- [第六节](Sec.06.md) 深入分析了实现可控 TTS 系统的挑战, 并提出了未来研究方向.
+- [第二节](Sec.02_Pipeline.md) 介绍 TTS 流程, 以建立起基础的理解.
+- [第三节](Sec.03_UnControllableTTS.md) 仔细研究了不可控 TTS, 其对整个研究领域的发展有极大影响.
+- [第四节](Sec.04_ControllableTTS.md) 详细调查了可控 TTS 方法, 分析了其模型架构和控制策略.
+- [第五节](Sec.05_Datasets&Evaluation.md) 展示了数据集和评价指标的全面综述.
+- [第六节](Sec.06_Challenges.md) 深入分析了实现可控 TTS 系统的挑战, 并提出了未来研究方向.
 - [第七节](#Sec.07) 探讨了可控 TTS 技术的广泛影响, 并提出了有前途的研究方向.
 - [第八节](#Sec.08) 总结了本文.
 
-## 2·[TTS Pipeline: TTS 流程](Sec.02.md)
+## 2·[TTS Pipeline: TTS 流程](Sec.02_Pipeline.md)
 
-## 3·[Uncontrollable TTS: 非可控 TTS](Sec.03.md)
+## 3·[Uncontrollable TTS: 非可控 TTS](Sec.03_UnControllableTTS.md)
 
-## 4·[Controllable TTS: 可控 TTS](Sec.04.md)
+## 4·[Controllable TTS: 可控 TTS](Sec.04_ControllableTTS.md)
 
-## 5·[Datasets & Evaluation: 数据集和评估](Sec.05.md)
+## 5·[Datasets & Evaluation: 数据集和评估](Sec.05_Datasets&Evaluation.md)
 
-## 6·[Challenges & Future Directions: 挑战与未来方向](Sec.06.md)
+## 6·[Challenges & Future Directions: 挑战与未来方向](Sec.06_Challenges.md)
 
 ## 7·Discussion: 讨论
 

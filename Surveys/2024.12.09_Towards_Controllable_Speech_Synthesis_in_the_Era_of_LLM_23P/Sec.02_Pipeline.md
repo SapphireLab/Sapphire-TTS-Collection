@@ -4,8 +4,8 @@
 <summary>展开原文</summary>
 
 In this section, we elaborate on the general pipeline that supports controllable TTS technologies, including acoustic models, speech vocoders, and feature representations.
-Fig.02 depicts the general pipeline of controllable TTS, containing various model architectures and feature representations, but the control strategies will be discussed in [Section 4](Sec.04.md).
-Readers can jump to [Section 3](Sec.03.md) if familiar with TTS pipelines.
+Fig.02 depicts the general pipeline of controllable TTS, containing various model architectures and feature representations, but the control strategies will be discussed in [Section 4](Sec.04_ControllableTTS.md).
+Readers can jump to [Section 3](Sec.03_UnControllableTTS.md) if familiar with TTS pipelines.
 
 </details>
 <br>
@@ -14,9 +14,9 @@ Readers can jump to [Section 3](Sec.03.md) if familiar with TTS pipelines.
 
 ![](Images/Fig.02.png)
 
-图 02 展示了可控 TTS 的一般流程, 包含各种模型架构和特征表示, 但控制策略将在 [第 4 节](Sec.04.md) 中讨论.
+图 02 展示了可控 TTS 的一般流程, 包含各种模型架构和特征表示, 但控制策略将在 [第 4 节](Sec.04_ControllableTTS.md) 中讨论.
 
-如果读者熟悉 TTS 流程, 可以直接跳转到 [第 3 节](Sec.03.md).
+如果读者熟悉 TTS 流程, 可以直接跳转到 [第 3 节](Sec.03_UnControllableTTS.md).
 
 ## A·Overview: 总览
 
@@ -373,7 +373,7 @@ Similarly, [FastSpeech2s [76]](../../Models/Acoustic/2020.06.08_FastSpeech2.md) 
 It integrates a [variational autoencoder (VAE) with normalizing flows [163]](../../Models/_Full/2015.05.21_Variational_Inference_with_Normalizing_Flows.md) and adversarial training, enabling the model to learn latent representations that capture the intricate variations in speech, such as prosody and style.
 VITS combines non-autoregressive synthesis with stochastic latent variable modeling, achieving real-time waveform generation without compromising naturalness.
 There are more end-to-end TTS models such as [Tacotron [74]](../../Models/Acoustic/2017.03.29_Tacotron.md), [ClariNet [161]](../../Models/E2E/2018.07.19_ClariNet.md), and [EATS [162]](../../Models/E2E/2020.06.05_EATS.md), refer to another survey ([Survey by Tan et al. (2021) [42]](../2021.06.29_A_Survey_on_Neural_Speech_Synthesis_63P/Main.md)) for more details.
-End-to-end controllable methods that emerged in recent years will be discussed in [Section 4](Sec.04.md).
+End-to-end controllable methods that emerged in recent years will be discussed in [Section 4](Sec.04_ControllableTTS.md).
 
 </details>
 <br>
@@ -390,7 +390,7 @@ VITS 将非自回归合成和随机潜在变量建模相结合, 实现了实时�
 
 参考综述论文 ([Survey by Tan et al. (2021) [42]](../2021.06.29_A_Survey_on_Neural_Speech_Synthesis_63P/Main.md)) 获取更多细节.
 
-近年来出现的端到端的可控方法将在[第 4 节](Sec.04.md)中讨论.
+近年来出现的端到端的可控方法将在[第 4 节](Sec.04_ControllableTTS.md)中讨论.
 
 ## E·Acoustic Feature Representations: 声学特征表示
 
