@@ -218,53 +218,124 @@ SoTA 可控 TTS 系统通常依赖于大的神经网络, 如 LLMs, 它们提供�
 
 ## B·Future Directions: 未来方向
 
-In this survey, we conduct a comprehensive investigation and analysis of existing TTS methods, particularly on controllable TTS technologies.~
-While these methods show great potential in real-world applications, there are still some limitations that need to be addressed.~
-Based on our observations, we outline several promising future directions as follows:~
+<details>
+<summary>展开原文</summary>
+
+In this survey, we conduct a comprehensive investigation and analysis of existing TTS methods, particularly on controllable TTS technologies.
+While these methods show great potential in real-world applications, there are still some limitations that need to be addressed.
+Based on our observations, we outline several promising future directions as follows:
+
+</details>
+<br>
+
+在本调查中, 我们构造了对现有 TTS 方法的全面的调查和分析, 特别是可控 TTS 技术.
+虽然这些方法在实时应用中展示出了巨大的潜力, 但仍有一些限制需要解决.
+基于我们的观察, 我们提出了一些有前途的未来方向如下:
 
 ### Fine-Grained Speech Synthesis by Natural Language Description: 基于自然语言描述的细粒度语音合成
+
+<details>
+<summary>展开原文</summary>
 
 Using natural language description to synthesize human speech with fine-grained control over various audio attributes is currently underexplored.
 Most of the existing works can only control a fixed number of attributes of the synthesized speech.
 Although a few works show great control of emotion, timbres, pitch, gender, and styles, e.g., [VoxInstruct [103]](../../Models/SpeechLM/2024.08.28_VoxInstruct.md) and [CosyVoice [17]](../../Models/SpeechLM/2024.07.07_CosyVoice.md), they can frequently synthesize unwanted speech clips.
-Users need to synthesize multiple times to get satisfactory speech.~
+Users need to synthesize multiple times to get satisfactory speech.
+
+</details>
+<br>
+
+使用自然语言描述来实现细粒度控制的音频属性并合成人类语音, 目前还处于空白地带.
+现有的大多数工作只能控制合成语音的固定数量的属性.
+虽然一些工作已经展示出了对情感, 音色, 音高, 性别, 风格等音频属性的精细控制, 如 [VoxInstruct [103]](../../Models/SpeechLM/2024.08.28_VoxInstruct.md) 和 [CosyVoice [17]](../../Models/SpeechLM/2024.07.07_CosyVoice.md), 但它们往往会生成不想要的语音片段.
+用户需要多次合成才能获得令人满意的语音.
 
 ### Fine-Grained Speech Editing by Natural Language Description: 基于自然语言描述的细粒度语音编辑
+
+<details>
+<summary>展开原文</summary>
 
 Speech or audio editing has been studied for a long time.
 However, existing methods usually train conditional models and adjust a fixed number of conditional inputs to modify the attributes of synthesized speech, thus lacking fine-grained manipulations [^94] [^95]
 Therefore, how to learn disentangled speech representations for speech attributes while supporting editing by using natural language description is worthy of investigation.
+
+</details>
+<br>
+
+语音或音频编辑已经研究了很长一段时间.
+然而, 现有的方法通常训练条件模型并调整固定数量的条件输入来修改合成语音的属性, 这导致粒度不够细致的操作 [^94] [^95]
+因此, 如何学习分离的语音表示来支持自然语言描述的语音属性编辑, 值得进一步研究.
 
 [^94]: Editspeech: A Text Based Speech Editing System Using Partial Inference and Bidirectional Fusion
 [^95]: Editts: Score-Based Editing for Controllable Text-To-Speech
 
 ### Expressive Multi-Modal Speech Synthesis: 表达性多模态语音合成
 
+<details>
+<summary>展开原文</summary>
+
 Synthesizing speech from multi-modal data such as texts, images, and videos is an appealing research topic due to its various applications in the industry such as storytelling, filming, and gaming.
 Although there are several related works on this task ([^6] [^24] [^276] [^277]), few of them can fully extract useful information from multi-modal data.
 Particularly, synthesizing engaging speech and expressive voiceover for complex visual content sees great opportunities in the future.
+
+</details>
+<br>
+
+从多模态数据 (如文本, 图像, 视频) 中合成语音是一项有吸引力的研究主题, 因为它在工业界有着各种应用, 如故事讲述, 电影拍摄, 游戏.
+虽然有一些相关工作 ([^6] [^24] [^276] [^277]), 但很少有工作可以从多模态数据中完全提取有用的信息.
+特别是, 合成富有情感的语音和富有表现力的配音, 对于复杂的视觉内容, 具有巨大的机会.
 
 [^6]: Speech-Driven Cartoon Animation with Emotions (2001)
 [^24]: Face2speech: Towards multi-speaker text-to-speech synthesis using an embedding vector predicted from a face image
 [^276]: Seeing Your Speech Style: A Novel Zero-Shot Identity-Disentanglement Face-Based Voice Conversion
 [^277]: Visualtts: TTS with Accurate Lip-Speech Synchronization For Automatic Voice Over
 
-
 ### Natural and Emotional Conversational TTS: 自然和情感对话式语音合成
+
+<details>
+<summary>展开原文</summary>
 
 Speech conversational TTS have come out for several decades but remained as cascaded systems for a long time and cannot generate natural and emotional speech.
 These systems are not context-aware, making the synthesized speech sound robotic.
 With the advent of LLMs, existing TTS technologies were directly introduced by simply synthesizing speech from the text generated by LLMs ([LLaMA-Omni [33]](../../Models/SpokenDialogue/2024.09.10_LLaMA-Omni.md)).
-However, context-aware conversational TTS with rich emotion and good naturalness has not been well studied.~
+However, context-aware conversational TTS with rich emotion and good naturalness has not been well studied.
+
+</details>
+<br>
+
+语音对话式 TTS 已经存在了几十年, 但长期以来仍然是级联系统, 无法生成自然和情感语音.
+这些系统不具有上下文感知能力, 导致合成语音听起来像机器人.
+随着 LLMs 的出现, 现有的 TTS 技术被直接引入, 只需从 LLMs 生成的文本合成语音 ([LLaMA-Omni [33]](../../Models/SpokenDialogue/2024.09.10_LLaMA-Omni.md)).
+然而, 具有丰富情感和良好自然度的上下文感知对话式 TTS, 却没有得到充分研究.
 
 ### Zero-Shot Long Speech Synthesis with Emotion Consistency: 情感一致的零样本长语音合成
 
+<details>
+<summary>展开原文</summary>
+
 Zero-shot TTS emerged in recent years to achieve voice cloning and speech style imitation without fine-tuning, making them more practical in real scenarios ([MaskGCT [78]](../../Models/SpeechLM/2024.09.01_MaskGCT.md); [CosyVoice [17]](../../Models/SpeechLM/2024.07.07_CosyVoice.md); [F5-TTS [194]](../../Models/Diffusion/2024.10.09_F5-TTS.md)).
 However, synthesizing long speech with rich emotion and style variation in a zero-shot setting remains challenging due to the lack of rich speech information in short reference audio clips.
-Addressing this issue will make a big step towards fully controllable zero-shot TTS.~
+Addressing this issue will make a big step towards fully controllable zero-shot TTS.
+
+</details>
+<br>
+
+零样本 TTS 于近年出现以实现声音克隆和语音风格模仿而无需微调, 因此在实际场景中更加实际 ([MaskGCT [78]](../../Models/SpeechLM/2024.09.01_MaskGCT.md); [CosyVoice [17]](../../Models/SpeechLM/2024.07.07_CosyVoice.md); [F5-TTS [194]](../../Models/Diffusion/2024.10.09_F5-TTS.md)).
+然而, 在零样本设置中合成具有丰富情感和风格变化的长语音, 仍然存在挑战, 因为短引用音频片段中缺乏丰富的语音信息.
+解决这一问题将迈出重要一步, 迈向完全可控的零样本 TTS.
 
 ### Efficient TTS by Natural Language Description: 自然语言描述的高效文本转语音
 
+<details>
+<summary>展开原文</summary>
+
 Synthesizing speech with natural language description usually involves training large language encoders and bridge nets between the two modalities which can bring about much more computation overhead compared to previous TTS methods.
 The inference time is also relatively slow, e.g., existing methods usually take tens of seconds to synthesize a short speech audio clip of less than 10 seconds ([CosyVoice [17]](../../Models/SpeechLM/2024.07.07_CosyVoice.md), [Prompttts++ [104]](../../Models/Acoustic/PromptTTS++.md)).
-Therefore, efficient text and speech modeling and interaction is critical for natural language description-based TTS systems.~
+Therefore, efficient text and speech modeling and interaction is critical for natural language description-based TTS systems.
+
+</details>
+<br>
+
+使用自然语言描述来合成语音通常涉及训练大型语言编码器和两个模态之间的桥接网络, 这会带来比以前 TTS 方法更多的计算开销.
+推理时间也相对较慢, 例如, 现有的方法通常需要几十秒才能合成 10 秒以下的短语音音频片段 ([CosyVoice [17]](../../Models/SpeechLM/2024.07.07_CosyVoice.md), [Prompttts++ [104]](../../Models/Acoustic/PromptTTS++.md)).
+因此, 基于自然语言描述 TTS 系统的高效文本和语音建模和交互至关重要.
