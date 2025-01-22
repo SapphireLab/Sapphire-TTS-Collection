@@ -78,29 +78,29 @@ The related material is available at [Github](https://github.com/jishengpeng/Wav
 <details>
 <summary>展开原文</summary>
 
-Spoken dialogue models ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md); [SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md); [Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md)) represent one of the most direct methods of human-computer interaction, evolving from traditional voice assistants such as [Alexa [Website]](https://www.alexa.com/), [Siri [Website]](https://www.apple.com/siri/), and [Google Assistant [Website]](https://assistant.google.com/) to the latest intelligent dialogue systems, such as [GPT-4o [Website]](https://openai.com/index/chatgpt-can-now-see-hear-and-speak/).
+Spoken dialogue models ([Moshi [44]](../../Models/SpokenDialogue/2024.09.17_Moshi.md); [SpeechGPT [242]](../../Models/SpokenDialogue/2023.05.18_SpeechGPT.md); [Mini-Omni2 [223]](../../Models/SpokenDialogue/2024.10.15_Mini-Omni2.md)) represent one of the most direct methods of human-computer interaction, evolving from traditional voice assistants such as [Alexa [Website]](https://www.alexa.com/), [Siri [Website]](https://www.apple.com/siri/), and [Google Assistant [Website]](https://assistant.google.com/) to the latest intelligent dialogue systems, such as [GPT-4o [Website]](https://openai.com/index/chatgpt-can-now-see-hear-and-speak/).
 The fundamental definition of a spoken dialogue model refers to a dialogue system capable of generating intelligent verbal responses based on the input speech.
 On the one hand, the **speech modality** serves as both the input and output interface for the human-computer interaction in the spoken dialogue models.
 On the other hand, the **dialogue system** ([LLaMA3 [52]](../../Models/TextLM/2024.07.31_LLaMA3.md)) requires the model to possess a certain level of textual intelligence, including the ability to comprehend the knowledge of human society and generating professional and intelligent responses.
-Recently, intelligent spoken dialogue systems, exemplified by GPT-4o and [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md), have garnered significant attention for their ability to extend speech intelligence capabilities beyond traditional text-based dialogue models ([AudioGPT [84]](../../Models/SpeechLM/2023.04.25_AudioGPT.md)).
-These dialogue models can not only generate natural, human-like speech responses ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md); [FunAudioLLM [195]](../../Models/SpeechLM/2024.07.04_FunAudioLLM.md)) but also demonstrate an advanced understanding and generation of acoustic features beyond text, such as timbre, emotion, and style ([Spoken-LLM [127]](../../Models/SpeechLM/2024.02.20_Spoken-LLM.md); [ParalinGPT [128]](../../Models/SpeechLM/2023.12.23_ParalinGPT.md); [E-chat [227]](../../Models/SpeechLM/2023.12.31_E-chat.md)).
-Additionally, they exhibit strong performance in processing other speech-related representations, including music and audio events ([Qwen2-Audio [33]](../../Models/SpeechLM/2024.07.15_Qwen2-Audio.md); [Qwen-Audio [34]](../../Models/SpeechLM/2023.11.14_Qwen-Audio.md); [LTU-AS [67]](../../Models/SpeechLM/2023.09.25_LTU-AS.md); [SALMONN [198]](../../Models/SpeechLM/2023.10.20_SALMONN.md)).
-Their realistic conversational interactivity ([VITA [61]](../../Models/SpeechLM/2024.08.09_VITA.md); [Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md)) and low-latency dialogue experiences ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)) further distinguish them among the traditional spoken dialogue models.
+Recently, intelligent spoken dialogue systems, exemplified by GPT-4o and [Moshi [44]](../../Models/SpokenDialogue/2024.09.17_Moshi.md), have garnered significant attention for their ability to extend speech intelligence capabilities beyond traditional text-based dialogue models ([AudioGPT [84]](../../Models/SpokenDialogue/2023.04.25_AudioGPT.md)).
+These dialogue models can not only generate natural, human-like speech responses ([Moshi [44]](../../Models/SpokenDialogue/2024.09.17_Moshi.md); [FunAudioLLM [195]](../../Models/SpeechLM/2024.07.04_FunAudioLLM.md)) but also demonstrate an advanced understanding and generation of acoustic features beyond text, such as timbre, emotion, and style ([Spoken-LLM [127]](../../Models/SpokenDialogue/2024.02.20_Spoken-LLM.md); [ParalinGPT [128]](../../Models/SpokenDialogue/2023.12.23_ParalinGPT.md); [E-chat [227]](../../Models/SpokenDialogue/2023.12.31_E-chat.md)).
+Additionally, they exhibit strong performance in processing other speech-related representations, including music and audio events ([Qwen2-Audio [33]](../../Models/SpokenDialogue/2024.07.15_Qwen2-Audio.md); [Qwen-Audio [34]](../../Models/SpokenDialogue/2023.11.14_Qwen-Audio.md); [LTU-AS [67]](../../Models/SpokenDialogue/2023.09.25_LTU-AS.md); [SALMONN [198]](../../Models/SpokenDialogue/2023.10.20_SALMONN.md)).
+Their realistic conversational interactivity ([VITA [61]](../../Models/SpokenDialogue/2024.08.09_VITA.md); [Mini-Omni2 [223]](../../Models/SpokenDialogue/2024.10.15_Mini-Omni2.md)) and low-latency dialogue experiences ([Moshi [44]](../../Models/SpokenDialogue/2024.09.17_Moshi.md)) further distinguish them among the traditional spoken dialogue models.
 
-The history of spoken dialogue models can be traced back to early systems like [dGSLM [157]](../../Models/SpeechLM/2022.03.30_dGSLM.md) and [AudioGPT [84]](../../Models/SpeechLM/2023.04.25_AudioGPT.md), leading up to more recent advancements such as GPT-4o and [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md).
+The history of spoken dialogue models can be traced back to early systems like [dGSLM [157]](../../Models/SpokenDialogue/2022.03.30_dGSLM.md) and [AudioGPT [84]](../../Models/SpokenDialogue/2023.04.25_AudioGPT.md), leading up to more recent advancements such as GPT-4o and [Moshi [44]](../../Models/SpokenDialogue/2024.09.17_Moshi.md).
 During this period, many notable spoken dialogue models have emerged.
 As shown in Fig.01, we have organized these models in chronological order.
-Broadly, they can be categorized into two types: cascaded spoken dialogue models ([Qwen2-Audio [33]](../../Models/SpeechLM/2024.07.15_Qwen2-Audio.md); [Qwen-Audio [34]](../../Models/SpeechLM/2023.11.14_Qwen-Audio.md)) and end-to-end ([FSQ [149]](../../Modules/VQ/FSQ.md); [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md); [OmniFlatten [246]](../../Models/SpeechLM/2024.10.23_OmniFlatten.md); [IntrinsicVoice [248]](../../Models/SpeechLM/2024.10.09_IntrinsicVoice.md)) spoken dialogue models.
+Broadly, they can be categorized into two types: cascaded spoken dialogue models ([Qwen2-Audio [33]](../../Models/SpokenDialogue/2024.07.15_Qwen2-Audio.md); [Qwen-Audio [34]](../../Models/SpokenDialogue/2023.11.14_Qwen-Audio.md)) and end-to-end ([FSQ [149]](../../Modules/VQ/FSQ.md); [Mini-Omni [222]](../../Models/SpokenDialogue/2024.08.27_Mini-Omni.md); [OmniFlatten [246]](../../Models/SpokenDialogue/2024.10.23_OmniFlatten.md); [IntrinsicVoice [248]](../../Models/SpokenDialogue/2024.10.09_IntrinsicVoice.md)) spoken dialogue models.
 Given that most current spoken dialogue models rely on alignment with the text modality, the distinction between cascaded and end-to-end models is crucial.
 As illustrated in Fig.02, we classify all spoken dialogue models based on whether **the core language model can directly understand and generate speech representations**, dividing them into cascaded and end-to-end categories.
-Traditional cascaded spoken dialogue systems such as [AudioGPT [84]](../../Models/SpeechLM/2023.04.25_AudioGPT.md) are structured around text as the central intermediary, typically comprising three cascaded modules.
+Traditional cascaded spoken dialogue systems such as [AudioGPT [84]](../../Models/SpokenDialogue/2023.04.25_AudioGPT.md) are structured around text as the central intermediary, typically comprising three cascaded modules.
 First, the input audio is transcribed into text by an automatic speech recognition (ASR) module ([Whisper [169]](../../Models/SpeechLM/2022.12.06_Whisper.md)).
 The transcribed text is then fed into a large language model (LLM) such as ChatGPT to generate a textual response.
 Finally, this textual response is converted back into audio through a text-to-speech (TTS) module ([VITS2 [109]](../../Models/E2E/2023.07.31_VITS2.md); [FastSpeech2 [176]](../../Models/Acoustic/2020.06.08_FastSpeech2.md)).
 While this cascaded architecture leverages the strong in-context capabilities of large language models, it introduces several challenges, including high latency, limited interactivity, and the inability to process non-textual information.
 To address these issues, recent research has taken two primary directions.
-Some approaches ([Qwen-Audio [34]](../../Models/SpeechLM/2023.11.14_Qwen-Audio.md); [SALMONN [198]](../../Models/SpeechLM/2023.10.20_SALMONN.md)) focus on optimizing the understanding and generation components within the cascaded system to mitigate the aforementioned limitations.
-Some other approach ([Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md); [Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md); [SpeechGPT-Gen [244]](../../Models/SpeechLM/2024.01.24_SpeechGPT-Gen.md); [IntrinsicVoice [248]](../../Models/SpeechLM/2024.10.09_IntrinsicVoice.md)) seek to directly solve these problems by adopting end-to-end architectures for spoken dialogue systems.
+Some approaches ([Qwen-Audio [34]](../../Models/SpokenDialogue/2023.11.14_Qwen-Audio.md); [SALMONN [198]](../../Models/SpokenDialogue/2023.10.20_SALMONN.md)) focus on optimizing the understanding and generation components within the cascaded system to mitigate the aforementioned limitations.
+Some other approach ([Mini-Omni [222]](../../Models/SpokenDialogue/2024.08.27_Mini-Omni.md); [Mini-Omni2 [223]](../../Models/SpokenDialogue/2024.10.15_Mini-Omni2.md); [SpeechGPT-Gen [244]](../../Models/SpokenDialogue/2024.01.24_SpeechGPT-Gen.md); [IntrinsicVoice [248]](../../Models/SpokenDialogue/2024.10.09_IntrinsicVoice.md)) seek to directly solve these problems by adopting end-to-end architectures for spoken dialogue systems.
 Although end-to-end spoken dialogue models exhibit various differences in terms of representations and model architectures, they share a common feature: they do not rely on text as the central intermediary.
 Instead, these models aim to directly comprehend and generate speech representations.
 We define such systems as end-to-end spoken dialogue models.
@@ -126,27 +126,27 @@ Given the complexity of the technical points, we provide an overview of the stru
 </details>
 <br>
 
-口语对话模型 ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md); [SpeechGPT [242]](../../Models/SpeechLM/2023.05.18_SpeechGPT.md); [Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md)) 代表了人机交互中最直接的方法之一, 从传统的声音助手([Alexa [Website]](https://www.alexa.com/); [Siri [Website]](https://www.apple.com/siri/); [Google Assistant [Website]](https://assistant.google.com/)) 进化到最新的智能对话系统 (如 [GPT-4o [Website]](https://openai.com/index/chatgpt-can-now-see-hear-and-speak/)).
+口语对话模型 ([Moshi [44]](../../Models/SpokenDialogue/2024.09.17_Moshi.md); [SpeechGPT [242]](../../Models/SpokenDialogue/2023.05.18_SpeechGPT.md); [Mini-Omni2 [223]](../../Models/SpokenDialogue/2024.10.15_Mini-Omni2.md)) 代表了人机交互中最直接的方法之一, 从传统的声音助手([Alexa [Website]](https://www.alexa.com/); [Siri [Website]](https://www.apple.com/siri/); [Google Assistant [Website]](https://assistant.google.com/)) 进化到最新的智能对话系统 (如 [GPT-4o [Website]](https://openai.com/index/chatgpt-can-now-see-hear-and-speak/)).
 
 口语对话模型的基本定义是指一个能够根据输入语音生成智能口语回应的对话系统.
 一方面, **语音模态**在口语对话模型中既是人机交互的输入接口, 也是输出接口.
 另一方面, **对话系统** ([LLaMA3 [52]](../../Models/TextLM/2024.07.31_LLaMA3.md)) 要求模型具备一定程度的文本智能, 包括理解人类社会知识并生成专业和智能的回应.
 
-近期, 以 GPT-4o 和 [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md) 为代表的智能口语对话系统, 因其超越了传统基于文本的对话模型 ([AudioGPT [84]](../../Models/SpeechLM/2023.04.25_AudioGPT.md)) 的语音智能能力而受到广泛关注.
+近期, 以 GPT-4o 和 [Moshi [44]](../../Models/SpokenDialogue/2024.09.17_Moshi.md) 为代表的智能口语对话系统, 因其超越了传统基于文本的对话模型 ([AudioGPT [84]](../../Models/SpokenDialogue/2023.04.25_AudioGPT.md)) 的语音智能能力而受到广泛关注.
 
-这些对话模型不仅能够生成自然, 类似人类的语音回应 ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md); [FunAudioLLM [195]](../../Models/SpeechLM/2024.07.04_FunAudioLLM.md)) 还展示了超越文本的高级声学特征 (如音色, 情感和风格) 的理解和生成能力 ([Spoken-LLM [127]](../../Models/SpeechLM/2024.02.20_Spoken-LLM.md); [ParalinGPT [128]](../../Models/SpeechLM/2023.12.23_ParalinGPT.md); [E-chat [227]](../../Models/SpeechLM/2023.12.31_E-chat.md)).
-此外, 它们在处理其他语音相关表示方面表现出色, 包括音乐和音频事件 ([Qwen2-Audio [33]](../../Models/SpeechLM/2024.07.15_Qwen2-Audio.md); [Qwen-Audio [34]](../../Models/SpeechLM/2023.11.14_Qwen-Audio.md); [LTU-AS [67]](../../Models/SpeechLM/2023.09.25_LTU-AS.md); [SALMONN [198]](../../Models/SpeechLM/2023.10.20_SALMONN.md)).
-它们在现实对话互动 ([VITA [61]](../../Models/SpeechLM/2024.08.09_VITA.md); [Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md)) 和低延迟对话体验 ([Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)) 方面的表现进一步使它们在传统对话模型的竞争中脱颖而出.
+这些对话模型不仅能够生成自然, 类似人类的语音回应 ([Moshi [44]](../../Models/SpokenDialogue/2024.09.17_Moshi.md); [FunAudioLLM [195]](../../Models/SpeechLM/2024.07.04_FunAudioLLM.md)) 还展示了超越文本的高级声学特征 (如音色, 情感和风格) 的理解和生成能力 ([Spoken-LLM [127]](../../Models/SpokenDialogue/2024.02.20_Spoken-LLM.md); [ParalinGPT [128]](../../Models/SpokenDialogue/2023.12.23_ParalinGPT.md); [E-chat [227]](../../Models/SpokenDialogue/2023.12.31_E-chat.md)).
+此外, 它们在处理其他语音相关表示方面表现出色, 包括音乐和音频事件 ([Qwen2-Audio [33]](../../Models/SpokenDialogue/2024.07.15_Qwen2-Audio.md); [Qwen-Audio [34]](../../Models/SpokenDialogue/2023.11.14_Qwen-Audio.md); [LTU-AS [67]](../../Models/SpokenDialogue/2023.09.25_LTU-AS.md); [SALMONN [198]](../../Models/SpokenDialogue/2023.10.20_SALMONN.md)).
+它们在现实对话互动 ([VITA [61]](../../Models/SpokenDialogue/2024.08.09_VITA.md); [Mini-Omni2 [223]](../../Models/SpokenDialogue/2024.10.15_Mini-Omni2.md)) 和低延迟对话体验 ([Moshi [44]](../../Models/SpokenDialogue/2024.09.17_Moshi.md)) 方面的表现进一步使它们在传统对话模型的竞争中脱颖而出.
 
-口语对话模型的历史可以回溯到早期系统, 如 [dGSLM [157]](../../Models/SpeechLM/2022.03.30_dGSLM.md), [AudioGPT [84]](../../Models/SpeechLM/2023.04.25_AudioGPT.md), 直至最近的进展, 如 GPT-4o 和 [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md).
+口语对话模型的历史可以回溯到早期系统, 如 [dGSLM [157]](../../Models/SpokenDialogue/2022.03.30_dGSLM.md), [AudioGPT [84]](../../Models/SpokenDialogue/2023.04.25_AudioGPT.md), 直至最近的进展, 如 GPT-4o 和 [Moshi [44]](../../Models/SpokenDialogue/2024.09.17_Moshi.md).
 在此过程中, 许多值得注意的口语对话模型相继出现.
 如图 01 所示, 我们按时间顺序组织了这些模型.
 
 ![](Images/Fig.01.png)
 
 大致上, 它们可以分为两种类型:
-- 级联口语对话模型: ([Qwen2-Audio [33]](../../Models/SpeechLM/2024.07.15_Qwen2-Audio.md); [Qwen-Audio [34]](../../Models/SpeechLM/2023.11.14_Qwen-Audio.md))
-- 端到端口语对话模型: ([FSQ [149]](../../Modules/VQ/FSQ.md); [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md); [OmniFlatten [246]](../../Models/SpeechLM/2024.10.23_OmniFlatten.md); [IntrinsicVoice [248]](../../Models/SpeechLM/2024.10.09_IntrinsicVoice.md))
+- 级联口语对话模型: ([Qwen2-Audio [33]](../../Models/SpokenDialogue/2024.07.15_Qwen2-Audio.md); [Qwen-Audio [34]](../../Models/SpokenDialogue/2023.11.14_Qwen-Audio.md))
+- 端到端口语对话模型: ([FSQ [149]](../../Modules/VQ/FSQ.md); [Mini-Omni [222]](../../Models/SpokenDialogue/2024.08.27_Mini-Omni.md); [OmniFlatten [246]](../../Models/SpokenDialogue/2024.10.23_OmniFlatten.md); [IntrinsicVoice [248]](../../Models/SpokenDialogue/2024.10.09_IntrinsicVoice.md))
 
 鉴于现有大多数口语对话模型依赖和文本模态的对齐, 级联模型和端到端模型之间的区别十分关键.
 
@@ -154,7 +154,7 @@ Given the complexity of the technical points, we provide an overview of the stru
 
 ![](Images/Fig.02.png)
 
-传统的级联口语对话系统, 如 [AudioGPT [84]](../../Models/SpeechLM/2023.04.25_AudioGPT.md), 采用以文本为中心媒介的结构, 通常由三个级联模块组成:
+传统的级联口语对话系统, 如 [AudioGPT [84]](../../Models/SpokenDialogue/2023.04.25_AudioGPT.md), 采用以文本为中心媒介的结构, 通常由三个级联模块组成:
 - 输入音频通过自动语音识别 ASR 模块转写为文本.
 - 转写后的文本输入到大语言模型如 ChatGPT 中生成文本回应.
 - 最后, 文本回应通过文本转语音模块 ([VITS2 [109]](../../Models/E2E/2023.07.31_VITS2.md); [FastSpeech2 [176]](../../Models/Acoustic/2020.06.08_FastSpeech2.md)) 转换回音频.
@@ -162,8 +162,8 @@ Given the complexity of the technical points, we provide an overview of the stru
 尽管这种级联架构利用了大语言模型强大的上下文能力, 但它也引入了一些挑战: 高延迟, 受限互动性, 无法处理非文本信息等.
 
 为了处理这些问题, 近期研究采取了两个主要方向:
-- 一些方法 ([Qwen-Audio [34]](../../Models/SpeechLM/2023.11.14_Qwen-Audio.md); [SALMONN [198]](../../Models/SpeechLM/2023.10.20_SALMONN.md)) 专注于优化级联系统中的理解和生成组件以缓解上述局限.
-- 另一些方法 ([Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md); [Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md); [SpeechGPT-Gen [244]](../../Models/SpeechLM/2024.01.24_SpeechGPT-Gen.md); [IntrinsicVoice [248]](../../Models/SpeechLM/2024.10.09_IntrinsicVoice.md)) 试图采用端到端架构来直接解决这些问题.
+- 一些方法 ([Qwen-Audio [34]](../../Models/SpokenDialogue/2023.11.14_Qwen-Audio.md); [SALMONN [198]](../../Models/SpokenDialogue/2023.10.20_SALMONN.md)) 专注于优化级联系统中的理解和生成组件以缓解上述局限.
+- 另一些方法 ([Mini-Omni [222]](../../Models/SpokenDialogue/2024.08.27_Mini-Omni.md); [Mini-Omni2 [223]](../../Models/SpokenDialogue/2024.10.15_Mini-Omni2.md); [SpeechGPT-Gen [244]](../../Models/SpokenDialogue/2024.01.24_SpeechGPT-Gen.md); [IntrinsicVoice [248]](../../Models/SpokenDialogue/2024.10.09_IntrinsicVoice.md)) 试图采用端到端架构来直接解决这些问题.
   尽管端到端口语对话模型在表示和模型架构方面存在各种差异, 但它们有一个共同特征: 它们不依赖于文本作为中介.
   相反, 这些模型试图直接理解和生成语音表示.
   我们将此类系统定义为端到端口语对话模型.
@@ -188,15 +188,15 @@ Given the complexity of the technical points, we provide an overview of the stru
 
 ![](Images/Fig.03.png)
 
-## [2·Overall: 整体视角](Sec.02.md)
+## [2·Overall: 整体视角](Sec.02_Overall.md)
 
-## [3·Representations of Spoken Dialogue Models: 口语对话模型的表示](Sec.03.md)
+## [3·Representations of Spoken Dialogue Models: 口语对话模型的表示](Sec.03_Representations.md)
 
-## [4·Training Paradigm of Spoken Dialogue Model: 口语对话模型的训练范式](Sec.04.md)
+## [4·Training Paradigm of Spoken Dialogue Model: 口语对话模型的训练范式](Sec.04_Training.md)
 
-## [5·Streaming, Duplex, and Interaction: 流式, 双工, 和交互](Sec.05.md)
+## [5·Streaming, Duplex, and Interaction: 流式, 双工, 和交互](Sec.05_Streaming_Duplex_Interaction.md)
 
-## [6·Training Resources and Evaluation: 训练资源和评估](Sec.06.md)
+## [6·Training Resources and Evaluation: 训练资源和评估](Sec.06_Resources&Evaluation.md)
 
 ## 7·Conclusions: 结论
 

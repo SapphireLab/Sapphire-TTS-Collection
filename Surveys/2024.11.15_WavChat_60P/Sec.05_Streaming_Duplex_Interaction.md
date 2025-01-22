@@ -158,20 +158,20 @@ As new inputs are processed, the model can generate outputs without waiting for 
 
 Audio streams are typically split into frames, then processed in sequence via a queue management system that ensures real-time, orderly processing.
 
-Some end-to-end models, such as [LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md), [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md) and [Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md), employ non-streaming ASR model Whisper as an audio encoder components.
+Some end-to-end models, such as [LLaMA-Omni [57]](../../Models/SpokenDialogue/2024.09.10_LLaMA-Omni.md), [Mini-Omni [222]](../../Models/SpokenDialogue/2024.08.27_Mini-Omni.md) and [Mini-Omni2 [223]](../../Models/SpokenDialogue/2024.10.15_Mini-Omni2.md), employ non-streaming ASR model Whisper as an audio encoder components.
 These models have made improvements on the output side to reduce latency.
 - **Mini-Omni**.
 Mini-Omni use a generation strategy delayed parallel decoding is a that layer-by-layer delays during audio token generation.
 This allows the model to generate text and multiple audio tokens simultaneously at each step, accelerating streaming audio generation and ensuring low-latency real-time output.
 - **Llama-Omni**.
 Llama-Omni incorporates a non-autoregressive streaming speech decoder that leverages connectionist temporal classification (CTC) to directly generate a sequence of discrete audio tokens as the response.
-- [IntrinsicVoice [248]](../../Models/SpeechLM/2024.10.09_IntrinsicVoice.md)
+- [IntrinsicVoice [248]](../../Models/SpokenDialogue/2024.10.09_IntrinsicVoice.md)
 IntrinsicVoice introduced GroupFormer module to group speech tokens, reducing the length of speech sequences to match that of text sequences.
 This approach accelerates inference, alleviates the challenges of long-sequence modeling, and effectively narrows the gap between speech and text modalities.We think they cannot be considered fully streaming because they are not designed to be streaming on the input side.
-- [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md)
+- [Moshi [44]](../../Models/SpokenDialogue/2024.09.17_Moshi.md)
 In contrast, Moshi references the architecture of SpeechTokenizer to train a streaming codec from scratch, serving as the audio tokenizer-detokenizer.
 The entire model, including the codec, transformer, and attention mechanism, is built on a causal structure.
-- [OmniFlatten [246]](../../Models/SpeechLM/2024.10.23_OmniFlatten.md)
+- [OmniFlatten [246]](../../Models/SpokenDialogue/2024.10.23_OmniFlatten.md)
 OmniFlatten proposes chunk-based processing of text and speech along with gradual learning techniques and data handling to reduce turn-taking delays, such as response delays when users finish speaking or interrupt the system.
 These models have achieved true streaming capabilities and established a foundation for diverse, bidirectional interactions.
 
@@ -180,19 +180,19 @@ These models have achieved true streaming capabilities and established a foundat
 
 音频流通常被分割成帧, 然后以序列形式通过队列管理系统确保实时有序的处理.
 
-一些端到端模型, 例如 [LLaMA-Omni [57]](../../Models/SpeechLM/2024.09.10_LLaMA-Omni.md), [Mini-Omni [222]](../../Models/SpeechLM/2024.08.27_Mini-Omni.md) 和 [Mini-Omni2 [223]](../../Models/SpeechLM/2024.10.15_Mini-Omni2.md), 采用非流式 ASR 模型 Whisper 作为音频编码器组件.
+一些端到端模型, 例如 [LLaMA-Omni [57]](../../Models/SpokenDialogue/2024.09.10_LLaMA-Omni.md), [Mini-Omni [222]](../../Models/SpokenDialogue/2024.08.27_Mini-Omni.md) 和 [Mini-Omni2 [223]](../../Models/SpokenDialogue/2024.10.15_Mini-Omni2.md), 采用非流式 ASR 模型 Whisper 作为音频编码器组件.
 这些模型在输出段上进行了改进, 以减少延迟.
 - **Mini-Omni**: Mini-Omni 使用延迟并行解码策略, 在音频 Token 生成时逐层延迟.
 这种策略允许模型同时生成文本和多个音频 Token, 加快流式音频生成速度, 并确保低延迟实时输出.
 - **Llama-Omni**: Llama-Omni 融合了非自回归流式语音解码器, 利用**连接时序分类 (CTC)** 直接生成音频 Token 序列作为响应.
-- [IntrinsicVoice [248]](../../Models/SpeechLM/2024.10.09_IntrinsicVoice.md): IntrinsicVoice 引入 GroupFormer 模块, 将语音 Token 进行分组, 减少语音序列的长度与文本序列的长度匹配.
+- [IntrinsicVoice [248]](../../Models/SpokenDialogue/2024.10.09_IntrinsicVoice.md): IntrinsicVoice 引入 GroupFormer 模块, 将语音 Token 进行分组, 减少语音序列的长度与文本序列的长度匹配.
 这种方法加快推理速度, 缓解长序列建模的挑战, 有效缩小语音和文本模态之间的差距.
 
 我们认为它们不能被认为是完全流式的, 因为它们没有在输入端设计为流式.
 
-- [Moshi [44]](../../Models/SpeechLM/2024.09.17_Moshi.md): 相比之下, Moshi 参考 SpeechTokenizer 的架构, 重新训练一个流式编解码器, 作为音频 Tokenizer-DeTokenizer.
+- [Moshi [44]](../../Models/SpokenDialogue/2024.09.17_Moshi.md): 相比之下, Moshi 参考 SpeechTokenizer 的架构, 重新训练一个流式编解码器, 作为音频 Tokenizer-DeTokenizer.
   整个模型, 包括编解码器, Transformer, 和注意力机制, 都建立在因果结构之上.
-- [OmniFlatten [246]](../../Models/SpeechLM/2024.10.23_OmniFlatten.md): OmniFlatten 提出基于块的文本和语音处理, 并采用渐进学习技术和数据处理, 以减少轮次交换延迟, 例如用户完成说话或中断系统时的响应延迟.
+- [OmniFlatten [246]](../../Models/SpokenDialogue/2024.10.23_OmniFlatten.md): OmniFlatten 提出基于块的文本和语音处理, 并采用渐进学习技术和数据处理, 以减少轮次交换延迟, 例如用户完成说话或中断系统时的响应延迟.
 
 这些模型实现了真正的流式能力, 并为多样化的双向交互奠定了基础.
 
@@ -301,7 +301,7 @@ It is designed more for command execution rather than interactive communication.
 <details>
 <summary>展开原文</summary>
 
-Full-duplex communication allows both parties to send and receive data simultaneously ([LSLM [142]](../../Models/SpeechLM/2024.08.05_LSLM.md)).
+Full-duplex communication allows both parties to send and receive data simultaneously ([LSLM [142]](../../Models/SpokenDialogue/2024.08.05_LSLM.md)).
 Figure 08(c) shows the user and robot engaging in overlapping, real-time interaction, where backchannels and interruptions are possible.
 This mode enables a natural, two-way conversation, where both the user and robot can speak, respond, and even interrupt each other as needed, much like a phone call.In dialogue systems, full-duplex means that the system and user can speak simultaneously and interrupt each other, making it closer to natural conversation in real life.
 Full-duplex large voice models allow the system not only to listen and understand the user while they speak but also to interrupt at appropriate moments or respond with backchannel cues.
@@ -310,7 +310,7 @@ Moreover, the system can detect the user’s intent to interrupt and pause itsel
 </details>
 <br>
 
-全双工通信允许双方同时发送和接收数据 ([LSLM [142]](../../Models/SpeechLM/2024.08.05_LSLM.md)).
+全双工通信允许双方同时发送和接收数据 ([LSLM [142]](../../Models/SpokenDialogue/2024.08.05_LSLM.md)).
 图 08(c) 展示了用户和机器人在重叠, 实时互动中进行交流, 反向通道和中断都是可以的.
 这种模式使得双方可以进行自然的双向对话, 即用户和机器人可以同时说话, 回应, 甚至可以互相打断, 就像打电话一样.
 
@@ -808,7 +808,7 @@ This effectively implements streaming processing, ensuring low latency and high 
 <details>
 <summary>展开原文</summary>
 
-To support duplex dialogue, [Freeze-Omni [213]](../../Models/SpeechLM/2024.11.01_Freeze-Omni.md) uses a chunk-level state prediction mechanism for natural turn-taking.
+To support duplex dialogue, [Freeze-Omni [213]](../../Models/SpokenDialogue/2024.11.01_Freeze-Omni.md) uses a chunk-level state prediction mechanism for natural turn-taking.
 When the user begins speaking, a voice activity detection module identifies the audio input, prompting the model to process the audio chunk by chunk.
 After processing each chunk, the model's classification layer predicts the conversation state to determine the next action.
 There are three possible states: State 0, where the model continues listening for more input, assuming the user hasn’t completed their turn; State 1, where the model interrupts to provide an immediate response if a quick acknowledgment or feedback is needed; and State 2, where the model has completed processing the current user input and is ready to generate and output a response, thus transitioning smoothly into the response phase without further listening.
@@ -817,7 +817,7 @@ This chunk-wise state prediction enables the model to decide effectively when to
 </details>
 <br>
 
-为了支持双工对话, [Freeze-Omni [213]](../../Models/SpeechLM/2024.11.01_Freeze-Omni.md) 使用块级状态预测机制来实现自然轮次切换.
+为了支持双工对话, [Freeze-Omni [213]](../../Models/SpokenDialogue/2024.11.01_Freeze-Omni.md) 使用块级状态预测机制来实现自然轮次切换.
 当用户开始说话时, 语音活动检测模块识别音频输入, 提示模型按块处理音频.
 在处理每个块后, 模型的分类层预测对话状态, 以确定下一步动作.
 在三个可能的状态:
