@@ -4,7 +4,7 @@
 (可能含有部分 NLP 和其他语音相关技术)
 仍在初步更新中
 
-[模型总结表 Models.CSV](Models.csv)
+[腾讯文档汇总表](https://docs.qq.com/sheet/DZGpLVG5nTFZxb3NQ?nlc=1&tab=ss_t310ak&viewId=voTHIY)
 
 ## 推荐链接
 
