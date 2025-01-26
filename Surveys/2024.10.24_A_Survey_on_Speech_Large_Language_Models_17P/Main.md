@@ -53,16 +53,16 @@ The paper further delves into the training strategies for Speech LLMs, proposing
 ## 1.Introduction: 引言
 
 The advancements in large language models within natural language processing have been particularly significant, especially in contextual understanding and multimodal technology.
-Models like [GPT-4 [1]](../../Models/TextLM/2023.03.15_GPT-4.md), trained on extensive corpora, are now capable of processing complex contexts with exceptional accuracy.
+Models like [GPT-4](../../Models/TextLM/2023.03.15_GPT-4.md)[^1], trained on extensive corpora, are now capable of processing complex contexts with exceptional accuracy.
 These models, with their vast parameters, excel in parsing contextually appropriate sentences and maintaining coherence over multiple conversational turns, which is crucial for tasks like dialogue systems, automatic summarization, and machine translation.
 By leveraging vast contextual information, these models manage long-text processing with unprecedented proficiency in contextual reasoning.
 
-In addition to the success in text-based tasks, large language models have also achieved remarkable success in multimodal tasks~\cite{app14125068}, particularly in integrating and processing inputs from diverse modalities like vision, speech, and text.
-Their ability to semantically link these different types of data has led to significant breakthroughs in areas such as visual question answering and image generation, as exemplified by models like CLIP~\cite{radford2021learningtransferablevisualmodels} and DALL-E~\cite{ramesh2021zeroshottexttoimagegeneration}.
+In addition to the success in text-based tasks, large language models have also achieved remarkable success in multimodal tasks ([Survey by Huang et al.](../From_Large_Language_Models_to_Large_Multimodal_Models__A_Literature_Review.md)[^2]), particularly in integrating and processing inputs from diverse modalities like vision, speech, and text.
+Their ability to semantically link these different types of data has led to significant breakthroughs in areas such as visual question answering and image generation, as exemplified by models like [CLIP](../../Models/_Basis/2021.02.26_CLIP.md)[^3] and [DALL-E](../../Models/_Basis/DALL-E.md)[^4].
 This capability not only enhances performance in visual tasks by effectively fusing information from different modalities, but also demonstrates the models' potential to expand into and improve upon other modalities.
 The way these models manage complex multimodal information processing highlights their adaptability and lays the groundwork for further innovations in multimodal understanding and integration.
 
-The typical **Spoken Language Understanding (SLU)** involves interpreting spoken language to extract meaning, intent, and relevant information beyond simple transcription~\cite{tur2011spoken, qin2021survey}.
+The typical **Spoken Language Understanding (SLU)** involves interpreting spoken language to extract meaning, intent, and relevant information beyond simple transcription [^5] [^6]~\cite{tur2011spoken, qin2021survey}.
 In order to more comprehensively and coherently demonstrate the performance of Speech LLMs, in this article, we also include basic speech-to-text tasks, such as automatic speech recognition (ASR), within its scope.
 Related works have achieved remarkable performance across various domains, including voice-activated assistants, automated transcription, and real-time speech translation.
 Modern systems are adept at handling diverse accents and languages, improving efficiency and accuracy in workflows like medical transcription and customer service automation.
@@ -87,42 +87,43 @@ Considering the exceptional performance of large language models (LLMs) in conte
 #### 2.1.1.Transformer Integration into Traditional Speech Models
 
 One of the key milestones in the integration of LLMs into SLU was the introduction of the Transformer architecture.
-Dong et al. (2018) first applied the Transformer to speech recognition, proposing an end-to-end speech recognition system based on the Transformer~\cite{dong2018transformer}.
+- [Dong et al. (2018)](../../Models/ASR/2018.04.15_Speech_Transformer.md)[^7] first applied the Transformer to speech recognition, proposing an end-to-end speech recognition system based on the Transformer.
 This attempt laid the foundation for subsequent research.
-Following this, in 2020, Gulati et al. (2020) further advanced this approach by introducing the **Conformer** architecture, which combines the local feature extraction capabilities of Convolutional Neural Networks (CNNs) with the Transformer, making the Transformer more robust in processing speech signals~\cite{gulati2020conformer}.
+- Following this, in 2020, [Gulati et al. (2020)](../../Models/ASR/2020.05.16_Conformer.md)[^8] further advanced this approach by introducing the Conformer architecture, which combines the local feature extraction capabilities of Convolutional Neural Networks (CNNs) with the Transformer, making the Transformer more robust in processing speech signals.
 
-In 2021, Hsu et al. proposed [HuBERT (Hidden-Unit BERT) [9]](../../Models/Speech_Representaion/2021.06.14_HuBERT.md), which represented a major breakthrough in utilizing LLMs to process audio features.
+In 2021, Hsu et al. proposed [HuBERT (Hidden-Unit BERT)](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md)[^9], which represented a major breakthrough in utilizing LLMs to process audio features.
 HuBERT employs self-supervised learning on a large corpus of unlabeled speech data to learn effective hidden unit representations.
-In 2022, Radford et al. introduced the **Whisper** model, which further integrated multilingual and multitask capabilities into a single model, demonstrating excellent transferability across different languages and tasks~\cite{radford2021learningtransferablevisualmodels}.
+In 2022, Radford et al. introduced the **Whisper** model, which further integrated multilingual and multitask capabilities into a single model, demonstrating excellent transferability across different languages and tasks ([CLIP](../../Models/_Basis/2021.02.26_CLIP.md)[^3]).
 
 Researchers, unsatisfied with simply using speech as input and text as output, began exploring end-to-end speech-text multimodal inputs and outputs.
-In 2022, Junyi Ao et al. introduced \textit{SpeechT5}, pioneering the investigation of a unified encoder-decoder framework for various spoken language processing tasks~\cite{ao2021speecht5}.
+In 2022, Junyi Ao et al. introduced [SpeechT5](../../Models/SpeechLM/2021.10.14_SpeechT5.md)[^10], pioneering the investigation of a unified encoder-decoder framework for various spoken language processing tasks.
 
 #### 2.1.2.Direct Audio Processing with Large Language Models
 
 Besides directly incorporating the architecture of LLMs like transformer into speech recognition tasks, another significant integration approach involves using LLM as a whole to process audio features extracted by traditional speech recognition tools.
-This approach leverages the powerful contextual understanding and reasoning abilities of LLMs to improve the accuracy and robustness of speech recognition and deeper speech understanding, and it has gradually evolved into the main trend of using large language models in the field of speech recognition.In other words, this refers to the narrower definition of Speech LLMs\label{narrow SpeechLLM} .
+This approach leverages the powerful contextual understanding and reasoning abilities of LLMs to improve the accuracy and robustness of speech recognition and deeper speech understanding, and it has gradually evolved into the main trend of using large language models in the field of speech recognition.
+In other words, this refers to the narrower definition of Speech LLMs.
 
 The earliest attempts to align speech and text modalities by passing extracted features from speech to downstream language models can be traced back to 2020.
-Qi Liu et al. were the first to explore this approach, separating the mapping of speech feature information from the speech feature extraction process into two independent modules and introducing the LSTM model into the process of mapping speech feature information to text~\cite{liu2020modular}.
+Qi Liu et al. were the first to explore this approach, separating the mapping of speech feature information from the speech feature extraction process into two independent modules and introducing the LSTM model into the process of mapping speech feature information to text [^11]~\cite{liu2020modular}.
 This approach differs from traditional CTC-based end-to-end systems by isolating the acoustic feature-to-text mapping as a standalone unit.
 This separation laid the groundwork for the subsequent integration of large language models into this area, making it possible to embed LLMs more effectively in speech recognition tasks.
 
 Currently, Speech LLMs can mainly be divided into two categories \ref{fig:overall}.
 The first is **Discrete Sequence Modeling**, represented by approaches that condense audio feature information into discrete tokens, which are then passed to the LLM for processing.
-In early 2023, Microsoft released \textit{Vall-E}, a typical study utilizing LLMs to process audio features.
-Vall-E introduces the Transformer architecture, combining audio features with the capabilities of language models to achieve more natural text-to-speech generation~\cite{chen2024vall}.
-Following this, the emergence of **SpeechGPT** marked a deep integration of speech models and LLMs, capable not only of processing audio but also interacting through natural language, bringing a new interactive paradigm to the field of speech recognition~\cite{zhang2023speechgpt}.
-In mid-2023, Google launched \textit{AudioPaLM}, which further expanded the capabilities of speech recognition into multimodal processing, enhancing performance in multimodal tasks~\cite{rubenstein2023audiopalm}.
+- In early 2023, Microsoft released [VALL-E](../../Models/SpeechLM/2023.01.05_VALL-E.md)[^12], a typical study utilizing LLMs to process audio features.
+VALL-E introduces the Transformer architecture, combining audio features with the capabilities of language models to achieve more natural text-to-speech generation.
+- Following this, the emergence of [SpeechGPT](../../Models/SpokenDialogue/2023.05.18_SpeechGPT.md)[^13] marked a deep integration of speech models and LLMs, capable not only of processing audio but also interacting through natural language, bringing a new interactive paradigm to the field of speech recognition.
+- In mid-2023, Google launched [AudioPaLM](../../Models/SpeechLM/2023.06.22_AudioPaLM.md)[^14], which further expanded the capabilities of speech recognition into multimodal processing, enhancing performance in multimodal tasks.
 
 The second is **Continuous Sequence Modeling**, where audio feature information is projected into continuous input embedding vectors and then transmitted to the LLM for processing.
-In 2023, Deshmukh et al. introduced \textit{Pengi}, which projects speech modality information into the text space of large models without altering any parameters in LLM such as embedding vector spaces~\cite{deshmukh2023pengi}.
-Subsequently, continuous audio feature information began to be used to convey richer representations to the LLM~\cite{tang2023salmonn,chu2023qwen,bai2024seed}, resulting in significant performance improvements across a range of tasks in the SLU domain.
-In 2024, Ma et al. further proposed \textit{SLAM-LLM}, which involves the addition of a linear projector, allowing the task to be greatly completed by training only the projection layer~\cite{ma2024}.
+- In 2023, Deshmukh et al. introduced [Pengi](../../Models/SpeechLM/2023.05.19_Pengi.md)[^15], which projects speech modality information into the text space of large models without altering any parameters in LLM such as embedding vector spaces.
+- Subsequently, continuous audio feature information began to be used to convey richer representations to the LLM~\cite{[SALMONN](../../Models/SpokenDialogue/2023.10.20_SALMONN.md)[^16]; chu2023qwen [^17],bai2024seed[^18]}, resulting in significant performance improvements across a range of tasks in the SLU domain.
+- In 2024, Ma et al. further proposed \textit{SLAM-LLM}, which involves the addition of a linear projector, allowing the task to be greatly completed by training only the projection layer~\cite{ma2024}[^19].
 
 Once researchers achieved significant improvements in recognition accuracy compared to traditional speech recognition technologies, they began exploring and attempting to address the issues inherent in these conventional methods.
-In 2024, Fathullah et al. introduced the Conformer mechanism, achieving advancements in handling long speech sequences~\cite{fathullah2024prompting}.
-In the same year, **SpeechX** achieved breakthroughs in multilingual, multitask speech recognition, enabling seamless switching between languages and supporting challenges like long-form speech understanding and hotword recognition~\cite{wang2024speechx}.
+In 2024, Fathullah et al. introduced the Conformer mechanism, achieving advancements in handling long speech sequences~\cite{fathullah2024prompting}[^20].
+In the same year, [SpeechX](../../Models/SpeechLM/2023.08.14_SpeechX.md)[^21] achieved breakthroughs in multilingual, multitask speech recognition, enabling seamless switching between languages and supporting challenges like long-form speech understanding and hotword recognition.
 
 ### 2.2.Advancements of Speech LLMs in Key Tasks and Challenges
 
@@ -145,24 +146,24 @@ Modern ASR systems, enhanced by LLMs, aim to achieve higher accuracy, better noi
 This task is foundational for voice-controlled applications, interactive voice response systems, and automated transcription services.
 One of the key metrics for evaluating speech recognition systems is the Word Error Rate (WER).
 
-Traditional models, such as those based on LSTM or GRU, have shown competitive performance on various benchmark datasets~\cite{amodei2016deep}.
-However, the introduction of LLMs has significantly improved these results~\cite{radford2023robust,seide2024speech}.
+Traditional models, such as those based on LSTM or GRU, have shown competitive performance on various benchmark datasets~\cite{amodei2016deep}[^22].
+However, the introduction of LLMs has significantly improved these results~\cite{radford2023robust,seide2024speech}[^23] [^24].
 
 Moreover, in multilingual speech recognition, LLMs have demonstrated superior performance across various languages.
-On the Multilingual LibriSpeech (MLS) dataset, Conformer-based models have achieved significant reductions in WER across multiple languages~\cite{huang2024multilingual}.
-Notably, in low-resource languages such as French and German, great WER reductions have been reported~\cite{radford2023robust}.
+On the Multilingual LibriSpeech (MLS) dataset, Conformer-based models have achieved significant reductions in WER across multiple languages~\cite{huang2024multilingual} [^25].
+Notably, in low-resource languages such as French and German, great WER reductions have been reported~\cite{radford2023robust} [^23].
 
 Speech translation is the process of converting spoken language from one language into written or spoken text in another language.
-It typically involves two key steps~\cite{agarwal2023findings}: automatic speech recognition (ASR), which transcribes spoken words into text, and machine translation (MT), which translates the transcribed text into the target language.
+It typically involves two key steps [^26]~\cite{agarwal2023findings}: automatic speech recognition (ASR), which transcribes spoken words into text, and machine translation (MT), which translates the transcribed text into the target language.
 This technology is used in real-time applications such as multilingual meetings, conferences, and live broadcasts, enabling seamless cross-lingual communication.
-With the successful application of large language models in the field of machine translation~\cite{yang2023bigtranslate}, the speech translation domain has also begun to gradually incorporate large language models, aiming to achieve similar significant results.
+With the successful application of large language models in the field of machine translation~\cite{yang2023bigtranslate}[^27], the speech translation domain has also begun to gradually incorporate large language models, aiming to achieve similar significant results.
 Advances in large language models have significantly improved the accuracy and fluency of speech translation systems.
 In the field of speech translation, the integration of large language models has significantly enhanced performance.
-Not only has it improved the accuracy of speech translation tasks~\cite{hu2024gentranslate}, but it has also broadened the range of supported languages~\cite{barrault2023seamlessm4t}, making these models an invaluable addition to the field.
+Not only has it improved the accuracy of speech translation tasks~\cite{hu2024gentranslate}[^28], but it has also broadened the range of supported languages~\cite{barrault2023seamlessm4t}[^29], making these models an invaluable addition to the field.
 The incorporation of large language models brings a complementary advantage, enriching both precision and diversity in multilingual speech translation.
 
 Additionally, LLMs have excelled in multitask learning scenarios.
-For example, the Qwen-Audio model has shown impressive performance in tasks that combine speech-to-text with other modalities, such as sentiment analysis and speaker identification, reducing WER by 10\% and improving sentiment recognition accuracy by 8\% compared to single-task models~\cite{chu2023qwen}.
+For example, the Qwen-Audio model has shown impressive performance in tasks that combine speech-to-text with other modalities, such as sentiment analysis and speaker identification, reducing WER by 10\% and improving sentiment recognition accuracy by 8\% compared to single-task models~\cite{chu2023qwen}[^17].
 
 For a detailed comparison and analysis of Speech LLMs' performance in traditional speech tasks, please refer to~\Cref{sec: Performance}.
 
@@ -174,29 +175,30 @@ In contrast, LLM-based systems have significantly mitigated this problem.
 The Whisper model, for instance, maintains contextual consistency across long-form audio, demonstrating an 18\% reduction in WER on audio segments exceeding five minutes compared to traditional models.
 This enhancement is critical for applications such as the transcription of speeches and lectures.
 
-Additionally, models like UniAudio and Pengi have shown remarkable performance in maintaining low WERs across extended speech segments by integrating advanced contextual understanding~\cite{yang2023uniaudio,NEURIPS2023_3a2e5889}.
+Additionally, models like UniAudio and Pengi have shown remarkable performance in maintaining low WERs across extended speech segments by integrating advanced contextual understanding~\cite{yang2023uniaudio,NEURIPS2023_3a2e5889}[^30] [^31].
 These models have been particularly effective in domains requiring detailed, accurate transcriptions of prolonged speech events, where maintaining context over extended durations is crucial.
 
 #### 2.2.3.Hotword Recognition
 
 Hotword recognition has been another challenging area for traditional speech recognition systems, especially in noisy environments.
 Traditional models often fail to accurately detect and differentiate hotwords within long audio streams.
-The GenTranslate model, introduced in late 2023, has made substantial improvements in this area by leveraging the contextual understanding capabilities of LLMs~\cite{hu2024gentranslate}.
+The GenTranslate model, introduced in late 2023, has made substantial improvements in this area by leveraging the contextual understanding capabilities of LLMs~\cite{hu2024gentranslate}[^28].
 In a test set containing multiple domain-specific hotwords, GenTranslate achieved a 22\% improvement in hotword recognition accuracy compared to traditional models.
 Moreover, it maintained high robustness in noisy conditions, marking a significant advancement over prior approaches.
 
-Further examples of LLM-based models outperforming traditional systems include \textit{Mala-ASR} and \textit{Whisper}, which not only improves hotword recognition accuracy~\cite{yang2024mala} but also adapts dynamically to new hotwords in real-time, a feature that traditional models lack.
+Further examples of LLM-based models outperforming traditional systems include \textit{Mala-ASR} and \textit{Whisper}, which not only improves hotword recognition accuracy~\cite{yang2024mala}[^32] but also adapts dynamically to new hotwords in real-time, a feature that traditional models lack.
 This capability is particularly valuable in dynamic environments like live broadcasts or interactive voice response (IVR) systems where new terms may frequently be introduced.
 
 #### 2.2.4.Real-time Multimodal Interaction
 
 The integration of LLMs into speech recognition has expanded the scope of tasks beyond traditional speech-to-text, enabling real-time multimodal interaction.
-Models like \textit{VoxtLM} and \textit{LauraGPT} facilitate seamless integration of speech with visual and textual inputs~\cite{maiti2024voxtlm,chen2023lauragpt}, providing coherent and accurate multimodal outputs.
+Models like [VoxtLM](../../Models/SpeechLM/2023.09.14_VoxtLM.md)[^33] and [LauraGPT](../../Models/SpeechLM/2023.10.07_LauraGPT.md)[^34] facilitate seamless integration of speech with visual and textual inputs, providing coherent and accurate multimodal outputs.
 This capability is particularly valuable in applications such as live transcription and synchronized translation during presentations, where both speech and visual context need to be processed simultaneously.
 
 Moreover, LLM-based systems have introduced new functionalities, such as the generation of descriptive text, summaries, and even translations based on audio input.
-For instance, \textit{ViOLA} can generate coherent summaries and cross-language translations with high fluency and accuracy, outperforming traditional models in both speed and quality of output.
-This represents a significant advancement in how speech recognition systems can interact with and interpret complex multimodal data streams~\cite{wang2023viola}.In addition, the integration of large language models with acoustics has demonstrated significant development potential across various specialized fields~\cite{zheng2024bat}.
+For instance, [VioLA](../../Models/SpeechLM/2023.05.25_VioLA.md)[^35] can generate coherent summaries and cross-language translations with high fluency and accuracy, outperforming traditional models in both speed and quality of output.
+This represents a significant advancement in how speech recognition systems can interact with and interpret complex multimodal data streams.
+In addition, the integration of large language models with acoustics has demonstrated significant development potential across various specialized fields~\cite{zheng2024bat}.[^36]
 
 ## 3.Model Paradigm of Speech LLMs
 
@@ -212,13 +214,13 @@ Generally, the input and output modes of Speech LLMs can be categorized into thr
 The model's encoder extracts features from the audio input, and the large language model then generates text as output.
 While S2T models are simple to implement, they are limited in the range of tasks they can handle since they only support speech-to-text conversion.
 
-- Speech\&Text to Text (ST2T)
+- Speech and Text to Text (ST2T)
   The ST2T mode, the most widely used in modern speech recognition, incorporates both audio and text inputs.
 Typically, the text input serves as an instruction or task prompt.
 The model processes both modalities, fusing the audio and text information to produce a final text output.
 This approach enables multi-task capabilities and allows models to fully leverage the strengths of large language models, handling a wider variety of tasks than the S2T mode.
 
-- Speech\&Text to Speech\&Text (ST2ST)
+- Speech and Text to Speech and Text (ST2ST)
   In this more advanced mode, a vocoder is added to the output, enabling the model to generate both text and audio outputs.
 This expands the model's capabilities beyond basic speech recognition, supporting tasks such as Text-to-Speech (TTS), speech translation, and voice conversion.
 The ST2ST mode offers greater versatility than the other two modes, making it applicable across a broader range of speech and language tasks.
@@ -240,7 +242,7 @@ S2T models (Speech-to-Text) take speech as the input and generate text as the ou
 These models typically incorporate an audio encoder to extract features from the speech signal, while a text encoder is not required, as text input is absent.  Therefore, to optimize model size and efficiency, a **decoder-only architecture** is commonly employed to generate the text output.
 However, aligning the audio features with the input embedding space of the large language model (decoder-only architecture) requires a conversion module.
 This module ensures that the audio features are properly mapped, facilitating the generation of accurate text output.
-As discussed in the work by Tsunoo, et al.~\cite{Tsunoo2024}, the decoder-only architecture is particularly effective for streaming end-to-end speech recognition, where efficiency and real-time performance are critical.
+As discussed in the work by Tsunoo, et al.[^37]~\cite{Tsunoo2024}, the decoder-only architecture is particularly effective for streaming end-to-end speech recognition, where efficiency and real-time performance are critical.
 
 #### 3.2.2.ST2S
 
@@ -251,9 +253,9 @@ The unified multimodal features are then passed to the decoder of a large langua
 
 #### 3.2.3.ST2ST
 
-Speech\&Text-to-Speech\&Text models (ST2ST) include an additional speech modality in the output, which requires a more complex decoding mechanism during the generation phase.
+Speech&Text-to-Speech&Text models (ST2ST) include an additional speech modality in the output, which requires a more complex decoding mechanism during the generation phase.
 After modal feature extraction, modal information fusion, and large language model inference, the text output can be generated by the decoder of the large language model.
-However, the speech output requires a **vocoder** to synthesize the final speech output~\cite{Nguyen2024,zhang2023speechgpt}.
+However, the speech output requires a vocoder to synthesize the final speech output~\cite{Nguyen2024[^38],[SpeechGPT](../../Models/SpokenDialogue/2023.05.18_SpeechGPT.md)[^13]}.
 
 ## 4.Multimodal Information Fusion
 
@@ -267,8 +269,8 @@ The second step, called **Audio and Text Connection**, addresses how to effectiv
 In this stage, researchers currently tend to directly use the final layer output of the encoder.
 The current mainstream approach is to extract the output of the final layer of the encoder as the primary source of audio modality information.
 However, there are other various alternative methods available.
-For instance, some approaches involve using intermediate layer outputs to capture more granular features~\cite{yang2021superb}.
-Others apply attention mechanisms to emphasize relevant parts of the audio signal~\cite{chen2022wavlm}.
+For instance, some approaches involve using intermediate layer outputs to capture more granular features [^39]~\cite{yang2021superb}.
+Others apply attention mechanisms to emphasize relevant parts of the audio signal ([WavLM](../../Models/SpeechRepresentation/2021.10.26_WavLM.md)[^40]).
 
 ### 4.2.Audio and Text Connection
 
@@ -285,12 +287,12 @@ This neural network structure should minimize the loss of audio feature informat
 
 Currently, two common methods are employed (illustrated in ~\Cref{fig:direct_projection} and~\Cref{fig:token_mapping}):
 
-- **Direct Projection**: The audio feature information is directly projected into the LLM's text feature space through a connector~\cite{ma2024,tang2023salmonn}.
+- **Direct Projection**: The audio feature information is directly projected into the LLM's text feature space through a connector~\cite{ma2024[^20], [SALMONN](../../Models/SpokenDialogue/2023.10.20_SALMONN.md)[^16]}.
 Specifically, the tensor containing audio features is projected into an embedding vector aligned with the text modality.
 These audio embeddings are then concatenated with the input text's embedding vector to create a new embedding vector that integrates both speech and text information.
-This combined vector is then fed into the LLM.Of course, some researchers have also implicitly handled the projection step by internalizing it within the original encoder, achieving the modality projection effect by adjusting the encoder's parameters during training~\cite{chu2023qwen}.
+This combined vector is then fed into the LLM.Of course, some researchers have also implicitly handled the projection step by internalizing it within the original encoder, achieving the modality projection effect by adjusting the encoder's parameters during training~\cite{chu2023qwen}[^17].
 
-- **Token Mapping**: The audio feature information is mapped into text tokens that the LLM can process~\cite{Tsunoo2024}.
+- **Token Mapping**: The audio feature information is mapped into text tokens that the LLM can process [^37]~\cite{Tsunoo2024}.
 Initially, the audio features are passed through a projector or converter to generate symbols or representations that correspond to text tokens.
 These representations are then combined with the tokenized input text, forming a token sequence that includes both audio and text information.
 This sequence is subsequently input into the LLM for processing.
@@ -300,7 +302,7 @@ This approach not only preserves the integrity of the audio feature information 
 
 Projecting the speech modality into the text modality is certainly straightforward, but it does not achieve lossless modality fusion in the true sense.
 Information loss and conflicts may occur during modality conversion (to be elaborated later).
-Therefore, researchers have proposed another modality alignment approach, which involves modifying the original input space of the large language model to integrate the audio modality~\cite{rubenstein2023audiopalm,zhang2023speechgpt,zhan2024anygpt}.
+Therefore, researchers have proposed another modality alignment approach, which involves modifying the original input space of the large language model to integrate the audio modality ([AudioPaLM](../../Models/SpeechLM/2023.06.22_AudioPaLM.md)[^14]; [SpeechGPT](../../Models/SpokenDialogue/2023.05.18_SpeechGPT.md)[^13]; [AnyGPT](../../Models/SpeechLM/2024.02.19_AnyGPT.md)[^41]).
 Specifically, this method augments the token space by adding audio tokens on top of the existing text tokens, creating a new token space.
 These new audio token are synthesized from the audio features extracted in the previous step, thereby largely preserving the original audio information (illustrated in~\Cref{fig:space_combine}).
 
@@ -313,8 +315,8 @@ These approaches are used in different training stages and scenarios due to thei
 
 Pretraining involves training models on large-scale unlabeled data to enable them to learn broad, general knowledge.
 Typically, in Speech LLMs, speech encoders undergo pretraining on audio-text pairs to capture audio features.
-Common training strategies, including self-supervised learning (SSL)~\cite{bai2024seed}, are widely used.
-However, to better integrate speech encoders with LLMs, some researchers attempt to re-pretrain speech encoders~\cite{kong2024audio}, which allows for more direct acquisition of encoders with audio feature extraction capabilities.
+Common training strategies, including self-supervised learning (SSL)~\cite{bai2024seed}[^18], are widely used.
+However, to better integrate speech encoders with LLMs, some researchers attempt to re-pretrain speech encoders~\cite{kong2024audio}[^42], which allows for more direct acquisition of encoders with audio feature extraction capabilities.
 
 For Speech LLMs of~\Cref{sec:structure B}, as mentioned previously, a thorough re-training of multimodal large models is necessary.
 This involves referencing the pretraining phase of large language models.
@@ -331,14 +333,14 @@ This mainly involves handling modality alignment and completing the model's lear
 Similarly, models of structure described in ~\Cref{sec:structure B} also require supervised fine-tuning, which is essential for enhancing its performance on specific tasks.
 
 It is worth noting that supervised fine-tuning is also frequently used as a wake-up method for large language models.
-When modality alignment is completed, large language models might experience a certain degree of dormancy~\cite{tang2023salmonn}.
+When modality alignment is completed, large language models might experience a certain degree of dormancy ([SALMONN](../../Models/SpokenDialogue/2023.10.20_SALMONN.md)[^16]).
 Researchers use audio-based dialogue wake-up fine-tuning to reactivate large language models.
 
 ### 5.3.Reinforcement Learning (RL)
 
-Reinforcement learning (RL) is a commonly used method in the training of large language models, especially in the field of large language model safety alignment~\cite{ji2023ai}.
+Reinforcement learning (RL) is a commonly used method in the training of large language models, especially in the field of large language model safety alignment~\cite{ji2023ai}[^43].
 Unlike other training strategies, reinforcement learning ensures that the LLM optimizes in the desired direction while maintaining diversity in its outputs.
-In order to maintain and enhance cross-task integration capabilities of large language models under the Speech LLM paradigm, reinforcement learning is an effective training strategy that is worth further exploration~\cite{chen2024enhancing,tian2024preference}.
+In order to maintain and enhance cross-task integration capabilities of large language models under the Speech LLM paradigm, reinforcement learning is an effective training strategy that is worth further exploration~\cite{chen2024enhancing,tian2024preference}[^44] [^45].
 However, it has not been widely used in Speech LLMs.
 
 Reinforcement learning is a framework where an agent interacts with an environment to maximize cumulative rewards over time.
@@ -349,7 +351,7 @@ Two commonly used RL algorithms in this context are Proximal Policy Optimization
 The objective function for PPO is defined as:
 
 $$
-    \mathcal{L}^{\text{PPO}}(\theta) = \hat{\mathbb{E}}_t \left[ \min \left( r_t(\theta) \hat{A}_t, \text{clip}(r_t(\theta), 1-\epsilon, 1+\epsilon) \hat{A}_t \right) \right]
+\mathcal{L}^{\text{PPO}}(\theta) = \hat{\mathbb{E}}_t \left[ \min \left( r_t(\theta) \hat{A}_t, \text{clip}(r_t(\theta), 1-\epsilon, 1+\epsilon) \hat{A}_t \right) \right]
 $$
 
 where $r_t(\theta) = \frac{\pi_\theta(a_t|s_t)}{\pi_{\theta_{\text{old}}}(a_t|s_t)}$ is the probability ratio between the new policy and the old policy, $\hat{A}_t$ is the advantage function, and $\epsilon$ is a hyperparameter that controls the clipping range.
@@ -365,7 +367,7 @@ $$
 where $R(s_t, a_t)$ is the task-specific reward function, and $\pi_\theta(a_t|s_t)$ is the policy parameterized by $\theta$.
 DPO directly maximizes the expected reward by focusing on optimizing the policy without clipping, often used in settings where a more direct reward signal is available.
 
-Currently, RL is generally employed to further enhance the model's accuracy in a specific domain by setting reward signals in a reward model to guide the model's training~\cite{bai2024seed}, thereby achieving further performance improvement.
+Currently, RL is generally employed to further enhance the model's accuracy in a specific domain by setting reward signals in a reward model to guide the model's training~\cite{bai2024seed}[^18], thereby achieving further performance improvement.
 
 ## 6.Performance in Speech Tasks
 
@@ -376,48 +378,49 @@ Meanwhile, we will further explore the **multi-tasking** and **cross-tasking** c
 
 ### 6.1.Automatic Speech Recognition
 
-In this survey, we assess the performance of various models via the **Word Error Rate (WER)** tested on the clean and other test set of LibriSpeech dataset~\cite{panayotov2015librispeech}, which is an essential benchmark for evaluating ASR systems.
+In this survey, we assess the performance of various models via the **Word Error Rate (WER)** tested on the clean and other test set of LibriSpeech dataset [^46]~\cite{panayotov2015librispeech}, which is an essential benchmark for evaluating ASR systems.
 
 Traditional models based on LSTM or GRU architectures have consistently demonstrated strong performance across various benchmark datasets.
-For instance, the LSTM-based model Deep Speech 2 achieved a Word Error Rate (WER) of approximately 3.51\% on the LibriSpeech \textit{clean} test set and 10.62\% on the \textit{other} test set~\cite{amodei2016deep}.
+For instance, the LSTM-based model Deep Speech 2 achieved a Word Error Rate (WER) of approximately 3.51\% on the LibriSpeech \textit{clean} test set and 10.62\% on the \textit{other} test set~\cite{amodei2016deep}[^22].
 The introduction of Large Language Models (LLMs) has significantly improved these results.
-Notably, the Conformer model reduced the WER to 1.9\% and 3.9\% on the \textit{clean} and \textit{other} test sets, respectively~\cite{gulati2020conformer}.
+Notably, the Conformer model reduced the WER to 1.9\% and 3.9\% on the \textit{clean} and \textit{other} test sets, respectively~\cite{gulati2020conformer}[^8].
 Similarly, the HuBERT Base model, trained solely with 960 hours of LibriSpeech audio, achieved WERs of 3.4\% and 8.1\%.
 Utilizing an extended dataset of 60,000 hours from Libri-light, the HuBERT X-Large model further reduced the WERs to 1.9\% on the \textit{clean} test set and 3.5\% on the \textit{other} test set.
 As of 2023, further advancements were seen with Whisper Large-V3, achieving a new low WER of 1.8\% on the \textit{clean} test set.
-Recent Speech LLM models like Qwen-audio~\cite{chu2023qwen} and SALMONN~\cite{tang2023salmonn} have also shown impressive results, approaching state-of-the-art performance, with WERs around 2\% on the \textit{clean} test set and below 5\% on the \textit{other} test set.
-Currently, the most advanced ASR system on the LibriSpeech dataset is Seed-ASR, which achieves a WER of 1.6\% on the \textit{clean} test set and 2.8\% on the \textit{other} test set~\cite{bai2024seed}.
+Recent Speech LLM models like Qwen-audio [^17]~\cite{chu2023qwen} and [SALMONN](../../Models/SpokenDialogue/2023.10.20_SALMONN.md)[^16] have also shown impressive results, approaching state-of-the-art performance, with WERs around 2\% on the \textit{clean} test set and below 5\% on the \textit{other} test set.
+Currently, the most advanced ASR system on the LibriSpeech dataset is Seed-ASR, which achieves a WER of 1.6\% on the \textit{clean} test set and 2.8\% on the \textit{other} test set~\cite{bai2024seed}[^18].
 
 ### 6.2.Speech Translation
 
 In the realm of natural language processing, translation tasks, encompassing both speech translation (ST) and machine translation (MT), are pivotal for enhancing global communication.
-Just like other NLP fields, these translation tasks have experienced significant progress due to the recent advancements in large language models (LLMs)~\cite{zhang2023prompting}.
+Just like other NLP fields, these translation tasks have experienced significant progress due to the recent advancements in large language models (LLMs) [^47]~\cite{zhang2023prompting}.
 In this survey, we employ the BLEU (Bilingual Evaluation Understudy) score to evaluate the translation performance of each model on the two-way translation between Chinese and English.
-For speech translation, we utilize the FLEURS test sets~\cite{conneau2023fleurs}, and for machine translation from Chinese to English, we use the FLORES test sets~\cite{goyal2022flores, costa2022no}.
-Additionally, the WMT'20 test sets~\cite{loic2020findings} are used for English-to-Chinese machine translation.
+For speech translation, we utilize the FLEURS test sets [^48]~\cite{conneau2023fleurs}, and for machine translation from Chinese to English, we use the FLORES test sets~\cite{goyal2022flores, costa2022no} [^49] [^50].
+Additionally, the WMT'20 test sets [^51]~\cite{loic2020findings} are used for English-to-Chinese machine translation.
 
 There are two primary objectives in the translation domain: enhancing translation quality and expanding language coverage.
-In machine translation, the NLLB model, which is fine-tuned on LLMs aiming to be a universal translation system, initially broadened its linguistic scope to include more than 200 languages~\cite{costa2022no}.
-Furthermore, BigTranslate, leveraging instruction tuning based on LLaMA, has expanded the translation applicability of LLMs to a broader array of languages, achieving results comparable to those of ChatGPT and Google Translate~\cite{yang2023bigtranslate}.
+In machine translation, the NLLB model, which is fine-tuned on LLMs aiming to be a universal translation system, initially broadened its linguistic scope to include more than 200 languages~\cite{costa2022no}[^50].
+Furthermore, BigTranslate, leveraging instruction tuning based on LLaMA, has expanded the translation applicability of LLMs to a broader array of languages, achieving results comparable to those of ChatGPT and Google Translate~\cite{yang2023bigtranslate}[^27].
 The advent of LLMs has also propelled advancements in speech translation.
-Using a Cascaded ASR + MT approach, Whisper has shown notable efficacy in speech translation by utilizing extensive web-scale data~\cite{radford2023robust}.
-Subsequently, AudioPaLM2~\cite{rubenstein2023audiopalm} enhanced speech translation quality by integrating text and speech-based models, thereby achieving impressive results as an end-to-end speech translation model.
-Previously achieving state-of-the-art in both ST and MT tasks on various public datasets, SeamlessM4T~\cite{barrault2023seamlessm4t}, a foundational multilingual and multitask model, is now surpassed by GenTranslate.
-This model utilizes the information stored in N-best candidates instead of relying solely on beam search decoding's top-1 selection, a common practice among other models~\cite{hu2024gentranslate}.  Please refer to ~\Cref{fig:st} for a detailed performance comparison of these models.
+Using a Cascaded ASR + MT approach, Whisper has shown notable efficacy in speech translation by utilizing extensive web-scale data~\cite{radford2023robust}[^23].
+Subsequently, [AudioPaLM2](../../Models/SpeechLM/2023.06.22_AudioPaLM.md)[^14] enhanced speech translation quality by integrating text and speech-based models, thereby achieving impressive results as an end-to-end speech translation model.
+Previously achieving state-of-the-art in both ST and MT tasks on various public datasets, SeamlessM4T~\cite{barrault2023seamlessm4t}[^29], a foundational multilingual and multitask model, is now surpassed by GenTranslate.
+This model utilizes the information stored in N-best candidates instead of relying solely on beam search decoding's top-1 selection, a common practice among other models~\cite{hu2024gentranslate}[^28].
+Please refer to ~\Cref{fig:st} for a detailed performance comparison of these models.
 
 ### 6.3.Multi-Tasking and Cross-Tasking Abilities
 
 Besides the above-mentioned two speech tasks, some Speech LLMs also demonstrate remarkable results on a wide range of speech tasks, showcasing their good multi-tasking and cross-tasking capabilities.
 Among these, Pengi is notable for its versatility, as it supports both open-ended tasks like Audio Captioning and Audio Question Answering (AQA), and close-ended tasks such as Sound Event and Scene Classification, without requiring any task-specific fine-tuning or extensions.
-Pengi's approach involves framing all audio tasks as text-generation tasks, leveraging a unified architecture that effectively blends audio and text inputs into text outputs, achieving state-of-the-art performance on several benchmarks, including audio question answering and sound event classification~\cite{deshmukh2023pengi}.
+Pengi's approach involves framing all audio tasks as text-generation tasks, leveraging a unified architecture that effectively blends audio and text inputs into text outputs, achieving state-of-the-art performance on several benchmarks, including audio question answering and sound event classification ([Pengi](../../Models/SpeechLM/2023.05.19_Pengi.md)[^15]).
 
 Following Pengi, SALMONN further broadens these capabilities by integrating both speech and general audio inputs, such as music, into a single multimodal model.
 This integration enables SALMONN to perform well in emergent tasks that were not explicitly trained for, such as Audio-based Storytelling and Speech Audio Co-reasoning, illustrating its comprehensive cross-modal understanding.
-Its novel architecture allows it to handle complex tasks across different modalities, showcasing the potential for multimodal AI systems that can "hear" and comprehend a wide range of auditory information~\cite{tang2023salmonn}.
+Its novel architecture allows it to handle complex tasks across different modalities, showcasing the potential for multimodal AI systems that can "hear" and comprehend a wide range of auditory information ([SALMONN](../../Models/SpokenDialogue/2023.10.20_SALMONN.md)[^16]).
 
 Lastly, Qwen-Audio significantly advances the field of audio interaction by scaling up audio-language pre-training across more than 30 tasks involving various audio types.
 This model excels in areas like Acoustic Scene Classification, Speech Emotion Recognition, and Automatic Audio Captioning.
-By employing a multi-task training framework that minimizes interference from the diversity of tasks and audio types, Qwen-Audio achieves groundbreaking results in these areas, indicating a significant enhancement in audio understanding capabilities~\cite{chu2023qwen}.
+By employing a multi-task training framework that minimizes interference from the diversity of tasks and audio types, Qwen-Audio achieves groundbreaking results in these areas, indicating a significant enhancement in audio understanding capabilities~\cite{chu2023qwen}[^17].
 
 ## 7.Challenges
 
@@ -436,7 +439,7 @@ We trained for three epochs on the librispeech-960h dataset and achieved results
 
 The core idea of SALMONN is to use a window-level Q-former to integrate audio information extracted by BERT and Whisper and map it into the text token space.
 During training, we updated the parameters of the LLM and encoder using LoRA and the window-level Q-former.
-We achieved results on librispeech \textit{test\_clean}, \textit{test\_other}, and Gigaspeech~\cite{chen2021gigaspeech} that matched the expectations of the original paper.
+We achieved results on librispeech \textit{test\_clean}, \textit{test\_other}, and [GigaSpeech](../../Datasets/2021.06.13_GigaSpeech.md)[^52] that matched the expectations of the original paper.
 
 We conducted a series of prompt tests on the two models mentioned above, with the results as shown in~\Cref{table:prompt_test}.
 From the table, we can see that SLAM-ASR almost does not respond to prompts, while SALMONN selectively responds to prompts, which precisely confirms our view that LLMs cannot maintain full model performance in the current framework.
@@ -508,7 +511,7 @@ Since $A \gg T$, according to equations (1), (2), and (3), due to the shared wei
 It is clear that the final attention output from the speech part is much larger than that from the text part.
 As a result, the model is likely to neglect the text portion, leading to the large language model falling into dormancy.
 
-This can also be explained more broadly and intuitively using Bayes' theorem~\cite{tang2023salmonn}.
+This can also be explained more broadly and intuitively using Bayes' theorem ([SALMONN](../../Models/SpokenDialogue/2023.10.20_SALMONN.md)[^16]).
 Let $Y$ denote the output, $X$ denote the audio feature, and $I$ denote the instruction.
 
 $$
@@ -523,7 +526,7 @@ $$
 is not negligible.
 In other words, the influence of $I$ on the result will not be significant.
 
-Models like SALMONN and Qwen-audio, which are Speech LLMs, perform poorly in tasks involving untrained speech emotion inference and environmental understanding~\cite{ao2024sd}, and may even provide irrelevant answers.
+Models like SALMONN and Qwen-audio, which are Speech LLMs, perform poorly in tasks involving untrained speech emotion inference and environmental understanding~\cite{ao2024sd}[^53], and may even provide irrelevant answers.
 This further supports the observation that we did not fully achieve modality alignment under the current framework.
 
 ### 7.2.High cost
@@ -536,23 +539,23 @@ Additionally, the large number of parameters imposes high demands on GPU memory,
 ## 8.Future Exploration
 
 According to the challenges described earlier, the primary issue to address is **the alignment of text and speech modalities**.
-Currently, expanding the token space of large language models to include audio tokens can achieve a thorough integration of modalities, enabling the transition from large language models to multimodal models~\cite{zhan2024anygpt}.
+Currently, expanding the token space of large language models to include audio tokens can achieve a thorough integration of modalities, enabling the transition from large language models to multimodal models ([AnyGPT](../../Models/SpeechLM/2024.02.19_AnyGPT.md)[^41]).
 However, this approach faces issues such as data imbalance and high training costs.
 Additionally, simply using connectors for fine-tuning to enable the model to understand mappings between continuous feature embeddings has not yielded the expected results.
 The core problem is that current model architectures and training paradigms cannot guarantee an increase in task accuracy while maintaining the performance of large language models.
-Researchers are beginning to explore alternative alignment methods, such as constraining or normalizing continuous features and converting them into discrete representations before mapping them to text tokens in large language models~\cite{Tsunoo2024}.
+Researchers are beginning to explore alternative alignment methods, such as constraining or normalizing continuous features and converting them into discrete representations before mapping them to text tokens in large language models~\cite{Tsunoo2024}[^37].
 
 In terms of training strategies, innovation is also essential.
 Current training methods largely focus on pretraining and supervised fine-tuning, with **reinforcement learning (RL)** not yet being widely applied.
 However, when large language models are integrated into the model architecture, these training methods may not fully meet the requirements of training large models.
-Considering the diversity of inputs and outputs in large language models, exploring the incorporation of reinforcement learning strategies such as Proximal Policy Optimization (PPO)~\cite{schulman2017proximal} can be beneficial.
+Considering the diversity of inputs and outputs in large language models, exploring the incorporation of reinforcement learning strategies such as [Proximal Policy Optimization (PPO)](../../Models/_Basis/PPO.md)[^54] can be beneficial.
 Introducing perturbations in supervised learning can help maintain the model's multi-task performance.
-Additionally, to address hallucinations in large language models, techniques such as **Reinforcement Learning with Human Feedback (RLHF)** can be employed to apply "soft" constraints~\cite{huang2023survey}, alleviating issues such as repetitive outputs and other hallucination phenomena.
+Additionally, to address hallucinations in large language models, techniques such as **Reinforcement Learning with Human Feedback (RLHF)** can be employed to apply "soft" constraints~\cite{huang2023survey}[^55], alleviating issues such as repetitive outputs and other hallucination phenomena.
 
 Currently, large models are widely deployed in only a few specific tasks.
 Given the powerful contextual capabilities of large language models, researchers are beginning to explore their integration into more complex systems.
-For instance, there is a growing interest in incorporating large language models into **dialogue systems**~\cite{wang2024full}, using them as the "brain" to coordinate other components within the system.
-Researchers are also experimenting with integrating large language models into conference and translation systems~\cite{cheng2024towards}.
+For instance, there is a growing interest in incorporating large language models into **dialogue systems**[^56]~\cite{wang2024full}, using them as the "brain" to coordinate other components within the system.
+Researchers are also experimenting with integrating large language models into conference and translation systems~\cite{cheng2024towards}[^57].
 The exceptional contextual understanding and reasoning capabilities of large language models can handle multi-state judgments and selections.
 More precisely, their outstanding performance has not yet been fully demonstrated across various domains.
 Considering latency and high training costs, it is more practical to utilize them as system coordinators.
@@ -569,3 +572,70 @@ Additionally, we discussed training strategies such as self-supervised learning 
 The survey highlights key improvements in Rich Audio Transcription and the potential for Cross-task Integration across SLU tasks.
 However, challenges such as the Dormancy of LLMs under certain conditions persist, underscoring the need for further innovation in training strategies and system design.
 By addressing these challenges and exploring future solutions, this work provides valuable insights into advancing Speech LLMs and their applications in multimodal contexts.
+
+## Reference: 参考文献
+
+[^1]: [GPT-4 Technical Report.](../../Models/TextLM/2023.03.15_GPT-4.md) ArXiv:2303.08774, 2023.
+[^2]: From Large Language Models to Large Multimodal Models: A Literature Review. Applied Sciences 2024.
+[^3]: Learning transferable visual models from natural language supervision. 2021.
+[^4]: Zero-shot text-to-image generation. 2021.
+[^5]: Spoken language understanding: Systems for extracting semantic information from speech, John Wiley & Sons, 2011.
+[^6]: A survey on spoken language understanding: Recent advances and new frontiers. ArXiv:2103.03095.
+[^7]: Speech-transformer: A no-recurrence sequence-to-sequence
+model for speech recognition. in 2018 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP). IEEE, 2018, pp. 5884–5888.
+[^8]: Conformer: Convolution-augmented transformer for speech recognition. in Proc. Interspeech, 2020, pp. 5036–5040.
+[^9]: Hubert: Self-supervised speech representation learning by masked prediction of hidden units,”in IEEE Transactions on Audio, Speech, and Language Processing, 2021.
+[^10]: Speecht5: Unified-modal encoder-decoder pre-training for spoken language processing. ArXiv:2110.07205.
+[^11]: Modular end-to-end automatic speech recognition framework for acoustic-to-word model. IEEE/ACM Transactions on Audio, Speech, and Language Processing, vol. 28, pp. 2174–2183, 2020.
+[^12]: Vall-e 2: Neural codec language models are human parity zero-shot text to speech synthesizers. ArXiv:2406.05370, 2024.
+[^13]: Speechgpt: Empowering large language models with intrinsic cross-modal conversational abilities. 2023.
+[^14]: Audiopalm: A large language model that can speak and lis-
+ten. 2023.
+[^15]: Pengi: An audio language model for audio tasks. Advances in Neural Information Processing Systems, vol. 36, pp. 18090–18108, 2023.
+[^16]: Salmonn:Towards generic hearing abilities for large language models. ArXiv:2310.13289.
+[^17]: Qwen-audio: Advancing universal audio understanding via unified large-scale audio-language models. ArXiv:2311.07919.
+[^18]: Seed-asr: Understanding diverse speech and contexts with llm-based speech recognition. ArXiv:2407.04675.
+[^19]: An embarrassingly simple approach for llm with strong asr capacity. 2024.
+[^20]: Prompting large language models with speech recognition abilities. in ICASSP 2024-2024 IEEE International Conference on Acoustics, Speech and Signal Processing(ICASSP). IEEE, 2024, pp. 13351–13355.
+[^21]: Speechx: Neural codec language model as a versatile speech transformer. IEEE/ACM Transactions on Audio, Speech, and Language Processing, 2024.
+[^22]: Deep speech 2: End-to-end speech recognition in english and mandarin. in International conference on machine learning. PMLR, 2016, pp. 173–182.
+[^23]: Robust speech recognition via large-scale weak supervision. in International conference on machine learning. PMLR, 2023, pp. 28492–28518.
+[^24]: Speech reallm–real-time streaming speech recognition with multimodal llms by teaching the flow of time. ArXiv:2406.09569, 2024.
+[^25]: Multilingual and fully non-autoregressive asr with large language model fusion: A comprehensive study,”in ICASSP 2024-2024 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP). IEEE, 2024, pp. 13306–13310.
+[^26]: Findings of the iwslt 2023 evaluation campaign. Association for Computational Linguistics, 2023.
+[^27]: Bigtranslate: Augmenting large language mod-
+els with multilingual translation capability over 100 lan-
+guages. ArXiv:2305.18098, 2023.
+[^28]: Gentranslate: Large language models are generative
+multilingual speech and machine translators,”arXiv
+preprint arXiv:2402.06894, 2024.
+[^29]: Seamlessm4t-massively multilingual & multimodal machine translation,”ArXiv:2308.11596, 2023.
+[^30]: Uniaudio: An audio foundation model toward universal audio generation. ArXiv:2310.00704, 2023.
+[^31]: Pengi: An audio language model for audio tasks. in Advances in Neural Information Processing Systems.
+[^32]: Mala-asr: Multimedia-assisted llm-based asr. ArXiv:2406.05839, 2024.
+[^33]: Voxtlm: Unified decoder-only models for consolidating speech recognition, synthesis and speech, text continuation tasks. in ICASSP 2024-2024 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP). IEEE, 2024, pp. 13326–13330.
+[^34]: Lauragpt: Listen, attend, understand, and regenerate audio with gpt. ArXiv:2310.04673, 2023.
+[^35]: Viola: Unified codec language models for speech recognition, synthesis, and translation. ArXiv:2305.16107, 2023.
+[^36]: Bat: Learning to reason about spatial sounds with large language models. ArXiv:2402.01591, 2024.
+[^37]: Decoder-only architecture for speech recognition with ctc prompts and text data augmentation. 2024.
+[^38]: Spirit-lm: Interleaved spoken and written language model. 2024.
+[^39]: Superb: Speech processing universal performance benchmark. in Interspeech, 2021, pp. 1194–1198.
+[^40]: Wavlm: Large-scale self-supervised pre-training for full stack speech processing. in Advances in Neural Information Processing Systems, 2022.
+[^41]: Anygpt: Unified multimodal llm with discrete sequence modeling,”ArXiv:2402.12226, 2024.
+[^42]: Audio flamingo: A novel audio language model with few-shot learning and dialogue abilities,”ArXiv:2402.01831, 2024.
+[^43]: Ai alignment:A comprehensive survey,”arXiv preprint
+arXiv:2310.19852, 2023.
+[^44]: Enhancing zero-shot text-to-speech synthesis with human feedback. ArXiv:2406.00654, 2024.
+[^45]: Preference alignment improves language model-based tts. ArXiv:2409.12403, 2024.
+[^46]: Librispeech: an asr corpus based on public domain audio books. in 2015 IEEE international conference on acoustics, speech and signal processing (ICASSP). IEEE, 2015, pp. 5206–5210.
+[^47]: Prompting large language model for machine translation: A case study. in International Conference on Machine Learning. PMLR, 2023, pp. 41092–41110.
+[^48]: Fleurs: Few-shot learning evaluation of universal representations of speech. in 2022 IEEE Spoken Language Technology Workshop (SLT). IEEE, 2023, pp. 798–805.
+[^49]: The flores-101 evaluation benchmark for low-resource and multilingual machine translation. Transactions of the Association for Computational Linguistics, vol. 10, pp. 522–538, 2022.
+[^50]: No language left behind: Scaling human-centered machine translation,” arXiv preprint arXiv:2207.04672, 2022.
+[^51]: Findings of the 2020 conference on machine translation (wmt20). in Proceedings of the Fifth Conference on Machine Translation. Association for Computational Linguistics,, 2020, pp. 1–55.
+[^52]: Gigaspeech: An evolving, multi-domain asr corpus with 10,000 hours of transcribed audio. ArXiv:2106.06909, 2021.
+[^53]: Sd-eval:A benchmark dataset for spoken dialogue understanding beyond words. ArXiv:2406.13340, 2024.
+[^54]: Proximal policy optimization algorithms. ArXiv:1707.06347, 2017.
+[^55]: A survey on hallucination in large language models: Principles, taxonomy, challenges, and open questions. ArXiv:2311.05232, 2023.
+[^56]: A Full-Duplex Speech Dialogue Scheme Based on Large Language Models. ArXiv:2405.19487.
+[^57]: Towards Achieving Human Parity on End-to-End Simultaneous Speech Translation via LLM Agent. ArXiv:2407.21646.
