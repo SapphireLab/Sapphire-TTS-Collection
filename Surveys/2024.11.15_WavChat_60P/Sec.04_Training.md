@@ -1,7 +1,6 @@
 # 4·Training Paradigm of Spoken Dialogue Model: 口语对话模型的训练范式
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 Existing text-based large language models have demonstrated strong contextual understanding and reasoning abilities in the field of natural language processing, such as [GPT-4 [1]](../../Models/TextLM/2023.03.15_GPT-4.md), [LLaMA 3.1 [52]](../../Models/TextLM/2024.07.31_LLaMA3.md), and [Qwen-2 [228]](../../Models/TextLM/Qwen2.md).
 Due to their training on large-scale corpora, these models achieve exceptional accuracy when handling complex contexts.
@@ -24,8 +23,7 @@ These datasets are far smaller compared to the vast amounts of pure text data av
 Thus, building a truly end-to-end conversational model that meets real-world requirements necessitates careful consideration of model architecture, training paradigms, and training data.
 Overall, we believe that several key aspects are crucial in the training paradigm of spoken dialogue models: aligning speech-text modalities to ensure consistent understanding, designing multi-stage training strategies for gradual adaptation, and optimizing training structures and inference paradigms for efficient performance.
 
-</details>
-<br>
+</td><td>
 
 现有的基于文本的大语言模型已经在自然语言处理领域展现出了强大的上下文理解和推理能力, 如 [GPT-4 [1]](../../Models/TextLM/2023.03.15_GPT-4.md), [LLaMA 3.1 [52]](../../Models/TextLM/2024.07.31_LLaMA3.md) 和 [Qwen-2 [228]](../../Models/TextLM/Qwen2.md).
 由于它们在大规模语料库上进行训练, 这些模型在处理复杂上下文时取得了卓越的准确性.
@@ -58,26 +56,30 @@ Overall, we believe that several key aspects are crucial in the training paradig
 - 设计多阶段训练策略, 逐步适应;
 - 优化训练结构和推理范式, 以实现高效性能.
 
+</td></tr></table>
+
 ## 4.1·Architecture Paradigm about Modal Alignment of Speech and Text: 语音和文本模态对齐的架构范式
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 To enable large language models (LLMs) to handle both speech input and output, a significant amount of prior work ([AudioPaLM [179]](../../Models/SpeechLM/2023.06.22_AudioPaLM.md); [LLaMA3 [52]](../../Models/TextLM/2024.07.31_LLaMA3.md); [LLaMA-Omni [57]](../../Models/SpokenDialogue/2024.09.10_LLaMA-Omni.md); [Mini-Omni [222]](../../Models/SpokenDialogue/2024.08.27_Mini-Omni.md); [Moshi [44]](../../Models/SpokenDialogue/2024.09.17_Moshi.md)) has focused on adapting text-based foundation models into robust spoken dialogue models.
 Based on different architectural paradigms, these approaches can be broadly categorized into five types, as shown in Figure.05.
 
-</details>
-<br>
-
-![](Images/Fig.05.png)
+</td><td>
 
 为了使得大语言模型能够处理语音输入和输出, 大量先前工作 ([AudioPaLM [179]](../../Models/SpeechLM/2023.06.22_AudioPaLM.md); [LLaMA3 [52]](../../Models/TextLM/2024.07.31_LLaMA3.md); [LLaMA-Omni [57]](../../Models/SpokenDialogue/2024.09.10_LLaMA-Omni.md); [Mini-Omni [222]](../../Models/SpokenDialogue/2024.08.27_Mini-Omni.md); [Moshi [44]](../../Models/SpokenDialogue/2024.09.17_Moshi.md)) 都集中在将基于文本的基础模型转化为健壮的口语对话模型.
 基于不同的架构范式, 这些方法可以大致分为五类, 如图 05 所示.
 
+</td></tr>
+<tr><td colspan="2">
+
+![](Images/Fig.05.png)
+
+</td></tr></table>
+
 ### Text-Output Only Method: 仅输出文本的方法
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 These systems ([Qwen2-Audio [33]](../../Models/SpokenDialogue/2024.07.15_Qwen2-Audio.md); [Qwen-Audio [34]](../../Models/SpokenDialogue/2023.11.14_Qwen-Audio.md); [LTU-AS [67]](../../Models/SpokenDialogue/2023.09.25_LTU-AS.md); [E-chat [227]](../../Models/SpokenDialogue/2023.12.31_E-chat.md); [SALMONN [198]](../../Models/SpokenDialogue/2023.10.20_SALMONN.md); [WavLLM [80]](../../Models/SpeechLM/2024.03.31_WavLLM.md); [SpeechVerse [41]](../../Models/SpokenDialogue/2024.05.14_SpeechVerse.md); [VITA [61]](../../Models/SpokenDialogue/2024.08.09_VITA.md)) maintain the text-based LLM’s foundational structure unchanged, **using an audio encoder and adaptor to map speech input into the LLM's pre-trained text latent space directly**.
 This method of direct embedding alignment, combined with a multi-task training strategy, equips the LLM with the ability to 'listen,' thus enabling it to understand and process speech modality inputs effectively and perform exceptionally well in various audio understanding tasks.
@@ -95,8 +97,7 @@ All the aforementioned methods frequently overlook paralinguistic information, i
 [E-chat [227]](../../Models/SpokenDialogue/2023.12.31_E-chat.md) employs a [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) speech encoder to extract speech and emotion features, using a connection module to map these features to the textual space within the LLM decoder.
 Although these approaches have explored emotional responses within spoken dialogue systems, they require additional systems to synthesize speech from text and suffer from high latency, making real-time dialogue challenging to achieve.
 
-</details>
-<br>
+</td><td>
 
 这些系统 ([Qwen2-Audio [33]](../../Models/SpokenDialogue/2024.07.15_Qwen2-Audio.md); [Qwen-Audio [34]](../../Models/SpokenDialogue/2023.11.14_Qwen-Audio.md); [LTU-AS [67]](../../Models/SpokenDialogue/2023.09.25_LTU-AS.md); [E-chat [227]](../../Models/SpokenDialogue/2023.12.31_E-chat.md); [SALMONN [198]](../../Models/SpokenDialogue/2023.10.20_SALMONN.md); [WavLLM [80]](../../Models/SpeechLM/2024.03.31_WavLLM.md); [SpeechVerse [41]](../../Models/SpokenDialogue/2024.05.14_SpeechVerse.md); [VITA [61]](../../Models/SpokenDialogue/2024.08.09_VITA.md)) 保持了基于文本的大语言模型的基础架构不变, **使用音频编码器和适配器将语音输入直接映射到大语言模型预训练的文本潜在空间**.
 这种直接嵌入对齐的方法, 和多任务训练策略相结合, 使得大语言模型具备了听的能力, 从而能够有效地理解和处理语音模态输入, 并在各种音频理解任务中表现出色.
@@ -112,12 +113,13 @@ Although these approaches have explored emotional responses within spoken dialog
 - [ParalinGPT [128]](../../Models/SpokenDialogue/2023.12.23_ParalinGPT.md) 使用 ASR 模型获取文本, 并使用语音编码器提取情感嵌入, 从而更准确地模拟语音响应的语言内容和副语言属性.
 - [E-Chat [227]](../../Models/SpokenDialogue/2023.12.31_E-chat.md) 采用 [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) 语音编码器提取语音和情感特征, 使用连接模块将这些特征映射到 LLM 解码器中的文本空间.
 
-尽管这些方法已经探索了口语对话系统的情感响应, 它们要求额外的系统来从文本合成语音并面临高延迟问题, 使得实时对话难以实现.
+尽管这些方法已经探索了口语对话系统的情感响应, 它们要求额外的系统来从文本合成语音并面临高延迟问题, 使得实时对话难以实现
+
+</td></tr></table>
 
 ### Chain-of-Modality (CoM) Method: 模态链方法
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 This method tokenizes speech into discrete tokens and extends the LLM’s vocabulary to handle both speech input and output.
 To address alignment issues between speech and text modalities, Recent works ([SpeechGPT [242]](../../Models/SpokenDialogue/2023.05.18_SpeechGPT.md); [SpeechGPT-Gen [244]](../../Models/SpokenDialogue/2024.01.24_SpeechGPT-Gen.md); [Spectron [156]](../../Models/SpokenDialogue/2023.05.24_Spectron.md); [EMOVA [25]](../../Models/SpokenDialogue/2024.09.26_EMOVA.md)) utilize a prompting approach called Chain-of-Modality (CoM), which first generates response text autoregressively before producing the corresponding speech.
@@ -133,8 +135,7 @@ Its speech response procedure is divided into three primary steps:
 
 This process enables EMOVA to facilitate emotional speech dialogue.
 
-</details>
-<br>
+</td><td>
 
 这种方法将语音分词为离散 Token 并扩展大语言模型的词表以处理语音输入和输出.
 为了处理语音和文本模态之间的对齐问题, 近期工作 ([SpeechGPT [242]](../../Models/SpokenDialogue/2023.05.18_SpeechGPT.md); [SpeechGPT-Gen [244]](../../Models/SpokenDialogue/2024.01.24_SpeechGPT-Gen.md); [Spectron [156]](../../Models/SpokenDialogue/2023.05.24_Spectron.md); [EMOVA [25]](../../Models/SpokenDialogue/2024.09.26_EMOVA.md)) 利用了名为模态链 (Chain-of-Modality, CoM) 的提示方法, 首先自回归地生成响应文本然后生成相应的语音.
@@ -145,10 +146,11 @@ This process enables EMOVA to facilitate emotional speech dialogue.
   其语音响应过程分为三个主要步骤: (1) 将用户指令转化为文本, (2) 根据这些指令生成文本响应, (3) 从文本响应生成样式标签和响应语音单元.
   这种过程使得 EMOVA 能够促进情感语音对话.
 
+</td></tr></table>
+
 ### Interleaving Text and Speech Tokens: 交错文本和语音 Token
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 Some earlier models ([AudioPaLM [179]](../../Models/SpeechLM/2023.06.22_AudioPaLM.md), [VoxtLM [145]](../../Models/SpeechLM/2023.09.14_VoxtLM.md)) employed supervised training methods, using specific input and output sequences, and trained on mixed speech-text tasks, including text-to-speech (TTS), automatic speech recognition (ASR), and speech-to-speech translation.
 [Spirit-LM [158]](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md) leverages the temporal alignment between speech and its transcription, continuing training on a pre-trained text-based LLM using alternating text and speech tokens.
@@ -157,8 +159,7 @@ However, it employs discrete [HuBERT [78]](../../Models/SpeechRepresentation/202
 [USDM [106]](../../Models/SpeechLM/2024.02.08_USDM.md) continues pretraining [Mistral-7B [22]](../../Models/TextLM/2023.10.10_Mistral-7B.md) with interleaved speech-text data to capture multimodal semantics.
 For dialogue finetuning, it constructs templates using both speech and transcripts of user input as instruction data.
 
-</details>
-<br>
+</td><td>
 
 一些早期的模型 ([AudioPaLM [179]](../../Models/SpeechLM/2023.06.22_AudioPaLM.md), [VoxtLM [145]](../../Models/SpeechLM/2023.09.14_VoxtLM.md)) 采用了监督训练方法, 使用具体的输入和输出序列, 并在混合语音-文本任务上进行训练, 包括文本到语音 (TTS), 自动语音识别 (ASR), 以及语音到语音的翻译.
 - [Spirit-LM [158]](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md) 利用语音和其转写之间的时序对齐, 使用交替文本和语音 Token 继续训练预训练的基于文本的大语言模型 (LLM).
@@ -167,10 +168,11 @@ For dialogue finetuning, it constructs templates using both speech and transcrip
 - [USDM [106]](../../Models/SpeechLM/2024.02.08_USDM.md) 继续使用语音-文本数据对 [Mistral-7B [22]](../../Models/TextLM/2023.10.10_Mistral-7B.md) 进行预训练, 以捕捉多模态语义.
   为了对话微调, 它使用用户输入的语音和转写作为指令数据构造模板.
 
+</td></tr></table>
+
 ### Parallel Generation of Text and Speech: 并行生成文本和语音
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 [PSLM [154]](../../Models/SpokenDialogue/2024.06.18_PSLM.md) proposes generating speech and text tokens in parallel to reduce latency; however, this approach may compromise response quality.
 Additionally, this method still relies on speech recognition for input ([Whisper [169]](../../Models/SpeechLM/2022.12.06_Whisper.md)), which introduces further delay.
@@ -182,8 +184,7 @@ However, inconsistencies between speech input and output introduce additional co
 In contrast, Moshi allows users to input speech without relying on text, and generates both text and speech tokens in parallel on the assistant side.
 Moshi further extends its architecture to model several speech streams in parallel, allowing for conceptually and practically simple handling of full-duplex dialogues with arbitrary dynamics.
 
-</details>
-<br>
+</td><td>
 
 - [PSLM [154]](../../Models/SpokenDialogue/2024.06.18_PSLM.md) 提出并行地生成语音和文本 Token 来减少延迟, 然而这种方法可能会损害响应的质量.
   此外, 这种方法仍然依赖于输入的语音识别 ([Whisper [169]](../../Models/SpeechLM/2022.12.06_Whisper.md)), 这引入了进一步的延迟.
@@ -199,10 +200,11 @@ Moshi further extends its architecture to model several speech streams in parall
 相比之下, Moshi 允许用户直接输入语音而不依赖于文本, 并在助手端并行生成文本和语音 Token.
 Moshi 进一步扩展了架构以并行建模多个语音流, 从而能够从概念上和实践上简单地处理具有任意动态的全双工对话.
 
+</td></tr></table>
+
 ### Speech-to-Speech Generation: 语音转语音生成
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 This approach aims to remove the dependency on intermediate text, thereby reducing latency and making the system closer to real-time interaction.
 [SyncLLM [203]](../../Models/SpokenDialogue/2024.09.23_SyncLLM.md) achieves real-time full-duplex interaction through time chunking methods, integrating time information into LLMs to enable synchronous operation with the real-world clock.
@@ -211,26 +213,25 @@ This approach aims to remove the dependency on intermediate text, thereby reduci
 It employs [LoRA [79]](../../Modules/LoRA/2021.06.17_LoRA.md) adapter fine-tuning on a pre-trained [TWIST [74]](../../Models/SpeechLM/2023.05.22_TWIST.md) to produce multiple speech continuations from a given prompt and uses semantic metrics to generate preference data for [Direct Preference Optimization (DPO) [170]](../../Modules/RLHF/DPO.md).
 Experimental results indicate that integrating the preference optimization method significantly improves the semantic comprehension of the Spoken LLM.
 
-</details>
-<br>
+</td><td>
 
 这种方法旨在移除对中间文本的依赖, 从而减少延迟并使系统更接近实时互动.
 - [SyncLLM [203]](../../Models/SpokenDialogue/2024.09.23_SyncLLM.md) 通过时间分块方法实现实时全双工交互, 将时间信息集成到 LLMs 中, 以便与真实世界时钟同步运行.
 - [IntrinsicVoice [248]](../../Models/SpokenDialogue/2024.10.09_IntrinsicVoice.md) 使用特定模型在单步生成多个语音 Token, 有效地将语音 Token 序列长度与文本序列长度相当, 同时产生高质量的音频.
 - [Align-SLM [129]](../../Models/SpeechLM/2024.11.04_Align-SLM.md) 使用预训练的自监督 [HuBERT [78]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md) 模型和 K-means 聚类 ([TWIST [74]](../../Models/SpeechLM/2023.05.22_TWIST.md)) 将连续语音表示转换为离散单元. 它采用在预训练的 [TWIST [74]](../../Models/SpeechLM/2023.05.22_TWIST.md) 上微调的 [LoRA [79]](../../Modules/LoRA/2021.06.17_LoRA.md) 适配器来从给定的提示生成多个语音延续, 并使用语义度量来生成偏好数据用于[直接偏好优化 (DPO) [170]](../../Modules/RLHF/DPO.md). 实验结果表明, 将偏好优化方法集成到 Spoken LLM 中可以显著提高语义理解能力.
 
+</td></tr></table>
+
 ## 4.2·Multi-Stage Training Strategy: 多阶段训练策略
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 This section primarily discusses the training process of the Spoken Dialogue Model, building upon previous work on spoken dialogue systems.
 Generally, this process consists of four stages: text LLM pre-training, modality adaptation and alignment post-training, followed by supervised fine-tuning, and optionally, preference optimization.
 The primary goal in training most spoken dialogue systems is to preserve the model's original capabilities while integrating the speech modality for voice interaction into the LLM.
 The diagram of multi-stage training can be referred to in Figure.06.
 
-</details>
-<br>
+</td><td>
 
 本节主要基于之前在口语对话系统方面的工作来讨论口语对话模型的训练过程.
 通常, 该过程包括四个阶段:
@@ -243,12 +244,13 @@ The diagram of multi-stage training can be referred to in Figure.06.
 
 多阶段训练的流程图可参考图 06。
 
+</td></tr></table>
+
 ![](Images/Fig.06.png)
 
 ### 4.2.1·Text LLM Pre-Training: 文本大语言模型预训练
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 The goal is to develop a text-intelligent LLM model capable of handling complex contexts and possessing knowledge reasoning abilities, thus preparing it for integration with speech-intelligent LLMs.
 Most spoken dialogue systems utilize pre-trained large language models as foundational models rather than pre-training with separate text data themselves.
@@ -258,8 +260,7 @@ Meanwhile, [Moshi [44]](../../Models/SpokenDialogue/2024.09.17_Moshi.md) employs
 The collected data was filtered using a comprehensive preprocessing pipeline to ensure quality and relevance, which included deduplication to remove redundant entries, language identification to retain text in the desired language, and quality filtering to exclude low-quality or irrelevant content based on criteria such as coherence and completeness.
 [VITA [61]](../../Models/SpokenDialogue/2024.08.09_VITA.md) utilizes [Mixtral 8x7B1 [95]](../../Models/TextLM/Mixtral.md), a representative LLM with a sparse mixture of experts (SMoE) architecture, and performs pure-text instruction tuning for its extended Chinese vocabulary.
 
-</details>
-<br>
+</td><td>
 
 这一阶段的目标是开发一个能够处理复杂上下文并具备知识推理能力的文本智能 LLM 模型, 从而为与语音智能 LLM 的集成做好准备.
 
@@ -269,10 +270,11 @@ The collected data was filtered using a comprehensive preprocessing pipeline to 
 - 同时, [Moshi [44]](../../Models/SpokenDialogue/2024.09.17_Moshi.md) 采用 RQ-Transformer 进行语音的分层自回归建模, 利用一种独特的结构, 通过互联网数据集 (例如[维基百科](https://dumps.wikimedia.org/) 和 [StackExchange](https://archive.org/details/stackexchange/)) 预训练纯文本语言模型. 收集的数据通过全面的预处理流水线进行过滤, 以确保质量和相关性, 包括去重以删除冗余条目, 语言识别以保留所需语言的文本, 以及质量过滤以排除根据连贯性和完整性等标准判断为低质量或不相关的内容.
 - [VITA [61]](../../Models/SpokenDialogue/2024.08.09_VITA.md) 利用 [Mixtral 8x7B1 [95]](../../Models/TextLM/Mixtral.md), 这是一种具有稀疏混合专家 (Sparse Mixture of Experts, SMoE) 架构的代表性 LLM, 并对其扩展的中文词汇进行纯文本指令调优.
 
+</td></tr></table>
+
 ### 4.2.2·Modality Adaptation and Alignment Post-training: 模态适配和对齐后训练
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 This phase explores strategies to adapt text-based large language models (LLMs) for speech modality input, focusing on aligning text and audio modalities effectively.
 The primary goal is to enhance the models' ability to understand and generate speech by bridging the gap between these two modalities.
@@ -292,16 +294,13 @@ Notably, Mini-Omni divides the training of various modules into three phases: th
 The second phase focuses exclusively on enhancing the model’s text capabilities when given speech inputs, updating only the LLM parameters while freezing other modules.
 Through these two training phases, the original language LLM’s capabilities are maximally preserved, while adapting to speech modality input and output, thereby addressing the primary modality alignment tasks.
 
-</details>
-<br>
+</td><td>
 
 这一阶段探索将基于文本的大语言模型适配到语音模态输入的策略, 着重于有效地对齐文本和音频模态.
 主要目标是通过弥合文本和语音模态之间的差距来增强模型理解和生成的能力.
 常用方法包括多模态训练技术, 利用无标签语音数据集并采用多任务学习框架.
 这些方法通常涉及到使用与语音相关的任务微调现有的大语言模型并整合语音特定模块, 例如语音适配器和解码器, 以促进文本和语音模态之间的无缝交互.
 模态适配和对齐的不同训练任务如图 07 所示.
-
-![](Images/Fig.07.png)
 
 - [SpiRit-LM [158]](../../Models/SpeechLM/2024.02.08_SpiRit-LM.md) 使用交错的文本和语音 Token 在文本 LLM 检查点进行持续预训练, 来提升模型在语音理解和生成的性能.
 - [LLaMA-Omni [57]](../../Models/SpokenDialogue/2024.09.10_LLaMA-Omni.md) 采用两阶段训练策略: 第一阶段使用语音输入和文本响应联合训练语音适配器和 LLM, 第二阶段使用相同的数据集来单独训练流式语音解码器.
@@ -311,10 +310,16 @@ Through these two training phases, the original language LLM’s capabilities ar
 - [IntrinsicVoice [248]](../../Models/SpokenDialogue/2024.10.09_IntrinsicVoice.md) 采用两阶段训练方法, 从单一数据集构建多个跨模态任务来使得模型更好地学习语音和文本之间的语义一致性.
 - [Mini-Omni [222]](../../Models/SpokenDialogue/2024.08.27_Mini-Omni.md), [EMOVA [25]](../../Models/SpokenDialogue/2024.09.26_EMOVA.md), [OmniFlatten [246]](../../Models/SpokenDialogue/2024.10.23_OmniFlatten.md) 采用类似的方法, 首先对文本 LLM 骨干进行多任务微调, 以实现语音-文本模态对齐, 并使用自动语音识别和文本转语音任务开发多模态 LLM ([Jin et al. (Survey) [99]](../2024.05.17_Efficient_Multimodal_Large_Language_Models__A_Survey/Main.md); [Li et al. (2024) [120]](../2024.08.16_A_Survey_on_Benchmarks_of_Multimodal_Large_Language_Models/Main.md)). 值得注意的是, Mini-Omni 将不同模块的训练划分为三个阶段: 第一阶段利用语音识别和合成的数据来增强模型在这些方面的能力, 仅训练 ASR 和 TTS 模块; 第二阶段仅专注于在给定语音输入时增强模型的文本能力, 冻结其他模块仅更新 LLM 参数. 通过这两个训练阶段, 原始语言 LLM 的能力被最大程度的保留, 同时适配到语音模态的输入和输出, 从而解决主要的模态对齐任务.
 
+</td></tr>
+<tr><td colspan="2">
+
+![](Images/Fig.07.png)
+
+</td></tr></table>
+
 ### 4.2.3·Supervised Fine-tuning or Dialogue Dataset Fine-tuning: 监督微调或对话数据集微调
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 During this stage, most models use instruction-following datasets or dialogue data for supervised fine-tuning of the LLM, enhancing natural conversational abilities.
 ([SpeechGPT [242]](../../Models/SpokenDialogue/2023.05.18_SpeechGPT.md); [SpeechGPT-Gen [244]](../../Models/SpokenDialogue/2024.01.24_SpeechGPT-Gen.md)) propose a two-stage instruction-tuning process that includes cross-modal instruction fine-tuning and chain-of-modality instruction fine-tuning.
@@ -325,8 +330,7 @@ Remarkably, Moshi constructs a more natural and realistic dialogue dataset that 
 OmniFlatten fine-tunes the speech-text LLM using interleaved and serialized dialogues across three stages to progressively train the model in acquiring half-duplex and full-duplex communication capabilities.
 Similarly, SyncLLM employs a three-stage training procedure that predominantly uses synthetic spoken dialogue data along with a relatively small amount of real-world spoken dialogue data to develop a full-duplex voice agent.
 
-</details>
-<br>
+</td><td>
 
 在这一阶段, 大多数模型使用指令跟随数据集或口语数据即进行 LLM 的监督式微调, 增强自然对话能力.
 - [SpeechGPT [242]](../../Models/SpokenDialogue/2023.05.18_SpeechGPT.md); [SpeechGPT-Gen [244]](../../Models/SpokenDialogue/2024.01.24_SpeechGPT-Gen.md) 提出了一种两阶段的指令微调过程, 包括跨模态指令微调和链式模态指令微调.
@@ -337,10 +341,11 @@ Similarly, SyncLLM employs a three-stage training procedure that predominantly u
   - OmniFlatten 利用三阶段训练过程, 首先使用交替和序列化的对话数据进行语音-文本 LLM 的微调, 逐步训练模型以实现半双工和全双工通信能力.
   - 类似地, SyncLLM 使用三阶段训练过程, 首先使用合成口语对话数据和相对较少的真实口语对话数据进行微调, 开发全双工语音智能体.
 
+</td></tr></table>
+
 ### 4.2.4·Preference Optimization and Reinforcement Learning: 偏好优化和强化学习
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 The research on leveraging preference optimization to align a spoken dialogue model with human preferences is virtually absent.
 Recently, [Seed-TTS [5]](../../Models/SpeechLM/2024.06.04_Seed-TTS.md); [SpeechAlign [243]](../../Models/SpeechLM/2024.04.08_SpeechAlign.md); [UNO [23]](../../Modules/RLHF/2024.06.02_UNO.md) adopted preference optimization for Text-to-Speech (TTS) models to align speech synthesis quality with human preferences but not for spoken dialogue models.
@@ -350,8 +355,7 @@ LoRA fine-tuning on a Spoken LLM generates multiple speech continuations from pr
 Semantic metrics create preference data offline, making DPO training efficient and stable, eliminating the need for an external reward model.
 Coupled with [curriculum learning [15]](../../Models/_Basis/Curriculum_Learning.md), Align-SLM progressively refines preference data selection, optimizing semantic feedback, and improving SLM performance.
 
-</details>
-<br>
+</td><td>
 
 利用偏好优化来对齐口语对话模型和人类偏好的研究几乎空缺.
 - [Seed-TTS [5]](../../Models/SpeechLM/2024.06.04_Seed-TTS.md); [SpeechAlign [243]](../../Models/SpeechLM/2024.04.08_SpeechAlign.md); [UNO [23]](../../Modules/RLHF/2024.06.02_UNO.md) 采用偏好优化来对齐文本转语音模型的语音合成质量和人类偏好, 但不适用于口语对话模型.
@@ -361,24 +365,25 @@ Coupled with [curriculum learning [15]](../../Models/_Basis/Curriculum_Learning.
   语义度量生成偏好数据离线, 使得 DPO 训练高效稳定, 避免了外部奖励模型.
   与[课程学习 [15]](../../Models/_Basis/Curriculum_Learning.md) 结合, Align-SLM 逐步优化偏好数据选择, 优化语义反馈, 并提升 SLM 性能.
 
+</td></tr></table>
+
 ## 4.3·Training Frameworks and Generation Strategies: 训练框架和生成策略
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 Recent advanced methods in spoken dialogue models employ a variety of innovative techniques to achieve more natural speech output and lower latency.
 In this part, we explore various approaches that exemplify these advancements:
 
-</details>
-<br>
+</td><td>
 
 在口语对话模型中的近期先进方法采用了各种创新的技术来实现更自然的语音输出和更低的延迟.
 在这一部分, 我们探索了这些先进的各种方法:
 
+</td></tr></table>
+
 ### LLaMA-Omni
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 [LLaMA-Omni [57]](../../Models/SpokenDialogue/2024.09.10_LLaMA-Omni.md) adds a streaming speech decoder that operates after the LLM.
 This decoder runs in a non-autoregressive manner, taking the output hidden states from the LLM as input and generating the discrete unit sequence corresponding to the speech response.
@@ -386,8 +391,7 @@ To model the variable-length mapping between input and output, LLaMA-Omni employ
 This ensures that the model can generate speech responses simultaneously with text responses.
 Additionally, a predefined chunk size is set to further enable vocoder streaming synthesis of speech waveforms, facilitating real-time interaction and reducing latency.
 
-</details>
-<br>
+</td><td>
 
 [LLaMA-Omni [57]](../../Models/SpokenDialogue/2024.09.10_LLaMA-Omni.md) 在 LLM 后添加了一个流式语音解码器.
 该解码器以非自回归方式运行, 接受 LLM 的输出隐藏状态作为输入, 生成对应语音响应的离散单元序列.
@@ -395,10 +399,11 @@ Additionally, a predefined chunk size is set to further enable vocoder streaming
 这确保模型能够同时生成文本响应和语音响应.
 此外, 设置了预定义的块大小以进一步启用声码器流式合成语音波形, 促进实时互动并降低延迟.
 
+</td></tr></table>
+
 ### Mini-Omni
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 [Mini-Omni [222]](../../Models/SpokenDialogue/2024.08.27_Mini-Omni.md) selects [SNAC [193]](../../Models/SpeechCodec/2024.10.18_SNAC.md), a music-grade encoder, to discretize one second of audio into hundreds of tokens, which significantly increases the burden on the LLM for modeling speech tokens.
 Delay Pattern language model decoding strategies are often applied in modeling multiple parallel streams of acoustic tokens in speech tasks like [MusicGen [40]](../../Models/SpeechLM/2023.06.08_MusicGen.md), [VoiceCraft [163]](../../Models/SpeechLM/2024.03.25_VoiceCraft.md), and [Parler-TTS [140]](../../Models/SpeechLM/2024.02.02_Parler-TTS.md).
@@ -410,8 +415,7 @@ Specifically, it generates two samples in parallel for a single input: the first
 The text output from the first sample is embedded into the corresponding positions of the second sample, while the second sample's text output is discarded.
 This further enhances the model’s reasoning capabilities during dialogue, maximizing the transfer of its text-based abilities.
 
-</details>
-<br>
+</td><td>
 
 [Mini-Omni [222]](../../Models/SpokenDialogue/2024.08.27_Mini-Omni.md) 选择 [SNAC [193]](../../Models/SpeechCodec/2024.10.18_SNAC.md), 一个音乐级编码器, 将一秒钟的音频划分为数百个 Token, 这显著增加了 LLM 建模语音 Token 的负担.
 延迟模式语言模型解码策略通常用于建模语音任务中的多个并行流的音频 Token, 如 [MusicGen [40]](../../Models/SpeechLM/2023.06.08_MusicGen.md), [VoiceCraft [163]](../../Models/SpeechLM/2024.03.25_VoiceCraft.md), 和 [Parler-TTS [140]](../../Models/SpeechLM/2024.02.02_Parler-TTS.md).
@@ -423,10 +427,11 @@ This further enhances the model’s reasoning capabilities during dialogue, maxi
 第一个样本的文本输出嵌入到第二个样本的相应位置, 而第二个样本的文本输出被丢弃.
 这进一步增强了模型在对话中的推理能力, 最大限度地迁移其基于文本的能力.
 
+</td></tr></table>
+
 ### IntrinsicVoice
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 [IntrinsicVoice [248]](../../Models/SpokenDialogue/2024.10.09_IntrinsicVoice.md) introduces a speech encoder and a streaming vocoder for the tokenization and detokenization of speech, and a GroupFormer for modeling speech and text sequences.
 This architecture integrates a large language model (LLM) with a GroupModel.
@@ -437,8 +442,7 @@ The context embeddings output by the LLM are processed through a linear layer an
 This input is fed into a smaller non-autoregressive transformer encoder model, dubbed the "GroupModel," to predict a group of speech tokens in one step.
 The introduction of GroupFormer effectively improves the model's ability to handle sequences within a group, mitigates the modality gap between speech and text, accelerates inference speed, and alleviates issues associated with long-sequence modeling.
 
-</details>
-<br>
+</td><td>
 
 [IntrinsicVoice [248]](../../Models/SpokenDialogue/2024.10.09_IntrinsicVoice.md) 提出了语音编码器和流式解码器, 用于对语音进行分词和反分词, 以及用于建模语音和文本序列的 GroupFormer.
 该架构将大语言模型 (LLM) 与 GroupModel 集成在一起.
@@ -449,10 +453,11 @@ LLM 的上下文嵌入输出通过线性层处理, 并与可学习的查询连�
 然后输入到较小的非自回归 Transformer 编码器模型, 称为 "GroupModel", 以一步预测一组语音 Token.
 GroupFormer 的引入有效地提高了模型处理组内序列的能力, 减轻了语音和文本模态之间的模态差距, 加速了推理速度, 并减轻了长序列建模相关的问题.
 
+</td></tr></table>
+
 ### Moshi
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 [Moshi [44]](../../Models/SpokenDialogue/2024.09.17_Moshi.md) introduces a mini codec model with 8 codebooks at a frame rate of 12.5 Hz for speech representation, where one second corresponds to 100 speech tokens.
 It adopts an RQ-Transformer consisting of a Temporal Transformer and a smaller Depth Transformer as the backbone network for the LLM, hierarchically modeling multi-codebook audio tokens.
@@ -461,8 +466,7 @@ The Depth Transformer models sub-sequence tokens conditioned on temporal context
 Given the smaller size of the Depth Transformer, sub-sequence generation can almost be viewed as parallel generation.
 This allows the model to scale to longer sequences by extending the temporal modeling capacity of the Temporal Transformer or to achieve greater depth by enhancing the hierarchical modeling capabilities of the Depth Transformer, rather than modeling the flattened sequence with a single model.
 
-</details>
-<br>
+</td><td>
 
 [Moshi [44]](../../Models/SpokenDialogue/2024.09.17_Moshi.md) 提出了一个具有 8 个码本帧率为 12.5 Hz 的小型码本模型用于语音表示, 一秒语音对应于 100 个语音 Token.
 它采用了由时序 Transformer 和更小的深度 Transformer 组成的 RQ-Transformer 作为 LLM 的骨干网络, 层次化建模多码本音频 Token.
@@ -471,28 +475,29 @@ This allows the model to scale to longer sequences by extending the temporal mod
 给定更小的深度 Transformer, 子序列生成几乎可以被视为并行生成.
 这使得模型通过增加时序 Transformer 的时序建模能力扩展到更长的序列, 也能通过增强深度 Transformer 的层次化建模能力来实现更深的深度, 而不是用单个模型来建模扁平化的序列.
 
+</td></tr></table>
+
 ### SyncLLM
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 [SyncLLM [203]](../../Models/SpokenDialogue/2024.09.23_SyncLLM.md) employs an auto-regressive transformer decoder for full-duplex dialogue, integrating time synchronization to align speech units with the real-world clock.
 It predicts interleaved speech tokens for both dialogue partners, maintaining timing with speaker tags.
 The model is trained on deduplicated HuBERT token sequences to enhance semantic fidelity while managing latency by anticipating user responses.
 Interpolation reconstructs token sequences to fit expected structures, facilitating seamless speech synthesis.
 
-</details>
-<br>
+</td><td>
 
 [SyncLLM [203]](../../Models/SpokenDialogue/2024.09.23_SyncLLM.md) 采用自回归 Transformer 解码器进行全双工对话, 集成了时间同步功能, 以将语音单元与现实世界时钟对齐.
 它为对话双方预测交错的语音 Token, 并通过说话者标签保持时间同步.
 该模型在去重后的 HuBERT Token 序列上进行训练以增强语义保真度, 同时通过预测用户响应来管理延迟.
 插值重建 Token 序列以适应预期的结构, 从而实现无缝的语音合成.
 
+</td></tr></table>
+
 ### Text-Guided Generation: 文本引导生成
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 Some end-to-end methods like ([SpeechGPT [242]](../../Models/SpokenDialogue/2023.05.18_SpeechGPT.md); [SpeechGPT-Gen [244]](../../Models/SpokenDialogue/2024.01.24_SpeechGPT-Gen.md); [Spectron [156]](../../Models/SpokenDialogue/2023.05.24_Spectron.md); [EMOVA [25]](../../Models/SpokenDialogue/2024.09.26_EMOVA.md)) use chain-of-thought reasoning, which allows guiding speech generation with the output of an underlying text LLM.
 However, this is fundamentally incompatible with live interactions, as the model needs to produce an entire answer as text before it starts speaking.
@@ -501,8 +506,7 @@ Later methods ([LLaMA-Omni [57]](../../Models/SpokenDialogue/2024.09.10_LLaMA-Om
 [Mini-Omni [222]](../../Models/SpokenDialogue/2024.08.27_Mini-Omni.md) is restructured to transfer language reasoning abilities to streaming audio output through a text-audio parallel decoding approach.
 [Moshi [44]](../../Models/SpokenDialogue/2024.09.17_Moshi.md) details a novel feature, the Inner Monologue, which consists of joint modeling of the textual and speech modalities on the system side to improve the quality of interactions.
 
-</details>
-<br>
+</td><td>
 
 - 一些端到端方法, 如 ([SpeechGPT [242]](../../Models/SpokenDialogue/2023.05.18_SpeechGPT.md); [SpeechGPT-Gen [244]](../../Models/SpokenDialogue/2024.01.24_SpeechGPT-Gen.md); [Spectron [156]](../../Models/SpokenDialogue/2023.05.24_Spectron.md); [EMOVA [25]](../../Models/SpokenDialogue/2024.09.26_EMOVA.md)) 采用思维链推理, 允许使用底层的文本 LLM 的输出引导语音生成.
 然而, 这种方式和实时互动在根本上是不兼容的, 因为模型需要生成整个答案的文本, 然后才能开始说话.
@@ -511,28 +515,29 @@ Later methods ([LLaMA-Omni [57]](../../Models/SpokenDialogue/2024.09.10_LLaMA-Om
 - [Mini-Omni [222]](../../Models/SpokenDialogue/2024.08.27_Mini-Omni.md) 通过文本-语音并行解码方法, 将语言推理能力迁移到流式音频输出.
 - [Moshi [44]](../../Models/SpokenDialogue/2024.09.17_Moshi.md) 详细介绍了一种新特征, 即 Inner Monologue, 它由系统侧的联合建模文本和语音模态, 改善交互质量.
 
+</td></tr></table>
+
 ### W/O Text-Guided Generation: 无文本引导生成
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 Other methods achieve speech-to-speech generation without relying on text stream generation.
 [IntrinsicVoice [248]](../../Models/SpokenDialogue/2024.10.09_IntrinsicVoice.md) introduces a novel GroupModel that predicts a group of speech tokens in one step based on global context embeddings.
 [SyncLLM [203]](../../Models/SpokenDialogue/2024.09.23_SyncLLM.md) predicts interleaved chunks of token sequences at each time step, allowing the model to handle all conversational cues such as backchannels, overlaps, interruptions, etc.
 
-</details>
-<br>
+</td><td>
 
 其他方法实现了无需依赖文本流生成的语音到语音生成.
 - [IntrinsicVoice [248]](../../Models/SpokenDialogue/2024.10.09_IntrinsicVoice.md) 提出了一种全新的 GroupModel, 它以全局上下文嵌入为条件一步预测一组语音 Token.
 - [SyncLLM [203]](../../Models/SpokenDialogue/2024.09.23_SyncLLM.md) 在每个时间步预测交错的 Token 序列块, 允许模型处理所有会话提示, 如背景通道, 重叠, 中断等.
 
+</td></tr></table>
+
 ## 4.4·Discussions about Training Paradigm in Spoken Dialogue Models: 讨论
 
 ### 4.4.1·Text and Speech Modality Alignment: 文本和语音模态对齐
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 In spoken dialogue systems, the alignment between speech and text modalities is a crucial stage.
 To preserve the textual intelligence of large language models (LLMs) as much as possible, nearly all current methodologies ([SpeechGPT [242]](../../Models/SpokenDialogue/2023.05.18_SpeechGPT.md); [PSLM [154]](../../Models/SpokenDialogue/2024.06.18_PSLM.md); [LLaMA-Omni [57]](../../Models/SpokenDialogue/2024.09.10_LLaMA-Omni.md); [Mini-Omni [222]](../../Models/SpokenDialogue/2024.08.27_Mini-Omni.md); [Mini-Omni2 [223]](../../Models/SpokenDialogue/2024.10.15_Mini-Omni2.md); [Moshi [44]](../../Models/SpokenDialogue/2024.09.17_Moshi.md); [OmniFlatten [246]](../../Models/SpokenDialogue/2024.10.23_OmniFlatten.md)) incorporate a post-training phase utilizing speech-text paired data when developing spoken dialogue models.
@@ -546,8 +551,7 @@ This is because unlabeled speech data is abundant and easily accessible, making 
 This approach would require us to obtain a pre-aligned speech representation with the text modality.
 Perhaps we can consider further exploration and experimentation in the speech tokenizer component, such as directly mapping the semantic discrete units of speech onto the text token space to achieve enforced alignment.
 
-</details>
-<br>
+</td><td>
 
 在口语对话系统中, 语音和文本模态之间的对齐是至关重要的阶段.
 
@@ -563,10 +567,11 @@ Perhaps we can consider further exploration and experimentation in the speech to
 这种方法要求我们获得与文本模态预先对齐的语音表示.
 也许我们可以考虑进一步探索和实验语音分词器组件, 例如直接将语音的语义离散单元映射到文本 Token 空间, 以实现强制对齐.
 
+</td></tr></table>
+
 ### 4.4.2·Different Temporal Alignment Methods in Spoken Dialogue Models: 不同时序对齐方法
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 In speech and text modalities, there is often a significant mismatch in sequence lengths.
 Even when some speech tokenizers ([WavTokenizer [90]](../../Models/SpeechCodec/2024.08.29_WavTokenizer.md); [Single-Codec [119]](../../Models/SpeechCodec/2024.06.11_Single-Codec.md)) employ extreme sequence compression methods, a length gap remains between the two.
@@ -585,8 +590,7 @@ Exploring the impact of introducing different levels of temporal alignment prior
 Understanding how these various alignment strategies affect model performance can guide the development of more efficient and accurate systems.
 For instance, sentence-level alignment might offer a broader contextual understanding, while word-level or phoneme-level alignments could provide more detailed synchronization between speech and text, potentially leading to improvements in nuanced tasks like speech synthesis and understanding.
 
-</details>
-<br>
+</td><td>
 
 在语音和文本模态中, 序列长度通常存在显著的不匹配.
 即使某些语音分词器 ([WavTokenizer [90]](../../Models/SpeechCodec/2024.08.29_WavTokenizer.md); [Single-Codec [119]](../../Models/SpeechCodec/2024.06.11_Single-Codec.md)) 采用极端的序列压缩方法, 两者之间的长度差距也仍然存在.
@@ -606,10 +610,11 @@ For instance, sentence-level alignment might offer a broader contextual understa
 理解这些不同的对齐策略对模型性能的影响, 可以指导开发更高效和准确的系统.
 例如, 句子级别对齐可能提供更广泛的上下文理解, 而词级别对齐则可以更好地捕捉到语音和文本之间更详细的同步关系, 潜在地提升语音合成和理解等精细任务的性能.
 
+</td></tr></table>
+
 ### 4.4.3·Reinforcement Learning (RL) in Spoken Dialogue Models: 强化学习
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 Reinforcement Learning (RL) has proven to be an effective learning paradigm in text and image processing ([PPO [185]](../../Models/_Basis/PPO.md); [Policy Gradient [196]](../../Models/_Basis/PG.md); [Diffusion-DPO [204]](../../Models/CV/2023.11.21_Diffusion-DPO.md)).
 Recent research has shown that [Direct Preference Optimization (DPO) [170]](../../Modules/RLHF/DPO.md) can be extended to music and speech generation ([MusicRL [36]](../../Models/SpeechLM/2024.02.06_MusicRL.md); [SpeechAlign [243]](../../Models/SpeechLM/2024.04.08_SpeechAlign.md)).
@@ -623,8 +628,7 @@ However, in the dialogue system field, reinforcement learning techniques based o
 Considering the diversity of inputs and outputs in large language models, exploring the incorporation of reinforcement learning strategies such as [Proximal Policy Optimization (PPO) [185]](../../Models/_Basis/PPO.md) can be beneficial.
 Additionally, considering the performance metrics for evaluating spoken dialogue systems, designing targeted reinforcement learning strategies and feedback functions to enhance different objectives is also a direction worth exploring.
 
-</details>
-<br>
+</td><td>
 
 强化学习 (Reinforcement Learning, RL) 在文本和图像处理领域已经证明是一种有效的学习范式 ([PPO [185]](../../Models/_Basis/PPO.md); [Policy Gradient [196]](../../Models/_Basis/PG.md); [Diffusion-DPO [204]](../../Models/CV/2023.11.21_Diffusion-DPO.md)).
 近期研究表明, [Direct Preference Optimization (DPO) [170]](../../Modules/RLHF/DPO.md) 可以被扩展到音乐和语音生成 ([MusicRL [36]](../../Models/SpeechLM/2024.02.06_MusicRL.md); [SpeechAlign [243]](../../Models/SpeechLM/2024.04.08_SpeechAlign.md)).
@@ -637,3 +641,5 @@ Additionally, considering the performance metrics for evaluating spoken dialogue
 然而, 在对话系统领域, 基于人类反馈的强化学习技术 ([Huang et al (Survey) [82]](../2023.11.09_A_Survey_on_Hallucination_in_Large_Language_Models__Principles_Taxonomy_Challenges_and_Open_Questions/Main.md)) 很少被应用.
 考虑到大型语言模型的输入和输出的多样性, 探索将强化学习策略 (如 [Proximal Policy Optimization (PPO) [185]](../../Models/_Basis/PPO.md)) 纳入其中可以提供益处.
 此外, 考虑到对话系统的性能评估指标, 设计目标导向的强化学习策略和反馈函数来增强不同目标也是值得探索的方向.
+
+</td></tr></table>
