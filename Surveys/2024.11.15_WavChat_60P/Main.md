@@ -31,15 +31,14 @@
   - [Demo]
   - [WeChat](https://mp.weixin.qq.com/s/9DisPbvZBr8NGY2SPytT9Q)
 - 文件:
-  - [ArXiv](2411.13577v1__Survey__WavChat__A_Survey_of_Spoken_Dialogue_Models.pdf)
+  - [ArXiv](2024.11.15__2411.13577v1__Survey__WavChat__A_Survey_of_Spoken_Dialogue_Models.pdf)
   - [Publication] #TODO
 
 </details>
 
 ## Abstract: 摘要
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 Recent advancements in spoken dialogue models, exemplified by systems like GPT-4o, have captured significant attention in the speech domain.
 In the broader context of multimodal models, the speech modality offers a direct interface for human-computer interaction, enabling direct communication between AI and users.
@@ -54,8 +53,7 @@ Additionally, we present a thorough review of **relevant datasets, evaluation me
 We hope this survey will contribute to advancing both academic research and industrial applications in the field of spoken dialogue systems.
 The related material is available at [Github](https://github.com/jishengpeng/WavChat).
 
-</details>
-<br>
+</td><td>
 
 口语对话模型的近期进展, 如 GPT-4o 等系统为代表, 在语音领域获得了广泛关注.
 在多模态模型的更广泛背景下, 语音模态为人机交互提供了直接的接口, 使得人工智能和用户之间可以直接交流.
@@ -73,10 +71,11 @@ The related material is available at [Github](https://github.com/jishengpeng/Wav
 我们希望这项工作能够促进口语对话系统的学术研究和工业应用的发展.
 相关材料可在 [Github](https://github.com/jishengpeng/WavChat) 获得.
 
+</td></tr></table>
+
 ## 1·Introduction: 引言
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 Spoken dialogue models ([Moshi [44]](../../Models/SpokenDialogue/2024.09.17_Moshi.md); [SpeechGPT [242]](../../Models/SpokenDialogue/2023.05.18_SpeechGPT.md); [Mini-Omni2 [223]](../../Models/SpokenDialogue/2024.10.15_Mini-Omni2.md)) represent one of the most direct methods of human-computer interaction, evolving from traditional voice assistants such as [Alexa [Website]](https://www.alexa.com/), [Siri [Website]](https://www.apple.com/siri/), and [Google Assistant [Website]](https://assistant.google.com/) to the latest intelligent dialogue systems, such as [GPT-4o [Website]](https://openai.com/index/chatgpt-can-now-see-hear-and-speak/).
 The fundamental definition of a spoken dialogue model refers to a dialogue system capable of generating intelligent verbal responses based on the input speech.
@@ -90,9 +89,53 @@ Their realistic conversational interactivity ([VITA [61]](../../Models/SpokenDia
 The history of spoken dialogue models can be traced back to early systems like [dGSLM [157]](../../Models/SpokenDialogue/2022.03.30_dGSLM.md) and [AudioGPT [84]](../../Models/SpokenDialogue/2023.04.25_AudioGPT.md), leading up to more recent advancements such as GPT-4o and [Moshi [44]](../../Models/SpokenDialogue/2024.09.17_Moshi.md).
 During this period, many notable spoken dialogue models have emerged.
 As shown in Fig.01, we have organized these models in chronological order.
+
+</td><td>
+
+口语对话模型 ([Moshi [44]](../../Models/SpokenDialogue/2024.09.17_Moshi.md); [SpeechGPT [242]](../../Models/SpokenDialogue/2023.05.18_SpeechGPT.md); [Mini-Omni2 [223]](../../Models/SpokenDialogue/2024.10.15_Mini-Omni2.md)) 代表了人机交互中最直接的方法之一, 从传统的声音助手([Alexa [Website]](https://www.alexa.com/); [Siri [Website]](https://www.apple.com/siri/); [Google Assistant [Website]](https://assistant.google.com/)) 进化到最新的智能对话系统 (如 [GPT-4o [Website]](https://openai.com/index/chatgpt-can-now-see-hear-and-speak/)).
+
+口语对话模型的基本定义是指一个能够根据输入语音生成智能口语回应的对话系统.
+一方面, **语音模态**在口语对话模型中既是人机交互的输入接口, 也是输出接口.
+另一方面, **对话系统** ([LLaMA3 [52]](../../Models/TextLM/2024.07.31_LLaMA3.md)) 要求模型具备一定程度的文本智能, 包括理解人类社会知识并生成专业和智能的回应.
+
+近期, 以 GPT-4o 和 [Moshi [44]](../../Models/SpokenDialogue/2024.09.17_Moshi.md) 为代表的智能口语对话系统, 因其超越了传统基于文本的对话模型 ([AudioGPT [84]](../../Models/SpokenDialogue/2023.04.25_AudioGPT.md)) 的语音智能能力而受到广泛关注.
+
+这些对话模型不仅能够生成自然, 类似人类的语音回应 ([Moshi [44]](../../Models/SpokenDialogue/2024.09.17_Moshi.md); [FunAudioLLM [195]](../../Models/SpeechLM/2024.07.04_FunAudioLLM.md)) 还展示了超越文本的高级声学特征 (如音色, 情感和风格) 的理解和生成能力 ([Spoken-LLM [127]](../../Models/SpokenDialogue/2024.02.20_Spoken-LLM.md); [ParalinGPT [128]](../../Models/SpokenDialogue/2023.12.23_ParalinGPT.md); [E-chat [227]](../../Models/SpokenDialogue/2023.12.31_E-chat.md)).
+此外, 它们在处理其他语音相关表示方面表现出色, 包括音乐和音频事件 ([Qwen2-Audio [33]](../../Models/SpokenDialogue/2024.07.15_Qwen2-Audio.md); [Qwen-Audio [34]](../../Models/SpokenDialogue/2023.11.14_Qwen-Audio.md); [LTU-AS [67]](../../Models/SpokenDialogue/2023.09.25_LTU-AS.md); [SALMONN [198]](../../Models/SpokenDialogue/2023.10.20_SALMONN.md)).
+它们在现实对话互动 ([VITA [61]](../../Models/SpokenDialogue/2024.08.09_VITA.md); [Mini-Omni2 [223]](../../Models/SpokenDialogue/2024.10.15_Mini-Omni2.md)) 和低延迟对话体验 ([Moshi [44]](../../Models/SpokenDialogue/2024.09.17_Moshi.md)) 方面的表现进一步使它们在传统对话模型的竞争中脱颖而出.
+
+口语对话模型的历史可以回溯到早期系统, 如 [dGSLM [157]](../../Models/SpokenDialogue/2022.03.30_dGSLM.md), [AudioGPT [84]](../../Models/SpokenDialogue/2023.04.25_AudioGPT.md), 直至最近的进展, 如 GPT-4
+
+</td></tr>
+<tr><td colspan="2">
+
+![](Images/Fig.01.png)
+
+</td></tr>
+<tr><td>
+
 Broadly, they can be categorized into two types: cascaded spoken dialogue models ([Qwen2-Audio [33]](../../Models/SpokenDialogue/2024.07.15_Qwen2-Audio.md); [Qwen-Audio [34]](../../Models/SpokenDialogue/2023.11.14_Qwen-Audio.md)) and end-to-end ([FSQ [149]](../../Modules/VQ/FSQ.md); [Mini-Omni [222]](../../Models/SpokenDialogue/2024.08.27_Mini-Omni.md); [OmniFlatten [246]](../../Models/SpokenDialogue/2024.10.23_OmniFlatten.md); [IntrinsicVoice [248]](../../Models/SpokenDialogue/2024.10.09_IntrinsicVoice.md)) spoken dialogue models.
 Given that most current spoken dialogue models rely on alignment with the text modality, the distinction between cascaded and end-to-end models is crucial.
 As illustrated in Fig.02, we classify all spoken dialogue models based on whether **the core language model can directly understand and generate speech representations**, dividing them into cascaded and end-to-end categories.
+
+</td><td>
+
+大致上, 它们可以分为两种类型:
+- 级联口语对话模型: ([Qwen2-Audio [33]](../../Models/SpokenDialogue/2024.07.15_Qwen2-Audio.md); [Qwen-Audio [34]](../../Models/SpokenDialogue/2023.11.14_Qwen-Audio.md))
+- 端到端口语对话模型: ([FSQ [149]](../../Modules/VQ/FSQ.md); [Mini-Omni [222]](../../Models/SpokenDialogue/2024.08.27_Mini-Omni.md); [OmniFlatten [246]](../../Models/SpokenDialogue/2024.10.23_OmniFlatten.md); [IntrinsicVoice [248]](../../Models/SpokenDialogue/2024.10.09_IntrinsicVoice.md))
+
+鉴于现有大多数口语对话模型依赖和文本模态的对齐, 级联模型和端到端模型之间的区别十分关键.
+
+如图 02 所示, 我们根据**核心语言模型是否能够直接理解和生成语音表示**将所有口语对话模型划分为级联模型和端到端模型.
+
+</td></tr>
+<tr><td colspan="2">
+
+![](Images/Fig.02.png)
+
+</td></tr>
+<tr><td>
+
 Traditional cascaded spoken dialogue systems such as [AudioGPT [84]](../../Models/SpokenDialogue/2023.04.25_AudioGPT.md) are structured around text as the central intermediary, typically comprising three cascaded modules.
 First, the input audio is transcribed into text by an automatic speech recognition (ASR) module ([Whisper [169]](../../Models/SpeechLM/2022.12.06_Whisper.md)).
 The transcribed text is then fed into a large language model (LLM) such as ChatGPT to generate a textual response.
@@ -123,36 +166,9 @@ At the end of each section, we include a summary and discussion to reflect on th
 
 Given the complexity of the technical points, we provide an overview of the structure of this survey in Fig.03.
 
-</details>
-<br>
+</td><td>
 
-口语对话模型 ([Moshi [44]](../../Models/SpokenDialogue/2024.09.17_Moshi.md); [SpeechGPT [242]](../../Models/SpokenDialogue/2023.05.18_SpeechGPT.md); [Mini-Omni2 [223]](../../Models/SpokenDialogue/2024.10.15_Mini-Omni2.md)) 代表了人机交互中最直接的方法之一, 从传统的声音助手([Alexa [Website]](https://www.alexa.com/); [Siri [Website]](https://www.apple.com/siri/); [Google Assistant [Website]](https://assistant.google.com/)) 进化到最新的智能对话系统 (如 [GPT-4o [Website]](https://openai.com/index/chatgpt-can-now-see-hear-and-speak/)).
 
-口语对话模型的基本定义是指一个能够根据输入语音生成智能口语回应的对话系统.
-一方面, **语音模态**在口语对话模型中既是人机交互的输入接口, 也是输出接口.
-另一方面, **对话系统** ([LLaMA3 [52]](../../Models/TextLM/2024.07.31_LLaMA3.md)) 要求模型具备一定程度的文本智能, 包括理解人类社会知识并生成专业和智能的回应.
-
-近期, 以 GPT-4o 和 [Moshi [44]](../../Models/SpokenDialogue/2024.09.17_Moshi.md) 为代表的智能口语对话系统, 因其超越了传统基于文本的对话模型 ([AudioGPT [84]](../../Models/SpokenDialogue/2023.04.25_AudioGPT.md)) 的语音智能能力而受到广泛关注.
-
-这些对话模型不仅能够生成自然, 类似人类的语音回应 ([Moshi [44]](../../Models/SpokenDialogue/2024.09.17_Moshi.md); [FunAudioLLM [195]](../../Models/SpeechLM/2024.07.04_FunAudioLLM.md)) 还展示了超越文本的高级声学特征 (如音色, 情感和风格) 的理解和生成能力 ([Spoken-LLM [127]](../../Models/SpokenDialogue/2024.02.20_Spoken-LLM.md); [ParalinGPT [128]](../../Models/SpokenDialogue/2023.12.23_ParalinGPT.md); [E-chat [227]](../../Models/SpokenDialogue/2023.12.31_E-chat.md)).
-此外, 它们在处理其他语音相关表示方面表现出色, 包括音乐和音频事件 ([Qwen2-Audio [33]](../../Models/SpokenDialogue/2024.07.15_Qwen2-Audio.md); [Qwen-Audio [34]](../../Models/SpokenDialogue/2023.11.14_Qwen-Audio.md); [LTU-AS [67]](../../Models/SpokenDialogue/2023.09.25_LTU-AS.md); [SALMONN [198]](../../Models/SpokenDialogue/2023.10.20_SALMONN.md)).
-它们在现实对话互动 ([VITA [61]](../../Models/SpokenDialogue/2024.08.09_VITA.md); [Mini-Omni2 [223]](../../Models/SpokenDialogue/2024.10.15_Mini-Omni2.md)) 和低延迟对话体验 ([Moshi [44]](../../Models/SpokenDialogue/2024.09.17_Moshi.md)) 方面的表现进一步使它们在传统对话模型的竞争中脱颖而出.
-
-口语对话模型的历史可以回溯到早期系统, 如 [dGSLM [157]](../../Models/SpokenDialogue/2022.03.30_dGSLM.md), [AudioGPT [84]](../../Models/SpokenDialogue/2023.04.25_AudioGPT.md), 直至最近的进展, 如 GPT-4o 和 [Moshi [44]](../../Models/SpokenDialogue/2024.09.17_Moshi.md).
-在此过程中, 许多值得注意的口语对话模型相继出现.
-如图 01 所示, 我们按时间顺序组织了这些模型.
-
-![](Images/Fig.01.png)
-
-大致上, 它们可以分为两种类型:
-- 级联口语对话模型: ([Qwen2-Audio [33]](../../Models/SpokenDialogue/2024.07.15_Qwen2-Audio.md); [Qwen-Audio [34]](../../Models/SpokenDialogue/2023.11.14_Qwen-Audio.md))
-- 端到端口语对话模型: ([FSQ [149]](../../Modules/VQ/FSQ.md); [Mini-Omni [222]](../../Models/SpokenDialogue/2024.08.27_Mini-Omni.md); [OmniFlatten [246]](../../Models/SpokenDialogue/2024.10.23_OmniFlatten.md); [IntrinsicVoice [248]](../../Models/SpokenDialogue/2024.10.09_IntrinsicVoice.md))
-
-鉴于现有大多数口语对话模型依赖和文本模态的对齐, 级联模型和端到端模型之间的区别十分关键.
-
-如图 02 所示, 我们根据**核心语言模型是否能够直接理解和生成语音表示**将所有口语对话模型划分为级联模型和端到端模型.
-
-![](Images/Fig.02.png)
 
 传统的级联口语对话系统, 如 [AudioGPT [84]](../../Models/SpokenDialogue/2023.04.25_AudioGPT.md), 采用以文本为中心媒介的结构, 通常由三个级联模块组成:
 - 输入音频通过自动语音识别 ASR 模块转写为文本.
@@ -184,9 +200,14 @@ Given the complexity of the technical points, we provide an overview of the stru
 在每一节末尾, 我们进行总结和讨论, 以反思关键见解.
 最后, 我们在第七节, 总结了本文的主要发现和未来研究的开放问题.
 
+</td></tr>
+<tr><td colspan="2">
+
 鉴于技术点的复杂性, 我们在图 03 中提供了本文的结构概览.
 
 ![](Images/Fig.03.png)
+
+</td></tr></table>
 
 ## [2·Overall: 整体视角](Sec.02_Overall.md)
 
@@ -200,8 +221,7 @@ Given the complexity of the technical points, we provide an overview of the stru
 
 ## 7·Conclusions: 结论
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 In this work, we systematically review the research related to spoken dialogue models, categorizing it according to two paradigms: cascaded spoken dialogue models and end-to-end spoken dialogue models.
 Additionally, we provide a detailed overview of the core technologies behind spoken dialogue models, including speech representation, training paradigms, streaming duplex systems, and interaction mechanisms.
@@ -214,8 +234,7 @@ It is important to note that, given that spoken dialogue models are a relatively
 Therefore, at the end of each section, we include a dedicated discussion module to explore these open issues.
 We hope that this survey will contribute to the further development of the field of spoken dialogue systems.
 
-</details>
-<br>
+</td><td>
 
 在这项工作中, 我们系统性地回顾了与口语对话模型相关的研究, 根据两种范式进行分类: 级联口语对话模型和端到端口语对话模型.
 
@@ -227,3 +246,5 @@ We hope that this survey will contribute to the further development of the field
 
 需要注意的是, 由于口语对话模型是一项相对较新且新兴的技术, 许多方面如语义和声学表示, 仍然缺乏成熟的范式.
 因此, 在每个部分的末尾, 我们专门加入了一个专门的讨论部分, 探讨这些开放性问题, 我们希望这项调查能够为口语对话系统领域的进一步发展做出贡献.
+
+</td></tr></table>
