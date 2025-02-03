@@ -2,8 +2,7 @@
 
 ## 6.1·Training Resources: 训练资源
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 Training a spoken dialogue system is a complex, multi-stage process, with each stage relying on specific datasets to achieve distinct training objectives and enhance system performance.
 This section provides an in-depth analysis of the training resources about the spoken dialogue models, showcasing the data collection and processing methods at each stage and illustrating how these elements contribute to the system's intelligence.
@@ -20,8 +19,7 @@ Appendix A: This section lists commonly used music and sound datasets.
 These datasets cover different modalities, including environmental sounds, music, and emotional sounds, and provide some help for the development of future voice dialogue systems.
 The table 4 shows the basic information of each dataset, including the dataset name, number of samples, dataset link, and modality type.
 
-</details>
-<br>
+</td><td>
 
 训练一个口语对话系统是一个复杂的多阶段过程, 每个阶段都依赖于特定的数据集以实现不同的训练目标和增强系统性能.
 本节提供了关于口语对话模型的训练资源的深入分析, 展示了每个阶段的数据收集和处理方法, 并说明这些元素如何促进系统的智能.
@@ -42,8 +40,10 @@ The table 4 shows the basic information of each dataset, including the dataset n
 这些数据集涵盖了不同的模态, 包括环境声音, 音乐, 和情绪声音, 并为未来的语音对话系统的开发提供一些帮助.
 表格 04 显示了每个数据集的基本信息, 包括数据集名称, 样本数量, 数据集链接, 和模态类型.
 
-<details>
-<summary>Table.02: Datasets Used in the Various Training Stages</summary>
+</td></tr>
+<tr><td colspan="2">
+
+Table.02: Datasets Used in the Various Training Stages
 
 |Stage                  |Task          |Dataset          |Size                       |URL                                                         |Modality     |
 |---                    |---           |---              |---                        |---                                                         |---          |
@@ -77,11 +77,10 @@ The table 4 shows the basic information of each dataset, including the dataset n
 |Conversation Fine-Tune |Instruction   |INSTRUCTS2S-200K |200k items                 |https://github.com/ictnlp/LLaMA-Omni                        |Text + TTS   |
 |Conversation Fine-Tune |Instruction   |Open Hermes      |900k items                 |https://ollama.com/library/openhermes                       |Text + TTS   |
 
-</details>
-<br>
+</td></tr>
+<tr><td colspan="2">
 
-<details>
-<summary>Table.04: Music and Non-Speech Sound Datasets</summary>
+Table.04: Music and Non-Speech Sound Datasets
 
 |Dataset                  |Size                            |URL                                                        |Modality                   |
 |---                      |---                             |---                                                        |---                        |
@@ -103,31 +102,30 @@ The table 4 shows the basic information of each dataset, including the dataset n
 |Jamendo                  |600k songs                      |https://www.jamendo.com/?language=en                       |Music                      |
 <!-- |% VIVAE                  |1085 clips                      |https://zenodo.org/records                                 |emotion vocalizations      | -->
 
-</details>
-<br>
+</td></tr></table>
+
 
 ### 6.1.1·Training Resources about Text LLM Pre-training: 文本大语言模型预训练资源
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 Text Language Model pre-training serves as the foundational stage for spoken dialogue models.
 Through unsupervised learning on large-scale text data, the model acquires knowledge of vocabulary, grammar, and contextual relationships, gaining essential knowledge and reasoning capabilities.
 Most spoken dialogue systems are built upon pre-existing open-source text language models (such as [LLaMA [200]](../../Models/TextLM/2023.02.27_LLaMA.md), [PaLM2 [6]](../../Models/TextLM/2023.05.17_PaLM2.md), etc).
 Although we does not delve into this stage in detail, it provides a solid foundation for the model’s natural language understanding and generation capabilities.
 
-</details>
-<br>
+</td><td>
 
 文本语言模型预训练是口语对话模型的基础阶段.
 通过在大规模文本数据上进行无监督训练, 模型获得词汇语法上下文关联等知识, 增进了必要的知识和推理能力.
 大多数口语对话系统都是建立在开源文本语言模型基础之上的 (如[LLaMA [200]](../../Models/TextLM/2023.02.27_LLaMA.md), [PaLM2 [6]](../../Models/TextLM/2023.05.17_PaLM2.md) 等).
 虽然我们并未详细探讨这一阶段, 但它为模型的自然语言理解和生成能力提供了坚实的基础.
 
+</td></tr></table>
+
 ### 6.1.2·Training Resources about Post-Train for Audio Modal Alignment: 音频模态对齐后训练资源
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 After establishing a text-based foundational model, the system possesses essential knowledge and reasoning abilities.
 In this stage, we introduce the audio modality, enabling the text language model to understand and generate speech while minimizing any potential loss of textual knowledge.
@@ -147,8 +145,7 @@ Therefore, the data typically consists of single-channel audio, which can be use
 Notably, in some works, it is essential to ensure word-level alignment between text tokens and audio tokens (e.g., Spirit-LM, Moshi, and OmniFlatten), achievable through tools like the Whisper-timestamped package or other alignment tool.
 In Moshi, to prevent catastrophic forgetting, half of the training time is allocated to text data, highlighting the importance of balancing text and audio data during training.
 
-</details>
-<br>
+</td><td>
 
 在建立了基于文本的基座模型后, 系统拥有了必要的知识和推理能力.
 然后在这一阶段引入音频模态, 使得文本语言模型能够理解和生成语音, 同时最小化任何文本知识的潜在损失.
@@ -186,10 +183,11 @@ In Moshi, to prevent catastrophic forgetting, half of the training time is alloc
 值得注意的是, 在一些工作中, 确保文本 Token 和音频 Token 之间的词级对齐至关重要 (如 Spirit-LM, Moshi, 和 OmniFlatten), 这可以通过类似 Whisper-timestamped 包或其他对齐工具实现.
 在 Moshi 中为了防止灾难性以往, 训练时间的一半用于文本数据, 强调了在训练中平衡文本和音频数据的重要性.
 
+</td></tr></table>
+
 ### 6.1.3·Training Resources about Post-Train for Dual-Stream Dialogue Processing: 双流对话处理后训练资源
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 To ensure that the model possesses the ability to “listen while speaking”.
 Most research such as [Moshi [44]](../../Models/SpokenDialogue/2024.09.17_Moshi.md) and [OmniFlatten [246]](../../Models/SpokenDialogue/2024.10.23_OmniFlatten.md) has implemented a dual audio-stream model: one audio stream generates model output, while the other captures user audio.
@@ -209,8 +207,7 @@ To better simulate real scenarios, further data augmentation can be applied.
 For example, random gain adjustments can be applied to the user audio stream, and background noise randomly selected from datasets like [MUSAN [194]](../../Datasets/2015.10.28_MUSAN.md) and [DNS [174]](../../Datasets/DNS.md) can be added to the user audio channel (OmniFlatten).
 To simulate echo effects from a user’s microphone, portions of the audio stream can be scaled down and added to the user’s audio stream with random delays between 100 to 500 milliseconds, along with reverberation-like enhancements, helping the model adapt to real-world environments.
 
-</details>
-<br>
+</td><td>
 
 为了确保模型具有 "说话时听取" 的能力, 大多数研究都实现了双音频流模型: 一个音频流生成模型输出, 另一个捕获用户音频.
 这一训练阶段的目标是使模型的双流处理能力无需复杂的人机交互建模.
@@ -232,10 +229,11 @@ To simulate echo effects from a user’s microphone, portions of the audio strea
 例如随机增益调整可以用于用户音频流, 背景噪声可以随机从数据集选择 (如 [MUSAN [194]](../../Datasets/2015.10.28_MUSAN.md) 和 [DNS [174]](../../Datasets/DNS.md)), 并添加到用户音频通道 (OmniFlatten).
 为了模拟来自用户麦克风的回声效果, 音频流的一部分可以缩小, 并与用户音频流相加, 随机延迟在 100 到 500 毫秒之间, 并添加类似于混响的增强, 使模型适应真实环境.
 
+</td></tr></table>
+
 ### 6.1.4·Training resources about Enhancing Conversational Abilities and Instruction Tuning: 增强对话能力和指令微调资源
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 While the foundational model has been established, there remains a gap between this and a complete dialogue system.
 The above model utilizes non-overlapping dialogue audio, where one party remains silent while the other speaks, failing to fully simulate real conversational dynamics.
@@ -261,8 +259,7 @@ Initially, open-source text language models paraphrase text instructions to matc
 Generated text responses are also optimized to meet TTS output requirements, removing lengthy expressions and complex grammatical structures to make content clear and concise for TTS output.
 After adjusting the instruction and response text, a TTS system converts the text to audio.
 
-</details>
-<br>
+</td><td>
 
 虽然已经构建了基座模型, 但距离完整对话系统还有一段距离.
 上述模型仅使用非重叠的对话音频, 其中一方在对方说话时保持沉默, 无法充分模拟真实的对话动态.
@@ -288,10 +285,11 @@ After adjusting the instruction and response text, a TTS system converts the tex
 生成的文本响应也被优化, 以满足 TTS 输出要求, 去除冗长的表达式和复杂的句法结构, 以使内容清晰而简洁.
 调整指令和响应文本后, TTS 系统将文本转换为音频.
 
+</td></tr></table>
+
 ## 6.2·Evaluation: 评估
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 Fair and comprehensive evaluation of spoken dialogue models presents a multifaceted challenge.
 On the one hand, the field of spoken dialogue still lacks publicly available test sets, comprehensive evaluation metrics, and established benchmarks.
@@ -302,8 +300,7 @@ Given these requirements, and in line with the comprehensive expectations for sp
 Specifically, we will assess eleven key factors: speech generation quality, text intelligence, speech intelligence, audio and music generation, audio and music understanding, multilingual capability, context learning, interaction capability, streaming latency, multimodal capability, and the safety of dialogue systems.
 Finally, we will list the current benchmarks and summarize the common conclusions derived from them.
 
-</details>
-<br>
+</td><td>
 
 口语对话模型的公平且全面的评估面临多方面挑战.
 - 一方面, 口语对话领域仍然缺乏公开可用的测试集, 全面评估指标, 和固定基准.
@@ -327,12 +324,13 @@ Finally, we will list the current benchmarks and summarize the common conclusion
 
 最后, 我们将列出当前的基准, 并总结从中得出的常见结论.
 
+</td></tr></table>
+
 ### 6.2.1·Common Evaluation: 常规评估
 
 #### Text Intelligence: 文本智能
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 As shown in Fig.04 (a), text intelligence refers to the fundamental understanding and generation capabilities of the spoken dialogue model.
 When evaluating text intelligence, the focus is solely on the semantic content generated by the model, without considering other aspects such as timbre, emotion, or style.
@@ -341,8 +339,7 @@ Regardless of the output format, we are concerned only with the generated text o
 There are typically two categories of metrics and benchmarks used to assess text intelligence, MT-Metrics and Acc-Metrics.
 The details are outlined as follows:
 
-</details>
-<br>
+</td><td>
 
 文本智能指的是口语对话模型的基本理解和生成能力.
 当评估文本智能时, 重点只是模型生成语义内容, 而不考虑其他方面 (例如音调, 情绪, 或风格).
@@ -354,7 +351,11 @@ The details are outlined as follows:
 无论输出格式如何, 在评估口语对话模型的文本智能时, 我们都只关心生成的文本或语音的转录文本.
 通常有两类指标和基准用于评估文本智能, **机器翻译指标 MT-Metrics** 和**准确率指标 Acc-Metrics**.
 
+</td></tr></table>
+
 ##### ACC-Metrics: 准确率度量
+
+<table><tr><td width="50%">
 
 A common approach to evaluating text intelligence is to use benchmarks typically ([CommonsenseQA [197]](../../Evaluations/TextIntelligence/2018.11.02_CommonsenseQA.md); [HELM [125]](../../Evaluations/TextIntelligence/2022.11.16_HELM.md); [HellaSwag [239]](../../Evaluations/TextIntelligence/2019.05.19_HellaSwag.md); [ARC [38]](../../Evaluations/TextIntelligence/2018.03.14_ARC.md); [WinoGrande [181]](../../Evaluations/TextIntelligence/2019.07.24_WinoGrande.md); [HumanEval [26]](../../Evaluations/TextIntelligence/2021.07.07_HumanEval.md); [AGIEval [255]](../../Evaluations/TextIntelligence/2023.04.13_AGIEval.md); [Natural Instructions [153]](../../Evaluations/TextIntelligence/2021.04.18_NaturalInstructions.md); [Super-NaturalInstructions [215]](../../Evaluations/TextIntelligence/2022.04.16_Super-NaturalInstructions.md); [MMDialog [58]](../../Evaluations/TextIntelligence/2022.11.10_MMDialog.md)) employed for large language models, such as the classic [MMLU [75]](../../Evaluations/2020.09.07_MMLU.md) and [GSM-8K [39]](../../Evaluations/GSM-8K.md).
 These benchmarks often include complex multiple-choice questions, which assess the model's reasoning abilities through Acc-Metrics.
@@ -364,7 +365,13 @@ For example, [MMLU [75]](../../Evaluations/2020.09.07_MMLU.md) and [GSM-8K [39]]
 These benchmarks often contain questions and corresponding answers.
 Most of these questions are close-ended questions with short answers, so that they can have good generalization ability, any model that can generate text answers can be evaluated with these benchmarks and accuracy and F-Score can be easily adopted as the evaluation metrics.
 
+</td><td>
+
+</td></tr></table>
+
 ##### MT-Metrics: 机器翻译度量
+
+<table><tr><td width="50%">
 
 With the development of the LLMs, LLMs can follow instructions to accomplish many complex problems, so the scope of the evaluation was further expanded to include open-ended questions.
 These open-ended questions often lack standard answers, therefore it's difficult to measure them by common ACC-Metrics.
@@ -375,28 +382,52 @@ So there are some metrics like [BERTScore [247]](../../Evaluations/2019.04.21_BE
 And there are also been some methods utilizing LLM to judge the effectiveness of the responses which focusing on human preference ([LLM Judge [252]](../../Evaluations/2023.06.09_LLM_Judge.md); [G-Eval [138]](../../Evaluations/2023.03.29_G-Eval.md)).
 The results of these large model-based especially GPT4o-based ratings of evaluation metrics demonstrated a high degree of correlation with human.
 
+</td><td>
+
+</td></tr></table>
+
 #### Speech Quality: 语音质量
+
+<table><tr><td width="50%">
 
 Speech quality is one of the fundamental aspects for evaluating the performance of spoken dialogue systems, as it is closely tied to the experience of users.
 There are two common dimensions for assessing speech quality: the clarity and naturalness (expressiveness and prosody) of the generated audio, and the robustness of the generated speech, such as the presence of missing or extra words.
 The former is typically evaluated by using subjective MOS (Mean Opinion Score) ratings, while the latter is commonly assessed by using WER (Word Error Rate) or CER (Character Error Rate) metrics.
 
+</td><td>
+
+</td></tr></table>
+
 #### Streaming Latency: 流式延迟
+
+<table><tr><td width="50%">
 
 In addition to evaluating the quality of text understanding and generated speech, the speed at which a spoken dialogue system generates speech responses is also crucial.
 This necessitates the ability to stream both the comprehension and generation of speech in real time, achieving an effect of generating speech while speaking ([IntrinsicVoice [248]](../../Models/SpokenDialogue/2024.10.09_IntrinsicVoice.md); [Moshi [44]](../../Models/SpokenDialogue/2024.09.17_Moshi.md); [LLaMA-Omni [57]](../../Models/SpokenDialogue/2024.09.10_LLaMA-Omni.md)).
 To assess the streaming performance of a model, one typically measures the time taken to generate the first token of speech (i.e., the waiting time after the user finishes speaking) and calculates the overall Real-Time Factor (RTF) of the spoken dialogue model's response.
 The RTF value is obtained by dividing the total duration of the speech segment generated by the model by the time taken by the model to generate that response.
 
+</td><td>
+
+</td></tr></table>
+
 ### 6.2.2·Advanced Evaluation: 高级评估
 
 #### Speech Intelligence: 语音智能
+
+<table><tr><td width="50%">
 
 Evaluating the speech intelligence of spoken dialogue systems is one of the key aspects.
 The definition of speech intelligence in spoken dialogue systems is discussed in detail in Section [Section 2.1.2](Sec.02_Overall.md).
 Given that speech intelligence encompasses a wide range of application scenarios, we address the evaluation separately for the understanding and generation components during the assessment.
 
+</td><td>
+
+</td></tr></table>
+
 ##### Understanding: 理解
+
+<table><tr><td width="50%">
 
 Ordinary cascaded spoken dialog models based on ASR getting text input will loss many paralinguistic information like speaking style, accent, emotion, etc.
 Thus many spoken dialogue models ([E-chat [227]](../../Models/SpokenDialogue/2023.12.31_E-chat.md); [ParalinGPT [128]](../../Models/SpokenDialogue/2023.12.23_ParalinGPT.md); [Spoken-LLM [127]](../../Models/SpokenDialogue/2024.02.20_Spoken-LLM.md)) devoted into helping dialog models understand the paralinguistic information.
@@ -410,7 +441,13 @@ The current evaluation methods usually transcript the output audio into text thr
 Evaluations are usually conducted in text, so commonly used evaluation metrics are as the same as in the section \ref{eval_text}, like BLEU and METEOR, which are used to measure the similarity between two sentences.
 Currently, there is limited research exploring whether spoken dialogue models can autonomously generate appropriate acoustic responses based on varying acoustic information, making it a promising area for future investigation.
 
+</td><td>
+
+</td></tr></table>
+
 ##### Generation: 生成
+
+<table><tr><td width="50%">
 
 In the generation component, evaluating the speech intelligence of spoken dialogue systems primarily focuses on controllability, i.e., the ability of the dialogue model to respond in a user-specified style and timbre in the zero-shot scenarios.
 There are various dimensions to assess style, such as pitch, speech rate, energy, emotion, and accent, among others.
@@ -418,12 +455,24 @@ ACC-metrics can be used to evaluate whether the spoken dialogue model can genera
 Additionally, the evaluation of voice cloning capabilities within the model can borrow metrics from the zero-shot TTS domain ([VALL-E [209]](../../Models/SpeechLM/2023.01.05_VALL-E.md); [NaturalSpeech2](../../Models/Diffusion/2023.04.18_NaturalSpeech2.md); [MobileSpeech [91]](../../Models/SpeechLM/2024.02.14_MobileSpeech.md); [HAM-TTS [210]](../../Models/SpeechLM/2024.03.09_HAM-TTS.md)), using speaker similarity indices ([WavLM [27]](../../Models/SpeechRepresentation/2021.10.26_WavLM.md))
 Currently, there are few models that explore the generation of speech intelligence in spoken dialogue systems, and this area warrants further refinement and exploration in future work.
 
+</td><td>
+
+</td></tr></table>
+
 #### Audio Understanding and Generation: 音频理解与生成
+
+<table><tr><td width="50%">
 
 In real-world scenarios, the broader definition of speech modality encompasses not only clear human speech but also a wide range of natural sounds such as dog barking and bird chirping, all of which can be considered forms of audio.
 Evaluating the ability of spoken dialogue models to understand and generate such audio is a critical aspect of assessing the model’s performance.
 
+</td><td>
+
+</td></tr></table>
+
 ##### Audio Understanding: 音频理解
+
+<table><tr><td width="50%">
 
 On the audio comprehension side, various sub-tasks are commonly employed to measure a system's capacity to understand audio, including tasks such as [Audio Captioning (AudioCap) [105]](../../Evaluations/AudioCaps.md), [Sound Event Detection (SED) [152]](../../Evaluations/SED.md), audio classification, and audio-motivated creative writing ([Qwen-Audio [34]](../../Models/SpokenDialogue/2023.11.14_Qwen-Audio.md)), among others.
 The core of these tasks lies in evaluating the model’s ability to process and interpret the complex acoustic information embedded within the audio.
@@ -432,7 +481,13 @@ However, for the AudioCap task, the problem is generally open-ended, meaning the
 As a result, existing evaluation methods are primarily based on measuring the similarity between the generated text and the reference text, using traditional metrics such as [BLEU [161]](../../Evaluations/BLEU.md) and [METEOR [13]](../../Evaluations/METEOR.md), or newer evaluation approaches involving large language models such as GPT-4o ([LLM Judge [252]](../../Evaluations/2023.06.09_LLM_Judge.md)).
 In the case of audio-motivated creative writing, where the objective is to generate inventive descriptions from a given audio input, evaluation typically relies on subjective measures, given the divergent nature of the creative process involved.
 
+</td><td>
+
+</td></tr></table>
+
 ##### Audio Generation: 音频生成
+
+<table><tr><td width="50%">
 
 Additionally, on the audio generation side, producing high-quality audio should be considered an advanced capability for a conversational spoken dialogue model.
 However, as most current spoken dialogue systems lack the ability to generate audio, this remains an area for further exploration in the future end-to-end spoken dialogue systems.
@@ -447,7 +502,13 @@ FD, KL, and IS are built upon the [PANNs model [110]](../../Models/_tmp/2019.12.
 In contrast, FAD uses [VGGish [76]](../../Models/_tmp/VGGish.md) as an audio classifier, processing raw audio waveforms as input.
 The CLAP score, adapted from the [CLIP score [77]](../../Evaluations/ClipScore.md), is a reference-free metric used to assess audio-text alignment and strongly correlates with human perception.
 
+</td><td>
+
+</td></tr></table>
+
 #### Music Understanding and Generation: 音乐理解与生成
+
+<table><tr><td width="50%">
 
 In advanced spoken dialogue models, the evaluation of music modality understanding and generation follows a methodology similar to that used for audio modality.
 Unlike Audio Understanding, which only requires a general description of the events that occur in the audio, Music Understanding requires appreciating the style and genre of music, understanding its keys, themes, and other rich information.
@@ -456,7 +517,13 @@ For music captioning task, MusicCaps ([MusicLM [2]](../../Models/SpeechLM/2023.0
 For music analysis, [Nsynth [56]](../../Models/_tmp/Nsynth.md) provides rich note data information.
 In terms of evaluation for music generation, subjective Mean Opinion Score (MOS) assessments or measures of similarity between generated music and target music are commonly used.
 
+</td><td>
+
+</td></tr></table>
+
 #### Multilingual Capability: 多语言能力
+
+<table><tr><td width="50%">
 
 The ability to speak multiple languages is also required for a spoken dialogue model, but most current models ([LTU [68]](../../Models/SpeechLM/2023.05.18_LTU.md); [Spoken-LLM [127]](../../Models/SpokenDialogue/2024.02.20_Spoken-LLM.md); [ParalinGPT [128]](../../Models/SpokenDialogue/2023.12.23_ParalinGPT.md); [LLaSM [119]](../../Models/SpeechLM/2023.08.30_LLaSM.md); [BLSP [208]](../../Models/SpeechLM/2023.09.02_BLSP.md); [E-chat [227]](../../Models/SpokenDialogue/2023.12.31_E-chat.md)) only focus on English and Chinese.
 A naive idea is to directly evaluate spoken dialogue models' capability in speech-to-speech or speech-to-text translation tasks ([CVSS [94]](../../Datasets/2022.01.11_CVSS.md); [CoVoST [206]](../../Datasets/2020.02.04_CoVoST.md)).
@@ -466,7 +533,13 @@ Explicitly requiring a spoken dialogue model to perform speech translation is no
 In most cases, when a user asks a question in a different language or with a distinct accent, the model is expected to automatically respond in the same language that the user is using.
 In this context, it seems more reasonable to evaluate the accuracy of the model’s generated speech in terms of language identification, combined with subjective human assessments, as a more intuitive and appropriate evaluation method.
 
+</td><td>
+
+</td></tr></table>
+
 #### Context Learning: 上下文学习
+
+<table><tr><td width="50%">
 
 The context learning capability is crucial for maintaining the coherence of an entire conversation.
 Similar to a memory function, the challenge lies in how to preserve this capability when relying solely on speech.
@@ -476,7 +549,13 @@ However, it is important to note the relevance of editing scenarios in long-dura
 In real spoken dialogue scenarios, the users will modify some certain key information, the model needs to promptly understand and respond accordingly, e.g., the users offer wrong information for solving a problem and modify the condition in the next dialog.
 So how to evaluate the model's online understanding ability is still needed further study.
 
+</td><td>
+
+</td></tr></table>
+
 #### Interaction Capability: 交互能力
+
+<table><tr><td width="50%">
 
 Interactive ability is also an essential metric for assessing the advanced capabilities of spoken dialogue systems.
 As illustrated in Fig.04 (b), basic interactive ability refers to the system's capacity to allow users to interrupt the conversation at any time.
@@ -488,7 +567,13 @@ In addition, in real-world scenarios, beyond basic interruptions, various discou
 Current spoken dialogue systems ([dGSLM [157]](../../Models/SpokenDialogue/2022.03.30_dGSLM.md)) typically track the frequency of these markers as a standard evaluation metric.
 Looking ahead, it may be valuable to assess whether future spoken dialogue models can effectively and appropriately interrupt human speakers, which could also represent a key dimension for evaluation the interaction capability.
 
+</td><td>
+
+</td></tr></table>
+
 #### Multimodal Capability: 多模态能力
+
+<table><tr><td width="50%">
 
 Spoken dialogue models primarily focus on the audio modality for both input and output.
 However, considering the close coupling between video and audio modalities in practical applications of dialogue systems, recent advancements in spoken dialogue models have incorporated the understanding of video and images in the input stage ([VITA [61]](../../Models/SpokenDialogue/2024.08.09_VITA.md); [Ocean-Omni [122]](../../Models/SpokenDialogue/2024.10.11_Ocean-Omni.md); [MultiDialog [162]](../../Models/SpeechLM/2024.06.12_MultiDialog.md)), indicate that future spoken dialogue models need to simultaneously understand visual information and audio information to achieve real-time Audio-Visual Understandings.
@@ -496,7 +581,13 @@ The evaluation of such models generally still focuses on the evaluation of dialo
 Therefore, this aspect can still be evaluated using metrics such as [BLEU [161]](../../Evaluations/BLEU.md) and [METEOR [13]](../../Evaluations/METEOR.md) to assess sentence semantic similarity.
 However, research in this area also focuses on the understanding of visual information, and how to evaluate the model's correct understanding of real-time visual information in dialogue is also a difficulty, still can be a future benchmark direction.
 
+</td><td>
+
+</td></tr></table>
+
 #### Security: 安全性
+
+<table><tr><td width="50%">
 
 Security is also an integral part of the evaluation, how to ensure that the output of the model complies with ethical and social norms is a critical aspect.
 Spoken dialogue models may encounter security issues such as harmful content generation, privacy pitfalls, bias, and adversarial attacks.
@@ -505,18 +596,36 @@ The commonly used metric is to evaluate the attack success rate of injection att
 However, there are relatively few evaluation methods in the field of speech modality.
 How to construct a dataset for attacking spoken dialogue models, avoid poisoning of speech data, and evaluate the model's speech defense capabilities as benchmarks are required further research in the field of spoken dialogue model evaluation in the future.
 
+</td><td>
+
+</td></tr></table>
+
 ## 6.3·Benchmark: 基准
+
+<table><tr><td width="50%">
 
 We list the common benchmarks for evaluating voice dialogue systems in the table\ref{table:benchmark}, and briefly introduce each benchmark in this section.
 
+</td><td>
+
+</td></tr></table>
+
 #### VoiceBench
+
+<table><tr><td width="50%">
 
 [VoiceBench [29]](../../Evaluations/2024.10.22_VoiceBench.md)'s Key evaluation dimensions include general knowledge, instruction-following ability, and safety compliance.
 The benchmark incorporates both synthetic and real spoken instructions to simulate diverse speaker styles, environmental conditions, and content variations.
 It challenges systems with tasks involving accent adaptability, handling noisy environments, and robustness against content irregularities such as grammatical errors, disfluencies, and mispronunciations.
 Additionally, it explores the systems' resilience under varying speaker characteristics (age, pitch, and speaking speed) and environmental challenges like reverberation, background noise, and far-field effects.
 
+</td><td>
+
+</td></tr></table>
+
 #### SUPERB
+
+<table><tr><td width="50%">
 
 The benchmark [SUPERB [235]](../../Evaluations/2021.05.03_SUPERB.md) evaluates speech processing models across multiple dimensions, including content recognition, speaker modeling, semantic understanding, and paralinguistic analysis.
 Tasks in content recognition cover phoneme recognition, automatic speech recognition, keyword spotting, and query-by-example spoken term detection, focusing on transcription and content detection accuracy.
@@ -525,14 +634,25 @@ Semantic understanding includes intent classification and slot filling, testing 
 Paralinguistic analysis focuses on emotion recognition, capturing models' ability to interpret affective cues from speech.
 The evaluation framework uses publicly available datasets and conventional metrics to provide a standardized testbed for assessing generalizability and task-specific performance.
 
+</td><td>
+
+</td></tr></table>
+
 #### AudioBench
+
+<table><tr><td width="50%">
 
 [AudioBench [205]](../../Evaluations/2024.06.23_AudioBench.md) evaluates spoken dialogue models across three primary dimensions: speech understanding, audio scene understanding, and voice (paralinguistic) understanding.
 It encompasses eight distinct tasks and leverages 26 datasets, including seven newly developed datasets.
 The evaluation emphasizes models' ability to handle instruction-following tasks conditioned on audio signals, addressing aspects such as speech recognition accuracy, environmental sound interpretation, and paralinguistic feature extraction (e.g., emotion, gender, accent).
 
+</td><td>
+
+</td></tr></table>
 
 #### AirBench
+
+<table><tr><td width="50%">
 
 [AIR-Bench [234]](../../Evaluations/2024.02.12_AIR-Bench.md) assesses the capabilities of Spoken dialogue models to understand and interact based on various audio types, including human speech, natural sounds, and music.
 It consists of two primary components: a foundation benchmark with 19 specific audio tasks and over 19,000 single-choice questions, and a chat benchmark featuring more than 2,000 open-ended audio-prompted questions.
@@ -540,19 +660,37 @@ The foundation benchmark evaluates fundamental skills such as speech recognition
 The chat benchmark tests the models' ability to handle complex, real-world audio-based queries, including mixed audio with varying loudness and temporal offsets.
 AIR-Bench introduces a novel audio mixing strategy to simulate complex real-world scenarios and employs GPT-4-based evaluation to judge model-generated hypotheses against reference answers.
 
+</td><td>
+
+</td></tr></table>
+
 #### SpokenWOZ
+
+<table><tr><td width="50%">
 
 [SpokenWOZ [192]](../../Evaluations/SpokenWOZ.md) evaluates task-oriented dialogue (TOD) systems in spoken scenarios, addressing challenges unique to spoken conversations, such as incremental processing, disfluencies, incomplete utterances, and Automatic Speech Recognition (ASR) noise.
 It introduces novel metrics to assess performance in tasks like cross-turn slot detection and reasoning slot detection, which require integrating information across multiple turns and reasoning from implicit cues.
 The benchmark encompasses multi-domain, human-to-human dialogues with diverse speech characteristics, testing systems on both textual and auditory inputs through large-scale annotated datasets with over 200,000 utterances and 249 hours of audio
 
+</td><td>
+
+</td></tr></table>
+
 #### SD-EVAL
+
+<table><tr><td width="50%">
 
 [SD-Eval [7]](../../Evaluations/2024.06.19_SD-Eval.md) evaluates spoken dialogue models across multiple dimensions, focusing on both spoken understanding and response generation beyond textual content.
 It assesses models' abilities to process three key types of information embedded in speech: content (e.g., linguistic meaning), paralinguistic cues (e.g., emotion, accent, age), and environmental context (e.g., background sounds).
 The benchmark consists of four sub-tasks—emotion, accent, age, and environment—constructed from diverse datasets and totaling 7,303 utterances spanning 8.76 hours.
 
+</td><td>
+
+</td></tr></table>
+
 #### SuperCLUE
+
+<table><tr><td width="50%">
 
 SuperCLUE evaluates spoken dialogue systems across four main dimensions: voice interaction, general capabilities, scenario applications, and response speed.
 Key metrics include interruption recognition, speech tone adjustment, semantic understanding, naturalness of speech, and memory accuracy.
@@ -560,11 +698,20 @@ Additionally, it measures real-time data retrieval, reasoning ability, complianc
 Scenario-specific applications like emotional counseling, health consultations, and customer service are assessed for precision and effectiveness.
 The final aspect is response timeliness, focusing on latency and delay management.However, this benchmark is not open source and focuse on Mandarine ability
 
+</td><td>
+
+</td></tr></table>
 
 #### MMAU
+
+<table><tr><td width="50%">
 
 [MMAU [182]](../../Evaluations/2024.10.24_MMAU.md) evaluates spoken dialogue models across multiple dimensions, encompassing 27 distinct tasks divided into reasoning and information extraction categories.
 It assesses models on their ability to comprehend and reason about speech, sound, and music by leveraging advanced cognitive skills and domain-specific knowledge.
 Key evaluated areas include temporal event reasoning, speaker role mapping, emotional tone interpretation, eco-acoustic knowledge, phonemic stress pattern analysis, and melodic structure interpretation.
 It examines not just basic recognition or transcription capabilities but also models' proficiency in complex reasoning, contextual understanding, and the ability to extract and apply world knowledge.
 Additionally, MMAU scrutinizes performance consistency across varying difficulty levels, testing systems' depth of reasoning and robustness in real-world audio scenarios.
+
+</td><td>
+
+</td></tr></table>
