@@ -1,32 +1,32 @@
 # 4·Controllable TTS: 可控文本转语音
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 In this section, we first review recent TTS work from the perspective of model architecture, followed by a detailed discussion of control modes in controllable TTS.
 
-</details>
-<br>
+</td><td>
 
 在本节中, 我们首先从模型架构的角度回顾近期的 TTS 工作, 然后详细讨论可控 TTS 中的控制模式.
 
+</td></tr></table>
+
 ## A·Model Architecture: 模型架构
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 Current model architectures can be broadly classified into two main categories: the first is the non-autoregressive (NAR) generative models, which are based on HMMs, neural networks, VAEs, diffusion models, flow matching, and other NAR techniques.
 The second category relies on autoregressive (AR) codec language models, which typically quantize speech into discrete tokens and use decoder-only models to autoregressively generate these tokens.
 We summarize the NAR-based and AR-based controllable TTS methods in Table.03 and Table.04, respectively.
 
-</details>
-<br>
+</td><td>
 
 现有模型架构可以大致分类为两个主要类别:
 - 非自回归生成式模型: 基于 HMM, 神经网络, 变分自编码器, 扩散模型, 流匹配, 和其他.
 - 自回归编解码器语言模型: 将语音量化为离散 Token, 并使用仅解码器的模型来自回归生成这些 Token.
 
 我们在表格 03 和表格 04 中分别总结了非自回归和自回归可控 TTS 方法.
+
+</td></tr></table>
 
 ### Fully Non-Autoregressive (NAR) Architectures: 完全非自回归架构
 
@@ -86,6 +86,8 @@ We summarize the NAR-based and AR-based controllable TTS methods in Table.03 and
 
 #### HMM-Based Approaches: 基于 HMM 的方法
 
+<table><tr><td width="50%">
+
 In the realm of Controllable Text-To-Speech (CTTS), advancements in Hidden Markov Model (HMM) architectures have significantly enhanced the manipulation of speech elements such as emotion and prosody.
 Yamagishi et al.~\cite{yamagishi2003modeling} pioneered this field by introducing style-dependent and style-mixed modeling, which allowed precise emulation of human-like emotional nuances and versatile synthesis across various styles by incorporating style as a contextual variable.
 Building on this foundation, Qin et al.\cite{qin2006hmm} developed the "average emotion model," which utilized MLLR-based adaptation to modulate emotions like happiness and sadness even with limited data, thus advancing the emotional intelligence of synthetic speech systems.
@@ -94,7 +96,11 @@ Furthering expressive variability, [Nose et al. (2012) [119]](../../Models/_Earl
 [Lorenzo-Trueba et al. (2015) [72]](../../Models/_Early/Emotion_Transplantation_through_Adaptation_in_HMM-Based_Speech_Synthesis.md) expanded on these capabilities with CSMAPLR adaptation, introducing "emotion transplantation" to transfer emotional states between speakers while preserving voice distinctiveness, enhancing personalized human-computer interaction.
 These innovations in HMM architectures have broadened the expressiveness and individuality in synthetic speech, augmenting technological interfaces and paving the way for future developments in adaptive, lifelike speech solutions.
 
+</td></tr></table>
+
 #### Transformer-Based Approaches: 基于 Transformer 的方法
+
+<table><tr><td width="50%">
 
 Advancements in Controllable Text-to-Speech (TTS) technology highlight the integration of deep learning with audio processing, driven by Transformer-based architectures.
 Ren et al. introduced [FastSpeech [15]](../../Models/Acoustic/2019.05.22_FastSpeech.md), a feed-forward non-autoregressive Transformer model that significantly enhances TTS efficiency by reducing inference time and improving the stability issues found in autoregressive models like Tacotron 2.
@@ -106,7 +112,11 @@ Additionally, [FastPitch](../../Models/Acoustic/2020.06.11_FastPitch.md) incorpo
 This capability enhances expressiveness and retains the efficiency benefits established by FastSpeech.
 These innovations significantly contribute to the development of more interactive and natural AI-driven communication systems, underscoring the potential of integrating AI with human-centric disciplines to craft a future where technology and humanity coexist harmoniously.
 
+</td></tr></table>
+
 #### VAE-Based Approaches: 基于 VAE 的方法
+
+<table><tr><td width="50%">
 
 Recent advancements in Controllable Text-To-Speech (TTS) systems are largely driven by the integration of Variational Autoencoder (VAE) architectures, which enhance the flexibility and precision of speech modulation.
 [Zhang et al. [18]](../../Models/Acoustic/2018.12.11_Learning_Latent_Representations_for_Style_Control_and_Transfer_in_End-to-End_Speech_Synthesis.md) pioneered the use of VAEs in end-to-end speech synthesis, creating disentangled latent representations that allow effective style control and transfer, especially in prosody and emotion management, outperforming the Global Style Token model in style transfer tasks.
@@ -115,7 +125,11 @@ Liu et al.\cite{liu2022controllable} further advanced the field with the CLONE m
 By employing a conditional VAE with normalizing flows and a dual path adversarial training mechanism with multi-band discriminators, CLONE achieves nuanced control over prosody and energy, demonstrating superior performance in both speech quality and prosody control compared to state-of-the-art models.
 These collective innovations highlight the adaptability of VAEs in managing complex speech generation tasks, marking significant progress toward more dynamic and versatile TTS technologies, with ongoing research promising even greater advancements.
 
+</td></tr></table>
+
 #### Diffusion-Based Approaches: 基于扩散模型的方法
+
+<table><tr><td width="50%">
 
 The core concept of diffusion-based models is to generate target data by progressively removing noise.
 During the forward diffusion phase, noise is incrementally added to the original data to form a noise distribution.
@@ -131,7 +145,11 @@ This includes domain-specific modeling, such as phoneme and duration~\cite{shen2
 To address the issue of reduced naturalness caused by the addition of duration models, DiTTo-TTS~\cite{lee2024ditto} leverages the off-the-shelf pre-trained text and speech encoders without relying on speech domain-specific modeling by incorporating cross-attention mechanisms with the prediction of the total length of speech representations.
 Similarly, SimpleSpeech~\cite{yang2024simplespeech} proposes a speech codec model (SQ-Codec) based on scalar quantization and uses the sentence duration to control the generated speech length.
 
+</td></tr></table>
+
 #### Flow-Based Approaches: 基于流模型的方法
+
+<table><tr><td width="50%">
 
 Flow-based methods leverage invertible flow transformations to learn mappings from target speech features to simple distributions, typically standard Gaussian distributions.
 Due to their invertibility, this mechanism can directly sample from the simple distribution and generate high-fidelity speech in the reverse direction.
@@ -148,13 +166,19 @@ E1 TTS~\cite{liu2024e1} further distills a diffusion-based TTS model into a one-
 SimpleSpeech 2~\cite{yang2024simplespeech2} introduces a flow-based scalar transformer diffusion model.
 The work also provides a theoretical analysis, showing that the inclusion of a small number of noisy labels in a large-scale dataset is equivalent to introducing classifier-free guidance during model optimization.
 
+</td></tr></table>
+
 #### Other NAR Approaches: 其他方法
+
+<table><tr><td width="50%">
 
 Other works leverage GAN-based or Masked Generative-based methods for TTS generation.
 StyleTTS 2~\cite{li2024styletts2} employs large pre-trained speech language models (SLMs) such as Wav2Vec 2.0~\cite{baevski2020wav2vec}, [HuBERT [166]](../../Models/SpeechRepresentation/2021.06.14_HuBERT.md), and WavLM~\cite{chen2022wavlm} as discriminators, in combination with a novel differentiable duration modeling approach.
 This setup uses SLM representations to enhance the naturalness of the synthesized speech.
 [MaskGCT [78]](../../Models/SpeechLM/2024.09.01_MaskGCT.md) proposes masked generative transformers without requiring text-speech alignment supervision and phone-level duration.
 The model employs a two-stage system, both trained using a mask-and-predict learning paradigm.
+
+</td></tr></table>
 
 ### Autoregressive (AR) Architectures: 自回归架构
 
@@ -198,6 +222,8 @@ The model employs a two-stage system, both trained using a mask-and-predict lear
 |
 #### RNN-Based Approaches: 基于 RNN 的方法
 
+<table><tr><td width="50%">
+
 Controllable Text-To-Speech (TTS) technology has seen significant advancements through innovations in neural network architectures, facilitating speech that is both natural-sounding and adaptable in terms of emotion, prosody, and pitch.
 A key breakthrough was the introduction of [Tacotron [74]](../../Models/Acoustic/2017.03.29_Tacotron.md), a sequence-to-sequence architecture that effectively integrates prosodic variations, laying the groundwork for precise control over speech attributes.
 [Tacotron 2 [175]](../../Models/Acoustic/2017.12.16_Tacotron2.md) further enhanced this capability by better managing prosodic variability, though it averaged these variations, indicating a need for more sophisticated control methods.
@@ -209,7 +235,11 @@ Hierarchical models like MsEmoTTS\cite{lei2022msemotts} refine this approach by 
 These advancements have expanded the scope to produce nuanced TTS outputs, enabling precise control over emotion, prosody, and pitch, with applications ranging from virtual assistants to interactive narratives.
 As researchers continue to explore the potential of neural networks in TTS, the technology promises even richer, more engaging digital experiences, moving towards speech synthesis that is indistinguishable from natural human interaction.
 
+</td></tr></table>
+
 #### LLM-Based Approaches: 基于大语言模型的方法
+
+<table><tr><td width="50%">
 
 Inspired by the success of large language models (LLMs) in natural language processing (NLP), recent studies have explored leveraging in-context learning for zero-shot TTS generation.
 
@@ -238,19 +268,31 @@ Although models using discrete tokens as intermediate representations have achie
 MELLE~\cite{meng2024autoregressive} optimizes the training objectives and sampling strategy, marking the first exploration of using continuous-valued tokens instead of discrete-valued tokens within the paradigm of autoregressive speech synthesis models.
 Similar to MELLE, ARDiT~\cite{liu2024autoregressive} encodes audio as vector sequence in continuous space and autoregressively generates these sequences by a decoder-only transformer.
 
+</td></tr></table>
+
 ## B·Control Strategies: 控制策略
+
+<table><tr><td width="50%">
 
 The control strategies in existing controllable TTS can be broadly classified into four categories: style tagging using discrete labels, speech reference prompt for customizing a new speaker's voice with just a few seconds of voice input, controlling speech style using natural language descriptions, and the instruction-guided mode.
 We illustrate taxonomies of controllable TTS from the perspective of control strategies in Fig.03.
 
+</td></tr></table>
+
 ### Style Tagging: 风格标记
+
+<table><tr><td width="50%">
 
 This paradigm typically employs target control attributes, primarily emotion-related controls, as categorical label inputs to enable controllable speech synthesis.
 StyleTagging-TTS~\cite{kim2021expressive} utilizes a short phrase or word to represent the style of an utterance and learns the relationship between linguistic embedding and style embedding space by a pre-trained language model.
 
 However, these methods are limited in expressive diversity, as they can only model a small set of pre-defined styles.
 
+</td></tr></table>
+
 ### Reference Speech Prompt: 参考语音提示
+
+<table><tr><td width="50%">
 
 This paradigm aims to customize a new speaker’s voice with just a few seconds of voice prompt.
 The architecture can be abstracted into two main components: a speaker encoder that processes the reference speech and outputs a speaker embedding, and a conditional TTS decoder that takes both text and speaker embedding as input to generate speech that matches the style of the reference prompt.
@@ -267,7 +309,11 @@ Some works also decouple timbre and style information from the reference speech,
 MegaTTS 2~\cite{jiang2024mega} introduces an acoustic autoencoder that separately encodes prosody and timbre into the latent space, enabling the transfer of various speaking styles to the desired timbre.
 [ControlSpeech [106]](../../Models/SpeechLM/2024.06.03_ControlSpeech.md) uses bidirectional attention and mask-based parallel decoding to capture codec representations in a discrete decoupling codec space, allowing independent control of timbre, style, and content in a zero-shot manner.
 
+</td></tr></table>
+
 ### Natural Language Descriptions: 自然语言描述
+
+<table><tr><td width="50%">
 
 Recent studies explore controlling speech style using natural language descriptions that include attributes such as pitch, gender, and emotion, making the process more user-friendly and interpretable.
 In this paradigm, several speech datasets with natural language descriptions~\cite{[PromptTTS [101]](../../Models/Acoustic/2022.11.22_PromptTTS.md),ji2024textrolspeech,[ControlSpeech [106]](../../Models/SpeechLM/2024.06.03_ControlSpeech.md)} and associated prompt generation pipelines~\cite{ji2024textrolspeech,leng2023prompttts2,lyth2024natural} have been proposed.
@@ -287,9 +333,15 @@ Audiobox~\cite{vyas2023audiobox} introduces both description-based and example-b
 VoiceLDM~\cite{lee2024voiceldm} and AST-LDM~\cite{kim2024speak} extend AudioLDM~\cite{liu2023audioldm} to incorporate environmental context in TTS generation by adding a content prompt as a conditional input.
 Building on VoiceLDM, MS$^{2}$KU-VTTS~\cite{he2024multi} further expands the dimensions of environmental perception, enhancing the generation of immersive spatial speech.
 
+</td></tr></table>
+
 ### Instruction-Guided Control: 指令引导控制
+
+<table><tr><td width="50%">
 
 The natural language description-based TTS methods discussed above require splitting inputs into content and description prompts, which limits fine-grained control over speech and does not align with other AIGC models.
 [VoxInstruct [103]](../../Models/SpeechLM/2024.08.28_VoxInstruct.md) proposes a new paradigm that extends traditional text-to-speech tasks into a general human instruction-to-speech task.
 Here, human instructions are freely written in natural language, encompassing both the spoken content and descriptive information about the speech.
 To enable automatic extraction of the synthesized speech content from raw text instructions, VoxInstruct uses speech semantic tokens as an intermediate representation, bridging the gap in current research by allowing the simultaneous use of both text description prompts and speech prompts for speech generation.
+
+</td></tr></table>
