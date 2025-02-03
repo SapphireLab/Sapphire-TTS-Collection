@@ -1,7 +1,6 @@
 # 5·Streaming, Duplex, and Interaction
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 Streaming, full-duplex technology, and interactions, are crucial elements for enhancing the interactive capabilities of spoken dialogue models because they directly impact the system's responsiveness, the fluidity of natural interaction, and its ability to handle complex interactions.
 Unlike text language models, spoken dialogue models require real-time processing of user input.
@@ -14,8 +13,7 @@ At the same time, duplex technology is an indispensable key implementation, whic
 
 Next, we will first discuss the streaming processing method in Section 5.1, then introduce the key technologies of duplex communication and explains how to handle interaction to improve user experience in Section 5.2.
 
-</details>
-<br>
+</td><td>
 
 流式, 完全双工技术, 和交互, 是增强口语对话模型的交互能力的关键元素, 因为它们直接影响了系统的响应能力, 自然交互的流畅度, 以及处理复杂交互的能力.
 和文本语言模型不同, 口语对话模型要求实时处理用户输入.
@@ -34,10 +32,11 @@ Next, we will first discuss the streaming processing method in Section 5.1, then
 下面, 我们将在 5.1 节首先讨论流式处理方法;
 然后, 在 5.2 节介绍双工通信的关键技术, 并解释如何处理交互以提高用户体验.
 
+</td></tr></table>
+
 ## 5.1·Streaming Spoken Dialogue Models: 流式口语对话模型
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 The core of streaming speech models lies in their "real-time" and "continuous" capabilities, meaning they can process input and generate output simultaneously without waiting for complete input.
 This includes two main aspects:
@@ -50,8 +49,7 @@ Instead, it can produce output progressively as processing occurs, which improve
 These streaming capabilities allow the model to perform more fluidly in real-time interactions, providing a seamless communication experience for users.
 We will explore streaming techniques in both end-to-end and cascaded spoken dialogue models, discussing the implementation methods of streaming in each system and highlighting their similarities and differences.
 
-</details>
-<br>
+</td><td>
 
 流式语音模型的核心在于其 "实时" 和 "连续" 的能力, 这意味着它们可以同时处理输入和生成输出, 而不需要等待完整的输入.
 
@@ -63,17 +61,17 @@ We will explore streaming techniques in both end-to-end and cascaded spoken dial
 
 我们将探索端到端和级联口语对话模型中的流式技术, 探讨流式在每种系统中的实现方法, 并强调它们的相似和不同之处.
 
+</td></tr></table>
+
 ### 5.1.1·Streaming End-to-End Spoken Dialogue Models: 流式端到端口语对话模型
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 End-to-end streaming spoken dialogue models often leverage the knowledge of pre-trained text language models alongside an audio tokenizer, employing an tokenizer-detokenizer architecture to process and output audio signals.
 Based on the concepts of streaming input and output discussed above, end-to-end models also require specific design considerations to enable streaming capabilities.
 These designs center around the model’s input and output handling and can be distilled into three core techniques: causal convolution, causal attention mechanisms, and queue management.
 
-</details>
-<br>
+</td><td>
 
 端到端流式口语对话模型通常利用了预训练文本语言模型的知识和音频分词器, 采用分词器-反分词器架构处理和输出音频信号.
 基于上面讨论的流式输入和输出的概念, 端到端模型还要求具体的设计考虑, 以启用流式能力.
@@ -82,10 +80,11 @@ These designs center around the model’s input and output handling and can be d
 - 因果注意力机制 (Causal Attention Mechanisms)
 - 队列管理 (Queue Management)
 
+</td></tr></table>
+
 #### Causal Convolution: 因果卷积
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 [Causal Convolution [12]](../../Models/_Basis/2018.03.04_TCN.md) is a specialized form of convolution widely used in time-series processing, especially suitable for streaming speech models.
 The key feature of causal convolution is that the current output depends only on the current and past inputs, without being influenced by future inputs, thereby strictly respecting temporal order.
@@ -102,8 +101,7 @@ Causal convolution allows the model to compute outputs without accessing future 
 - **Reducing latency**.
 By not requiring future input data, causal convolution significantly lowers the latency in speech models, making it more suitable for real-time interaction applications, such as voice assistants and live translation.
 
-</details>
-<br>
+</td><td>
 
 [因果卷积 [12]](../../Models/_Basis/2018.03.04_TCN.md)是时间序列处理中广泛使用的卷积的一种特殊形式, 特别适用流式语音模型.
 因果卷积的关键特征是当前输出仅依赖于当前和过去输入, 而不受未来输入的影响, 因此严格遵循时间顺序.
@@ -121,10 +119,11 @@ By not requiring future input data, causal convolution significantly lowers the 
 - **确保实时处理**: 因果卷积允许模型在不访问未来帧的情况下计算输出, 实现实时处理, 当输入接收时就能生成输出, 这对于流式至关重要.
 - **降低延迟**: 由于不需要未来输入数据, 因果卷积在语音模型中显著降低延迟, 适用于如语音助手和实时翻译等实时交互应用.
 
+</td></tr></table>
+
 #### Causal Attention: 因果注意力
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 Causal Attention is a specialized form of the attention mechanism designed to ensure that each position in a sequence can only attend to previous positions, thus preserving the temporal order crucial for streaming models.
 This approach ensures that the model’s current output depends only on past and present information, preventing any “leakage” of future information, which is essential for real-time processing tasks.
@@ -136,8 +135,7 @@ In streaming speech models, causal attention plays a significant role in enablin
 Unlike standard attention, which requires access to the entire sequence, causal attention can operate incrementally.
 As new inputs are processed, the model can generate outputs without waiting for future context.
 
-</details>
-<br>
+</td><td>
 
 因果注意力是注意力机制的一种特殊形式, 设计用于确保序列中的每个位置智能关注之前的位置, 因此保留时序对于流式模型至关重要.
 这种方法确保了模型当前输出仅依赖于过去和现在信息, 阻止未来信息的任何"泄露", 这对于实时处理任务很重要.
@@ -151,10 +149,11 @@ As new inputs are processed, the model can generate outputs without waiting for 
 和标准注意力要求访问整个序列不同, 因果注意力可以增量地运行.
 当新输入被处理时, 模型可以生成输出而无需等待未来上下文.
 
+</td></tr></table>
+
 #### [Queue Management: 队列管理 [220]](../../Models/SpeechCodec/2023.05.26_AudioDec.md)
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 Audio streams are typically split into frames, then processed in sequence via a queue management system that ensures real-time, orderly processing.
 
@@ -175,8 +174,7 @@ The entire model, including the codec, transformer, and attention mechanism, is 
 OmniFlatten proposes chunk-based processing of text and speech along with gradual learning techniques and data handling to reduce turn-taking delays, such as response delays when users finish speaking or interrupt the system.
 These models have achieved true streaming capabilities and established a foundation for diverse, bidirectional interactions.
 
-</details>
-<br>
+</td><td>
 
 音频流通常被分割成帧, 然后以序列形式通过队列管理系统确保实时有序的处理.
 
@@ -196,10 +194,11 @@ These models have achieved true streaming capabilities and established a foundat
 
 这些模型实现了真正的流式能力, 并为多样化的双向交互奠定了基础.
 
+</td></tr></table>
+
 ### 5.1.2·Streaming Cascaded Spoken Dialogue Models: 流式级联口语对话模型
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 Consistent with the above, ensuring streaming capability in a model relies on designing both input and output for streaming.
 Due to its cascaded nature, a cascaded model typically relies on external streaming ASR and TTS components, placing the streaming responsibility on these ASR and TTS modules.
@@ -207,8 +206,7 @@ Due to its cascaded nature, a cascaded model typically relies on external stream
 In [Wang et al. [211]](../../Models/_Full/2024.05.29_A_Full-Duplex_Speech_Dialogue_Scheme_Based_on_Large_Language_Models.md), comparative studies were conducted on the streaming ASR model [U2++ Conformer](../../Models/ASR/2021.06.10_U2++.md), streaming TTS model [XTTS-v2 [21]](../../Models/SpeechLM/2024.06.07_XTTS.md), non-streaming ASR model **Whisper**, and non-streaming TTS model [VITS2 [109]](../../Models/E2E/2023.07.31_VITS2.md).
 The combination of streaming components achieved the lowest latency and significantly contributed to interactive interruption capabilities.
 
-</details>
-<br>
+</td><td>
 
 和前文一致, 确保模型中的流式能力依赖于设计流式输入和输出.
 由于模型的级联性质, 级联模型通常依赖于外部的流式 ASR 和 TTS 组件, 将流式责任放在这些 ASR 和 TTS 模块上.
@@ -217,12 +215,13 @@ The combination of streaming components achieved the lowest latency and signific
 
 流式组件的组合实现了最低延迟, 并为交互中断能力提供了显著贡献.
 
+</td></tr></table>
+
 ## 5.2·Duplex Technology and Interaction: 双工技术和交互
 
 ### 5.2.1·Duplex Technology: 双工技术
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 The term Duplex originates from the field of communications, used to describe interaction modes between two parties in data transmission.
 Depending on the type of communication, duplex is divided into half-duplex and full-duplex.
@@ -231,8 +230,7 @@ With the development of audio processing and generation technology , the concept
 Here, duplex doesn’t just refer to signal transmission but emphasizes the synchronization and natural interaction in human-computer dialogue.
 Specifically, within model architecture, it means that the model must retain its ability to perceive external input even while generating a response---essentially, the ability to listen while speaking.
 
-</details>
-<br>
+</td><td>
 
 双工 (Duplex) 一词源自通信领域, 用于描述数据传输双方之间的交互模式.
 根据通信类型, 双工可以分为半双工和全双工.
@@ -241,20 +239,20 @@ Specifically, within model architecture, it means that the model must retain its
 此时双工不只是指代信号传输, 还强调了人机对话中的同步和自然互动.
 具体来说, 在模型架构中, 它意味着模型必须保持其接收外部输入的能力甚至是在生成响应时, 也就是在说话的时候保持监听的能力.
 
+</td></tr></table>
+
 ![](Images/Fig.08.png)
 
 #### Simplex: 单工
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 In simplex communication, data flows in only one direction.
 The speaker can send data, while the listener can only receive it.
 As shown in Figure 08(a), the robot continuously transmits audio, while the user has no ability to respond.
 This fixed-direction, one-way communication has the limitation of lacking interactivity.
 
-</details>
-<br>
+</td><td>
 
 在单工通信中, 数据仅在一个方向流动.
 说话人可以发送数据, 但听众只能接收它.
@@ -262,10 +260,11 @@ This fixed-direction, one-way communication has the limitation of lacking intera
 如图 08(a) 所示, 机器人连续地传输音频, 而用户却无能力作出反应.
 这种固定方向, 单向的通信有着缺乏互动性的局限性.
 
+</td></tr></table>
+
 #### Half-Duplex: 半双工
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 In half-duplex communication, data flows in both directions but not simultaneously.
 The two parties must take turns speaking and listening.
@@ -278,8 +277,7 @@ These systems typically adopt an ASR-LM-TTS cascaded structure and are often con
 Although this interaction method is simple and easy to implement, it can feel rigid and disjointed in natural conversational settings, with notable latency.
 It is designed more for command execution rather than interactive communication.
 
-</details>
-<br>
+</td><td>
 
 在半双工通信中, 数据在两个方向流动但不能同时进行. 双方必须轮流说话和听.
 
@@ -296,10 +294,11 @@ It is designed more for command execution rather than interactive communication.
 尽管这种交互方法简单且易于实现, 但在自然对话设置下, 它可能感觉僵硬和分离, 带来明显的延迟.
 它主要为命令执行而设计, 而不是交互通信.
 
+</td></tr></table>
+
 #### Full-Duplex: 全双工
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 Full-duplex communication allows both parties to send and receive data simultaneously ([LSLM [142]](../../Models/SpokenDialogue/2024.08.05_LSLM.md)).
 Figure 08(c) shows the user and robot engaging in overlapping, real-time interaction, where backchannels and interruptions are possible.
@@ -307,8 +306,7 @@ This mode enables a natural, two-way conversation, where both the user and robot
 Full-duplex large voice models allow the system not only to listen and understand the user while they speak but also to interrupt at appropriate moments or respond with backchannel cues.
 Moreover, the system can detect the user’s intent to interrupt and pause itself accordingly, maintaining a smooth flow in the interaction.
 
-</details>
-<br>
+</td><td>
 
 全双工通信允许双方同时发送和接收数据 ([LSLM [142]](../../Models/SpokenDialogue/2024.08.05_LSLM.md)).
 图 08(c) 展示了用户和机器人在重叠, 实时互动中进行交流, 反向通道和中断都是可以的.
@@ -318,10 +316,11 @@ Moreover, the system can detect the user’s intent to interrupt and pause itsel
 全双工的大型声音模型允许系统不仅能在说话时听取并理解用户, 还能在适当的时候打断, 并以反向通道的形式回应.
 此外, 系统还可以检测到用户的打断意图, 并相应地暂停自己, 保持对话的流畅.
 
+</td></tr></table>
+
 #### Summary: 小结
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 The ultimate goal of a spoken dialogue model is to make the user feel as though they are conversing with a real human friend.
 Clearly, full-duplex technology is essential for achieving natural voice dialogue systems, enabling the system to send and receive audio signals simultaneously, thus facilitating real-time interaction.
@@ -330,8 +329,7 @@ Users and intelligent agents can interrupt each other while listening or express
 The challenges in realizing this lie in ensuring conversational fluidity, seamless turn-taking, and precise timing of interactions.
 Developing a full-duplex system that can both generate and receive voice signals in complex interactive scenarios remains a key focus in academic and industrial research.
 
-</details>
-<br>
+</td><td>
 
 口语对话模型的最终目标是让用户感觉自己正在和真正的人类朋友进行对话.
 很明显, 全双工技术是实现自然语音对话系统的必要条件, 它使得系统能够同时发送和接收音频信号, 这有助于实现实时互动.
@@ -341,10 +339,11 @@ Developing a full-duplex system that can both generate and receive voice signals
 实现这一目标的挑战在于确保对话流畅, 无缝轮流, 以及对话的精准时机.
 开发能够在复杂的交互场景中生成和接收语音信号的全双工系统, 仍然是学术和工业研究的关键关注点.
 
+</td></tr></table>
+
 ### 5.2.2·Interaction: 交互
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 Now that we understand duplex technology, we can further explore duplex spoken dialogue model.
 
@@ -395,8 +394,7 @@ When the user briefly pauses, the system can interpret this as a moment of thoug
 In situations where the system detects critical information, it can choose to interrupt the user to provide immediate feedback.
 For example, if the user is speaking but the system needs to alert them to an error, it can intervene in real-time to ensure effective communication.
 
-</details>
-<br>
+</td><td>
 
 现在我们理解了双工技术, 可以进一步探索双工模式口语对话模型.
 
@@ -420,26 +418,27 @@ For example, if the user is speaking but the system needs to alert them to an er
 通过这些概念, 我们可以更好地理解双工对话中的轮次交换行为.
 总而言之, 与基于文本的对话系统相比, 我们的与语音对话系统的互动可以分为中断, 反向通道和正常轮次交换.
 
+</td></tr></table>
+
 #### Cascaded Systems: 级联系统
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 To enable interactive functionality, cascaded spoken dialogue models typically require explicit modeling of dialogue turns.
 As the core, the large language model needs effective context and turn management.
 Next, we introduce several representative works on interaction in cascaded systems.
 
-</details>
-<br>
+</td><td>
 
 为了实现交互功能, 级联口语对话模型通常要求显式建模对话轮次.
 作为核心, 大语音模型需要有效的内容和轮次管理.
 接下来, 我们介绍级联系统中的几个代表性工作.
 
+</td></tr></table>
+
 ##### Duplex Conversation: 双工对话
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 In [Lin et al [130]](../../Models/_Full/Duplex_Conversation__Towards_Human-Like_Interaction_in_Spoken_Dialogue_Systems.md), three core modules are proposed to achieve smooth full-duplex dialogue: user state detection, response signal selection, and interruption detection.
 The user state detection module not only focuses on traditional turn-end detection but also identifies whether the user intends to switch turns, continue speaking, or hesitates during their speech.
@@ -450,18 +449,18 @@ Using multi-label classification, the system selects the optimal response for ea
 The interruption detection module flexibly responds to user interruptions.
 Unlike traditional rule-based detection methods, this system builds an end-to-end detection model with multimodal input (audio and text) that not only identifies genuine user interruptions but also avoids misinterpreting background noise or unintended voice signals as interruptions.
 
-</details>
-<br>
+</td><td>
 
 [Lin et al [130]](../../Models/_Full/Duplex_Conversation__Towards_Human-Like_Interaction_in_Spoken_Dialogue_Systems.md) 提出了三个核心模块, 以实现平滑的全双工对话: 用户状态检测, 响应信号选择, 和中断检测.
 - 用户状态检测模块: 不仅关注传统的轮次结束检测, 还可以识别用户是否打算切换轮次, 继续说话或是在说话时犹豫. 为了实现这一点, 系统使用多模态模型, 接收音频和文本作为输入, 并整合诸如语音节奏, 音高和停顿等特征以更精确地评估用户状态, 确定是否立即响应或等待更长时间.
 - 响应信号选择模块: 在合适的时机插入小的反向通道提示 (如 "嗯" 或 "对") 以模拟自然人类对话. 通过分析大量真实对话, 该模块提取并训练适合各种对话场景的响应信号. 使用多标签分类, 系统为每个对话上下文选择最优的响应, 显著减少用户等待时间并增强了对话流动.
 - 终端检测模块: 灵活响应用户中断. 和传统的基于规则的检测方法不同, 该系统构建了具有多模态输入 (音频和文本) 的端到端检测模型, 既可以识别真正的用户中断, 也避免误解背景噪声或意外语音信号为中断.
 
+</td></tr></table>
+
 ##### Outbound Agent System: 外呼智能体系统
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 [Jin et al [98]](../../Models/_Full/Duplex_Conversation_in_Outbound_Agent_System.md) proposed a full-duplex dialogue scheme for outbound systems, focusing on the issues of conversational fluidity and timing of interaction in speech dialogue.
 This scheme uses semantic analysis to determine whether the user truly intends to interrupt the system and can handle disjointed expressions when users mention named entities.
@@ -471,8 +470,7 @@ The model employs a pre-trained BERT-based text classifier and utilizes streamin
 Additionally, the system includes a Discontinuous Expression module to handle user pauses when mentioning named entities.
 Specifically, when users hesitate over entities (such as numbers, locations, or company names), VAD may erroneously detect turn-end.
 
-</details>
-<br>
+</td><td>
 
 [Jin et al [98]](../../Models/_Full/Duplex_Conversation_in_Outbound_Agent_System.md) 提出了用于外呼系统的全双工对话方案, 着重于语音对话中的对话流畅性和交互时机.
 该方案使用语义分析来确定用户是否真的打算中断系统, 并在用户提到命名实体是可以处理杂乱的表达.
@@ -482,10 +480,11 @@ Specifically, when users hesitate over entities (such as numbers, locations, or 
 此外, 该系统还包含了不连续表达模块, 用于处理当提到命名实体时的用户停顿.
 具体来说, 当用户在提到实体时犹豫 (如数字, 位置或公司名称), VAD 可能错误地检测到轮次结束.
 
+</td></tr></table>
+
 ##### Transition: 过渡段落
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 The advent of Large Language Models has significantly advanced generative AI development.
 Models like ChatGPT demonstrate strong capabilities in semantic understanding and logical reasoning, offering a simplified method to integrate various dialogue components into a unified framework, which may simplify SDS construction.
@@ -493,8 +492,7 @@ GPT-4o represents a milestone for dialogue systems, showcasing a nearly human-li
 Its flexible interaction style and interruption mechanisms make human-computer interaction more natural and fluid.
 However, as a commercial model, its training data and implementation details remain proprietary, making replication challenging.
 
-</details>
-<br>
+</td><td>
 
 大语言模型的出现显著推动了生成式人工智能的发展.
 模型如 ChatGPT 展示了在语义理解和逻辑推理方面的强大能力, 提供了一种简化的方法将各种对话组件集成到统一框架中, 这可能简化 SDS 构建.
@@ -502,10 +500,11 @@ GPT-4o 代表对话系统的里程碑, 展示了一种与人类十分相似的�
 其灵活的交互方式和中断机制使人机交互更加自然和流畅.
 然而, 作为商业模型, 其训练数据和实现细节仍然是专有, 使得复制具有挑战性.
 
+</td></tr></table>
+
 ##### Full-Duplex LLM: 全双工大语言模型
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 [Wang et al [211]](../../Models/_Full/A_Full-Duplex_Speech_Dialogue_Scheme_Based_on_Large_Language_Models.md) proposed a full-duplex spoken dialogue models based on LLMs, enabling simultaneous reception and transmission of voice signals through a perception module, an action module, and a neural finite-state machine (FSM).
 The perception module uses a streaming ASR model, capturing and processing user speech in real-time with 640-millisecond intervals per time step, converting it into token inputs for the LLM.
@@ -514,8 +513,7 @@ At the core is the neural FSM, allowing the LLM to switch between "speaking" and
 Controlled by FSM signals, the system can dynamically decide to continue speaking, listen, or interrupt based on the dialogue context.
 Experimental results show that Wang et al.'s full-duplex streaming system reduces response latency by threefold, achieves a response time within 500 milliseconds in over 50\% of dialogues, and handles user interruptions at a rate of 96.7\%, with an interruption accuracy of 54.7\%.
 
-</details>
-<br>
+</td><td>
 
 [Wang et al [211]](../../Models/_Full/A_Full-Duplex_Speech_Dialogue_Scheme_Based_on_Large_Language_Models.md) 提出了一个基于大语言模型的全双工口语对话模型, 通过感知模块, 动作模块和神经有限状态机 (FSM) 实现了同时接收和传输语音信号.
 - 感知模块: 使用流式 ASR 模型, 实时捕获和处理用户语音, 每隔 640 毫秒的时间步长转化为 LLM 的 Token 输入.
@@ -523,10 +521,11 @@ Experimental results show that Wang et al.'s full-duplex streaming system reduce
 - 神经有限状态机: 作为核心, 使得 LLM 可以在说话和听取状态之间切换. 由 FSM 信号控制, 系统可以根据对话内容动态地决定是否继续说话, 听取或中断.
 - 实验结果表明该全双工流式系统通过三方面减少响应延迟, 能在 50% 以上的对话中实现响应时间在 500 毫秒内, 并以 96.7% 的比率处理用户中断, 而中断准确率为 54.7%.
 
+</td></tr></table>
+
 ##### VITA
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 VITA is an open-source multimodal large language model which aimed at enhancing multimodal interaction experiences.
 VITA can process multiple modalities, such as video, image, text, and audio, and achieves fluid human-computer interaction through a new duplex architecture involving two simultaneously operating models: one for generating responses to user queries, and another for continuously monitoring environmental inputs.
@@ -536,8 +535,7 @@ VITA’s perception abilities are achieved through multimodal alignment and inst
 Additionally, VITA employs state tokens to distinguish user input types, such as query audio, background noise, and text input, facilitating wake-free interaction.
 VITA's enhanced listening module prevents unnecessary user feedback from interrupting system responses, improving robustness.
 
-</details>
-<br>
+</td><td>
 
 VITA 是一个开源的多模态大语言模型, 旨在增强多模态交互体验.
 VITA 可以处理多模态输入, 如视频, 图像, 文本, 音频, 并通过涉及两个同时运作的模型的新式双工架构实现流畅的人机交互.
@@ -551,10 +549,11 @@ VITA 的感知能力是通过多模态对齐和指令微调实现的, 使得它�
 此外, VITA 采用状态 Token 来区分用户输入类型, 例如查询音频, 背景噪声, 文本输入等, 有助于无唤醒交互.
 VITA 增强的听取模块防止不必要的用户反馈中断用户响应, 提升鲁棒性.
 
+</td></tr></table>
+
 ##### [CleanS2S [159]](../../Models/_tmp/CleanS2S.md)
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 This model employs a structured pipeline to enable responsive and flexible interactions in a spoken dialogue setting.
 Designed to facilitate seamless turn-taking and interruption handling, the model consists of several interconnected modules working in a coordinated sequence to optimize user experience.
@@ -573,8 +572,7 @@ Each segment is prepared and sent only after a brief VAD check, ensuring that th
 This interconnected processing chain—VAD detecting input, ASR transcribing, LLM generating responses, and TTS outputting segmented audio—creates a duplex interaction framework that balances response generation and user-driven interruptions.
 By seamlessly coordinating these components, the model provides a fluid, real-time dialogue experience that adapts to user interactions dynamically.
 
-</details>
-<br>
+</td><td>
 
 该模型采用结构化流水线实现在口语对话设置下具有响应性和灵活性的交互.
 为了促进无缝轮次切换和中断处理, 模型由数个互连模块组成, 以协调的顺序工作以优化用户体验.
@@ -593,24 +591,25 @@ By seamlessly coordinating these components, the model provides a fluid, real-ti
 这种互连处理链: VAD 检测输入 + ASR 转写 + LLM 生成响应 + TTS 输出分段音频, 构成了一个双工交互框架, 能够平衡响应生成和用户驱动的中断.
 通过无缝地协调这些组件, 模型提供了流畅实时的对话体验, 能够根据用户交互动态调整.
 
+</td></tr></table>
+
 #### End-to-End Systems: 端到端系统
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 In contrast, end-to-end spoken dialogue models do not require explicit modeling of dialogue turns; instead, they learn interaction modeling directly from training data.
 Next, we introduce several representative works on interaction in end-to-end systems.
 
-</details>
-<br>
+</td><td>
 
 与级联系统不同, 端到端口语对话模型不需要显式建模对话轮次, 它们直接从训练数据学习交互建模.
 接下来, 我们介绍数个端到端系统在交互方面的代表性工作.
 
+</td></tr></table>
+
 ##### dGSLM
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 In end-to-end systems, the introduction of the dGSLM model marks a significant milestone in full-duplex technology development.
 Within the dGSLM framework, duplex technology is effectively implemented.
@@ -624,8 +623,7 @@ This approach differs significantly from traditional text-dependent spoken dialo
 This capability gives dGSLM a notable advantage in duplex voice interaction, better mimicking the natural dynamics of human conversation.
 Through its duplex model design, dGSLM represents an essential step forward in interactive capabilities and provides a foundation for further advancements.
 
-</details>
-<br>
+</td><td>
 
 在端到端系统中, dGSLM 模型的出现是全双工技术发展的一个重要里程碑.
 在 dGSLM 框架中, 全双工技术被有效实现.
@@ -642,10 +640,11 @@ dGSLM 将通道上的音频使用 HuBERT 转换为离散 Token, 然后 DLM 自�
 这种能力给 dGSLM 在双工声音交互方面带来了显著优势, 能够更好地模拟人类对话的自然动态.
 通过其双工模型设计, dGSLM 代表向交互能力迈出了重要的一步, 为进一步发展奠定了基础.
 
+</td></tr></table>
+
 ##### Moshi
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 As a novel full-duplex architecture, Moshi incorporates a rich array of design concepts.
 Unlike dGSLM, Moshi does not abandon the language model’s ability in text dialogue.
@@ -661,8 +660,7 @@ Moshi is pre-trained on unsupervised audio data to handle speech scenarios and t
 Finally, the system is further optimized on a custom instruction-tuning dataset, ensuring robust performance across various interactive scenarios.
 Experimental results show that Moshi excels in speech modeling and spoken QA tasks, especially in latency, achieving a theoretical latency of 160 milliseconds and 200 milliseconds in practice, significantly lower than the typical 230 milliseconds in natural conversation, enhancing real-time interaction and conversation flow.
 
-</details>
-<br>
+</td><td>
 
 作为新式全双工架构, Moshi 整合了丰富的设计概念.
 和 dGSLM 不同, Moshi 并未放弃语言模型在文本对话方面的能力.
@@ -682,10 +680,11 @@ Moshi 在无监督音频数据上预训练以处理语音场景, 然后在 Fishe
 
 实验结果表明 Moshi 在语音建模和口语 QA 任务表现卓越, 特别是在延迟上, 理论延迟为 160 毫秒, 实际延迟为 200 毫秒, 显著低于自然对话的通常延迟 230 毫秒, 增强了实时交互和对话流动.
 
+</td></tr></table>
+
 ##### Parrot
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 [Parrot [148]](../../Models/SpeechLM/Parrot.md) model incorporates multiple features specifically designed to enhance interaction in spoken dialogue.
 It uses a dual-channel audio setup, where each channel represents a different speaker.
@@ -698,8 +697,7 @@ This streaming capability allows the model to respond to live spoken input in re
 Unlike cascaded systems that rely on intermediate text conversions, Parrot processes audio directly, reducing latency and allowing immediate responses to spoken input.
 These interaction-focused design choices make Parrot highly responsive, enabling it to manage turn-taking naturally, respond to interruptions, and handle overlapping speech.
 
-</details>
-<br>
+</td><td>
 
 [Parrot [148]](../../Models/SpeechLM/Parrot.md) 模型整合了特别设计的多个特性以增强口语对话中的交互性.
 它使用了双通道音频设置, 每个通道表示不同的说话人.
@@ -714,10 +712,11 @@ These interaction-focused design choices make Parrot highly responsive, enabling
 
 #TODO: 信息量不大的段落.
 
+</td></tr></table>
+
 ##### Mini-Omni2
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 Mini-Omni2 is an open-source multimodal large language model aimed at simulating the multimodal capabilities of GPT-4o in vision, hearing, and text, supporting real-time full-duplex interaction.
 Mini-Omni2 combines visual and audio encoders with a language model to enable simultaneous input and output of images, audio, and text.
@@ -732,8 +731,7 @@ The training data consists of long audio streams from which the model extracts a
 Researchers inserted interrupt commands at various time points, marking data after the insertion point as irq (interrupt) and data before as n-irq (non-interrupt).
 This labeling method ensures that the model learns to accurately identify interrupt commands in complex audio inputs and respond appropriately.
 
-</details>
-<br>
+</td><td>
 
 Mini-Omni2 是一个开源的多模态大语言模型, 旨在模拟 GPT-4o 在视觉听觉和文本上的多模态能力并支持实时全双工交互.
 
@@ -751,10 +749,11 @@ Mini-Omni2 将视觉和音频编码器和语言模型组合并确保图像音频
 研究人员在不同时间点插入中断命令, 将插入点后数据标记为 irq (中断), 插入点前数据标记为 n-irq (非中断).
 这种标记方法确保模型学习在复杂音频输入中准确识别中断命令并相应地作出响应.
 
+</td></tr></table>
+
 ##### SyncLLM
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 SyncLLM achieves full-duplex dialogue and interruption capabilities through multi-stream interleaving and chunk processing.
 SyncLLM divides the conversation's audio stream into fixed-sized chunks, each corresponding to a specific time interval.
@@ -764,8 +763,7 @@ This mechanism enables the system to keep pace with the conversation even with n
 The chunk method allows SyncLLM to handle both user and system audio streams simultaneously, supporting complex dialogue features like speech overlap, interruption, and real-time feedback.
 Additionally, by using de-duplicated speech token sequences and periodic synchronization markers, the model efficiently performs chunk-level real-time inference, making conversation more fluid and natural.
 
-</details>
-<br>
+</td><td>
 
 SyncLLM 通过多流交错和分块处理来实现全双工对话和中断能力.
 SyncLLM 将对话音频流分割成固定大小的块, 每块对应特定的时间间隔.
@@ -775,10 +773,11 @@ SyncLLM 将对话音频流分割成固定大小的块, 每块对应特定的时�
 分块方法允许 SyncLLM 同时处理用户和系统音频流, 支持复杂对话特性如语音重叠, 中断, 实时反馈.
 此外, 通过使用去重的语音 Token 序列和周期同步标记, 模型有效地执行块级实时推理, 使对话更加流畅自然.
 
+</td></tr></table>
+
 ##### OmniFlatten
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 Similar to SyncLLM, the OmniFlatten model achieves full-duplex and interruption functionality primarily through multi-stream data processing and progressive training.
 To enable full-duplex dialogue, the model adopts a multi-stream architecture that interleaves the user’s speech stream with the assistant’s speech and text streams into a single sequence for training, simplifying multimodal modeling and enhancing real-time capability.
@@ -788,8 +787,7 @@ These steps reduce reliance on text and decrease latency, allowing the system to
 By using a block-by-block generation strategy, OmniFlatten divides the input and output speech sequences into fixed-size blocks, processing each segment in turn.
 This effectively implements streaming processing, ensuring low latency and high responsiveness in full-duplex dialogue, thereby providing a more natural response to user interruptions.
 
-</details>
-<br>
+</td><td>
 
 类似于 SyncLLM, OmniFlatten 模型通过多流数据处理和渐进训练实现全双工和中断功能.
 为了实现全双工对话, 模型采用多流架构, 将用户语音流, 助手语音和文本流交错到单个序列中用于训练, 简化多模态建模并增强实时能力.
@@ -803,10 +801,11 @@ This effectively implements streaming processing, ensuring low latency and high 
 通过使用逐块生成策略, OmniFlatten 将输入和输出语音序列划分为固定大小的块, 逐个处理每个片段.
 这有效地实现了流式处理, 确保全双工对话中的低延迟和高响应, 从而为用户中断提供更自然的响应.
 
+</td></tr></table>
+
 ##### Freeze-Omni
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 To support duplex dialogue, [Freeze-Omni [213]](../../Models/SpokenDialogue/2024.11.01_Freeze-Omni.md) uses a chunk-level state prediction mechanism for natural turn-taking.
 When the user begins speaking, a voice activity detection module identifies the audio input, prompting the model to process the audio chunk by chunk.
@@ -814,8 +813,7 @@ After processing each chunk, the model's classification layer predicts the conve
 There are three possible states: State 0, where the model continues listening for more input, assuming the user hasn’t completed their turn; State 1, where the model interrupts to provide an immediate response if a quick acknowledgment or feedback is needed; and State 2, where the model has completed processing the current user input and is ready to generate and output a response, thus transitioning smoothly into the response phase without further listening.
 This chunk-wise state prediction enables the model to decide effectively when to respond and when to continue listening, enhancing its ability to handle natural conversational cues and support interactive dialogue.
 
-</details>
-<br>
+</td><td>
 
 为了支持双工对话, [Freeze-Omni [213]](../../Models/SpokenDialogue/2024.11.01_Freeze-Omni.md) 使用块级状态预测机制来实现自然轮次切换.
 当用户开始说话时, 语音活动检测模块识别音频输入, 提示模型按块处理音频.
@@ -827,10 +825,11 @@ This chunk-wise state prediction enables the model to decide effectively when to
 
 这种块级状态预测使得模型能有效地决定何时响应, 何时继续监听, 增强其处理自然对话线索和支持交互式对话的能力.
 
+</td></tr></table>
+
 ### 5.2.3·Discussions about Streaming and Interaction: 流式和交互的讨论
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 Significant progress has been made in dialogues models, particularly in real-time interaction and semantic understanding, with notable achievements in streaming processing and full-duplex interaction.
 Current systems exhibit strong technical capabilities in reducing response latency, enhancing interruption handling, and improving the naturalness of conversation.
@@ -839,8 +838,7 @@ Future research could explore new frameworks to better manage both user interrup
 Additionally, standardized benchmarks for evaluating interaction capabilities remain underdeveloped.
 A unified evaluation benchmark would provide a consistent method for assessing and comparing the performance of different models, thereby advancing the development of more intelligent and responsive interaction systems.
 
-</details>
-<br>
+</td><td>
 
 对话模型取得了显著的进步, 尤其是在实时交互和语义理解, 在流式处理和全双工交互方面取得了重要成果.
 现有的系统在减少响应延迟, 增强中断处理和提升对话自然度方面表现出强大的技术能力.
@@ -848,3 +846,5 @@ A unified evaluation benchmark would provide a consistent method for assessing a
 未来研究可以探索新的框架来更好地管理用户中断和系统终端用户的能力, 使交互更自然.
 此外, 评估交互能力的标准化基准仍未开发.
 统一的评估基准可以为不同模型提供一致的方法以评估和比较性能, 从而促进更智能和响应的交互系统的发展.
+
+</td></tr></table>
