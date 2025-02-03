@@ -22,8 +22,7 @@
 
 ## Abstract: 摘要
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 Text-to-speech (TTS), also known as speech synthesis, is a prominent research area that aims to generate natural-sounding human speech from text.
 Recently, with the increasing industrial demand, TTS technologies have evolved beyond synthesizing human-like speech to enabling controllable speech generation.
@@ -34,8 +33,7 @@ We examine the general controllable TTS pipeline, challenges, model architecture
 Additionally, we provide a detailed summary of datasets and evaluation metrics and shed some light on the applications and future directions of controllable TTS.
 To the best of our knowledge, this survey paper provides the first comprehensive review of emerging controllable TTS methods, which can serve as a beneficial resource for both academic researchers and industry practitioners.
 
-</details>
-<br>
+</td><td>
 
 文本转语音 (Text-to-Speech, TTS), 也称为语音合成 (Speech Synthesis) 是旨在从文本生成自然听感的人类语音的重要研究领域.
 
@@ -50,10 +48,11 @@ To the best of our knowledge, this survey paper provides the first comprehensive
 
 据我们所知, 本文是新兴可控 TTS 方法的首个全面综述, 这对于学术研究者和工业实践者都可以提供有益的参考.
 
+</td></tr></table>
+
 ## 1·Introduction: 引言
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 Speech synthesis, also broadly known as text-to-speech (TTS), is a long-time developed technique that aims to synthesize human-like voices from text ([^1] [^2]), and it has extensive applications in our daily lives, such as health care ([^3] [^4]), personal assistants [^5], entertainment ([^6] [^7]), and robotics ([^8] [^9]).
 Recently, TTS has gained significant attention with the rise of large language model (LLM)-powered chatbots, such as ChatGPT [^10] and [LLaMA [11]](../../Models/TextLM/2023.02.27_LLaMA.md), due to its naturalness and convenience for human-computer interaction.
@@ -88,8 +87,7 @@ Fig.01 demonstrates the development of controllable TTS methods in recent years,
 The remainder of this section begins with a brief comparison between this survey and previous ones, followed by an overview of the history of controllable TTS technologies, ranging from early milestones to state-of-the-art advancements.
 Finally, we introduce the taxonomy and organization of this paper.
 
-</details>
-<br>
+</td><td>
 
 语音合成 (Speech Synthesis), 也称为文本转语音 (Text-to-Speech, TTS), 是一项长期发展的技术, 旨在从文本合成类似人类的声音 ([^1] [^2]), 并且在日常生活中有广泛的应用, 如医疗保健 ([^3] [^4]), 个性化助手 [^5], 娱乐 ([^6] [^7]), 以及机器人 ([^8] [^9]).
 近期, 随着大语言模型驱动的聊天机器人 (如 ChatGPT [^10] 和 [LLaMA [11]](../../Models/TextLM/2023.02.27_LLaMA.md)) 的兴起, TTS 获得了广泛关注, 因为它在人机交互中的自然性和便利性.
@@ -132,24 +130,28 @@ Finally, we introduce the taxonomy and organization of this paper.
 本文提供了对现有和新兴 TTS 技术的全面且深入的调查, 特别关注可控 TTS 方法.
 图 01 展示了近年来可控 TTS 方法的发展, 展示了它们的骨干, 特征表示和控制能力.
 
-![](Images/Fig.01.png)
-
 本节的剩余部分
 - 首先简要比较了本文和之前综述,
 - 随后介绍可控 TTS 技术的历史, 从早期里程碑到最先进的进展.
 - 最后, 我们介绍了本文的分类体系和组织结构.
 
+
+</td></tr>
+<tr><td colspan="2">
+
+![](Images/Fig.01.png)
+
+</td></tr></table>
+
 ### A·Comparison with Existing Surveys: 与现有综述的比较
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 Several survey papers have reviewed TTS technologies, spanning early approaches from previous decades ([Survey by Klatt et al. (1987) [36]](../../Surveys/1987.05.01_Review_of_Text-To-Speech_Conversion_for_English.md); [Survey by Dutoit et al. (1997) [37]](../../Surveys/1997.00.00_High-Quality_Text-To-Speech_Synthesis__An_Overview.md); [Survey by King et al. (2014) [40]](../../Surveys/2014.06.30_Measuring_a_Decade_of_Progress_in_Text-To-Speech.md); [Survey by Tabet et al. (2011) [49]](../2011.06.27_Speech_Synthesis_Techniques_A_Survey.md)) to more recent advancements ([Survey by Ning et al. (2019) [43]](../2019.08.01_A_Review_of_DL_Based_Speech_Synthesis_16P.md); [Survey by Tan et al. (2021) [42]](../2021.06.29_A_Survey_on_Neural_Speech_Synthesis_63P/Main.md); [Survey by Zhang et al. (2023) [50]](../2023.03.23_A_Survey_on_Audio_Diffusion_Models__TTS_Synthesis_&_Enhancement_in_Generative_AI/Main.md)).
 However, to the best of our knowledge, this paper is the first to focus specifically on controllable TTS.
 The key differences between this survey and prior work are summarized as follows:
 
-</details>
-<br>
+</td><td>
 
 多篇综述论文已经回顾了 TTS 技术的发展历程, 涵盖了从几十年前的早期方法到近年来的最新进展.
 - 早期方法:
@@ -166,10 +168,11 @@ The key differences between this survey and prior work are summarized as follows
 
 本综述与之前工作的主要区别总结如下:
 
+</td></tr></table>
+
 #### Different Scope: 不同范围
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 [Survey by Klatt et al. (1987) [36]](../../Surveys/1987.05.01_Review_of_Text-To-Speech_Conversion_for_English.md) provided the first comprehensive survey on formant, concatenative, and articulatory TTS methods, with a strong emphasis on text analysis.
 In the early 2010s, [Survey by Tabet et al. (2011) [49]](../2011.06.27_Speech_Synthesis_Techniques_A_Survey.md) and [Survey by King et al. (2014) [40]](../../Surveys/2014.06.30_Measuring_a_Decade_of_Progress_in_Text-To-Speech.md) explored rule-based, concatenative, and HMM-based techniques.
@@ -178,8 +181,7 @@ Therefore, [Survey by Ning et al. (2019) [43]](../2019.08.01_A_Review_of_DL_Base
 However, these studies offer limited discussion on the controllability of TTS systems.
 To address this gap, we present the first comprehensive survey of TTS methods through the lens of controllability, providing an in-depth analysis of model architectures and strategies for controlling synthesized speech.
 
-</details>
-<br>
+</td><td>
 
 - [Klatt 等人 (1987) [36]](../../Surveys/1987.05.01_Review_of_Text-To-Speech_Conversion_for_English.md) 的综述首次全面探讨了共振峰, 拼接式, 发音式 TTS 方法, 并特别强调了文本分析的重要性.
 - 到了 2010 年代初期, [Tabet 等人 (2011) [49]](../2011.06.27_Speech_Synthesis_Techniques_A_Survey.md) 和 [King 等人 (2014) [40]](../../Surveys/2014.06.30_Measuring_a_Decade_of_Progress_in_Text-To-Speech.md) 的综述进一步研究了基于规则, 拼接式以及隐马尔可夫模型 (HMM) 的 TTS 技术.
@@ -190,26 +192,27 @@ To address this gap, we present the first comprehensive survey of TTS methods th
 
 为了填补这一空白, 本文首次从可控性的角度对 TTS 方法进行了全面综述, 深入分析了模型架构以及控制合成语音的策略.
 
+</td></tr></table>
+
 #### Close to Current Demand: 接近当前需求
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 With the rapid development of hardware (i.e., GPUs) and artificial intelligence techniques (i.e., transformers, LLMs, diffusion models) in the last few years, the demand for controllable TTS is becoming increasingly urgent due to its broad applications in industries such as filmmaking, gaming, robots, and personal assistants.
 Despite this growing need, existing surveys pay little attention to control methods in TTS technologies.
 To bridge this gap, we propose a systematic analysis of current controllable TTS methods and the associated challenges, offering a comprehensive understanding of the research state in this field.
 
-</details>
-<br>
+</td><td>
 
 近年来随着硬件 (如 GPU) 和人工智能技术 (如 Transformer, 大语言模型, 扩散模型) 的快速发展, 可控 TTS 的需求日益迫切, 因为其在影视制作, 游戏, 机器人以及个人助手等领域的应用越来越广泛.
 尽管这种需求不断增长, 但现有的综述对 TTS 技术中的控制方法关注甚少.
 为了填补这一空白, 本文提出对当前可控 TTS 方法及其相关挑战进行系统性分析, 旨在为该领域的研究现状提供全面深入的理解.
 
+</td></tr></table>
+
 #### New Insights & Directions: 新见解与方向
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 This survey offers new insights through a comprehensive analysis of model architectures and control methods in controllable TTS systems.
 Additionally, it provides an in-depth discussion of the challenges associated with various controllable TTS tasks.
@@ -218,14 +221,16 @@ Based on these analyses, we identify promising directions for future research on
 
 Table.01 summarizes representative surveys and this paper in terms of main focus and publication year.
 
-</details>
-<br>
+</td><td>
 
 本综述
 - 通过对可控 TTS 系统中模型架构和控制方法的全面分析, 提供了新的见解.
 - 此外, 本文深入探讨了与各种可控 TTS 任务相关的挑战.
 - 更进一步, 我们通过审视当前 TTS 方法与工业需求之间的关系与差距, 回答了这样一个问题：**"我们在实现完全可控TTS技术的道路上处于什么位置?"**
 - 基于这些分析，我们为TTS技术的未来研究指明了有前景的方向.
+
+</td></tr>
+<tr><td colspan="2">
 
 表 01 总结了代表性综述及本文的主要关注点和发表年份。
 
@@ -238,24 +243,25 @@ Table.01 summarizes representative surveys and this paper in terms of main focus
 |[Zhang et al. (2023) [50]](../2023.03.23_A_Survey_on_Audio_Diffusion_Models__TTS_Synthesis_&_Enhancement_in_Generative_AI/Main.md)|扩散模型 TTS, 语音增强|2023|
 |本文|可控 TTS, 评估 | 2024 |
 
+</td></tr></table>
+
 ### B·The History of Controllable TTS: 可控 TTS 的历史
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 Controllable TTS aims to control various aspects of synthesized speech, such as pitch, energy, speed/duration, prosody, timbre, emotion, gender, or high-level styles.
 This subsection briefly reviews the history of controllable TTS ranging from early approaches to the state-of-arts in recent years.
 
-</details>
-<br>
+</td><td>
 
 可控性 TTS 的目标是控制合成语音的各个方面, 如音高, 能量, 速度/时长, 韵律, 音色, 情感, 性别, 或高级风格.
 本小节简要回顾了可控 TTS 的历史, 从早期方法到近年来工业界的最新技术.
 
+</td></tr></table>
+
 #### Early Approaches: 早期方法
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 Before the prevalence of deep neural networks (DNNs), controllable TTS technologies were built primarily on rule-based, concatenative, and statistical methods.
 These approaches enable some degree of customization and control, though they were constrained by the limitations of the underlying models and available computational resources.
@@ -270,8 +276,7 @@ Some HMM-based systems also supported speaker adaptation [66] [67]~\cite{yamagis
 Besides, emotion can also be limitedly controlled by some of these methods~\cite{yamagishi2003modeling,[Yamagishi et al. (2005) [71]](../../Models/_Early/Acoustic_Modeling_of_Speaking_Styles_and_Emotional_Expressions_in_HMM-Based_Speech_Synthesis.md),nose2007style, [Lorenzo et al. (2015) [72]](../../Models/_Early/Emotion_Transplantation_through_Adaptation_in_HMM-Based_Speech_Synthesis.md)} [70].
 In addition, they required less storage compared to concatenative TTS and allowed smoother transitions between speech units.
 
-</details>
-<br>
+</td><td>
 
 在深度神经网络盛行之前, 可控 TTS 技术主要建立在基于规则, 拼接, 统计方法之上.
 这些方法实现了一定程度上的定制和控制, 但它们受到底层模型和可用计算资源的局限性约束.
@@ -286,7 +291,11 @@ In addition, they required less storage compared to concatenative TTS and allowe
    - 除此之外, 其中一些方法还可以有限地控制情感.
    - 另外, 它们比起拼接式 TTS 所需存储更少, 且能在语音单元之间实现更平滑的过渡.
 
+</td></tr></table>
+
 #### Neural-Based Synthesis: 基于神经网络合成
+
+<table><tr><td width="50%">
 
 Neural-based TTS technologies emerged with the advent of deep learning, significantly advancing the field by enabling more flexible, natural, and expressive speech synthesis.
 Unlike traditional methods, neural-based TTS leverages DNNs to model complex relationships between input text and speech, facilitating nuanced control over various speech characteristics.
@@ -304,7 +313,13 @@ These methods can emphasize or de-emphasize specific words or adjust the pronunc
 Neural-based TTS technologies represent a significant leap in the flexibility and quality of speech synthesis.
 From prosody and emotion to speaker identity and style, these systems empower diverse applications in fields such as entertainment, accessibility, and human-computer interaction.
 
+</td><td>
+
+</td></tr></table>
+
 #### LLM-Based Synthesis: 基于大语言模型合成
+
+<table><tr><td width="50%">
 
 Here we pay special attention to LLM-based synthesis methods due to their superior context modeling capabilities compared to other neural-based TTS methods.
 LLMs, such as GPT ([GPT-3 [97]](../../Models/TextLM/2020.05.28_GPT-3.md); )~\cite{achiam2023gpt4}, T5~\cite{raffel2020t5} [98] [99], and PaLM [100]~\cite{chowdhery2023palm}, have revolutionized various natural language processing (NLP) tasks with their ability to generate coherent, context-aware text.
@@ -315,10 +330,13 @@ The detected emotion is encoded as an auxiliary input to the TTS model, enabling
 By leveraging LLMs' capabilities in understanding and generating rich contextual information, these systems can achieve enhanced and fine-grained control over various speech attributes such as prosody, emotion, style, and speaker characteristics ([InstructTTS [105]](../../Models/Acoustic/2023.01.31_InstructTTS.md),[Emo-DPO [31]](../../Modules/RLHF/2024.09.16_Emo-DPO.md); [ControlSpeech [106]](../../Models/SpeechLM/2024.06.03_ControlSpeech.md)).
 Integrating LLMs into TTS systems represents a significant step forward, enabling more dynamic and expressive speech synthesis.
 
+</td><td>
+
+</td></tr></table>
+
 ### C·Organization of This Survey: 本文结构
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 This paper first presents a comprehensive and systematic review of controllable TTS technologies, with a particular focus on model architectures, control methodologies, and feature representations.
 To establish a foundational understanding, this survey begins with an introduction to the TTS pipeline in [Section 2](Sec.02_Pipeline.md).
@@ -328,8 +346,7 @@ While our focus remains on controllable TTS, [Section 3](Sec.03_UnControllableTT
 [Section 6](Sec.06_Challenges.md) provides an in-depth analysis of the challenges encountered in achieving controllable TTS systems and discusses future directions.
 [Section 7](#Sec.07) explores the broader impacts of controllable TTS technologies and identifies promising future research directions, followed by the conclusion in [Section 8](#Sec.08).
 
-</details>
-<br>
+</td><td>
 
 本文首次展示了一份全面且系统化的可控 TTS 技术综述, 着重分析模型架构, 控制策略, 和特征表示.
 - [第二节](Sec.02_Pipeline.md) 介绍 TTS 流程, 以建立起基础的理解.
@@ -339,6 +356,8 @@ While our focus remains on controllable TTS, [Section 3](Sec.03_UnControllableTT
 - [第六节](Sec.06_Challenges.md) 深入分析了实现可控 TTS 系统的挑战, 并提出了未来研究方向.
 - [第七节](#Sec.07) 探讨了可控 TTS 技术的广泛影响, 并提出了有前途的研究方向.
 - [第八节](#Sec.08) 总结了本文.
+
+</td></tr></table>
 
 ## 2·[TTS Pipeline: TTS 流程](Sec.02_Pipeline.md)
 
@@ -358,6 +377,8 @@ While our focus remains on controllable TTS, [Section 3](Sec.03_UnControllableTT
 
 #### Applications: 应用
 
+<table><tr><td width="50%">
+
 Controllable TTS systems allow fine-grained manipulation of speech attributes such as pitch, emotion, speaking rate, and style, enabling a wide range of applications across industries.
 One major application is in virtual assistants and customer support systems, where controllable TTS ensures tailored and context-aware responses.
 For instance, a virtual assistant can speak in a calm tone for technical support but switch to an enthusiastic tone when presenting promotional offers, enhancing user experience.
@@ -373,7 +394,13 @@ In content localization, controllable TTS systems adjust speech characteristics 
 Additionally, it finds applications in human-computer interaction research, enabling adaptive dialogue systems that modify speech dynamically based on user mood or environment.
 By offering this flexibility, controllable TTS systems enhance accessibility, personalization, and engagement across various domains.
 
+</td><td>
+
+</td></tr></table>
+
 #### Deepfakes: 深度伪造
+
+<table><tr><td width="50%">
 
 A deepfake is a type of synthetic media in which a person in an existing image, video, or audio recording is replaced with someone else’s likeness or voice.
 This technology uses deep learning, particularly GANs~\cite{zhang2022deepfake}, to create highly realistic, but fabricated, content.
@@ -385,19 +412,28 @@ With a convincing clone of someone’s voice, attackers could potentially impers
 To address these concerns, it’s essential to establish robust security protocols, consent-based regulations, and public awareness around voice cloning.
 Furthermore, advancements in detecting voice clones are equally important to help distinguish genuine voices from synthesized ones, protecting both individuals and organizations from potential misuse.
 
+</td><td>
+
+</td></tr></table>
+
 ### B·Limitation of this Survey: 本综述的局限性
+
+<table><tr><td width="50%">
 
 Although we conduct a comprehensive survey of controllable TTS in this paper, there are some limitations we want to address in the future:
 1) A unified benchmark method will be provided to evaluate controllable TTS methods.
 2) Detailed analysis and control strategies of each specific speech attribute will be provided in an updated version of this paper.
 3) The methodologies for feature disentanglement are crucial for controllable TTS but are not adequately discussed.
 
+</td><td>
+
+</td></tr></table>
+
 ## 8·Conclusions: 结论
 
 <a id="Sec.08"></a>
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 In this survey paper, we first elaborate on the general pipeline for controllable TTS, followed by a glimpse of uncontrollable TTS methods.
 Then we comprehensively review existing controllable methods from the perspectives of model architectures and control strategies.
@@ -408,8 +444,7 @@ To the best of our knowledge, this is the first comprehensive survey for control
 Writing a comprehensive survey is a challenging task and an iterative process.
 Hence, we will regularly update this survey to offer researchers and practitioners a continuously evolving resource for understanding controllable speech synthesis.
 
-</details>
-<br>
+</td><td>
 
 在本综述中, 我们
 - 首次阐述了可控 TTS 的一般流程, 并简要介绍了不可控 TTS 方法.
@@ -421,3 +456,5 @@ Hence, we will regularly update this survey to offer researchers and practitione
 
 撰写一篇全面综述是一个具有挑战性的任务, 也是一项迭代式的过程.
 因此, 我们将不断更新本综述, 为研究者和从业者提供可持续发展的可控语音合成资源.
+
+</td></tr></table>
