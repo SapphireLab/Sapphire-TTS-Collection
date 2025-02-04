@@ -1,38 +1,37 @@
 # 4.Training Recipes: 训练方法
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 In this section, we categorize and summarize the commonly used training recipes found in recent SpeechLM papers.
 This includes an overview of the types of features modeled in SpeechLMs, the various training stages along with the techniques employed in each stage, and the different paradigms for generating speech.
 
-</details>
-<br>
+</td><td>
 
 在本节中, 我们分类并总结了最近的语音语言模型论文中常用的训练方法.
 这包括对语音语言模型中建模的特征类型, 训练阶段以及每个阶段所采用的技术, 以及用于生成语音的不同范式的概述.
 
+</td></tr></table>
+
 ## 4.1.Features Modeled: 特征建模
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 The features modeled refer to the types of features outputted by the speech tokenizer and modeled by the language model component within a SpeechLM.
 These features play a crucial role in determining the capabilities and performance of SpeechLMs.
 Different features model the speech waveforms from different aspects.
 Based on recent developments, we can categorize the features modeled by SpeechLMs into two main types, including discrete features and continuous features.
 
-</details>
-<br>
+</td><td>
 
 特征建模是指语音语言模型中由语音分词器输出和语言模型组件建模的特征类型.
 这些特征在决定语音语言模型的能力和性能方面发挥着重要作用.
 根据最近的发展, 我们可以将语音语言模型所建模的特征分为两种主要类型, 包括离散特征和连续特征.
 
+</td></tr></table>
+
 ### 4.1.1.Discrete Features: 离散特征
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 Discrete features refer to quantized representations of speech signals that can be represented as distinct, countable units or tokens.
 These features are typically derived from speech signals through various encoding and quantization processes, resulting in a finite set of possible values.
@@ -60,8 +59,7 @@ Some studies attempt to directly model the codec tokens in an autoregressive man
 It encodes a 3-second audio clip using [EnCodec (2022)](../../Models/SpeechCodec/2022.10.24_EnCodec.md) as a prompt, enabling the TTS system to synthesize speech that matches the timbre information of the prompt.
 [VioLA (2023)](../../Models/SpeechLM/2023.05.25_VioLA.md) uses codec tokens in a SpeechLM capable of performing ASR, TTS, and Machine Translation (in text).
 
-</details>
-<br>
+</td><td>
 
 离散特征是指语音信号的量化表示, 可以表示为不同的可数的单元或 Token.
 这些特征通常通过各种编码和量化过程从语音信号中导出, 从而得到一组可能值的有限集合.
@@ -87,10 +85,11 @@ It encodes a 3-second audio clip using [EnCodec (2022)](../../Models/SpeechCodec
   它使用 [EnCodec (2022)](../../Models/SpeechCodec/2022.10.24_EnCodec.md) 编码 3 秒的音频作为提示, 使得 TTS 系统能够合成与提示的音色信息匹配的语音.
 - [VioLA (2023)](../../Models/SpeechLM/2023.05.25_VioLA.md) 使用编解码器 Token 在语音语言模型中实现 ASR, TTS 和机器翻译 (文本).
 
+</td></tr></table>
+
 #### Discussion: 讨论
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 Different types of tokens influence the speech quality of SpeechLMs in different ways, often resulting in trade-offs ([AudioLM (2022)](../../Models/SpeechLM/2022.09.07_AudioLM.md)).
 For example, while semantic tokens align well with text and excel in producing semantically coherent speech, the generated speech often lacks acoustic details, such as high-frequency information.
@@ -102,8 +101,7 @@ The first involves combining semantic and acoustic tokens into a single sequence
 However, this kind of approach increases sequence length, which increases modeling complexity.
 The second strategy leverages [**mixed tokens**](Sec.03.Components.md#313mixed-objective-混合目标) to jointly model semantic and acoustic information, showing promising results in [Moshi (2024)](../../Models/SpokenDialogue/2024.09.17_Moshi.md) and [SpeechGPT-Gen (2024)](../../Models/SpokenDialogue/2024.01.24_SpeechGPT-Gen.md).
 
-</details>
-<br>
+</td><td>
 
 不同类型的 Token 以不同的方式影响语音语言模型的语音质量, 通常需要权衡 ([AudioLM (2022)](../../Models/SpeechLM/2022.09.07_AudioLM.md)).
 例如, 虽然语义 Token 与文本能够良好对齐, 并且在生成语义连贯的语音方面表现出色, 但生成的语音通常缺乏声学细节, 如高频信息.
@@ -117,10 +115,11 @@ The second strategy leverages [**mixed tokens**](Sec.03.Components.md#313mixed-o
 - 第二种方式: 利用[混合 Token](Sec.03.Components.md#313mixed-objective-混合目标) 来同时建模语义和声学信息.
   这种方式在 [Moshi (2024)](../../Models/SpokenDialogue/2024.09.17_Moshi.md) 和 [SpeechGPT-Gen (2024)](../../Models/SpokenDialogue/2024.01.24_SpeechGPT-Gen.md) 中都取得了良好的结果.
 
+</td></tr></table>
+
 ### 4.1.2.Continuous Features: 连续特征
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 Continuous features, in contrast to discrete features, are unquantized, real-valued representations of speech signals that exist on a continuous scale.
 These features capture fine-grained, nuanced aspects of speech that may be lost in discretization processes.
@@ -130,8 +129,7 @@ The exploration of leveraging continuous features to condition SpeechLMs is stil
 However, the generation of speech spectrograms still needs to be conditioned on text transcripts, which is not an end-to-end speech generation approach.
 [Mini-Omni (2024)](../../Models/SpokenDialogue/2024.08.27_Mini-Omni.md) extracts intermediate representations from a frozen Whisper encoder as input for the SpeechLM, whereas [LauraGPT (2023)](../../Models/SpeechLM/2023.10.07_LauraGPT.md) employs an audio encoder trained alongside the SpeechLM to derive latent representations from input speech.
 
-</details>
-<br>
+</td><td>
 
 连续特征与离散特征不同, 是语音信号的未量化的实值表示, 存在于连续尺度上.
 这些特征捕获了语音的细粒度微妙的方面, 这些方面在离散化过程中可能丢失.
@@ -142,10 +140,11 @@ However, the generation of speech spectrograms still needs to be conditioned on 
 [Mini-Omni (2024)](../../Models/SpokenDialogue/2024.08.27_Mini-Omni.md) 从冻结的 Whisper 编码器中提取中间表示作为语音语言模型的输入.
 [LauraGPT (2023)](../../Models/SpeechLM/2023.10.07_LauraGPT.md) 采用与语音语言模型一起训练的音频编码器, 从输入语音中提取隐表示.
 
+</td></tr></table>
+
 ## 4.2.Training Stages: 训练阶段
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 Training a SpeechLM involves training the three main components: speech tokenizer, language model, and vocoder.
 Similar to TextLMs, the key to training SpeechLMs lies in effectively modeling speech continuation, which is primarily the responsibility of the language model.
@@ -156,8 +155,7 @@ Following TextLMs, the training process for SpeechLMs can be divided into three 
 However, to our knowledge, there is currently no research specifically focused on the alignment process following instruction tuning.
 Therefore, we only discuss the works related to the pre-training and instruction-tuning stages of SpeechLMs.
 
-</details>
-<br>
+</td><td>
 
 训练一个语音语言模型涉及到训练三个主要组件: 语音分词器, 语言模型, 和声码器.
 类似于文本语言模型, 训练语音语言模型的关键在于有效地建模语音连续, 这主要是语言模型的责任.
@@ -168,38 +166,38 @@ Therefore, we only discuss the works related to the pre-training and instruction
 然而, 目前还没有专门研究关注指令调参之后的对齐过程.
 因此, 我们只讨论与语音语言模型预训练和指令调参阶段相关的工作.
 
+</td></tr></table>
+
 ### 4.2.1.Language Model Pre-Training: 语言模型预训练
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 The pre-training of the language model in SpeechLMs is a critical phase that significantly influences the model's ability to generate coherent and contextually relevant speech.
 This phase typically involves training the language model to autoregressively predict the next token on a large corpus of speech tokens.
 The primary objective during this stage is to learn the statistical patterns and dependencies inherent in the speech data, enabling the model to predict the next token in a sequence based on the preceding context.
 Table.02 includes popular datasets used in pre-training stage of SpeechLMs.
 
-</details>
-<br>
+</td><td>
 
 语音语言模型中语言模型的预训练是关键阶段, 它对模型的生成连贯且上下文相关的语音能力有着显著影响.
 这一阶段通常涉及训练语言模型在大规模语音 Token 语料库上以自回归的方式预测下一个 Token.
 这一阶段的主要目标是学习语音数据中的统计模式和依赖关系, 使模型能够根据前面的上下文预测序列中的下一个 Token.
 表格 02 列出了语音语言模型预训练阶段常用的数据集.
 
+</td></tr></table>
+
 ![](Images/Tab.02.png)
 
 #### Training Data: 训练数据
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 SpeechLMs pre-training mainly leverages large-scale open-sourced speech data.
 Commonly used datasets include those for ASR ([LibriSpeech (2015)](../../Datasets/2015.04.19_LibriSpeech.md); [Libri-Light (2019)](../../Datasets/2019.12.17_Libri-Light.md); [The People's Speech (2021)](../../Datasets/2021.11.17_The_People's_Speech.md); [VoxPopuli (2021)](../../Datasets/2021.01.02_VoxPopuli.md)), TTS ([LibriTTS (2019)](../../Datasets/2019.04.05_LibriTTS.md)), ST ([CVSS (2022)](../../Datasets/2022.01.11_CVSS.md); [VoxPopuli (2021)](../../Datasets/2021.01.02_VoxPopuli.md)), podcasts ([Spotify Podcast Dataset (2020)](../../Datasets/2020.04.08_Spotify_Podcast_Dataset.md)), and dialogues ([Fisher Corpus (2004)](../../Datasets/Fisher_Corpus.md)).
 Some datasets consist solely of speech data, while others include both speech and corresponding text transcripts.
 The inclusion of text transcripts can enhance the model's representation by allowing it to learn the relationship between spoken language and its written form, which will be discussed later.
 
-</details>
-<br>
+</td><td>
 
 语音语言模型预训练主要利用大规模开源语音数据.
 常用的数据集包括用于 ASR ([LibriSpeech (2015)](../../Datasets/2015.04.19_LibriSpeech.md); [Libri-Light (2019)](../../Datasets/2019.12.17_Libri-Light.md); [The People's Speech (2021)](../../Datasets/2021.11.17_The_People's_Speech.md); [VoxPopuli (2021)](../../Datasets/2021.01.02_VoxPopuli.md)) 的语料库, 用于 TTS ([LibriTTS (2019)](../../Datasets/2019.04.05_LibriTTS.md)) 的语料库, 用于 ST ([CVSS (2022)](../../Datasets/2022.01.11_CVSS.md); [VoxPopuli (2021)](../../Datasets/2021.01.02_VoxPopuli.md)) 的语料库, 用于播客 ([Spotify Podcast Dataset (2020)](../../Datasets/2020.04.08_Spotify_Podcast_Dataset.md)) 的语料库, 以及用于对话 ([Fisher Corpus (2004)](../../Datasets/Fisher_Corpus.md)) 的语料库.
@@ -207,10 +205,11 @@ The inclusion of text transcripts can enhance the model's representation by allo
 一些数据集仅包含语音数据, 而另一些数据集既包含语音数据, 也包含相应的文本转录.
 包含文本转录可以增强模型的表示能力, 允许模型学习到口头语言与书面形式之间的关系, 后面会讨论到.
 
+</td></tr></table>
+
 #### Cold Initialization: 冷初始化
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 Some SpeechLMs use cold initialization during the pre-training phase, where model parameters are initialized randomly.
 The pioneering SpeechLM---[GSLM (2021)](../../Models/SpeechLM/2021.02.01_GSLM.md)--trained a [Transformer (2017)](../../Models/_Transformer/2017.06.12_Transformer.md) from scratch to serve as the language model.
@@ -221,8 +220,7 @@ They studied the critical problem of jointly modeling speech and text tokens by 
 They showed that the setting of alternating speech-text performs the best in cross-modal evaluations.
 Table.03 illustrates the four modeling methods.
 
-</details>
-<br>
+</td><td>
 
 一些语音语言模型在与训练阶段使用冷初始化, 其中模型参数随机初始化.
 - 最早的语音语言模型 [GSLM (2021)](../../Models/SpeechLM/2021.02.01_GSLM.md) 以从头开始训练 [Transformer (2017)](../../Models/_Transformer/2017.06.12_Transformer.md) 作为语言模型.
@@ -233,10 +231,11 @@ Table.03 illustrates the four modeling methods.
 他们发现交替语音文本的设置在跨模态评估中表现最佳.
 表 03 总结了四种建模方法.
 
+</td></tr></table>
+
 ![](Images/Tab.03.png)
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 Some works leverage a different architecture from the standard transformer.
 Since there are no existing checkpoints for those self-proposed architectures, it is necessary to train them from scratch.
@@ -245,8 +244,7 @@ For example, [pGSLM (2021)](../../Models/SpeechLM/2021.09.07_pGSLM.md) proposes 
 To enable the listening ability of SpeechLMs while speaking, [LSLM (2024)](../../Models/SpokenDialogue/2024.08.05_LSLM.md) proposes to attach a streaming self-supervised learning (SSL) Encoder to an autoregressive token-based TTS Model.
 [VioLA (2023)](../../Models/SpeechLM/2023.05.25_VioLA.md) introduced a multi-task auto-regressive codec language model to autoregressively generate codec tokens instead of speech unit tokens.
 
-</details>
-<br>
+</td><td>
 
 一些工作采用了来自标准 Transformer 的不同架构.
 因为对于这些自创的架构没有现有的权重检查点, 因此需要从头开始训练它们.
@@ -255,10 +253,11 @@ To enable the listening ability of SpeechLMs while speaking, [LSLM (2024)](../..
 - [LSLM (2024)](../../Models/SpokenDialogue/2024.08.05_LSLM.md) 为了使得语音语言模型在说话时具有听觉能力, 提出一种流式自监督学习 (SSL) 编码器, 并将其附加到自回归 Token-based TTS 模型.
 - [VioLA (2023)](../../Models/SpeechLM/2023.05.25_VioLA.md) 引入了一个多任务自回归编解码语言模型 (MLAC), 用于自回归生成编解码器 Token, 而不是语音单元 Token.
 
+</td></tr></table>
+
 #### Continued Pre-Training: 继续预训练
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 In contrast to cold initialization, continued Pre-Training involves initializing the language model with pre-trained weights from a TextLM and then adapting it to handle speech tokens.
 This approach leverages the linguistic knowledge embedded in TextLMs, allowing for more efficient and effective training of SpeechLMs.
@@ -277,8 +276,7 @@ Consequently, both text and speech versions of the prompt can be utilized to tra
 Specifically, the input speech prompt is first transcribed into its text tokens, and then the model predicts the text token response.
 Finally, the text response is synthesized to output speech.
 
-</details>
-<br>
+</td><td>
 
 和冷初始化相比, 继续预训练涉及使用预训练的 TextLM 权重来初始化语言模型, 然后将其修改为处理语音 Token.
 这种方法利用 TextLM 中内嵌的语言知识, 允许更有效和高效地训练语音语言模型.
@@ -297,10 +295,11 @@ Finally, the text response is synthesized to output speech.
   具体地, 输入语音提示首先被转录成文本 Token, 然后模型预测文本 Token 响应.
   最后, 文本响应被合成输出语音.
 
+</td></tr></table>
+
 ### 4.2.2.Language Model Instruction-Tuning: 语言模型指令微调
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 Instruction-tuning refers to the process of fine-tuning SpeechLMs to follow specific instructions to perform a wide range of tasks.
 This phase is crucial for enhancing the pre-trained model's generalization capabilities and making it more adaptable to diverse applications.
@@ -318,8 +317,7 @@ Finally, they synthesize the prompt/response pairs using TTS.
 [COSMIC (2023)](../../Models/SpeechLM/2023.11.03_COSMIC.md) constructed speech QA data by asking GPT-3.5 to generate question-answer pairs based on the transcriptions of English TED talk speeches.
 They showed the model trained on their proposed speech QA dataset can generalize to unseen tasks such as speech-to-text translation using in-context learning.
 
-</details>
-<br>
+</td><td>
 
 指令微调是指堆语音语言模型进行微调, 使其遵循特定指令以执行广泛的任务.
 这一阶段对于增强预训练模型的泛化能力并使其更适应多样化应用至关重要.
@@ -337,10 +335,11 @@ They showed the model trained on their proposed speech QA dataset can generalize
 - [COSMIC (2023)](../../Models/SpeechLM/2023.11.03_COSMIC.md) 通过询问 GPT-3.5 基于英语 TED 演讲语音的转录来生成问答对, 构建语音问答数据集.
 他们展示了在他们提出的语音问答数据集上训练的模型可以使用上下文学习泛化到未见过的任务, 如语音到文本的翻译.
 
+</td></tr></table>
+
 ## 4.3.Speech Generation Paradigm: 语音生成范式
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 In the previous sections, we discuss the typical generation paradigm for SpeechLMs, which involves taking a predefined input sequence and generating a complete response.
 However, this approach does not reflect the natural flow of voice interactions.
@@ -348,8 +347,7 @@ For instance, during a conversation, one person may interrupt another, switching
 Additionally, a person might choose not to respond if the other is engaged in a conversation with someone else.
 Based on these observations, we identify two key aspects of advanced voice interaction skills for SpeechLMs: real-time interaction and silence mode.
 
-</details>
-<br>
+</td><td>
 
 在先前的章节中, 我们讨论了语音语言模型的典型生成范式, 涉及使用预定义的输入序列并生成完整的响应.
 然而, 这种方法并不能反映语音交互的自然流动.
@@ -357,10 +355,11 @@ Based on these observations, we identify two key aspects of advanced voice inter
 此外, 一个人可能选择不作答, 如果另一个正在与其他人进行对话.
 基于这些观察, 我们认为语音语言模型的高级语音交互技能有两个关键方面: 实时交互和静默模式.
 
+</td></tr></table>
+
 ### Real-time Interaction: 实时交互
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 Real-time Interaction refers to the capability of SpeechLMs to engage with users instantaneously.
 This interaction consists of two key components:
@@ -374,8 +373,7 @@ A cross-attention transformer layer is included to capture the interactions betw
 In contrast, [LSLM (2024)](../../Models/SpokenDialogue/2024.08.05_LSLM.md) proposes a different approach, utilizing a single decoder-only Transformer to model one speaker's speech in the dialogue.
 This model incorporates a streaming SSL encoder that continuously processes input from the listening channel and fuses its embeddings with those from the speaking channel.
 
-</details>
-<br>
+</td><td>
 
 实时交互是指语音语言模型能够即时与用户进行交互的能力.
 这一交互由两个关键组件组成:
@@ -388,10 +386,11 @@ This model incorporates a streaming SSL encoder that continuously processes inpu
 - [LSLM (2024)](../../Models/SpokenDialogue/2024.08.05_LSLM.md) 提出了一个不同的方法, 使用单个的仅解码器的 Transformer 模型来处理对话中的一个发言人的语音.
   该模型包含一个流式 SSL 编码器, 持续处理来自听觉通道的输入, 并将其嵌入和说话通道的嵌入融合.
 
+</td></tr></table>
+
 ### Silence Mode: 静默模式
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 Silence Mode refers to the state in which the SpeechLMs remain inactive or silent during periods of non-interaction.
 This mode is essential for creating a natural conversational flow, allowing the model to avoid unnecessary interruptions.
@@ -401,8 +400,7 @@ Additionally, it is important for the model to learn when to disregard instructi
 This method involves training the model on both query speech and non-query audio, which may include environmental sounds or non-query speech.
 As a result, the model learns to output the **end-of-sequence** token to terminate its response when non-query audio is detected.
 
-</details>
-<br>
+</td><td>
 
 静默模式指的是语音语言模型在非交互期间保持无声或静默的状态.
 这一模式对于创建自然的对话流是至关重要的, 允许模型避免不必要的中断.
@@ -411,3 +409,5 @@ As a result, the model learns to output the **end-of-sequence** token to termina
 目前唯一集成静默模式的方法是 [VITA (2024)](../../Models/SpokenDialogue/2024.08.09_VITA.md).
 该方法涉及在查询语音和非查询音频上训练模型, 这可能包括环境声音或非查询语音.
 因此, 当检测到非查询音频时, 模型学会输出**终止序列** Token 以终止其响应.
+
+</td></tr></table>
