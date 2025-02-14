@@ -96,6 +96,10 @@
 
 - **Survey**: A Comprehensive Survey of Hallucination in Large Language, Image, Video and Audio Foundation Models. ACL EMNLP 2024.
 - **Survey**: A Survey on Model Compression for Large Language Models. ACL2024.
+- [**Survey**: A Survey on Speech Large Language Models](Surveys/2024.10.24__Survey__A_Survey_on_Speech_Large_Language_Models_(17P).md)
+- [**Survy**: Recent Advances in Speech Language Models: A Survey](Surveys/2024.10.01_Recent_Advances_in_Speech_Language_Models__A_Survey_20P/Main.md)
+- [**Survey**: Towards Controllable Speech Synthesis in the Era of LLM](Surveys/2024.12.09_Towards_Controllable_Speech_Synthesis_in_the_Era_of_LLM_23P/Main.md)
+- [**Survey**: WavChat: A Survey of Spoken Dialogue Models](Surveys/2024.11.15_WavChat_60P/Main.md)
 
 - [**T5-TTS**: Improving Robustness of LLM-Based Speech Synthesis by Learning Monotonic Alignment.](Models/SpeechLM/2024.06.25_T5-TTS.md) InterSpeech2024.
 - [**Tacotron2**: Natural TTS Synthesis by Conditioning WaveNet on Mel Spectrogram Predictions.](Models/Acoustic/2017.12.16_Tacotron2.md) ICASSP2018.
