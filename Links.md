@@ -126,6 +126,30 @@
     - 二次整理: [文件](Blogs/2024.05.27_一文教你看懂GPT-4o背后的语音技术-林唯秀.md) #TODO 修改排版
 - 笑叔神侠
   - 2025.02.10 [文章: 深入解析 Flow Matching 技术](https://zhuanlan.zhihu.com/p/685921518)
+- 小冬瓜AIGC
+  - [专栏: 手撕 LLM](https://www.zhihu.com/column/c_1683257985659564032)
+- v_JULY_v 七月
+  - 2020.01.05 [16 系列合集](https://blog.csdn.net/v_JULY_v/article/details/6543438)
+    - 最近更新: 2025.02.21
+    - 01 微软面试 100 题
+    - 02 十五个经典算法
+    - 03 程序员编程艺术 40 章
+    - 04 红黑树/B树/R树/Trie树
+    - 05 机器学习十大算法
+    - 06 大模型与 ChatGPT 系列
+    - 07 Transformer 改进
+    - 08 DeepSeek
+    - 09 AIGC 与 CV 多模态
+    - 10 工业协作机器人
+    - 11 机器人大模型
+    - 12 视觉语言动作机器人
+    - 13 具身智能
+    - 14 七月论文审稿 GPT
+    - 15 RAG 知识库问答
+    - 16 智能体 Agent 项目
+    - 17 其他文章节选
+  - 2023.04.12 [文章: 从零实现Transformer的简易版与强大版：从300多行到3000多行](https://blog.csdn.net/v_JULY_v/article/details/130090649)
+    - 最近更新: 2023.11.24
 
 ## 魔搭社区
 
@@ -134,6 +158,10 @@
 ## CSDN
 
 - 夏天｜여름이다
+  - 2023.03.08 [TTS|一文了解语音合成经典论文/最新语音合成论文篇](https://blog.csdn.net/weixin_44649780/article/details/129402750)
+    - 最近更新: 2024.01.11
+  - 2023.07.13 [TTS|文本转语音中的声码器(Vocoder)](https://blog.csdn.net/weixin_44649780/article/details/129840575)
+    - 最近更新: 2023.11.07
   - 2023.09.18 [TTS|保姆级端到端的语音合成VITS论文详解及项目实现(超详细图文代码)](https://blog.csdn.net/weixin_44649780/article/details/132406232)
     - 最近更新: 2023.12.07
 - 留尘铃
@@ -145,14 +173,35 @@
     - 2024.01.25 [02: 采样值-本质分析|采样值-震动振幅值|采样值的录制与播放|采样值在播放设备中才有意义|音频采样率|音频采样精度|音频通道数](https://hanshuliang.blog.csdn.net/article/details/135822403)
     - 2024.01.27 [03: 比特率/码率|帧/帧长|帧采样排列方式-交错模式/非交错模式](https://hanshuliang.blog.csdn.net/article/details/135852745)
     - 2024.01.29 [04: 音频压缩技术|音频采样占用的带宽和空间|人耳听觉掩蔽效应|频谱掩蔽效应|时域掩蔽效应](https://hanshuliang.blog.csdn.net/article/details/135886197)
+- 曼城周杰伦 (杨夕)
+  - [系列: 自然语言处理](https://blog.csdn.net/victor_manches/category_12345328_3.html)
+    - 最近更新: 2025.02.26 [094 PPO & GRPO 详解](https://blog.csdn.net/victor_manches/article/details/145857326)
+
+## HuggingFace
+
+- [Audio Course](https://hf-mirror.com/learn/audio-course/)
+  - 译: [音频特征](https://datawhalechina.github.io/hugging-audio/) by Datawhale
 
 ## Github
 
 - JunityZhan
   - 2023.04.10 [Repo·Understanding-VITS](https://github.com/JunityZhan/Understanding-VITS/blob/main/models.ipynb)
     - 最近更新: 2023.06.05
+- km1994/杨夕 -> 知识星球
+  - [km1994/LLMs_interview_notes: 该仓库主要记录 大模型（LLMs） 算法工程师相关的面试题](https://github.com/km1994/LLMs_interview_notes?tab=readme-ov-file)
+- [Repo·speechmetrics](https://github.com/aliutkus/speechmetrics)
+  - 最近更新: 2023.07.05
+
 
 ## Tencent Cloud
 
 - CreateAMind
   - 2019.10.14 [VAE的三种不同推导方法](https://cloud.tencent.com/developer/article/1520388)
+- deephub
+  - 2023.12.19 [从头开始实现LoRA以及一些实用技巧](https://cloud.tencent.com/developer/article/2372608)
+
+## Youtube
+
+- Hung-yi Lee/李宏毅
+  - [2024 生成式AI导论](https://www.youtube.com/playlist?list=PLJV_el3uVTsPz6CTopeRp2L2t4aL_KgiI)
+  - [Diffusion Model](https://www.youtube.com/playlist?list=PLJV_el3uVTsNi7PgekEUFsyVllAJXRsP-)
