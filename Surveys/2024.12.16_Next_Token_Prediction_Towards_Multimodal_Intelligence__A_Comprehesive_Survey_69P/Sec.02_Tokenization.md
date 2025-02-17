@@ -1,7 +1,7 @@
 # 2·MultiModal Tokenization: 多模态分词
 
-<details>
-<summary>展开原文</summary>
+
+<table><tr><td width="50%">
 
 Tokenization is the first and a fundamental step for multimodal sequential modeling under the next token prediction framework.
 It decomposes information from various sources, such as images, videos, and audio clips, into a sequence of minimal, manageable units known as tokens for the NTP model to learn.
@@ -10,8 +10,7 @@ Table.02 provides an overview of the tokenizers used across various modalities i
 Despite being derived from various modalities, these tokenization methods can all be categorized into two prototypes: **discrete tokenization**  and **continuous tokenization**.
 In this section, we will initially introduce the general definition and basics techniques of training multimodal tokenizers ([Section.2.1](#Section.2.1)), then the fundamentals and applications of discrete tokens ([Section.2.2](#Section.2.2), [Section.2.3](#Section.2.3)) and continuous tokens ([Section.2.4](#Section.2.4), [Section.2.5](#Section.2.5)) in NTP framework.
 
-</details>
-<br>
+</td><td>
 
 在 **Next Token Prediction (NTP)** 框架下, Tokenization 是多模态序列建模的第一且基础的步骤.
 它将不同来源的信息 (如图像, 视频, 音频片段) 分解为最小的可管理的单元即 Token 组成的序列, 以供 NTP 模型学习.
@@ -26,12 +25,13 @@ In this section, we will initially introduce the general definition and basics t
 - [2.4 节](#Section.2.4)介绍连续 Tokens 的基本原理;
 - [2.5 节](#Section.2.5)介绍连续 Tokens 的应用.
 
+</td></tr></table>
+
 ## 2.1·Tokenization of Different Modalities: 不同模态的分词
 
 <a id="Section.2.1"></a>
 
-<details>
-<summary>展开原文</summary>
+<table><tr><td width="50%">
 
 We first define the tokenization process as a function $f$ that maps a sample $x$ from the raw multimodal space $X$ to a representation $z$ in the tokenizer's output representation space $Z_f$.
 
@@ -41,8 +41,7 @@ $$
 
 where $x\in X$ and $z\in Z_f$.
 
-</details>
-<br>
+</td><td>
 
 我们首先定义 Tokenization 过程为一个函数 $f$, 它将来自原始多模态空间 $X$ 的样本 $x$ 映射到 Tokenizer 的输出表示空间 $Z_f$ 中的表示 $z$.
 
@@ -50,10 +49,12 @@ $$
 f(x) = z,\ x\in X,\ z\in Z_f.\tag{1}
 $$
 
+</td></tr></table>
+
 ### 2.1.1·Tokenizer Type: 分词器类型
 
-<details>
-<summary>展开原文</summary>
+
+<table><tr><td width="50%">
 
 As illustrated in Fig.04, tokenizers for multimodal information can be categorized into two types: discrete and continuous.
 This classification is based on how tokens are derived from the original data.
@@ -85,8 +86,7 @@ Each token $z$ is sampled from a continuous distribution, allowing for a more nu
 Continuous tokenization is particularly advantageous for modalities that naturally exist in a continuous form and require a rich representational capacity to capture their complex patterns.
 For instance, in audio and visual data, continuous representations can effectively retain fine-grained temporal and spatial information that might be lost during discrete tokenization.
 
-</details>
-<br>
+</td><td>
 
 如图 04 所示, 多模态信息的 Tokenizer 可以分为两种类型: 离散和连续.
 这一分类是基于 Token 如何从原始数据中产生.
@@ -121,10 +121,12 @@ For instance, in audio and visual data, continuous representations can effective
 连续 Tokenization 对于自然以连续形式存在并且需要丰富的表示能力来捕捉其复杂模式的模态特别有利.
 例如, 在音频和视觉数据中, 连续表示可以有效地保留细粒度的时空信息, 而在离散 Tokenization 中则可能被削弱.
 
+</td></tr></table>
+
 ### 2.1.2·Features of Tokenizers: 分词器特征
 
-<details>
-<summary>展开原文</summary>
+
+<table><tr><td width="50%">
 
 Before diving into different tokenization techniques, we summarize the basic two features (Representation and Reconstruction) that an ideal multimodal tokenizer should possess to achieve better understanding and generation capabilities in the NTP framework.
 
@@ -141,8 +143,7 @@ Notable works that excel in reconstruction include Auto-Encoder (AE) series mode
 
 It is important to note that these abilities are not mutually exclusive; their balance depends on the training techniques used.
 
-</details>
-<br>
+</td><td>
 
 在深入讨论不同 Tokenization 技术之前, 我们总结了基础的两个特征 (表示和重构), 一个理想的多模态 Tokenizer 应该具有在 NTP 框架中获得更好的理解和生成能力.
 
@@ -163,10 +164,12 @@ It is important to note that these abilities are not mutually exclusive; their b
 
 重要的是需要注意这些能力并不互斥, 它们的平衡取决于所使用的训练技术.
 
+</td></tr></table>
+
 ### 2.1.3·Training Methods for Tokenizers: 训练方法
 
-<details>
-<summary>展开原文</summary>
+
+<table><tr><td width="50%">
 
 The training methodologies for tokenizers can be categorized into four groups, based on their respective training objectives: Auto-Encoding, Denoising Auto-Encoding, Supervised Training, and Contrastive Learning, as depicted in Figure.05.
 Herein, we provide a summary of the core concepts associated with various tokenizers.
@@ -195,7 +198,7 @@ These models are initially trained on large-scale datasets to capture specific f
 In the vision modality, supervised tasks include semantic segmentation, object detection, and depth estimation.
 Models trained for these tasks, such as SAM~\citep{sam,samclip}, ViTDet~\citep{vitdet}, and MiDaS~\citep{midas}, are later used in LMMs as tokenizers, like in DeepSeek-VL~\citep{DeepSeek-VL} and Cambrain-1~\citep{Cambrian-1}, to extract diverse visual features from input data.
 In the audio modality, Whisper~\citep{radford2023robust} is trained with 680,000 hours of labeled audio data in a weakly supervised manner.
-Thanks to its robust and powerful speech feature extraction capabilities, Whisper is widely used in Speech LLMs ([SALMONN](../../Models/SpokenDialogue/2023.10.20_SALMONN.md); [Qwen-Audio](../../Models/SpokenDialogue/2023.11.14_Qwen-Audio.md); [WavLLM](../../Models/SpeechLM/2024.03.31_WavLLM.md)) for extracting speech embeddings.
+Thanks to its robust and powerful speech feature extraction capabilities, Whisper is widely used in Speech LLMs ([SALMONN](../../Models/SpokenDialogue/2023.10.20_SALMONN.md); [Qwen-Audio](../../Models/SpeechLM/ST2T/2023.11.14_Qwen-Audio.md) [WavLLM](../../Models/SpeechLM/2024.03.31_WavLLM.md)) for extracting speech embeddings.
 
 **Contrastive Learning**
 
@@ -207,8 +210,7 @@ For example, [DINO](../../Models/_Basis/DINO.md) uses image-image pairs to enhan
 Currently, LMMs that only feature multimodal understanding capabilities, such as InstructBLIP~\cite{dai2023instructblip} [74] and LLaVA~\cite{liu2023llava} [255], opt for tokenizers with superior representation abilities like [CLIP](../../Models/_Basis/2021.02.26_CLIP.md), as they do not require reconstruction of the multimodal information.
 Conversely, LMMs supporting multimodal generation capabilities tend to choose VQ-VAE as the tokenizer, exemplified by models like Unified-IO~\cite{lu2022unifiedio} [272], Chameleon~\cite{chameleonteam2024chameleon} [375], Emu3~\citep{Emu3} [407], among others~\citep{wang2024mio, seedllama, wang2022ofa} [128] [402] [411].
 
-</details>
-<br>
+</td><td>
 
 如图 05 所示, Tokenizer 的训练方法可以基于对应的训练目标分为四组:
 - 自编码 (Auto-Encoding)
@@ -250,7 +252,7 @@ Conversely, LMMs supporting multimodal generation capabilities tend to choose VQ
 - 在视觉模态中, 监督任务包括语义分割, 目标检测, 深度估计.
 针对这些任务训练的模型, 如 SAM~\citep{sam,samclip}[197] [398], ViTDet~\citep{vitdet} [241], 和 MiDaS [334]~\citep{midas}, 随后作为 LMMs 中的 Tokenizer 使用 (如 DeepSeek-VL [269]~\citep{DeepSeek-VL}, Cambrain-1 [382] ~\citep{Cambrian-1}), 来从输入数据中提取多样化的视觉特征.
 
-- 在音频模态中, Whisper 以弱监督的方式在 680K 小时的标注音频数据上训练. 由于其健壮且强大的语音特征提取能力, Whisper 被广泛用于语音 LLMs (如 [SALMONN](../../Models/SpokenDialogue/2023.10.20_SALMONN.md); [Qwen-Audio](../../Models/SpokenDialogue/2023.11.14_Qwen-Audio.md); [WavLLM](../../Models/SpeechLM/2024.03.31_WavLLM.md)) 提取语音嵌入.
+- 在音频模态中, Whisper 以弱监督的方式在 680K 小时的标注音频数据上训练. 由于其健壮且强大的语音特征提取能力, Whisper 被广泛用于语音 LLMs (如 [SALMONN](../../Models/SpokenDialogue/2023.10.20_SALMONN.md); [Qwen-Audio](../../Models/SpeechLM/ST2T/2023.11.14_Qwen-Audio.md) [WavLLM](../../Models/SpeechLM/2024.03.31_WavLLM.md)) 提取语音嵌入.
 
 #### 对比学习 (Contrastive Learning)
 
@@ -264,12 +266,14 @@ Conversely, LMMs supporting multimodal generation capabilities tend to choose VQ
 
 相反, 支持多模态生成能力的 LMM 则倾向于选择 VQ-VAE 作为 Tokenizer, 例如 Unified-IO~\cite{lu2022unifiedio}, Chameleon~\cite{chameleonteam2024chameleon}, Emu3~\citep{Emu3} 和 ~\citep{wang2024mio, seedllama, wang2022ofa}.
 
+</td></tr></table>
+
 ## 2.2·Discrete Tokenization Basics: 离散分词基础
 
 <a id="Section.2.2"></a>
 
-<details>
-<summary>展开原文</summary>
+
+<table><tr><td width="50%">
 
 Unlike the language modality, which inherently comprises discrete symbols (e.g., tokens or words), most other modalities naturally exist in a continuous space.
 To bridge the gap, the core technique is **Vector Quantization (VQ)**, which aims to map the original continuous information into a compressed, finite representation space, i.e.
@@ -281,8 +285,7 @@ This linearization allows for effective modeling using the next token prediction
 In this section, we will first elaborate on modern vector quantization techniques widely used as multimodal tokenizers, such as VQ-VAE (Section.2.2.1) and its variants.
 Following that, we will introduce the specific optimizations of discrete tokenization in different modalities (Section.2.3).
 
-</details>
-<br>
+</td><td>
 
 不同于语言模态, 其本质由离散符号 (如 Token 或词) 组成, 大多数其他模态自然存在于连续空间中.
 为了弥合这种差距, 核心技术是 **向量量化 (Vector Quantization, VQ)**, 其目标是将原始连续信息映射到压缩的有限的表示空间中, 即离散 Token.
@@ -293,10 +296,12 @@ Following that, we will introduce the specific optimizations of discrete tokeniz
 在本节中, 我们首先详细介绍被广泛作为多模态 Tokenizer 的现代向量量化技术, 如 VQ-VAE (Section.2.2.1) 和其变体.
 随后, 我们在 Section.2.3 中介绍离散 Tokenization 在不同模态中的特定优化.
 
+</td></tr></table>
+
 ### 2.2.1·Vector Quantization Methods: 向量量化方法
 
-<details>
-<summary>展开原文</summary>
+
+<table><tr><td width="50%">
 
 The origins of VQ method trace back to the 1950s at Bell Laboratories, where researchers endeavored to optimize signal transmission through the development of suitable discretization procedures~\cite{Pags2015IntroductionTV}.
 In essence, quantization is the process of mapping an infinite set of continuous values to a smaller, discrete set of finite values.
@@ -374,8 +379,7 @@ The generated bit tokens exhibit highly structured semantic representations, whi
 Unlike RVQ which models the information residually, Group Vector Quantization models the information across different dimensions.
 In the audio domain, [HiFi-Codec](../../Models/SpeechCodec/2023.05.04_HiFi-Codec.md) proposes a group-residual vector quantization technique to reduce the number of codebooks, while [FACodec](../../Models/SpeechCodec/2024.03.05_FACodec.md) disentangles speech into prosody information, content information, and acoustic details using three-factorized vector quantizers.
 
-</details>
-<br>
+</td><td>
 
 向量量化方法的起源可以追溯到 1950 年代的贝尔实验室, 研究人员试图通过开发合适的离散过程来优化信号传输.
 简单来说, 量化是将连续值的无限集映射到较小的有限值的离散集的过程.
@@ -465,10 +469,12 @@ Maskbit 探索了无嵌入的 Tokenization 方法, 使用了二元量化.
 - [HiFi-Codec](../../Models/SpeechCodec/2023.05.04_HiFi-Codec.md) 提出了分组残差向量量化技术来减少码本数量;
 - [FACodec](../../Models/SpeechCodec/2024.03.05_FACodec.md) 使用三个因子向量量化器将语音分解为韵律信息, 内容信息和声学信息.
 
+</td></tr></table>
+
 ### 2.2.2·Evaluation of VQ Tokenizers
 
-<details>
-<summary>展开原文</summary>
+
+<table><tr><td width="50%">
 
 When evaluating VQ-VAEs, two critical metrics are commonly considered: **reconstruction ability** and **generation ability**.
 
@@ -483,8 +489,7 @@ To quantitatively evaluate generation ability, metrics such as the Inception Sco
 rFIDs are often computed between ImageNet validation images and their reconstructed images.
 gFIDs are usually computed against the training set with ADM's evaluation suite~\cite{dhariwal2021diffusionmodelsbeatgans}.
 
-</details>
-<br>
+</td><td>
 
 在评估 VQ-VAE 时, 两个关键指标是常见的: **重构能力**和**生成能力**.
 
@@ -499,12 +504,14 @@ L2 距离, PSNR 和 rFID 都是常用的评估重构能力的指标.
 rFID 通常通过 ImageNet 验证集图像和它们的重构图像计算.
 gFID 通常通过 ADM 评估套件~\cite{dhariwal2021diffusionmodelsbeatgans} 计算, 它与训练集进行比较.
 
+</td></tr></table>
+
 ## 2.3·Discrete Tokenization for Different Modalities: 不同模态的离散分词
 
 <a id="Section.2.3"></a>
 
-<details>
-<summary>展开原文</summary>
+
+<table><tr><td width="50%">
 
 Generic quantization methods provide basic ways to convert continuous data into discrete tokens.
 However, there isn't a single quantizer that works well for all modalities because each modality has unique characteristics.
@@ -514,24 +521,28 @@ This section will explain the unique features of different modalities and showca
 </details>
 <br>
 
+</td><td>
+
 一般量化方法提供了将连续数据转换为离散 Token 的基本方法.
 然而, 并没有单个量化器能够对所有模态都良好工作, 因为每个模态都有独特的特征.
 因此, 为每个模态创建特定的 Tokenizer 是很重要的.
 本节将介绍不同模态的独特特征, 并展示一些图像, 音频和视频等其他模态的 Tokenizer 的例子.
 
+</td></tr></table>
+
+
 ### 2.3.1·Image: 图像
+
+<table><tr><td width="50%">
 
 Images can be tokenized into discrete symbols with the previously introduced VQ-VAE structure.
 Compared to text tokens, images diverge in three fundamental aspects that significantly impact how they should be tokenized:
 
-1.
-Rich Information Granularity: Unlike text, which primarily encapsulates high-level semantic meaning, images are contain with a myriad of perceptual details.
+1. Rich Information Granularity: Unlike text, which primarily encapsulates high-level semantic meaning, images are contain with a myriad of perceptual details.
 These encompass low-level visual elements such as colors, shapes, and textures, alongside more abstract concepts like objects and actions.
-2.
-Dense Information: Images inhabit a densely packed representational realm, where each pixel, across multiple dimensions including height, width, and color channels (RGB being a common example), carries information.
+2. Dense Information: Images inhabit a densely packed representational realm, where each pixel, across multiple dimensions including height, width, and color channels (RGB being a common example), carries information.
 This stands in stark contrast to the discreteness of text in nature, characterized by sequentially arranged words.
-3.
-Two-Dimensional Spatial Structure: Images are inherently structured in two dimensions, spread across a grid defined by height and width.
+3. Two-Dimensional Spatial Structure: Images are inherently structured in two dimensions, spread across a grid defined by height and width.
 This 2D layout differs fundamentally from the straightforward, one-dimensional sequence that characterizes textual data, introducing unique complexities in their processing and analysis.
 
 Given these differences, bridging the gap between text and image modalities in the training of LLMs based on discrete image tokens requires a robust image tokenizer, which must balance the fusion of sufficient alignment with LLM's language ability (referred to as "representation"), the retention of rich original image information (referred to as "reconstruction"), and the efficient use of tokens given the growing inference cost of transformer decoder (referred to as "token efficiency").
@@ -553,7 +564,17 @@ Beyond these aspects, some studies also focus on the unique properties of specif
 For example, VQ-IMG aims to enhance the modeling capabilities of image tokenizers for faces~\citep{make-a-scene}, while LVM integrates tasks like segmentation and object detection during the training of models based on VQGAN to enrich the representation of image tokens~\citep{bai2023sequential}.
 StrokeNVWA introduces a VQ-Stroke method to discretize vector graphic images into stroke tokens~\citep{strokenvwa}.
 
+
+</td><td>
+
+</td></tr></table>
+
+
+
+
 ### 2.3.2·Audio: 音频
+
+<table><tr><td width="50%">
 
 Raw audios are typically stored as 16-bit integer values with a sampling rate that exceeds tens of thousands values per second, which leads to extremely long sequences and renders next token prediction training more difficult.
 Versatile quantization methodologies have been investigated for audio tokenization.
@@ -580,7 +601,13 @@ Mimi, used by Moshi~\citep{défossez2024moshispeechtextfoundationmodel}, further
 Additionally, it isolates the first-layer codebook from the RVQ process to achieve better semantic and acoustic disentanglement.
 To enhance the compression rate, WavTokenizer~\citep{ji2024wavtokenizer} is capable of quantizing one-second audio into 75 or 40 tokens with a single quantizer.
 
+</td><td>
+
+</td></tr></table>
+
 ### 2.3.3·Video: 视频
+
+<table><tr><td width="50%">
 
 Compared to images, videos introduce an additional temporal dimension that must be considered during the tokenization process.
 A straightforward strategy is to utilize an image-based VQ-VAE model to tokenize the video frame-by-frame.
@@ -601,7 +628,13 @@ Accordingly, both the initial frame and each subsequent clip are discretized int
 **(2) Temporal Causality**.
 Compared to vanilla 3D architectures, using causal 3D architecture can ensure the tokenization and detokenization of each clip depend only on the preceding clips, facilitating autoregressive modeling along the temporal dimension.
 
+</td><td>
+
+</td></tr></table>
+
 ### 2.3.4·More Modalities: 更多模态
+
+<table><tr><td width="50%">
 
 Modeling various information as discrete tokens has gone far beyond the traditional text, image, video and audio modalities.
 In the computer vision field, we can unify the output spaces of tasks like object detection, semantic segmentation, and depth mapping into images.
@@ -610,9 +643,15 @@ In **robotics and embodied AI** domain, the robots actions in response to the en
 In **AI4Science**, by factorizing various proteins into DNA token sequences, protein language models are capable of learning from a wide array of sequences that span the evolutionary tree.
 These models have demonstrated their efficacy as powerful tools for sequence design and protein engineering, as highlighted in studies ~\cite{madani2023large,ruffolo2024designing}.
 
+</td><td>
+
+</td></tr></table>
+
 ## 2.4·Continuous Tokenization Basics: 连续分词基础
 
 <a id="Section.2.4"></a>
+
+<table><tr><td width="50%">
 
 Continuous tokens represent non-textual modalities in a continuous feature space, offering less information loss~\citep{dnd-transformer} and improved data representation compared to discrete tokens~\citep{xie2024showosingletransformerunify}.
 However, their dense feature encapsulation makes direct mapping to a fixed vocabulary challenging, unlike discrete tokens.
@@ -622,7 +661,13 @@ To handle continuous multimodal token inputs for LLM to understand, transformati
 For multimodal generation, modifying the output head to align with non-textual modality specific decoders' input feature space is also crucial.
 The following subsections introduce the basic designs and change for LLMs to accommodate continuous multimodal token from multimodal understanding (\S\ref{sec: Tokenize Continuous Input}) and generation (\S\ref{sec: De-tokenize Continuous Output}) perspectives.
 
+</td><td>
+
+</td></tr></table>
+
 ### 2.4.1·Tokenize Continuous Input for Understanding
+
+<table><tr><td width="50%">
 
 To effectively integrate raw non-textual modality data into Large Language Models (LLMs), two key steps are typically undertaken: (1) encoding the data into a more suitable representation space, and (2) aligning it with the LLM’s feature space.
 
@@ -675,7 +720,13 @@ LLaVA-1.5~\citep{liu2023llava15} enhances LLaVA by substituting the linear proje
 There are also other approaches to connect the non-textual modality encoder with the LLM backbone.
 For example, Emu~\citep{sun2023emu1} leverages a Causal Transformer (i.e., C-Former) to convert the image tokens autoregressively; Emu2~\citep{sun2023generative} replaces the C-Former with mean pooling followed by a linear projection.
 
+</td><td>
+
+</td></tr></table>
+
 ### 2.4.2·De-tokenize Continuous Output for Generation
+
+<table><tr><td width="50%">
 
 The backbone of large language models is inherently designed for language generation.
 Typically, their output layers function as classification heads that predict distributions over a language vocabulary.
@@ -711,14 +762,26 @@ To address this, additional modules are introduced to convert these tokens into 
 For instance, NExT-GPT~\citep{nextgpt} employs a Transformer-based output projection, while Mini-GPT5~\citep{zheng2023minigpt5} and GILL~\citep{koh2023GILL} utilize a Q-Former-like architecture~\citep{li2023blip2} consisting of a Transformer encoder and decoder to transform continuous tokens into conditional latent features for the Stable Diffusion Model.
 DreamLLM~\citep{dreamllm} uses a linear layer, whereas Emu~\citep{sun2023emu1} and Emu2~\citep{sun2023generative} directly utilize the generated continuous tokens as latents for multimodal decoders.
 
+</td><td>
+
+</td></tr></table>
+
 ## 2.5·Continuous Tokenization for Different Modalities: 不同模态的连续分词
 
 <a id="Section.2.5"></a>
 
+<table><tr><td width="50%">
+
 While the aforementioned workflow and categorization outline a general approach to continuous multimodal tokenization, research indicates that employing modality-specific encoders, tailored to each modality, can significantly enhance performance~\citep{navit, fixres, anymal}.
 Given the unique characteristics of different modalities, these approaches introduce specific inductive biases into the tokenization process.
 
+</td><td>
+
+</td></tr></table>
+
 ### 2.5.1·Images: 图像
+
+<table><tr><td width="50%">
 
 For images, specific research directions include but are not limited to: \textbf{image augmentation}, \textbf{resolution and aspect ratio} and \textbf{heterogeneous images}.
 
@@ -737,7 +800,13 @@ Document images, for example, require detailed observation, as seen in TextMonke
 Each sub-image is encoded individually, and trainable shifted attention layers are added post-frozen ViT layers for interactive representation across sub-images.
 These are then compressed and fed into the LLM backbone via an image and token resampler.
 
+</td><td>
+
+</td></tr></table>
+
 ### 2.5.2·Audio: 音频
+
+<table><tr><td width="50%">
 
 Recently, MELLE~\citep{meng2024autoregressive} indicates that predicting continuous tokens in an NTP manner can generate audio with high quality and naturalness comparable to ground truth.
 Traditionally, audio frames are converted from the temporal domain to the frequency domain using the Short-Time Fourier Transform (STFT)~\cite{griffin1984signal} or the Fast Fourier Transform (FFT)~\cite{duhamel1990fast}.
@@ -763,7 +832,13 @@ Audio-MAE~\citep{huang2022masked} adopts a Transformer-based encoder-decoder fra
 Similar to MAE, it uses a reconstruction pre-training task where the decoder is tasked with reconstructing masked patches from the encoded information of the unmasked patches.
 BEATs~\citep{chen2022beats} introduces a self-distilled tokenizer that converts continuous audio signals into discrete labels, facilitating classic mask and discrete label prediction pre-training.
 
+</td><td>
+
+</td></tr></table>
+
 ### 2.5.3·Video: 视频
+
+<table><tr><td width="50%">
 
 Video can be viewed as a sequence of images (frames) over time, making the modeling of temporal relationships between these frames a central focus.
 There are two common approaches to this modeling: post-temporal fusion and full-temporal fusion.
@@ -778,3 +853,7 @@ This enables better modeling of dynamic changes in temporal order, effectively c
 However, this approach requires substantial 3D computation, prompting common strategies such as decoupling temporal and spatial self-attention~\citep{bertasius2021space, ren2023testa} and implementing sparse 3D attention~\citep{lin2022swinbert} to enhance computational efficiency.
 
 Recent advancements, such as TimeChat~\citep{ren2024timechat} and NumPro~\citep{wu2024number}, have explored the integration of timestamp information into continuous video tokens, facilitating explicit time-vision associations for improved temporal grounding and reasoning.
+
+</td><td>
+
+</td></tr></table>
