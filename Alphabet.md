@@ -1,7 +1,13 @@
+- [8-Bit Optimizers via Block-Wise Quantization.](Modules/Optimization/2021.10.06_8-Bit_Optimizers.md) ArXiv:2110.02861/ICLR2022.
+- A Study of BFLOAT16 for Deep Learning Training. ArXiv:1905.12322.
+- [**Adafactor**: Adaptive Learning Rates with Sublinear Memory Cost.](Modules/Optimization/2018.04.11_Adafactor.md) ArXiv:1804.04235.
+- [**AdaLomo**: Low-Memory Optimization with Adaptive Learning Rate.](Modules/Optimization/2023.10.16_AdaLomo.md) ArXiv:2310.10195/ACL2024.
 - [**Adam**: A Method for Stochastic Optimization.](Modules/Optimization/2014.12.22_Adam.md) ICLR2015.
 - [**AdamW**: Decoupled Weight Decay Regularization.](Modules/Optimization/2017.11.14_AdamW.md) ICLR2019.
+- [**AdEMAMix**: The AdEMAMix Optimizer: Better, Faster, Older](Modules/Optimization/2024.09.05_AdEMAMix.md) ArXiv:2409.03137.
 - [**AISHELL-1**: An Open-Source Mandarin Speech Corpus and a Speech Recognition Baseline.](Datasets/2017.09.16_AISHELL-1.md) O-COCOSDA 2017.
 - [**AISHELL-2**: Transforming Mandarin ASR Research into Industrial Scale.](Datasets/2018.08.31_AISHELL-2.md) ArXiv:1808.10583.
+- [**Align-SLM**: Textless Spoken Language Models with Reinforcement Learning from AI Feedback.](Models/SpeechLM/2024.11.04_Align-SLM.md) ArXiv:2411.01834.
 - [**AlignTTS**: Efficient Feed-Forward Text-to-Speech System without Explicit Alignment.](Models/Acoustic/2020.03.04_AlignTTS.md) ICASSP2020.
 - [**AnyGPT**: Unified Multimodal LLM with Discrete Sequence Modeling.](Models/SpeechLM/2024.02.19_AnyGPT.md) ArXiv:2402.12226.
 - [**AudioLM**: A Language Modeling Approach to Audio Generation.](Models/SpeechLM/ST2S/2022.09.07_AudioLM.md) TASLP2023.
@@ -17,31 +23,45 @@
 - [**Char2Wav**: End-to-End Speech Synthesis.](Models/E2E/2017.02.18_Char2Wav.md) ICLR2017.
 - [**CLaM-TTS**: Improving Neural Codec Language Model for Zero-Shot Text-to-Speech.](Models/SpeechLM/2024.04.03_CLaM-TTS.md) ICLR.
 - Classifier-Free Guidance in LLMs Safety. ArXiv2024.
+- **Code LLaMA**: Open Foundation Models for Code. ArXiv:2308.12950.
 - [**Conformer**: Convolution-Augmented Transformer for Speech Recognition.](Models/ASR/2020.05.16_Conformer.md) ArXiv:2005.08100.
 - Connecting Speech Encoder and Large Language Model for ASR. ICASSP2024.
 - [**COSMIC**: Data Efficient Instruction-Tuning for Speech In-Context Learning](Models/SpeechLM/2023.11.03_COSMIC.md) ArXiv:2311.02248.
 - [**Cosyvoice2**: Scalable Streaming Speech Synthesis with Large Language Models.](Models/SpeechLM/2024.12.13_CosyVoice2.md) ArXiv:2412.10117.
 - [**Cosyvoice**: A Scalable Multilingual Zero-Shot Text-to-Speech Synthesizer Based on Supervised Semantic Tokens.](Models/SpeechLM/2024.07.07_CosyVoice.md) ArXiv:2407.05407.
+- [**Cramming**: Training a Language Model on a Single GPU in One Day.](Models/TextLM/2022.12.28_Cramming.md) ArXiv:2212.14034/ICML2023.
+- [**CTRL**: A Conditional Transformer Language Model for Controllable Generation.](Models/_Basis/2019.09.11_CTRL.md) ArXiv:1909.05858.
 - [**DAC**: High-Fidelity Audio Compression with Improved RVQGAN.](Models/SpeechCodec/2023.06.11_Descript-Audio-Codec.md) NeurIPS2024.
 - [**DeepSeekMath**: Pushing the Limits of Mathematical Reasoning in Open Language Models.](Models/TextLM/2024.02.05_DeepSeekMath.md) ArXiv2024.
 - [**DeepVoice3**: 2000-Speaker Neural Text-to-Speech.](Models/Acoustic/2017.10.20_DeepVoice3.md) ICLR2018.
 - Density estimation using Real NVP. ICLR2017.
+- [**dGSLM**: Generative Spoken Dialogue Language Modeling.](Models/SpokenDialogue/2022.03.30_dGSLM.md) ArXiv:2203.16502.
 - Discrete Audio Representation as an Alternative to Mel-Spectrograms for Speaker and Speech Recognition. ICASSP2024.
+- **DISSC**: Speaking Style Conversion in the Waveform Domain Using Discrete Self-Supervised Units. ArXiv:2212.09730/EMNLP2023.
+- [**DivPO**: Diverse Preference Optimization.](Modules/RLHF/2025.01.30_DivPO.md) ArXiv:2501.18101.
 - [**DNSMOS**: A Non-Intrusive Perceptual Objective Speech Quality metric to evaluate Noise Suppressors.](Evaluations/2020.10.28_DNSMOS.md) ICASSP2021.
 - [**DPO**: Direct Preference Optimization: Your Language Model Is Secretly A Reward Model.](Modules/RLHF/2023.05.29_DPO.md) NeurIPS2024.
+- [**DPO**： Direct Preference Optimization: Your Language Model is Secretly a Reward Model.](Modules/RLHF/2023.05.29_DPO.md) ArXiv:2305.18290/NeurIPS2024.
 - [**E2 TTS**: Embarrassingly Easy Fully Non-Autoregressive Zero-Shot TTS.](Models/Diffusion/2024.06.26_E2_TTS.md) SLT2024.
 - [**EATS**: End-to-end Adversarial Text-to-Speech.](Models/E2E/2020.06.05_EATS.md) ICLR2021.
+- Efficient Training of Self-Supervised Speech Foundation Models on a Compute Budget. ArXiv:2409.16295/SLT2024.
 - [**ELLA-V**: Stable Neural Codec Language Modeling with Alignment-Guided Sequence Reordering.](Models/SpeechLM/ST2S/2024.01.14_ELLA-V.md) ArXiv2024.
 - [**Emilia**: An Extensive, Multi-Lingual, and Diverse Speech Dataset for Large-Scale Speech Generation.](Datasets/2024.07.07_Emilia.md) SLT2024.
-- [**EnCodec**: High Fidelity Neural Audio Compression.](Models/SpeechCodec/2022.10.24_EnCodec.md) ArXiv2022.
+- [**EnCodec**: High Fidelity Neural Audio Compression.](Models/SpeechCodec/2022.10.24_EnCodec.md) ArXiv:2210.13438.
 - End-to-End Attention-Based Large Vocabulary Speech Recognition. ICASSP2016.
 - End-to-End Speech Recognition Contextualization with Large Language Models. ICASSP2024.
+- Enhanced Direct Speech-to-Speech Translation Using Self-supervised Pre-training and Data Augmentation. ArXiv:2204.02967.
 - [**ESD**: Emotional Voice Conversion: Theory, Databases and ESD.](Datasets/2021.05.31_ESD.md) Speech Communication2022.
 - Explicitly Minimizing the Blur Error of Variational Autoencoders. ICLR2023.
 - [**F5-TTS**: A Fairytaler that Fakes Fluent and Faithful Speech with Flow Matching.](Models/Diffusion/2024.10.09_F5-TTS.md) ArXiv:2410.06885.
+- [**fairseq S^2**: A Scalable and Integrable Speech Synthesis Toolkit.](Models/Toolkits/2021.09.14_FairSeq_S^2.md) ArXiv:2109.06912/EMNLP2021.
 - [**FastSpeech2**: Fast and High-Quality End-to-End Text-to-Speech.](Models/Acoustic/2020.06.08_FastSpeech2.md) ArXiv2022.
 - [**FastSpeech**: Fast, Robust and Controllable Text to Speech.](Models/Acoustic/2019.05.22_FastSpeech.md)
 - [**FireRedTTS**: A Foundation Text-to-Speech Framework for Industry-Level Generative Speech Applications.](Models/SpeechLM/2024.09.05_FireRedTTS.md) ArXiv2024.
+- [**FlashAttention2**: Faster Attention with Better Parallelism and Work Partitioning.](Modules/Attention/2023.07.17_FlashAttention2.md) ArXiv:2307.08691.
+- [**FlashAttention3**: Fast and Accurate Attention with Asynchrony and Low-precision.](Modules/Attention/2024.07.11_FlashAttention3.md) ArXiv:2407.08608.
+- **FlexAttention**: FlexAttention for Efficient High-Resolution Vision-Language Models. ArXiv:2407.20228.
+- **FLM-101B**: An Open LLM and How to Train It with $100K Budget. ArXiv:2309.03852.
 - [**Flow Matching**: Flow Matching for Generative Modeling](Models/Diffusion/2022.10.06_Flow_Matching.md) ArXiv:2210.02747.
 - [**Flow++**: Improving Flow-Based Generative Models with Variational Dequantization and Architecture Design.](Models/Flow/2019.02.01_Flow++.md) ICML2019.
 - [**Flow-TTS**: A Non-Autoregressive Network for Text to Speech Based on Flow.](Models/Acoustic/2020.04.09_Flow-TTS.md) ICASSP2020.
@@ -58,37 +78,54 @@
 - [**Glow-TTS**: A Generative Flow for Text-to-Speech via Monotonic Alignment Search.](Models/Acoustic/2020.05.22_Glow-TTS.md) NeurIPS2020.
 - [**GMVAE-Tacotron**: Hierarchical Generative Modeling for Controllable Speech Synthesis.](Models/Acoustic/2018.10.16_GMVAE-Tacotron.md) ICLR2019.
 - [**Google USM**: Scaling Automatic Speech Recognition Beyond 100 Languages.](Models/ASR/2023.03.02_Google_USM.md) ArXiv:2303.01037.
+- [**Gopher**: Scaling Language Models: Methods, Analysis & Insights from Training Gopher.](Models/TextLM/2021.12.08_Gopher.md) ArXiv:2112.11446.
 - [**GPT-3**: Language Models Are Few-Shot Learners.](Models/TextLM/2020.05.28_GPT-3.md) NeurIPS2020.
 - [**GPT-4**: GPT-4 Technical Report.](Models/TextLM/2023.03.15_GPT-4.md) ArXiv:2303.08774.
 - [GPT-4o System Card.](Models/SpokenDialogue/2024.09.06_GPT-4o.md) ArXiv:2410.21276.
 - **GPT-o1**: OpenAI o1 System Card. ArXiv2024.
+- **GRASS**: Compute Efficient Low-Memory LLM Training with Structured Sparse Gradients. ArXiv:2406.17660.
+- **GREATS**: Online Selection of High-Quality Data for LLM Training in Every Iteration.
+- [**GSLM**: On Generative Spoken Language Modeling from Raw Audio.](Models/SpeechLM/2021.02.01_GSLM.md) ArXiv:2102.01192/TACL2021.
 - [**HiFi-GAN**: Generative Adversarial Networks for Efficient and High Fidelity Speech Synthesis.](Models/Vocoder/2020.10.12_HiFi-GAN.md) NeurIPS2020.
+- How to Train BERT with an Academic Budget. ArXiv:2104.07705.
+- [**HuBERT**: Self-Supervised Speech Representation Learning by Masked Prediction of Hidden Units.](Models/SpeechRepresentation/2021.06.14_HuBERT.md) TASLP2021.
 - [**IAF**: Improved Variational Inference with Inverse Autoregressive Flow.](Models/_Basis/IAF.md) NeurIPS2016.
 - [**iDDPM**: Improved Denoising Diffusion Probabilistic Models.](Models/Diffusion/2021.02.18_iDDPM.md) ICML2021.
 - Inference-Time Scaling for Diffusion Models beyond Scaling Denoising Steps. ArXiv2025.
-- [**InstructGPT**: Training Language Models to Follow Instructions with Human Feedback.](Models/TextLM/InstructGPT.md) NeurIPS2022.
+- [**InstructGPT**: Training Language Models to Follow Instructions with Human Feedback.](Models/TextLM/InstructGPT.md) ArXiv:2203.02155/NeurIPS2022.
 - [**IPO**: A General Theoretical Paradigm to Understand Learning from Human Preferences.](Modules/RLHF/2023.10.18_IPO.md) AISTATS2024.
 - [**IST-LM**: Interleaved Speech-Text Language Models Are Simple Streaming Text to Speech Synthesizers.](Models/SpeechLM/ST2S/2024.12.20_IST-LM.md) ArXiv:2412.16102.
 - [**KALL-E**: Autoregressive Speech Synthesis with Next-Distribution Prediction.](Models/SpeechLM/ST2S/2024.12.22_KALL-E.md) ArXiv:2412.16846.
 - [**KeSpeech**: An Open Source Speech Dataset of Mandarin and Its Eight Subdialects.](Datasets/KeSpeech.md) NeurIPS Dataset & Benchmark Track 2021.
+- **Kokoro TTS** [URL](https://doi.org/10.57967/hf/4329).
 - [**LAS** Listen, Attend and Spell: A Neural Network for Large Vocabulary Conversational Speech Recognition.](Models/ASR/2015.08.05_LAS.md) ICASSP2016.
 - Latent Normalizing Flows for Discrete Sequences. ICML2019.
 - [**LauraGPT**: Listen, Attend, Understand, and Regenerate Audio with GPT.](Models/SpeechLM/ST2ST/2023.10.07_LauraGPT.md) ArXiv:2310.04673.
+- **LDB**: LayerDropBack: A Universally Applicable Approach for Accelerating Training of Deep Networks. ArXiv:2412.18027.
 - Learning Latent Representations for Style Control and Transfer in End-to-End Speech Synthesis. ICASSP2019.
 - [**LFSC**: Low Frame-rate Speech Codec: a Codec Designed for Fast High-quality Speech LLM Training and Inference.](Models/SpeechCodec/2024.09.18_LFSC.md) ICASSP2025.
 - [**Libriheavy**: A 50,000 Hours ASR Corpus with Punctuation Casing and Context.](Datasets/2023.09.15_Libriheavy.md) ICASSP2024.
 - [**LibriSpeech**: An ASR Corpus Based on Public Domain Audio Books.](Datasets/2015.04.19_LibriSpeech.md) ICASSP2015.
+- [**Lion**: Symbolic Discovery of Optimization Algorithms.](Modules/Optimization/2023.02.13_Lion.md) ArXiv:2302.06675.
+- [**Lirbi-Light**: A Benchmark for ASR with Limited or No Supervision.](Datasets/2019.12.17_Libri-Light.md) ArXiv:1912.07875/ICASSP2020.
 - [**LJSpeech**: The LJ Speech Dataset.](Datasets/2017.07.05_LJSpeech.md)
+- [**LLaMA-Omni**: Seamless Speech Interaction with Large Language Models.](Models/SpokenDialogue/2024.09.10_LLaMA-Omni.md) ArXiv:2409.06666.
+- [**LLaMA3**: The LLaMA3 Herd of Models.](Models/TextLM/2024.07.31_LLaMA3.md) ArXiv:2407.21783.
 - [**LLaMA**: Open and Efficient Foundation Language Models.](Models/TextLM/2023.02.27_LLaMA.md) ArXiv2023.
 - [**LoRA**: Low-Rank Adaptation of Large Language Models.](Modules/LoRA/2021.06.17_LoRA.md) ArXiv:2106.09685.
+- **LPA**: Scalable Efficient Training of Large Language Models with Low-dimensional Projected Attention. ArXiv:2411.02063.
 - [**LSGAN**: Least Squares Generative Adversarial Networks.](Models/_Basis/2016.11.13_LSGAN.md) ICCV2017.
 - [**MaskGCT**: Zero-Shot Text-To-Speech with Masked Generative Codec Transformer.](Models/SpeechLM/ST2S/2024.09.01_MaskGCT.md) ArXiv2024.
 - [**Matcha-TTS**: A Fast TTS Architecture with Conditional Flow Matching.](Models/Diffusion/2023.09.06_Matcha-TTS.md) ICASSP2024.
 - [**MelGAN**: MelGAN: Generative Adversarial Networks for Conditional Waveform Synthesis.](Models/Vocoder/2019.10.08_MelGAN.md) NeurIPS2019.
 - [**MELLE**: Autoregressive Speech Synthesis without Vector Quantization.](Models/SpeechLM/ST2S/2024.07.11_MELLE.md) ArXiv2024.
 - [**MelNet**: A Generative Model for Audio in the Frequency Domain.](Models/Acoustic/2019.06.04_MelNet.md) ArXiv:1906.01083.
+- [**Mini-Omni**: Language Models Can Hear, Talk While Thinking in Streaming.](Models/SpokenDialogue/2024.08.27_Mini-Omni.md) ArXiv:2408.16725.
 - [**MLS**: A Large-Scale Multilingual Dataset for Speech Research.](Datasets/2020.12.07_MLS.md) ArXiv2020.
-- [**Moshi**: A Speech-Text Foundation Model for Real-Time Dialogue.](Models/SpokenDialogue/2024.09.17_Moshi.md) ArXiv:/2410.00037.
+- [**MobileLLM**: Optimizing Sub-billion Parameter Language Models for On-Device Use Cases.](Models/TextLM/2024.02.22_MobileLLM.md) ArXiv:2402.14905/ICML2024.
+- [**ModernBERT**: Smarter, Better, Faster, Longer: A Modern Bidirectional Encoder for Fast, Memory Efficient, and Long Context Finetuning and Inference](Models/TextLM/2024.12.18_ModernBERT.md) ArXiv:2412.13663.
+- [**Moshi**: A Speech-Text Foundation Model for Real-Time Dialogue.](Models/SpokenDialogue/2024.09.17_Moshi.md) ArXiv:2410.00037.
+- **MSLM-S2ST**: A Multitask Speech Language Model for Textless Speech-to-Speech Translation with Speaker Style Preservation. ArXiv:2403.12408.
 - [**NaturalSpeech3**: Zero-Shot Speech Synthesis with Factorized Codec and Diffusion Models.](Models/Diffusion/2024.03.05_NaturalSpeech3.md) ICML2024.
 - [**Nemotron-4** 340B Technical Report.](Models/TextLM/2024.06.17_Nemotron-4.md) ArXiv2024.
 - Neural Spline Flows. NeurIPS2019.
@@ -97,17 +134,29 @@
 - [**Paraformer**: Fast and Accurate Parallel Transformer for Non-Autoregressive End-to-End Speech Recognition.](Models/ASR/2022.06.16_Paraformer.md) ArXiv:2206.08317.
 - [**ParaNet**: Non-Autoregressive Neural Text-to-Speech.](Models/Acoustic/2019.05.21_ParaNet.md) ICML2020.
 - [**Pengi**: An Audio Language Model for Audio Tasks.](Models/SpeechLM/ST2T/2023.05.19_Pengi.md) NeurIPS2023.
+- [**PeopleSpeech**: The People's Speech: A Large-Scale Diverse English Speech Recognition Dataset for Commercial Usage.](Datasets/2021.11.17_The_People's_Speech.md) ArXiv:2111.09344/NeurIPS2021.
+- [**pGSLM**: Text-Free Prosody-Aware Generative Spoken Language Modeling.](Models/SpeechLM/2021.09.07_pGSLM.md) ArXiv:2109.03264.
 - **Phonemizer** [Github](https://github.com/bootphon/phonemizer) 2021.
+- [**Pythia**: A Suite for Analyzing Large Language Models Across Training and Scaling.](Models/TextLM/2023.04.03_Pythia.md) ArXiv:2304.01373/ICML2023.
+- **PyTorch 2**: Fast Machine Learning through Dynamic Python Bytecode Transformation and Graph Compilation. ACM ICASPLOS2024.
 - [**Qwen-Audio**: Advancing Universal Audio Understanding via Unified Large-Scale Audio-Language Models.](Models/SpeechLM/ST2T/2023.11.14_Qwen-Audio.md) ArXiv:2311.07919.
 - [**Qwen2** Technical Report](Models/TextLM/Qwen2.md) ArXiv:2407.10671.
 - [**Qwen2-Audio**: Qwen2-Audio Technical Report.](Models/SpeechLM/ST2T/2024.07.15_Qwen2-Audio.md) ArXiv:2407.10759.
+- [**Qwen2.5**: Qwen2.5 Technical Report.](Models/TextLM/2024.12.19_Qwen2.5.md) ArXiv:2412.15115.
 - [**RALL-E**: Robust Codec Language Modeling with Chain-of-Thought Prompting for Text-to-Speech Synthesis.](Models/SpeechLM/ST2S/2024.04.04_RALL-E.md) ArXiv:2404.03204.
+- [**RedPajama**: An Open Dataset for Training Large Language Models.](Datasets/2024.11.19_RedPajama.md) ArXiv:2411.12372/NeurIPS2024.
 - Revisiting Over-Smoothness in Text to Speech. ACL2022.
+- [**Roformer**: Enhanced Transformer with Rotary Position Embedding.](Modules/PositionEmb/RoPE.md) Neurocomputing2024.
+- **S4**: Efficiently Modeling Long Sequences with Structured State Spaces. ArXiv:2111.00396.
 - [**SALAD**: Continuous Speech Synthesis Using Per-Token Latent Diffusion.](Models/Diffusion/2024.10.21_SALAD.md) ArXiv:2410.16048.
 - [**SALM**: Speech-Augmented Language Model with In-Context Learning for Speech Recognition and Translation.](Models/SpeechLM/2023.10.13_SALM.md) ICASSP2024.
-- Scaling Laws for Neural Language Models. ArXiv2020.
+- [**SALMONN**: Towards Generic Hearing Abilities for Large Language Models.](Models/SpokenDialogue/2023.10.20_SALMONN.md) ICLR2024.
+- **SALT**: A Little Help Goes a Long Way: Efficient LLM Training by Leveraging Small LMs. ArXiv:2410.18779.
+- **sBLIMP**: The Zero Resource Speech Challenge 2021: Spoken Language Modelling. ArXiv:2104.14700.
 - Scaling Laws for Neural Language Models. ArXiv:2001.08361.
 - Scaling LLM Test-Time Compute Optimally Can be More Effective than Scaling Model Parameters. ArXiv2024.
+- [Scaling Properties of Speech Language Models.](Modules/Scaling/2024.03.31_Scaling_Properties_of_Speech_Language_Models.md) ArXiv:2404.00685.
+- [Scaling Speech-Text Pre-training with Synthetic Interleaved Data.](Modules/2024.11.26_Scaling_Speech-Text_Pre-training_with_Synthetic_Interleaved_Data.md) ArXiv:2411.17607.
 - [**Seamless**: Multilingual Expressive and Streaming Speech Translation.](Models/SpeechLM/2023.12.08_Seamless.md) ArXiv2023.
 - [**Second-Pass Reranking & Deep LLM-Fusion**: Prompting Large Language Models for Zero-Shot Domain Adaptation in Speech Recognition.](Models/ASR/2023.06.28_Prompting_LLMs_for_Zero-Shot_Domain_Adaptation_in_Speech_Recognition.md) ASRU 2023.
 - [**Seed-ASR**: Understanding Diverse Speech and Contexts with LLM-Based Speech Recognition.](Models/ASR/2024.07.05_Seed-ASR.md) ArXiv:2407.04675.
@@ -115,41 +164,60 @@
 - Self-Attention with Relative Position Representations. ACL2018.
 - [**Semanticodec**: An Ultra Low Bitrate Semantic Audio Codec For General Sound.](Models/SpeechCodec/2024.04.30_SemantiCodec.md) ArXiv2024.
 - Sequence Transduction with Recurrent Neural Networks. ArXiv:1211.3711.
+- [**SGDR**: Stochastic Gradient Descent with Warm Restarts.](Modules/Optimization/2016.08.13_SGDR.md) ArXiv:1608.03983/ICLR2017.
 - [**SLAM-ASR**: An Embarrassingly Simple Approach for LLM with Strong ASR Capacity.](Models/ASR/2024.02.13_SLAM-ASR.md) ArXiv:2402.08846.
 - [**SLM**: Bridge the Thin Gap between Speech and Text Foundation Models.](Models/SpeechLM/2023.09.30_SLM.md) ASRU 2023.
+- [**SmolLM2**: When Smol Goes Big - Data-Centric Training of a Small Language Model.](Models/TextLM/2025.02.04_SmolLM2.md) ArXiv:2502.02737.
 - [**SoundStream**: An End-to-End Neural Audio Codec.](Models/SpeechCodec/2021.07.07_SoundStream.md) TASLP2021.
 - [**SPEAR-TTS**: Speak, Read and Prompt: High-Fidelity Text-to-Speech with Minimal Supervision.](Models/SpeechLM/ST2S/2023.02.07_SPEAR-TTS.md) TACL2023.
 - SpecAugment: A Simple Data Augmentation Method for Automatic Speech Recognition. ArXiv:1904.08779.
 - [**Spectral Codecs**: Spectrogram-Based Audio Codecs for High Quality Speech Synthesis.](Models/SpeechCodec/2024.06.07_Spectral_Codec.md) ArXiv2024.
+- [**Spectron**: Spoken Question Answering and Speech Continuation Using Spectrogram-Powered LLM.](Models/SpokenDialogue/2023.05.24_Spectron.md) ArXiv:2305.15255/ICLR2024.
+- [Speech Resynthesis from Discrete Disentangled Self-Supervised Representations.](Models/SpeechCodec/2021.04.01_Speech_Resynthesis_from_Discrete_Disentangled_Self-Supervised_Representations.md) ArXiv:2104.00355.
 - [**Speech-LLaMA**: On Decoder-Only Architecture for Speech-to-Text and Large Language Model Integration](Models/ASR/2023.07.08_Speech-LLaMA.md) ASRU 2023.
 - [**SpeechAlign**: Aligning Speech Generation to Human Preferences.](Models/SpeechLM/2024.04.08_SpeechAlign.md) NeurIPS2024.
 - [**SpeechGPT**: Empowering Large Language Models with Intrinsic Crossmodal Conversational Abilities.](Models/SpokenDialogue/2023.05.18_SpeechGPT.md) EMNLP2023.
+- [**SpeechSSM**: Long-Form Speech Generation with Spoken Language Models.](Models/SpeechLM/2024.12.24_SpeechSSM.md) ArXiv:2412.18603.
 - [**SpeechT5**: Unified-Modal Encoder-Decoder Pre-Training for Spoken Language Processing.](Models/SpeechLM/ST2ST/2021.10.14_SpeechT5.md) ACL2022.
 - [**SpeechTokenizer**: Unified Speech Tokenizer for Speech Large Language Models.](Models/SpeechCodec/2023.08.31_SpeechTokenizer.md) ICLR2024.
 - [**SpeechX**: Neural Codec Language Models as a Versatile Speech Transformer.](Models/SpeechLM/2023.08.14_SpeechX.md) TASLP2024.
-- [**Spirit-LM**: Interleaved Spoken and Written Language Model.](Models/SpeechLM/2024.02.08_SpiRit-LM.md) ArXiv:2402.05755.
+- [**SpiRit-LM**: Interleaved Spoken and Written Language Model.](Models/SpeechLM/2024.02.08_SpiRit-LM.md) ArXiv:2402.05755/TACL2025.
 - **Stable Codec**: Scaling Transformers for Low-Bitrate High-Quality Speech Coding. ICLR2025.
 - Stay on Topic with Classifier-Free Guidance. ArXiv2023.
-- [**Survey** End-to-End Speech Recognition: A Survey.](Models/ASR/2023.03.03__Survey__End-to-End_Speech_Recognition_(27P).md) IEEE/ACM@TASLP 2023.
+- **StoryCloze**: A Corpus and Evaluation Framework for Deeper Understanding of Commonsense Stories. ArXiv:1604.01696.
+- [**Survey by Cui et al (2024)**: Recent Advances in Speech Language Models: A Survey.](Surveys/2024.10.01_Recent_Advances_in_Speech_Language_Models__A_Survey_20P/Main.md) ArXiv:2410.03751.
+- [**Survey by Ji et al (2024)**: WavChat: A Survey of Spoken Dialogue Models.](Surveys/2024.11.15_WavChat_60P/Main.md)
+- [**Survey by Ji et al (2024)**: **WavChat**: A Survey of Spoken Dialogue Models.](Surveys/2024.11.15_WavChat_60P/Main.md) ArXiv:2411.13577.
+- [**Survey by Latif et al (2023)**: Sparks of Large Audio Models: A Survey and Outlook.](Surveys/2023.08.24__Survey__Sparks_of_Large_Audio_Models_(32P).md) ArXiv:2308.12792.
+- [**Survey by Li et al (2021)**: Recent Advances in End-to-End Automatic Speech Recognition.](Models/ASR/2021.11.02__Survey__Recent_Advances_in_End-to-End_Automatic_Speech_Recognition_(27P).md) APSIPA TSIP 2022.
+- [**Survey by Peng et al (2024)**: A Survey on Speech Large Language Models.](Surveys/2024.10.24__Survey__A_Survey_on_Speech_Large_Language_Models_(17P).md) ArXiv:2410.18908.
+- [**Survey by Prabhavalkar et al (2023)** End-to-End Speech Recognition: A Survey.](Models/ASR/2023.03.03__Survey__End-to-End_Speech_Recognition_(27P).md) IEEE/ACM@TASLP 2023.
+- [**Survey by Shen et al (2023)**: On Efficient Training of Large-Scale Deep Learning Models: A Literature Review](Surveys/2023.04.07__Survey__On_Efficient_Training_of_Large-Scale_Deep_Learning_Models_(60P).md) ArXiv:2304.03589.
+- [**Survey by Xie et al (2024)**: Towards Controllable Speech Synthesis in the Era of LLM.](Surveys/2024.12.09_Towards_Controllable_Speech_Synthesis_in_the_Era_of_LLM_23P/Main.md)
 - **Survey**: A Comprehensive Survey of Hallucination in Large Language, Image, Video and Audio Foundation Models. ACL EMNLP 2024.
 - **Survey**: A Survey on Model Compression for Large Language Models. ACL2024.
-- [**Survey**: A Survey on Speech Large Language Models](Surveys/2024.10.24__Survey__A_Survey_on_Speech_Large_Language_Models_(17P).md)
-- [**Survey**: Recent Advances in End-to-End Automatic Speech Recognition.](Models/ASR/2021.11.02__Survey__Recent_Advances_in_End-to-End_Automatic_Speech_Recognition_(27P).md) APSIPA TSIP 2022.
-- [**Survey**: Towards Controllable Speech Synthesis in the Era of LLM](Surveys/2024.12.09_Towards_Controllable_Speech_Synthesis_in_the_Era_of_LLM_23P/Main.md)
-- [**Survey**: WavChat: A Survey of Spoken Dialogue Models](Surveys/2024.11.15_WavChat_60P/Main.md)
-- [**Survy**: Recent Advances in Speech Language Models: A Survey](Surveys/2024.10.01_Recent_Advances_in_Speech_Language_Models__A_Survey_20P/Main.md)
+- [**SWAG**: A Large-Scale Adversarial Dataset for Grounded Commonsense Inference.](Datasets/2018.08.16_SWAG.md) ArXiv:1808.05326/EMNLP2018.
+- [**SWC**: The Spoken Wikipedia Corpus Collection: Harvesting, Alignment and an Application to Hyperlistening.](Datasets/SWC.md) Springer2019.
+- **SwiftLearn**: A Data-Efficient Training Method of Deep Learning Models Using Importance Sampling. ArXiv:2311.15134.
 - [**T5-TTS**: Improving Robustness of LLM-Based Speech Synthesis by Learning Monotonic Alignment.](Models/SpeechLM/2024.06.25_T5-TTS.md) InterSpeech2024.
 - [**Tacotron2**: Natural TTS Synthesis by Conditioning WaveNet on Mel Spectrogram Predictions.](Models/Acoustic/2017.12.16_Tacotron2.md) ICASSP2018.
 - [**Tacotron**: A Fully End-to-End Text-to-Speech Synthesis Model.](Models/Acoustic/2017.03.29_Tacotron.md) InterSpeech2017.
+- **TED-LIUM 3**: Twice as Much Data and Corpus Repartition for Experiments on Speaker Adaptation. ArXiv:1805.04699/SPECOM2018.
 - Test-Time Computing: From System-1 Thinking to System-2 Thinking. ArXiv2025.
+- Textless Speech Emotion Conversion using Discrete and Decomposed Representations. ArXiv:2111.07402/EMNLP2022.
+- [**TinyStories**: How Small Can Language Models Be and Still Speak Coherent English?](Datasets/2023.05.12_TinyStories.md) ArXiv:2305.07759.
 - [**TorToiseTTS**: Better Speech Synthesis through Scaling.](Models/Diffusion/2023.05.12_TorToise-TTS.md) ArXiv2023.
 - [**TouchASP**: Elastic Automatic Speech Perception that Everyone Can Touch.](Models/_Basis/2024.12.20_TouchASP.md) ArXiv:2412.15622.
+- Training Compute-Optimal Large Language Models. ArXiv:2203.15556.
 - Transfer Learning from Speaker Verification to Multispeaker Text-To-Speech Synthesis. NeurIPS2018.
 - [**Transformer-XL**: Attentive Language Models Beyond a Fixed-Length Context.](Models/_Transformer/Transformer-XL.md) ArXiv:1901.02860.
 - [**Transformer**: Attention is All You Need.](Models/_Transformer/2017.06.12_Transformer.md) NeurIPS2017.
 - [**TransformerTTS**: Neural Speech Synthesis With Transformer Network.](Models/Acoustic/2018.09.19_TransformerTTS.md) AAAI2019.
+- [**TWIST**: Textually Pretrained Speech Language Models.](Models/SpeechLM/2023.05.22_TWIST.md) ArXiv:2305.13009/NeurIPS2023Poster.
 - Two-Pass End-to-End Speech Recognition. ArXiv:1908.10992.
+- [**UniAudio 1.5**: Large Language Model-Driven Audio Codec Is a Few-Shot Audio Task Learner](Models/SpeechLM/2024.06.14_UniAudio1.5.md) ArXiv:2406.10056/NeurIPS2024Poster.
 - [**UniAudio**: Towards Universal Audio Generation with Large Language Models.](Models/SpeechLM/2023.10.01_UniAudio.md) ICML2024.
+- [Unsupervised Speech Segmentation: A General Approach Using Speech Language Models.](Models/SpeechLM/2025.01.07_Unsupervised_Speech_Segmentation.md) ArXiv:2501.03711.
 - Unveiling the Potential of LLM-Based ASR on Chinese Open-Source Datasets. ISCSLP2024.
 - [**UTMOS**: UTokyo-Sarulab System For VoiceMOS Challenge 2022.](Evaluations/2022.04.05_UTMOS.md) InterSpeech2022.
 - [**VAE**: Auto-Encoding Variational Bayes.](Models/_Basis/VAE.md) ICLR2014.
@@ -165,6 +233,7 @@
 - [**Vocos**: Closing the Gap between Time-Domain and Fourier-Based Neural Vocoders for High-Quality Audio Synthesis.](Models/Vocoder/2023.03.01_Vocos.md) ICLR.
 - [**VoiceBox**: Text-Guided Multilingual Universal Speech Generation at Scale.](Models/SpeechLM/2023.06.23_VoiceBox.md) NeurIPS2024.
 - [**VoiceLoop**: Voice Fitting and Synthesis via a Phonological Loop.](Models/Acoustic/2017.07.20_VoiceLoop.md) ICLR2018.
+- [**VoxPopuli**: A Large-Scale Multilingual Speech Corpus for Representation Learning, Semi-Supervised Learning and Interpretation.](Datasets/2021.01.02_VoxPopuli.md) ArXiv:2101.00390/ACL2021.
 - [**VoxtLM**: Unified Decoder-Only Models for Consolidating Speech Recognition/Synthesis and Speech/Text Continuation Tasks.](Models/SpeechLM/2023.09.14_VoxtLM.md) ICASSP2024.
 - [**VQ-VAE**: Neural Discrete Representation Learning.](Modules/VQ/2017.11.02_VQ-VAE.md) NeurIPS2017.
 - [**Wave-Tacotron**: Spectrogram-Free End-to-End Text-to-Speech Synthesis.](Models/_tmp/Wave-Tacotron.md) ArXiv2020.
