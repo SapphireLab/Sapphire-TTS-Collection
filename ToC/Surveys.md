@@ -18,6 +18,7 @@
 | S20191120 | 2019.11.20 | 2019.11.20 | Applications of Deep Learning to Audio Generation | [DOI:30](https://doi.org/10.1109/MCAS.2019.2945210) | [AUS] 西澳大学 |
 | S20200610 | 2020.06.10 | 2020.11.25 | Deep Generative Models for Musical Audio Synthesis | [ArXiv](https://arxiv.org/abs/2006.06426)<br>[Book:31](https://doi.org/10.1007/978-3-030-72116-9_22) | [SGP] 新加坡国立大学 |
 | S20210224 | 2021.02.24 | 2021.02.24 | Deep Learning for Audio and Music | [Book:18](https://doi.org/10.1007/978-3-030-74478-6_10) | [FRA] 波尔多大学 |
+| S20210420 | 2021.04.20 | 2024.04.20 | Review of End-to-End Speech Synthesis Technology Based on Deep Learning | [ArXiv:49](https://arxiv.org/abs/2104.09995) | [CHN] 西安交通大学 |
 | S20210801 | 2021.08.01 | 2021.08.01 | A Survey on Audio Synthesis and Audio-Visual Multimodal Processing | [ArXiv:15](https://arxiv.org/abs/2108.00443) | [CHN] 电子科技大学 |
 | S20211130 | 2021.11.30 | 2021.11.30 | Audio Representations for Deep Learning in Sound Synthesis: A Review | [DOI:36](https://doi.org/10.1109/AICCSA53542.2021.9686838) | [IRL] 都柏林理工大学 |
 
