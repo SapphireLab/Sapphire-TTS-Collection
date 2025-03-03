@@ -16,6 +16,7 @@
 | S20190430 | 2019.04.30 | 2019.05.25 | Deep Learning for Audio Signal Processing | [ArXiv](https://arxiv.org/pdf/1905.00078)<br>[DOI:999](https://doi.org/10.1109/JSTSP.2019.2908700) | [DNK] 哥本哈根奥尔堡大学<br>[USA] 谷歌<br>[FIN] 坦佩雷大学<br>[FRA] 图伦大学CNRS |
 | S20190801 | 2019.08.01 | 2019.09.06 | A Review of Deep Learning Based Speech Synthesis | [DOI:253](https://doi.org/10.3390/app9194050) | [CHN] 清华大学 |
 | S20191120 | 2019.11.20 | 2019.11.20 | Applications of Deep Learning to Audio Generation | [DOI:30](https://doi.org/10.1109/MCAS.2019.2945210) | [AUS] 西澳大学 |
+| S20200610 | 2020.06.10 | 2020.11.25 | Deep Generative Models for Musical Audio Synthesis | [ArXiv](https://arxiv.org/abs/2006.06426)<br>[DOI:31](https://doi.org/10.1007/978-3-030-72116-9_22) | [SGP] 新加坡国立大学 |
 
 注：
 - AUS：澳大利亚
@@ -27,6 +28,8 @@
 - DZA：阿尔及利亚
 - FIN：芬兰
 - FRA：法国
+- IRL：爱尔兰
 - JPN：日本
 - GBR：英国
+- SGP：新加坡
 - USA：美国
