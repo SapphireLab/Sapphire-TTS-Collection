@@ -15,9 +15,10 @@
 | S20190125 | 2019.01.25 | 2023.05.02 | Word Embeddings: A Survey | [ArXiv:473](https://arxiv.org/abs/1901.09069) | [BRA] 里约热内卢联邦大学 |
 | S20190430 | 2019.04.30 | 2019.05.25 | Deep Learning for Audio Signal Processing | [ArXiv](https://arxiv.org/pdf/1905.00078)<br>[DOI:999](https://doi.org/10.1109/JSTSP.2019.2908700) | [DNK] 哥本哈根奥尔堡大学<br>[USA] 谷歌<br>[FIN] 坦佩雷大学<br>[FRA] 图伦大学CNRS |
 | S20190801 | 2019.08.01 | 2019.09.06 | A Review of Deep Learning Based Speech Synthesis | [DOI:253](https://doi.org/10.3390/app9194050) | [CHN] 清华大学 |
-
+| S20191120 | 2019.11.20 | 2019.11.20 | Applications of Deep Learning to Audio Generation | [DOI:30](https://doi.org/10.1109/MCAS.2019.2945210) | [AUS] 西澳大学 |
 
 注：
+- AUS：澳大利亚
 - BEL：比利时
 - BRA：巴西
 - CHN：中国
