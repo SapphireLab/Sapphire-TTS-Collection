@@ -13,13 +13,18 @@
 | S20150402 | 2015.04.02 | 2015.04.02 | Deep Learning for Acoustic Modeling in Parametric Speech Generation:<br> A Systematic Review of Existing Techniques and Future Trends | [DOI:317](https://doi.org/10.1109/MSP.2014.2359987) | [CHN] 中国科学技术大学<br>[CHN] 清华大学<br>[JPN] 名古屋工业大学<br>[GBR] 剑桥大学<br>[CHN] 复旦大学<br>[CHN] 香港中文大学<br>[DEU] 杜伊斯堡-埃森大学<br>[USA] 威斯康星大学麦迪逊分校 |
 | S20170905 | 2017.09.05 | 2019.08.07 | Deep Learning Techniques for Music Generation -- A Survey | [ArXiv:480](https://arxiv.org/abs/1709.01620)<br>[Book:352](https://doi.org/10.1007/978-3-319-70163-9) | [FRA] 索邦大学<br>[FRA] 索尼计科实验室<br>[FRA] Spotify 创作者技术实验室 |
 | S20190125 | 2019.01.25 | 2023.05.02 | Word Embeddings: A Survey | [ArXiv:473](https://arxiv.org/abs/1901.09069) | [BRA] 里约热内卢联邦大学 |
+| S20190430 | 2019.04.30 | 2019.05.25 | Deep Learning for Audio Signal Processing | [ArXiv](https://arxiv.org/pdf/1905.00078)<br>[DOI:999](https://doi.org/10.1109/JSTSP.2019.2908700) | [DNK] 哥本哈根奥尔堡大学<br>[USA] 谷歌<br>[FIN] 坦佩雷大学<br>[FRA] 图伦大学CNRS |
+| S20190801 | 2019.08.01 | 2019.09.06 | A Review of Deep Learning Based Speech Synthesis | [DOI:253](https://doi.org/10.3390/app9194050) | [CHN] 清华大学 |
+
 
 注：
 - BEL：比利时
 - BRA：巴西
 - CHN：中国
 - DEU：德国
+- DNK：丹麦
 - DZA：阿尔及利亚
+- FIN：芬兰
 - FRA：法国
 - JPN：日本
 - GBR：英国
