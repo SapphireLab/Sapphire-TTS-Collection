@@ -9,6 +9,8 @@
 | S20090114 | 2009.01.14 | 2009.01.14 | Statistical Parametric Speech Synthesis | [DOI:1680](https://doi.org/10.1016/j.specom.2009.04.004) | [JPN] 名古屋工业大学<br>[GBR] 东芝欧洲剑桥研究实验室<br>[USA] CMU |
 | S20110509 | 2011.05.09 | 2011.05.09 | Speech Synthesis Techniques. A Survey | [DOI:117](https://doi.org/10.1109/WOSSPA.2011.5931414) | [DZA] 布迈达尔·布格达大学<br>[DZA] 巴迪·莫卡塔尔大学 |
 | S20140221 | 2014.02.21 | 2014.11.04 | Audiovisual Speech Synthesis: An Overview of The State-of-The-Art | [DOI:98](https://doi.org/10.1016/j.specom.2014.11.001) | [BEL] 布鲁塞尔自由大学<br>[BEL] iMinds |
+| S20140630 | 2014.06.30 | 2014.06.30 | Measuring a Decade of Progress in Text-to-Speech | [DOI:136](https://doi.org/10.3989/loquens.2014.006) | [GBR] 爱丁堡大学CSTR |
+
 
 注：
 - BEL：比利时
