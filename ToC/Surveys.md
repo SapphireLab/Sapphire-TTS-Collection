@@ -10,11 +10,13 @@
 | S20110509 | 2011.05.09 | 2011.05.09 | Speech Synthesis Techniques. A Survey | [DOI:117](https://doi.org/10.1109/WOSSPA.2011.5931414) | [DZA] 布迈达尔·布格达大学<br>[DZA] 巴迪·莫卡塔尔大学 |
 | S20140221 | 2014.02.21 | 2014.11.04 | Audiovisual Speech Synthesis: An Overview of The State-of-The-Art | [DOI:98](https://doi.org/10.1016/j.specom.2014.11.001) | [BEL] 布鲁塞尔自由大学<br>[BEL] iMinds |
 | S20140630 | 2014.06.30 | 2014.06.30 | Measuring a Decade of Progress in Text-to-Speech | [DOI:136](https://doi.org/10.3989/loquens.2014.006) | [GBR] 爱丁堡大学CSTR |
+| S20150402 | 2015.04.02 | 2015.04.02 | Deep Learning for Acoustic Modeling in Parametric Speech Generation:<br> A Systematic Review of Existing Techniques and Future Trends | [DOI:317](https://doi.org/10.1109/MSP.2014.2359987) | [CHN] 中国科学技术大学<br>[CHN] 清华大学<br>[JPN] 名古屋工业大学<br>[GBR] 剑桥大学<br>[CHN] 复旦大学<br>[CHN] 香港中文大学<br>[DEU] 杜伊斯堡-埃森大学<br>[USA] 威斯康星大学麦迪逊分校 |
 
 
 注：
 - BEL：比利时
 - CHN：中国
+- DEU：德国
 - DZA：阿尔及利亚
 - JPN：日本
 - GBR：英国
