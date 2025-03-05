@@ -36,6 +36,7 @@
 | S20240430 | 2024.04.30 | 2025.04.10 | Expressivity and Speech Synthesis | [ArXiv:6](https://arxiv.org/abs/2404.19363) | ? |
 | S20240531 | 2024.05.31 | 2024.05.31 | A Survey of Deep Learning Audio Generation Methods | [ArXiv:7](https://arxiv.org/abs/2406.00146) | [HRV] 克罗地亚萨格勒布大学 |
 | S20241024 | 2024.10.24 | 2025.07.02 | A Survey on Speech Large Language Models for Understanding | [ArXiv:20](https://arxiv.org/abs/2410.18908) | [CHN] 上海交通大学X-LANCE<br>[CHN]AISpeech<br>[CHN] 华中科技大学<br>[CHE] 苏黎世理工学院<br>[CHN] 香港中文大学<br>[CHN] 南京大学 |
+| S20241113 | 2024.11.13 | 2024.11.13 | Direct Speech-to-Speech Neural Machine Translation: A Survey | [ArXiv:4](https://arxiv.org/abs/2411.14453 ) | [IND] NITTTR |
 
 注：
 - ARE：阿联酋
