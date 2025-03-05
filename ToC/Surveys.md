@@ -13,7 +13,7 @@
 | S20150402 | 2015.04.02 | 2015.04.02 | Deep Learning for Acoustic Modeling in Parametric Speech Generation:<br> A Systematic Review of Existing Techniques and Future Trends | [DOI:317](https://doi.org/10.1109/MSP.2014.2359987) | [CHN] 中国科学技术大学<br>[CHN] 清华大学<br>[JPN] 名古屋工业大学<br>[GBR] 剑桥大学<br>[CHN] 复旦大学<br>[CHN] 香港中文大学<br>[DEU] 杜伊斯堡-埃森大学<br>[USA] 威斯康星大学麦迪逊分校 |
 | S20170905 | 2017.09.05 | 2019.08.07 | Deep Learning Techniques for Music Generation -- A Survey | [ArXiv:480](https://arxiv.org/abs/1709.01620)<br>[Book:352](https://doi.org/10.1007/978-3-319-70163-9) | [FRA] 索邦大学<br>[FRA] 索尼计科实验室<br>[FRA] Spotify 创作者技术实验室 |
 | S20190125 | 2019.01.25 | 2023.05.02 | Word Embeddings: A Survey | [ArXiv:473](https://arxiv.org/abs/1901.09069) | [BRA] 里约热内卢联邦大学 |
-| S20190430 | 2019.04.30 | 2019.05.25 | Deep Learning for Audio Signal Processing | [ArXiv](https://arxiv.org/pdf/1905.00078)<br>[DOI:999](https://doi.org/10.1109/JSTSP.2019.2908700) | [DNK] 哥本哈根奥尔堡大学<br>[USA] 谷歌<br>[FIN] 坦佩雷大学<br>[FRA] 图伦大学CNRS |
+| S20190430 | 2019.04.30 | 2019.05.25 | Deep Learning for Audio Signal Processing | [ArXiv](https://arxiv.org/pdf/1905.00078)<br>[DOI:999](https://doi.org/10.1109/JSTSP.2019.2908700) | [DNK] 奥尔堡大学<br>[USA] 谷歌<br>[FIN] 坦佩雷大学<br>[FRA] 图伦大学CNRS |
 | S20190801 | 2019.08.01 | 2019.09.06 | A Review of Deep Learning Based Speech Synthesis | [DOI:253](https://doi.org/10.3390/app9194050) | [CHN] 清华大学 |
 | S20191120 | 2019.11.20 | 2019.11.20 | Applications of Deep Learning to Audio Generation | [DOI:30](https://doi.org/10.1109/MCAS.2019.2945210) | [AUS] 西澳大学 |
 | S20200610 | 2020.06.10 | 2020.11.25 | Deep Generative Models for Musical Audio Synthesis | [ArXiv](https://arxiv.org/abs/2006.06426)<br>[Book:31](https://doi.org/10.1007/978-3-030-72116-9_22) | [SGP] 新加坡国立大学 |
@@ -22,6 +22,7 @@
 | S20210629 | 2021.06.29 | 2021.07.23 | A Survey on Neural Speech Synthesis | [ArXiv:509](https://arxiv.org/abs/2106.15561) | [USA] 微软亚洲研究院 |
 | S20210801 | 2021.08.01 | 2021.08.01 | A Survey on Audio Synthesis and Audio-Visual Multimodal Processing | [ArXiv:15](https://arxiv.org/abs/2108.00443) | [CHN] 电子科技大学 |
 | S20211130 | 2021.11.30 | 2021.11.30 | Audio Representations for Deep Learning in Sound Synthesis: A Review | [DOI:36](https://doi.org/10.1109/AICCSA53542.2021.9686838) | [IRL] 都柏林理工大学 |
+| S20220521 | 2022.05.21 | 2022.10.27 | Self-Supervised Speech Representation Learning: A Review | [ArXiv](https://arxiv.org/abs/2205.10643)<br>[DOI:471](https://doi.org/10.1109/JSTSP.2022.3207050) | [USA] Meta<br>[CHN] 国立台湾大学<br>[DNK] 哥本哈根大学<br>[DNK] 丹麦技术大学<br>[DNK] Corti AI<br>[USA] 亚马逊 AWS AI实验室<br>[USA] 芝加哥丰田工业大学 |
 | S20221005 | 2022.10.05 | 2022.12.12 | Exploration of A Self-Supervised Speech Model: A Study on Emotional Corpora | [ArXiv](https://arxiv.org/abs/2210.02595)<br>[DOI:61](https://doi.org/10.1109/SLT54892.2023.10023428) | [GBR] 爱丁堡大学CSTR |
 | S20230321 | 2023.03.21 | 2025.06.04 | Transformers in Speech Processing: A Survey | [ArXiv:86](https://arxiv.org/abs/2303.11607) | [AUS] 昆士兰科技大学<br>[PAK] 信息技术大学<br>[GBR] 林肯大学<br>[ARE] MBZUAI<br>EmulationAI<br>[PAK] FAST-NUCES<br>[QAT] 卡塔尔大学 |
 
