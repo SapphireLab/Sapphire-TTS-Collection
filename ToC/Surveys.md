@@ -22,8 +22,10 @@
 | S20210629 | 2021.06.29 | 2021.07.23 | A Survey on Neural Speech Synthesis | [ArXiv:509](https://arxiv.org/abs/2106.15561) | [USA] 微软亚洲研究院 |
 | S20210801 | 2021.08.01 | 2021.08.01 | A Survey on Audio Synthesis and Audio-Visual Multimodal Processing | [ArXiv:15](https://arxiv.org/abs/2108.00443) | [CHN] 电子科技大学 |
 | S20211130 | 2021.11.30 | 2021.11.30 | Audio Representations for Deep Learning in Sound Synthesis: A Review | [DOI:36](https://doi.org/10.1109/AICCSA53542.2021.9686838) | [IRL] 都柏林理工大学 |
+| S20230321 | 2023.03.21 | 2025.06.04 | Transformers in Speech Processing: A Survey | [ArXiv:](https://arxiv.org/abs/2303.11607) | [AUS] 昆士兰科技大学<br>[PAK] 信息技术大学<br>[GBR] 林肯大学<br>[ARE] MBZUAI<br>EmulationAI<br>[PAK] FAST-NUCES<br>[QAT] 卡塔尔大学 |
 
 注：
+- ARE：阿联酋
 - AUS：澳大利亚
 - BEL：比利时
 - BRA：巴西
@@ -36,5 +38,7 @@
 - IRL：爱尔兰
 - JPN：日本
 - GBR：英国
+- PAK：巴基斯坦
+- QAT：卡塔尔
 - SGP：新加坡
 - USA：美国
