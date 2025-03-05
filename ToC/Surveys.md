@@ -34,6 +34,7 @@
 | S20240426 | 2024.04.26 | 2024.05.28 | From Large Language Models to Large Multimodal Models: A Literature Review | [DOI:50](https://doi.org/10.3390/app14125068) | [CHN] 深圳大学<br>[USA] 乔治梅森大学<br>[CHN] 深圳技术大学 |
 | [S20240220](../Surveys/S20240220.md) | 2024.02.20 | 2024.02.20 | Towards Audio Language Modeling -- An Overview | [ArXiv:42](https://arxiv.org/abs/2402.13236v1) | [CHN] 国立台湾大学 |
 | S20240430 | 2024.04.30 | 2025.04.10 | Expressivity and Speech Synthesis | [ArXiv:6](https://arxiv.org/abs/2404.19363) | ? |
+| S20240531 | 2024.05.31 | 2024.05.31 | A Survey of Deep Learning Audio Generation Methods | [ArXiv:7](https://arxiv.org/abs/2406.00146) | [HRV] 克罗地亚萨格勒布大学 |
 
 注：
 - ARE：阿联酋
@@ -47,6 +48,7 @@
 - FIN：芬兰
 - FRA：法国
 - GBR：英国
+- HRV：克罗地亚
 - IND：印度
 - IRL：爱尔兰
 - JPN：日本
