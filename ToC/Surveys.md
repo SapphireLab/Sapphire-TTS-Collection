@@ -27,6 +27,7 @@
 | S20221113 | 2022.11.13 | 2022.11.13 | Conventional and Contemporary Approaches Used in Text To Speech Synthesis: A Review | [DOI:88](https://doi.org/10.1007/s10462-022-10315-0) | [IND] 阿姆利则政府女子理工学院<br>[IND] 旁遮普科技大学<br>[IND] 古鲁·那纳克德夫工程学院 |
 | S20230321 | 2023.03.21 | 2025.06.04 | Transformers in Speech Processing: A Survey | [ArXiv:86](https://arxiv.org/abs/2303.11607) | [AUS] 昆士兰科技大学<br>[PAK] 信息技术大学<br>[GBR] 林肯大学<br>[ARE] MBZUAI<br>EmulationAI<br>[PAK] FAST-NUCES<br>[QAT] 卡塔尔大学 |
 | S20230323 | 2023.03.23 | 2023.04.02 | A Survey on Audio Diffusion Models:<br>Text To Speech Synthesis and Enhancement in Generative AI | [ArXiv:102](https://arxiv.org/abs/2303.13336) | [KOR] KAIST<br>[KOR] 庆熙大学<br>[CHN] 北京理工大学 |
+| S20230407 | 2023.04.07 | 2023.04.07 | On Efficient Training of Large-Scale Deep Learning Models: A Literature Review | [ArXiv:55](https://arxiv.org/abs/2304.03589) | [CHN] 京东探索研究院<br>[AUS] 悉尼大学<br>[CHN] 中国科学科技大学 |
 
 注：
 - ARE：阿联酋
