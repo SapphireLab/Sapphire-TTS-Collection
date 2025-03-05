@@ -32,6 +32,7 @@
 | S20230824 | 2023.08.24 | 2023.09.22 | Sparks of Large Audio Models: A Survey and Outlook | [ArXiv:49](https://arxiv.org/abs/2308.12792)<br>[Github](https://github.com/EmulationAI/awesome-large-audio-models) | [AUS] 昆士兰科技大学<br>[AUS] EmulationAIM<br>[ARE] MBZUAI<br>[PAK] FAST-NUCES<br>[GBR] 林肯大学<br>[GBR] 萨里大学<br>[CHN] 平安科技<br>[AUS] 西澳大学<br>[SGP] 南洋理工大学<br> [GBR] 帝国理工 |
 | S20240214 | 2024.02.14 | 2024.03.27 | Attacks, Defenses and Evaluations for LLM Conversation Safety: A Survey | [ArXiv:82](https://arxiv.org/abs/2402.09283) | [CHN] 上海 AI 实验室 |
 | S20240426 | 2024.04.26 | 2024.05.28 | From Large Language Models to Large Multimodal Models: A Literature Review | [DOI:50](https://doi.org/10.3390/app14125068) | [CHN] 深圳大学<br>[USA] 乔治梅森大学<br>[CHN] 深圳技术大学 |
+| [S20240220](../Surveys/S20240220.md) | 2024.02.20 | 2024.02.20 | Towards Audio Language Modeling -- An Overview | [ArXiv:42](https://arxiv.org/abs/2402.13236v1) | [CHN] 国立台湾大学 |
 
 注：
 - ARE：阿联酋
