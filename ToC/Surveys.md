@@ -24,6 +24,7 @@
 | S20211130 | 2021.11.30 | 2021.11.30 | Audio Representations for Deep Learning in Sound Synthesis: A Review | [DOI:36](https://doi.org/10.1109/AICCSA53542.2021.9686838) | [IRL] 都柏林理工大学 |
 | S20220521 | 2022.05.21 | 2022.10.27 | Self-Supervised Speech Representation Learning: A Review | [ArXiv](https://arxiv.org/abs/2205.10643)<br>[DOI:471](https://doi.org/10.1109/JSTSP.2022.3207050) | [USA] Meta<br>[CHN] 国立台湾大学<br>[DNK] 哥本哈根大学<br>[DNK] 丹麦技术大学<br>[DNK] Corti AI<br>[USA] 亚马逊 AWS AI实验室<br>[USA] 芝加哥丰田工业大学 |
 | S20221005 | 2022.10.05 | 2022.12.12 | Exploration of A Self-Supervised Speech Model: A Study on Emotional Corpora | [ArXiv](https://arxiv.org/abs/2210.02595)<br>[DOI:61](https://doi.org/10.1109/SLT54892.2023.10023428) | [GBR] 爱丁堡大学CSTR |
+| S20221113 | 2022.11.13 | 2022.11.13 | Conventional and Contemporary Approaches Used in Text To Speech Synthesis: A Review | [DOI:88](https://doi.org/10.1007/s10462-022-10315-0) | [IND] 阿姆利则政府女子理工学院<br>[IND] 旁遮普科技大学<br>[IND] 古鲁·那纳克德夫工程学院 |
 | S20230321 | 2023.03.21 | 2025.06.04 | Transformers in Speech Processing: A Survey | [ArXiv:86](https://arxiv.org/abs/2303.11607) | [AUS] 昆士兰科技大学<br>[PAK] 信息技术大学<br>[GBR] 林肯大学<br>[ARE] MBZUAI<br>EmulationAI<br>[PAK] FAST-NUCES<br>[QAT] 卡塔尔大学 |
 | S20230323 | 2023.03.23 | 2023.04.02 | A Survey on Audio Diffusion Models:<br>Text To Speech Synthesis and Enhancement in Generative AI | [ArXiv:102](https://arxiv.org/abs/2303.13336) | [KOR] KAIST<br>[KOR] 庆熙大学<br>[CHN] 北京理工大学 |
 
@@ -39,6 +40,7 @@
 - FIN：芬兰
 - FRA：法国
 - GBR：英国
+- IND：印度
 - IRL：爱尔兰
 - JPN：日本
 - KOR：韩国
