@@ -35,6 +35,7 @@
 | [S20240220](../Surveys/S20240220.md) | 2024.02.20 | 2024.02.20 | Towards Audio Language Modeling -- An Overview | [ArXiv:42](https://arxiv.org/abs/2402.13236v1) | [CHN] 国立台湾大学 |
 | S20240430 | 2024.04.30 | 2025.04.10 | Expressivity and Speech Synthesis | [ArXiv:6](https://arxiv.org/abs/2404.19363) | ? |
 | S20240531 | 2024.05.31 | 2024.05.31 | A Survey of Deep Learning Audio Generation Methods | [ArXiv:7](https://arxiv.org/abs/2406.00146) | [HRV] 克罗地亚萨格勒布大学 |
+| S20240826 | 2024.08.26 | 2024.09.03 | Foundation Models for Music: A Survey | [ArXiv:28](https://arxiv.org/abs/2408.14340) | 略 |
 | S20241024 | 2024.10.24 | 2025.07.02 | A Survey on Speech Large Language Models for Understanding | [ArXiv:20](https://arxiv.org/abs/2410.18908) | [CHN] 上海交通大学X-LANCE<br>[CHN]AISpeech<br>[CHN] 华中科技大学<br>[CHE] 苏黎世理工学院<br>[CHN] 香港中文大学<br>[CHN] 南京大学 |
 | S20241113 | 2024.11.13 | 2024.11.13 | Direct Speech-to-Speech Neural Machine Translation: A Survey | [ArXiv:4](https://arxiv.org/abs/2411.14453 ) | [IND] NITTTR |
 | S20250125 | 2025.01.25 | 2025.01.25 | Audio-Language Models for Audio-Centric Tasks: A Survey | [ArXiv:4](https://arxiv.org/abs/2501.15177) | [CHN] 国防科技大学<br>[CHN] 西北工业大学 |
