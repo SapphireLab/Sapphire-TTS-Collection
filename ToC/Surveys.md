@@ -41,7 +41,7 @@
 | S20240826 | 2024.08.26 | 2024.09.03 | Foundation Models for Music: A Survey | [ArXiv:28](https://arxiv.org/abs/2408.14340) | 略 |
 | S20241024 | 2024.10.24 | 2025.07.02 | A Survey on Speech Large Language Models for Understanding | [ArXiv:20](https://arxiv.org/abs/2410.18908) | [CHN] 上海交通大学X-LANCE<br>[CHN]AISpeech<br>[CHN] 华中科技大学<br>[CHE] 苏黎世理工学院<br>[CHN] 香港中文大学<br>[CHN] 南京大学 |
 | S20241113 | 2024.11.13 | 2024.11.13 | Direct Speech-to-Speech Neural Machine Translation: A Survey | [ArXiv:4](https://arxiv.org/abs/2411.14453 ) | [IND] NITTTR |
-| [S20241115](../Surveys/S20241115.md) | 2024.11.15 | 2024.11.26 | WavChat: A Survey of Spoken Dialogue Models | [ArXiv:](https://arxiv.org/abs/2411.13577)<br>[Github](https://github.com/jishengpeng/WavChat) | [CHN] 浙江大学<br>[USA] 微软<br>[CHN] 腾讯优图实验室<br>[CHN] 阿里巴巴 |
+| [S20241115](../Surveys/S20241115.md) | 2024.11.15 | 2024.11.26 | WavChat: A Survey of Spoken Dialogue Models | [ArXiv:](https://arxiv.org/abs/2411.13577)<br>[Github](https://github.com/jishengpeng/WavChat) | [CHN] 浙江大学<br>[USA] 微软<br>[CHN] 腾讯优图实验室<br>[CHN] 阿里巴巴 | 翻译完成 |
 | S20250125 | 2025.01.25 | 2025.01.25 | Audio-Language Models for Audio-Centric Tasks: A Survey | [ArXiv:4](https://arxiv.org/abs/2501.15177) | [CHN] 国防科技大学<br>[CHN] 西北工业大学 |
 | S20250210 | 2025.02.10 | 2025.02.16 | Recent Advances in Discrete Speech Tokens: A Review | [ArXiv:6](https://arxiv.org/abs/2502.06490) | [CHN] 上海交通大学 X-LANCE |
 
