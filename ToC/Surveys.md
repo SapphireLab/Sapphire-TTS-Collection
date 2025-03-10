@@ -39,7 +39,7 @@
 | S20240531 | 2024.05.31 | 2024.05.31 | A Survey of Deep Learning Audio Generation Methods | [ArXiv:7](https://arxiv.org/abs/2406.00146) | [HRV] 克罗地亚萨格勒布大学 |
 | S20240816 | 2024.08.16 | 2024.09.06 | A Survey on Benchmarks of Multimodal Large Language Models | [ArXiv:51](https://arxiv.org/abs/2408.08632)<br>[Github](https://github.com/swordlidev/Evaluation-Multimodal-LLMs-Survey) | [CHN] 腾讯<br>[CHN] 北京大学<br>[SGP] 新加坡国立大学<br>[CHN] 东南大学<br>[CHN] 南京大学 |
 | S20240826 | 2024.08.26 | 2024.09.03 | Foundation Models for Music: A Survey | [ArXiv:28](https://arxiv.org/abs/2408.14340) | 略 |
-| S20241001 | 2024.10.01 | 2025.02.06 | Recent Advances in Speech Language Models: A Survey | [ArXiv:31](https://arxiv.org/abs/2410.03751) | [CHN] 香港中文大学<br>[SGP] 新加坡国立大学<br>[CHN] 腾讯 |
+| [S20241001](../Surveys/S20241001.md) | 2024.10.01 | 2025.02.06 | Recent Advances in Speech Language Models: A Survey | [ArXiv:31](https://arxiv.org/abs/2410.03751)<br>[Github](https://github.com/dreamtheater123/Awesome-SpeechLM-Survey) | [CHN] 香港中文大学<br>[SGP] 新加坡国立大学<br>[CHN] 腾讯 |
 | S20241024 | 2024.10.24 | 2025.07.02 | A Survey on Speech Large Language Models for Understanding | [ArXiv:20](https://arxiv.org/abs/2410.18908) | [CHN] 上海交通大学X-LANCE<br>[CHN]AISpeech<br>[CHN] 华中科技大学<br>[CHE] 苏黎世理工学院<br>[CHN] 香港中文大学<br>[CHN] 南京大学 |
 | S20241113 | 2024.11.13 | 2024.11.13 | Direct Speech-to-Speech Neural Machine Translation: A Survey | [ArXiv:4](https://arxiv.org/abs/2411.14453 ) | [IND] NITTTR |
 | [S20241115](../Surveys/S20241115.md) | 2024.11.15 | 2024.11.26 | WavChat: A Survey of Spoken Dialogue Models | [ArXiv:](https://arxiv.org/abs/2411.13577)<br>[Github](https://github.com/jishengpeng/WavChat) | [CHN] 浙江大学<br>[USA] 微软<br>[CHN] 腾讯优图实验室<br>[CHN] 阿里巴巴 | 翻译完成 |
