@@ -35,6 +35,7 @@
 | S20240212 | 2024.02.12 | 2024.02.12 | Deep Learning-Based Expressive Speech Synthesis: A Systematic Review of Approaches, Challenges, and Resources | [DOI:27](https://doi.org/10.1186/s13636-024-00329-7) |
 | S20240214 | 2024.02.14 | 2024.03.27 | Attacks, Defenses and Evaluations for LLM Conversation Safety: A Survey | [ArXiv:82](https://arxiv.org/abs/2402.09283) | [CHN] 上海 AI 实验室 |
 | [S20240220](../Surveys/S20240220.md) | 2024.02.20 | 2024.02.20 | Towards Audio Language Modeling -- An Overview | [ArXiv:42](https://arxiv.org/abs/2402.13236v1) | [CHN] 国立台湾大学 |
+| S20240312 | 2024.03.12 | 2024.04.08 | Recent Advances in Synthesis and Interaction of Speech, Text, and Vision | [DOI:18](https://doi.org/10.3390/electronics13091726) |
 | S20240426 | 2024.04.26 | 2024.05.28 | From Large Language Models to Large Multimodal Models: A Literature Review | [DOI:50](https://doi.org/10.3390/app14125068) | [CHN] 深圳大学<br>[USA] 乔治梅森大学<br>[CHN] 深圳技术大学 |
 | S20240430 | 2024.04.30 | 2025.04.10 | Expressivity and Speech Synthesis | [ArXiv:6](https://arxiv.org/abs/2404.19363) | ? |
 | S20240517 | 2024.05.17 | 2024.08.09 | Efficient Multimodal Large Language Models: A Survey | [ArXiv:73](https://arxiv.org/abs/2405.10739) | [CHN] 腾讯优图实验室<br>[CHN] 上海交通大学<br>[CHN] 北京智源BAAI<br>[CHN] 华东师范大学|
