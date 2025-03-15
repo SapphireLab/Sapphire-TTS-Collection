@@ -51,7 +51,7 @@
 | S20241216 | 2024.12.16 | 2024.12.30 | Next Token Prediction Towards Multimodal Intelligence: A Comprehensive Survey | [ArXiv:19](https://arxiv.org/abs/2412.18619)<br>[Github](https://github.com/LMM101/Awesome-Multimodal-Next-Token-Prediction) | [CHN] 北京大学<br>[CHN] 北航大学<br>[CHN] 香港大学<br>[CHN] 深圳先进技术研究院<br>[CHN] 清华大学<br>[CHN] M-A-P<br>[CHN] 香港中文大学<br>[CHN] 阿里巴巴<br>[GBR] 剑桥大学<br>[USA] 微软研究院<br>[USA] UIUC<br>[CHN] 浙江大学 |
 | S20250125 | 2025.01.25 | 2025.01.25 | Audio-Language Models for Audio-Centric Tasks: A Survey | [ArXiv:4](https://arxiv.org/abs/2501.15177) | [CHN] 国防科技大学<br>[CHN] 西北工业大学 |
 | S20250210 | 2025.02.10 | 2025.02.16 | Recent Advances in Discrete Speech Tokens: A Review | [ArXiv:6](https://arxiv.org/abs/2502.06490) | [CHN] 上海交通大学 X-LANCE |
-| S20250226 | 2025.02.26 | 2025.02.26 | When Large Language Models Meet Speech: A Survey on Integration Approaches | [ArXiv:1](https://arxiv.org/abs/2502.19548) | [JPN] 京都大学 |
+| [S20250226](../Surveys/S20250226.md) | 2025.02.26 | 2025.02.26 | When Large Language Models Meet Speech: A Survey on Integration Approaches | [ArXiv:1](https://arxiv.org/abs/2502.19548) | [JPN] 京都大学 |
 
 注：
 - ARE：阿联酋
