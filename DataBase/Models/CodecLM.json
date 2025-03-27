@@ -1,6 +1,5 @@
 {
     "VALL-E": {
-        "ArXiv": "https://arxiv.org/abs/2301.02111v1",
         "Architecture": {
             "CodecLM": {
                 "AR Transformer Decoder": "12Layer 16Head 1024Embed 4096FFN 0.1Dropout",
@@ -10,9 +9,15 @@
             "Speech Encoder": "EnCodec",
             "Text": "G2P"
         },
-        "Code": "",
+        "Code": {
+            "Official": "",
+            "Reproduce": [
+                "https://github.com/lifeiteng/vall-e",
+                "https://github.com/open-mmlab/Amphion/tree/main/models/tts/valle",
+                "https://github.com/dukGuo/valle-audiodec"
+            ]
+        },
         "Demo": "https://aka.ms/valle",
-        "Doi": "",
         "Institutions": [
             "Microsoft"
         ],
@@ -23,13 +28,9 @@
             "WER": "HuBERT-Large ASR"
         },
         "Notes": "Codec-Based Language Model for TTS",
-        "OpenSource": false,
-        "Publication": "",
-        "Reproduce": [
-            "https://github.com/lifeiteng/vall-e",
-            "https://github.com/open-mmlab/Amphion/tree/main/models/tts/valle",
-            "https://github.com/dukGuo/valle-audiodec"
-        ],
+        "Publication": {
+            "ArXiv": "https://arxiv.org/abs/2301.02111v1"
+        },
         "Tasks": [
             "TTS",
             "Zero-Shot TTS"
@@ -80,8 +81,88 @@
             ]
         }
     },
+    "VALL-E 2": {
+        "Architecture": {
+            "CodecLM": {
+                "AR Transformer Decoder": "12Layer 16Head 1024Embed 4096FFN 0.1Dropout",
+                "NAR Transformer Decoder": "12Layer 16Head 1024Embed 4096FFN 0.1Dropout"
+            },
+            "Speech Decoder": "Vocos",
+            "Speech Encoder": "EnCodec",
+            "Text": "BPE"
+        },
+        "Code": {
+            "Official": "",
+            "Reproduce": ""
+        },
+        "Demo": "https://aka.ms/valle2 ",
+        "Institutions": [
+            "Microsoft"
+        ],
+        "Metrics": {
+            "CMOS": "Human",
+            "DNSMOS": "DNSMOS Model",
+            "SIM": "WavLM-TDNN",
+            "SMOS": "Human",
+            "WER": "STT EN Conformer-Transducer XLarge"
+        },
+        "Notes": "VALL-E + Repetition Aware Sampling + Grouped Code Modeling",
+        "Publication": {
+            "ArXiv": "https://arxiv.org/abs/2406.05370v2"
+        },
+        "Tasks": [
+            "Zero-Shot TTS",
+            "TTS"
+        ],
+        "Test": {
+            "LibriSpeech Evaluation": {
+                "Ablations": [
+                    "Text Input + Prompt Input",
+                    "Size of Training Data"
+                ],
+                "Baselines": [
+                    "VALL-E",
+                    "VALL-E 2"
+                ],
+                "Datasets": [
+                    "LibriSpeech test-clean"
+                ],
+                "Metrics": [
+                    "SMOS",
+                    "CMOS",
+                    "SIM",
+                    "WER",
+                    "DNSMOS"
+                ]
+            },
+            "VCTK Evaluation": {
+                "Ablations": [
+                    "Text Input + Prompt Input",
+                    "Size of Training Data"
+                ],
+                "Baselines": [
+                    "VALL-E",
+                    "VALL-E 2"
+                ],
+                "Datasets": [
+                    "VCTK"
+                ],
+                "Metrics": [
+                    "SMOS",
+                    "CMOS",
+                    "SIM",
+                    "WER",
+                    "DNSMOS"
+                ]
+            }
+        },
+        "Train": {
+            "Datasets": [
+                "Libriheavy"
+            ]
+        }
+    },
     "VALL-E X": {
-        "ArXiv": "https://arxiv.org/abs/2303.03926",
         "Architecture": {
             "CodecLM": {
                 "Multi-Lingual AR Transformer Decoder": "12Layer 1024Embed 4096FFN",
@@ -93,9 +174,11 @@
             "Speech Recognition&Translation Model": "SpeechUT",
             "Text": "G2P (BigCiDian)"
         },
-        "Code": "",
+        "Code": {
+            "Official": "",
+            "Reproduce": "https://github.com/Plachtaa/VALL-E-X"
+        },
         "Demo": "https://aka.ms/vallex",
-        "Doi": "",
         "Institutions": [
             "Microsoft"
         ],
@@ -106,11 +189,9 @@
             "SMOS": "Human"
         },
         "Notes": "Cross-Lingual Version of VALL-E",
-        "OpenSource": false,
-        "Publication": "",
-        "Reproduce": [
-            "https://github.com/Plachtaa/VALL-E-X"
-        ],
+        "Publication": {
+            "ArXiv": "https://arxiv.org/abs/2303.03926v1"
+        },
         "Tasks": [
             "TTS",
             "Zero-Shot TTS",
