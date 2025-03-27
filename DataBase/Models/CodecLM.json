@@ -1,48 +1,160 @@
 {
     "VALL-E": {
-        "Paper": ["https://arxiv.org/abs/2301.02111v1"],
+        "ArXiv": "https://arxiv.org/abs/2301.02111v1",
+        "Architecture": {
+            "CodecLM": {
+                "AR Transformer Decoder": "12Layer 16Head 1024Embed 4096FFN 0.1Dropout",
+                "NAR Transformer Decoder": "12Layer 16Head 1024Embed 4096FFN 0.1Dropout"
+            },
+            "Speech Decoder": "EnCodec",
+            "Speech Encoder": "EnCodec",
+            "Text": "G2P"
+        },
+        "Code": "",
+        "Demo": "https://aka.ms/valle",
+        "Doi": "",
+        "Institutions": [
+            "Microsoft"
+        ],
+        "Metrics": {
+            "CMOS": "Human",
+            "SMOS": "Human",
+            "Speaker Similarity": "WavLM-TDNN",
+            "WER": "HuBERT-Large ASR"
+        },
+        "Notes": "Codec-Based Language Model for TTS",
         "OpenSource": false,
+        "Publication": "",
         "Reproduce": [
             "https://github.com/lifeiteng/vall-e",
             "https://github.com/open-mmlab/Amphion/tree/main/models/tts/valle",
             "https://github.com/dukGuo/valle-audiodec"
         ],
-        "Tasks": ["TTS", "Zero-Shot TTS"],
-        "Architecture": {
-            "Text": "G2P",
-            "Speech Encoder": "EnCodec",
-            "CodecLM": {
-                "AR Transformer Decoder": "12Layer 16Head 1024Embed 4096FFN 0.1Dropout",
-                "NAR Transformer Decoder": "12Layer 16Head 1024Embed 4096FFN 0.1Dropout"
+        "Tasks": [
+            "TTS",
+            "Zero-Shot TTS"
+        ],
+        "Test": {
+            "LibriSpeech Evaluation": {
+                "Ablations": [
+                    "NAR-no prompt",
+                    "NAR-phoneme prompt",
+                    "NAR-2 prompts (phoneme + acoustic tokens)"
+                ],
+                "Baselines": [
+                    "GSLM",
+                    "AudioLM",
+                    "YourTTS",
+                    "VALL-E",
+                    "VALL-E-continual"
+                ],
+                "Datasets": [
+                    "LibriSpeech test-clean"
+                ],
+                "Metrics": [
+                    "WER",
+                    "SPK",
+                    "CMOS",
+                    "SMOS"
+                ]
             },
-            "Speech Decoder": "EnCodec"
+            "VCTK Evaluation": {
+                "Baselines": [
+                    "YourTTS",
+                    "VALL-E"
+                ],
+                "Datasets": [
+                    "VCTK"
+                ],
+                "Metrics": [
+                    "WER",
+                    "SPK",
+                    "CMOS",
+                    "SMOS"
+                ]
+            }
         },
-        "Datasets": ["Libri-Light"],
-        "Baselines": ["YourTTS (Official)"],
+        "Train": {
+            "Datasets": [
+                "Libri-Light"
+            ]
+        }
+    },
+    "VALL-E X": {
+        "ArXiv": "https://arxiv.org/abs/2303.03926",
+        "Architecture": {
+            "CodecLM": {
+                "Multi-Lingual AR Transformer Decoder": "12Layer 1024Embed 4096FFN",
+                "Multi-Lingual NAR Transformer Decoder": "12Layer 1024Embed 4096FFN"
+            },
+            "Language ID Module": "",
+            "Speech Decoder": "EnCodec",
+            "Speech Encoder": "EnCodec",
+            "Speech Recognition&Translation Model": "SpeechUT",
+            "Text": "G2P (BigCiDian)"
+        },
+        "Code": "",
+        "Demo": "https://aka.ms/vallex",
+        "Doi": "",
+        "Institutions": [
+            "Microsoft"
+        ],
         "Metrics": {
-            "Speaker Similarity": "WavLM-TDNN",
-            "WER": "HuBERT-Large ASR",
+            "ASV": "Automatic Speech Verification",
             "CMOS": "Human",
-            "SMOS": "Human",
-            "Evaluations": [
-                {
-                    "Datasets": ["LibriSpeech test-clean"],
-                    "Baselines": [
-                        "GSLM",
-                        "AudioLM",
-                        "YourTTS",
-                        "VALL-E",
-                        "VALL-E-continual"
-                    ],
-                    "Ablations": [
-                        "NAR-no prompt",
-                        "NAR-phoneme prompt",
-                        "NAR-2 prompts (phoneme + acoustic tokens)"
-                    ]
-                },
-                {
-                    "Datasets": ["VCTK"],
-                    "Baselines": ["YourTTS", "VALL-E"]}
+            "Naturalness": "NISQA",
+            "SMOS": "Human"
+        },
+        "Notes": "Cross-Lingual Version of VALL-E",
+        "OpenSource": false,
+        "Publication": "",
+        "Reproduce": [
+            "https://github.com/Plachtaa/VALL-E-X"
+        ],
+        "Tasks": [
+            "TTS",
+            "Zero-Shot TTS",
+            "Zero-Shot S2ST",
+            "Cross-Lingual TTS"
+        ],
+        "Test": {
+            "Zero-Shot Cross-Lingual TTS Evaluation": {
+                "Baselines": [
+                    "YourTTS",
+                    "VALL-E X"
+                ],
+                "Datasets": [
+                    "LibriSpeech dev-clean"
+                ],
+                "Metrics": [
+                    "ASV-Score",
+                    "ASR-WER",
+                    "Naturalness"
+                ]
+            },
+            "Zero-Shot S2ST Evaluation": {
+                "Baselines": [
+                    "Cascaded S2ST",
+                    "VALL-E X Trans"
+                ],
+                "Datasets": [
+                    "EMIME"
+                ],
+                "Metrics": [
+                    "ASV-Score",
+                    "ASR-BLEU",
+                    "Naturalness"
+                ]
+            }
+        },
+        "Train": {
+            "Datasets": [
+                "WenetSpeech",
+                "Libri-Light",
+                "AI Challenger",
+                "OpenSubtitles2018",
+                "WMT2020",
+                "GigaSpeech"
             ]
         }
     }
