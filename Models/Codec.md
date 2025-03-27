@@ -1,5 +1,26 @@
 # 神经音频编解码器 (Neural Audio Codec)
 
+## EnCodec
+
+- 标题: High Fidelity Neural Audio Compression.
+- 机构: MetaAI FAIR Team
+- 代码: [Facebook Research](http://github.com/facebookresearch/encodec)
+- 时间: 2022.10.24
+- 发表: TMLR2023
+
+![](Codec/Images/2022.10.24_Encodec_Fig.01.png)
+
+## SpeechTokenizer
+
+- 标题: SpeechTokenizer: Unified Speech Tokenizer for Speech Large Language Models.
+- 代码: [Github](https://github.com/ZhangXInFD/SpeechTokenizer/)
+- 时间: 2023.08.31
+- 发表: ICLR2024
+
+![](Codec/Images/2023.08.31_SpeechTokenizer_Fig.02.png)
+
+对比: EnCodec, HuBERT
+
 ## SECodec
 
 - 标题: Structural Entropy-Based Compressive Speech Representation Codec for Speech Language Models.
@@ -19,3 +40,9 @@
 2. 提出了新量化方法, 为每个输入的原始语音节点自适应地选择其所属聚类的最合适的 Token.
 
 对比: EnCodec, SpeechTokenizer
+
+# Benchmark
+
+- SLMTokBench: SpeechTokenizer 使用的基准.
+  - 代码: [0nutation 暂未开源](https://github.com/0nutation/SLMTokBench)
+  - 替代链接: [CodecEvaluation](https://github.com/xzm2004260/CodecEvaluation)

@@ -1,2 +1,6 @@
-Time,Model,Institutions,ArXiv,Publication,OpenSource,Github,Framework,Training Objectives,Discriminator,Dataset
-2024.12.16,SECodec,CN-KUST,https://arxiv.org/abs/2501.00018v1,AAAI2025,Not Yet,https://github.com/wlq2019/SECodec,RVQ-GAN,Reconstruction+Adversarial+RVQ Commit,MSD+MPD+MSTFTD,LibriSpeech
+Time,Model,Submodel,Institutions,ArXiv,Publication,OpenSource,Github,Framework,Training Objectives,Discriminator,Dataset,Area
+2022.10.24,EnCodec,24kHz Monophonic,US-MetaAI,https://arxiv.org/abs/2210.13438v1,TMLR2023,Inference,http://github.com/facebookresearch/encodec,RVQ-GAN,Reconstruction+Adversarial+RVQ Commit,MS-STFT,DNS Chanllenge4 + CommonVoice + AudioSet + FSD50K,Speech + Audio
+2022.10.24,EnCodec,48kHz Fullband Stereo,US-MetaAI,https://arxiv.org/abs/2210.13438v1,TMLR2023,Inference,http://github.com/facebookresearch/encodec,RVQ-GAN,Reconstruction+Adversarial+RVQ Commit,MS-STFT,Jamendo,Music
+2023.08.31,SpeechTokenizer,16kHz HuBERT_AVG,CN-FUDAN,https://arxiv.org/abs/2308.16692v2,ICLR2024,Train + Inference,https://github.com/ZhangXInFD/SpeechTokenizer/,RVQ-GAN,Reconstruction+Adversarial+RVQ Commit+Semantic Distillation,MS-STFT + MPD + MSD,LibriSpeech,Speech
+2023.08.31,SpeechTokenizer,16kHz SNAKE HuBERT_AVG,CN-FUDAN,https://arxiv.org/abs/2308.16692v2,ICLR2024,Train + Inference,https://github.com/ZhangXInFD/SpeechTokenizer/,RVQ-GAN,Reconstruction+Adversarial+RVQ Commit+Semantic Distillation,MS-STFT + MPD + MSD,LibriSpeech + CommonVoice,Speech
+2024.12.16,SECodec,,CN-KUST,https://arxiv.org/abs/2501.00018v1,AAAI2025,Not Yet,https://github.com/wlq2019/SECodec,RVQ-GAN,Reconstruction+Adversarial+RVQ Commit,MSD+MPD+MSTFTD,LibriSpeech,Speech
