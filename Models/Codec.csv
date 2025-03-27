@@ -1,0 +1,2 @@
+Time,Model,Institutions,ArXiv,Publication,OpenSource,Github,Framework,Training Objectives,Discriminator,Dataset
+2024.12.16,SECodec,CN-KUST,https://arxiv.org/abs/2501.00018v1,AAAI2025,Not Yet,https://github.com/wlq2019/SECodec,RVQ-GAN,Reconstruction+Adversarial+RVQ Commit,MSD+MPD+MSTFTD,LibriSpeech
