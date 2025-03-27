@@ -1,0 +1,49 @@
+{
+    "VALL-E": {
+        "Paper": ["https://arxiv.org/abs/2301.02111v1"],
+        "OpenSource": false,
+        "Reproduce": [
+            "https://github.com/lifeiteng/vall-e",
+            "https://github.com/open-mmlab/Amphion/tree/main/models/tts/valle",
+            "https://github.com/dukGuo/valle-audiodec"
+        ],
+        "Tasks": ["TTS", "Zero-Shot TTS"],
+        "Architecture": {
+            "Text": "G2P",
+            "Speech Encoder": "EnCodec",
+            "CodecLM": {
+                "AR Transformer Decoder": "12Layer 16Head 1024Embed 4096FFN 0.1Dropout",
+                "NAR Transformer Decoder": "12Layer 16Head 1024Embed 4096FFN 0.1Dropout"
+            },
+            "Speech Decoder": "EnCodec"
+        },
+        "Datasets": ["Libri-Light"],
+        "Baselines": ["YourTTS (Official)"],
+        "Metrics": {
+            "Speaker Similarity": "WavLM-TDNN",
+            "WER": "HuBERT-Large ASR",
+            "CMOS": "Human",
+            "SMOS": "Human",
+            "Evaluations": [
+                {
+                    "Datasets": ["LibriSpeech test-clean"],
+                    "Baselines": [
+                        "GSLM",
+                        "AudioLM",
+                        "YourTTS",
+                        "VALL-E",
+                        "VALL-E-continual"
+                    ],
+                    "Ablations": [
+                        "NAR-no prompt",
+                        "NAR-phoneme prompt",
+                        "NAR-2 prompts (phoneme + acoustic tokens)"
+                    ]
+                },
+                {
+                    "Datasets": ["VCTK"],
+                    "Baselines": ["YourTTS", "VALL-E"]}
+            ]
+        }
+    }
+}
