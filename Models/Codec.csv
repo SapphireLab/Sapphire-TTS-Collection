@@ -28,8 +28,12 @@ Time,Model,Submodel,Institutions,ArXiv,Publication,OpenSource,Github,Framework,T
 2024.09.02,SoCodec,,,https://arxiv.org/abs/2409.00933v1,SLT2024,,,,,,,
 2024.09.09,BigCodec,,,https://arxiv.org/abs/2409.05377v1,,Train + Inference,https://github.com/Aria-K-Alethia/BigCodec,,,,,
 2024.09.18,LFSC,,,https://arxiv.org/abs/2409.12117v1,ICASSP2025,,,,,,,
+2024.09.18,WMCodec,,,https://arxiv.org/abs/2409.12121v3,,Train + Inference,https://github.com/zjzser/WMCodec,,,,,
+2024.09.19,NDVQ,,,https://arxiv.org/abs/2409.12717v1,,,,,,,,
+2024.09.20,MuCodec,,,https://arxiv.org/abs/2409.13216v3,,,https://github.com/tencent-ailab/MuCodec,,,,,
 2024.09.26,FlowMAC,,,https://arxiv.org/abs/2409.17635v2,ICASSP2025,,,,,,,
 2024.10.18,SNAC,,,https://arxiv.org/abs/2410.14411v1,NeurIPS2024Workshop,Inference,https://github.com/hubertsiuzdak/snac,,,,,
+2024.10.19,DM-Codec,,,https://arxiv.org/abs/2410.15017v2,EMNLP2025,,https://github.com/mubtasimahasan/DM-Codec,,,,,
 2024.10.21,LSCodec,25Hz,CN-SJTU-XLANCE,https://arxiv.org/abs/2410.15764v3,InterSpeech2025,Inference,https://github.com/X-LANCE/LSCodec-Inference,,,,LibriTTS,Speech
 2024.10.21,LSCodec,50Hz,CN-SJTU-XLANCE,https://arxiv.org/abs/2410.15764v3,InterSpeech2025,Inference,https://github.com/X-LANCE/LSCodec-Inference,,,,LibriTTS,Speech
 2024.10.30,APCodec+,,,https://arxiv.org/abs/2410.22807v1,ISCSLP2025,,,,,,,
