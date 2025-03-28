@@ -7,12 +7,12 @@ Time,Model,Submodel,PreTrained,Datasets,Datasets Durations (Hrs),Datasets Domain
 2022.07.18,TF-Codec,6k_20ms_redundant,tfcodec_6k_514000,,,,,16,GVQ,16,25,1024,6
 2022.07.18,TF-Codec,6k_40ms_redundant,NO AVAILABLE,,,,,16,GVQ,32,25,1024,6
 2022.10.24,EnCodec,24kHz Monophonic,encodec_24khz,DNS Challenge4 + CommonVoice + AudioSet + FSD50K,,Speech+Audio,,24,RVQ,32,75,1024,24
-2022.10.24,EnCodec,48kHz Stereo,encodec_48khz,Jamendo,,Music,,48,RVQ
+2022.10.24,EnCodec,48kHz Stereo,encodec_48khz,Jamendo,,Music,,48,RVQ,,,,
 2022.11.22,Disen-TF-Codec,,,LibriSpeech train-clean-100,,Speech,,16,GVQ,"[2,6]",25,"[256,1024]","[0.40,1.50]"
-2023.05.04,HiFi-Codec,Compare,Encodec_16k_320
-2023.05.04,HiFi-Codec,Compare,Encodec_24k_240d
-2023.05.04,HiFi-Codec,Compare,Encodec_24k_32d
-2023.05.04,HiFi-Codec,Compare,SoundStream_24k_240d
+2023.05.04,HiFi-Codec,Compare,Encodec_16k_320,,,,,,,,,,
+2023.05.04,HiFi-Codec,Compare,Encodec_24k_240d,,,,,,,,,,
+2023.05.04,HiFi-Codec,Compare,Encodec_24k_32d,,,,,,,,,,
+2023.05.04,HiFi-Codec,Compare,SoundStream_24k_240d,,,,,,,,,,
 2023.05.04,HiFi-Codec,,HiFi-Codec-16k-320d,LibriTTS + VCTK + AISHELL,,Speech,,16,GRVQ,4,50,1024,2
 2023.05.04,HiFi-Codec,,HiFi-Codec-16k-320d-large-universal,,,,,16,GRVQ,4,50,1024,2
 2023.05.04,HiFi-Codec,,HiFi-Codec-24k-240d,,,,,24,GRVQ,4,100,1024,4
@@ -37,7 +37,7 @@ Time,Model,Submodel,PreTrained,Datasets,Datasets Durations (Hrs),Datasets Domain
 2023.09.15,TiCodec,,logs_convonly_Lib_1g4r_cos_from_head,LibriTTS,,Speech,,24,RVQ+GVQ,4,75,1024,3
 2023.11.14,LaDiffCodec,,,,,,,16,RVQ,"[3,6]",50,1024,"[1.5,3.0]"
 2024.02.16,APCodec,,No,,,,,48,RVQ,4,150,1024,6
-2024.02.19,Language-Codec,,languagecodec_paper_8nq,,50k,,2 M
+2024.02.19,Language-Codec,,languagecodec_paper_8nq,,50k,,2 M,,,,,,
 2024.03.05,FACodec,,,,,,,16,RVQ,1+2+3,80,1024,4.8
 2024.03.18,SRCodec,,,VCTK,,Speech,,16,RVQ + RVQ,"[1,2,4]",50,512 + 1024,"[0.95,1.90,3.80]"
 2024.04.03,PromptCodec,,,,,,,24,GRVQ,"[1,4]",75,1024,"[0.75,3.00]"
@@ -49,17 +49,17 @@ Time,Model,Submodel,PreTrained,Datasets,Datasets Durations (Hrs),Datasets Domain
 2024.06.11,Single-Codec,,NO AVAILABLE,,,,,24,VQ,1,23,8192,0.3
 2024.06.14,LLM-Codec,,semantic_acoustic.pth,,,,,16,RVQ,3,8.33+16.67+33.33,3248+32000+32000,0.85
 2024.07.30,SuperCodec,,,LibriTTS,,Speech,,16,RVQ,2,50,1024,1
-2024.08.29,WavTokenizer,,large_speech_320_v2.ckpt
-2024.08.29,WavTokenizer,,large-320-24k-4096,-,80k,Speech+Audio+Music
-2024.08.29,WavTokenizer,,large-600-24k-4096,-,80k,Speech+Audio+Music
-2024.08.29,WavTokenizer,,medium-320-24k-4096,-,10k,Speech+Audio+Music
+2024.08.29,WavTokenizer,,large_speech_320_v2.ckpt,,,,,,,,,,
+2024.08.29,WavTokenizer,,large-320-24k-4096,-,80k,Speech+Audio+Music,,,,,,,
+2024.08.29,WavTokenizer,,large-600-24k-4096,-,80k,Speech+Audio+Music,,,,,,,
+2024.08.29,WavTokenizer,,medium-320-24k-4096,-,10k,Speech+Audio+Music,,,,,,,
 2024.08.29,WavTokenizer,,small-320-24k-4096,LibriTTS,-,Speech,,24,VQ,1,75,4096,0.9
 2024.08.29,WavTokenizer,,small-600-24k-4096,LibriTTS,-,Speech,,24,VQ,1,40,4096,0.48
-2024.08.30,X-Codec,,xcodec-hubert-general,200k hours internal data,200k,General Audio
-2024.08.30,X-Codec,,xcodec-hubert-general-balanced,more balanced data,,General Audio
+2024.08.30,X-Codec,,xcodec-hubert-general,200k hours internal data,200k,General Audio,,,,,,,
+2024.08.30,X-Codec,,xcodec-hubert-general-balanced,more balanced data,,General Audio,,,,,,,
 2024.08.30,X-Codec,,xcodec-hubert-librispeech,LibriSpeech,,Speech,,16,RVQ,8,50,1024,4
-2024.08.30,X-Codec,,xcodec-wavlm-mls,MLS English,,Speech
-2024.08.30,X-Codec,,xcodec-wavlm-more-data,MLS English + Internal data,,Speech
+2024.08.30,X-Codec,,xcodec-wavlm-mls,MLS English,,Speech,,,,,,,
+2024.08.30,X-Codec,,xcodec-wavlm-more-data,MLS English + Internal data,,Speech,,,,,,,
 2024.09.02,SoCodec,,,,,,,16,GVQ,"[1,4,8]","[25,8.3,4.2]",16384,"[0.35,0.47]"
 2024.09.09,BigCodec,,bigcodec.pt,LibriSpeech,,,,16,SVQ,1,80,8192,1.04
 2024.09.17,Mimi,,,,,,,24,RVQ,8,12.5,2048,1.1
