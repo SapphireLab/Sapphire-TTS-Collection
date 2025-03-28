@@ -13,15 +13,22 @@ Time,Model,Submodel,Institutions,ArXiv,Publication,OpenSource,Github,Framework,T
 2023.09.14,FunCodec,,,https://arxiv.org/abs/2309.07405v2,ICASSP2024,Train + Inference,https://github.com/alibaba-damo-academy/FunCodec,,,,,
 2023.09.15,TiCodec,,,https://arxiv.org/abs/2310.00014v2,ICASSP2024,,,,,,,
 2024.01.22,ScoreDec,,,https://arxiv.org/abs/2401.12160v1,ICASSP2024,,,,,,,
+2024.02.02,CBRC,,,https://arxiv.org/abs/2402.01271v1,InterSpeech2023,,,,,,,
 2024.02.16,APCodec,,,https://arxiv.org/abs/2402.10533v2,TASLP2024,Train + Inference,https://github.com/yangai520/APCodec,,,,,
 2024.03.05,FACodec,,,https://arxiv.org/abs/2403.03100v3,,,,,,,,
+2024.03.18,SRCodec,,,NO,ICASSP2024,,,,,,,
+2024.03.18,LightCodec,,,NO,ICASSP2024,,,,,,,
+2024.04.03,PSCodec,,,https://arxiv.org/abs/2404.02702v3,,,,,,,,
 2024.04.30,SemantiCodec,,,https://arxiv.org/abs/2405.00233v2,JSTSP,Inference,https://github.com/haoheliu/SemantiCodec-inference,,,,,
+2024.05.08,HILCodec,,,https://arxiv.org/abs/2405.04752v2,JSTSP2024,,,,,,,
 2024.06.11,Single-Codec,,,https://arxiv.org/abs/2406.07422v1,InterSpeech2024,,,,,,,
 2024.07.30,SuperCodec,,,https://arxiv.org/abs/2407.20530v1,ICASSP2024,,,,,,,
 2024.08.29,WavTokenizer,,,https://arxiv.org/abs/2408.16532v3,ICLR2025,Train + Inference,https://github.com/jishengpeng/WavTokenizer,,,,,
 2024.08.30,X-Codec,,,https://arxiv.org/abs/2408.17175v3,,,https://github.com/zhenye234/xcodec,,,,,
 2024.09.02,SoCodec,,,https://arxiv.org/abs/2409.00933v1,SLT2024,,,,,,,
 2024.09.09,BigCodec,,,https://arxiv.org/abs/2409.05377v1,,Train + Inference,https://github.com/Aria-K-Alethia/BigCodec,,,,,
+2024.09.18,LFSC,,,https://arxiv.org/abs/2409.12117v1,ICASSP2025,,,,,,,
+2024.09.26,FlowMAC,,,https://arxiv.org/abs/2409.17635v2,ICASSP2025,,,,,,,
 2024.10.18,SNAC,,,https://arxiv.org/abs/2410.14411v1,NeurIPS2024Workshop,Inference,https://github.com/hubertsiuzdak/snac,,,,,
 2024.10.21,LSCodec,25Hz,CN-SJTU-XLANCE,https://arxiv.org/abs/2410.15764v3,InterSpeech2025,Inference,https://github.com/X-LANCE/LSCodec-Inference,,,,LibriTTS,Speech
 2024.10.21,LSCodec,50Hz,CN-SJTU-XLANCE,https://arxiv.org/abs/2410.15764v3,InterSpeech2025,Inference,https://github.com/X-LANCE/LSCodec-Inference,,,,LibriTTS,Speech
@@ -30,4 +37,5 @@ Time,Model,Submodel,Institutions,ArXiv,Publication,OpenSource,Github,Framework,T
 2024.11.27,TS3-Codec,No,US-Microsoft,https://arxiv.org/abs/2411.18803v2,,No,,,Reconstruction+LQ-GAN+Feature+VQ,MPD + MS-STFT,Libri-Light,Speech
 2024.12.02,FreeCodec,,"[CN-WHU, CN-TencentYouTu]",https://arxiv.org/abs/2412.01053v3,InterSpeech2025,Not Yet,https://github.com/exercise-book-yq/FreeCodec,,Reconstruction+VQ Commit+Content+Feature Matching+Adversarial,MS-STFT,LibriSpeech,Speech
 2024.12.16,SECodec,,CN-KUST,https://arxiv.org/abs/2501.00018v1,AAAI2025,Not Yet,https://github.com/wlq2019/SECodec,RVQ-GAN,Reconstruction+Adversarial+RVQ Commit,MSD+MPD+MSTFTD,LibriSpeech,Speech
+2025.02.27,UniCodec,,,https://arxiv.org/abs/2502.20067v1,,,,,,,,
 2025.03.03,FlowDec,,,https://arxiv.org/abs/2503.01485v1,ICLR2025,,https://github.com/facebookresearch/FlowDec,,,,,
