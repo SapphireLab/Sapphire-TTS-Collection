@@ -1,6 +1,27 @@
 Time,Model,Submodel,Institutions,ArXiv,Publication,OpenSource,Github,Framework,Training Objectives,Discriminator,Dataset,Area
+2021.07.07,SoundStream,,,https://arxiv.org/abs/2107.03312v1,,,,,,,,
+2022.07.18,TF-Codec,,,https://arxiv.org/abs/2207.08363v3,TASLP2023,,,,,,,
 2022.10.24,EnCodec,24kHz Monophonic,US-MetaAI,https://arxiv.org/abs/2210.13438v1,TMLR2023,Inference,http://github.com/facebookresearch/encodec,RVQ-GAN,Reconstruction+Adversarial+RVQ Commit,MS-STFT,DNS Chanllenge4 + CommonVoice + AudioSet + FSD50K,Speech + Audio
 2022.10.24,EnCodec,48kHz Fullband Stereo,US-MetaAI,https://arxiv.org/abs/2210.13438v1,TMLR2023,Inference,http://github.com/facebookresearch/encodec,RVQ-GAN,Reconstruction+Adversarial+RVQ Commit,MS-STFT,Jamendo,Music
+2023.03.23,LMCodec,,,https://arxiv.org/abs/2303.12984v1,ICASSP2023,,,,,,,
+2023.05.04,HiFi-Codec,,"CN-PKU, CN-TencentAI, CN-ZJU",https://arxiv.org/abs/2305.02765v1,No,Train + Inference,https://github.com/yangdongchao/AcademiCodec,,,,LibriTTS + VCTK + AISHELL,Speech
+2023.05.26,AudioDec,,,https://arxiv.org/abs/2305.16608v1,ICASSP2023,,https://github.com/facebookresearch/AudioDec,,,,,
+2023.06.11,DAC,,,https://arxiv.org/abs/2306.06546v2,NeurIPS2023Spotlight,,https://github.com/descriptinc/descript-audio-codec,,,,,
 2023.08.31,SpeechTokenizer,16kHz HuBERT_AVG,CN-FUDAN,https://arxiv.org/abs/2308.16692v2,ICLR2024,Train + Inference,https://github.com/ZhangXInFD/SpeechTokenizer/,RVQ-GAN,Reconstruction+Adversarial+RVQ Commit+Semantic Distillation,MS-STFT + MPD + MSD,LibriSpeech,Speech
 2023.08.31,SpeechTokenizer,16kHz SNAKE HuBERT_AVG,CN-FUDAN,https://arxiv.org/abs/2308.16692v2,ICLR2024,Train + Inference,https://github.com/ZhangXInFD/SpeechTokenizer/,RVQ-GAN,Reconstruction+Adversarial+RVQ Commit+Semantic Distillation,MS-STFT + MPD + MSD,LibriSpeech + CommonVoice,Speech
+2023.09.14,FunCodec,,,https://arxiv.org/abs/2309.07405v2,ICASSP2024,Train + Inference,https://github.com/alibaba-damo-academy/FunCodec,,,,,
+2023.09.15,TiCodec,,,https://arxiv.org/abs/2310.00014v2,ICASSP2024,,,,,,,
+2024.01.22,ScoreDec,,,https://arxiv.org/abs/2401.12160v1,ICASSP2024,,,,,,,
+2024.02.16,APCodec,,,https://arxiv.org/abs/2402.10533v2,TASLP2024,Train + Inference,https://github.com/yangai520/APCodec,,,,,
+2024.03.05,FACodec,,,https://arxiv.org/abs/2403.03100v3,,,,,,,,
+2024.04.30,SemantiCodec,,,https://arxiv.org/abs/2405.00233v2,JSTSP,Inference,https://github.com/haoheliu/SemantiCodec-inference,,,,,
+2024.06.11,Single-Codec,,,https://arxiv.org/abs/2406.07422v1,InterSpeech2024,,,,,,,
+2024.07.22,RepCodec,,,https://arxiv.org/abs/2309.00169v3,ACL2024,,,,,,,
+2024.08.29,WavTokenizer,,,https://arxiv.org/abs/2408.16532v3,ICLR2025,Train + Inference,https://github.com/jishengpeng/WavTokenizer,,,,,
+2024.10.21,LSCodec,25Hz,CN-SJTU-XLANCE,https://arxiv.org/abs/2410.15764v3,InterSpeech2025,Inference,https://github.com/X-LANCE/LSCodec-Inference,,,,LibriTTS,Speech
+2024.10.21,LSCodec,50Hz,CN-SJTU-XLANCE,https://arxiv.org/abs/2410.15764v3,InterSpeech2025,Inference,https://github.com/X-LANCE/LSCodec-Inference,,,,LibriTTS,Speech
+2024.11.01,MDCTCodec,,CN-USTC-NERC-SLIP,https://arxiv.org/abs/2411.00464v1,SLT2024,No,,,,,,
+2024.11.27,TS3-Codec,No,US-Microsoft,https://arxiv.org/abs/2411.18803v2,,No,,,Reconstruction+LQ-GAN+Feature+VQ,MPD + MS-STFT,Libri-Light,Speech
+2024.12.02,FreeCodec,,"[CN-WHU, CN-TencentYouTu]",https://arxiv.org/abs/2412.01053v3,InterSpeech2025,Not Yet,https://github.com/exercise-book-yq/FreeCodec,,Reconstruction+VQ Commit+Content+Feature Matching+Adversarial,MS-STFT,LibriSpeech,Speech
 2024.12.16,SECodec,,CN-KUST,https://arxiv.org/abs/2501.00018v1,AAAI2025,Not Yet,https://github.com/wlq2019/SECodec,RVQ-GAN,Reconstruction+Adversarial+RVQ Commit,MSD+MPD+MSTFTD,LibriSpeech,Speech
+2025.03.03,FlowDec,,,https://arxiv.org/abs/2503.01485v1,ICLR2025,,https://github.com/facebookresearch/FlowDec,,,,,
