@@ -1,62 +1,74 @@
-Time,Model,Submodel,Institutions,ArXiv,Publication,OpenSource,Github,Framework,Training Objectives,Discriminator,Dataset,Area,Guo2025Recent Type,Guo2025Recent Purpose,Sampling Rate (kHz),Quantization,Quantizers Number,Frame Rate (Hz),Vocabulary Size Per Q,Bitrate (kpbs)
-2021.07.07,SoundStream,,,https://arxiv.org/abs/2107.03312v1,,,,VQ-GAN (CNN),,,LibriTTS + Freesound + MagnaTagATune,Speech + Music,Acoustic,General,24,RVQ,24,75,1024,18
-2022.07.05,Siahkoohi2022Ultra,,,https://arxiv.org/abs/2207.02262v1,InterSpeech2022,,,VQ-GAN (CNN),,,,,Acoustic,Semantic Distillation,16,RVQ,"[2+1,2+2,6]",25+50,64,"[0.60,0.90,1.80]"
-2022.07.18,TF-Codec,tfcodec_1k(6k)_545000 ,"CN-CUC, US-MSRA",https://arxiv.org/abs/2207.08363v3,TASLP2023,Train + Inference,https://github.com/microsoft/TF-Codec,VQ-GAN (CNN),,,,,Acoustic,General,16,GVQ,"[3,6,16,32]",25,"[512,1024,1024,1024]","[0.675,1.5,4,8]"
-2022.10.24,EnCodec,24kHz Monophonic,US-MetaAI,https://arxiv.org/abs/2210.13438v1,TMLR2023,Inference,http://github.com/facebookresearch/encodec,VQ-GAN (CNN),Reconstruction+Adversarial+RVQ Commit,MS-STFT,DNS Challenge4 + CommonVoice + AudioSet + FSD50K,Speech + Audio,Acoustic,General,24,RVQ,32,75,1024,24
-2022.10.24,EnCodec,48kHz Fullband Stereo,US-MetaAI,https://arxiv.org/abs/2210.13438v1,TMLR2023,Inference,http://github.com/facebookresearch/encodec,VQ-GAN (CNN),Reconstruction+Adversarial+RVQ Commit,MS-STFT,Jamendo,Music,Acoustic,General,,,,,,
-2022.11.22,Disen-TF-Codec,,"CN-CUC, US-MSRA",https://arxiv.org/abs/2211.11960v2,ICASSP2023,No,,VQ-GAN (CNN),,,LibriSpeech train-clean-100,Speech,Acoustic,General,16,GVQ,"[2,6]",25,"[256,1024]","[0.40,1.50]"
-2023.03.23,LMCodec,,"US-UW, US-Google, NZ-VUW",https://arxiv.org/abs/2303.12984v1,ICASSP2023,,,,,,,,,,,,,,,
-2023.05.04,HiFi-Codec,16k-320d,"CN-PKU, CN-TencentAI, CN-ZJU",https://arxiv.org/abs/2305.02765v1,No,Train + Inference,https://github.com/yangdongchao/AcademiCodec,,,,LibriTTS + VCTK + AISHELL,Speech,Acoustic,General,16,GRVQ,4,50,1024,2
-2023.05.04,HiFi-Codec,24k-320d,"CN-PKU, CN-TencentAI, CN-ZJU",https://arxiv.org/abs/2305.02765v1,No,Train + Inference,https://github.com/yangdongchao/AcademiCodec,,,,LibriTTS + VCTK + AISHELL,Speech,Acoustic,General,24,GRVQ,4,100,1024,4
-2023.05.26,AudioDec,symAD,US-MetaAI,https://arxiv.org/abs/2305.16608v1,ICASSP2023,Train + Inference,https://github.com/facebookresearch/AudioDec,VQ-VAE (CNN) + GAN,,,Valentini,Speech,Acoustic,General,48,RVQ,8,160,1024,12.8
-2023.05.26,AudioDec,AD v0 v1 v2,US-MetaAI,https://arxiv.org/abs/2305.16608v1,ICASSP2023,Train + Inference,https://github.com/facebookresearch/AudioDec,VQ-VAE (CNN) + GAN,,,Valentini,Speech,Acoustic,General,48,RVQ,8,160,1024,12.8
-2023.06.11,DAC,,US-Descript,https://arxiv.org/abs/2306.06546v2,NeurIPS2023Spotlight,,https://github.com/descriptinc/descript-audio-codec,VQ-GAN (CNN),,,,,Acoustic,General,44.1,RVQ,9,86,1024,7.74
-2023.08.31,SpeechTokenizer,16kHz HuBERT_AVG,CN-FUDAN,https://arxiv.org/abs/2308.16692v2,ICLR2024,Train + Inference,https://github.com/ZhangXInFD/SpeechTokenizer/,VQ-GAN (CNN),Reconstruction+Adversarial+RVQ Commit+Semantic Distillation,MS-STFT + MPD + MSD,LibriSpeech,Speech,Acoustic,Semantic Distillation,16,RVQ,8,50,1024,4
-2023.08.31,SpeechTokenizer,16kHz SNAKE HuBERT_AVG,CN-FUDAN,https://arxiv.org/abs/2308.16692v2,ICLR2024,Train + Inference,https://github.com/ZhangXInFD/SpeechTokenizer/,VQ-GAN (CNN),Reconstruction+Adversarial+RVQ Commit+Semantic Distillation,MS-STFT + MPD + MSD,LibriSpeech + CommonVoice,Speech,Acoustic,Semantic Distillation,16,RVQ,8,50,1024,4
-2023.08.31,RepCodec,,CN-ByteDance,https://arxiv.org/abs/2309.00169v3,ACL2024,,,,,,,,,,,,,,,
-2023.09.14,FunCodec/FreqCodec,,CN-Alibaba,https://arxiv.org/abs/2309.07405v2,ICASSP2024,Train + Inference,https://github.com/alibaba-damo-academy/FunCodec,VQ-GAN (CNN),,,,,Acoustic,General,16,RVQ,32,50,1024,16
-2023.09.15,TiCodec,,"CN-CAS, CN-UCAS, CN-THU",https://arxiv.org/abs/2310.00014v2,ICASSP2024,,,VQ-GAN (CNN),,,LibriTTS,Speech,Acoustic,General,24,RVQ + GVQ,"[1,2,4]",75,1024,"[0.75,1.5,3.0]"
-2023.11.14,LaDiffCodec,,"US-IU, KR-ETRI",https://arxiv.org/abs/2311.08330v2,,,,Latent Diffusion,,,,,Acoustic,General,16,RVQ,"[3,6]",50,1024,"[1.5,3.0]"
-2024.01.22,ScoreDec,,US-MetaAI-CodecAvatarsLab,https://arxiv.org/abs/2401.12160v1,ICASSP2024,,,,,,,,,,,,,,,
-2024.02.02,CBRC,,"CN-ByteDance-RTCLab, CN-BUPT, AU-MURDOCH",https://arxiv.org/abs/2402.01271v1,InterSpeech2023,,,,,,,,,,,,,,,
-2024.02.16,APCodec,,CN-USTC-NERC-SLIP,https://arxiv.org/abs/2402.10533v2,TASLP2024,Train + Inference,https://github.com/yangai520/APCodec,VQ-GAN (CNN),,,,,Acoustic,General,48,RVQ,4,150,1024,6
-2024.02.19,Language-Codec,,,https://arxiv.org/abs/2402.12208v4,ACL2025Main,Train + Inference,https://github.com/jishengpeng/languagecodec,,,,,,,,,,,,,
-2024.03.05,FACodec,,,https://arxiv.org/abs/2403.03100v3,,,,VQ-GAN (CNN),,,,,Acoustic,Disentanglement,16,RVQ,1+2+3,80,1024,4.8
-2024.03.18,LightCodec,,,NO,ICASSP2024,,,,,,,,,,,,,,,
-2024.03.18,SRCodec,,,NO,ICASSP2024,,,VQ-GAN (CNN),,,VCTK,Speech,Acoustic,General,16,RVQ + RVQ,"[1,2,4]",50,512 + 1024,"[0.95,1.90,3.80]"
-2024.04.03,PromptCodec,,,https://arxiv.org/abs/2404.02702v2,,,,VQ-GAN (CNN),,,,,Acoustic,Disentanglement,24,GRVQ,"[1,4]",75,1024,"[0.75,3.00]"
-2024.04.03,PSCodec,,,https://arxiv.org/abs/2404.02702v3,,,,,,,,,,,,,,,,
-2024.04.30,ESC,,,https://arxiv.org/abs/2404.19441v3,EMNLP2024,,,VQ-GAN (U-Net),,,,,Acoustic,General,16,GVQ,18,50,1024,9
-2024.04.30,SemantiCodec,,,https://arxiv.org/abs/2405.00233v2,JSTSP,Inference,https://github.com/haoheliu/SemantiCodec-inference,Latent Diffusion,,,,,Acoustic,Semantic Distillation,16,VQ,2,"[12.5,50]","8192+[2^12,2^15]","[0.31,1.40]"
-2024.05.08,HILCodec,hil_speech,,https://arxiv.org/abs/2405.04752v2,JSTSP2024,Train + Inference,https://github.com/aask1357/hilcodec,VQ-GAN (CNN),,MFBD + MRSD,DNS Challenge4 + VCTK 0.92,Speech,Acoustic,General,24,RVQ,"[2,12]",75,1024,"[1.50,9.00]"
-2024.05.08,HILCodec,hil_music,,https://arxiv.org/abs/2405.04752v2,JSTSP2024,Train + Inference,https://github.com/aask1357/hilcodec,VQ-GAN (CNN),,MFBD + MRSD,DNS Challenge4 + VCTK 0.92 + Jamendo,Speech + Music,Acoustic,General,24,RVQ,"[2,12]",75,1024,"[1.50,9.00]"
-2024.06.04,SQ-Codec,,,https://arxiv.org/abs/2406.02328v3,InterSpeech2024,,,VQ-GAN (CNN),,,,,Acoustic,General,16,FSQ,32,50,19,8
-2024.06.11,Single-Codec,,,https://arxiv.org/abs/2406.07422v1,InterSpeech2024,,,VQ-GAN (Transformer+CNN),,,,,Acoustic,General,24,VQ,1,23,8192,0.3
-2024.06.14,LLM-Codec,,,https://arxiv.org/abs/2406.10056v1,,Inference,https://github.com/yangdongchao/LLM-Codec,VQ-GAN (CNN),,,,,Acoustic,Semantic Distillation,16,RVQ,3,8.33+16.67+33.33,3248+32000+32000,0.85
-2024.07.30,SuperCodec,,,https://arxiv.org/abs/2407.20530v1,ICASSP2024,Train + Inference,https://github.com/exercise-book-yq/Supercodec,VQ-GAN (CNN),,,LibriTTS,Speech,Acoustic,General,16?,RVQ,"[2,12]",50,1024,"[1.00,6.00]"
-2024.08.29,WavTokenizer,,,https://arxiv.org/abs/2408.16532v3,ICLR2025,Train + Inference,https://github.com/jishengpeng/WavTokenizer,VQ-GAN (CNN),,,,,Acoustic,General,24,VQ,1,"[40,75]",4096,"[0.48,0.90]"
-2024.08.30,X-Codec,,,https://arxiv.org/abs/2408.17175v3,,Train + Inference,https://github.com/zhenye234/xcodec,VQ-GAN (CNN),,,,,Acoustic,Semantic Distillation,16,RVQ,8,50,1024,4
-2024.09.02,SoCodec,,,https://arxiv.org/abs/2409.00933v1,SLT2024,,,VQ-GAN (CNN),,,,,Acoustic,Semantic Distillation,16,GVQ,"[1,4,8]","[25,8.3,4.2]",16384,"[0.35,0.47]"
-2024.09.09,BigCodec,,,https://arxiv.org/abs/2409.05377v1,,Train + Inference,https://github.com/Aria-K-Alethia/BigCodec,VQ-GAN (CNN),,,,,Acoustic,General,16,VQ,1,80,8192,1.04
-2024.09.17,SD-Codec,,,https://arxiv.org/abs/2409.11228v2,ICASSP2025,Train + Inference,https://github.com/XiaoyuBIE1994/SDCodec,VQ-GAN (CNN),,,,,Acoustic,Disentanglement,16,RVQ,12,50,1024,6
-2024.09.17,Mimi,,,https://arxiv.org/abs/2410.00037v2,,Inference,https://github.com/kyutai-labs/moshi,VQ-GAN (CNN+Transformer),,,,,Acoustic,Semantic Distillation,24,RVQ,8,12.5,2048,1.1
-2024.09.18,CoFi-Codec,,,https://arxiv.org/abs/2409.11630v1,,,,VQ-GAN (U-Net),,,WenetSpeech4TTS,Speech,Acoustic,General,16,GVQ,3,8.33+25+50,16384,1.17
-2024.09.18,LFSC,,,https://arxiv.org/abs/2409.12117v1,ICASSP2025,,,VQ-GAN (CNN),,,,,Acoustic,General,22.05,FSQ,8,21.5,2016,1.89
-2024.09.18,WMCodec,,,https://arxiv.org/abs/2409.12121v3,,Train + Inference,https://github.com/zjzser/WMCodec,,,,,,,,,,,,,
-2024.09.19,NDVQ,,,https://arxiv.org/abs/2409.12717v1,,,,VQ-GAN (CNN),,,,,Acoustic,General,24,RVQ,32,75,1024,24
-2024.09.20,MuCodec,,,https://arxiv.org/abs/2409.13216v3,,Inference,https://github.com/tencent-ailab/MuCodec,,,,,,,,,,,,,
-2024.09.26,FlowMAC,,,https://arxiv.org/abs/2409.17635v2,ICASSP2025,,,,,,,,,,,,,,,
-2024.10.08,VRVQ,,"JP-SonyAI, KR-KAIST, KR-SNU",https://arxiv.org/abs/2410.06016v3,ICASSP2025,,,VQ-GAN (CNN),,,,,Acoustic,General,44.1,RVQ,8,86,1024,0.26+max6.89
-2024.10.18,SNAC,,"CH-PaplaMedia, CH-ETH",https://arxiv.org/abs/2410.14411v1,NeurIPS2024Workshop,Inference,https://github.com/hubertsiuzdak/snac,VQ-GAN (CNN),,,,,Acoustic,General,24,RVQ,3,12+23+47,4096,0.98
-2024.10.19,DM-Codec,,"BD-IUB, US-Amazon, QA-QCRI, US-UVA",https://arxiv.org/abs/2410.15017v2,EMNLP2025,Train + Inference,https://github.com/mubtasimahasan/DM-Codec,,,,,,,,,,,,,
-2024.10.21,LSCodec,25Hz,CN-SJTU-XLANCE,https://arxiv.org/abs/2410.15764v3,InterSpeech2025,Inference,https://github.com/X-LANCE/LSCodec-Inference,VQ-VAE (CNN+Transformer) + GAN,,,LibriTTS,Speech,Acoustic,Disentanglement,24,VQ,1,25,1024,0.25
-2024.10.21,LSCodec,50Hz,CN-SJTU-XLANCE,https://arxiv.org/abs/2410.15764v3,InterSpeech2025,Inference,https://github.com/X-LANCE/LSCodec-Inference,VQ-VAE (CNN+Transformer) + GAN,,,LibriTTS,Speech,Acoustic,Disentanglement,24,VQ,1,50,300,0.45
-2024.10.30,APCodec+,,CN-USTC-NERC-SLIP,https://arxiv.org/abs/2410.22807v1,ISCSLP2025,,,,,,,,,,,,,,,
-2024.11.01,MDCTCodec,,CN-USTC-NERC-SLIP,https://arxiv.org/abs/2411.00464v1,SLT2024,No,,,,,,,,,,,,,,
-2024.11.27,TS3-Codec,No,US-Microsoft,https://arxiv.org/abs/2411.18803v2,,No,,VQ-GAN (Transformer),Reconstruction+LQ-GAN+Feature+VQ,MPD + MS-STFT,Libri-Light,Speech,Acoustic,General,16,VQ,1,"[40,50]","[2^16,2^17]","[0.64,0.85]"
-2024.11.29,Stable-Codec,,,https://arxiv.org/abs/2411.19842v1,,,,VQ-GAN (Transformer),,,,,Acoustic,General,16,FSQ,"[6,12]",25,"[5,6]","[0.40,0.70]"
-2024.12.02,FreeCodec,,"[CN-WHU, CN-TencentYouTu]",https://arxiv.org/abs/2412.01053v3,InterSpeech2025,Not Yet,https://github.com/exercise-book-yq/FreeCodec,VQ-GAN (CNN+Transformer),Reconstruction+VQ Commit+Content+Feature Matching+Adversarial,MS-STFT,LibriSpeech,Speech,Acoustic,General,16,VQ,1+1,50+7,256,0.45
-2024.12.16,SECodec,,CN-KUST,https://arxiv.org/abs/2501.00018v1,AAAI2025,Not Yet,https://github.com/wlq2019/SECodec,VQ-GAN,Reconstruction+Adversarial+RVQ Commit,MSD+MPD+MSTFTD,LibriSpeech,Speech,,,,RVQ,,,,
-2025.02.06,X-Codec2,,,https://arxiv.org/abs/2502.04128v2,,Train + Inference,https://github.com/zhenye234/X-Codec-2.0,VQ-GAN (CNN+Transformer),,,,,Acoustic,Semantic Distillation,16,FSQ,8,50,4,0.8
-2025.02.27,UniCodec,,"SG-NUS, CN-Alibaba-Tongyi, CN-SJTU, CN-SRIBD, CN-CUHK(SZ)",https://arxiv.org/abs/2502.20067v1,,,,,,,,,,,,,,,,
-2025.03.03,FlowDec,,"DE-UHH, US-MetaAI-CodecAvatarsLab",https://arxiv.org/abs/2503.01485v1,ICLR2025,Train + Inference,https://github.com/facebookresearch/FlowDec,,,,,,,,,,,,,
+Time,Model,Institutions,ArXiv,Publication,OpenSource,Github,Framework,Input,Encoder,Decoder,Output,Vocoder,Discriminator,Representation,Training Objectives,Training Auxiliary,Guo2025Recent Type,Guo2025Recent Purpose,Sampling Rate (kHz),Quantization,BitrateType,Joint Training,Target Domain,Streamability
+2021.07.07,SoundStream,,https://arxiv.org/abs/2107.03312v1,,,,VQ-GAN,Waveform,SEANet,SEANet,Waveform,！！,MSD+STFTD,Time,GAN+Feature+Reconstruction,,Acoustic,General,24,RVQ,,,,Yes
+2022.07.05,Siahkoohi2022Ultra,,https://arxiv.org/abs/2207.02262v1,InterSpeech2022,,,VQ-GAN (CNN),,,,,,,,,,Acoustic,Semantic Distillation,16,RVQ,,,,
+2022.07.18,TF-Codec,"CN-CUC, US-MSRA",https://arxiv.org/abs/2207.08363v3,TASLP2023,Train + Inference,https://github.com/microsoft/TF-Codec,VQ-GAN,Spec,CNN+TCM+GRU,TCM+GRU+CNN,Spec,iSTFT,FrequencyD,,,,Acoustic,General,16,GVQ,,,,
+2022.10.24,EnCodec,US-MetaAI,https://arxiv.org/abs/2210.13438v1,TMLR2023,Inference,http://github.com/facebookresearch/encodec,VQ-GAN,Waveform,CNN+LSTM,LSTM+CNN,Waveform,！！,MS-STFTD,Time,GAN+Feature+Reconstruction+VQ,,Acoustic,General,24,RVQ,Fixed,Yes,Speech+Music+Audio,Yes
+2022.11.22,Disen-TF-Codec,"CN-CUC, US-MSRA",https://arxiv.org/abs/2211.11960v2,ICASSP2023,No,！！,VQ-GAN (CNN+RNN),,CNN+RNN,CNN,,,,Time-Freq,GAN+Feature+Reconstruction (Pred),Disentanglement,Acoustic,General,16,GVQ,Adaptive,Yes,Speech,Yes
+2023.03.23,LMCodec,"US-UW, US-Google, NZ-VUW",https://arxiv.org/abs/2303.12984v1,ICASSP2023,,,,,,,,,,,,,,,,,,,,
+2023.05.04,HiFi-Codec,"CN-PKU, CN-TencentAI, CN-ZJU",https://arxiv.org/abs/2305.02765v1,No,Train + Inference,https://github.com/yangdongchao/AcademiCodec,,,CNN+RNN,CNN+RNN,,,,Time,,,Acoustic,General,16,GRVQ,,,,
+2023.05.26,AudioDec,US-MetaAI,https://arxiv.org/abs/2305.16608v1,ICASSP2023,Train + Inference,https://github.com/facebookresearch/AudioDec,VQ-VAE (CNN) + GAN,,CNN,CNN,,,,Time,GAN+Feature+Reconstruction+VQ,,Acoustic,General,48,RVQ,Fixed,Yes,Speech,Yes
+2023.06.11,DAC,US-Descript,https://arxiv.org/abs/2306.06546v2,NeurIPS2023Spotlight,,https://github.com/descriptinc/descript-audio-codec,VQ-GAN (CNN),,CNN,CNN,,,,Time,GAN+Feature+Reconstruction+VQ,,Acoustic,General,44.1,RVQ,Fixed,Yes,Speech+Music+Audio,No
+2023.08.31,SpeechTokenizer,CN-FUDAN,https://arxiv.org/abs/2308.16692v2,ICLR2024,Train + Inference,https://github.com/ZhangXInFD/SpeechTokenizer/,VQ-GAN,,CNN+RNN,CNN,,,MS-STFT + MPD + MSD,Time,Reconstruction+Adversarial+RVQ Commit+Semantic Distillation,,Acoustic,Semantic Distillation,16,RVQ,,,,
+2023.08.31,RepCodec,CN-ByteDance,https://arxiv.org/abs/2309.00169v3,ACL2024,,,,,CNN,CNN,,,,Time,,,,,,,,,,
+2023.09.14,FunCodec/FreqCodec,CN-Alibaba,https://arxiv.org/abs/2309.07405v2,ICASSP2024,Train + Inference,https://github.com/alibaba-damo-academy/FunCodec,VQ-GAN (CNN),,CNN+RNN,CNN+RNN,,,,Time-Freq,,,Acoustic,General,16,RVQ,,,,
+2023.09.15,TiCodec,"CN-CAS, CN-UCAS, CN-THU",https://arxiv.org/abs/2310.00014v2,ICASSP2024,Train + Inference,https://github.com/y-ren16/TiCodec,VQ-GAN,,CNN+RNN,CNN+RNN,,,,Time,,,Acoustic,General,24,RVQ + GVQ,,,,
+2023.11.14,LaDiffCodec,"US-IU, KR-ETRI",https://arxiv.org/abs/2311.08330v2,,,,Latent Diffusion,,CNN,CNN,,,,Time,,,Acoustic,General,16,RVQ,,,,
+2024.01.22,ScoreDec,US-MetaAI-CodecAvatarsLab,https://arxiv.org/abs/2401.12160v1,ICASSP2024,,,,,,,,,,,,,,,,,,,,
+2024.02.02,CBRC,"CN-ByteDance-RTCLab, CN-BUPT, AU-MURDOCH",https://arxiv.org/abs/2402.01271v1,InterSpeech2023,,,,,,,,,,,,,,,,,,,,
+2024.02.16,APCodec,CN-USTC-NERC-SLIP,https://arxiv.org/abs/2402.10533v2,TASLP2024,Train + Inference (No),https://github.com/yangai520/APCodec,VQ-GAN (CNN),,CNN,CNN,,,,Time-Freq,GAN+Feature+Reconstruction+VQ,,Acoustic,General,48,RVQ,Fixed,Yes,Speech,Yes
+2024.02.19,Language-Codec,,https://arxiv.org/abs/2402.12208v4,ACL2025Main,Train + Inference,https://github.com/jishengpeng/languagecodec,,,CNN+RNN,CNN,,,,"Time, Time-Freq",,,,,,,,,,
+2024.03.05,FACodec,,https://arxiv.org/abs/2403.03100v3,,,,VQ-GAN (CNN),,CNN+RNN,CNN+RNN,,,,Time,,,Acoustic,Disentanglement,16,RVQ,,,,
+2024.03.18,SRCodec,,NO,ICASSP2024,,,VQ-GAN (CNN),,,,,,,,,,Acoustic,General,16,RVQ + RVQ,,,,
+2024.03.18,LightCodec,,NO,ICASSP2024,,,,,,,,,,,,,,,,,,,,
+2024.04.03,PromptCodec,,https://arxiv.org/abs/2404.02702v2,,,,VQ-GAN (CNN),,CNN+RNN,CNN+RNN,,,,Time-Freq,,,Acoustic,Disentanglement,24,GRVQ,,,,
+2024.04.03,PSCodec,,https://arxiv.org/abs/2404.02702v3,,,,,,,,,,,,,,,,,,,,,
+2024.04.30,ESC,,https://arxiv.org/abs/2404.19441v3,EMNLP2024,,,VQ-GAN (U-Net),,Transformer,Transformer,,,,Time-Freq,Reconstruction (Mel+STFT) +VQ,,Acoustic,General,16,CS-RVQ,,,,
+2024.04.30,SemantiCodec,,https://arxiv.org/abs/2405.00233v2,JSTSP,Inference,https://github.com/haoheliu/SemantiCodec-inference,Latent Diffusion,,CNN+Transformer,Transformer,,,,Time,,,Acoustic,Semantic Distillation,16,VQ,,,,
+2024.05.08,HILCodec,,https://arxiv.org/abs/2405.04752v2,JSTSP2024,Train + Inference,https://github.com/aask1357/hilcodec,VQ-GAN (CNN),,CNN,CNN,,,MFBD + MRSD,Time,,,Acoustic,General,24,RVQ,,,,Yes
+2024.06.04,SQ-Codec,,https://arxiv.org/abs/2406.02328v3,InterSpeech2024,,,VQ-GAN,,CNN,CNN,,,,Time,,,Acoustic,General,16,FSQ,,,,
+2024.06.11,Single-Codec,,https://arxiv.org/abs/2406.07422v1,InterSpeech2024,No,,VQ-GAN (Transformer+CNN),MelSpec,Conformer+BLSTM,BLSTM+Conv,MelSpec,BigVGAN,,Time-Freq,,,Acoustic,General,24,VQ,,,,
+2024.06.14,LLM-Codec,,https://arxiv.org/abs/2406.10056v1,,Inference,https://github.com/yangdongchao/LLM-Codec,VQ-GAN (CNN),,CNN+Transformer,CNN+Transformer,,,,Time,,,Acoustic,Semantic Distillation,16,RVQ,,,,
+2024.07.30,SuperCodec,,https://arxiv.org/abs/2407.20530v1,ICASSP2024,Train + Inference,https://github.com/exercise-book-yq/Supercodec,VQ-GAN (CNN),,,,,,,,,,Acoustic,General,16,RVQ,,,,
+2024.08.29,WavTokenizer,,https://arxiv.org/abs/2408.16532v3,ICLR2025,Train + Inference,https://github.com/jishengpeng/WavTokenizer,VQ-GAN,,CNN+Transformer,CNN+Transformer,,,,Time,,,Acoustic,General,,VQ,,,,
+2024.08.30,X-Codec,,https://arxiv.org/abs/2408.17175v3,,Train + Inference,https://github.com/zhenye234/xcodec,VQ-GAN,,CNN,CNN,,,,Time,,,Acoustic,Semantic Distillation,16,RVQ,,,,
+2024.09.02,SoCodec,,https://arxiv.org/abs/2409.00933v1,SLT2024,,,VQ-GAN,,CNN,CNN,,,,Time-Freq,,,Acoustic,Semantic Distillation,16,GVQ,,,,
+2024.09.09,BigCodec,,https://arxiv.org/abs/2409.05377v1,,Train + Inference,https://github.com/Aria-K-Alethia/BigCodec,VQ-GAN (CNN+RNN),,CNN+RNN,CNN+RNN,,,,Time,GAN+Feature+Reconstruction+VQ,,Acoustic,General,16,SVQ,Fixed,Yes,Speech,No
+2024.09.17,SD-Codec,,https://arxiv.org/abs/2409.11228v2,ICASSP2025,Train + Inference,https://github.com/XiaoyuBIE1994/SDCodec,VQ-GAN (CNN),,CNN,CNN,,,,Time,,,Acoustic,Disentanglement,16,RVQ,,,,
+2024.09.17,Mimi,,https://arxiv.org/abs/2410.00037v2,,Inference,https://github.com/kyutai-labs/moshi,VQ-GAN (CNN+Transformer),,CNN+Transformer,CNN+Transformer,,,,Time,,,Acoustic,Semantic Distillation,24,RVQ,,,,Yes
+2024.09.18,CoFi-Codec,,https://arxiv.org/abs/2409.11630v1,,No,,VQ-GAN (U-Net),,,,,,,,,,Acoustic,General,16,GVQ,,,,
+2024.09.18,LFSC,,https://arxiv.org/abs/2409.12117v1,ICASSP2025,Train + Inference,https://huggingface.co/nvidia/low-frame-rate-speech-codec-22khz,VQ-GAN (CNN),,CNN,CNN,,,,Time,,,Acoustic,General,22.05,FSQ,,,,
+2024.09.18,WMCodec,,https://arxiv.org/abs/2409.12121v3,,Train + Inference,https://github.com/zjzser/WMCodec,,,CNN+Transformer,CNN,,,,Time,,,,,,,,,,
+2024.09.19,NDVQ,,https://arxiv.org/abs/2409.12717v1,,,,VQ-GAN (CNN),,CNN+RNN,CNN+RNN,,,,Time,,,Acoustic,General,24,RVQ,,,,
+2024.09.20,MuCodec,,https://arxiv.org/abs/2409.13216v3,,Inference,https://github.com/tencent-ailab/MuCodec,,,,,,,,,,,,,,,,,,
+2024.09.26,FlowMAC,,https://arxiv.org/abs/2409.17635v2,ICASSP2025,,,,,,,,,,,,,,,,,,,,
+2024.10.08,VRVQ,"JP-SonyAI, KR-KAIST, KR-SNU",https://arxiv.org/abs/2410.06016v3,ICASSP2025,,,VQ-GAN (CNN),,,,,,,,,,Acoustic,General,44.1,RVQ,,,,
+2024.10.18,SNAC,"CH-PaplaMedia, CH-ETH",https://arxiv.org/abs/2410.14411v1,NeurIPS2024Workshop,Inference,https://github.com/hubertsiuzdak/snac,VQ-GAN,,CNN+RNN,CNN,,,,Time,,,Acoustic,General,24,RVQ,,,,
+2024.10.19,DM-Codec,"BD-IUB, US-Amazon, QA-QCRI, US-UVA",https://arxiv.org/abs/2410.15017v2,EMNLP2025,Train + Inference,https://github.com/mubtasimahasan/DM-Codec,,,-,CNN,,,,Time-Freq,,,,,,,,,,
+2024.10.21,LSCodec,CN-SJTU-XLANCE,https://arxiv.org/abs/2410.15764v3,InterSpeech2025,Inference,https://github.com/X-LANCE/LSCodec-Inference,VQ-VAE (CNN+Transformer) + GAN,,CNN,CNN,,,,Time,,,Acoustic,Disentanglement,24,VQ,,,,
+2024.10.30,APCodec+,CN-USTC-NERC-SLIP,https://arxiv.org/abs/2410.22807v1,ISCSLP2025,,,,,,,,,,,,,,,,,,,,
+2024.11.01,MDCTCodec,CN-USTC-NERC-SLIP,https://arxiv.org/abs/2411.00464v1,SLT2024,No,,,,CNN,CNN,,,,Time-Freq,,,,,,,,,,
+2024.11.27,TS3-Codec,US-Microsoft,https://arxiv.org/abs/2411.18803v2,,No,,VQ-GAN,,Transformer,Transformer,,,MPD + MS-STFT,Time,Reconstruction+LQ-GAN+Feature+VQ,,Acoustic,General,16,VQ,,,,Yes
+2024.11.29,Stable-Codec,,https://arxiv.org/abs/2411.19842v1,,,,VQ-GAN (Transformer),,,,,,,,,,Acoustic,General,16,FSQ,,,,
+2024.12.02,FreeCodec,"[CN-WHU, CN-TencentYouTu]",https://arxiv.org/abs/2412.01053v3,InterSpeech2025,Not Yet,https://github.com/exercise-book-yq/FreeCodec,VQ-GAN (CNN+Transformer),,,,,,MS-STFT,,Reconstruction+VQ Commit+Content+Feature Matching+Adversarial,,Acoustic,General,16,VQ,,,,
+2024.12.16,SECodec,CN-KUST,https://arxiv.org/abs/2501.00018v1,AAAI2025,Not Yet,https://github.com/wlq2019/SECodec,VQ-GAN,,,,,,MSD+MPD+MSTFTD,,Reconstruction+Adversarial+RVQ Commit,,,,,RVQ,,,,
+2025.02.06,X-Codec2,,https://arxiv.org/abs/2502.04128v2,,Train + Inference,https://github.com/zhenye234/X-Codec-2.0,VQ-GAN (CNN+Transformer),,,,,,,,,,Acoustic,Semantic Distillation,16,FSQ,,,,
+2025.02.27,UniCodec,"SG-NUS, CN-Alibaba-Tongyi, CN-SJTU, CN-SRIBD, CN-CUHK(SZ)",https://arxiv.org/abs/2502.20067v1,,,,,,,,,,,,,,,,,,,,,
+2025.03.03,FlowDec,"DE-UHH, US-MetaAI-CodecAvatarsLab",https://arxiv.org/abs/2503.01485v1,ICLR2025,Train + Inference,https://github.com/facebookresearch/FlowDec,,,,,,,,,,,,,,,,,,
+,BEST-RQ,,,,,,,,CNN+Transformer,-,,,,Time-Freq,MP,,,,,PQ,Fixed,-,Speech,Yes
+,Discrete SSL,,,,,,,,CNN+Transformer,Transformer,,,,Time,,,,,,,,,,
+,dMel,,,,,,,,,,,,,,,,,,,,,,,
+,HARP-Net,,,,,,,,CNN,CNN,,,,Time,,,,,,,,,,
+,MMM,,,,,,,,CNN+Transformer,CNN,,,,Time,,,,,,,,,,
+,NAST,,,,,,,,CNN+Transformer,CNN+Transformer,,,,Time,,,,,,,,,,
+,PAST,,,,,,,,CNN+Transformer,CNN,,,,Time,,,,,,,,,,Yes
+,PQ-VAE,,,,,,,,CNN,CNN,,,,Time-Freq,,,,,,,,,,
+,S3,,,,,,,,Transformer,Transformer,,,,Time,,,,,,,,,,
+,SingOMD,,,,,,,,CNN+Transformer,CNN,,,,Time,,,,,,,,,,
+,Spectral Codecs,,,,,,,,CNN,CNN,,,,Time-Freq,,,,,,,,,,
+,S-TFNet,,,,,,,,CNN+RNN,CNN,,,,Time-Freq,,,,,,,,,,
+,TAAE,,,,,,,,CNN+Transformer,CNN+Transformer,,,,Time,,,,,,,,,,Yes
+,TFNet,,,,,,,,CNN+RNN,CNN,,,,Time-Freq,,,,,,,,,,
+,USM,,,,,,,,CNN+Transformer,-,,,,Time-Freq,,,,,,,,,,
+,Vocos,,,,,,,,CNN,CNN,,,,Time-Freq,,,,,,,,,,
+,Wav2Vec-BERT,,,,,,,,CNN+Transformer,-,,,,Time,,,,,,,,,,
+,XEUS,,,,,,,,CNN+Transformer,-,,,,Time,,,,,,,,,,
