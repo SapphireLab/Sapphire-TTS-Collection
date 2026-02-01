@@ -28,6 +28,7 @@
 
 | 创建时间<br>更新时间 | 名称 | 仓库 | 架构 |
 | --- | --- | :-: | --- |
+|2026.01.22<br>2026.01.26|**Qwen3-TTS-0.6B/1.7B**<br>|[Official](https://github.com/QwenLM/Qwen3-TTS)<br>Apache-2.0<br>![Star](https://img.shields.io/github/stars/QwenLM/Qwen3-TTS?style=social)||
 |2025.09.16<br>2025.09.30|**VoxCPM-0.5B**<br>面壁智能|[Official](https://github.com/OpenBMB/VoxCPM)<br>Apache-2.0<br>![Star](https://img.shields.io/github/stars/FunAudioLLM/CosyVoice?style=social)|LocEnc + TSLM (MiniCPM4) + FSQ + RALM + LocDiT + AudioVAE|
 |2025.09.08<br>2025.10.02|**IndexTTS-2**<br>Bilibili|[Official](https://github.com/index-tts/index-tts)<br>Bilibili<br>![Star](https://img.shields.io/github/stars/fishaudio/fish-speech?style=social)|
 |2025.09.02<br>2025.09.17|**FireRedTTS2**<br>小红书|[Official](https://github.com/FireRedTeam/FireRedTTS2)<br>Apache-2.0<br>![Star](https://img.shields.io/github/stars/FireRedTeam/FireRedTTS2?style=social)|
