@@ -64,3 +64,166 @@
 |2022.01.28<br>2024.11.20|**TorToise-TTS**<br>@neonbjb|[Github](https://github.com/neonbjb/tortoise-tts)<br>Apache-2.0<br>![Star](https://img.shields.io/github/stars/neonbjb/tortoise-tts?style=social)|
 |2020.05.20<br>2024.02.10|**XTTS v2**<br>@Coqui.AI|[Github](https://github.com/coqui-ai/TTS)<br>MPL-2.0<br>![Star](https://img.shields.io/github/stars/coqui-ai/TTS?style=social)|
 |2017.11.14<br>2025.09.28|**PaddleSpeech**<br>@百度飞桨|[Github](https://github.com/PaddlePaddle/PaddleSpeech)<br>Apache-2.0<br>![Star](https://img.shields.io/github/stars/PaddlePaddle/PaddleSpeech?style=social)|
+
+```mermaid
+---
+config:
+  gitGraph:
+    rotateCommitLabel: false
+---
+gitGraph BT:
+    commit id: "START"
+    checkout main
+    commit id: "百度创建 PaddleSpeech" tag: "2017.05.22"
+    commit id: "Coqui AI 创建 TTS" tag: "2018.01.22"
+    commit id: "Coqui.AI 发布 XTTS V2" tag: "2020.05.20"
+    commit id: "韩国 Kakao 创建 VITS" tag: "2021.05.27"
+    branch VITS
+    checkout VITS
+    commit id: "发布 VITS 论文" tag: "2021.06.11"
+    commit id: "VITS 最近更新" type: REVERSE tag: "2021.06.14"
+    checkout main
+    commit id: "James Betker 创建 TorToiSe-TTS" tag: "2022.01.28"
+    commit id: "2noise 创建 MassTTS" tag: "2023.04.13"
+    commit id: "FishAudio 创建 BERT-VITS2" tag: "2023.07.21"
+    commit id: "瑞典皇家理工学院创建 Matcha-TTS" tag: "2023.09.06"
+    commit id: "FishAudio 创建 FishSpeech" tag: "2023.10.10"
+    branch FishSpeech
+    checkout main
+    commit id: "MyShell AI & 清华大学 创建 OpenVoice" tag: "2023.11.29"
+    branch OpenVoice
+    checkout main
+    commit id: "花儿不哭创建 GPT-SoVITS" tag: "2024.01.15"
+    branch GPT-SoVITS
+    checkout GPT-SoVITS
+    commit id: "发布 GPT-SoVITS V1" tag: "2024.01.15"
+    checkout main
+    commit id: "HuggingFace 创建 Parler-TTS" tag: "2024.02.13"
+    commit id: "MyShell AI 创建 MeloTTS" tag: "2024.02.20"
+    checkout OpenVoice
+    commit id: "OpenVoice V2" tag: "2024.04.18"
+    checkout FishSpeech
+    commit id: "FishSpeech V1.1" tag: "2024.05.10"
+    checkout main
+    commit id: "2Noise 创建 ChatTTS" tag: "2024.05.28"
+    checkout FishSpeech
+    commit id: "FishSpeech V1.2" tag: "2024.07.02"
+    checkout main
+    commit id: "阿里创建 FunAudioLLM"
+    branch CosyVoice
+    checkout CosyVoice
+    commit id: "创建 CosyVoice" tag: "2024.07.03"
+    commit id: "开源 300M" tag: "2024.07.05"
+    commit id: "发布 CosyVoice 论文" tag: "2024.07.07"
+    commit id: "修订 CosyVoice 论文v2" tag: "2024.07.09"
+    checkout GPT-SoVITS
+    commit id: "发布 V2" tag: "2024.08.02"
+    checkout main
+    commit id: "小红书创建 FireRedTTS"
+    branch FireRedTTS
+    checkout FireRedTTS
+    commit id: "FireRedTTS" tag: "2024.08.15"
+    checkout FishSpeech
+    commit id: "FishSpeech V1.4" tag: "2024.09.10"
+    checkout main
+    commit id: "SJTU 创建 F5-TTS" tag: "2024.10.08"
+    branch F5-TTS
+    checkout main
+    commit id: "CUHK 创建 MaskGCT" tag: "2024.10.19"
+    commit id: "OuteAI 创建 OuteTTS" tag: "2024.11.04"
+    checkout FishSpeech
+    commit id: "FishSpeech V1.5" tag: "2024.12.03"
+    checkout CosyVoice
+    commit id: "更新 CosyVoice-2" tag: "2024.12.11"
+    commit id: "开源 CosyVoice-2 (0.5B)" tag: "2024.12.12"
+    commit id: "发布 CosyVoice-2 论文" tag: "2024.12.13"
+    commit id: "修订 CosyVoice-2 论文v2" tag: "2024.12.18"
+    commit id: "修订 CosyVoice-2 论文v3" tag: "2024.12.25"
+    checkout FishSpeech
+    commit id: "FishSpeech V1.5.1" tag: "2024.12.25"
+    checkout main
+    commit id: "哔哩哔哩创建 IndexTTS" tag: "2025.02.06"
+    branch IndexTTS
+    checkout IndexTTS
+    commit id: "发布 IndexTTS 论文" tag: "2025.02.08"
+    checkout GPT-SoVITS
+    commit id: "发布 V3" tag: "2025.02.11"
+    checkout FireRedTTS
+    commit id: "FireRedTTS-1S" tag: "2025.04.15"
+    checkout GPT-SoVITS
+    commit id: "发布 V4" tag: "2025.04.20"
+    checkout IndexTTS
+    commit id: "IndexTTS-1.5" tag: "2025.05.14"
+    checkout CosyVoice
+    commit id: "发布 CosyVoice-3 论文" tag: "2025.05.23"
+    commit id: "修订 CosyVoice-3 论文v2" tag: "2025.05.27"
+    checkout FishSpeech
+    commit id: "OpenAudio-S1" tag: "2025.06.03"
+    checkout GPT-SoVITS
+    commit id: "发布 V2Pro, V2Pro+" tag: "2025.06.04"
+    checkout IndexTTS
+    commit id: "发布 IndexTTS-2 论文" tag: "2025.06.23"
+    checkout main
+    checkout FireRedTTS
+    commit id: "FireRedTTS-2" tag: "2024.09.02"
+    checkout IndexTTS
+    commit id: "修订 IndexTTS-2 论文v2" tag: "2025.09.03"
+    commit id: "开源 IndexTTS-2" tag: "2025.09.08"
+    checkout main
+    commit id: "面壁智能创建 VoiceCPM" tag: "2025.09.16"
+    branch VoiceCPM
+    checkout VoiceCPM
+    commit id: "开源 VoiceCPM (0.5B)" tag: "2025.09.16"
+    commit id: "发布 VoiceCPM 论文" tag: "2025.09.29"
+    checkout main
+    commit id: "XMU SJTU ZJU 发布 UniVoice 论文" tag: "2025.10.06"
+    branch UniVoice
+    checkout FireRedTTS
+    commit id: "FireRedTTS 最近更新" type: REVERSE tag: "2025.10.26"
+    checkout UniVoice
+    commit id: "创建 UniVoice" tag: "2025.10.28"
+    commit id: "UniVoice 最近更新" type: REVERSE tag: "2025.10.30"
+    commit id: "修订 UniVoice 论文v2" tag: "2025.11.20"
+    checkout IndexTTS
+    commit id: "IndexTTS 最近更新" type: REVERSE tag: "2025.12.02"
+    checkout main
+    commit id: "BIT & 快手 & CAS 创建 M3-TTS" tag: "2025.12.04"
+    branch M3-TTS
+    checkout M3-TTS
+    commit id: "发布 M3-TTS 论文" tag: "2025.12.04"
+    checkout VoiceCPM
+    commit id: "开源 VoiceCPM-1.5" tag: "2025.12.05"
+    checkout CosyVoice
+    commit id: "开源 Fun-CosyVoice-3 (0.5B)" tag: "2025.12.10"
+    commit id: "更新 CosyVoice-3 代码" tag: "2025.12.12"
+    checkout M3-TTS
+    commit id: "M3-TTS 最近更新" type: REVERSE tag: "2025.12.18"
+    checkout GPT-SoVITS
+    commit id: "GPT-SoVITS 最近更新" type: REVERSE tag: "2025.12.30"
+    checkout IndexTTS
+    commit id: "发布 IndexTTS-2.5 论文" tag: "2026.01.07"
+    commit id: "修订 IndexTTS-2.5 论文v2" tag: "2026.01.08"
+    checkout main
+    commit id: "CUHK & 华为发布 FlexiVoice 论文" type: REVERSE tag: "2026.01.08"
+    checkout IndexTTS
+    commit id: "修订 IndexTTS-2.5 论文v3" tag: "2026.01.09"
+    checkout main
+    commit id: "阿里 QwenLM 创建 Qwen3-TTS" tag: "2026.01.22"
+    branch Qwen3-TTS
+    commit id: "发布 Qwen3-TTS 论文" tag: "2026.01.22"
+    commit id: "开源 12Hz 1.7B Base" tag: "2026.01.23"
+    checkout VoiceCPM
+    commit id: "VoiceCPM 最近更新" type: REVERSE tag: "2026.01.24"
+    checkout Qwen3-TTS
+    commit id: "Qwen-TTS 最近更新" type: REVERSE tag: "2026.01.26"
+    checkout F5-TTS
+    commit id: "F5-TTS 最近更新" type: REVERSE tag: "2026.01.28"
+    checkout Qwen3-TTS
+    commit id: "开源 12Hz 0.6B Base" tag: "2026.01.29"
+    commit id: "开源 12Hz 0.6/1.7B Custom Voice" tag: "2026.01.29"
+    commit id: "开源 12Hz 1.7B VoiceDesign" tag: "2026.01.29"
+    checkout CosyVoice
+    commit id: "CosyVoice 最近更新" type: REVERSE tag: "2026.01.30"
+    checkout main
+    commit id: "2026.02"
+```
