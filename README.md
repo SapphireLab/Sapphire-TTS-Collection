@@ -158,6 +158,11 @@ gitGraph BT:
     commit id: "发布 IndexTTS 论文" tag: "2025.02.08"
     checkout GPT-SoVITS
     commit id: "发布 V3" tag: "2025.02.11"
+    checkout main
+    commit id: "HKUST etc 创建 SparkTTS" tag: "2025.02.25"
+    branch SparkTTS
+    commit id: "发布 SparkTTS 论文" tag: "2025.03.03"
+    commit id: "SparkTTS 最近更新" type: REVERSE tag: "2025.04.09"
     checkout FireRedTTS
     commit id: "FireRedTTS-1S" tag: "2025.04.15"
     checkout OpenVoice
@@ -181,10 +186,17 @@ gitGraph BT:
     checkout VITS
     branch ParaStyleTTS
     commit id: "创建 ParaStyleTTS" tag: "2025.08.16"
+    checkout main
+    commit id: "微软研究开源 VibeVoice-TTS" tag: "2025.08.25"
+    branch VibeVoice
+    commit id: "发布 VibeVoice 论文" tag: "2025.08.26"
     checkout FireRedTTS
     commit id: "FireRedTTS-2" tag: "2025.09.02"
     checkout IndexTTS
     commit id: "修订 IndexTTS-2 论文v2" tag: "2025.09.03"
+    checkout VibeVoice
+    commit id: "创建 VibeVoice" tag: "2025.09.05"
+    checkout IndexTTS
     commit id: "开源 IndexTTS-2" tag: "2025.09.08"
     checkout main
     commit id: "面壁智能创建 VoiceCPM" tag: "2025.09.16"
@@ -212,6 +224,8 @@ gitGraph BT:
     branch M3-TTS
     checkout M3-TTS
     commit id: "发布 M3-TTS 论文" tag: "2025.12.04"
+    checkout VibeVoice
+    commit id: "开源 VibeVoice-RealTime (0.5B)" type: REVERSE tag: "2025.12.05"
     checkout VoiceCPM
     commit id: "开源 VoiceCPM-1.5" tag: "2025.12.05"
     checkout CosyVoice
@@ -245,6 +259,8 @@ gitGraph BT:
     commit id: "Qwen3-TTS 最近更新" type: REVERSE tag: "2026.01.26"
     checkout F5-TTS
     commit id: "F5-TTS 最近更新" type: REVERSE tag: "2026.01.28"
+    checkout VibeVoice
+    commit id: "VibeVoice 最近更新" type: REVERSE tag: "2026.01.28"
     checkout Qwen3-TTS
     commit id: "开源 12Hz 0.6B Base" tag: "2026.01.29"
     commit id: "开源 12Hz 0.6/1.7B Custom Voice" tag: "2026.01.29"
