@@ -123,13 +123,19 @@ gitGraph BT:
     branch FireRedTTS
     checkout FireRedTTS
     commit id: "FireRedTTS" tag: "2024.08.15"
+    checkout main
+    commit id: "CUHK 发布 MaskGCT 论文" tag: "2024.09.01"
+    branch MaskGCT
     checkout FishSpeech
     commit id: "FishSpeech V1.4" tag: "2024.09.10"
     checkout main
     commit id: "SJTU 创建 F5-TTS" tag: "2024.10.08"
     branch F5-TTS
+    checkout MaskGCT
+    commit id: "修订 MaskGCT 论文v2" tag: "2024.10.11"
+    commit id: "修订 MaskGCT 论文v3" tag: "2024.10.20"
+    commit id: "添加 MaskGCT 到 Amphion" tag: "2024.10.20"
     checkout main
-    commit id: "CUHK 创建 MaskGCT" tag: "2024.10.19"
     commit id: "OuteAI 创建 OuteTTS" tag: "2024.11.04"
     checkout FishSpeech
     commit id: "FishSpeech V1.5" tag: "2024.12.03"
@@ -156,6 +162,9 @@ gitGraph BT:
     commit id: "IndexTTS-1.5" tag: "2025.05.14"
     checkout CosyVoice
     commit id: "发布 CosyVoice-3 论文" tag: "2025.05.23"
+    checkout MaskGCT
+    commit id: "MaskGCT 最近更新" type: REVERSE tag: "2025.05.26"
+    checkout CosyVoice
     commit id: "修订 CosyVoice-3 论文v2" tag: "2025.05.27"
     checkout FishSpeech
     commit id: "OpenAudio-S1" tag: "2025.06.03"
@@ -203,6 +212,8 @@ gitGraph BT:
     checkout IndexTTS
     commit id: "发布 IndexTTS-2.5 论文" tag: "2026.01.07"
     commit id: "修订 IndexTTS-2.5 论文v2" tag: "2026.01.08"
+    checkout FishSpeech
+    commit id: "FishSpeech 最近更新" type: REVERSE tag: "2026.01.08"
     checkout main
     commit id: "CUHK & 华为发布 FlexiVoice 论文" type: REVERSE tag: "2026.01.08"
     checkout IndexTTS
@@ -215,7 +226,7 @@ gitGraph BT:
     checkout VoiceCPM
     commit id: "VoiceCPM 最近更新" type: REVERSE tag: "2026.01.24"
     checkout Qwen3-TTS
-    commit id: "Qwen-TTS 最近更新" type: REVERSE tag: "2026.01.26"
+    commit id: "Qwen3-TTS 最近更新" type: REVERSE tag: "2026.01.26"
     checkout F5-TTS
     commit id: "F5-TTS 最近更新" type: REVERSE tag: "2026.01.28"
     checkout Qwen3-TTS
@@ -223,7 +234,7 @@ gitGraph BT:
     commit id: "开源 12Hz 0.6/1.7B Custom Voice" tag: "2026.01.29"
     commit id: "开源 12Hz 1.7B VoiceDesign" tag: "2026.01.29"
     checkout CosyVoice
-    commit id: "CosyVoice 最近更新" type: REVERSE tag: "2026.01.30"
+    commit id: "CosyVoice <br>最近更新" type: REVERSE tag: "2026.01.30"
     checkout main
     commit id: "2026.02"
 ```
