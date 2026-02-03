@@ -26,6 +26,11 @@
 
 ## 开源项目·Text-to-Speech
 
+|项目名称|项目时点|模型版本|
+|---|---|---|
+|[![](https://img.shields.io/github/stars/coqui-ai/TTS?label=TTS@CoquiAI&style=flat)](https://github.com/coqui-ai/TTS)<br>Toolkits|![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/coqui-ai/TTS&query=created_at&label=创建时间&color=orange)<br>![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/coqui-ai/TTS/branches/main&query=commit.commit.committer.date&label=更新时间&color=orange)||
+|[![](https://img.shields.io/github/stars/PaddlePaddle/PaddleSpeech?label=PaddleSpeech@Baidu&style=flat)](https://github.com/PaddlePaddle/PaddleSpeech)<br>Toolkits|![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/PaddlePaddle/PaddleSpeech&query=created_at&label=创建时间&color=orange)<br>![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/PaddlePaddle/PaddleSpeech/branches/master&query=commit.commit.committer.date&label=更新时间&color=orange)||
+
 <!--
 ```mermaid
 ---
