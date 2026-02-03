@@ -8,21 +8,24 @@
 
 - [Speech.Zone](https://speech.zone)
 - [语音之家](https://www.speechhome.com)
+- 课题组 [SpeechLab@XMU](https://speech.xmu.edu.cn)
 - 课题组 [X-LANCE@SJTU](https://x-lance.sjtu.edu.cn)
 - 课题组 [ASLP@NPU](http://www.npu-aslp.org)
 - 课题组 [Speech@NTU](https://www.youtube.com/@HungyiLeeNTU)
 
-## 同类项目
+## 收集项目
 
-- [Awesome Audio Plaza](https://github.com/metame-ai/awesome-audio-plaza) by Metame AI ![Star](https://img.shields.io/github/stars/metame-ai/awesome-audio-plaza?style=social)
-- [Speech Trident](https://github.com/ga642381/speech-trident) by 李宏毅 Team ![Star](https://img.shields.io/github/stars/ga642381/speech-trident)
-- [WavChat](https://github.com/jishengpeng/WavChat) by 浙江大学 (赵洲 Team) & 微软 & 阿里巴巴 & 腾讯优图实验室 ![Star](https://img.shields.io/github/stars/jishengpeng/WavChat.svg?style=social)
-- [Neural Codec & Speech Language Models](https://github.com/LqNoob/Neural-Codec-and-Speech-Language-Models) by LqNoob ![Star](https://img.shields.io/github/stars/LqNoob/Neural-Codec-and-Speech-Language-Models?style=social)
-- [Awesome MLLM](https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models) by VITA Team ![Star](https://img.shields.io/github/stars/BradyFU/Awesome-Multimodal-Large-Language-Models?style=social)
-- [Awesome Large Speech Model](https://github.com/huangcanan/Awesome-Large-Speech-Model) by Huang Can'an ![Star](https://img.shields.io/github/stars/huangcanan/Awesome-Large-Speech-Model?style=social)
-- [VoiceBench](https://github.com/MatthewCYM/VoiceBench) by 新加坡国立大学 ![Star](https://img.shields.io/github/stars/MatthewCYM/VoiceBench)
-- [Awesome Controllable Speech Synthesis](https://github.com/imxtx/awesome-controllabe-speech-synthesis) by 香港科技大学 (广州) ![Star](https://img.shields.io/github/stars/imxtx/awesome-controllabe-speech-synthesis?style=social)
-- [Awesome-Multimodal-Next-Token-Prediction](https://github.com/LMM101/Awesome-Multimodal-Next-Token-Prediction) by Liang Chen (Leader) ![Star](https://img.shields.io/github/stars/LMM101/Awesome-Multimodal-Next-Token-Prediction)
+|项目名称|项目时点|
+|---|---|
+|[![](https://img.shields.io/github/stars/imxtx/awesome-controllabe-speech-synthesis?label=Awesome-Controllabe-Speech-Synthesis@香港科技大学(广州)&style=flat)](https://github.com/imxtx/awesome-controllabe-speech-synthesis)|![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/imxtx/awesome-controllabe-speech-synthesis&query=created_at&label=创建时间&color=orange)<br>![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/imxtx/awesome-controllabe-speech-synthesis/branches/main&query=commit.commit.committer.date&label=更新时间&color=orange)|
+|[![](https://img.shields.io/github/stars/jishengpeng/WavChat?label=WavChat@浙江大学%20(赵洲%20Team)%20etc&style=flat)](https://github.com/jishengpeng/WavChat)|![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/jishengpeng/WavChat&query=created_at&label=创建时间&color=orange)<br>![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/jishengpeng/WavChat/branches/main&query=commit.commit.committer.date&label=更新时间&color=orange)|
+|[![](https://img.shields.io/github/stars/LMM101/Awesome-Multimodal-Next-Token-Prediction?label=Awesome-Multimodal-Next-Token-Prediction@LMM101(Chen%20Liang%20etc)&style=flat)](https://github.com/LMM101/Awesome-Multimodal-Next-Token-Prediction)|![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/LMM101/Awesome-Multimodal-Next-Token-Prediction&query=created_at&label=创建时间&color=orange)<br>![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/LMM101/Awesome-Multimodal-Next-Token-Prediction/branches/main&query=commit.commit.committer.date&label=更新时间&color=orange)|
+|[![](https://img.shields.io/github/stars/MatthewCYM/VoiceBench?label=VoiceBench@新加坡国立大学&style=flat)](https://github.com/MatthewCYM/VoiceBench)|![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/MatthewCYM/VoiceBench&query=created_at&label=创建时间&color=orange)<br>![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/MatthewCYM/VoiceBench/branches/main&query=commit.commit.committer.date&label=更新时间&color=orange)|
+|[![](https://img.shields.io/github/stars/huangcanan/Awesome-Large-Speech-Model?label=Awesome-Large-Speech-Model@HuangCanAn&style=flat)](https://github.com/huangcanan/Awesome-Large-Speech-Model)|![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/huangcanan/Awesome-Large-Speech-Model&query=created_at&label=创建时间&color=orange)<br>![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/huangcanan/Awesome-Large-Speech-Model/branches/main&query=commit.commit.committer.date&label=更新时间&color=orange)|
+|[![](https://img.shields.io/github/stars/LqNoob/Neural-Codec-and-Speech-Language-Models?label=Neural-Codec-and-Speech-Language-Models@LqNoob&style=flat)](https://github.com/LqNoob/Neural-Codec-and-Speech-Language-Models)|![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/LqNoob/Neural-Codec-and-Speech-Language-Models&query=created_at&label=创建时间&color=orange)<br>![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/LqNoob/Neural-Codec-and-Speech-Language-Models/branches/main&query=commit.commit.committer.date&label=更新时间&color=orange)|
+|[![](https://img.shields.io/github/stars/ga642381/speech-trident?label=Speech-Trident@李宏毅%20Team&style=flat)](https://github.com/ga642381/speech-trident)|![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/ga642381/speech-trident&query=created_at&label=创建时间&color=orange)<br>![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/ga642381/speech-trident/branches/master&query=commit.commit.committer.date&label=更新时间&color=orange)|
+|[![](https://img.shields.io/github/stars/metame-ai/awesome-audio-plaza?label=Awesome-Audio-Plaza@MetameAI&style=flat)](https://github.com/metame-ai/awesome-audio-plaza)|![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/metame-ai/awesome-audio-plaza&query=created_at&label=创建时间&color=orange)<br>![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/metame-ai/awesome-audio-plaza/branches/master&query=commit.commit.committer.date&label=更新时间&color=orange)|
+|[![](https://img.shields.io/github/stars/BradyFU/Awesome-Multimodal-Large-Language-Models?label=Awesome-Multimodal-Large-Language-Models@南京大学%20MiG%20Team&style=flat)](https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models)|![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/BradyFU/Awesome-Multimodal-Large-Language-Models&query=created_at&label=创建时间&color=orange)<br>![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/BradyFU/Awesome-Multimodal-Large-Language-Models/branches/main&query=commit.commit.committer.date&label=更新时间&color=orange)|
 
 ## 开源项目·Text-to-Speech
 
