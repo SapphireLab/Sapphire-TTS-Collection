@@ -52,36 +52,3 @@
 [![](https://img.shields.io/github/stars/neonbjb/tortoise-tts?label=TorToiSe-TTS@James%20Betker&style=flat)](https://github.com/neonbjb/tortoise-tts)<br>* [![](https://img.shields.io/badge/论文报告-2305.07243-blue?style=flat)](https://arxiv.org/abs/2305.07243)|![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/neonbjb/tortoise-tts&query=created_at&label=创建时间&color=orange)<br>![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/neonbjb/tortoise-tts/branches/main&query=commit.commit.committer.date&label=更新时间&color=orange)|- [2023.10.25 ![](https://img.shields.io/badge/TorToiSe--TTS-%20-green)](https://huggingface.co/Manmay/tortoise-tts)|
 |[![](https://img.shields.io/github/stars/jaywalnut310/vits?label=VITS@Kakao&style=flat)](https://github.com/jaywalnut310/vits)<br>* [![](https://img.shields.io/badge/论文报告-2106.06103-blue?style=flat)](https://arxiv.org/abs/2106.06103)|![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/jaywalnut310/vits&query=created_at&label=创建时间&color=orange)<br>![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/jaywalnut310/vits/branches/main&query=commit.commit.committer.date&label=更新时间&color=orange)|- [2021.06.10 ![](https://img.shields.io/badge/VITS-%20-green)](https://drive.google.com/drive/folders/1ksarh-cJf3F5eKJjLVWY0X1j1qsQqiS2?usp=sharing)|
 |[![](https://img.shields.io/github/stars/coqui-ai/TTS?label=XTTS@CoquiAI&style=flat)](https://github.com/coqui-ai/TTS)<br>* [![](https://img.shields.io/badge/论文报告-2406.04904-blue?style=flat)](https://arxiv.org/abs/2406.04904)|![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/coqui-ai/TTS&query=created_at&label=创建时间&color=orange)<br>![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/coqui-ai/TTS/branches/main&query=commit.commit.committer.date&label=更新时间&color=orange)|- [2023.11.11 ![](https://img.shields.io/badge/XTTS-v1-green)](https://huggingface.co/coqui/XTTS-v1)<br>- [2023.12.12 ![](https://img.shields.io/badge/XTTS-v2-green)](https://huggingface.co/coqui/XTTS-v2)|
-
-
-## 开源项目·Speech Toolkits
-
-|项目名称|项目时点|项目简介|
-|---|---|---|
-|[![](https://img.shields.io/github/stars/coqui-ai/TTS?label=TTS@CoquiAI&style=flat)](https://github.com/coqui-ai/TTS)|![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/coqui-ai/TTS&query=created_at&label=创建时间&color=orange)<br>![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/coqui-ai/TTS/branches/main&query=commit.commit.committer.date&label=更新时间&color=orange)|
-|[![](https://img.shields.io/github/stars/PaddlePaddle/PaddleSpeech?label=PaddleSpeech@Baidu&style=flat)](https://github.com/PaddlePaddle/PaddleSpeech)<br>[2205.12007]()|![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/PaddlePaddle/PaddleSpeech&query=created_at&label=创建时间&color=orange)<br>![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/PaddlePaddle/PaddleSpeech/branches/master&query=commit.commit.committer.date&label=更新时间&color=orange)|
-|WeNet 2102.01547|
-|WeNet2.0 2203.15455|
-|Kaldi|
-|ESPnet 1804.00015|
-|ESPnet-TTS 1910.10909|
-|ESPnet-ST 2004.10234|
-|KoSpeech 2009.03092|
-|ESPnet-se 2011.03706|
-|ESPnet-SpeechLM 2502.15218|
-|SpeechBrain 2106.04624|
-|S3PRL|
-|FunASR 2305.11013|
-|NeMo|
-|FAIRSeq|
-|Amphion 2312.09911|
-|FunCodec 2309.07405|
-|WEST 2509.19902|
-
-
-|VERSA 2412.17667|
-
-## 开源项目·Neural Codec
-
-|项目名称|项目时点|模型版本|
-|---|---|---|
