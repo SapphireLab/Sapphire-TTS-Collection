@@ -16,14 +16,17 @@
   - 陈谐 副教授
 - 【Lab】[ASLP@NPU](http://www.npu-aslp.org)
   - 谢磊 教授
-- 【Lab】[Speech@NTU](https://www.youtube.com/@HungyiLeeNTU)
+- 【Lab】[Speech@NTU](https://www.youtube.com/@HungyiLeeNTU) 台湾大学语音处理实验室
   - 李宏毅
 - 【Lab】[Watanabe's Audio and Voice Lab (WAVLab)](https://www.wavlab.org)
   - Shinji Watanabe (渡部晋治)
 - 【Team】[Speech Research@MSRA](https://speechresearch.github.io)
   - 谭旭
 - 【Team】小红书 FireRed
-- 【Team】小米 k2
+- 【Team】[小米 k2](https://github.com/k2-fsa/icefall)
+  - Daniel Povey
+- 【Team】[FishAudio@HanabiAI](https://openaudio.com/)
+  - Shijia Liao [Github](https://github.com/leng-yue)
 
 ## 收集项目
 
