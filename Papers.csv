@@ -280,7 +280,7 @@ peng2025facm,FACM,2507.03738v2,2025.07.04,2025.12.14,FACM: Flow-Anchored Consist
 ott2019fairseq,FAIRSeq,1904.01038v1,2019.04.01,2019.04.01,"fairseq: A Fast, Extensible Toolkit for Sequence Modeling",,,,,,,"Myle Ott, Sergey Edunov, Alexei Baevski, Angela Fan, Sam Gross, Nathan Ng, David Grangier, Michael Auli"
 wang2021fairseq,FAIRSeq S^2,2109.06912v1,2021.09.14,2021.09.14,fairseq S^2: A Scalable and Integrable Speech Synthesis Toolkit,,EMNLP2021,,,,,"Changhan Wang, Wei-Ning Hsu, Yossi Adi, Adam Polyak, Ann Lee, Peng-Jen Chen, Jiatao Gu, Juan Pino"
 zheng2025farmer,FARMER,2510.23588v2,2025.10.27,2025.10.30,FARMER: Flow AutoRegressive Transformer Over Pixels,,,,,,,"Guangting Zheng, Qinyu Zhao, Tao Yang, Fei Xiao, Zhijie Lin, Jie Wu, Jiajun Deng, Yanyong Zhang, Rui Zhu"
-zheng2025accelerating,Fast F5-TTS,2505.19931v2,2025.05.26,2025.06.04,Accelerating Flow-Matching-Based Text-to-Speech via Empirically Pruned Step Sampling,,,,,,,"Qixi Zheng, Yushen Chen, Zhikang Niu, Ziyang Ma, Xiaofei Wang, Kai Yu, Xie Chen"
+zheng2025accelerating,Fast F5-TTS,2505.19931v2,2025.05.26,2025.06.04,Accelerating Flow-Matching-Based Text-to-Speech via Empirically Pruned Step Sampling,SJTU(X-LANCE)@CHN,,,,,,"Qixi Zheng, Yushen Chen, Zhikang Niu, Ziyang Ma, Xiaofei Wang, Kai Yu, Xie Chen"
 wu2025fast-dllmv2,Fast-dLLM v2,2509.26328v1,2025.09.30,2025.09.30,Fast-dLLM v2: Efficient Block-Diffusion LLM,,,,,,,"Chengyue Wu, Hao Zhang, Shuchen Xue, Shizhe Diao, Yonggan Fu, Zhijian Liu, Pavlo Molchanov, Ping Luo, Song Han, Enze Xie"
 lu2024fastadasp,FastAdaSP,2410.03007v1,2024.10.03,2024.10.03,FastAdaSP: Multitask-Adapted Efficient Inference for Large Speech Language Model,,EMNLP2024,,,,https://github.com/yichen14/FastAdaSP,"Yichen Lu, Jiaqi Song, Chao-Han Huck Yang, Shinji Watanabe"
 huang2022fastdiff,FastDiff,2204.09934v1,2022.04.21,2022.04.21,FastDiff: A Fast Conditional Diffusion Model for High-Quality Speech Synthesis,"ZJU@CHN, TencentAILab@CHN",IJCAI2022,https://doi.org/10.24963/ijcai.2022/577,https://fastdiff.github.io/,,,"Rongjie Huang, Max W. Y. Lam, Jun Wang, Dan Su, Dong Yu, Yi Ren, Zhou Zhao"
@@ -505,7 +505,7 @@ zhang2022m4singer,M4Singer,,2022.09.17,2023.05.24,"M4Singer: A Multi-Style, Mult
 he2021masked,MAE,2111.06377v3,2021.11.11,2021.12.19,Masked Autoencoders Are Scalable Vision Learners,,,,,,,"Kaiming He, Xinlei Chen, Saining Xie, Yanghao Li, Piotr Dollár, Ross Girshick"
 yoon2025maestro-evc,Maestro-EVC,2508.06890v1,2025.08.09,2025.08.09,Maestro-EVC: Controllable Emotional Voice Conversion Guided by References and Explicit Prosody,,,,,,,"Jinsung Yoon, Wooyeol Jeong, Jio Gim, Young-Joo Suh"
 mai2026magic-tts,MAGIC-TTS,2604.21164v2,2026.04.23,2026.04.27,MAGIC-TTS: Fine-Grained Controllable Speech Synthesis with Explicit Local Duration and Pause Control,,,,https://yongaifadian1.github.io/MAGIC-TTS,TTS,https://github.com/yongaifadian1/MAGIC-TTS,"Jialong Mai, Xiaofen Xing, Xiangmin Xu"
-song2025magicodec,MagiCodec,2506.00385v1,2025.05.31,2025.05.31,MagiCodec: Simple Masked Gaussian-Injected Codec for High-Fidelity Reconstruction and Generation,,,,,,,"Yakun Song, Jiawei Chen, Xiaobin Zhuang, Chenpeng Du, Ziyang Ma, Jian Wu, Jian Cong, Dongya Jia, Zhuo Chen, Yuping Wang, Yuxuan Wang, Xie Chen"
+song2025magicodec,MagiCodec,2506.00385v1,2025.05.31,2025.05.31,MagiCodec: Simple Masked Gaussian-Injected Codec for High-Fidelity Reconstruction and Generation,SJTU(X-LANCE)@CHN,,,,,,"Yakun Song, Jiawei Chen, Xiaobin Zhuang, Chenpeng Du, Ziyang Ma, Jian Wu, Jian Cong, Dongya Jia, Zhuo Chen, Yuping Wang, Yuxuan Wang, Xie Chen"
 ziv2024masked,MAGNeT,2401.04577v2,2024.01.09,2024.03.05,Masked Audio Generation Using a Single Non-Autoregressive Transformer,,ICLR2024Poster,https://openreview.net/forum?id=Ny8NiVfi95,https://pages.cs.huji.ac.il/adiyoss-lab/MAGNeT,,https://github.com/facebookresearch/audiocraft/blob/main/docs/MAGNET.md,"Alon Ziv, Itai Gat, Gael Le Lan, Tal Remez, Felix Kreuk, Alexandre Defossez, Jade Copet, Gabriel Synnaeve, Yossi Adi"
 huang2023make-a-voice,Make-A-Voice,2305.19269v1,2023.05.30,2023.05.30,Make-A-Voice: Unified Voice Synthesis with Discrete Representation,,,,https://make-a-voice.github.io/,,,"Rongjie Huang, Chunlei Zhang, Yongqi Wang, Dongchao Yang, Luping Liu, Zhenhui Ye, Ziyue Jiang, Chao Weng, Zhou Zhao, Dong Yu"
 huang2023make-an-audio,Make-An-Audio,2301.12661v1,2023.01.30,2023.01.30,Make-An-Audio: Text-to-Audio Generation with Prompt-Enhanced Diffusion Models,,ICML2023,https://proceedings.mlr.press/v202/huang23i.html,https://text-to-audio.github.io/,,,"Rongjie Huang, Jiawei Huang, Dongchao Yang, Yi Ren, Luping Liu, Mingze Li, Zhenhui Ye, Jinglin Liu, Xiang Yin, Zhou Zhao"
@@ -1320,3 +1320,14 @@ veaux2013voice,,,2013.11.25,,"The Voice Bank Corpus: Design, Collection and Data
 wells2022phonetic,,,,,Phonetic Analysis of Self-Supervised Representations of English Speech,,InterSpeech2022,https://doi.org/10.21437/Interspeech.2022-10884,,,,"Dan Wells, Hao Tang, Korin Richmond"
 zhao2018accent,,,,2018.04.15,Accent Conversion Using Phonetic Posteriorgrams,"Texas A&M University@USA, Iowa State University@USA",ICASSP2018,https://doi.org/10.1109/ICASSP.2018.8462258,,,,"Guanlong Zhao, Sinem Sonsaat, John Levis, Evgeny Chukharev-Hudilainen, Ricardo Gutierrez-Osuna"
 zheng2001comparison,,,2001.11.01,,Comparison of Different Implementations of MFCC,,Journal of Computer Science and Technology,,https://doi.org/10.1007/BF02943243,,,"Fang Zheng, Guoliang Zhang, Zhanjiang Song"
+,YuE,2503.08638
+,URO-Bench,2502.17810
+,,2504.20334
+,MMAR,2505.13032
+,TFC,2505.16845
+,,2505.19294
+,ERSB,2505.22515
+,LibriheavyMix,2409.00819
+,CR-CTC,2410.05101
+,k2SSL,2411.17100
+,,2505.15957,,,,,,,,Survey,,
