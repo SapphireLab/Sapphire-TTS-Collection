@@ -6,12 +6,24 @@
 
 ## 推荐链接
 
+- [Speech Arena Leaderboard](https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice)
 - [Speech.Zone](https://speech.zone)
 - [语音之家](https://www.speechhome.com)
-- 课题组 [SpeechLab@XMU](https://speech.xmu.edu.cn)
-- 课题组 [X-LANCE@SJTU](https://x-lance.sjtu.edu.cn)
-- 课题组 [ASLP@NPU](http://www.npu-aslp.org)
-- 课题组 [Speech@NTU](https://www.youtube.com/@HungyiLeeNTU)
+- 【Lab】[XMU Speech Lab](https://speech.xmu.edu.cn) 厦门大学智能语音实验室
+  - 洪青阳 教授
+- 【Lab】[X-LANCE@SJTU](https://x-lance.sjtu.edu.cn)
+  - 俞凯 教授
+  - 陈谐 副教授
+- 【Lab】[ASLP@NPU](http://www.npu-aslp.org)
+  - 谢磊 教授
+- 【Lab】[Speech@NTU](https://www.youtube.com/@HungyiLeeNTU)
+  - 李宏毅
+- 【Lab】[Watanabe's Audio and Voice Lab (WAVLab)](https://www.wavlab.org)
+  - Shinji Watanabe (渡部晋治)
+- 【Team】[Speech Research@MSRA](https://speechresearch.github.io)
+  - 谭旭
+- 【Team】小红书 FireRed
+- 【Team】小米 k2
 
 ## 收集项目
 
@@ -31,6 +43,8 @@
 
 |项目名称|项目时点|模型版本|
 |---|---|---|
+|[![](https://img.shields.io/github/stars/cwx-worst-one/WavTTS?label=WavTTS@SJTU-字节跳动&style=flat)](https://github.com/cwx-worst-one/WavTTS)<br>* [![](https://img.shields.io/badge/论文报告-2606.03455-blue?style=flat)](https://arxiv.org/abs/2606.03455) |![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/cwx-worst-one/WavTTS&query=created_at&label=创建时间&color=orange)<br>![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/cwx-worst-one/WavTTS/branches/main&query=commit.commit.committer.date&label=更新时间&color=orange)|- [2026.xx.xx ![](https://img.shields.io/badge/Raon--OpenTTS-0.3B-green)](https://huggingface.co/KRAFTON/Raon-OpenTTS-0.3B)<br>- [2026.xx.xx ![](https://img.shields.io/badge/Raon--OpenTTS-1B-green)](https://huggingface.co/KRAFTON/Raon-OpenTTS-1.0B) |
+|[![](https://img.shields.io/github/stars/krafton-ai/Raon-OpenTTS?label=Raon-OpenTTS@KraftonAI&style=flat)](https://github.com/krafton-ai/Raon-OpenTTS)<br>* [![](https://img.shields.io/badge/论文报告-2605.20830-blue?style=flat)](https://arxiv.org/abs/2605.20830) |![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/krafton-ai/Raon-OpenTTS&query=created_at&label=创建时间&color=orange)<br>![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/krafton-ai/Raon-OpenTTS/branches/main&query=commit.commit.committer.date&label=更新时间&color=orange)|
 |[![](https://img.shields.io/github/stars/k2-fsa/OmniVoice?label=OmniVoice@小米%20k2-fsa&style=flat)](https://github.com/k2-fsa/OmniVoice)<br>* [![](https://img.shields.io/badge/论文报告-2604.00688-blue?style=flat)](https://arxiv.org/abs/2604.00688)|![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/k2-fsa/OmniVoice&query=created_at&label=创建时间&color=orange)<br>![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/k2-fsa/OmniVoice/branches/main&query=commit.commit.committer.date&label=更新时间&color=orange)|- [2026.03.31 ![](https://img.shields.io/badge/OmniVoice-0.6B-green)](https://huggingface.co/k2-fsa/OmniVoice) |
 |[![](https://img.shields.io/github/stars/QwenLM/Qwen3-TTS?label=Qwen3-TTS@阿里巴巴%20Qwen%20Team&style=flat)](https://github.com/QwenLM/Qwen3-TTS)<br>* [![](https://img.shields.io/badge/论文报告-2601.15621-blue?style=flat)](https://arxiv.org/abs/2601.15621)|![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/QwenLM/Qwen3-TTS&query=created_at&label=创建时间&color=orange)<br>![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/QwenLM/Qwen3-TTS/branches/main&query=commit.commit.committer.date&label=更新时间&color=orange)|- 2026.01.29 ![](https://img.shields.io/badge/Qwen3--TTS-12Hz--0.6B--Base-green)<br>- 2026.01.29 ![](https://img.shields.io/badge/Qwen3--TTS-12Hz--0.6B--CustomVoice-green)<br>- 2026.01.29 ![](https://img.shields.io/badge/Qwen3--TTS-12Hz--0.6B--VoiceDesign-green)<br>- 2026.01.23 ![](https://img.shields.io/badge/Qwen3--TTS-12Hz--1.7B--Base-green)<br>- 2026.01.29  ![](https://img.shields.io/badge/Qwen3--TTS-12Hz--1.7B--CustomVoice-green)<br>- 2026.01.29 ![](https://img.shields.io/badge/Qwen3--TTS-12Hz--1.7B--VoiceDesign-green)<br>- 2026.01.29 ![](https://img.shields.io/badge/Qwen3--TTS--Tokenizer-12Hz-green)|
 |[![](https://img.shields.io/github/stars/OpenBMB/VoxCPM?label=VoxCPM@面壁智能%20VoxCPM%20Team&style=flat)](https://github.com/OpenBMB/VoxCPM)<br>* [![](https://img.shields.io/badge/论文报告-2509.24650-blue)](https://arxiv.org/abs/2509.24650)|![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/OpenBMB/VoxCPM&query=created_at&label=创建时间&color=orange)<br>![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/OpenBMB/VoxCPM/branches/main&query=commit.commit.committer.date&label=更新时间&color=orange)|- [2025.09.20 ![](https://img.shields.io/badge/VoxCPM1.0-12.5Hz--0.5B-green)](https://modelscope.cn/models/OpenBMB/VoxCPM-0.5B)<br>- [2026.01.14 ![](https://img.shields.io/badge/VoxCPM1.5-6.25Hz--0.8B-green)](https://modelscope.cn/models/OpenBMB/VoxCPM1.5) <br>- [2026.04.03 ![](https://img.shields.io/badge/VoxCPM2.0-2B-green)](https://modelscope.cn/models/OpenBMB/VoxCPM2)|
