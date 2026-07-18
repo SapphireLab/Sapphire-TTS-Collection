@@ -3,7 +3,7 @@
 ## 基本信息
 
 - 标题: F5-TTS: A Fairytaler that Fakes Fluent and Faithful Speech with Flow Matching
-- 链接: [HuggingFace](https://huggingface.co/SWivid/F5-TTS) | [ModelScope](https://www.modelscope.cn/models/SWivid/F5-TTS_Emilia-ZH-EN) | [WiseModel](https://wisemodel.cn/models/SJTU_X-LANCE/F5-TTS_Emilia-ZH-EN) | [GitHub](https://github.com/SWivid/F5-TTS) | [ArXiv](https://arxiv.org/abs/2410.06885) | [PaperNote](../../../Models/Diffusion/2024.10.09_F5-TTS.md)
+- 链接: [HuggingFace](https://huggingface.co/SWivid/F5-TTS) | [ModelScope](https://www.modelscope.cn/models/SWivid/F5-TTS_Emilia-ZH-EN) | [WiseModel](https://wisemodel.cn/models/SJTU_X-LANCE/F5-TTS_Emilia-ZH-EN) | [GitHub](https://github.com/SWivid/F5-TTS) | [ArXiv](https://arxiv.org/abs/2410.06885) | [PaperNote](../../Models/FlowMatching/2024.10.09_F5-TTS.md.md)
 - 开源: [代码] MIT License; [模型] CC-BY-NC License (数据集 Emilia 限制)
 - 更新: 2024.11.18
 - 笔记: 2024.11.18
@@ -15,7 +15,40 @@
 
 ### 更新日志
 
-- 2024.11.11 v0.1.1 版本
+- 2024.04.03 v1.1.1 添加基准和 TRT-LLM 离线代码
+- 2025.04.03 v1.1.0 支持 GPU 部署 Triton 和 TensorRT-LLM
+- 2025.03.31 v1.0.10 支持自定义对话模型
+- 2025.03.28 v1.0.9
+- 2025.03.25 v1.0.8 修复错误 log_samples
+- 2025.03.21 v1.0.7
+- 2025.03.20 v1.0.6 改进 Docker 使用
+- 2025.03.17 v1.0.5 优化界面，使得引导更明确
+- 2025.03.17 v1.0.4 修复 Gradio 界面和文件扩展名
+- 2025.03.17 v1.0.3 修复 API
+- 2025.03.15 v1.0.2 Checkpoint 添加 use_reentrant=False
+- 2025.03.14 v1.0.1 VRAM 使用管理
+- 2025.03.12 v1.0.0 发布 F5-TTS v1 基础模型, 具有更好的训练推理性能
+- 2025.02.25 v0.6.2 Socket 服务端支持文本分块
+- 2025.02.22 v0.6.1 修复 TQDM 进度问题
+- 2025.02.21 v0.6.0 支持分块流式输出
+- 2025.02.18 v0.5.3 修复 MPS 兼容性
+- 2025.02.09 v0.5.2 改进准备数据流程
+- 2025.02.05 v0.5.1 增强动态批次采样器
+- 2025.01.29 v0.5.0 修复梯度累积错误
+- 2025.01.29 v0.4.6 修复 Gradio Client 小问题
+- 2025.01.28 v0.4.5 修复文本序列长度大于音频序列的情况
+- 2025.01.28 v0.4.4 修复 Gradio GUI 小问题
+- 2025.01.27 v0.4.3 修复 Gradio 微调等问题
+- 2025.01.15 v0.4.2 修复 Grad Accumulation
+- 2025.01.15 v0.4.1 添加 Keep_Last_N_Checkpoints 选项
+- 2025.01.12 v0.4.0 处理梯度累积和 Checkpointing
+- 2024.12.22 v0.3.4 处理 BigVGAN 路径问题
+- 2024.12.18 v0.3.2 修复 Socket 服务端
+- 2024.12.17 V0.3.1 修复 Gradio 样式
+- 2024.12.16 v0.3.0 自定义模型配置, Checkpointing 技术
+- 2024.11.12 v0.2.1 修复 Issue 545
+- 2024.11.28 v0.2.0 添加 Hydra 配置
+- 2024.11.11 v0.1.1
 - 2024.10.23 PR#228: 项目结构重新组织, 将 `model/` 重构为 `src/f5_tts/model/`.
 - 2024.10.08 F5-TTS & E2-TTS 基础模型发布在 HuggingFace, ModelScope, WiseModel.
 
@@ -23,17 +56,18 @@
 
 | 项目 | 贡献者 | 说明 |
 | --- | --- | --- |
-| [E2-TTS](../../../Models/Diffusion/2024.06.26_E2_TTS.md) | | 简单高效的杰出工作 |
-| [Emilia](../../../Datasets/2024.07.07_Emilia.md), [WenetSpeech4TTS](../../../Datasets/2024.06.09_WenetSpeech4TTS.md) | | 数据集 |
+| E2-TTS | | 简单高效的杰出工作 |
+| Emilia, WenetSpeech4TTS | | 数据集 |
 | | [lucidrains](https://github.com/lucidrains) <br> [bfs](https://github.com/bfs18) | CFM 架构初始化|
-| [StableDiffusion3](../../../Models/Diffusion/2024.03.05_StableDiffusion3.md)<br>[HF Diffusers](https://github.com/huggingface/diffusers) | | DiT 和 MMDiT 代码结构 |
+| StableDiffusion3<br>[HF Diffusers](https://github.com/huggingface/diffusers) | | DiT 和 MMDiT 代码结构 |
 | [TorchDiffEQ](https://github.com/rtqichen/torchdiffeq) | | ODE 求解器 |
 | [Vocos](https://huggingface.co/charactr/vocos-mel-24khz) | | 声码器 |
 | [FunASR](https://github.com/modelscope/FunASR)<br>[Faster-Whisper](https://github.com/SYSTRAN/faster-whisper)<br>[UniSpeech](https://github.com/microsoft/UniSpeech) | | 评估工具 |
-| [CTC-Forced-Aligner](https://github.com/MahmoudAshraf97/ctc-forced-aligner) | | CTC 强制对齐工具 |
+| [CTC-Forced-Aligner](https://github.com/MahmoudAshraf97/ctc-forced-aligner) | | CTC 强制对齐工具/语音编辑测试 |
 | [realmrfakename](https://x.com/realmrfakename) | | HF Space 示例项目 |
 | [F5-TTS-MLX](https://github.com/lucasnewman/f5-tts-mlx/tree/main) | [Lucas Newman](https://github.com/lucasnewman) | MLX 版本 |
 | [F5-TTS-ONNX](https://github.com/DakeQQ/F5-TTS-ONNX) | [DakeQQ](https://github.com/DakeQQ) | ONNX Runtime 版本 |
+| | [Yuekai Zhang](https://github.com/yuekaizhang) | Triton 和 TensorRT-LLM 支持 |
 
 ### 引用信息
 
@@ -52,12 +86,12 @@
 ```
 F5-TTS
 ├─ [x] .github                                  Github 工作流配置
-│  ├─ [ ] ISSUE_TEMPLATE
-│  │  ├─ [ ] bug_report.yml
-│  │  ├─ [ ] config.yml
-│  │  ├─ [ ] feature_request.yml
-│  │  ├─ [ ] help_wanted.yml
-│  │  └─ [ ] question.yml
+│  ├─ [x] ISSUE_TEMPLATE
+│  │  ├─ [x] bug_report.yml
+│  │  ├─ [x] config.yml
+│  │  ├─ [x] feature_request.yml
+│  │  ├─ [x] help_wanted.yml
+│  │  └─ [x] question.yml
 │  └─ [x] workflows
 │     ├─ [x] pre-commit.yaml:                   调用 pre-commit-config.yaml
 │     ├─ [x] publish-docker-image.yaml:         发布 Docker 镜像
@@ -85,13 +119,21 @@ F5-TTS
 └─ [x] src
    ├─ [x] f5_tts
    │  ├─ [x] api.py
+   │  ├─ [ ] socket_client.py
    │  ├─ [ ] socket_server.py
+   │  ├─ [ ] configs
+   │  │  ├─ [ ] E2TTS_Base.yaml
+   │  │  ├─ [ ] E2TTS_Small.yaml
+   │  │  ├─ [ ] F5TTS_Base.yaml
+   │  │  ├─ [ ] F5TTS_Small.yaml
+   │  │  └─ [ ] F5TTS_v1_Base.yaml
    │  ├─ [ ] eval
    │  │  ├─ [ ] ecapa_tdnn.py
    │  │  ├─ [ ] eval_infer_batch.py
    │  │  ├─ [ ] eval_infer_batch.sh
    │  │  ├─ [ ] eval_librispeech_test_clean.py
    │  │  ├─ [ ] eval_seedtts_testset.py
+   │  │  ├─ [ ] eval_utmos.py
    │  │  ├─ [x] README.md:                      评估说明 Eval.md
    │  │  └─ [ ] utils_eval.py
    │  ├─ [ ] infer
@@ -124,7 +166,37 @@ F5-TTS
    │  │  ├─ [ ] modules.py
    │  │  ├─ [x] trainer.py                      使用 Accelerate 训练 CFM
    │  │  ├─ [ ] utils.py
-   │  │  └─ [x] __init__.py:                    引入三种 backbone, CFM 和 trainer
+   │  │  └─  [x] __init__.py:                    引入三种 backbone, CFM 和 trainer
+   │  ├─ [ ] runtime/triton_trtllm
+   │  │   ├─ [ ] model_repo_f5_tts
+   │  │   │  ├─ [ ] f5_tts
+   │  │   │  │  ├─ [ ] 1
+   │  │   │  │  │  ├─ [ ] f5_tts_trtllm.py
+   │  │   │  │  │  └─ [ ] model.py
+   │  │   │  │  └─ [ ] config.pbtxt
+   │  │   │  └─ [ ] vocoder
+   │  │   │     ├─ [x] 1
+   │  │   │     │  └─ [x] .gitkeep               空文件
+   │  │   │     └─ [ ] config.pbtxt
+   │  │   ├─ [ ] patch
+   │  │   │  ├─ [ ] f5tts
+   │  │   │  │  ├─ [ ] model.py
+   │  │   │  │  └─ [ ] modules.py
+   │  │   │  └─ [ ] __init__.py
+   │  │   ├─ [ ] scripts
+   │  │   │  ├─ [ ] conv_stft.py
+   │  │   │  ├─ [ ] convert_checkpoint.py
+   │  │   │  ├─ [ ] export_vocoder_to_onnx.py
+   │  │   │  ├─ [ ] export_vocos_trt.sh
+   │  │   │  └─ [ ] fill_template.py
+   │  │   ├─ benchmark.py
+   │  │   ├─ client_grpc.py
+   │  │   ├─ client_http.py
+   │  │   ├─ docker-compose.yml
+   │  │   ├─ Dockerfile.server
+   │  │   ├─ README.md
+   │  │   ├─ requirements-pytorch.txt
+   │  │   └─ run.sh
    │  ├─ [ ] scripts
    │  │  ├─ [ ] count_max_epoch.py
    │  │  └─ [ ] count_params_gflops.py
@@ -132,6 +204,8 @@ F5-TTS
    │     ├─ [ ] datasets
    │     │  ├─ [ ] prepare_csv_wavs.py
    │     │  ├─ [ ] prepare_emilia.py
+   │     │  ├─ [ ] prepare_libritts.py
+   │     │  ├─ [ ] prepare_ljspeech.py
    │     │  └─ [ ] prepare_wenetspeech4tts.py
    │     ├─ [ ] finetune_cli.py
    │     ├─ [ ] finetune_gradio.py
