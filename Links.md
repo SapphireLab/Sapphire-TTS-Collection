@@ -133,6 +133,23 @@
   - 2023.01.29 [合集·傅里叶变换从零到一](https://space.bilibili.com/2008799191/channel/collectiondetail?sid=990857)
   - 2023.12.18 [合集·小波变换](https://space.bilibili.com/2008799191/lists/4325308?type=season)
 
+- FishSpeech
+  - 2023.10.10 创建项目
+  - 2023.12.25 Version 0.2.0 [Bilibili](https://www.bilibili.com/video/BV1mQ4y1E7qD/)
+  - 2024.04.30 Version 1.0.0 [HuggingFace](https://huggingface.co/fishaudio/fish-speech-1)
+  - 2024.05.11 Version 1.1.0 [Bilibili](https://www.bilibili.com/video/BV1zJ4m1K7cj/)
+  - 2024.06.09 Version 1.1.1
+  - 2024.07.02 Version 1.1.2 -> 1.2.0
+  - 2024.07.19 Version 1.2.0 [Bilibili](https://www.bilibili.com/video/BV1wz421B71D/) | [HuggingFace](https://huggingface.co/fishaudio/fish-speech-1.2)
+  - 2024.09.10 Version 1.2.1 -> 1.4.0
+  - 2024.09.12 Version 1.4.0 [Bilibili](https://www.bilibili.com/video/BV1pu46eVEk7/) | [HuggingFace](https://huggingface.co/fishaudio/fish-speech-1.4)
+  - 2024.09.15 Version 1.4.1
+  - 2024.10.25 Version 1.4.2
+  - 2024.11.29 Version 1.4.3
+  - 2024.12.25 Version 1.5.0 [Bilibili](https://www.bilibili.com/video/BV1EKiDYBE4o/) | [HuggingFace](https://huggingface.co/fishaudio/fish-speech-1.5)
+  - 2025.06.01 Version 1.5.1
+  - 2025.06.03 OpenAudio S1/S1-mini
+
 ## HuggingFace
 
 - [Audio Course](https://hf-mirror.com/learn/audio-course/)
@@ -191,3 +208,5 @@
   - [Diffusion Model](https://www.youtube.com/playlist?list=PLJV_el3uVTsNi7PgekEUFsyVllAJXRsP-)
   - 2023.05.17 Speech Foundation Models 语音基石模型 - 张凯为
   - 2024.05.20 [GPT-4o 背后可能的语音技术猜测](https://www.youtube.com/watch?v=CgQ3lUOpXgc)
+  - [2025 生成式 AI 时代下的机器学习]
+    - 12 语言模型如何学会说话 - 概述语音语言模型发展历程 [视频](https://www.youtube.com/watch?v=gkAyqoQkOSk)
