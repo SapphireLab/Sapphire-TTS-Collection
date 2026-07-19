@@ -1,2 +1,3 @@
 ID,Model,AR-NAR,TextModule,SpeechInputModulde,SpeakerModule,AlignModule,Backbone,SpeechOutputModule,Dataset
+du2024cosyvoice,CosyVoice,,BPE+TextEncoder,S3Tokenizer,X-Vector,,Text-to-Token LLM,FlowMatching→(MelSpec)→HiFi-GAN,LibriTTS;Closed
 luo2026stellartts,StellarTTS,NAR,G2P+Embedding,Semantic-Aware Codec (W2V-BERT+RVQ),From 3D-Speaker,Duration Predictor+Sparse Length Regulator,MaskedGenerativeTransformer,Semantic-Aware Codec (W2V-BERT+RVQ),Emilia
