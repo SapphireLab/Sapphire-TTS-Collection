@@ -50,7 +50,7 @@
 <summary>
 <img src="https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/sh-lee-prml/WaveGen/branches/main&query=commit.commit.committer.date&label=Updated&style=flat-square&color=royalblue">
 <a href="https://github.com/sh-lee-prml/WaveGen">
-<img src="https://img.shields.io/github/stars/sh-lee-prml/WaveGen?&label=WaveGen%20★&style=flat-square">
+<img src="https://img.shields.io/github/stars/sh-lee-prml/WaveGen?&label=WaveGen&style=flat-square">
 </a>
 </summary>
 
@@ -59,8 +59,7 @@
 - 项目：[Github](https://github.com/sh-lee-prml/WaveGen)
   - 开源：
     - [WaveGen & WaveGen VSpec & WaveGen Flash](https://huggingface.co/LeeSangHoon/WaveGen)
-  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/sh-lee-prml/WaveGen&query=created_at&label=&color=white)
-  - 更新：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/sh-lee-prml/WaveGen/branches/main&query=commit.commit.committer.date&label=&color=white)
+  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/sh-lee-prml/WaveGen&query=created_at&label=Created&color=white)
 - 机构：Ajou University, Frontier AI Lab@KT Corp
 - 模型：
 - 训练：
@@ -71,7 +70,7 @@
 <summary>
 <img src="https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/RVC-Boss/GPT-SoVITS/branches/main&query=commit.commit.committer.date&label=Updated&style=flat-square&color=royalblue">
 <a href="https://github.com/RVC-Boss/GPT-SoVITS">
-<img src="https://img.shields.io/github/stars/RVC-Boss/GPT-SoVITS?&label=GPT-SoVITS%20★&style=flat-square">
+<img src="https://img.shields.io/github/stars/RVC-Boss/GPT-SoVITS?&label=GPT-SoVITS&style=flat-square">
 </a>
 <img src="https://img.shields.io/badge/Version-v1→v2→v2pro→v2pro+-orange?&style=flat-square">
 <img src="https://img.shields.io/badge/Version-v3→v4→v5-orange?&style=flat-square">
@@ -101,8 +100,7 @@
       - SV/pretrained_eres2netv2w24s4ep4.ckpt
     - 2026.10.05 [V5 (gsv-v5-pretrained)](https://huggingface.co/lj1995/GPT-SoVITS/tree/main/gsv-v5-pretrained)
       - s2G-v5dev.pth, s2G-v5-turbo.pth, vocoder.pth
-  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/RVC-Boss/GPT-SoVITS&query=created_at&label=&color=white)
-  - 更新：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/RVC-Boss/GPT-SoVITS/branches/main&query=commit.commit.committer.date&label=&color=white)
+  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/RVC-Boss/GPT-SoVITS&query=created_at&label=Created&color=white)
 - 作者：[花儿不哭](https://github.com/RVC-Boss)
 - 模型：
 - 训练：
@@ -113,7 +111,7 @@
 <summary>
 <img src="https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/OpenBMB/VoxCPM/branches/main&query=commit.commit.committer.date&label=Updated&style=flat-square&color=royalblue">
 <a href="https://github.com/OpenBMB/VoxCPM">
-<img src="https://img.shields.io/github/stars/OpenBMB/VoxCPM?&label=VoxCPM%20★&style=flat-square">
+<img src="https://img.shields.io/github/stars/OpenBMB/VoxCPM?&label=VoxCPM&style=flat-square">
 </a>
 <img src="https://img.shields.io/badge/Version-1.0→1.5→2.0-orange?&style=flat-square">
 </summary>
@@ -129,8 +127,7 @@
     - 2025.09.20 [VoxCPM1.0-0.5B](https://huggingface.co/openbmb/VoxCPM-0.5B) 12.5Hz
     - 2026.01.14 [VoxCPM1.5-0.8B](https://huggingface.co/openbmb/VoxCPM1.5) 6.25Hz
     - 2026.04.03 [VoxCPM2.0-2.0B](https://huggingface.co/openbmb/VoxCPM2)
-  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/OpenBMB/VoxCPM&query=created_at&label=&color=white)
-  - 更新：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/OpenBMB/VoxCPM/branches/main&query=commit.commit.committer.date&label=&color=white)
+  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/OpenBMB/VoxCPM&query=created_at&label=Created&color=white)
 - 机构：面壁智能 VoxCPM Team
 - 模型：
 - 训练：
@@ -141,7 +138,7 @@
 <summary>
 <img src="https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/ASLP-lab/M5-TTS/branches/main&query=commit.commit.committer.date&label=Updated&style=flat-square&color=royalblue">
 <a href="https://github.com/ASLP-lab/M5-TTS">
-<img src="https://img.shields.io/github/stars/ASLP-lab/M5-TTS?&label=M5-TTS%20★&style=flat-square">
+<img src="https://img.shields.io/github/stars/ASLP-lab/M5-TTS?&label=M5-TTS&style=flat-square">
 </a>
 </summary>
 
@@ -153,8 +150,7 @@
     - [M5-TTS](https://huggingface.co/ASLP-lab/M5-TTS)
     - [M5-TTS-50M-CustomVoice](https://huggingface.co/ASLP-lab/M5-TTS-50M-CustomVoice)
     - [M5-TTS-50M-VoiceClone](https://huggingface.co/ASLP-lab/M5-TTS-50M-VoiceClone)
-  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/ASLP-lab/M5-TTS&query=created_at&label=&color=white)
-  - 更新：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/ASLP-lab/M5-TTS/branches/main&query=commit.commit.committer.date&label=&color=white)
+  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/ASLP-lab/M5-TTS&query=created_at&label=Created&color=white)
 - 机构：ASLP@NPU, Shenzhen Pimei Tech, MoonstepAI, Wenet Community, ASLP@NJU
 - 模型：
   - Qwen-TTS-Tokenizer-12Hz (Qwen3-TTS)
@@ -174,7 +170,7 @@
 <summary>
 <img src="https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/resemble-ai/chatterbox/branches/master&query=commit.commit.committer.date&label=Updated&style=flat-square&color=royalblue">
 <a href="https://github.com/resemble-ai/chatterbox">
-<img src="https://img.shields.io/github/stars/resemble-ai/chatterbox?&label=ChatterBox%20★&style=flat-square">
+<img src="https://img.shields.io/github/stars/resemble-ai/chatterbox?&label=ChatterBox&style=flat-square">
 </a>
 </summary>
 
@@ -185,8 +181,7 @@
     - [Chatterbox-Turbo-350M](https://huggingface.co/ResembleAI/chatterbox-turbo) English
     - [Chatterbox-Nano-110M](https://huggingface.co/ResembleAI/chatterbox-nano) English
     - [Chatterbox-MultilingualV3-500M](https://huggingface.co/ResembleAI/chatterbox)
-  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/resemble-ai/chatterbox&query=created_at&label=&color=white)
-  - 更新：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/resemble-ai/chatterbox/branches/master&query=commit.commit.committer.date&label=&color=white)
+  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/resemble-ai/chatterbox&query=created_at&label=Created&color=white)
 - 机构：ResembleAI
 - 模型：
 - 训练：
@@ -197,7 +192,7 @@
 <summary>
 <img src="https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/SWivid/F5-TTS/branches/main&query=commit.commit.committer.date&label=Updated&style=flat-square&color=royalblue">
 <a href="https://github.com/SWivid/F5-TTS">
-<img src="https://img.shields.io/github/stars/SWivid/F5-TTS?&label=F5-TTS%20★&style=flat-square">
+<img src="https://img.shields.io/github/stars/SWivid/F5-TTS?&label=F5-TTS&style=flat-square">
 </a>
 <img src="https://img.shields.io/badge/Version-base→v1_base-orange?&style=flat-square">
 </summary>
@@ -210,8 +205,7 @@
 - 项目：[Github](https://github.com/SWivid/F5-TTS)
   - 开源：
     - [E2 TTS Base & F5-TTS Base & F5-TTS v1 Base](https://huggingface.co/SWivid/F5-TTS)
-  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/SWivid/F5-TTS&query=created_at&label=&color=white)
-  - 更新：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/SWivid/F5-TTS/branches/main&query=commit.commit.committer.date&label=&color=white)
+  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/SWivid/F5-TTS&query=created_at&label=Created&color=white)
 - 机构：SJTU X-LANCE Lab, University of Cambridge, Geely Automobile Research Institute (Ningbo) Company Ltd
 - 模型：
 - 训练：
@@ -222,7 +216,7 @@
 <summary>
 <img src="https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/cwx-worst-one/WavTTS/branches/main&query=commit.commit.committer.date&label=Updated&style=flat-square&color=royalblue">
 <a href="https://github.com/cwx-worst-one/WavTTS">
-<img src="https://img.shields.io/github/stars/cwx-worst-one/WavTTS?&label=WavTTS%20★&style=flat-square">
+<img src="https://img.shields.io/github/stars/cwx-worst-one/WavTTS?&label=WavTTS&style=flat-square">
 </a>
 </summary>
 
@@ -231,8 +225,7 @@
 - 项目：[Github](https://github.com/cwx-worst-one/WavTTS)
   - 开源：
     - [WavTTS](https://huggingface.co/worstchan/WavTTS)
-  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/cwx-worst-one/WavTTS&query=created_at&label=&color=white)
-  - 更新：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/cwx-worst-one/WavTTS/branches/main&query=commit.commit.committer.date&label=&color=white)
+  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/cwx-worst-one/WavTTS&query=created_at&label=Created&color=white)
 - 机构：SJTU, 字节跳动
 - 模型：
   - 基于 F5-TTS + 直接对波形建模
@@ -245,7 +238,7 @@
 <summary>
 <img src="https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/fishaudio/fish-speech/branches/main&query=commit.commit.committer.date&label=Updated&style=flat-square&color=royalblue">
 <a href="https://github.com/fishaudio/fish-speech">
-<img src="https://img.shields.io/github/stars/fishaudio/fish-speech?&label=FishAudio%20★&style=flat-square">
+<img src="https://img.shields.io/github/stars/fishaudio/fish-speech?&label=FishAudio&style=flat-square">
 </a>
 <img src="https://img.shields.io/badge/Version-1.0→1.2→1.4→1.5→S1→S2Pro→Drama3-orange?&style=flat-square">
 </summary>
@@ -268,8 +261,7 @@
     - 2025.06.03 [S1-Mini-0.5B](https://huggingface.co/fishaudio/s1-mini) S1-4B 未开源
     - 2026.03.10 [S2-Pro-4B](https://huggingface.co/fishaudio/s2-pro)
     - 2026.10.13 [Drama3-35B-A3B](https://huggingface.co/fishaudio/drama-3)
-  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/fishaudio/fish-speech&query=created_at&label=&color=white)
-  - 更新：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/fishaudio/fish-speech/branches/main&query=commit.commit.committer.date&label=&color=white)
+  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/fishaudio/fish-speech&query=created_at&label=Created&color=white)
 - 机构：FishAudio
 - 模型：
 - 训练：
@@ -280,7 +272,7 @@
 <summary>
 <img src="https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/index-tts/index-tts/branches/main&query=commit.commit.committer.date&label=Updated&style=flat-square&color=royalblue">
 <a href="https://github.com/index-tts/index-tts">
-<img src="https://img.shields.io/github/stars/index-tts/index-tts?&label=IndexTTS%20★&style=flat-square">
+<img src="https://img.shields.io/github/stars/index-tts/index-tts?&label=IndexTTS&style=flat-square">
 </a>
 <img src="https://img.shields.io/badge/Version-1.0→1.5→2.0→2.5-orange?&style=flat-square">
 </summary>
@@ -306,8 +298,7 @@
     - 2025.05.14 [IndexTTS-1.5](https://huggingface.co/IndexTeam/IndexTTS-1.5)
     - 2025.09.08 [IndexTTS-2](https://huggingface.co/IndexTeam/IndexTTS-2)
     - 2026.08.10 [IndexTTS-2.5](https://huggingface.co/IndexTeam/IndexTTS-2.5)
-  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/index-tts/index-tts&query=created_at&label=&color=white)
-  - 更新：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/index-tts/index-tts/branches/main&query=commit.commit.committer.date&label=&color=white)
+  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/index-tts/index-tts&query=created_at&label=Created&color=white)
 - 机构：哔哩哔哩
 - 模型：
 - 训练：
@@ -318,7 +309,7 @@
 <summary>
 <img src="https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/FireRedTeam/FireRedTTS3/branches/main&query=commit.commit.committer.date&label=Updated&style=flat-square&color=royalblue">
 <a href="https://github.com/FireRedTeam/FireRedTTS3">
-<img src="https://img.shields.io/github/stars/FireRedTeam/FireRedTTS3?&label=FireRedTTS%20★&style=flat-square">
+<img src="https://img.shields.io/github/stars/FireRedTeam/FireRedTTS3?&label=FireRedTTS&style=flat-square">
 </a>
 <img src="https://img.shields.io/badge/Version-1→1S→2→3-orange?&style=flat-square">
 </summary>
@@ -347,20 +338,19 @@
     - 开源：
       - [FireRedTTS](https://huggingface.co/FireRedTeam/FireRedTTS)
       - [FireRedTTS-1S](https://huggingface.co/FireRedTeam/FireRedTTS-1S)
-    - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/FireRedTeam/FireRedTTS&query=created_at&label=&color=white)
+    - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/FireRedTeam/FireRedTTS&query=created_at&label=Created&color=white)
     - 更新：
-      - 主分支：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/FireRedTeam/FireRedTTS/branches/main&query=commit.commit.committer.date&label=&color=white)
+      - 主分支：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/FireRedTeam/FireRedTTS/branches/main&query=commit.commit.committer.date&label=Updated&color=white)
       - 1S分支：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/FireRedTeam/FireRedTTS/branches/fireredtts-1s&query=commit.commit.committer.date&label=&color=white)
   - FireRedTTS2 [Github](https://github.com/FireRedTeam/FireRedTTS2) ![](https://img.shields.io/github/stars/FireRedTeam/FireRedTTS2)
     - 开源：
       - [FireRedTTS2](https://huggingface.co/FireRedTeam/FireRedTTS2)
-    - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/FireRedTeam/FireRedTTS2&query=created_at&label=&color=white)
-    - 更新：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/FireRedTeam/FireRedTTS2/branches/main&query=commit.commit.committer.date&label=&color=white)
+    - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/FireRedTeam/FireRedTTS2&query=created_at&label=Created&color=white)
+    - 更新：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/FireRedTeam/FireRedTTS2/branches/main&query=commit.commit.committer.date&label=Updated&color=white)
   - FireRedTTS3 [Github](https://github.com/FireRedTeam/FireRedTTS3) ![](https://img.shields.io/github/stars/FireRedTeam/FireRedTTS3)
     - 开源：
       - [FireRedTTS3](https://huggingface.co/FireRedTeam/FireRedTTS3)
-    - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/FireRedTeam/FireRedTTS3&query=created_at&label=&color=white)
-    - 更新：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/FireRedTeam/FireRedTTS3/branches/main&query=commit.commit.committer.date&label=&color=white)
+    - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/FireRedTeam/FireRedTTS3&query=created_at&label=Created&color=white)
 - 机构：小红书 FireRed Team
 - 模型：
 - 训练：
@@ -371,7 +361,7 @@
 <summary>
 <img src="https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/k2-fsa/OmniVoice/branches/main&query=commit.commit.committer.date&label=Updated&style=flat-square&color=royalblue">
 <a href="https://github.com/k2-fsa/OmniVoice">
-<img src="https://img.shields.io/github/stars/k2-fsa/OmniVoice?&label=OmniVoice%20★&style=flat-square">
+<img src="https://img.shields.io/github/stars/k2-fsa/OmniVoice?&label=OmniVoice&style=flat-square">
 </a>
 </summary>
 
@@ -383,8 +373,7 @@
 - 项目：[Github](https:github.com/k2-fsa/OmniVoice) ![](https://img.shields.io/github/stars/k2-fsa/OmniVoice)
   - 开源：
     - [OmniVoice-0.6B](https://huggingface.co/k2-fsa/OmniVoice/tree/main)
-  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/k2-fsa/OmniVoice&query=created_at&label=&color=white)
-  - 更新：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/k2-fsa/OmniVoice/branches/main&query=commit.commit.committer.date&label=&color=white)
+  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/k2-fsa/OmniVoice&query=created_at&label=Created&color=white)
 - 机构：小米 k2
 - 模型：
   - Single-Stage NAR TTS
@@ -399,7 +388,7 @@
 <summary>
 <img src="https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/FunAudioLLM/CosyVoice/branches/main&query=commit.commit.committer.date&label=Updated&style=flat-square&color=royalblue">
 <a href="https://github.com/FunAudioLLM/CosyVoice">
-<img src="https://img.shields.io/github/stars/FunAudioLLM/CosyVoice?&label=CosyVoice%20★&style=flat-square">
+<img src="https://img.shields.io/github/stars/FunAudioLLM/CosyVoice?&label=CosyVoice&style=flat-square">
 </a>
 <img src="https://img.shields.io/badge/Version-1.0→2.0→3.0-orange?&style=flat-square">
 </summary>
@@ -424,8 +413,7 @@
     - [CosyVoice-300M](https://huggingface.co/FunAudioLLM/CosyVoice-300M)
     - [CosyVoice2-0.5B](https://huggingface.co/FunAudioLLM/CosyVoice2-0.5B)
     - [Fun-CosyVoice3-0.5B-2512](https://huggingface.co/FunAudioLLM/Fun-CosyVoice3-0.5B-2512)
-  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/FunAudioLLM/CosyVoice&query=created_at&label=&color=white)
-  - 更新：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/FunAudioLLM/CosyVoice/branches/main&query=commit.commit.committer.date&label=&color=white)
+  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/FunAudioLLM/CosyVoice&query=created_at&label=Created&color=white)
 - 机构：
 - 模型：
 - 训练：
@@ -436,7 +424,7 @@
 <summary>
 <img src="https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/krafton-ai/RAON-OpenTTS/branches/main&query=commit.commit.committer.date&label=Updated&style=flat-square&color=royalblue">
 <a href="https://github.com/krafton-ai/RAON-OpenTTS">
-<img src="https://img.shields.io/github/stars/krafton-ai/RAON-OpenTTS?&label=RAON-OpenTTS%20★&style=flat-square">
+<img src="https://img.shields.io/github/stars/krafton-ai/RAON-OpenTTS?&label=RAON-OpenTTS&style=flat-square">
 </a>
 </summary>
 
@@ -448,8 +436,7 @@
   - 开源：
     - 2026.04.02 [Raon-OpenTTS-0.3B](https://huggingface.co/KRAFTON/Raon-OpenTTS-0.3B)
     - 2026.05.21 [Raon-OpenTTS-1B](https://huggingface.co/KRAFTON/Raon-OpenTTS-1B)
-  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/krafton-ai/RAON-OpenTTS&query=created_at&label=&color=white)
-  - 更新：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/krafton-ai/RAON-OpenTTS/branches/main&query=commit.commit.committer.date&label=&color=white)
+  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/krafton-ai/RAON-OpenTTS&query=created_at&label=Created&color=white)
 - 机构：韩国 KraftonAI
 - 模型：
   - 基于 F5-TTS
@@ -461,7 +448,7 @@
 <summary>
 <img src="https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/2noise/ChatTTS/branches/main&query=commit.commit.committer.date&label=Updated&style=flat-square&color=royalblue">
 <a href="https://github.com/2noise/ChatTTS">
-<img src="https://img.shields.io/github/stars/2noise/ChatTTS?&label=ChatTTS%20★&style=flat-square">
+<img src="https://img.shields.io/github/stars/2noise/ChatTTS?&label=ChatTTS&style=flat-square">
 </a>
 </summary>
 
@@ -471,8 +458,7 @@
   - 开源：~~训练~~ 推理
     - 2024.10.22 [ChatTTS](https://huggingface.co/2Noise/ChatTTS) 4w hrs
     - ChatTTS 10w hrs 未开源
-  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/2noise/ChatTTS&query=created_at&label=&color=white)
-  - 更新：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/2noise/ChatTTS/branches/main&query=commit.commit.committer.date&label=&color=white)
+  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/2noise/ChatTTS&query=created_at&label=Created&color=white)
 - 机构：2noise
 - 模型：
 - 训练：
@@ -483,7 +469,7 @@
 <summary>
 <img src="https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/edwko/OuteTTS/branches/main&query=commit.commit.committer.date&label=Updated&style=flat-square&color=royalblue">
 <a href="https://github.com/edwko/OuteTTS">
-<img src="https://img.shields.io/github/stars/edwko/OuteTTS?&label=OuteTTS%20★&style=flat-square">
+<img src="https://img.shields.io/github/stars/edwko/OuteTTS?&label=OuteTTS&style=flat-square">
 </a>
 </summary>
 
@@ -497,8 +483,7 @@
     - 2025.01.17 [OuteTTS-0.3-1B](https://huggingface.co/OuteAI/OuteTTS-0.3-1B)
     - 2025.05.19 [OuteTTS-1.0-0.6B](https://huggingface.co/OuteAI/OuteTTS-1.0-0.6B)
     - 2025.09.08 [LLaMA-OuteTTS-1.0-1B](https://huggingface.co/OuteAI/Llama-OuteTTS-1.0-1B)
-  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/edwko/OuteTTS&query=created_at&label=&color=white)
-  - 更新：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/edwko/OuteTTS/branches/main&query=commit.commit.committer.date&label=&color=white)
+  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/edwko/OuteTTS&query=created_at&label=Created&color=white)
 - 机构：OuteAI
 - 模型：
 - 训练：
@@ -509,7 +494,7 @@
 <summary>
 <img src="https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/QwenLM/Qwen3-TTS/branches/main&query=commit.commit.committer.date&label=Updated&style=flat-square&color=royalblue">
 <a href="https://github.com/QwenLM/Qwen3-TTS">
-<img src="https://img.shields.io/github/stars/QwenLM/Qwen3-TTS?&label=Qwen3-TTS%20★&style=flat-square">
+<img src="https://img.shields.io/github/stars/QwenLM/Qwen3-TTS?&label=Qwen3-TTS&style=flat-square">
 </a>
 </summary>
 
@@ -523,8 +508,7 @@
     - [Qwen3-TTS-12Hz-1.7B-Base](https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-Base)
     - [Qwen3-TTS-12Hz-1.7B-CustomVoice](https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice)
     - [Qwen3-TTS-12Hz-1.7B-VoiceDesign](https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign)
-  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/QwenLM/Qwen3-TTS&query=created_at&label=&color=white)
-  - 更新：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/QwenLM/Qwen3-TTS/branches/main&query=commit.commit.committer.date&label=&color=white)
+  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/QwenLM/Qwen3-TTS&query=created_at&label=Created&color=white)
 - 机构：阿里巴巴 Qwen Team
 - 模型：
   - Qwen-TTS-Tokenizer-25Hz：基于 Qwen2-Audio + 双阶段训练框架
@@ -543,7 +527,7 @@
 <summary>
 <img src="https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/shivammehta25/Matcha-TTS/branches/main&query=commit.commit.committer.date&label=Updated&style=flat-square&color=lightgray">
 <a href="https://github.com/shivammehta25/Matcha-TTS">
-<img src="https://img.shields.io/github/stars/shivammehta25/Matcha-TTS?&label=Matcha-TTS%20★&style=flat-square">
+<img src="https://img.shields.io/github/stars/shivammehta25/Matcha-TTS?&label=Matcha-TTS&style=flat-square">
 </a>
 </summary>
 
@@ -552,8 +536,7 @@
 - 项目：[Github](https://github.com/shivammehta25/Matcha-TTS)
   - 开源：
     - [Matcha-TTS LJSpeech&VCTK](https://drive.google.com/drive/folders/17C_gYgEHOxI5ZypcfE_k1piKCtyR0isJ)
-  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/shivammehta25/Matcha-TTS&query=created_at&label=&color=white)
-  - 更新：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/shivammehta25/Matcha-TTS/branches/main&query=commit.commit.committer.date&label=&color=white)
+  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/shivammehta25/Matcha-TTS&query=created_at&label=Created&color=white)
 - 机构：
 - 模型：
 - 训练：
@@ -564,7 +547,7 @@
 <summary>
 <img src="https://img.shields.io/badge/Updated-2025--06--11T00:00:00Z-lightgray?&label=Updated&style=flat-square">
 <a href="https://github.com/fishaudio/Bert-VITS2">
-<img src="https://img.shields.io/github/stars/fishaudio/Bert-VITS2?&label=BERT-VITS2%20★&style=flat-square">
+<img src="https://img.shields.io/github/stars/fishaudio/Bert-VITS2?&label=BERT-VITS2&style=flat-square">
 </a>
 </summary>
 
@@ -572,19 +555,19 @@
 - 报告：无
 - 项目：[Github](https://github.com/fishaudio/Bert-VITS2)
   - 开源：
-  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/fishaudio/Bert-VITS2&query=created_at&label=&color=white)
-  - 更新：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/fishaudio/Bert-VITS2/branches/master&query=commit.commit.committer.date&label=&color=white)
+  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/fishaudio/Bert-VITS2&query=created_at&label=Created&color=white)
 - 机构：
 - 模型：
 - 训练：
 
 </details>
 
+
 <details>
 <summary>
 <img src="https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/myshell-ai/OpenVoice/branches/main&query=commit.commit.committer.date&label=Updated&style=flat-square&color=lightgray">
 <a href="https://github.com/myshell-ai/OpenVoice">
-<img src="https://img.shields.io/github/stars/myshell-ai/OpenVoice?&label=OpenVoice%20★&style=flat-square">
+<img src="https://img.shields.io/github/stars/myshell-ai/OpenVoice?&label=OpenVoice&style=flat-square">
 </a>
 <img src="https://img.shields.io/badge/Version-v1→v2-orange?&style=flat-square">
 </summary>
@@ -597,8 +580,7 @@
   - 开源：
     - 2023.12.26 [OpenVoice-V1](https://myshell-public-repo-host.s3.amazonaws.com/openvoice/checkpoints_1226.zip)
     - 2024.04.17 [OpenVoice-V2](https://myshell-public-repo-host.s3.amazonaws.com/openvoice/checkpoints_v2_0417.zip)
-  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/myshell-ai/OpenVoice&query=created_at&label=&color=white)
-  - 更新：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/myshell-ai/OpenVoice/branches/main&query=commit.commit.committer.date&label=&color=white)
+  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/myshell-ai/OpenVoice&query=created_at&label=Created&color=white)
 - 机构：MyShellAI
 - 模型：基于 VITS
 - 训练：
@@ -609,7 +591,7 @@
 <summary>
 <img src="https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/SparkAudio/Spark-TTS/branches/main&query=commit.commit.committer.date&label=Updated&style=flat-square&color=lightgray">
 <a href="https://github.com/SparkAudio/Spark-TTS">
-<img src="https://img.shields.io/github/stars/SparkAudio/Spark-TTS?&label=Spark-TTS%20★&style=flat-square">
+<img src="https://img.shields.io/github/stars/SparkAudio/Spark-TTS?&label=Spark-TTS&style=flat-square">
 </a>
 </summary>
 
@@ -618,8 +600,7 @@
 - 项目：[Github](https://github.com/SparkAudio/Spark-TTS)
   - 开源：
     - [Spark-TTS-0.5B](https://huggingface.co/SparkAudio/Spark-TTS-0.5B)
-  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/SparkAudio/Spark-TTS&query=created_at&label=&color=white)
-  - 更新：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/SparkAudio/Spark-TTS/branches/main&query=commit.commit.committer.date&label=&color=white)
+  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/SparkAudio/Spark-TTS&query=created_at&label=Created&color=white)
 - 机构：HKUST, SparkAudio Community, Mobvoi Information Tech, SJTU, NTU, ASLP@NPU, Fuxi AI Lab@NetEase
 - 模型：
   - BiCodec
@@ -632,7 +613,7 @@
 <summary>
 <img src="https://img.shields.io/badge/Updated-2025--02--26T00:00:00Z-lightgray?&label=Updated&style=flat-square">
 <a href="https://github.com/open-mmlab/Amphion/tree/main/models/tts/maskgct">
-<img src="https://img.shields.io/github/stars/open-mmlab/Amphion?&label=MaskGCT%20★&style=flat-square">
+<img src="https://img.shields.io/github/stars/open-mmlab/Amphion?&label=MaskGCT&style=flat-square">
 </a>
 </summary>
 
@@ -650,9 +631,28 @@
 
 <details>
 <summary>
+<img src="https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/winddori2002/dex-tts/branches/main&query=commit.commit.committer.date&label=Updated&style=flat-square&color=lightgray">
+<a href="https://github.com/winddori2002/dex-tts">
+<img src="https://img.shields.io/github/stars/winddori2002/dex-tts?&label=DEX-TTS&style=flat-square">
+</a>
+</summary>
+
+- 标题：
+- 报告：[ArXiv:2406.19135v1](https://arxiv.org/abs/2406.19135v1)
+- 项目：[Github](https://github.com/winddori2002/dex-tts)
+  - 开源：
+  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/winddori2002/dex-tts&query=created_at&label=Created&color=white)
+- 机构：
+- 模型：
+- 训练：
+
+</details>
+
+<details>
+<summary>
 <img src="https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/huggingface/parler-tts/branches/main&query=commit.commit.committer.date&label=Updated&style=flat-square&color=lightgray">
 <a href="https://github.com/huggingface/parler-tts">
-<img src="https://img.shields.io/github/stars/huggingface/parler-tts?&label=Parler-TTS%20★&style=flat-square">
+<img src="https://img.shields.io/github/stars/huggingface/parler-tts?&label=Parler-TTS&style=flat-square">
 </a>
 </summary>
 
@@ -666,8 +666,7 @@
     - 2024.11.23 [Parler-TTS-Large-v1-2B](https://huggingface.co/parler-tts/parler_tts_large_v1)
     - 2024.10.30 [Parler-TTS-Mini-v1.1-0.9B](https://huggingface.co/parler-tts/parler_tts_mini_v1.1)
     - 2024.05.22 [Parler-TTS-Mini-Expresso-0.6B](https://huggingface.co/parler-tts/parler-tts-mini-expresso)
-  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/huggingface/parler-tts&query=created_at&label=&color=white)
-  - 更新：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/huggingface/parler-tts/branches/main&query=commit.commit.committer.date&label=&color=white)
+  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/huggingface/parler-tts&query=created_at&label=Created&color=white)
 - 机构：HuggingFace
 - 模型：
 - 训练：
@@ -678,7 +677,7 @@
 <summary>
 <img src="https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/neonbjb/tortoise-tts/branches/main&query=commit.commit.committer.date&label=Updated&style=flat-square&color=lightgray">
 <a href="https://github.com/neonbjb/tortoise-tts">
-<img src="https://img.shields.io/github/stars/neonbjb/tortoise-tts?&label=TorToiSe-TTS%20★&style=flat-square">
+<img src="https://img.shields.io/github/stars/neonbjb/tortoise-tts?&label=TorToiSe-TTS&style=flat-square">
 </a>
 </summary>
 
@@ -687,8 +686,7 @@
 - 项目：[Github](https://github.com/neonbjb/tortoise-tts)
   - 开源：
     - [TorToiSe-TTS](https://huggingface.co/Manmay/tortoise-tts)
-  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/neonbjb/tortoise-tts&query=created_at&label=&color=white)
-  - 更新：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/neonbjb/tortoise-tts/branches/main&query=commit.commit.committer.date&label=&color=white)
+  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/neonbjb/tortoise-tts&query=created_at&label=Created&color=white)
 - 机构：
 - 模型：
 - 训练：
@@ -699,7 +697,7 @@
 <summary>
 <img src="https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/jaywalnut310/vits/branches/main&query=commit.commit.committer.date&label=Updated&style=flat-square&color=lightgray">
 <a href="https://github.com/jaywalnut310/vits">
-<img src="https://img.shields.io/github/stars/jaywalnut310/vits?&label=VITS%20★&style=flat-square">
+<img src="https://img.shields.io/github/stars/jaywalnut310/vits?&label=VITS&style=flat-square">
 </a>
 </summary>
 
@@ -708,8 +706,7 @@
 - 项目：[Github](https://github.com/jaywalnut310/vits) ![](https://img.shields.io/github/stars/jaywalnut310/vits)
   - 开源：
     - [VITS LJSpeech & VCTK](https://drive.google.com/drive/folders/1ksarh-cJf3F5eKJjLVWY0X1j1qsQqiS2)
-  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/jaywalnut310/vits&query=created_at&label=&color=white)
-  - 更新：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/jaywalnut310/vits/branches/main&query=commit.commit.committer.date&label=&color=white)
+  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/jaywalnut310/vits&query=created_at&label=Created&color=white)
 - 机构：Kakao Enterprise, KAIST
 - 模型：
 - 训练：
@@ -720,7 +717,7 @@
 <summary>
 <img src="https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/coqui-ai/TTS/branches/main&query=commit.commit.committer.date&label=Updated&style=flat-square&color=lightgray">
 <a href="https://github.com/coqui-ai/TTS">
-<img src="https://img.shields.io/github/stars/coqui-ai/TTS?&label=XTTS%20★&style=flat-square">
+<img src="https://img.shields.io/github/stars/coqui-ai/TTS?&label=XTTS&style=flat-square">
 </a>
 <img src="https://img.shields.io/badge/Version-v1→v2-orange?&style=flat-square">
 </summary>
@@ -731,30 +728,30 @@
   - 开源：
     - 2023.11.11 [XTTS-v1](https://huggingface.co/coqui/XTTS-v1)
     - 2023.12.12 [XTTS-v2](https://huggingface.co/coqui/XTTS-v2)
-  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/coqui-ai/TTS&query=created_at&label=&color=white)
-  - 更新：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/coqui-ai/TTS/branches/main&query=commit.commit.committer.date&label=&color=white)
+  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/coqui-ai/TTS&query=created_at&label=Created&color=white)
 - 机构：
 - 模型：
 - 训练：
 
 </details>
 
+
 <!--
 <details open>
 <summary>
-<img src="https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/XXX/branches/main&query=commit.commit.committer.date&label=Updated&style=flat-square&color=royalbluey">
+<img src="https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/XXX/branches/main&query=commit.commit.committer.date&label=Updated&style=flat-square&color=royalblue">
 <a href="https://github.com/XXX">
-<img src="https://img.shields.io/github/stars/XXX?&label=???%20★&style=flat-square">
+<img src="https://img.shields.io/github/stars/XXX?&label=???&style=flat-square">
 </a>
 <img src="https://img.shields.io/badge/Version-???-orange?&style=flat-square">
 </summary>
 
 - 标题：
 - 报告：[ArXiv]()
-- 项目：[Github](https://github.com/) ![](https://img.shields.io/github/stars/)
+- 项目：[Github](https://github.com/)
   - 开源：
-  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/XXX&query=created_at&label=&color=white)
-  - 更新：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/XXX/branches/main&query=commit.commit.committer.date&label=&color=white)
+  - 创建：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/XXX&query=created_at&label=Created&color=white)
+  - 更新：![](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/XXX/branches/main&query=commit.commit.committer.date&label=Updated&color=white)
 - 机构：
 - 模型：
 - 训练：
